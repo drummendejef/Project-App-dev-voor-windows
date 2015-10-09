@@ -7,7 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <ScrollViewer>
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Image x:Name="image" HorizontalAlignment="Center" Height="200" Margin="0,10,0,0" VerticalAlignment="Top" Source="ms-appx:///Assets/BOB.png"/>
+            <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="412,376,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="button1" Content="Button" HorizontalAlignment="Stretch" Height="90" Margin="10,238,10,0" VerticalAlignment="Top"/>
+            <Button x:Name="button1_Copy" Content="Button" HorizontalAlignment="Stretch" Height="90" Margin="10,347,10,0" VerticalAlignment="Top"/>
+            <Button x:Name="button1_Copy1" Content="Button" HorizontalAlignment="Stretch" Height="90" Margin="10,454,10,0" VerticalAlignment="Top"/>
+        </Grid>
+    </ScrollViewer>
 </Page>

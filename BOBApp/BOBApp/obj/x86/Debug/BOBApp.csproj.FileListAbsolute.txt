@@ -460,3 +460,4 @@ E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Co
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Core\resources.pri
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\BOB.png
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Core\Assets\BOB.png
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\BOBApp.csprojResolveAssemblyReference.cache
