@@ -104,9 +104,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BenBOBVM.cs" />
+    <Compile Include="ViewModels\LoginCredentials.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\MainMenuVM.cs" />
     <Compile Include="ViewModels\PuntenVM.cs" />
+    <Compile Include="ViewModels\RegistreerVM.cs" />
     <Compile Include="ViewModels\ZoekBOBVM.cs" />
     <Compile Include="Views\BenBOB.xaml.cs">
       <DependentUpon>BenBOB.xaml</DependentUpon>
@@ -114,11 +116,17 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginCredentials.xaml.cs">
+      <DependentUpon>LoginCredentials.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Punten.xaml.cs">
       <DependentUpon>Punten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registreer.xaml.cs">
+      <DependentUpon>Registreer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ZoekBOB.xaml.cs">
       <DependentUpon>ZoekBOB.xaml</DependentUpon>
@@ -158,11 +166,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LoginCredentials.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Punten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Registreer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
