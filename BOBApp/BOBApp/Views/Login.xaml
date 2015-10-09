@@ -7,10 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image x:Name="imageLogo" Height="340" Margin="10,10,10,0" VerticalAlignment="Top" Source="ms-appx:///Assets/BOB.png" />
-        <Button x:Name="buttonLogin" Content="Login" HorizontalAlignment="Stretch" Margin="10,355,10,0" VerticalAlignment="Top" Height="89"/>
-        <Button x:Name="buttonRegister" Content="Register" HorizontalAlignment="Stretch" Margin="10,449,10,0" VerticalAlignment="Top" Height="89"/>
+    <RelativePanel x:Name="grid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    </Grid>
+        <Image x:Name="imageLogo" Height="340" Margin="10,10,10,0" VerticalAlignment="Top" Source="ms-appx:///Assets/BOB.png" />
+        <Button x:Name="buttonLogin" Content="Login" HorizontalAlignment="Stretch" Margin="10,367,-350,0" VerticalAlignment="Top" Height="89"/>
+        <Button x:Name="buttonRegister" Content="Register" HorizontalAlignment="Stretch" Margin="10,467,-350,0" VerticalAlignment="Top" Height="89"/>
+
+    </RelativePanel>
 </Page>
