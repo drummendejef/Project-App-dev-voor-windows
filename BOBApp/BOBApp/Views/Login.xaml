@@ -9,11 +9,39 @@
     mc:Ignorable="d">
 
     <ScrollViewer>
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Image x:Name="imageLogo" HorizontalAlignment="Center" Height="200" Margin="0,10,0,0" VerticalAlignment="Top" Source="ms-appx:///Assets/BOB.png"/>
-            <Button x:Name="button_Facebooklogin" Content="Log in met Facebook" HorizontalAlignment="Stretch" Height="90" Margin="10,238,10,0" VerticalAlignment="Top"/>
-            <Button x:Name="button_Register" Content="Registreer" HorizontalAlignment="Stretch" Height="90" Margin="10,347,10,0" VerticalAlignment="Top"/>
-            <Button x:Name="button1_Login" Content="Login" HorizontalAlignment="Stretch" Height="90" Margin="10,454,10,0" VerticalAlignment="Top"/>
-        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Under800">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="1"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Over800">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="textBoxEmail.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="textBoxEmail.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="False"/>
+                        <Setter Target="textBoxEmail.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="passwordBox.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="buttonFacebook.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="buttonAanmelden.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                        <Setter Target="textBoxEmail.(RelativePanel.Below)" Value="imageLogo"/>
+                        <Setter Target="buttonRegistreren.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="buttonRegistreren.(RelativePanel.Below)" Value=""/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <RelativePanel >
+            <Image x:Name="imageLogo" HorizontalAlignment="Center" MaxWidth="300"  VerticalAlignment="Top"  Source="ms-appx:///Assets/BOB.png" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <Button x:Name="buttonFacebook" Content="Registreer via Facebook" RelativePanel.Below="imageLogo" RelativePanel.AlignHorizontalCenterWith="" RelativePanel.AlignHorizontalCenterWithPanel="True" VerticalAlignment="Bottom" Margin="20,10" />
+            <TextBox x:Name="textBoxEmail" HorizontalAlignment="Center" PlaceholderText="Email" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="250" Margin="20,10" RelativePanel.Below="buttonFacebook" RelativePanel.AlignHorizontalCenterWithPanel="True" d:LayoutOverrides="HorizontalAlignment"/>
+            <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" PlaceholderText="Wachtwoord" Height="32" VerticalAlignment="Top" Width="250" RelativePanel.Below="textBoxEmail" Margin="20,10" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <Button x:Name="buttonAanmelden" Content="Aanmelden" Width="150" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBox" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="20,10"/>
+            <Button x:Name="buttonRegistreren" Content="Registreren >"  Width="150" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10"/>
+
+        </RelativePanel>
     </ScrollViewer>
 </Page>

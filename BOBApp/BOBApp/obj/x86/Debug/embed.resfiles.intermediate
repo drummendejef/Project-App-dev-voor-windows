@@ -2,6 +2,8 @@ App.xbf
 MainPage.xbf
 Views\BenBOB.xbf
 Views\Login.xbf
+Views\LoginCredentials.xbf
 Views\MainMenu.xbf
 Views\Punten.xbf
+Views\Registreer.xbf
 Views\ZoekBOB.xbf

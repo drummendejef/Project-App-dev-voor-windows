@@ -461,3 +461,13 @@ E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Co
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\BOB.png
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Core\Assets\BOB.png
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\BOBApp.csprojResolveAssemblyReference.cache
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x86\Debug\Views\LoginCredentials.xbf
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x86\Debug\Views\Registreer.xbf
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\LoginCredentials.g.i.cs
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\LoginCredentials.g.cs
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Registreer.g.i.cs
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Registreer.g.cs
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\LoginCredentials.xaml
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Registreer.xaml
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\LoginCredentials.xbf
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Registreer.xbf
