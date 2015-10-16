@@ -446,3 +446,8 @@ E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Vi
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Register.g.cs
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Register.xaml
 E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\Register.xbf
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x86\Debug\Views\FeestjesOverzicht.xbf
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\FeestjesOverzicht.g.i.cs
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\FeestjesOverzicht.g.cs
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\FeestjesOverzicht.xaml
+E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\obj\x86\Debug\Views\FeestjesOverzicht.xbf
