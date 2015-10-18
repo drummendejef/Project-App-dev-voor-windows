@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class MainMenuVM
+    class ProfielVM
     {
+
     }
 }

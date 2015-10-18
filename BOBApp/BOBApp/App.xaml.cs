@@ -76,8 +76,10 @@ namespace BOBApp
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                
-                rootFrame.Navigate(typeof(Login), e.Arguments);//Zorgen dat het startscherm de Login is.
+
+                //rootFrame.Navigate(typeof(Login), e.Arguments);//Zorgen dat het startscherm de Login is.
+                rootFrame.Navigate(typeof(Bestemmingen), e.Arguments);//Zorgen dat het bestemmingscherm het startscherm is (als test)
+                //rootFrame.Navigate(typeof(Register), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();

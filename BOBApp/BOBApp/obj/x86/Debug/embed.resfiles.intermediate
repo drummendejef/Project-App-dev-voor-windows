@@ -1,5 +1,7 @@
 App.xbf
 MainPage.xbf
+Views\Bestemmingen.xbf
 Views\FeestjesOverzicht.xbf
 Views\Login.xbf
+Views\Profiel.xbf
 Views\Register.xbf
