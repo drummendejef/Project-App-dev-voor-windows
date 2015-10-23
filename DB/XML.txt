@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+	
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="173" y="164" name="Users">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Firstname" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="Lastname" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="Email" null="1" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+<default>NULL</default></row>
+<row name="Cellphone" null="1" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>NULL</default></row>
+<row name="Bobs_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Bobs" row="ID" />
+</row>
+<row name="Password" null="0" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+</row>
+<row name="FacebookID" null="1" autoincrement="0">
+<datatype>VARCHAR(40)</datatype>
+<default>NULL</default></row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="785" y="55" name="Destinations">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+</row>
+<row name="Cities_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Cities" row="ID" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="1028" y="89" name="Cities">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+</row>
+<row name="Countries_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Countries" row="ID" />
+</row>
+<row name="PostCode" null="1" autoincrement="0">
+<datatype>VARCHAR(4)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="1188" y="127" name="Countries">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+</row>
+<row name="ShortName" null="0" autoincrement="0">
+<datatype>VARCHAR(3)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="572" y="42" name="Users_Destinations">
+<row name="Users_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Users" row="ID" />
+</row>
+<row name="Destinations_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Destinations" row="ID" />
+</row>
+<row name="Default" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>0</default></row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>Users_ID</part>
+<part>Destinations_ID</part>
+</key>
+</table>
+<table x="537" y="400" name="Autotype">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="Brand" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="966" y="376" name="Parties">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="Organistor" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<row name="Amount" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="FacebookEventID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Cities_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Cities" row="ID" />
+</row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="685" y="171" name="Bobs_Parties">
+<row name="Users_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Users" row="ID" />
+</row>
+<row name="Parties_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Parties" row="ID" />
+</row>
+<row name="Statuses_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Statuses" row="ID" />
+</row>
+<row name="Bobs_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+</row>
+<row name="Destination_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Destinations" row="ID" />
+</row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>Users_ID</part>
+<part>Parties_ID</part>
+<part>Statuses_ID</part>
+</key>
+</table>
+<table x="128" y="697" name="Users_PointsDescription">
+<row name="Users_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Users" row="ID" />
+</row>
+<row name="PointsDescription_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="PointsDescription" row="ID" />
+</row>
+<row name="Points" null="0" autoincrement="0">
+<datatype>DOUBLE</datatype>
+</row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>Users_ID</part>
+<part>PointsDescription_ID</part>
+</key>
+</table>
+<table x="475" y="694" name="PointsDescription">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Description" null="1" autoincrement="0">
+<datatype>VARCHAR(300)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="395" y="235" name="Bobs">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="CurrentLocation" null="1" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+<default>NULL</default></row>
+<row name="Online" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>0</default></row>
+<row name="PricePerKm" null="0" autoincrement="0">
+<datatype>DOUBLE</datatype>
+<default>0</default></row>
+<row name="Users_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Users" row="ID" />
+</row>
+<row name="BobsType_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="BobsType" row="ID" />
+</row>
+<row name="LicensePlate" null="0" autoincrement="0">
+<datatype>VARCHAR(60)</datatype>
+</row>
+<row name="Autotype_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Autotype" row="ID" />
+</row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="723" y="358" name="Statuses">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>VARCHAR(200)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="44" y="27" name="Friends">
+<row name="Users_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Users" row="ID" />
+</row>
+<row name="Friend_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Users" row="ID" />
+</row>
+<row name="Accepted" null="0" autoincrement="0">
+<datatype>TINYINT(1)</datatype>
+<default>0</default></row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>Users_ID</part>
+<part>Friend_ID</part>
+</key>
+</table>
+<table x="286" y="457" name="Chat">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Users_ID" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Users" row="ID" />
+</row>
+<row name="Bobs_ID" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="Bobs" row="ID" />
+</row>
+<row name="Comment" null="0" autoincrement="0">
+<datatype>VARCHAR(500)</datatype>
+</row>
+<row name="Added" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>CURRENT_TIMESTAMP</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="534" y="313" name="BobsType">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Name" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+</sql>
