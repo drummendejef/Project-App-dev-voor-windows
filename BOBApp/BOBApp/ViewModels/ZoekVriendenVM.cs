@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class ZoekVriendenVM
+    public class ZoekVriendenVM
     {
+        //Properties
+
+        //Constructor
+        public ZoekVriendenVM()
+        {
+
+        }
+
+        //Methods
     }
 }

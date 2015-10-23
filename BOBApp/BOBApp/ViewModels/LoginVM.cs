@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class LoginVM
+    public class LoginVM
     {
+        //Properties
+
+        //Constructor
+        public LoginVM()
+        {
+
+        }
+
+        //Methods
     }
 }

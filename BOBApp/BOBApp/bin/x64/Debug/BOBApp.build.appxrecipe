@@ -63,6 +63,15 @@
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\GalaSoft.MvvmLight.dll">
+      <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\GalaSoft.MvvmLight.Extras.dll">
+      <PackagePath>GalaSoft.MvvmLight.Extras.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\GalaSoft.MvvmLight.Platform.dll">
+      <PackagePath>GalaSoft.MvvmLight.Platform.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
     </AppxPackagedFile>
@@ -74,6 +83,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.Practices.ServiceLocation.dll">
+      <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>

@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class FeestjesOverzichtVM
+    public class FeestjesOverzichtVM
     {
+        //Properties
+
+        //Constructor
+        public FeestjesOverzichtVM()
+        {
+
+        }
+
+        //Methods
     }
 }

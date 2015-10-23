@@ -22,7 +22,7 @@
     <AppXManifest Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-10-18T14:51:14.456</Modified>
+      <Modified>2015-10-23T10:29:15.639</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +70,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-10-18T14:51:14.454</Modified>
+      <Modified>2015-10-23T10:29:15.630</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
@@ -82,7 +82,19 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-10-18T14:51:12.692</Modified>
+      <Modified>2015-10-23T10:29:09.348</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\GalaSoft.MvvmLight.dll">
+      <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
+      <Modified>2015-10-02T06:49:16.730</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\GalaSoft.MvvmLight.Extras.dll">
+      <PackagePath>GalaSoft.MvvmLight.Extras.dll</PackagePath>
+      <Modified>2015-10-02T06:49:16.741</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\GalaSoft.MvvmLight.Platform.dll">
+      <PackagePath>GalaSoft.MvvmLight.Platform.dll</PackagePath>
+      <Modified>2015-10-02T06:49:16.757</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -100,6 +112,10 @@
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
       <Modified>2015-09-25T09:14:01.178</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.Practices.ServiceLocation.dll">
+      <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
+      <Modified>2015-10-02T06:49:13.996</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
       <Modified>2015-09-25T09:14:01.406</Modified>
@@ -114,7 +130,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-10-18T14:51:13.720</Modified>
+      <Modified>2015-10-23T10:29:11.934</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project\BOBApp\BOBApp\bin\x64\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>

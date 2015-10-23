@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class BestemmingenVM
+    public class BestemmingenVM
     {
+        //Properties
+
+
+        //Constructor
+        public BestemmingenVM()
+        {
+
+        }
+
+        //Methods
     }
 }

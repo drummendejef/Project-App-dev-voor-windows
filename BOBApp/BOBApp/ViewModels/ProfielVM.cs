@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class ProfielVM
+    public class ProfielVM
     {
+        //Properties
 
+        //Constructor
+        public ProfielVM()
+        {
+
+        }
+
+        //Methods
     }
 }

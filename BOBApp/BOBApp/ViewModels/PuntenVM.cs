@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class PuntenVM
+    public class PuntenVM
     {
+        //Properties
+
+        //Constructor
+        public PuntenVM()
+        {
+
+        }
+
+        //Methods
+
     }
 }

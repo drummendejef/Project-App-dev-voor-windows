@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class RegisterVM
+    public class RegisterVM
     {
+        //Properties
+
+        //Constructor
+        public RegisterVM()
+        {
+
+        }
+
+        //Methods
+
     }
 }

@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class VindRitVM
+    public class VindRitVM
     {
+        //Properties
+
+        //Constructor
+        public VindRitVM()
+        {
+
+        }
+
+        //Methods
     }
 }

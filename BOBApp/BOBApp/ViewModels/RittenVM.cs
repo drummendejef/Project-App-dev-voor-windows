@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    class RittenVM
+    public class RittenVM
     {
+        //Properties
+
+        //Constructor
+        public RittenVM()
+        {
+
+        }
+
+        //Methods
     }
 }
