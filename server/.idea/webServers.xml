@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ee64fbdf-2a72-4318-9020-a71c3d8a8e8f" name="Bob" url="http://bob-2u15832u.cloudapp.net">
+        <fileTransfer host="bob-2u15832u.cloudapp.net" port="22" accessType="SFTP" password="dfcddf93dfccdffedfffdf93dffadfe4dfdedfc5df9fdf9edfe6dfe2dfcd" username="bob">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,77 @@
+doctype html
+html(ng-app="app")
+  head
+    title= title
+    base(href='/')
+    //styles
+    link(rel="stylesheet", type="text/css", media="screen", href="css/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", media="screen", href="css/bootstrap-theme.min.css")
+    link(rel='stylesheet', href='/css/style.min.css')
+    link(rel="stylesheet", href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.0/angular-material.min.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic")
+    link(rel="stylesheet", media="only screen and (max-width: 960px)", href="/css/960.css")
+    link(rel="stylesheet", media="only screen and (max-width: 768px)", href="/css/768.css")
+    link(rel="stylesheet", media="only screen and (max-width: 480px)", href="/css/480.css")
+
+    //favicons
+    link(rel="apple-touch-icon", sizes="57x57", href="/images/favicons/apple-touch-icon-57x57.png")
+    link(rel="apple-touch-icon", sizes="60x60", href="/images/favicons/apple-touch-icon-60x60.png")
+    link(rel="apple-touch-icon", sizes="72x72", href="/images/favicons/apple-touch-icon-72x72.png")
+    link(rel="apple-touch-icon", sizes="76x76", href="/images/favicons/apple-touch-icon-76x76.png")
+    link(rel="apple-touch-icon", sizes="114x114", href="/images/favicons/apple-touch-icon-114x114.png")
+    link(rel="apple-touch-icon", sizes="120x120", href="/images/favicons/apple-touch-icon-120x120.png")
+    link(rel="apple-touch-icon", sizes="144x144", href="/images/favicons/apple-touch-icon-144x144.png")
+    link(rel="apple-touch-icon", sizes="152x152", href="/images/favicons/apple-touch-icon-152x152.png")
+    link(rel="apple-touch-icon", sizes="180x180", href="/images/favicons/apple-touch-icon-180x180.png")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-32x32.png", sizes="32x32")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-194x194.png", sizes="194x194")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-96x96.png", sizes="96x96")
+    link(rel="icon", type="image/png", href="/images/favicons/android-chrome-192x192.png", sizes="192x192")
+    link(rel="icon", type="image/png", href="/images/favicons/favicon-16x16.png", sizes="16x16")
+    link(rel="manifest", href="/images/favicons/manifest.json")
+    meta(name="msapplication-TileColor", content="#a1a5ab")
+    meta(name="msapplication-TileImage", content="/images/favicons/mstile-144x144.png")
+    meta(name="theme-color", content="#ffffff")
+
+    //based on
+    meta(name="keywords" content="webdesign, web design, webontwikkelaar, website maken, website maker, webdesign, websites, internet, webontwerp,  website ontwikkelen, webdevelopment, design, graphic design, Brugge, Stijn, Stijn Van Hulle, stijn van hulle, van hulle, Burgerschool, multistore, gadgetline, NMCT, informaticabeheer")
+    meta(name="description" content="Stijn Van Hulle, webdesigner.")
+    meta(name="author" content="Stijn Van Hulle")
+    meta(name="google-site-verification" content="8ZI7BPKZd9GYPas-AHHIRScwthGPY2eoSHkiLhKgNlU")
+    meta(name="msvalidate.01" content="ABB71F3EE45FDE619A17AAA8F2D9BF73")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    meta(name="theme-color" content="#6DBCDB")
+
+
+  body(ng-controller="mainController")
+    block content
+
+  script(src="/bower_components/jquery/dist/jquery.min.js")
+  script(src="/socket.io/socket.io.js")
+
+  //angular components
+  script(src="/bower_components/angular/angular.min.js")
+  script(src="/bower_components/angular-resource/angular-resource.min.js")
+  script(src="/bower_components/angular-route/angular-route.min.js")
+  script(src="/bower_components/angular-animate/angular-animate.min.js")
+  script(src="/bower_components/angular-aria/angular-aria.min.js")
+  script(src="/bower_components/angular-material/angular-material.min.js")
+  script(src="/bower_components/angular-sanitize/angular-sanitize.min.js")
+  script(src="/bower_components/moment/min/moment-with-locales.min.js")
+  script(src="js/bootstrap.min.js")
+  script(src="js/ng-file-upload.min.js")
+  script(src="js/ng-file-upload-shim.min.js")
+  script(src="js/signature_pad.min.js")
+  script(src="js/angular-md5.min.js")
+  //script(src="js/functions.js")
+
+
+  script(src="js/all.min.js")
+  script(src="js/app.min.js")
+  script(src="js/controllers.min.js")
+
+
+
+

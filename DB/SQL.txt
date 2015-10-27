@@ -13,10 +13,10 @@
 DROP TABLE IF EXISTS `Users`;
 		
 CREATE TABLE `Users` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Firstname` VARCHAR(200) NOT NULL,
   `Lastname` VARCHAR(200) NOT NULL,
-  `Email` VARCHAR(300) NULL DEFAULT NULL,
+  `Email` VARCHAR(300) NOT NULL,
   `Cellphone` VARCHAR(30) NULL DEFAULT NULL,
   `Bobs_ID` INTEGER NULL DEFAULT NULL,
   `Password` VARCHAR(300) NOT NULL,
@@ -33,9 +33,9 @@ CREATE TABLE `Users` (
 DROP TABLE IF EXISTS `Destinations`;
 		
 CREATE TABLE `Destinations` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `Name` VARCHAR(300) NOT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Cities_ID` INTEGER NULL DEFAULT NULL,
+  `Location` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`ID`)
 );
 
@@ -47,8 +47,8 @@ CREATE TABLE `Destinations` (
 DROP TABLE IF EXISTS `Cities`;
 		
 CREATE TABLE `Cities` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `Name` VARCHAR(300) NOT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(400) NOT NULL,
   `Countries_ID` INTEGER NOT NULL,
   `PostCode` VARCHAR(4) NULL DEFAULT NULL,
   PRIMARY KEY (`ID`)
@@ -62,9 +62,10 @@ CREATE TABLE `Cities` (
 DROP TABLE IF EXISTS `Countries`;
 		
 CREATE TABLE `Countries` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(300) NOT NULL,
   `ShortName` VARCHAR(3) NOT NULL,
+  `EnglishName` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`ID`)
 );
 
@@ -80,6 +81,7 @@ CREATE TABLE `Users_Destinations` (
   `Destinations_ID` INTEGER NOT NULL,
   `Default` TINYINT(1) NOT NULL DEFAULT 0,
   `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Name` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`Users_ID`, `Destinations_ID`)
 );
 
@@ -105,7 +107,7 @@ CREATE TABLE `Autotype` (
 DROP TABLE IF EXISTS `Parties`;
 		
 CREATE TABLE `Parties` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(200) NOT NULL,
   `Organistor` VARCHAR(200) NOT NULL,
   `Amount` INTEGER NULL DEFAULT NULL,
@@ -142,9 +144,8 @@ DROP TABLE IF EXISTS `Users_PointsDescription`;
 CREATE TABLE `Users_PointsDescription` (
   `Users_ID` INTEGER NOT NULL,
   `PointsDescription_ID` INTEGER NOT NULL,
-  `Points` DOUBLE NOT NULL,
   `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Users_ID`, `PointsDescription_ID`)
+  PRIMARY KEY (`Users_ID`, `PointsDescription_ID`, `Added`)
 );
 
 -- ---
@@ -155,8 +156,9 @@ CREATE TABLE `Users_PointsDescription` (
 DROP TABLE IF EXISTS `PointsDescription`;
 		
 CREATE TABLE `PointsDescription` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Description` VARCHAR(300) NULL DEFAULT NULL,
+  `Points` DOUBLE NOT NULL,
   PRIMARY KEY (`ID`)
 );
 
@@ -168,15 +170,15 @@ CREATE TABLE `PointsDescription` (
 DROP TABLE IF EXISTS `Bobs`;
 		
 CREATE TABLE `Bobs` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `CurrentLocation` VARCHAR(200) NULL DEFAULT NULL,
   `Online` TINYINT(1) NOT NULL DEFAULT 0,
   `PricePerKm` DOUBLE NOT NULL DEFAULT 0,
-  `Users_ID` INTEGER NOT NULL,
   `BobsType_ID` INTEGER NOT NULL,
   `LicensePlate` VARCHAR(60) NOT NULL,
   `Autotype_ID` INTEGER NOT NULL,
   `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`)
 );
 
@@ -188,7 +190,7 @@ CREATE TABLE `Bobs` (
 DROP TABLE IF EXISTS `Statuses`;
 		
 CREATE TABLE `Statuses` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`ID`)
 );
@@ -202,25 +204,25 @@ DROP TABLE IF EXISTS `Friends`;
 		
 CREATE TABLE `Friends` (
   `Users_ID` INTEGER NOT NULL,
-  `Friend_ID` INTEGER NULL,
+  `Friend_ID` INTEGER NULL DEFAULT NULL,
   `Accepted` TINYINT(1) NOT NULL DEFAULT 0,
   `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Users_ID`, `Friend_ID`)
 );
 
 -- ---
--- Table 'Chat'
+-- Table 'ChatRooms'
 -- 
 -- ---
 
-DROP TABLE IF EXISTS `Chat`;
+DROP TABLE IF EXISTS `ChatRooms`;
 		
-CREATE TABLE `Chat` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
+CREATE TABLE `ChatRooms` (
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
   `Users_ID` INTEGER NULL DEFAULT NULL,
   `Bobs_ID` INTEGER NOT NULL,
-  `Comment` VARCHAR(500) NOT NULL,
   `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Active` TINYINT(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`)
 );
 
@@ -232,8 +234,40 @@ CREATE TABLE `Chat` (
 DROP TABLE IF EXISTS `BobsType`;
 		
 CREATE TABLE `BobsType` (
-  `ID` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,
-  `Name` INTEGER NOT NULL,
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`ID`)
+);
+
+-- ---
+-- Table 'Trips'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `Trips`;
+		
+CREATE TABLE `Trips` (
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
+  `Users_ID` INTEGER NOT NULL,
+  `Bobs_ID` INTEGER NOT NULL,
+  `Destinations_ID` INTEGER NOT NULL,
+  `CurrenLocation` VARCHAR(300) NULL DEFAULT NULL,
+  `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+);
+
+-- ---
+-- Table 'ChatComments'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `ChatComments`;
+		
+CREATE TABLE `ChatComments` (
+  `ID` INTEGER NOT NULL AUTO_INCREMENT,
+  `ChatRooms_ID` INTEGER NULL DEFAULT NULL,
+  `Comment` VARCHAR(200) NULL DEFAULT NULL,
+  `Added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 );
 
@@ -250,16 +284,20 @@ ALTER TABLE `Parties` ADD FOREIGN KEY (Cities_ID) REFERENCES `Cities` (`ID`);
 ALTER TABLE `Bobs_Parties` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
 ALTER TABLE `Bobs_Parties` ADD FOREIGN KEY (Parties_ID) REFERENCES `Parties` (`ID`);
 ALTER TABLE `Bobs_Parties` ADD FOREIGN KEY (Statuses_ID) REFERENCES `Statuses` (`ID`);
+ALTER TABLE `Bobs_Parties` ADD FOREIGN KEY (Bobs_ID) REFERENCES `Bobs` (`ID`);
 ALTER TABLE `Bobs_Parties` ADD FOREIGN KEY (Destination_ID) REFERENCES `Destinations` (`ID`);
 ALTER TABLE `Users_PointsDescription` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
 ALTER TABLE `Users_PointsDescription` ADD FOREIGN KEY (PointsDescription_ID) REFERENCES `PointsDescription` (`ID`);
-ALTER TABLE `Bobs` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
 ALTER TABLE `Bobs` ADD FOREIGN KEY (BobsType_ID) REFERENCES `BobsType` (`ID`);
 ALTER TABLE `Bobs` ADD FOREIGN KEY (Autotype_ID) REFERENCES `Autotype` (`ID`);
 ALTER TABLE `Friends` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
 ALTER TABLE `Friends` ADD FOREIGN KEY (Friend_ID) REFERENCES `Users` (`ID`);
-ALTER TABLE `Chat` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
-ALTER TABLE `Chat` ADD FOREIGN KEY (Bobs_ID) REFERENCES `Bobs` (`ID`);
+ALTER TABLE `ChatRooms` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
+ALTER TABLE `ChatRooms` ADD FOREIGN KEY (Bobs_ID) REFERENCES `Bobs` (`ID`);
+ALTER TABLE `Trips` ADD FOREIGN KEY (Users_ID) REFERENCES `Users` (`ID`);
+ALTER TABLE `Trips` ADD FOREIGN KEY (Bobs_ID) REFERENCES `Bobs` (`ID`);
+ALTER TABLE `Trips` ADD FOREIGN KEY (Destinations_ID) REFERENCES `Destinations` (`ID`);
+ALTER TABLE `ChatComments` ADD FOREIGN KEY (ChatRooms_ID) REFERENCES `ChatRooms` (`ID`);
 
 -- ---
 -- Table Properties
@@ -278,8 +316,10 @@ ALTER TABLE `Chat` ADD FOREIGN KEY (Bobs_ID) REFERENCES `Bobs` (`ID`);
 -- ALTER TABLE `Bobs` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Statuses` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Friends` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Chat` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `ChatRooms` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `BobsType` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `Trips` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `ChatComments` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ---
 -- Test Data
@@ -287,31 +327,35 @@ ALTER TABLE `Chat` ADD FOREIGN KEY (Bobs_ID) REFERENCES `Bobs` (`ID`);
 
 -- INSERT INTO `Users` (`ID`,`Firstname`,`Lastname`,`Email`,`Cellphone`,`Bobs_ID`,`Password`,`FacebookID`,`Added`) VALUES
 -- ('','','','','','','','','');
--- INSERT INTO `Destinations` (`ID`,`Name`,`Cities_ID`) VALUES
+-- INSERT INTO `Destinations` (`ID`,`Cities_ID`,`Location`) VALUES
 -- ('','','');
 -- INSERT INTO `Cities` (`ID`,`Name`,`Countries_ID`,`PostCode`) VALUES
 -- ('','','','');
--- INSERT INTO `Countries` (`ID`,`Name`,`ShortName`) VALUES
--- ('','','');
--- INSERT INTO `Users_Destinations` (`Users_ID`,`Destinations_ID`,`Default`,`Added`) VALUES
+-- INSERT INTO `Countries` (`ID`,`Name`,`ShortName`,`EnglishName`) VALUES
 -- ('','','','');
+-- INSERT INTO `Users_Destinations` (`Users_ID`,`Destinations_ID`,`Default`,`Added`,`Name`) VALUES
+-- ('','','','','');
 -- INSERT INTO `Autotype` (`ID`,`Name`,`Brand`) VALUES
 -- ('','','');
 -- INSERT INTO `Parties` (`ID`,`Name`,`Organistor`,`Amount`,`FacebookEventID`,`Cities_ID`,`Added`) VALUES
 -- ('','','','','','','');
 -- INSERT INTO `Bobs_Parties` (`Users_ID`,`Parties_ID`,`Statuses_ID`,`Bobs_ID`,`Destination_ID`,`Added`) VALUES
 -- ('','','','','','');
--- INSERT INTO `Users_PointsDescription` (`Users_ID`,`PointsDescription_ID`,`Points`,`Added`) VALUES
--- ('','','','');
--- INSERT INTO `PointsDescription` (`ID`,`Description`) VALUES
--- ('','');
--- INSERT INTO `Bobs` (`ID`,`CurrentLocation`,`Online`,`PricePerKm`,`Users_ID`,`BobsType_ID`,`LicensePlate`,`Autotype_ID`,`Added`) VALUES
+-- INSERT INTO `Users_PointsDescription` (`Users_ID`,`PointsDescription_ID`,`Added`) VALUES
+-- ('','','');
+-- INSERT INTO `PointsDescription` (`ID`,`Description`,`Points`) VALUES
+-- ('','','');
+-- INSERT INTO `Bobs` (`ID`,`CurrentLocation`,`Online`,`PricePerKm`,`BobsType_ID`,`LicensePlate`,`Autotype_ID`,`Added`,`Active`) VALUES
 -- ('','','','','','','','','');
 -- INSERT INTO `Statuses` (`ID`,`Name`) VALUES
 -- ('','');
 -- INSERT INTO `Friends` (`Users_ID`,`Friend_ID`,`Accepted`,`Added`) VALUES
 -- ('','','','');
--- INSERT INTO `Chat` (`ID`,`Users_ID`,`Bobs_ID`,`Comment`,`Added`) VALUES
+-- INSERT INTO `ChatRooms` (`ID`,`Users_ID`,`Bobs_ID`,`Added`,`Active`) VALUES
 -- ('','','','','');
 -- INSERT INTO `BobsType` (`ID`,`Name`) VALUES
 -- ('','');
+-- INSERT INTO `Trips` (`ID`,`Users_ID`,`Bobs_ID`,`Destinations_ID`,`CurrenLocation`,`Added`) VALUES
+-- ('','','','','','');
+-- INSERT INTO `ChatComments` (`ID`,`ChatRooms_ID`,`Comment`,`Added`) VALUES
+-- ('','','','');

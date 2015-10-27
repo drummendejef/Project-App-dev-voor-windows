@@ -1,0 +1,75 @@
+/* algemeen */
+body{
+  background: #c84030 !important;
+  background: #f9f9f9 !important;
+  color: #bdc3cd;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {overflow-y: scroll !important; overflow-x: hidden; outline: 0;}
+a{
+  color: rgb(57, 67, 76);
+  text-decoration:underline;
+}
+a:hover {
+  color: rgb(57, 67, 78);
+  text-decoration: none;
+}
+ul, ol, li {
+  text-align: left !important;
+  margin: 0px;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+p {
+  font-size: 14px;
+  text-transform: none;
+  font-weight: 300;
+  text-align: justify;
+}
+h1,h2,h3{
+  font-weight: 400;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  padding-left: 15px;
+
+}
+img{
+  border: none;
+  padding: 0;
+  margin: 0;
+
+}
+:focus {outline: none; }
+
+
+/* hoofdelementen */
+main{
+  padding-top: 20px;
+  position:relative;
+  float: left;
+  width: 100%;
+  background: #f9f9f9;
+}
+
+header {
+  background: #c84030;
+  height: 50px;
+  position: relative;
+  width: 100%;
+  color: white;
+}
+header a{
+  color: white;
+}
