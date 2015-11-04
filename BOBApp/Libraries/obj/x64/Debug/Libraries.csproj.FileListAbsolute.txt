@@ -1,0 +1,17 @@
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x64\Debug\Libraries.dll
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x64\Debug\Libraries.pdb
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x64\Debug\Libraries.pri
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\Libraries.csprojResolveAssemblyReference.cache
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\Libraries.dll
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\Libraries.pdb
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\priconfig.xml
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\priconfig.xml.intermediate
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\layout.resfiles
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\layout.resfiles.intermediate
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\resources.resfiles
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\resources.resfiles.intermediate
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\pri.resfiles
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\pri.resfiles.intermediate
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\qualifiers.txt
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\qualifiers.txt.intermediate
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt

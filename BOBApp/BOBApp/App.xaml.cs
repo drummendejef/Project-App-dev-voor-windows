@@ -1,4 +1,7 @@
-﻿using BOBApp.Views;
+﻿using BOBApp.Messages;
+using BOBApp.ViewModels;
+using BOBApp.Views;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,12 +47,7 @@ namespace BOBApp
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+            Messenger.Default.Register<GoToPage>(this, NavigateToPage);
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -77,13 +75,31 @@ namespace BOBApp
                 // configuring the new page by passing required information as a navigation
                 // parameter
 
-                //rootFrame.Navigate(typeof(Login), e.Arguments);//Zorgen dat het startscherm de Login is.
-                rootFrame.Navigate(typeof(Bestemmingen), e.Arguments);//Zorgen dat het bestemmingscherm het startscherm is (als test)
+                rootFrame.Navigate(typeof(Login), e.Arguments);//Zorgen dat het startscherm de Login is.
+                //rootFrame.Navigate(typeof(Bestemmingen), e.Arguments);//Zorgen dat het bestemmingscherm het startscherm is (als test)
                 //rootFrame.Navigate(typeof(Register), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();
         }
+
+        private void NavigateToPage(GoToPage message)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+         
+            switch (message.Name)
+            {
+                case "ritten":
+                    RittenVM ritten = new RittenVM();
+                    rootFrame.Navigate(typeof(Ritten));
+                    break;
+                default:
+                    rootFrame.Navigate(typeof(LoginVM));
+                    break;
+            }
+        }
+
+
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails
