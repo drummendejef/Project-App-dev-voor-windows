@@ -41,18 +41,18 @@ namespace BOBApp.ViewModels
             if (ok == true)
             {
                 Login user = await LoginRepository.GetUser();
+                BaseViewModelLocator.USER = user;
                 //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()
                 {
-                    Name = "ritten"
+                    Name = "MainView"
                 });
             }
 
             return ok;
         }
 
-       
-
+   
        
     }
 }

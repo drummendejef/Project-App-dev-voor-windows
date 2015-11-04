@@ -89,12 +89,14 @@ namespace BOBApp
          
             switch (message.Name)
             {
-                case "ritten":
-                    RittenVM ritten = new RittenVM();
+                case "Ritten":
                     rootFrame.Navigate(typeof(Ritten));
                     break;
+                case "MainView":
+                    rootFrame.Navigate(typeof(MainView));
+                    break;
                 default:
-                    rootFrame.Navigate(typeof(LoginVM));
+                    rootFrame.Navigate(typeof(Login));
                     break;
             }
         }

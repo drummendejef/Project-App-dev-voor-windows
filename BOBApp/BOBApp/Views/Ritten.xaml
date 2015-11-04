@@ -14,8 +14,10 @@
                 
             </StackPanel>
         </DataTemplate>
+       
     </Page.Resources>
 
+    
     <RelativePanel>
         <TextBox x:Name="textBoxZoekRitten" Height="32" TextWrapping="Wrap" Text="" PlaceholderText="Zoek door je ritten" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
         <TextBlock x:Name="textBlockHuidigeRit" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" Text="Huidige rit:" VerticalAlignment="Top" RelativePanel.Below="textBoxZoekRitten"/>

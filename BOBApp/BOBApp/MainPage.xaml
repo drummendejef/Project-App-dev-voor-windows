@@ -7,8 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" Margin="10,253,10,0" TextWrapping="Wrap" Text="TEST" VerticalAlignment="Top" Height="126" FontWeight="Bold" />
-
+    <Grid Background="{ThemeResource SystemControlHyperlinkTextBrush}">
+       
     </Grid>
 </Page>

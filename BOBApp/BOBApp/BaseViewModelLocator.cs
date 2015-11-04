@@ -19,6 +19,7 @@ namespace BOBApp
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);//In onze Ioc container zal een bepaalde view zitten en gekoppeld worden.
 
             //VMs registreren.
+            SimpleIoc.Default.Register<MainViewVM>();
             SimpleIoc.Default.Register<BestemmingenVM>();
             SimpleIoc.Default.Register<FeestjesOverzichtVM>();
             SimpleIoc.Default.Register<LoginVM>();
@@ -33,6 +34,10 @@ namespace BOBApp
 
 
 
+        }
+        public MainViewVM MainViewVM
+        {
+            get { return ServiceLocator.Current.GetInstance<MainViewVM>(); }//Viewmodels opvragen
         }
 
         public LoginVM LoginVM
