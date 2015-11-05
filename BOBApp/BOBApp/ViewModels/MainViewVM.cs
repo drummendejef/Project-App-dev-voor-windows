@@ -1,6 +1,5 @@
 ﻿using BOBApp.Messages;
 using BOBApp.Models;
-using BOBApp.services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;

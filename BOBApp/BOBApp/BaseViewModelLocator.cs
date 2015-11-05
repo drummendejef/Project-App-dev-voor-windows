@@ -44,6 +44,10 @@ namespace BOBApp
         {
             get { return ServiceLocator.Current.GetInstance<LoginVM>(); }//Viewmodels opvragen
         }
+        public RegisterVM RegisterVM
+        {
+            get { return ServiceLocator.Current.GetInstance<RegisterVM>(); }//Viewmodels opvragen
+        }
 
         public RittenVM RittenVM
         {

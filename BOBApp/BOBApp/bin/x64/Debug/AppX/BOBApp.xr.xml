@@ -3,11 +3,23 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="BestemmingenLijst" />
     <RootPropertyPathName Name="LoginVM" />
+    <RootPropertyPathName Name="RegisterCommand" />
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="Pass" />
     <RootPropertyPathName Name="Email" />
+    <RootPropertyPathName Name="Login_FacebookCommand" />
     <RootPropertyPathName Name="MainViewVM" />
     <RootPropertyPathName Name="ProfielVM" />
+    <RootPropertyPathName Name="RegisterVM" />
+    <RootPropertyPathName Name="CancelCommand" />
+    <RootPropertyPathName Name="PasswordRepeat" />
+    <RootPropertyPathName Name="Password" />
+    <RootPropertyPathName Name="NewRegister" />
+    <RootPropertyPathName Name="Licenseplate" />
+    <RootPropertyPathName Name="Cellphone" />
+    <RootPropertyPathName Name="Firstname" />
+    <RootPropertyPathName Name="Lastname" />
+    <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="RittenVM" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -235,9 +247,9 @@
       <RootProperty Name="Content" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Command" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Command" />
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
