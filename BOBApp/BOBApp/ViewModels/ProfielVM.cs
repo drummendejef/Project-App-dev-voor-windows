@@ -20,8 +20,8 @@ namespace BOBApp.ViewModels
         public ProfielVM()
         {
             
-
-            GetUserDetails(BaseViewModelLocator.USER.Email);
+           //GetUserDetails werkt nog niet
+           //GetUserDetails(BaseViewModelLocator.USER.Email);
 
             AanpasCommand = new RelayCommand(Aanpassen);
         }
