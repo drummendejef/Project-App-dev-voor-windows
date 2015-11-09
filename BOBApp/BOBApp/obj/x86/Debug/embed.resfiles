@@ -1,7 +1,14 @@
 App.xbf
 MainPage.xbf
+Styles\SplitView.xbf
 Views\Bestemmingen.xbf
 Views\FeestjesOverzicht.xbf
 Views\Login.xbf
+Views\MainView.xbf
 Views\Profiel.xbf
+Views\Punten.xbf
 Views\Register.xbf
+Views\Ritten.xbf
+Views\VindRit.xbf
+Views\VindRit1.xbf
+Views\ZoekVrienden.xbf

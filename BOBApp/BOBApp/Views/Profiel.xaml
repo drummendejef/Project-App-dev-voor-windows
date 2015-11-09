@@ -18,6 +18,6 @@
         <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10"/>
         <PasswordBox x:Name="passwordBox" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
         <PasswordBox x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
-        <Button x:Name="buttonAanpassen" Content="Aanpassen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignRightWith="passwordBoxHerhaal"/>
+        <Button x:Name="buttonAanpassen" Content="Aanpassen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignRightWith="passwordBoxHerhaal" Command="{Binding AanpasCommand}"/>
     </RelativePanel>
 </Page>
