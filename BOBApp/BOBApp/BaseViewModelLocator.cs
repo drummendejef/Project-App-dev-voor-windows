@@ -39,11 +39,30 @@ namespace BOBApp
         {
             get { return ServiceLocator.Current.GetInstance<MainViewVM>(); }//Viewmodels opvragen
         }
+        public BestemmingenVM BestemmingenVM
+        {
+            get { return ServiceLocator.Current.GetInstance<BestemmingenVM>(); }//Viewmodels opvragen
+        }
+        public FeestjesOverzichtVM FeestjesOverzichtVM
+        {
+            get { return ServiceLocator.Current.GetInstance<FeestjesOverzichtVM>(); }//Viewmodels opvragen
+        }
 
         public LoginVM LoginVM
         {
             get { return ServiceLocator.Current.GetInstance<LoginVM>(); }//Viewmodels opvragen
         }
+
+        public ProfielVM ProfielVM
+        {
+            get { return ServiceLocator.Current.GetInstance<ProfielVM>(); }//Viewmodels opvragen
+        }
+
+        public PuntenVM PuntenVM
+        {
+            get { return ServiceLocator.Current.GetInstance<PuntenVM>(); }//Viewmodels opvragen
+        }
+
         public RegisterVM RegisterVM
         {
             get { return ServiceLocator.Current.GetInstance<RegisterVM>(); }//Viewmodels opvragen
@@ -52,6 +71,21 @@ namespace BOBApp
         public RittenVM RittenVM
         {
             get { return ServiceLocator.Current.GetInstance<RittenVM>(); }//Viewmodels opvragen
+        }
+
+        public VindRitVM VindRitVM
+        {
+            get { return ServiceLocator.Current.GetInstance<VindRitVM>(); }//Viewmodels opvragen
+        }
+
+        public VindRit1VM VindRit1VM
+        {
+            get { return ServiceLocator.Current.GetInstance<VindRit1VM>(); }//Viewmodels opvragen
+        }
+
+        public ZoekVriendenVM ZoekVriendenVM
+        {
+            get { return ServiceLocator.Current.GetInstance<ZoekVriendenVM>(); }//Viewmodels opvragen
         }
     }
 }
