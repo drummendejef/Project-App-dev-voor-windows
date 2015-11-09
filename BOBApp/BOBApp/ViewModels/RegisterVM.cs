@@ -45,7 +45,8 @@ namespace BOBApp.ViewModels
         {
             Messenger.Default.Send<GoToPage>(new GoToPage()
             {
-                Name = "MainView"
+                //Keer terug naar login scherm
+                Name = "Login"
             });
         }
         public void Register()

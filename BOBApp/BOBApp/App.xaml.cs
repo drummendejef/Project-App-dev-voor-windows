@@ -89,17 +89,38 @@ namespace BOBApp
          
             switch (message.Name)
             {
-                case "Ritten":
-                    rootFrame.Navigate(typeof(Ritten));
+                case "Bestemmingen":
+                    rootFrame.Navigate(typeof(Bestemmingen));
+                    break;
+                case "FeestjesOverzicht":
+                    rootFrame.Navigate(typeof(FeestjesOverzicht));
+                    break;
+                case "Login":
+                    rootFrame.Navigate(typeof(Login));
                     break;
                 case "MainView":
                     rootFrame.Navigate(typeof(MainView));
                     break;
+                case "Profiel":
+                    rootFrame.Navigate(typeof(Profiel));
+                    break;
+                case "Punten":
+                    rootFrame.Navigate(typeof(Punten));
+                    break;
                 case "Register":
                     rootFrame.Navigate(typeof(Register));
                     break;
-                case "Profiel":
-                    rootFrame.Navigate(typeof(Profiel));
+                case "Ritten":
+                    rootFrame.Navigate(typeof(Ritten));
+                    break;
+                case "VindRit":
+                    rootFrame.Navigate(typeof(VindRit));
+                    break;
+                case "VindRit1":
+                    rootFrame.Navigate(typeof(VindRit1));
+                    break;
+                case "ZoekVrienden":
+                    rootFrame.Navigate(typeof(ZoekVrienden));
                     break;
                 default:
                     rootFrame.Navigate(typeof(Login));
