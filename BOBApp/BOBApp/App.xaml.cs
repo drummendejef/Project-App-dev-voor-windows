@@ -75,6 +75,7 @@ namespace BOBApp
                 // configuring the new page by passing required information as a navigation
                 // parameter
 
+                //Zolang navigatie niet volledig op punt staat, views testen door typeof() aan te passen naar de view
                 rootFrame.Navigate(typeof(Login), e.Arguments);//Zorgen dat het startscherm de Login is.
                 //rootFrame.Navigate(typeof(Bestemmingen), e.Arguments);//Zorgen dat het bestemmingscherm het startscherm is (als test)
                 //rootFrame.Navigate(typeof(Register), e.Arguments);
@@ -89,14 +90,38 @@ namespace BOBApp
          
             switch (message.Name)
             {
-                case "Ritten":
-                    rootFrame.Navigate(typeof(Ritten));
+                case "Bestemmingen":
+                    rootFrame.Navigate(typeof(Bestemmingen));
+                    break;
+                case "FeestjesOverzicht":
+                    rootFrame.Navigate(typeof(FeestjesOverzicht));
+                    break;
+                case "Login":
+                    rootFrame.Navigate(typeof(Login));
                     break;
                 case "MainView":
                     rootFrame.Navigate(typeof(MainView));
                     break;
+                case "Profiel":
+                    rootFrame.Navigate(typeof(Profiel));
+                    break;
+                case "Punten":
+                    rootFrame.Navigate(typeof(Punten));
+                    break;
                 case "Register":
                     rootFrame.Navigate(typeof(Register));
+                    break;
+                case "Ritten":
+                    rootFrame.Navigate(typeof(Ritten));
+                    break;
+                case "VindRit":
+                    rootFrame.Navigate(typeof(VindRit));
+                    break;
+                case "VindRit1":
+                    rootFrame.Navigate(typeof(VindRit1));
+                    break;
+                case "ZoekVrienden":
+                    rootFrame.Navigate(typeof(ZoekVrienden));
                     break;
                 default:
                     rootFrame.Navigate(typeof(Login));

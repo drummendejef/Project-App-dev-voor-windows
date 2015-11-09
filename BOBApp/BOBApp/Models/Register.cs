@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BOBApp.Models
 {
+    //Zou deze klasse niet beter User heten?
     public class Register
     {
         public int ID { get; set; }
