@@ -10,14 +10,14 @@
 
     <RelativePanel>
         <TextBox x:Name="textBoxNaam" TextWrapping="Wrap" Text="{Binding User.Lastname, Mode=TwoWay}" PlaceholderText="Naam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10,50,10,10"/>
-        <TextBox x:Name="textBoxVoornaam" TextWrapping="Wrap" Text="{Binding User.Firstname}" PlaceholderText="Voornaam" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-        <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="{Binding User.Email}" PlaceholderText="Email" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-        <TextBox x:Name="textBoxGSMnr" TextWrapping="Wrap" Text="{Binding User.Cellphone}" PlaceholderText="GSM Nummer" RelativePanel.Below="textBoxEmail" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-        <TextBox x:Name="textBoxNummerplaat" TextWrapping="Wrap" Text="{Binding User.Licenseplate}" PlaceholderText="Nummerplaat" RelativePanel.Below="textBoxGSMnr" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
+        <TextBox x:Name="textBoxVoornaam" TextWrapping="Wrap" Text="{Binding User.Firstname, Mode=TwoWay}" PlaceholderText="Voornaam" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
+        <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="{Binding User.Email, Mode=TwoWay}" PlaceholderText="Email" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
+        <TextBox x:Name="textBoxGSMnr" TextWrapping="Wrap" Text="{Binding User.Cellphone, Mode=TwoWay}" PlaceholderText="GSM Nummer" RelativePanel.Below="textBoxEmail" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
+        <TextBox x:Name="textBoxNummerplaat" TextWrapping="Wrap" Text="{Binding User.LicensePlate, Mode=TwoWay}" PlaceholderText="Nummerplaat" RelativePanel.Below="textBoxGSMnr" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
         <TextBlock x:Name="textBlockAutoType" TextWrapping="Wrap" Text="Automerk" RelativePanel.Below="textBoxNummerplaat" Margin="10" RelativePanel.AlignLeftWith="textBoxNummerplaat" RelativePanel.AlignBottomWith="" RelativePanel.AlignTopWith=""/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10"/>
-        <PasswordBox x:Name="passwordBox" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
-        <PasswordBox x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
+        <PasswordBox x:Name="passwordBox" Password="{Binding Password, Mode=TwoWay}" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
+        <PasswordBox x:Name="passwordBoxHerhaal" Password="{Binding PasswordRepeat, Mode=TwoWay}" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
         <Button x:Name="buttonAanpassen" Content="Aanpassen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignRightWith="passwordBoxHerhaal" Command="{Binding AanpasCommand}"/>
     </RelativePanel>
 </Page>

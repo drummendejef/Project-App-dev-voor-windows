@@ -11,16 +11,17 @@
     <RootPropertyPathName Name="MainViewVM" />
     <RootPropertyPathName Name="ProfielVM" />
     <RootPropertyPathName Name="AanpasCommand" />
+    <RootPropertyPathName Name="PasswordRepeat" />
+    <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="User" />
-    <RootPropertyPathName Name="Licenseplate" />
+    <RootPropertyPathName Name="LicensePlate" />
     <RootPropertyPathName Name="Cellphone" />
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="Lastname" />
     <RootPropertyPathName Name="RegisterVM" />
     <RootPropertyPathName Name="CancelCommand" />
-    <RootPropertyPathName Name="PasswordRepeat" />
-    <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="NewRegister" />
+    <RootPropertyPathName Name="Licenseplate" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="RittenVM" />
   </Roots.PropertyPathNames>
