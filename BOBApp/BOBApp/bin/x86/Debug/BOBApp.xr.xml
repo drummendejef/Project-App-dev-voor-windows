@@ -83,6 +83,8 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="TextAlignment" />
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
@@ -100,7 +102,6 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="Content" />
       <RootProperty Name="IsChecked" />
-      <RootProperty Name="Margin" />
       <RootEvent Name="Click" />
       <RootEvent Name="Checked" />
     </RootType>
@@ -257,6 +258,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="IsEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />
@@ -372,6 +374,12 @@
     <RootType FullName="BOBApp.Views.Profiel" />
     <RootType FullName="BOBApp.Views.Punten" />
     <RootType FullName="Windows.UI.Xaml.Thickness" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootEvent Name="Checked" />
+      <RootEvent Name="Unchecked" />
+    </RootType>
     <RootType FullName="BOBApp.Views.Register" />
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="Margin" />
