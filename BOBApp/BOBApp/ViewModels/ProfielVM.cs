@@ -23,7 +23,7 @@ namespace BOBApp.ViewModels
         {
 
             //GetUserDetails zou moeten werken, pas testbaar na de navigatie implementatie, login en register
-            //User = GetUserDetails();
+            //GetUserDetails();
 
             //Testen met statische data
             User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };

@@ -15,5 +15,9 @@ namespace Libraries
         public static string USER = BASE + "/user";
         public static string PROFILE = BASE + "/user/profile";
         public static string REGISTER = BASE + "/user/register";
+        public static string TRIPS = BASE + "/trips";
+        public static string CURRENTTRIP = BASE + "/trips/current";
+        public static string POINTS = BASE + "/user/points";
+        public static string TOTALPOINTS = BASE + "/user/points/amount";
     }
 }
