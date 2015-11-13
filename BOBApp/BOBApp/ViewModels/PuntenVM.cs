@@ -10,7 +10,7 @@ namespace BOBApp.ViewModels
     public class PuntenVM
     {
         //Properties
-        public int TotalPoints { get; set; }
+        public string TotalPoints { get; set; }
         public string PointsText { get; set; }
 
         //Constructor
@@ -22,8 +22,9 @@ namespace BOBApp.ViewModels
         //Methods
         private async void GetPoints()
         {
-            this.TotalPoints = await PointRepository.GetTotalPoints();
-            this.PointsText = TotalPoints + " punten.";
+            //problemen hierbij, kijk wat erin zit,  server werkt niet op moment van testen, moet nog gedaan worden
+            TotalPoints = await PointRepository.GetTotalPoints();
+            PointsText = TotalPoints + " punten.";
         }
 
     }

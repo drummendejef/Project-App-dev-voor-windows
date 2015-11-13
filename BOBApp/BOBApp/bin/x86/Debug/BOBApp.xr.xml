@@ -18,6 +18,8 @@
     <RootPropertyPathName Name="Cellphone" />
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="Lastname" />
+    <RootPropertyPathName Name="PuntenVM" />
+    <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="NewRegister" />

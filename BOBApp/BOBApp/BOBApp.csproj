@@ -109,8 +109,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />
+    <Compile Include="Repositories\PointRepository.cs" />
     <Compile Include="Repositories\RegisterRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ViewModels\BestemmingenVM.cs" />
     <Compile Include="ViewModels\FeestjesOverzichtVM.cs" />
     <Compile Include="ViewModels\MainViewVM.cs" />

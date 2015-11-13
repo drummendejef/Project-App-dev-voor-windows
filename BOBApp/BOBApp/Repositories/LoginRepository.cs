@@ -34,7 +34,8 @@ namespace BOBApp.Repositories
         }
         public static async Task<Boolean> LoginFacebook()
         {
-            Boolean success = false;
+            //Deze Boolean nodig? Voorlopig in commentaar
+            //Boolean success = false;
 
             Uri url = new Uri(URL.AUTH_FACEBOOK);
             Boolean launched = await Launcher.LaunchUriAsync(url);
