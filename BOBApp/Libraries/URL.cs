@@ -13,6 +13,7 @@ namespace Libraries
         public static string AUTH_FACEBOOK = BASE + "/auth/facebook";
         public static string AUTH_SUCCESS = BASE + "/auth/success";
         public static string USER = BASE + "/user";
+        public static string PROFILE = BASE + "/user/profile";
         public static string REGISTER = BASE + "/user/register";
     }
 }
