@@ -27,8 +27,17 @@ namespace BOBApp.Repositories
 
                 return data;
             }
+        }
 
-
+        public static async Task<Register> GetUser(String email)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.PROFILE);
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Register data = JsonConvert.DeserializeObject<Register>(json);
+                return data;
+            }
         }
     }
 }

@@ -23,8 +23,8 @@ namespace BOBApp.ViewModels
         public ProfielVM()
         {
 
-            //GetUserDetails werkt nog niet
-            //GetUserDetails(BaseViewModelLocator.USER.Email);
+            //GetUserDetails zou moeten werken, pas testbaar na de navigatie implementatie, login en register
+            //GetUserDetails();
 
             //Testen met statische data
             User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
@@ -54,9 +54,9 @@ namespace BOBApp.ViewModels
         }
 
         //Haal de gegevens op van de user via zijn E-mail
-        private async void GetUserDetails(string email)
+        private async void GetUserDetails()
         {
-          this.User = await UserRepository.GetUser(email);
+            this.User = await RegisterRepository.GetUser(BaseViewModelLocator.USER.Email);
         }
 
     }
