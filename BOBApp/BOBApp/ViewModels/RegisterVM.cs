@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Libraries;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,8 @@ namespace BOBApp.ViewModels
         }
         public void Register()
         {
+            if (NewRegister.Lastname == null)
+                
            
             registerTask = RegisterUser(NewRegister);
         }

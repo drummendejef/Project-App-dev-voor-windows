@@ -43,7 +43,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <RelativePanel>
-            <TextBlock Text="{Binding Error,Mode=TwoWay}"/>
+            <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="checkBoxAkkoordVoorwaarden" Foreground="Red" FontWeight="Bold" TextAlignment="Center"/>
             <Button x:Name="buttonRegisterFacebook" Margin="10" Content="Registreren via Facebook" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
             <TextBox Text="{Binding NewRegister.Lastname, Mode=TwoWay}" x:Name="textBoxNaam" TextWrapping="Wrap" PlaceholderText="Naam" RelativePanel.Below="buttonRegisterFacebook" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
             <TextBox Text="{Binding NewRegister.Firstname, Mode=TwoWay}"  x:Name="textBoxVoornaam" TextWrapping="Wrap"  PlaceholderText="Voornaam" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
@@ -54,9 +54,9 @@
             <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10"/>
             <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
             <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
-            <RadioButton x:Name="radioButtonAkkoordVoorwaarden" Content="Ik ga akkoord met de voorwaarden" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignLeftWith="passwordBoxHerhaal"/>
+            <CheckBox x:Name="checkBoxAkkoordVoorwaarden" Content="Ik ga akkoord met de voorwaarden" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignLeftWith="passwordBoxHerhaal" Checked="Akkoord_checked" Unchecked="Akkoord_unchecked"/>
             <Button x:Name="buttonCancel" Content="Annuleer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignLeftWithPanel="True" Width="100" Command="{Binding CancelCommand}"/>
-            <Button x:Name="buttonRegistreer" Content="Registreer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignRightWithPanel="True" Width="100" Command="{Binding RegisterCommand}" />
+            <Button x:Name="buttonRegistreer" Content="Registreer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignRightWithPanel="True" Width="100" Command="{Binding RegisterCommand}" IsEnabled="False"/>
         </RelativePanel>
     </ScrollViewer>
 </Page>
