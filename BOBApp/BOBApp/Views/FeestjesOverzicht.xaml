@@ -6,7 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="BOBApp.Views.FeestjesOverzicht"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding FeestjesOverzichtVM, Mode=TwoWay, Source={StaticResource Locator}}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <RelativePanel>
         <TextBox x:Name="textBoxZoek" Height="32" PlaceholderText="Zoek locatie/feestje" Text="" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>

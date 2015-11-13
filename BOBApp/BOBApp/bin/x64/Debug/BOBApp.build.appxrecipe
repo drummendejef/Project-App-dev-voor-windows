@@ -105,6 +105,33 @@
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-Bold.otf">
+      <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-ExtraBold.otf">
+      <PackagePath>Styles\fonts\Raleway-ExtraBold.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-ExtraLight.otf">
+      <PackagePath>Styles\fonts\Raleway-ExtraLight.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-Heavy.otf">
+      <PackagePath>Styles\fonts\Raleway-Heavy.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-Light.otf">
+      <PackagePath>Styles\fonts\Raleway-Light.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-Medium.otf">
+      <PackagePath>Styles\fonts\Raleway-Medium.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-Regular.otf">
+      <PackagePath>Styles\fonts\Raleway-Regular.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-SemiBold.otf">
+      <PackagePath>Styles\fonts\Raleway-SemiBold.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\Styles\fonts\Raleway-Thin.otf">
+      <PackagePath>Styles\fonts\Raleway-Thin.otf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
     </AppxPackagedFile>

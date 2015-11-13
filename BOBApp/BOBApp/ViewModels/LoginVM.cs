@@ -33,6 +33,8 @@ namespace BOBApp.ViewModels
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(Register);
             Login_FacebookCommand = new RelayCommand(Login_Facebook);
+            Email = "stijn.vanhulle@outlook.com";
+            Pass = "test";
         }
 
      

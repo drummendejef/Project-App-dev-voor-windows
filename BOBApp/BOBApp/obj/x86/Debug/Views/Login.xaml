@@ -8,9 +8,15 @@
     x:Class="BOBApp.Views.Login"
     mc:Ignorable="d"
     DataContext="{Binding LoginVM, Mode=TwoWay, Source={StaticResource Locator}}">
-
-   
     
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
     <ScrollViewer>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:ConnectionId='1' x:Name="VisualStateGroup">

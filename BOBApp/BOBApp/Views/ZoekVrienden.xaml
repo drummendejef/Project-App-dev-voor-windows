@@ -6,7 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="BOBApp.Views.ZoekVrienden"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding ZoekVriendenVM, Mode=TwoWay, Source={StaticResource Locator}}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <RelativePanel >
         <TextBox x:Name="textBoxZoekVriend" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>

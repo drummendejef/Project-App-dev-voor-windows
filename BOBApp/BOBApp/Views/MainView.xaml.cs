@@ -36,32 +36,45 @@ namespace BOBApp.Views
             ((RadioButton)sender).IsChecked = false;
         }
 
-        private void OnHomeButtonChecked(object sender, RoutedEventArgs e)
+        private void OnItem1Checked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(Ritten));
         }
 
-        private void OnSearchButtonChecked(object sender, RoutedEventArgs e)
-        {
-            ShellSplitView.IsPaneOpen = false;
-            if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(Profiel));
-        }
 
-        private void OnSettingsButtonChecked(object sender, RoutedEventArgs e)
+        private void OnItem2Checked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(ZoekVrienden));
         }
 
-        private void OnAboutButtonChecked(object sender, RoutedEventArgs e)
+        private void OnItem3Checked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(MijnRitten));
+        }
+
+        private void OnItem4Checked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(FeestjesOverzicht));
+        }
+        private void OnItem5Checked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(Bestemmingen));
+        }
+        private void OnItem6Checked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(Profiel));
         }
     }
 }

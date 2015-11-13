@@ -94,6 +94,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
+    <Content Include="Styles\fonts\Raleway-Bold.otf" />
+    <Content Include="Styles\fonts\Raleway-ExtraBold.otf" />
+    <Content Include="Styles\fonts\Raleway-ExtraLight.otf" />
+    <Content Include="Styles\fonts\Raleway-Heavy.otf" />
+    <Content Include="Styles\fonts\Raleway-Light.otf" />
+    <Content Include="Styles\fonts\Raleway-Medium.otf" />
+    <Content Include="Styles\fonts\Raleway-Regular.otf" />
+    <Content Include="Styles\fonts\Raleway-SemiBold.otf" />
+    <Content Include="Styles\fonts\Raleway-Thin.otf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -115,6 +124,7 @@
     <Compile Include="ViewModels\FeestjesOverzichtVM.cs" />
     <Compile Include="ViewModels\MainViewVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
+    <Compile Include="ViewModels\MijnRittenVM.cs" />
     <Compile Include="ViewModels\ProfielVM.cs" />
     <Compile Include="ViewModels\PuntenVM.cs" />
     <Compile Include="ViewModels\RegisterVM.cs" />
@@ -133,6 +143,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MijnRitten.xaml.cs">
+      <DependentUpon>MijnRitten.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Profiel.xaml.cs">
       <DependentUpon>Profiel.xaml</DependentUpon>
@@ -187,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Styles\Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Bestemmingen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MijnRitten.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

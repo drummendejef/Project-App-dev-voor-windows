@@ -9,21 +9,19 @@
     DataContext="{Binding RittenVM, Mode=TwoWay, Source={StaticResource Locator}}" >
 
     <Page.Resources>
-        <DataTemplate x:Key="DataTemplate">
-            <StackPanel HorizontalAlignment="Stretch">
-                
-            </StackPanel>
-        </DataTemplate>
-       
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
 
-    
+
     <RelativePanel>
         <TextBox x:Name="textBoxZoekRitten" Height="32" TextWrapping="Wrap" Text="" PlaceholderText="Zoek door je ritten" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
         <TextBlock x:Name="textBlockHuidigeRit" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" Text="Huidige rit:" VerticalAlignment="Top" RelativePanel.Below="textBoxZoekRitten"/>
         <TextBlock x:Name="textBlockBestemming" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" Text="Bestemming BINDING" VerticalAlignment="Top" Width="61.6666679382324" RelativePanel.Below="textBoxZoekRitten" RelativePanel.AlignRightWithPanel="True"/>
         <TextBox x:Name="textBoxAuto" Height="32" Margin="10" Text="" RelativePanel.Below="textBlockHuidigeRit" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" IsReadOnly="True" />
-        <ItemsControl x:Name="ItemsControlRitten" Margin="10" ItemTemplate="{StaticResource DataTemplate}" RelativePanel.Below="textBoxAuto" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+        <ItemsControl x:Name="ItemsControlRitten" Margin="10" RelativePanel.Below="textBoxAuto" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
 
     </RelativePanel>
 </Page>

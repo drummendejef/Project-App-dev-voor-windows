@@ -5,19 +5,19 @@
     xmlns:local="using:BOBApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding BestemmingenVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
-        <DataTemplate x:Key="DatTemplate">
-            <StackPanel HorizontalAlignment="Stretch">
-
-            </StackPanel>
-        </DataTemplate>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
+ 
 
     <RelativePanel>
         <TextBox x:ConnectionId='1' x:Name="textBoxZoekLocaties" Height="32" TextWrapping="Wrap" Text="" PlaceholderText="Locatie" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" />
-        <ItemsControl x:ConnectionId='2' x:Name="ItemsControlBestemmingen" Margin="10" RelativePanel.Below="textBoxZoekLocaties" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" ItemsSource="{Binding BestemmingenLijst}" ItemTemplate="{StaticResource DatTemplate}"/>
     </RelativePanel>
 </Page>
 

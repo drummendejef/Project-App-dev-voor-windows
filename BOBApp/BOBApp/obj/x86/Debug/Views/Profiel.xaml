@@ -8,6 +8,13 @@
     mc:Ignorable="d"
     DataContext="{Binding ProfielVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <RelativePanel>
         <TextBox x:ConnectionId='1' x:Name="textBoxNaam" TextWrapping="Wrap" Text="{Binding User.Lastname, Mode=TwoWay}" PlaceholderText="Naam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10,50,10,10"/>
         <TextBox x:ConnectionId='2' x:Name="textBoxVoornaam" TextWrapping="Wrap" Text="{Binding User.Firstname, Mode=TwoWay}" PlaceholderText="Voornaam" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>

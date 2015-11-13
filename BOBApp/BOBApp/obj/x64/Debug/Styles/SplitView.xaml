@@ -5,8 +5,8 @@
     <SolidColorBrush x:Key="SplitViewBackgroundBrush" Color="Black" />
     <SolidColorBrush x:Key="SplitViewForegroundBrush" Color="White" />
 
-    <SolidColorBrush x:Key="MenuButtonBackgroundBrush" Color="#ff4b0082" />
-    <SolidColorBrush x:Key="MenuButtonPressedBackgroundBrush" Color="#ff8b40c2" />
+    <SolidColorBrush x:Key="MenuButtonBackgroundBrush" Color="#3b63a7" />
+    <SolidColorBrush x:Key="MenuButtonPressedBackgroundBrush" Color="#3e5d94" />
     <SolidColorBrush x:Key="MenuButtonHoverBackgroundBrush" Color="#ff6b20a2" />
     <SolidColorBrush x:Key="MenuButtonCheckedBackgroundBrush" Color="#ff4b0082" />
     <SolidColorBrush x:Key="MenuButtonCheckedPressedBackgroundBrush" Color="#ff4b0082" />

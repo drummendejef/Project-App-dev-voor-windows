@@ -6,7 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="BOBApp.Views.VindRit"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding VindRitVM, Mode=TwoWay, Source={StaticResource Locator}}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <RelativePanel>
         <TextBox x:Name="textBoxZoekLocatieFeestje" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" TextWrapping="Wrap" Text="" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" />

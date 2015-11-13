@@ -1,5 +1,6 @@
 ﻿using BOBApp.Models;
 using BOBApp.Repositories;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    public class ProfielVM
+    public class ProfielVM : ViewModelBase
     {
         //Properties
         public RelayCommand AanpasCommand { get; set; }

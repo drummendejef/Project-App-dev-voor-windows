@@ -76,7 +76,7 @@ namespace BOBApp
                 // parameter
 
                 //Zolang navigatie niet volledig op punt staat, views testen door typeof() aan te passen naar de view
-                rootFrame.Navigate(typeof(Profiel), e.Arguments);//Zorgen dat het startscherm de Login is.
+                rootFrame.Navigate(typeof(Login), e.Arguments);//Zorgen dat het startscherm de Login is.
                 //rootFrame.Navigate(typeof(Bestemmingen), e.Arguments);//Zorgen dat het bestemmingscherm het startscherm is (als test)
                 //rootFrame.Navigate(typeof(Register), e.Arguments);
             }
@@ -113,6 +113,9 @@ namespace BOBApp
                     break;
                 case "Ritten":
                     rootFrame.Navigate(typeof(Ritten));
+                    break;
+                case "MijnRitten":
+                    rootFrame.Navigate(typeof(MijnRitten));
                     break;
                 case "VindRit":
                     rootFrame.Navigate(typeof(VindRit));

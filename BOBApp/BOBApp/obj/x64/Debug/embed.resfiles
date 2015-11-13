@@ -1,6 +1,7 @@
 App.xbf
 MainPage.xbf
 Styles\SplitView.xbf
+Styles\Theme.xbf
 Views\Bestemmingen.xbf
 Views\FeestjesOverzicht.xbf
 Views\Login.xbf

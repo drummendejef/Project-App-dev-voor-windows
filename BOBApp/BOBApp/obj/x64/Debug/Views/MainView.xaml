@@ -11,7 +11,6 @@
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Styles/SplitView.xaml">
             <ResourceDictionary.MergedDictionaries>
-
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -37,7 +36,18 @@
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
-            <Frame x:ConnectionId='7' x:Name="frame"/>
+            <!-- Navigation Frame -->
+            <Frame x:ConnectionId='7' x:Name="frame">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
         </SplitView.Content>
     </SplitView>
 </Page>

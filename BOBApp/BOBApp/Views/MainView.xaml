@@ -11,7 +11,6 @@
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Styles/SplitView.xaml">
             <ResourceDictionary.MergedDictionaries>
-
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -20,24 +19,29 @@
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
             <StackPanel>
-                <!-- Menu (hamburger) button -->
                 <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
+                <RadioButton Tag="&#xe10f;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem1Checked" IsChecked="True" />
+                <RadioButton Tag="&#xe11a;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem2Checked" />
+                <RadioButton Tag="&#xe115;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem3Checked" />
+                <RadioButton Tag="&#xe783;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem4Checked" />
+                <RadioButton Tag="&#xe783;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem5Checked" />
+                <RadioButton Tag="&#xe783;" Content="Gebruiker of bob" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem6Checked" />
 
-                <!-- Home button -->
-                <RadioButton Tag="&#xe10f;" Content="Home" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnHomeButtonChecked" IsChecked="True" />
-
-                <!-- Search button -->
-                <RadioButton Tag="&#xe11a;" Content="Search" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnSearchButtonChecked" />
-
-                <!-- Settings button -->
-                <RadioButton Tag="&#xe115;" Content="Settings" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnSettingsButtonChecked" />
-
-                <!-- About button -->
-                <RadioButton Tag="&#xe783;" Content="About" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnAboutButtonChecked" />
             </StackPanel>
         </SplitView.Pane>
         <SplitView.Content>
-            <Frame x:Name="frame"/>
+            <!-- Navigation Frame -->
+            <Frame x:Name="frame">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
         </SplitView.Content>
     </SplitView>
 </Page>
