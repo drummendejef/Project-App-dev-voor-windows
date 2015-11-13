@@ -5,7 +5,6 @@
     xmlns:local="using:BOBApp"
     RequestedTheme="Light">
 
-
     <Application.Resources>
         <ResourceDictionary>
             <local:BaseViewModelLocator x:Key="Locator"/>
