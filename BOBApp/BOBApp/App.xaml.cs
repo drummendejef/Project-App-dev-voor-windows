@@ -76,9 +76,8 @@ namespace BOBApp
                 // parameter
 
                 //Zolang navigatie niet volledig op punt staat, views testen door typeof() aan te passen naar de view
-                rootFrame.Navigate(typeof(Profiel), e.Arguments);//Zorgen dat het startscherm de Login is.
+                rootFrame.Navigate(typeof(Register), e.Arguments);//Zorgen dat het startscherm de Login is.
                 //rootFrame.Navigate(typeof(Bestemmingen), e.Arguments);//Zorgen dat het bestemmingscherm het startscherm is (als test)
-                //rootFrame.Navigate(typeof(Register), e.Arguments);
             }
             // Ensure the current window is active
             Window.Current.Activate();
