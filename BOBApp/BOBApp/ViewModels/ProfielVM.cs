@@ -59,7 +59,7 @@ namespace BOBApp.ViewModels
        //Dit werkt
         private async void GetUserDetails()
         {
-            this.User = await RegisterRepository.GetUser(BaseViewModelLocator.USER.Email);
+            this.User = await RegisterRepository.GetUser();
         }
 
     }

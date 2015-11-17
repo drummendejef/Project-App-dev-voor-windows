@@ -29,7 +29,7 @@ namespace BOBApp.Repositories
             }
         }
 
-        public static async Task<Register> GetUser(String email)
+        public static async Task<Register> GetUser()
         {
             using (HttpClient client = new HttpClient())
             {
