@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace BOBApp.ViewModels
 {
@@ -34,7 +35,7 @@ namespace BOBApp.ViewModels
     
 
         //Methods
-        public void Aanpassen()
+        public async void Aanpassen()
         {
             //Dit werkt
             Debug.WriteLine("knop werkt");
@@ -44,6 +45,8 @@ namespace BOBApp.ViewModels
             {
                 User.Password = Password;
                 //Updaten naar database ( + confirmatie dat password verandert is ( samen met eventuele andere aanpassingen)
+                //await RegisterRepository.EditUser(User);
+                
                 Debug.WriteLine("Password verandert");
             }
             else
@@ -51,9 +54,11 @@ namespace BOBApp.ViewModels
                 Debug.WriteLine("Password niet verandert");
             }
 
+            var dialog = new MessageDialog("Uw gegevens zijn opgeslaan");
+            await dialog.ShowAsync();
             //Updaten naar database ( + confirmatiescherm dat gegevens verandert zijn)
             Debug.WriteLine("naam: " + User.Lastname + " - Voornaam: " + User.Firstname + " - Email: " + User.Email + " - Cellphone: " + User.Cellphone + " - LicensePlate: " + User.LicensePlate + " - Password: " + User.Password);
-
+            
         }
 
        //Dit werkt

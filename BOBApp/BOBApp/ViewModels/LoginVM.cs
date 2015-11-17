@@ -67,7 +67,7 @@ namespace BOBApp.ViewModels
                 Messenger.Default.Send<GoToPage>(new GoToPage()
                 {
                     //Verander naar iets anders afhankelijk van wat je wil testen, zolang navigatie niet werkt ( MainView is de default)
-                    //Name = "Punten"
+                    //Name = "Profiel"
                     Name = "MainView"
                 });
             }
