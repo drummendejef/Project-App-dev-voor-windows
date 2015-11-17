@@ -66,7 +66,9 @@ namespace BOBApp.ViewModels
                 //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()
                 {
-                    Name = "MainView"
+                    //Verander naar iets anders afhankelijk van wat je wil testen, zolang navigatie niet werkt ( MainView is de default)
+                    Name = "Punten"
+                    //Name = "MainView"
                 });
             }
             else
