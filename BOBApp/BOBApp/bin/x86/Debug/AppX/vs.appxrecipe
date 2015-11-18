@@ -22,7 +22,11 @@
     <AppXManifest Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+<<<<<<< HEAD
       <Modified>2015-11-18T11:29:12.412</Modified>
+=======
+      <Modified>2015-11-17T21:56:06.042</Modified>
+>>>>>>> origin/master
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +74,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
+<<<<<<< HEAD
       <Modified>2015-11-18T11:29:12.411</Modified>
+=======
+      <Modified>2015-11-17T21:56:06.037</Modified>
+>>>>>>> origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
@@ -82,7 +90,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
+<<<<<<< HEAD
       <Modified>2015-11-18T11:27:11.470</Modified>
+=======
+      <Modified>2015-11-17T21:53:59.872</Modified>
+>>>>>>> origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
@@ -138,7 +150,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
+<<<<<<< HEAD
       <Modified>2015-11-18T11:29:11.339</Modified>
+=======
+      <Modified>2015-11-17T21:56:04.785</Modified>
+>>>>>>> origin/master
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Bold.otf">
       <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>

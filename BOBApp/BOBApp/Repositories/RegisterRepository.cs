@@ -29,7 +29,23 @@ namespace BOBApp.Repositories
             }
         }
 
-        public static async Task<Register> GetUser(String email)
+        public static async Task<Response> EditUser(Register user)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(new { Register = JsonConvert.SerializeObject(user) });
+                HttpResponseMessage result = await client.PutAsync(URL.REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                //  HttpResponseMessage result = await client.PostAsync(URL.REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
+
+        public static async Task<Register> GetUser()
         {
             using (HttpClient client = new HttpClient())
             {
