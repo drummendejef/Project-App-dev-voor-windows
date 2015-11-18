@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 
 namespace BOBApp.ViewModels
 {
@@ -35,11 +36,12 @@ namespace BOBApp.ViewModels
             Login_FacebookCommand = new RelayCommand(Login_Facebook);
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
+
+
         }
 
-     
 
-        //Methods
+        //Methods 
         public void Login()
         {
             loginTask = LoginUser(this.Email,this.Pass);

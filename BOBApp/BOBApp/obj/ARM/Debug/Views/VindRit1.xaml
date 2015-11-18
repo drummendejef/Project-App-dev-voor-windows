@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="BOBApp.Views.VindRit1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BOBApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding VindRit1VM, Mode=TwoWay, Source={StaticResource Locator}}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <RelativePanel>
+        <TextBlock x:ConnectionId='1' x:Name="textBlock" Margin="10,15" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Ik wil naar:" VerticalAlignment="Top" />
+        <ComboBox x:ConnectionId='2' x:Name="comboBoxBestemming" Margin="10" Height="32" RelativePanel.RightOf="textBlock" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch" />
+        <TextBlock x:ConnectionId='3' x:Name="textBlock1" Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Met volgende vrienden: " VerticalAlignment="Top" RelativePanel.Below="comboBoxBestemming"/>
+        <TextBox x:ConnectionId='4' x:Name="textBoxSelecteerVrienden" Margin="10,0" Height="32" TextWrapping="Wrap" Text=""  RelativePanel.AlignLeftWith="" RelativePanel.Below="comboBoxBestemming" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBlock1"/>
+        <ListView x:ConnectionId='5' x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockMinRating" />
+        <TextBlock x:ConnectionId='6' x:Name="textBlockMinRating" Margin="30,10" Text="Minimum rating van gebruikers:" RelativePanel.Above="sliderMinRating" />
+        <Slider x:ConnectionId='7' x:Name="sliderMinRating" Margin="30,10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockLaatstVervoer"  />
+        <TextBlock x:ConnectionId='8' x:Name="textBlockLaatstVervoer" Margin="10" Text="Wanneer wil je ten laatste vervoer?" RelativePanel.Above="datePicker" RelativePanel.AlignHorizontalCenterWithPanel="True"  />
+        <DatePicker x:ConnectionId='9' x:Name="datePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="timePicker" />
+        <TimePicker x:ConnectionId='10' x:Name="timePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="textBlockSoortVervoer"/>
+        <TextBlock x:ConnectionId='11' x:Name="textBlockSoortVervoer" Margin="10" Height="20" TextWrapping="Wrap" Text="Soort vervoer: " RelativePanel.AlignLeftWithPanel="True" RelativePanel.Above="buttonSnel"/>
+        <Button x:ConnectionId='12' x:Name="buttonGoedkoop" Margin="10" Content="Goedkoop" Width="80" Height="32" VerticalAlignment="Top"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+        <Button x:ConnectionId='13' x:Name="buttonMedium" Margin="10" Content="Medium" Width="80" Height="32" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+        <Button x:ConnectionId='14' x:Name="buttonSnel" Margin="10" Content="Snel" Width="80" Height="32" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" />
+        
+    </RelativePanel>
+</Page>
+

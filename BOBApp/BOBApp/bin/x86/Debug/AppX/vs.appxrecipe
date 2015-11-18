@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>DESKTOP-KPAOAM2</Machine>
-    <WindowsUser>kevin</WindowsUser>
+    <Machine>JORENFLAPFLOP</Machine>
+    <WindowsUser>Joren</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>872E417464504211D771AF7FE01289EB430B81EF5D5C3F2730C9DAB284972340</RegisteredManifestChecksum>
+    <IntermediateOutputPath>E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>EB8028E074F97908C9254C5CB9AC9BB667C0E5AB51A23861B0AE1845E0C77158</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_1.0.0.0_x86__gwked98mkhbva</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_gwked98mkhbva!App</RegisteredUserModeAppID>
     <RegisteredPackageID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</RegisteredPackageID>
@@ -19,562 +19,562 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-13T16:26:47.050</Modified>
+      <Modified>2015-11-18T11:29:12.412</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\ApplicationInsights.config">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
-      <Modified>2015-11-08T11:58:34.681</Modified>
+      <Modified>2015-11-04T21:33:54.425</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\BOB.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\BOB.png">
       <PackagePath>Assets\BOB.png</PackagePath>
-      <Modified>2015-11-08T11:58:34.683</Modified>
+      <Modified>2015-11-04T21:33:54.427</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2015-11-08T11:58:34.684</Modified>
+      <Modified>2015-11-04T21:33:54.428</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-08T11:58:34.686</Modified>
+      <Modified>2015-11-04T21:33:54.429</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-08T11:58:34.687</Modified>
+      <Modified>2015-11-04T21:33:54.430</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-08T11:58:34.688</Modified>
+      <Modified>2015-11-04T21:33:54.432</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-08T11:58:34.689</Modified>
+      <Modified>2015-11-04T21:33:54.433</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-08T11:58:34.691</Modified>
+      <Modified>2015-11-04T21:33:54.434</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-08T11:58:34.692</Modified>
+      <Modified>2015-11-04T21:33:54.434</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-11-13T16:26:47.050</Modified>
+      <Modified>2015-11-18T11:29:12.411</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.xr.xml">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
-      <Modified>2015-11-13T16:21:13.179</Modified>
+      <Modified>2015-11-17T19:07:42.267</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\ClrCompression.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\ClrCompression.dll">
       <PackagePath>ClrCompression.dll</PackagePath>
-      <Modified>2015-09-25T09:43:19.441</Modified>
+      <Modified>2015-09-25T09:14:04.275</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\entrypoint\BOBApp.exe">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-11-13T16:21:13.882</Modified>
+      <Modified>2015-11-18T11:27:11.470</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
-      <Modified>2015-10-02T06:47:34.212</Modified>
+      <Modified>2015-10-02T06:49:16.730</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.Extras.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.Extras.dll">
       <PackagePath>GalaSoft.MvvmLight.Extras.dll</PackagePath>
-      <Modified>2015-10-02T06:47:34.227</Modified>
+      <Modified>2015-10-02T06:49:16.741</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.Platform.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.Platform.dll">
       <PackagePath>GalaSoft.MvvmLight.Platform.dll</PackagePath>
-      <Modified>2015-10-02T06:47:34.245</Modified>
+      <Modified>2015-10-02T06:49:16.757</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Libraries.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
-      <Modified>2015-11-13T16:21:08.908</Modified>
+      <Modified>2015-11-13T16:28:48.529</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
-      <Modified>2015-09-25T09:43:00.256</Modified>
+      <Modified>2015-09-25T09:13:59.226</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.Extensibility.Windows.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.Extensibility.Windows.dll">
       <PackagePath>Microsoft.ApplicationInsights.Extensibility.Windows.dll</PackagePath>
-      <Modified>2015-09-25T09:43:00.612</Modified>
+      <Modified>2015-09-25T09:13:59.595</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.PersistenceChannel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.PersistenceChannel.dll">
       <PackagePath>Microsoft.ApplicationInsights.PersistenceChannel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:00.510</Modified>
+      <Modified>2015-09-25T09:13:59.475</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.CSharp.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
-      <Modified>2015-09-25T09:43:09.157</Modified>
+      <Modified>2015-09-25T09:14:01.178</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.Practices.ServiceLocation.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.Practices.ServiceLocation.dll">
       <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
-      <Modified>2015-10-02T06:47:33.873</Modified>
+      <Modified>2015-10-02T06:49:13.996</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.VisualBasic.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.VisualBasic.dll">
       <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
-      <Modified>2015-09-25T09:43:09.179</Modified>
+      <Modified>2015-09-25T09:14:01.406</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.Win32.Primitives.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.Win32.Primitives.dll">
       <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.465</Modified>
+      <Modified>2015-09-25T09:14:00.147</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
-      <Modified>2015-10-02T09:25:49.892</Modified>
+      <Modified>2015-10-09T07:13:57.193</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2015-11-08T11:58:34.754</Modified>
+      <Modified>2015-11-04T21:33:54.485</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\resources.pri">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-11-13T16:26:45.941</Modified>
+      <Modified>2015-11-18T11:29:11.339</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Bold.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Bold.otf">
       <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.593</Modified>
+      <Modified>2015-11-13T16:22:58.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-ExtraBold.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-ExtraBold.otf">
       <PackagePath>Styles\fonts\Raleway-ExtraBold.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.608</Modified>
+      <Modified>2015-11-13T16:22:58.135</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-ExtraLight.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-ExtraLight.otf">
       <PackagePath>Styles\fonts\Raleway-ExtraLight.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.608</Modified>
+      <Modified>2015-11-13T16:22:58.140</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Heavy.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Heavy.otf">
       <PackagePath>Styles\fonts\Raleway-Heavy.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.608</Modified>
+      <Modified>2015-11-13T16:22:58.145</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Light.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Light.otf">
       <PackagePath>Styles\fonts\Raleway-Light.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.624</Modified>
+      <Modified>2015-11-13T16:22:58.151</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Medium.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Medium.otf">
       <PackagePath>Styles\fonts\Raleway-Medium.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.624</Modified>
+      <Modified>2015-11-13T16:22:58.157</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Regular.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Regular.otf">
       <PackagePath>Styles\fonts\Raleway-Regular.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.640</Modified>
+      <Modified>2015-11-13T16:22:58.163</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-SemiBold.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-SemiBold.otf">
       <PackagePath>Styles\fonts\Raleway-SemiBold.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.640</Modified>
+      <Modified>2015-11-13T16:22:58.168</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Thin.otf">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Thin.otf">
       <PackagePath>Styles\fonts\Raleway-Thin.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.640</Modified>
+      <Modified>2015-11-13T16:22:58.173</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.AppContext.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
-      <Modified>2015-09-25T09:43:09.161</Modified>
+      <Modified>2015-09-25T09:14:01.147</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.Concurrent.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.Concurrent.dll">
       <PackagePath>System.Collections.Concurrent.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.049</Modified>
+      <Modified>2015-09-25T09:14:01.387</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.dll">
       <PackagePath>System.Collections.dll</PackagePath>
-      <Modified>2015-09-25T09:43:09.533</Modified>
+      <Modified>2015-09-25T09:14:01.430</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.Immutable.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.Immutable.dll">
       <PackagePath>System.Collections.Immutable.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.481</Modified>
+      <Modified>2015-09-25T09:14:01.412</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.NonGeneric.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.NonGeneric.dll">
       <PackagePath>System.Collections.NonGeneric.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.935</Modified>
+      <Modified>2015-09-25T09:14:02.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.Specialized.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Collections.Specialized.dll">
       <PackagePath>System.Collections.Specialized.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.938</Modified>
+      <Modified>2015-09-25T09:14:00.933</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.Annotations.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.Annotations.dll">
       <PackagePath>System.ComponentModel.Annotations.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.125</Modified>
+      <Modified>2015-09-25T09:14:01.469</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.DataAnnotations.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.DataAnnotations.dll">
       <PackagePath>System.ComponentModel.DataAnnotations.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.044</Modified>
+      <Modified>2015-09-25T09:14:00.160</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.dll">
       <PackagePath>System.ComponentModel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.427</Modified>
+      <Modified>2015-09-25T09:14:01.445</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.EventBasedAsync.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ComponentModel.EventBasedAsync.dll">
       <PackagePath>System.ComponentModel.EventBasedAsync.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.590</Modified>
+      <Modified>2015-09-25T09:14:00.127</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Core.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Core.dll">
       <PackagePath>System.Core.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.129</Modified>
+      <Modified>2015-09-25T09:14:00.213</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Data.Common.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Data.Common.dll">
       <PackagePath>System.Data.Common.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.207</Modified>
+      <Modified>2015-09-25T09:14:00.407</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Contracts.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Contracts.dll">
       <PackagePath>System.Diagnostics.Contracts.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.330</Modified>
+      <Modified>2015-09-25T09:14:00.426</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Debug.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Debug.dll">
       <PackagePath>System.Diagnostics.Debug.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.123</Modified>
+      <Modified>2015-09-25T09:14:01.546</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.StackTrace.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.StackTrace.dll">
       <PackagePath>System.Diagnostics.StackTrace.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.454</Modified>
+      <Modified>2015-09-25T09:14:00.548</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Tools.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Tools.dll">
       <PackagePath>System.Diagnostics.Tools.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.048</Modified>
+      <Modified>2015-09-25T09:14:01.824</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Tracing.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Diagnostics.Tracing.dll">
       <PackagePath>System.Diagnostics.Tracing.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.869</Modified>
+      <Modified>2015-09-25T09:14:01.827</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.dll">
       <PackagePath>System.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.147</Modified>
+      <Modified>2015-09-25T09:14:00.229</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Dynamic.Runtime.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Dynamic.Runtime.dll">
       <PackagePath>System.Dynamic.Runtime.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.935</Modified>
+      <Modified>2015-09-25T09:14:01.653</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Globalization.Calendars.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Globalization.Calendars.dll">
       <PackagePath>System.Globalization.Calendars.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.004</Modified>
+      <Modified>2015-09-25T09:14:01.666</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Globalization.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Globalization.dll">
       <PackagePath>System.Globalization.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.898</Modified>
+      <Modified>2015-09-25T09:14:01.592</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Globalization.Extensions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Globalization.Extensions.dll">
       <PackagePath>System.Globalization.Extensions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.914</Modified>
+      <Modified>2015-09-25T09:14:01.673</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.Compression.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.Compression.dll">
       <PackagePath>System.IO.Compression.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.366</Modified>
+      <Modified>2015-09-25T09:14:02.012</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.Compression.ZipFile.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.Compression.ZipFile.dll">
       <PackagePath>System.IO.Compression.ZipFile.dll</PackagePath>
-      <Modified>2015-09-25T09:43:10.959</Modified>
+      <Modified>2015-09-25T09:14:01.955</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.dll">
       <PackagePath>System.IO.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.212</Modified>
+      <Modified>2015-09-25T09:14:01.950</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.FileSystem.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.FileSystem.dll">
       <PackagePath>System.IO.FileSystem.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.466</Modified>
+      <Modified>2015-09-25T09:14:02.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.FileSystem.Primitives.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.FileSystem.Primitives.dll">
       <PackagePath>System.IO.FileSystem.Primitives.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.273</Modified>
+      <Modified>2015-09-25T09:14:02.036</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.IsolatedStorage.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.IsolatedStorage.dll">
       <PackagePath>System.IO.IsolatedStorage.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.729</Modified>
+      <Modified>2015-09-25T09:14:00.676</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.UnmanagedMemoryStream.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.IO.UnmanagedMemoryStream.dll">
       <PackagePath>System.IO.UnmanagedMemoryStream.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.465</Modified>
+      <Modified>2015-09-25T09:14:02.083</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.dll">
       <PackagePath>System.Linq.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.677</Modified>
+      <Modified>2015-09-25T09:14:02.310</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.Expressions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.Expressions.dll">
       <PackagePath>System.Linq.Expressions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:11.604</Modified>
+      <Modified>2015-09-25T09:14:02.313</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.Parallel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.Parallel.dll">
       <PackagePath>System.Linq.Parallel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:14.899</Modified>
+      <Modified>2015-09-25T09:14:02.425</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.Queryable.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Linq.Queryable.dll">
       <PackagePath>System.Linq.Queryable.dll</PackagePath>
-      <Modified>2015-09-25T09:43:14.990</Modified>
+      <Modified>2015-09-25T09:14:02.419</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.dll">
       <PackagePath>System.Net.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.161</Modified>
+      <Modified>2015-09-25T09:14:00.249</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Http.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Http.dll">
       <PackagePath>System.Net.Http.dll</PackagePath>
-      <Modified>2015-09-25T09:43:14.233</Modified>
+      <Modified>2015-09-25T09:14:02.362</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Http.Rtc.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Http.Rtc.dll">
       <PackagePath>System.Net.Http.Rtc.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.775</Modified>
+      <Modified>2015-09-25T09:14:00.572</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.NetworkInformation.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.NetworkInformation.dll">
       <PackagePath>System.Net.NetworkInformation.dll</PackagePath>
-      <Modified>2015-09-25T09:43:12.272</Modified>
+      <Modified>2015-09-25T09:14:02.277</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Primitives.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Primitives.dll">
       <PackagePath>System.Net.Primitives.dll</PackagePath>
-      <Modified>2015-09-25T09:43:14.167</Modified>
+      <Modified>2015-09-25T09:14:02.326</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Requests.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Requests.dll">
       <PackagePath>System.Net.Requests.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.848</Modified>
+      <Modified>2015-09-25T09:14:00.531</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Sockets.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.Sockets.dll">
       <PackagePath>System.Net.Sockets.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.720</Modified>
+      <Modified>2015-09-25T09:14:00.701</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.WebHeaderCollection.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Net.WebHeaderCollection.dll">
       <PackagePath>System.Net.WebHeaderCollection.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.630</Modified>
+      <Modified>2015-09-25T09:14:00.646</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Numerics.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Numerics.dll">
       <PackagePath>System.Numerics.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.179</Modified>
+      <Modified>2015-09-25T09:14:00.264</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Numerics.Vectors.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Numerics.Vectors.dll">
       <PackagePath>System.Numerics.Vectors.dll</PackagePath>
-      <Modified>2015-09-25T09:43:14.925</Modified>
+      <Modified>2015-09-25T09:14:02.326</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Numerics.Vectors.WindowsRuntime.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Numerics.Vectors.WindowsRuntime.dll">
       <PackagePath>System.Numerics.Vectors.WindowsRuntime.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.586</Modified>
+      <Modified>2015-09-25T09:14:00.619</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ObjectModel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ObjectModel.dll">
       <PackagePath>System.ObjectModel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:14.236</Modified>
+      <Modified>2015-09-25T09:14:02.484</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.DataContractSerialization.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.DataContractSerialization.dll">
       <PackagePath>System.Private.DataContractSerialization.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.254</Modified>
+      <Modified>2015-09-25T09:14:00.464</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.Networking.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.Networking.dll">
       <PackagePath>System.Private.Networking.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.981</Modified>
+      <Modified>2015-09-25T09:14:02.173</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.ServiceModel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.ServiceModel.dll">
       <PackagePath>System.Private.ServiceModel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.547</Modified>
+      <Modified>2015-09-25T09:14:00.217</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.Uri.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Private.Uri.dll">
       <PackagePath>System.Private.Uri.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.819</Modified>
+      <Modified>2015-09-25T09:13:59.928</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Context.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Context.dll">
       <PackagePath>System.Reflection.Context.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.594</Modified>
+      <Modified>2015-09-25T09:14:00.635</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.DispatchProxy.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.DispatchProxy.dll">
       <PackagePath>System.Reflection.DispatchProxy.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.411</Modified>
+      <Modified>2015-09-25T09:14:02.754</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.dll">
       <PackagePath>System.Reflection.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.096</Modified>
+      <Modified>2015-09-25T09:14:02.486</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Emit.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Emit.dll">
       <PackagePath>System.Reflection.Emit.dll</PackagePath>
-      <Modified>2015-09-25T09:43:19.641</Modified>
+      <Modified>2015-09-25T09:14:04.249</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Emit.ILGeneration.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Emit.ILGeneration.dll">
       <PackagePath>System.Reflection.Emit.ILGeneration.dll</PackagePath>
-      <Modified>2015-09-25T09:43:20.050</Modified>
+      <Modified>2015-09-25T09:14:04.252</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Emit.Lightweight.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Emit.Lightweight.dll">
       <PackagePath>System.Reflection.Emit.Lightweight.dll</PackagePath>
-      <Modified>2015-09-25T09:43:19.959</Modified>
+      <Modified>2015-09-25T09:14:04.275</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Extensions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Extensions.dll">
       <PackagePath>System.Reflection.Extensions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.323</Modified>
+      <Modified>2015-09-25T09:14:02.592</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Metadata.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Metadata.dll">
       <PackagePath>System.Reflection.Metadata.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.574</Modified>
+      <Modified>2015-09-25T09:14:02.707</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Primitives.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.Primitives.dll">
       <PackagePath>System.Reflection.Primitives.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.589</Modified>
+      <Modified>2015-09-25T09:14:02.552</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.TypeExtensions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Reflection.TypeExtensions.dll">
       <PackagePath>System.Reflection.TypeExtensions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.635</Modified>
+      <Modified>2015-09-25T09:14:02.787</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Resources.ResourceManager.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Resources.ResourceManager.dll">
       <PackagePath>System.Resources.ResourceManager.dll</PackagePath>
-      <Modified>2015-09-25T09:43:15.968</Modified>
+      <Modified>2015-09-25T09:14:02.761</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
-      <Modified>2015-09-25T09:43:16.518</Modified>
+      <Modified>2015-09-25T09:14:03.055</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Extensions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Extensions.dll">
       <PackagePath>System.Runtime.Extensions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:16.366</Modified>
+      <Modified>2015-09-25T09:14:02.861</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Handles.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Handles.dll">
       <PackagePath>System.Runtime.Handles.dll</PackagePath>
-      <Modified>2015-09-25T09:43:16.373</Modified>
+      <Modified>2015-09-25T09:14:02.891</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.InteropServices.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.InteropServices.dll">
       <PackagePath>System.Runtime.InteropServices.dll</PackagePath>
-      <Modified>2015-09-25T09:43:16.522</Modified>
+      <Modified>2015-09-25T09:14:02.965</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.InteropServices.WindowsRuntime.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.InteropServices.WindowsRuntime.dll">
       <PackagePath>System.Runtime.InteropServices.WindowsRuntime.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.718</Modified>
+      <Modified>2015-09-25T09:14:00.756</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Numerics.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Numerics.dll">
       <PackagePath>System.Runtime.Numerics.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.159</Modified>
+      <Modified>2015-09-25T09:14:03.147</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.dll">
       <PackagePath>System.Runtime.Serialization.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.255</Modified>
+      <Modified>2015-09-25T09:14:00.282</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.Json.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.Json.dll">
       <PackagePath>System.Runtime.Serialization.Json.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.778</Modified>
+      <Modified>2015-09-25T09:14:00.751</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.Primitives.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.Primitives.dll">
       <PackagePath>System.Runtime.Serialization.Primitives.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.932</Modified>
+      <Modified>2015-09-25T09:14:00.795</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.Xml.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.Serialization.Xml.dll">
       <PackagePath>System.Runtime.Serialization.Xml.dll</PackagePath>
-      <Modified>2015-09-25T09:43:05.693</Modified>
+      <Modified>2015-09-25T09:14:00.914</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.WindowsRuntime.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.WindowsRuntime.dll">
       <PackagePath>System.Runtime.WindowsRuntime.dll</PackagePath>
-      <Modified>2015-09-25T09:43:07.718</Modified>
+      <Modified>2015-09-25T09:14:01.005</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.WindowsRuntime.UI.Xaml.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Runtime.WindowsRuntime.UI.Xaml.dll">
       <PackagePath>System.Runtime.WindowsRuntime.UI.Xaml.dll</PackagePath>
-      <Modified>2015-09-25T09:43:09.118</Modified>
+      <Modified>2015-09-25T09:14:00.926</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Security.Claims.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Security.Claims.dll">
       <PackagePath>System.Security.Claims.dll</PackagePath>
-      <Modified>2015-09-25T09:43:16.426</Modified>
+      <Modified>2015-09-25T09:14:03.042</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Security.Principal.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Security.Principal.dll">
       <PackagePath>System.Security.Principal.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.291</Modified>
+      <Modified>2015-09-25T09:14:03.073</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.dll">
       <PackagePath>System.ServiceModel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.365</Modified>
+      <Modified>2015-09-25T09:14:00.309</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Duplex.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Duplex.dll">
       <PackagePath>System.ServiceModel.Duplex.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.123</Modified>
+      <Modified>2015-09-25T09:14:00.910</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Http.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Http.dll">
       <PackagePath>System.ServiceModel.Http.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.324</Modified>
+      <Modified>2015-09-25T09:14:01.008</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.NetTcp.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.NetTcp.dll">
       <PackagePath>System.ServiceModel.NetTcp.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.183</Modified>
+      <Modified>2015-09-25T09:14:00.976</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Primitives.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Primitives.dll">
       <PackagePath>System.ServiceModel.Primitives.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.896</Modified>
+      <Modified>2015-09-25T09:14:01.063</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Security.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Security.dll">
       <PackagePath>System.ServiceModel.Security.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.359</Modified>
+      <Modified>2015-09-25T09:14:00.960</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Web.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.ServiceModel.Web.dll">
       <PackagePath>System.ServiceModel.Web.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.379</Modified>
+      <Modified>2015-09-25T09:14:00.334</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.Encoding.CodePages.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.Encoding.CodePages.dll">
       <PackagePath>System.Text.Encoding.CodePages.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.925</Modified>
+      <Modified>2015-09-25T09:14:01.202</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.Encoding.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.Encoding.dll">
       <PackagePath>System.Text.Encoding.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.136</Modified>
+      <Modified>2015-09-25T09:14:02.958</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.Encoding.Extensions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.Encoding.Extensions.dll">
       <PackagePath>System.Text.Encoding.Extensions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.146</Modified>
+      <Modified>2015-09-25T09:14:03.011</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.RegularExpressions.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Text.RegularExpressions.dll">
       <PackagePath>System.Text.RegularExpressions.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.481</Modified>
+      <Modified>2015-09-25T09:14:03.039</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.dll">
       <PackagePath>System.Threading.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.643</Modified>
+      <Modified>2015-09-25T09:14:03.386</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Overlapped.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Overlapped.dll">
       <PackagePath>System.Threading.Overlapped.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.465</Modified>
+      <Modified>2015-09-25T09:13:59.975</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Tasks.Dataflow.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Tasks.Dataflow.dll">
       <PackagePath>System.Threading.Tasks.Dataflow.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.988</Modified>
+      <Modified>2015-09-25T09:14:03.452</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Tasks.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Tasks.dll">
       <PackagePath>System.Threading.Tasks.dll</PackagePath>
-      <Modified>2015-09-25T09:43:17.703</Modified>
+      <Modified>2015-09-25T09:14:03.144</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Tasks.Parallel.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Tasks.Parallel.dll">
       <PackagePath>System.Threading.Tasks.Parallel.dll</PackagePath>
-      <Modified>2015-09-25T09:43:18.085</Modified>
+      <Modified>2015-09-25T09:14:03.439</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Timer.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Threading.Timer.dll">
       <PackagePath>System.Threading.Timer.dll</PackagePath>
-      <Modified>2015-09-25T09:43:18.006</Modified>
+      <Modified>2015-09-25T09:14:03.394</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Windows.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Windows.dll">
       <PackagePath>System.Windows.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.395</Modified>
+      <Modified>2015-09-25T09:14:00.367</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.dll">
       <PackagePath>System.Xml.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.413</Modified>
+      <Modified>2015-09-25T09:14:00.381</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.Linq.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.Linq.dll">
       <PackagePath>System.Xml.Linq.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.428</Modified>
+      <Modified>2015-09-25T09:14:00.422</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.ReaderWriter.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.ReaderWriter.dll">
       <PackagePath>System.Xml.ReaderWriter.dll</PackagePath>
-      <Modified>2015-09-25T09:43:18.053</Modified>
+      <Modified>2015-09-25T09:14:03.447</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.Serialization.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.Serialization.dll">
       <PackagePath>System.Xml.Serialization.dll</PackagePath>
-      <Modified>2015-09-25T09:43:04.496</Modified>
+      <Modified>2015-09-25T09:14:00.456</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.XDocument.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.XDocument.dll">
       <PackagePath>System.Xml.XDocument.dll</PackagePath>
-      <Modified>2015-09-25T09:43:18.037</Modified>
+      <Modified>2015-09-25T09:14:03.471</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.XmlDocument.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.XmlDocument.dll">
       <PackagePath>System.Xml.XmlDocument.dll</PackagePath>
-      <Modified>2015-09-25T09:43:03.981</Modified>
+      <Modified>2015-09-25T09:13:59.932</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.XmlSerializer.dll">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
-      <Modified>2015-09-25T09:43:08.894</Modified>
+      <Modified>2015-09-25T09:14:01.118</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\WinMetadata\Windows.winmd">
+    <AppxPackagedFile Include="E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\WinMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2015-09-25T08:39:04.798</Modified>
+      <Modified>2015-11-13T16:28:48.337</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

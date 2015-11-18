@@ -339,6 +339,7 @@
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
+      <RootProperty Name="MapServiceToken" />
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="BOBApp.Views.FeestjesOverzicht" />

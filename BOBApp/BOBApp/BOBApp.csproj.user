@@ -2,5 +2,16 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <UseSimulator>false</UseSimulator>
+    <DeviceId>8BDF218D-FDBB-4A97-90F9-3AA33B559A92</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
+    <UseEmulator>true</UseEmulator>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DeviceId>25433CEB-C8BF-4422-B581-3EEFFC9B8ED6</DeviceId>
+    <UseEmulator>true</UseEmulator>
+    <UseSimulator>false</UseSimulator>
   </PropertyGroup>
 </Project>
