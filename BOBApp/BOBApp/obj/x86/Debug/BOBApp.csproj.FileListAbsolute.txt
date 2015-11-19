@@ -2104,3 +2104,5 @@ E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\resources.pri
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\testpin.png
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\Assets\testpin.png
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\testpin.png
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\Assets\testpin.png

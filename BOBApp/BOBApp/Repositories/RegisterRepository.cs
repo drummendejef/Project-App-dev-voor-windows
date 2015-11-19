@@ -37,7 +37,6 @@ namespace BOBApp.Repositories
 
                 var newObject = JsonConvert.SerializeObject(new { Register = JsonConvert.SerializeObject(user) });
                 HttpResponseMessage result = await client.PutAsync(URL.REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                //  HttpResponseMessage result = await client.PostAsync(URL.REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
                 string json = await result.Content.ReadAsStringAsync();
                 Response data = JsonConvert.DeserializeObject<Response>(json);
 
@@ -47,6 +46,7 @@ namespace BOBApp.Repositories
 
         public static async Task<Register> GetUser()
         {
+            //Probleem: Deze haalt het profiel op, maar deze wordt nooit geupdate ( geen idee of deze zelfs ook gepost word) bij EditUser
             using (HttpClient client = new HttpClient())
             {
                 var result = client.GetAsync(URL.PROFILE);
