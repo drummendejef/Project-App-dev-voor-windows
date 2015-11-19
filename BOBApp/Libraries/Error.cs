@@ -8,6 +8,7 @@ namespace Libraries
 {
     public class Error
     {
-        public static string Password = "Wachtenwoorden niet hetzelfde";
+        public static string Password = "Wachtwoorden zijn niet hetzelfde.";
+        public static string PasswordEmpty = "U moet een wachtwoord invullen.";
     }
 }

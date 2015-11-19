@@ -53,13 +53,21 @@ namespace BOBApp.ViewModels
         public void Register()
         {
             if (NewRegister.Lastname == null)
+            {
+                Debug.WriteLine("foutje");
+            }
                 
            
-            registerTask = RegisterUser(NewRegister);
+            //registerTask = RegisterUser(NewRegister);
         }
         private async Task<Boolean> RegisterUser(Register register)
         {
-            if (Password == PasswordRepeat)
+            if(PasswordRepeat == null)
+            {
+                this.Error = Libraries.Error.PasswordEmpty;
+                return false;
+            }
+            else if (Password == PasswordRepeat)
             {
                 register.Password = Password;
                 Response res = await RegisterRepository.Register(register);

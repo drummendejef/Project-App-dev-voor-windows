@@ -41,23 +41,54 @@ namespace BOBApp.ViewModels
             Debug.WriteLine("knop werkt");
 
             //databinding werkt/Password veranderen werkt ook
-            if(PasswordRepeat == Password)
-            {
-                User.Password = Password;
-                //Updaten naar database ( + confirmatie dat password verandert is ( samen met eventuele andere aanpassingen)
-                //await RegisterRepository.EditUser(User);
+            if(PasswordRepeat == null){
+                Debug.WriteLine("Password niet verandert");
                 
-                Debug.WriteLine("Password verandert");
+                //Updaten naar database
+                Response r = await RegisterRepository.EditUser(User);
+                //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
+                if (r.Success)
+                {
+                    var dialog = new MessageDialog("Uw gegevens zijn opgeslaan.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Er is een probleem met het updaten van uw gegevens. Probeer het nog eens opnieuw.");
+                    await dialog.ShowAsync();
+                }
+            }
+            else if(PasswordRepeat == Password)
+            {
+                
+                User.Password = Password;
+              
+                //Updaten naar database
+                Response r = await RegisterRepository.EditUser(User);
+                //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
+                if (r.Success)
+                {
+                    var dialog = new MessageDialog("Uw gegevens zijn opgeslaan en uw wachtwoord is verandert.");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    var dialog = new MessageDialog("Er is een probleem met het updaten van uw gegevens. Probeer het nog eens opnieuw.");
+                    await dialog.ShowAsync();
+                }
+
+                //Debug.WriteLine("Password verandert");
             }
             else
             {
-                Debug.WriteLine("Password niet verandert");
+                //de wachtwoorden zijn niet hetzelfde
+                var dialog = new MessageDialog("De twee wachtwoorden zijn niet hetzelfde.");
+                await dialog.ShowAsync();
             }
 
-            var dialog = new MessageDialog("Uw gegevens zijn opgeslaan");
-            await dialog.ShowAsync();
-            //Updaten naar database ( + confirmatiescherm dat gegevens verandert zijn)
-            Debug.WriteLine("naam: " + User.Lastname + " - Voornaam: " + User.Firstname + " - Email: " + User.Email + " - Cellphone: " + User.Cellphone + " - LicensePlate: " + User.LicensePlate + " - Password: " + User.Password);
+           
+            //Testcode voor databinding
+            //Debug.WriteLine("naam: " + User.Lastname + " - Voornaam: " + User.Firstname + " - Email: " + User.Email + " - Cellphone: " + User.Cellphone + " - LicensePlate: " + User.LicensePlate + " - Password: " + User.Password);
             
         }
 
