@@ -94,7 +94,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
-    <Content Include="Assets\testpin.png" />
+    <Content Include="Assets\BOBpin.png" />
+    <Content Include="Assets\feestpin.png" />
+    <Content Include="Assets\userpin.png" />
+    <Content Include="Assets\vriendpin.png" />
     <Content Include="Styles\fonts\Raleway-Bold.otf" />
     <Content Include="Styles\fonts\Raleway-ExtraBold.otf" />
     <Content Include="Styles\fonts\Raleway-ExtraLight.otf" />
