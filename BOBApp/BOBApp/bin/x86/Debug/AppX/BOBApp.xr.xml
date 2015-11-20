@@ -25,7 +25,6 @@
     <RootPropertyPathName Name="RegisterVM" />
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="NewRegister" />
-    <RootPropertyPathName Name="Licenseplate" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="RittenVM" />
     <RootPropertyPathName Name="VindRitVM" />

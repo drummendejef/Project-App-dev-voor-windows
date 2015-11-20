@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-11-19T14:25:41.688</Modified>
+      <Modified>2015-11-20T09:19:45.406</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +65,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\testpin.png">
       <PackagePath>Assets\testpin.png</PackagePath>
-      <Modified>2015-11-19T13:51:50.731</Modified>
+      <Modified>2015-11-20T08:29:30.416</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
@@ -74,11 +74,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-11-19T14:25:41.688</Modified>
+      <Modified>2015-11-20T09:19:45.404</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
-      <Modified>2015-11-19T13:51:50.811</Modified>
+      <Modified>2015-11-20T09:06:08.745</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\ClrCompression.dll">
       <PackagePath>ClrCompression.dll</PackagePath>
@@ -86,7 +86,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-11-19T14:25:40.057</Modified>
+      <Modified>2015-11-20T09:12:09.528</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
@@ -102,7 +102,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
-      <Modified>2015-11-19T14:25:36.854</Modified>
+      <Modified>2015-11-20T08:44:51.538</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -142,43 +142,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-11-19T14:25:41.067</Modified>
+      <Modified>2015-11-20T09:19:44.880</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Bold.otf">
       <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.593</Modified>
+      <Modified>2015-11-13T16:18:57.156</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-ExtraBold.otf">
       <PackagePath>Styles\fonts\Raleway-ExtraBold.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.608</Modified>
+      <Modified>2015-11-13T16:18:57.163</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-ExtraLight.otf">
       <PackagePath>Styles\fonts\Raleway-ExtraLight.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.608</Modified>
+      <Modified>2015-11-13T16:18:57.194</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Heavy.otf">
       <PackagePath>Styles\fonts\Raleway-Heavy.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.608</Modified>
+      <Modified>2015-11-13T16:18:57.194</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Light.otf">
       <PackagePath>Styles\fonts\Raleway-Light.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.624</Modified>
+      <Modified>2015-11-13T16:18:57.210</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Medium.otf">
       <PackagePath>Styles\fonts\Raleway-Medium.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.624</Modified>
+      <Modified>2015-11-13T16:18:57.210</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Regular.otf">
       <PackagePath>Styles\fonts\Raleway-Regular.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.640</Modified>
+      <Modified>2015-11-13T16:18:57.226</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-SemiBold.otf">
       <PackagePath>Styles\fonts\Raleway-SemiBold.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.640</Modified>
+      <Modified>2015-11-13T16:18:57.226</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Thin.otf">
       <PackagePath>Styles\fonts\Raleway-Thin.otf</PackagePath>
-      <Modified>2015-11-13T16:18:58.640</Modified>
+      <Modified>2015-11-13T16:18:57.241</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>

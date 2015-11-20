@@ -17,7 +17,8 @@ namespace BOBApp.ViewModels
     public class RegisterVM: ViewModelBase
     {
         //Properties
-        private Task registerTask;
+        private Task RegisterTask;
+        private Task LoginTask;
         public RelayCommand RegisterCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
         public Register NewRegister { get; set; }
@@ -52,13 +53,17 @@ namespace BOBApp.ViewModels
         }
         public void Register()
         {
-            if (NewRegister.Lastname == null)
+            /* if (NewRegister.Lastname == null)
+             {
+                 Debug.WriteLine("foutje");
+             }*/
+
+            NewRegister.IsBob = false;
+            RegisterTask = RegisterUser(NewRegister);
+            if(RegisterTask.IsCompleted == true)
             {
-                Debug.WriteLine("foutje");
+               LoginTask = LoginUser(NewRegister.Email, NewRegister.Password);
             }
-                
-           
-            //registerTask = RegisterUser(NewRegister);
         }
         private async Task<Boolean> RegisterUser(Register register)
         {
