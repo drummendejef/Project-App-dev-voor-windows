@@ -25,13 +25,15 @@ namespace BOBApp.Views
     public sealed partial class FeestjesOverzicht : Page
     {
         RandomAccessStreamReference mapIconStreamReference;
+        RandomAccessStreamReference mapIconStreamReferenceParty;
 
         public FeestjesOverzicht()
         {
             this.InitializeComponent();
 
             MapFeestOverzicht.Loaded += myMap_Loaded;
-            mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/testpin.png"));
+            mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/userpin.png"));
+            mapIconStreamReferenceParty = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/feestpin.png"));
         }
 
         //Methods
@@ -45,12 +47,21 @@ namespace BOBApp.Views
             //Marker voor eigen locatie plaatsen
             MapIcon mapIconUserLocation = new MapIcon();
             mapIconUserLocation.Location = MapFeestOverzicht.Center;
-            mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);
+            mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
             mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
             mapIconUserLocation.Image = mapIconStreamReference;
             MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
 
             //TODO: Locaties van andere feestjes ophalen (Joren) - API nog niet geschreven
+            int aantalfeestjes = 2;// na het ophalen van de feestjes, het aantal feestjes tellen (NOG DOEN)
+            for(int i = 0; i < aantalfeestjes; i++)//Alle feestjes overlopen en markers zetten.
+            {
+                MapIcon mapIconFeestLocation = new MapIcon();
+                //mapIconFeestLocation.Location = //Opgehaalde locatie;
+                //mapIconFeestLocation.Title = //Naam van het feestje;
+                mapIconFeestLocation.Image = mapIconStreamReferenceParty;
+                MapFeestOverzicht.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+            }
             
 
 
