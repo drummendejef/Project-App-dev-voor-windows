@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -49,13 +50,18 @@ namespace BOBApp.Views
 
                     //Locatie opvragen
                     Geoposition pos = await geolocator.GetGeopositionAsync();
+                    Debug.WriteLine("Positie opgevraagd, lat: " + pos.Coordinate.Point.Position.Latitude + " lon: " + pos.Coordinate.Point.Position.Longitude);
 
                     //Locatie opslaan als gebruikerslocatie
                     (App.Current as App).UserLocation = pos;
 
                     break;
 
+                case GeolocationAccessStatus.Denied: //De gebruiker heeft ons geen toegang gegeven.
 
+
+
+                    break;
 
             }
         }
