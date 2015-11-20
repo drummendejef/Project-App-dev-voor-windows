@@ -49,7 +49,7 @@ namespace BOBApp.Views
             mapIconUserLocation.Image = mapIconStreamReference;
             MapZoekVriend.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
 
-            //TODO: locaties van vrienden ophalen (Joren)
+            //TODO: locaties van vrienden ophalen (Joren) - API nog niet geschreven
 
 
         }

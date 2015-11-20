@@ -37,7 +37,7 @@ namespace BOBApp.Views
                 Debug.WriteLine("Er staat niets in de naam textbox");
                 checkBoxAkkoordVoorwaarden.IsChecked = false;
             }
-            else if (textBoxVoornaam.Text.Length <= 2)
+            else if (textBoxVoornaam.Text.Length <= 1)
             {
                 textBlockError.Text = "Vul een Voornaam in";
                 Debug.WriteLine("Er staat niets in de textboxVoornaam");
