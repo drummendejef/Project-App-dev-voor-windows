@@ -30,7 +30,7 @@ namespace BOBApp.Views
         {
             this.InitializeComponent();
 
-            myMap.Loaded += myMap_Loaded;
+            MapFeestOverzicht.Loaded += myMap_Loaded;
             mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/testpin.png"));
         }
 
@@ -38,17 +38,22 @@ namespace BOBApp.Views
         private void myMap_Loaded(object sender, RoutedEventArgs e)//Als de map geladen is.
         {
             //Map centreren op huidige locatie
-            myMap.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
-            myMap.ZoomLevel = 12;
-            myMap.LandmarksVisible = true;
+            MapFeestOverzicht.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
+            MapFeestOverzicht.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
+            MapFeestOverzicht.LandmarksVisible = true;
 
-            //Eigen locatie tonen
+            //Marker voor eigen locatie plaatsen
             MapIcon mapIconUserLocation = new MapIcon();
-            mapIconUserLocation.Location = myMap.Center;
+            mapIconUserLocation.Location = MapFeestOverzicht.Center;
             mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);
-            mapIconUserLocation.Title = "Ik";
+            mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
             mapIconUserLocation.Image = mapIconStreamReference;
-            myMap.MapElements.Add(mapIconUserLocation);
+            MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+
+            //TODO: Locaties van andere feestjes ophalen (Joren) - API nog niet geschreven
+            
+
+
 
         }
 
