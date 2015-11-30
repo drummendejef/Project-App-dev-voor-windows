@@ -19,6 +19,7 @@ namespace BOBApp.ViewModels
         public Register User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
+        public List<Merk> Merken { get; set; }
 
         //Constructor
         public ProfielVM()
@@ -26,6 +27,8 @@ namespace BOBApp.ViewModels
 
             //GetUserDetails() werkt
             GetUserDetails();
+
+            GetMerken();
 
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
@@ -96,6 +99,11 @@ namespace BOBApp.ViewModels
         private async void GetUserDetails()
         {
             this.User = await RegisterRepository.GetUser();
+        }
+
+        private async void GetMerken()
+        {
+            this.Merken = await MerkenRepository.GetMerken();
         }
 
     }
