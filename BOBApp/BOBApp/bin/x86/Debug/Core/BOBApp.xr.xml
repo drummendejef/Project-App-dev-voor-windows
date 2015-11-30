@@ -3,8 +3,10 @@
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="BestemmingenVM" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
+    <RootPropertyPathName Name="ZoekVeld" />
     <RootPropertyPathName Name="LoginVM" />
     <RootPropertyPathName Name="RegisterCommand" />
+    <RootPropertyPathName Name="isLocationGiven" />
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="Pass" />
     <RootPropertyPathName Name="Email" />
@@ -256,9 +258,9 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="IsEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />

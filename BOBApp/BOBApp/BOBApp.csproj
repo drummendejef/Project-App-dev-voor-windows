@@ -117,12 +117,14 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messages\GoToPage.cs" />
+    <Compile Include="Models\Party.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />
+    <Compile Include="Repositories\PartyRepository.cs" />
     <Compile Include="Repositories\PointRepository.cs" />
     <Compile Include="Repositories\RegisterRepository.cs" />
     <Compile Include="Repositories\TripRepository.cs" />

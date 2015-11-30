@@ -31,7 +31,7 @@ namespace BOBApp.ViewModels
         public LoginVM()
         {
             //Stap 1. Toestemming vragen voor locatie te krijgen
-            isLocationGiven = false;
+            isLocationGiven = true;//Moet op false staan, maar even op true zetten voor de commit
             LocatieToestemmingVragen();
 
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
