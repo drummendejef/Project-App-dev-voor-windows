@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Libraries;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +25,15 @@ namespace BOBApp.ViewModels
         public string Email { get; set; }
         public string Pass { get; set; }
         public string Error { get; set; }
+        public Boolean isLocationGiven { get; set; }
 
         //Constructor
         public LoginVM()
         {
+            //Stap 1. Toestemming vragen voor locatie te krijgen
+            isLocationGiven = false;
+            LocatieToestemmingVragen();
+
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
             RaisePropertyChanged("Email");
             RaisePropertyChanged("Pass");
@@ -95,6 +101,54 @@ namespace BOBApp.ViewModels
             }
 
             return ok;
+        }
+
+
+        //Een (eenmalige) pop up tonen om toestemming aan de gebruiker te vragen voor zijn locatie
+        private async void LocatieToestemmingVragen()
+        {
+            //De pop up tonen en toestemming vragen
+            var accessStatus = await Geolocator.RequestAccessAsync();
+
+            //De mogelijke antwoorden overlopen
+            switch (accessStatus)
+            {
+                case GeolocationAccessStatus.Allowed: //De gebruiker heeft ons toegang gegeven
+
+                    //Mag verdergaan en inloggen
+                    isLocationGiven = true;
+
+                    //aanmaken Geolocator
+                    Geolocator geolocator = new Geolocator();
+
+                    //Inschrijven op de StatusChanged voor updates van de permissies voor locaties.
+                    geolocator.StatusChanged += OnStatusChanged;
+
+                    //Locatie opvragen
+                    Geoposition pos = await geolocator.GetGeopositionAsync();
+                    Debug.WriteLine("Positie opgevraagd, lat: " + pos.Coordinate.Point.Position.Latitude + " lon: " + pos.Coordinate.Point.Position.Longitude);
+
+                    //Locatie opslaan als gebruikerslocatie
+                    (App.Current as App).UserLocation = pos;
+
+                    break;
+
+                case GeolocationAccessStatus.Denied: //De gebruiker heeft ons geen toegang gegeven.
+                
+                    break;
+
+                case GeolocationAccessStatus.Unspecified: //Er is iets vreemds misgelopen
+
+                    break;
+
+            }
+        }
+
+        //Als de status van de locatie permissies veranderd is.
+        private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        {
+            //throw new NotImplementedException();
+            //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
         }
 
 

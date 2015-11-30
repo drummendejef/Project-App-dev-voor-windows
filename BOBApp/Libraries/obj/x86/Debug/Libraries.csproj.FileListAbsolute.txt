@@ -31,3 +31,19 @@ C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libr
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pdb
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pri
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.dll
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.pdb
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml.intermediate
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\layout.resfiles
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\layout.resfiles.intermediate
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\resources.resfiles
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\resources.resfiles.intermediate
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\pri.resfiles
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\pri.resfiles.intermediate
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
+E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt

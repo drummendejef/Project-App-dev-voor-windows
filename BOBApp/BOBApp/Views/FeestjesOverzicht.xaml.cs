@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BOBApp.Models;
+using BOBApp.Repositories;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,7 +39,7 @@ namespace BOBApp.Views
         }
 
         //Methods
-        private void myMap_Loaded(object sender, RoutedEventArgs e)//Als de map geladen is.
+        private async void myMap_Loaded(object sender, RoutedEventArgs e)//Als de map geladen is.
         {
             //Map centreren op huidige locatie
             MapFeestOverzicht.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
@@ -53,12 +55,20 @@ namespace BOBApp.Views
             MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
 
             //TODO: Locaties van andere feestjes ophalen (Joren) - API nog niet geschreven
-            int aantalfeestjes = 2;// na het ophalen van de feestjes, het aantal feestjes tellen (NOG DOEN)
+
+            List<Party> feestjes = await PartyRepository.GetPartys();
+
+
+            int aantalfeestjes = feestjes.Count;// na het ophalen van de feestjes, het aantal feestjes tellen (NOG DOEN)
             for(int i = 0; i < aantalfeestjes; i++)//Alle feestjes overlopen en markers zetten.
             {
+                Party feest = feestjes[i];
+
+                //Geopoint test = new Geopoint();
+
                 MapIcon mapIconFeestLocation = new MapIcon();
-                //mapIconFeestLocation.Location = //Opgehaalde locatie;
-                //mapIconFeestLocation.Title = //Naam van het feestje;
+                //mapIconFeestLocation.Location = feest.Location; //Opgehaalde locatie
+                mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
                 mapIconFeestLocation.Image = mapIconStreamReferenceParty;
                 MapFeestOverzicht.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
             }

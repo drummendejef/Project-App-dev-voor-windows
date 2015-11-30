@@ -19,5 +19,6 @@ namespace Libraries
         public static string CURRENTTRIP = BASE + "/trips/current";
         public static string POINTS = BASE + "/user/points";
         public static string TOTALPOINTS = BASE + "/user/points/amount";
+        public static string PARTIES = BASE + "/parties";
     }
 }

@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BOBApp.Views;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,12 @@ namespace BOBApp.ViewModels
     public class FeestjesOverzichtVM : ViewModelBase
     {
         //Properties
+        public string ZoekVeld { get; set; }
 
         //Constructor
         public FeestjesOverzichtVM()
         {
-
+            
         }
 
         //Methods
