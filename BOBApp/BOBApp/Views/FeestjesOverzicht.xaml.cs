@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Streams;
@@ -62,22 +63,28 @@ namespace BOBApp.Views
             int aantalfeestjes = feestjes.Count;// na het ophalen van de feestjes, het aantal feestjes tellen (NOG DOEN)
             for(int i = 0; i < aantalfeestjes; i++)//Alle feestjes overlopen en markers zetten.
             {
+                //Kan weg gelaten worden door feestjes[i] op een van de onderstaande lijnen te zetten (optimalisatie?) maar dit is misschien duidelijker. Keuzes keuzes
                 Party feest = feestjes[i];
 
-                //Geopoint test = new Geopoint();
+                //Tijdelijke locatie aanmaken
+                BasicGeoposition tempbasic = new BasicGeoposition();
+
+                //Feestlocatie opsplitsen (word opgeslagen als string)
+                string[] splittedcoord = feest.Location.Split(',',':','}');//Splitsen op } zodat de lon proper is
+
+                //Locaties omzetten en in de tijdelijke posities opslaan.
+                tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
+                tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
+
+                //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                Geopoint temppoint = new Geopoint(tempbasic);
 
                 MapIcon mapIconFeestLocation = new MapIcon();
-                //mapIconFeestLocation.Location = feest.Location; //Opgehaalde locatie
+                mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
                 mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
                 mapIconFeestLocation.Image = mapIconStreamReferenceParty;
                 MapFeestOverzicht.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
             }
-            
-
-
-
         }
-
-
     }
 }

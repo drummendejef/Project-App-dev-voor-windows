@@ -43,6 +43,7 @@ namespace BOBApp.ViewModels
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
 
+           
 
         }
 
@@ -51,6 +52,12 @@ namespace BOBApp.ViewModels
         public void Login()
         {
             loginTask = LoginUser(this.Email,this.Pass);
+
+            //***********************************************
+            //OM HET INLOGGEN TE OMZEILEN!!!! WEGDOEN ALS DAT OPGELOST IS
+            //TODO: Onderstaande regel verwijderen als de server niet meer crasht :P
+            //***********************************************
+            //Messenger.Default.Send<GoToPage>(new GoToPage() { Name = "MainView" });
         }
         private void Login_Facebook()
         {
@@ -134,11 +141,17 @@ namespace BOBApp.ViewModels
                     break;
 
                 case GeolocationAccessStatus.Denied: //De gebruiker heeft ons geen toegang gegeven.
-                
+                    Debug.WriteLine("Geen locatie: Toestemming geweigerd");
+
+                    //Als de app geen toegang krijgt tot de locatie, gaat hij vastlopen als hij een kaart gaat willen tonen op dat hij geen locatie voor de eigenaar heeft.
+                    //We kunnen dat oplossen door de app af te sluiten, of gewoon door niet op die locatie te focussen
+                    Debug.WriteLine("App sluit af wegens geen locatie toestemming");//Nog mooier maken door echt een bericht te geven op de app.
+                    App.Current.Exit();
+
                     break;
 
                 case GeolocationAccessStatus.Unspecified: //Er is iets vreemds misgelopen
-
+                    Debug.WriteLine("Geen locatie: Unspecified");
                     break;
 
             }
@@ -147,6 +160,7 @@ namespace BOBApp.ViewModels
         //Als de status van de locatie permissies veranderd is.
         private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
         {
+            //TODO: Locatie opvragen afwerken?
             //throw new NotImplementedException();
             //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
         }
