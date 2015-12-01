@@ -20,5 +20,6 @@ namespace Libraries
         public static string POINTS = BASE + "/user/points";
         public static string TOTALPOINTS = BASE + "/user/points/amount";
         public static string PARTIES = BASE + "/parties";
+        public static string MERKEN = BASE + "/autotypes/";
     }
 }
