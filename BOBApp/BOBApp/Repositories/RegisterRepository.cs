@@ -17,11 +17,11 @@ namespace BOBApp.Repositories
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                client.BaseAddress = new Uri(URL.USER_REGISTER);
 
-                var newObject = JsonConvert.SerializeObject(new { Register = JsonConvert.SerializeObject(register) });
+                var newObject = JsonConvert.SerializeObject(register);
 
-                HttpResponseMessage result = await client.PostAsync(URL.REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                HttpResponseMessage result = await client.PostAsync(URL.USER_REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
                 string json = await result.Content.ReadAsStringAsync();
                 Response data = JsonConvert.DeserializeObject<Response>(json);
 
@@ -33,10 +33,11 @@ namespace BOBApp.Repositories
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                client.BaseAddress = new Uri(URL.USER_EDIT);
 
-                var newObject = JsonConvert.SerializeObject(new { Register = JsonConvert.SerializeObject(user) });
-                HttpResponseMessage result = await client.PutAsync(URL.REGISTER, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                var newObject = JsonConvert.SerializeObject(user);
+
+                HttpResponseMessage result = await client.PutAsync(URL.USER_EDIT, new StringContent(newObject, Encoding.UTF8, "application/json"));
                 string json = await result.Content.ReadAsStringAsync();
                 Response data = JsonConvert.DeserializeObject<Response>(json);
 

@@ -1,2 +1,2 @@
-E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\BOBApp\BOBApp.csproj;x86
-E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\Libraries.csproj;x86
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\BOBApp.csproj;x86
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\Libraries.csproj;x86

@@ -14,7 +14,8 @@ namespace Libraries
         public static string AUTH_SUCCESS = BASE + "/auth/success";
         public static string USER = BASE + "/user";
         public static string PROFILE = BASE + "/user/profile";
-        public static string REGISTER = BASE + "/user/register";
+        public static string USER_REGISTER = BASE + "/user/register";
+        public static string USER_EDIT = BASE + "/user/edit";
         public static string TRIPS = BASE + "/trips";
         public static string CURRENTTRIP = BASE + "/trips/current";
         public static string POINTS = BASE + "/user/points";
