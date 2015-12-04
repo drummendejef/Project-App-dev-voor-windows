@@ -39,18 +39,21 @@ namespace BOBApp.Views
 
         private void myMap_Loaded(object sender, RoutedEventArgs e)
         {
-            //Map centreren op huidige locatie
-            MapVindRit.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
-            MapVindRit.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
-            MapVindRit.LandmarksVisible = true;
+            if ((App.Current as App).UserLocation != null)//Als de eigen locatie niet gekend is.
+            {
+                //Map centreren op huidige locatie
+                MapVindRit.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
+                MapVindRit.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
+                MapVindRit.LandmarksVisible = true;
 
-            //Marker voor eigen locatie plaatsen
-            MapIcon mapIconUserLocation = new MapIcon();
-            mapIconUserLocation.Location = MapVindRit.Center;
-            mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
-            mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
-            mapIconUserLocation.Image = mapIconStreamReference;
-            MapVindRit.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+                //Marker voor eigen locatie plaatsen
+                MapIcon mapIconUserLocation = new MapIcon();
+                mapIconUserLocation.Location = MapVindRit.Center;
+                mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+                mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
+                mapIconUserLocation.Image = mapIconStreamReference;
+                MapVindRit.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+            }
 
             //TODO: Locaties van BOBs ophalen (Joren) - API nog niet geschreven
             int aantalBobs = 0;//Na het ophalen van de bobs, het aantal bobs tellen.

@@ -19,6 +19,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
+using Microsoft.QueryStringDotNET;
+using Windows.System;
+using System.Diagnostics;
 
 namespace BOBApp
 {
@@ -162,5 +165,80 @@ namespace BOBApp
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        //Als de gebruiker op de toast/notification klikt
+        protected override async void OnActivated(IActivatedEventArgs e)
+        {
+            //De rootframe ophalen
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            //TODO: initialiseren van root frame, net als in OnLaunched
+
+            //Toast Activation opvangen
+            if (e is ToastNotificationActivatedEventArgs)
+            {
+                var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
+
+                QueryString args = QueryString.Parse(toastActivationArgs.Argument);
+
+                //Kijk welke actie gevraagd is
+                switch (args["action"])
+                {
+                    //Open de application
+                    case "openBobApp":
+                        //Nog uitzoeken hoe je dat moet doen, nog niet zo heel belangrijk
+                        break;
+                    //Open het scherm waar je toestemming geeft om je locatie te gebruiken.
+                    case "openLocationServices":
+                        await Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
+                        break;
+                }
+            }
+
+            //Maak zeker dat het scherm nu actief is
+            Window.Current.Activate();
+        }
+
+        //Als de status van de locatie permissies veranderd is.
+        async private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        {
+            //TODO: Locatie opvragen afwerken?
+            //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
+
+            /*await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+
+            });*/
+            Debug.WriteLine("Status Locatie toestemming is veranderd");
+
+            switch (args.Status)
+            {
+                case PositionStatus.Ready:
+                    //We krijgen locatie data binnen
+                    //aanmaken Geolocator
+                    /*Geolocator geolocator = new Geolocator();
+
+                    //Inschrijven op de StatusChanged voor updates van de permissies voor locaties.
+                    geolocator.StatusChanged += OnStatusChanged;
+
+                    //Locatie opvragen
+                    Geoposition pos = await geolocator.GetGeopositionAsync();
+                    Debug.WriteLine("Positie opgevraagd, lat: " + pos.Coordinate.Point.Position.Latitude + " lon: " + pos.Coordinate.Point.Position.Longitude);
+
+                    //Locatie opslaan als gebruikerslocatie
+                    (App.Current as App).UserLocation = pos;*/
+                    Debug.WriteLine("Positionstatus Ready");
+
+                    break;
+                case PositionStatus.Initializing:
+                    Debug.WriteLine("Positionstatus Initializing");
+                    break;
+                case PositionStatus.Disabled:
+                    Debug.WriteLine("Positionstatus Disabled");
+                    break;
+            }
+        }
+
+
     }
 }
