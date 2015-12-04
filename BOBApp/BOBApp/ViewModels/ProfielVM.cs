@@ -65,7 +65,7 @@ namespace BOBApp.ViewModels
             {
                 
                 User.Password = Password;
-              
+                
                 //Updaten naar database
                 Response r = await UserRepository.EditUser(User);
                 //na de edit ( en deze is correct) toon bevestiging aan de gebruiker

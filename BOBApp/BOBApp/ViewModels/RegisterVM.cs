@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Libraries;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    public class RegisterVM: ViewModelBase
+    public class RegisterVM : ViewModelBase
     {
         //Properties
         private Task RegisterTask;
@@ -26,11 +27,19 @@ namespace BOBApp.ViewModels
         public string PasswordRepeat { get; set; }
         public string Error { get; set; }
 
+        public ObservableCollection<Autotype> Merken {get;set;}
+
+        public Autotype SelectedAutoType { get; set; }
+
+
+
         //Constructor
         public RegisterVM()
         {
             this.NewRegister = new Register();
+            GetMerken();
 
+            RaisePropertyChanged("Merken");
             RaisePropertyChanged("NewRegister");
             RaisePropertyChanged("Password");
             RaisePropertyChanged("PasswordRepeat");
@@ -117,6 +126,19 @@ namespace BOBApp.ViewModels
             }
 
             return res.Success;
+        }
+
+
+        private async void GetMerken()
+        {
+
+            List<Autotype> merkenLijst = await MerkenRepository.GetMerken();
+            this.Merken = new ObservableCollection<Autotype>();
+            foreach(Autotype merk in merkenLijst)
+            {
+                this.Merken.Add(merk);
+            }
+
         }
 
 
