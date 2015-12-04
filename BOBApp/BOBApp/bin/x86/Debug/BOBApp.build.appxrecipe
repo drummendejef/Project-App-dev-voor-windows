@@ -90,6 +90,9 @@
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\Newtonsoft.Json\7.0.1\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\QueryString.NET\1.0.0\lib\dotnet\QueryString.NETCore.dll">
+      <PackagePath>QueryString.NETCore.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\System.AppContext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
     </AppxPackagedFile>
@@ -356,6 +359,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\NotificationsExtensions.Win10\10586.0.0\lib\uap10.0\NotificationsExtensions.winmd">
+      <PackagePath>NotificationsExtensions.winmd</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>

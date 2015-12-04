@@ -1987,3 +1987,6 @@ C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBA
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\feestpin.png
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\userpin.png
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\vriendpin.png
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\NotificationsExtensions.winmd
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\QueryString.NETCore.dll
+C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\NotificationsExtensions.pri.xml
