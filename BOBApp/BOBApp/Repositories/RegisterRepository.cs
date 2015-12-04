@@ -50,7 +50,7 @@ namespace BOBApp.Repositories
             //Probleem: Deze haalt het profiel op, maar deze wordt nooit geupdate ( geen idee of deze zelfs ook gepost word) bij EditUser
             using (HttpClient client = new HttpClient())
             {
-                var result = client.GetAsync(URL.PROFILE);
+                var result = client.GetAsync(URL.USER_EDIT);
                 string json = await result.Result.Content.ReadAsStringAsync();
                 Register data = JsonConvert.DeserializeObject<Register>(json);
                 return data;

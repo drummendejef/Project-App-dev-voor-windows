@@ -15,7 +15,7 @@ namespace BOBApp.Repositories
         {
             using (HttpClient client = new HttpClient())
             {
-                var result = client.GetAsync(URL.TOTALPOINTS);
+                var result = client.GetAsync(URL.USER_POINTSAMOUNT);
                 string json = await result.Result.Content.ReadAsStringAsync();
                 string data = JsonConvert.DeserializeObject<string>(json);
                 return data;

@@ -19,7 +19,7 @@ namespace BOBApp.ViewModels
         public Register User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
-        //public List<Merk> Merken { get; set; }
+        public List<Autotype> Merken { get; set; }
 
         //Constructor
         public ProfielVM()
@@ -103,7 +103,7 @@ namespace BOBApp.ViewModels
 
         private async void GetMerken()
         {
-            //this.Merken = await MerkenRepository.GetMerken();
+            this.Merken = await MerkenRepository.GetMerken();
         }
 
     }
