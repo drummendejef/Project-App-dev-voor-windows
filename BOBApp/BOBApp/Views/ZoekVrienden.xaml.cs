@@ -38,18 +38,21 @@ namespace BOBApp.Views
 
         private void myMap_Loaded(object sender, RoutedEventArgs e)
         {
-            //Map centreren op huidige locatie
-            MapZoekVriend.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
-            MapZoekVriend.ZoomLevel = 15; //Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
-            MapZoekVriend.LandmarksVisible = true;
+            if ((App.Current as App).UserLocation != null)//Als de eigen locatie niet gekend is.
+            {
+                //Map centreren op huidige locatie
+                MapZoekVriend.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
+                MapZoekVriend.ZoomLevel = 15; //Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
+                MapZoekVriend.LandmarksVisible = true;
 
-            //Marker voor eigen locatie plaatsen
-            MapIcon mapIconUserLocation = new MapIcon();
-            mapIconUserLocation.Location = MapZoekVriend.Center;//De map is al gecentreerd op waar de gebruiker is, dus ook hier een marker zetten.
-            mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
-            mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
-            mapIconUserLocation.Image = mapIconStreamReference;
-            MapZoekVriend.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+                //Marker voor eigen locatie plaatsen
+                MapIcon mapIconUserLocation = new MapIcon();
+                mapIconUserLocation.Location = MapZoekVriend.Center;//De map is al gecentreerd op waar de gebruiker is, dus ook hier een marker zetten.
+                mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+                mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
+                mapIconUserLocation.Image = mapIconStreamReference;
+                MapZoekVriend.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+            }
 
             //TODO: locaties van vrienden ophalen (Joren) - API nog niet geschreven
             int aantalvrienden = 0;

@@ -197,10 +197,6 @@ namespace BOBApp.ViewModels
                     //En uiteindelijk de toast tonen
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
 
-
-                    //Debug.WriteLine("App sluit af wegens geen locatie toestemming");//Nog mooier maken door echt een bericht te geven op de app.
-                    //App.Current.Exit();
-
                     break;
 
                 case GeolocationAccessStatus.Unspecified: //Er is iets vreemds misgelopen
@@ -220,12 +216,12 @@ namespace BOBApp.ViewModels
             {
 
             });*/
+
         }
 
         //Als de locatie veranderd is, zou Async moeten gebeuren!!
         private void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
-        {
-            
+        {     
             (App.Current as App).UserLocation = e.Position;
         }
 
