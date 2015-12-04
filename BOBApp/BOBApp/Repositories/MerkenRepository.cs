@@ -12,13 +12,13 @@ namespace BOBApp.Repositories
 {
     public class MerkenRepository
     {
-        public static async Task<List<Merk>> GetMerken()
+        public static async Task<List<Autotype>> GetMerken()
         {
             using (HttpClient client = new HttpClient())
             {
                 var result = client.GetAsync(URL.MERKEN);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                    List<Merk> data = JsonConvert.DeserializeObject<List<Merk>>(json);
+                    List<Autotype> data = JsonConvert.DeserializeObject<List<Autotype>>(json);
                   return data;
             }
         }

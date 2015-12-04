@@ -64,4 +64,4 @@ BOBApp/BOBApp/bin/x86/Debug/BOBApp.exe
 *.suo
 
 # Debug
-BOBApp/BOBApp/bin/x86/Debug/*
+BOBApp/BOBApp/obj/x86/Debug/*
