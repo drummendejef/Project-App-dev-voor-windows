@@ -42,21 +42,23 @@ namespace BOBApp.Views
         //Methods
         private async void myMap_Loaded(object sender, RoutedEventArgs e)//Als de map geladen is.
         {
-            //Map centreren op huidige locatie
-            MapFeestOverzicht.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
-            MapFeestOverzicht.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
-            MapFeestOverzicht.LandmarksVisible = true;
+            if((App.Current as App).UserLocation != null)
+            { 
+                //Map centreren op huidige locatie
+                MapFeestOverzicht.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
+                MapFeestOverzicht.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
+                MapFeestOverzicht.LandmarksVisible = true;
 
-            //Marker voor eigen locatie plaatsen
-            MapIcon mapIconUserLocation = new MapIcon();
-            mapIconUserLocation.Location = MapFeestOverzicht.Center;
-            mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
-            mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
-            mapIconUserLocation.Image = mapIconStreamReference;
-            MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+                //Marker voor eigen locatie plaatsen
+                MapIcon mapIconUserLocation = new MapIcon();
+                mapIconUserLocation.Location = MapFeestOverzicht.Center;
+                mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+                mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
+                mapIconUserLocation.Image = mapIconStreamReference;
+                MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+            }
 
-            //TODO: Locaties van andere feestjes ophalen (Joren) - API nog niet geschreven
-
+            //Feestjes ophalen
             List<Party> feestjes = await PartyRepository.GetParties();
 
 
