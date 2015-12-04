@@ -117,10 +117,27 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messages\GoToPage.cs" />
+    <Compile Include="Models\Autotype.cs" />
+    <Compile Include="Models\Bob.cs" />
+    <Compile Include="Models\BobsType.cs" />
+    <Compile Include="Models\ChatComment.cs" />
+    <Compile Include="Models\ChatRoom.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Destination.cs" />
+    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\PointsDescription.cs" />
     <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\relations\Bobs_Parties.cs" />
+    <Compile Include="Models\relations\Trips_Locations.cs" />
+    <Compile Include="Models\relations\Users_Destinations.cs" />
+    <Compile Include="Models\relations\Users_Locations.cs" />
+    <Compile Include="Models\relations\Users_PointsDescription.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Trip.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Repositories\LoginRepository.cs" />

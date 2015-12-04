@@ -4,17 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BOBApp.Models
+namespace BOBApp.Models.relations
 {
-    public class Trip
+    public class Users_Destinations
     {
-        public int ID { get; set; }
         public int Users_ID { get; set; }
-        public int Bobs_ID { get; set; }
         public int Destinations_ID { get; set; }
-        public string Friends { get; set; }
+        public bool Default { get; set; }
         public DateTime Added { get; set; }
-    
-        
+        public string Name { get; set; }
     }
 }
