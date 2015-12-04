@@ -12,6 +12,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Windows.UI.Notifications;
+using NotificationsExtensions.Toasts;  // NotificationsExtensions.Win10
+using Microsoft.QueryStringDotNET; //QueryString.NET
+
 
 namespace BOBApp.ViewModels
 {
@@ -52,12 +56,6 @@ namespace BOBApp.ViewModels
         public void Login()
         {
             loginTask = LoginUser(this.Email,this.Pass);
-
-            //***********************************************
-            //OM HET INLOGGEN TE OMZEILEN!!!! WEGDOEN ALS DAT OPGELOST IS
-            //TODO: Onderstaande regel verwijderen als de server niet meer crasht :P
-            //***********************************************
-            //Messenger.Default.Send<GoToPage>(new GoToPage() { Name = "MainView" });
         }
         private void Login_Facebook()
         {
@@ -143,10 +141,64 @@ namespace BOBApp.ViewModels
                 case GeolocationAccessStatus.Denied: //De gebruiker heeft ons geen toegang gegeven.
                     Debug.WriteLine("Geen locatie: Toestemming geweigerd");
 
-                    //Als de app geen toegang krijgt tot de locatie, gaat hij vastlopen als hij een kaart gaat willen tonen op dat hij geen locatie voor de eigenaar heeft.
-                    //We kunnen dat oplossen door de app af te sluiten, of gewoon door niet op die locatie te focussen
-                    Debug.WriteLine("App sluit af wegens geen locatie toestemming");//Nog mooier maken door echt een bericht te geven op de app.
-                    App.Current.Exit();
+                    //We gaan een Toast tonen om te zeggen dat we de locatie nodig hebben.
+                    //Aanmaken tekst voor in Toast
+                    string title = "Locatie Nodig";
+                    string content = "We krijgen geen toegang tot uw locatie, deze staat softwarematig uitgeschakeld of u geeft ons geen toegang.";
+                    
+                    //De visuals van de Toast aanmaken
+                    ToastVisual visual = new ToastVisual()
+                    {
+                        TitleText = new ToastText()
+                        {
+                            Text = title
+                        },
+                        BodyTextLine1 = new ToastText()
+                        {
+                            Text = content
+                        },
+                        AppLogoOverride = new ToastAppLogo()
+                        {
+                            Source = new ToastImageSource("../Assets/StoreLogo.png"),
+                            Crop = ToastImageCrop.Circle
+                        }
+                    };
+
+                    //De interacties met de toast aanmaken
+                    ToastActionsCustom actions = new ToastActionsCustom()
+                    {
+                        Buttons =
+                        {
+                            new ToastButton("Geef Toestemming", new QueryString()
+                            {
+                                {"action", "openLocationServices" }
+                            }.ToString())
+                        }
+                    };
+
+                    //De final toast content aanmaken
+                    ToastContent toastContent = new ToastContent()
+                    {
+                        Visual = visual,
+                        Actions = actions,
+
+                        //Argumenten wanneer de user de body van de toast aanklikt
+                        Launch = new QueryString()
+                        {
+                            { "action", "openBobApp"}
+                        }.ToString()
+                    };
+
+                    //De toast notification maken
+                    var toast = new ToastNotification(toastContent.GetXml());
+                    toast.ExpirationTime = DateTime.Now.AddDays(2);//Tijd totdat de notification vanzelf verdwijnt
+
+                    //En uiteindelijk de toast tonen
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+
+
+                    //Debug.WriteLine("App sluit af wegens geen locatie toestemming");//Nog mooier maken door echt een bericht te geven op de app.
+                    //App.Current.Exit();
 
                     break;
 
@@ -165,6 +217,10 @@ namespace BOBApp.ViewModels
             //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
         }
 
+
+
+
+        
 
 
 

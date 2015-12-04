@@ -19,6 +19,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
+using Microsoft.QueryStringDotNET;
+using Windows.System;
 
 namespace BOBApp
 {
@@ -161,6 +163,41 @@ namespace BOBApp
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        //Als de gebruiker op de toast/notification klikt
+        protected override async void OnActivated(IActivatedEventArgs e)
+        {
+            //De rootframe ophalen
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            //TODO: initialiseren van root frame, net als in OnLaunched
+
+            //Toast Activation opvangen
+            if (e is ToastNotificationActivatedEventArgs)
+            {
+                var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
+
+                QueryString args = QueryString.Parse(toastActivationArgs.Argument);
+
+                //Kijk welke actie gevraagd is
+                switch (args["action"])
+                {
+                    //Open de application
+                    case "openBobApp":
+                        //Nog uitzoeken hoe je dat moet doen, nog niet zo heel belangrijk
+                        break;
+                    //Open het scherm waar je toestemming geeft om je locatie te gebruiken.
+                    case "openLocationServices":
+                        await Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
+                        break;
+                }
+            }
+
+            //Maak zeker dat het scherm nu actief is
+            Window.Current.Activate();
+
+
         }
     }
 }
