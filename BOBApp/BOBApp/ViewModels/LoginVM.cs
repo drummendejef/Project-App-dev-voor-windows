@@ -15,6 +15,7 @@ using Windows.Devices.Geolocation;
 using Windows.UI.Notifications;
 using NotificationsExtensions.Toasts;  // NotificationsExtensions.Win10
 using Microsoft.QueryStringDotNET; //QueryString.NET
+using Windows.UI.Core;
 
 
 namespace BOBApp.ViewModels
@@ -210,19 +211,23 @@ namespace BOBApp.ViewModels
         }
 
         //Als de status van de locatie permissies veranderd is.
-        private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        async private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
         {
             //TODO: Locatie opvragen afwerken?
-            //throw new NotImplementedException();
             //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
+
+            /*await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+
+            });*/
         }
 
-
-
-
-        
-
-
+        //Als de locatie veranderd is, zou Async moeten gebeuren!!
+        private void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
+        {
+            
+            (App.Current as App).UserLocation = e.Position;
+        }
 
     }
 }
