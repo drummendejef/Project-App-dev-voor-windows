@@ -5,6 +5,7 @@
     xmlns:local="using:BOBApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="thisPage"
     mc:Ignorable="d"
     DataContext="{Binding RegisterVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
@@ -51,7 +52,7 @@
             <TextBox Text="{Binding NewRegister.Cellphone, Mode=TwoWay}"  x:Name="textBoxGSMnr" TextWrapping="Wrap"  PlaceholderText="GSM Nummer" RelativePanel.Below="textBoxEmail" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
             <TextBox Text="{Binding NewRegister.LicensePlate, Mode=TwoWay}"  x:Name="textBoxNummerplaat" TextWrapping="Wrap" PlaceholderText="Nummerplaat" RelativePanel.Below="textBoxGSMnr" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
             <TextBlock x:Name="textBlockAutoType" TextWrapping="Wrap" Text="Automerk" RelativePanel.Below="textBoxNummerplaat" Margin="10" RelativePanel.AlignLeftWith="textBoxNummerplaat" RelativePanel.AlignBottomWith="" RelativePanel.AlignTopWith=""/>
-            <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10"/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch"  ItemsSource="{Binding Merken, Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAutoType, Mode=TwoWay}" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10"/>
             <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
             <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
             <CheckBox x:Name="checkBoxAkkoordVoorwaarden" Content="Ik ga akkoord met de voorwaarden" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignLeftWith="passwordBoxHerhaal" Checked="Akkoord_checked" Unchecked="Akkoord_unchecked"/>
