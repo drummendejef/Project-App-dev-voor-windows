@@ -62,3 +62,6 @@ BOBApp/BOBApp/bin/x86/Debug/AppX/Assets/testpin.png
 BOBApp/BOBApp/bin/x86/Debug/BOBApp.build.appxrecipe
 BOBApp/BOBApp/bin/x86/Debug/BOBApp.exe
 *.suo
+
+# Debug
+BOBApp/BOBApp/bin/x86/Debug/*
