@@ -14,6 +14,7 @@
     <RootPropertyPathName Name="MainViewVM" />
     <RootPropertyPathName Name="MijnRittenVM" />
     <RootPropertyPathName Name="ProfielVM" />
+    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="AanpasCommand" />
     <RootPropertyPathName Name="PasswordRepeat" />
     <RootPropertyPathName Name="Password" />
@@ -25,7 +26,10 @@
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
+    <RootPropertyPathName Name="ID" />
     <RootPropertyPathName Name="CancelCommand" />
+    <RootPropertyPathName Name="Merken" />
+    <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="RittenVM" />
@@ -370,8 +374,12 @@
     <RootType FullName="BOBApp.Views.MijnRitten" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="DisplayMemberPath" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="SelectedValuePath" />
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="BOBApp.Views.Profiel" />
