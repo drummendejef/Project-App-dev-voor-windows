@@ -15,9 +15,23 @@ namespace BOBApp.Repositories
         {
             using (HttpClient client = new HttpClient())
             {
+                var definition = new { Points = "" };
+
                 var result = client.GetAsync(URL.USER_POINTSAMOUNT);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                string data = JsonConvert.DeserializeObject<string>(json);
+                var data = JsonConvert.DeserializeAnonymousType(json, definition);
+                return data.Points;
+            }
+        }
+
+        public static async Task<List<Models.Point>> GetPoints()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.USER_POINTS);
+                string json = await result.Result.Content.ReadAsStringAsync();
+
+                List<Models.Point> data = JsonConvert.DeserializeObject<List<Models.Point>>(json);
                 return data;
             }
         }

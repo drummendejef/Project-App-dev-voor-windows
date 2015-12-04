@@ -50,14 +50,14 @@ namespace BOBApp.Views
             //Marker voor eigen locatie plaatsen
             MapIcon mapIconUserLocation = new MapIcon();
             mapIconUserLocation.Location = MapFeestOverzicht.Center;
-            mapIconUserLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+            mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
             mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
             mapIconUserLocation.Image = mapIconStreamReference;
             MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
 
             //TODO: Locaties van andere feestjes ophalen (Joren) - API nog niet geschreven
 
-            List<Party> feestjes = await PartyRepository.GetPartys();
+            List<Party> feestjes = await PartyRepository.GetParties();
 
 
             int aantalfeestjes = feestjes.Count;// na het ophalen van de feestjes, het aantal feestjes tellen (NOG DOEN)

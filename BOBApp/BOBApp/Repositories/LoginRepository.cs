@@ -43,15 +43,6 @@ namespace BOBApp.Repositories
             return launched;
         }
 
-        public static async Task<Login> GetUser()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                var result = client.GetAsync(URL.USER);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                Login data = JsonConvert.DeserializeObject<Login>(json);
-                return data;
-            }
-        }
+     
     }
 }

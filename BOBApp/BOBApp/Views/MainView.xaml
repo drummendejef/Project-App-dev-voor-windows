@@ -24,6 +24,7 @@
                 <RadioButton Tag="&#xe11a;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem2Checked" />
                 <RadioButton Tag="&#xe115;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem3Checked" />
                 <RadioButton Tag="&#xe783;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem4Checked" />
+                <RadioButton Tag="&#xe783;" Content="Mijn punten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem7Checked" />
                 <RadioButton Tag="&#xe783;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem5Checked" />
                 <RadioButton Tag="&#xe783;" Content="Gebruiker of bob" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem6Checked" />
 

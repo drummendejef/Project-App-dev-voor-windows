@@ -127,6 +127,7 @@
     <Compile Include="Models\Destination.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Party.cs" />
+    <Compile Include="Models\Point.cs" />
     <Compile Include="Models\PointsDescription.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\relations\Bobs_Parties.cs" />
@@ -144,7 +145,7 @@
     <Compile Include="Repositories\MerkenRepository.cs" />
     <Compile Include="Repositories\PartyRepository.cs" />
     <Compile Include="Repositories\PointRepository.cs" />
-    <Compile Include="Repositories\RegisterRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\TripRepository.cs" />
     <Compile Include="ViewModels\BestemmingenVM.cs" />
     <Compile Include="ViewModels\FeestjesOverzichtVM.cs" />

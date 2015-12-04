@@ -75,7 +75,7 @@ namespace BOBApp.ViewModels
             else if (Password == PasswordRepeat)
             {
                 register.Password = Password;
-                Response res = await RegisterRepository.Register(register);
+                Response res = await UserRepository.Register(register);
                 if (res.Success == true)
                 {
                    await LoginUser(register.Email, register.Password);
@@ -103,7 +103,7 @@ namespace BOBApp.ViewModels
             Response res = await LoginRepository.Login(email, pass);
             if (res.Success == true)
             {
-                Login user = await LoginRepository.GetUser();
+                User user = await UserRepository.GetUser();
                 BaseViewModelLocator.USER = user;
                 //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()

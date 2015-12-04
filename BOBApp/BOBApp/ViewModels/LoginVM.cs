@@ -76,7 +76,7 @@ namespace BOBApp.ViewModels
             Response res = await LoginRepository.Login(email, md5.Create(pass));
             if (res.Success == true)
             {
-                Login user = await LoginRepository.GetUser();
+                User user = await UserRepository.GetUser();
                 BaseViewModelLocator.USER = user;
                 //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()
@@ -98,7 +98,7 @@ namespace BOBApp.ViewModels
             Boolean ok = await LoginRepository.LoginFacebook();
             if (ok == true)
             {
-                Login user = await LoginRepository.GetUser();
+                User user = await UserRepository.GetUser();
                 BaseViewModelLocator.USER = user;
                 //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()

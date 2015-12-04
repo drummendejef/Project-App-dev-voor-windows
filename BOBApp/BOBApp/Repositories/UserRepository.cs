@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BOBApp.Repositories
 {
-    public class RegisterRepository
+    public class UserRepository
     {
         public static async Task<Response> Register(Register register)
         {
@@ -29,7 +29,7 @@ namespace BOBApp.Repositories
             }
         }
 
-        public static async Task<Response> EditUser(Register user)
+        public static async Task<Response> EditUser(User user)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -45,14 +45,14 @@ namespace BOBApp.Repositories
             }
         }
 
-        public static async Task<Register> GetUser()
+        public static async Task<Models.User> GetUser()
         {
             //Probleem: Deze haalt het profiel op, maar deze wordt nooit geupdate ( geen idee of deze zelfs ook gepost word) bij EditUser
             using (HttpClient client = new HttpClient())
             {
-                var result = client.GetAsync(URL.USER_EDIT);
+                var result = client.GetAsync(URL.USER);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                Register data = JsonConvert.DeserializeObject<Register>(json);
+                Models.User data = JsonConvert.DeserializeObject<Models.User>(json);
                 return data;
             }
         }

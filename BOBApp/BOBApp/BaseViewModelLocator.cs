@@ -12,7 +12,7 @@ namespace BOBApp
 {
     public class BaseViewModelLocator //Gaat de views aan de viewmodels koppelen. Moet aangeroepen worden (zie app.xaml)
     {
-        public static Login USER;
+        public static User USER;
         public BaseViewModelLocator()
         {//Zorgen dat je geen harde verbinding hebt tussen 2 dingen, objecten injecteren in containers.
 

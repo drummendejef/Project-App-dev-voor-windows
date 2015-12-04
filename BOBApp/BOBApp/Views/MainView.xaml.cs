@@ -76,5 +76,12 @@ namespace BOBApp.Views
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(Profiel));
         }
+
+        private void OnItem7Checked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(Punten));
+        }
     }
 }

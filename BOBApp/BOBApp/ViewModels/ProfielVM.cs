@@ -16,7 +16,7 @@ namespace BOBApp.ViewModels
     {
         //Properties
         public RelayCommand AanpasCommand { get; set; }
-        public Register User { get; set; }
+        public User User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
         public List<Autotype> Merken { get; set; }
@@ -48,7 +48,7 @@ namespace BOBApp.ViewModels
                 Debug.WriteLine("Password niet verandert");
                 
                 //Updaten naar database
-                Response r = await RegisterRepository.EditUser(User);
+                Response r = await UserRepository.EditUser(User);
                 //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
                 if (r.Success)
                 {
@@ -67,7 +67,7 @@ namespace BOBApp.ViewModels
                 User.Password = Password;
               
                 //Updaten naar database
-                Response r = await RegisterRepository.EditUser(User);
+                Response r = await UserRepository.EditUser(User);
                 //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
                 if (r.Success)
                 {
@@ -98,7 +98,7 @@ namespace BOBApp.ViewModels
        //Dit werkt
         private async void GetUserDetails()
         {
-            this.User = await RegisterRepository.GetUser();
+            this.User = await UserRepository.GetUser();
         }
 
         private async void GetMerken()

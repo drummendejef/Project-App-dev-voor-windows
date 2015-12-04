@@ -13,7 +13,7 @@ namespace BOBApp.Repositories
     public class PartyRepository
     {
         //Lijst van alle feestjes ophalen.
-        public static async Task<List<Party>> GetPartys()
+        public static async Task<List<Party>> GetParties()
         {
             using (HttpClient client = new HttpClient())
             {

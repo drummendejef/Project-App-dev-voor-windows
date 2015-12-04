@@ -11,7 +11,8 @@ namespace BOBApp.ViewModels
     public class PuntenVM : ViewModelBase
     {
         //Properties
-        public string Points { get; set; }
+        public List<Models.Point> Points { get; set; }
+        public string TotalPoints { get; set; }
         public string PointsText { get; set; }
 
         //Constructor
@@ -19,13 +20,19 @@ namespace BOBApp.ViewModels
         {
            
             GetUserPoints();
-            this.PointsText = "U hebt " + Points + " punten.";
+            GetPoints();
+            this.PointsText = "U hebt " + TotalPoints + " punten.";
         }
 
         //Methods
         private async void GetUserPoints()
         {
-            this.Points = await PointRepository.GetTotalPoints();
+            this.TotalPoints = await PointRepository.GetTotalPoints();
+
+        }
+        private async void GetPoints()
+        {
+            this.Points = await PointRepository.GetPoints();
 
         }
 

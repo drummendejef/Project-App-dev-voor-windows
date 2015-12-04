@@ -17,6 +17,7 @@ namespace BOBApp.Models
         public string FacebookID { get; set; }
         public DateTime Added { get; set; }
         public bool Online { get; set; }
+        public string Password { get; set; }
 
         //optional
         public bool IsBob { get; set; }
