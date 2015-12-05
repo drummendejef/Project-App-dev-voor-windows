@@ -132,7 +132,7 @@ namespace BOBApp.ViewModels
         private async void GetMerken()
         {
 
-            List<Autotype> merkenLijst = await MerkenRepository.GetMerken();
+            List<Autotype> merkenLijst = await AutotypeRepository.GetMerken();
             this.Merken = new ObservableCollection<Autotype>();
             foreach(Autotype merk in merkenLijst)
             {

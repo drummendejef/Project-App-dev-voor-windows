@@ -32,7 +32,7 @@ namespace Libraries
 
         public static string CITIES = BASE + "/cities";
         public static string COUNTRIES = BASE + "/countries";
-        public static string MERKEN = BASE + "/autotypes/";
+        public static string AUTOTYPES = BASE + "/autotypes/";
         public static string FRIENDS = BASE + "/friends/";
 
         public static string BOBS = BASE + "/bobs/";
@@ -46,6 +46,8 @@ namespace Libraries
 
         public static string USERS = BASE + "/users/";
         public static string USERS_ONLINE = BASE + "/users/online/";
+
+        public static string STATUSES = BASE + "/statuses/";
 
     }
 }

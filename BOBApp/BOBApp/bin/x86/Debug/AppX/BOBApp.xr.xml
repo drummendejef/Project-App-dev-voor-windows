@@ -26,7 +26,6 @@
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
-    <RootPropertyPathName Name="ID" />
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="SelectedAutoType" />
@@ -379,7 +378,6 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
       <RootProperty Name="SelectedItem" />
-      <RootProperty Name="SelectedValuePath" />
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="BOBApp.Views.Profiel" />

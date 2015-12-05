@@ -13,11 +13,53 @@ namespace BOBApp.Repositories
 {
     public class UserRepository
     {
+        #region get
+        public static async Task<Models.User> GetUser()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.USER);
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Models.User data = JsonConvert.DeserializeObject<Models.User>(json);
+                return data;
+            }
+        }
+        public static async Task<Models.User.Profile> GetProfile()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+                var result = client.GetAsync(URL.USER_LOCATION);
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Models.User.Profile data = JsonConvert.DeserializeObject<Models.User.Profile>(json);
+
+                return data;
+            }
+        }
+
+        public static async Task<Models.Location> GetLocation()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var definition = new { Users_ID = 0, Location = "", Added = "" };
+
+
+                var result = client.GetAsync(URL.USER_LOCATION);
+                string json = await result.Result.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeAnonymousType(json, definition);
+                Location location = (Models.Location)data.Location;
+                return location;
+            }
+        }
+        #endregion
+
+
+        #region post
         public static async Task<Response> Register(Register register)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(URL.USER_REGISTER);
+                client.BaseAddress = new Uri(URL.BASE);
 
                 var newObject = JsonConvert.SerializeObject(register);
 
@@ -29,11 +71,30 @@ namespace BOBApp.Repositories
             }
         }
 
+        public static async Task<Response> PostLocation(Location location)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(location);
+
+                HttpResponseMessage result = await client.PostAsync(URL.USER_LOCATION, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
+
+        #endregion
+
+        #region put
         public static async Task<Response> EditUser(User user)
         {
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(URL.USER_EDIT);
+                client.BaseAddress = new Uri(URL.BASE);
 
                 var newObject = JsonConvert.SerializeObject(user);
 
@@ -44,17 +105,28 @@ namespace BOBApp.Repositories
                 return data;
             }
         }
-
-        public static async Task<Models.User> GetUser()
+        public static async Task<Response> ChanteToBob(bool ok)
         {
-            //Probleem: Deze haalt het profiel op, maar deze wordt nooit geupdate ( geen idee of deze zelfs ook gepost word) bij EditUser
             using (HttpClient client = new HttpClient())
             {
-                var result = client.GetAsync(URL.USER);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                Models.User data = JsonConvert.DeserializeObject<Models.User>(json);
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var definition = new { IsBob=ok };
+
+                var newObject = JsonConvert.SerializeObject(definition);
+
+                HttpResponseMessage result = await client.PutAsync(URL.USER_CHANGETOBOB, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
                 return data;
             }
         }
+        #endregion
+
+
+
+
+
     }
 }

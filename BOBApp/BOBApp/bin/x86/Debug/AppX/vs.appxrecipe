@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T10:20:03.676</Modified>
+      <Modified>2015-12-05T09:41:00.429</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-12-04T10:19:52.095</Modified>
+      <Modified>2015-12-05T09:40:58.242</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\CommonServiceLocator\1.3.0\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll">
       <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
@@ -480,7 +480,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
-      <Modified>2015-12-04T10:16:26.816</Modified>
+      <Modified>2015-12-05T09:39:25.736</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\NotificationsExtensions.Win10\10586.0.0\lib\uap10.0\NotificationsExtensions.winmd">
       <PackagePath>NotificationsExtensions.winmd</PackagePath>
@@ -488,105 +488,105 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
-      <Modified>2015-12-04T09:01:03.675</Modified>
+      <Modified>2015-12-04T10:52:52.079</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\BOBpin.png">
       <PackagePath>Assets\BOBpin.png</PackagePath>
-      <Modified>2015-12-04T09:01:03.753</Modified>
+      <Modified>2015-12-04T10:52:52.085</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\feestpin.png">
       <PackagePath>Assets\feestpin.png</PackagePath>
-      <Modified>2015-12-04T09:01:03.784</Modified>
+      <Modified>2015-12-04T10:52:52.092</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\userpin.png">
       <PackagePath>Assets\userpin.png</PackagePath>
-      <Modified>2015-12-04T09:01:04.050</Modified>
+      <Modified>2015-12-04T10:52:52.093</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\vriendpin.png">
       <PackagePath>Assets\vriendpin.png</PackagePath>
-      <Modified>2015-12-04T09:01:04.081</Modified>
+      <Modified>2015-12-04T10:52:52.094</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\BOB.png">
       <PackagePath>Assets\BOB.png</PackagePath>
-      <Modified>2015-12-04T09:01:03.706</Modified>
+      <Modified>2015-12-04T10:52:52.082</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2015-12-04T09:01:03.816</Modified>
+      <Modified>2015-12-04T10:52:52.086</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T09:01:03.862</Modified>
+      <Modified>2015-12-04T10:52:52.088</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T09:01:03.894</Modified>
+      <Modified>2015-12-04T10:52:52.089</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T09:01:03.941</Modified>
+      <Modified>2015-12-04T10:52:52.090</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T09:01:03.972</Modified>
+      <Modified>2015-12-04T10:52:52.090</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T09:01:04.019</Modified>
+      <Modified>2015-12-04T10:52:52.091</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-04T09:01:04.112</Modified>
+      <Modified>2015-12-04T10:52:52.092</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-Bold.otf">
       <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.502</Modified>
+      <Modified>2015-12-04T10:52:52.217</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-ExtraBold.otf">
       <PackagePath>Styles\fonts\Raleway-ExtraBold.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.564</Modified>
+      <Modified>2015-12-04T10:52:52.224</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-ExtraLight.otf">
       <PackagePath>Styles\fonts\Raleway-ExtraLight.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.626</Modified>
+      <Modified>2015-12-04T10:52:52.228</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-Heavy.otf">
       <PackagePath>Styles\fonts\Raleway-Heavy.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.686</Modified>
+      <Modified>2015-12-04T10:52:52.233</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-Light.otf">
       <PackagePath>Styles\fonts\Raleway-Light.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.749</Modified>
+      <Modified>2015-12-04T10:52:52.239</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-Medium.otf">
       <PackagePath>Styles\fonts\Raleway-Medium.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.808</Modified>
+      <Modified>2015-12-04T10:52:52.243</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-Regular.otf">
       <PackagePath>Styles\fonts\Raleway-Regular.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.871</Modified>
+      <Modified>2015-12-04T10:52:52.248</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-SemiBold.otf">
       <PackagePath>Styles\fonts\Raleway-SemiBold.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.936</Modified>
+      <Modified>2015-12-04T10:52:52.252</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Styles\fonts\Raleway-Thin.otf">
       <PackagePath>Styles\fonts\Raleway-Thin.otf</PackagePath>
-      <Modified>2015-12-04T09:02:47.993</Modified>
+      <Modified>2015-12-04T10:52:52.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2015-12-04T09:02:47.295</Modified>
+      <Modified>2015-12-04T10:52:52.184</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
-      <Modified>2015-12-04T10:18:03.696</Modified>
+      <Modified>2015-12-05T09:40:57.773</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -594,11 +594,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-04T10:20:03.473</Modified>
+      <Modified>2015-12-05T09:40:59.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-04T10:20:03.674</Modified>
+      <Modified>2015-12-05T09:41:00.413</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

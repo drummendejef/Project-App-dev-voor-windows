@@ -15,5 +15,10 @@ namespace BOBApp.Models
         public int Autotype_ID { get; set; }
         public DateTime Added { get; set; }
         public bool Active { get; set; }
+        public class All
+        {
+            public User User { get; set; }
+            public Bob Bob { get; set; }
+        }
     }
 }

@@ -13,5 +13,8 @@ namespace BOBApp.Models
         public string Comment { get; set; }
         public DateTime Added { get; set; }
         public int Users_ID { get; set; }
+
+        //optional
+        public int FromUser_ID { get; set; }
     }
 }

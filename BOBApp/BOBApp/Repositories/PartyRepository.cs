@@ -23,5 +23,36 @@ namespace BOBApp.Repositories
                 return data;
             }
         }
+
+        public static async Task<List<Party>> GetPartiesInArea(string location, double distance)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.PARTIES_AREA);
+
+                var newObject = JsonConvert.SerializeObject(new { Location = location, Distance = distance });
+
+                HttpResponseMessage result = await client.PostAsync(URL.PARTIES_AREA, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                List<Party> data = JsonConvert.DeserializeObject<List<Party>>(json);
+
+                return data;
+            }
+        }
+        public static async Task<Response> PostParty(Party party)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(party);
+
+                HttpResponseMessage result = await client.PostAsync(URL.PARTIES, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
     }
 }

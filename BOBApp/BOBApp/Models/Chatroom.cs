@@ -13,6 +13,10 @@ namespace BOBApp.Models
         public int Bobs_ID { get; set; }
         public DateTime Added { get; set; }
         public bool Active{ get; set; }
-
+        public class All
+        {
+            public ChatRoom     ChatRoom { get; set; }
+            public List<ChatComment> ChatComments { get; set; }
+        }
     }
 }

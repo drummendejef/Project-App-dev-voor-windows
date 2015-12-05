@@ -21,5 +21,17 @@ namespace BOBApp.Models
 
         //optional
         public bool IsBob { get; set; }
+
+        public class Profile
+        {
+            public User User { get; set; }
+            public Bob Bob { get; set; }
+            public Autotype Autotype { get; set; }
+        }
+        public class All
+        {
+            public User User { get; set; }
+            public Bob Bob { get; set; }
+        }
     }
 }

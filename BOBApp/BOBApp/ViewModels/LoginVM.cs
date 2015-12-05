@@ -37,7 +37,7 @@ namespace BOBApp.ViewModels
         {
             //Stap 1. Toestemming vragen voor locatie te krijgen
             isLocationGiven = true;//Moet op false staan, maar even op true zetten voor de commit
-            LocatieToestemmingVragen();
+            //LocatieToestemmingVragen();
 
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
             RaisePropertyChanged("Email");
