@@ -119,9 +119,6 @@ namespace BOBApp
                 case "Register":
                     rootFrame.Navigate(typeof(Register));
                     break;
-                case "Ritten":
-                    rootFrame.Navigate(typeof(Ritten));
-                    break;
                 case "MijnRitten":
                     rootFrame.Navigate(typeof(MijnRitten));
                     break;

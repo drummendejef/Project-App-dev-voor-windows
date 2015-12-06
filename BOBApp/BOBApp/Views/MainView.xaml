@@ -20,13 +20,30 @@
         <SplitView.Pane>
             <StackPanel>
                 <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
-                <RadioButton Tag="&#xe10f;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem1Checked" IsChecked="True" />
-                <RadioButton Tag="&#xe11a;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem2Checked" />
-                <RadioButton Tag="&#xe115;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem3Checked" />
-                <RadioButton Tag="&#xe783;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem4Checked" />
-                <RadioButton Tag="&#xe783;" Content="Mijn punten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem7Checked" />
-                <RadioButton Tag="&#xe783;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem5Checked" />
-                <RadioButton Tag="&#xe783;" Content="Gebruiker of bob" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnItem6Checked" />
+
+                <Grid x:Name="user" Height="70" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding User.Firstname}" />
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding User.Lastname}" />
+                    <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points}" />
+                </Grid>
+
+                <RadioButton Tag="&#xe10f;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
+                <RadioButton Tag="&#xe783;" x:Name="bobBiedJeAan" Visibility="Collapsed" Content="Bied je aan" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBiedJeAanChecked" />
+
+                <RadioButton Tag="&#xe783;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindVriendenChecked" />
+                <RadioButton Tag="&#xe783;" Content="Mijn ritten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnMijnRittenChecked" />
+                <RadioButton Tag="&#xe783;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnFeestjesInDeBuurtChecked" />
+                <RadioButton Tag="&#xe783;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBestemmingenChecked" />
+                <RadioButton Tag="&#xe783;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
+                <Button x:Name="Change" Content="User" HorizontalAlignment="Stretch" Click="OnChangeChecked" />
 
             </StackPanel>
         </SplitView.Pane>

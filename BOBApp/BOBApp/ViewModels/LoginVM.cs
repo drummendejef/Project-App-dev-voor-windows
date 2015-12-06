@@ -1,6 +1,4 @@
 ﻿using BOBApp.Messages;
-using BOBApp.Models;
-using BOBApp.Repositories;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -16,7 +14,8 @@ using Windows.UI.Notifications;
 using NotificationsExtensions.Toasts;  // NotificationsExtensions.Win10
 using Microsoft.QueryStringDotNET; //QueryString.NET
 using Windows.UI.Core;
-
+using Libraries.Repositories;
+using Libraries.Models;
 
 namespace BOBApp.ViewModels
 {

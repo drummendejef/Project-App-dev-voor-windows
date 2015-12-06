@@ -4,18 +4,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DAB762DA-3B6E-418C-BA16-4A49CEBF1C7F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{3AFF93D9-6341-4E63-822B-54F8CFFA63CA}</ProjectGuid>
+    <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Libraries</RootNamespace>
-    <AssemblyName>Libraries</AssemblyName>
+    <RootNamespace>BobWorker</RootNamespace>
+    <AssemblyName>BobWorker</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <AllowCrossPlatformRetargeting>false</AllowCrossPlatformRetargeting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -107,56 +108,15 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Error.cs" />
-    <Compile Include="md5.cs" />
-    <Compile Include="Models\Autotype.cs" />
-    <Compile Include="Models\Bob.cs" />
-    <Compile Include="Models\BobsType.cs" />
-    <Compile Include="Models\ChatComment.cs" />
-    <Compile Include="Models\ChatRoom.cs" />
-    <Compile Include="Models\City.cs" />
-    <Compile Include="Models\Country.cs" />
-    <Compile Include="Models\Destination.cs" />
-    <Compile Include="Models\Friend.cs" />
-    <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Party.cs" />
-    <Compile Include="Models\Point.cs" />
-    <Compile Include="Models\PointsDescription.cs" />
-    <Compile Include="Models\Register.cs" />
-    <Compile Include="Models\relations\Bobs_Parties.cs" />
-    <Compile Include="Models\relations\Trips_Locations.cs" />
-    <Compile Include="Models\relations\Users_Destinations.cs" />
-    <Compile Include="Models\relations\Users_Locations.cs" />
-    <Compile Include="Models\relations\Users_PointsDescription.cs" />
-    <Compile Include="Models\Response.cs" />
-    <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\Trip.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AutotypeRepository.cs" />
-    <Compile Include="Repositories\bobsRepository.cs" />
-    <Compile Include="Repositories\ChatRoomRepository.cs" />
-    <Compile Include="Repositories\CityRepository.cs" />
-    <Compile Include="Repositories\CountryRepository.cs" />
-    <Compile Include="Repositories\DestinationRepository.cs" />
-    <Compile Include="Repositories\FriendsRepository.cs" />
-    <Compile Include="Repositories\LoginRepository.cs" />
-    <Compile Include="Repositories\PartyRepository.cs" />
-    <Compile Include="Repositories\PointRepository.cs" />
-    <Compile Include="Repositories\StatusRepository.cs" />
-    <Compile Include="Repositories\TripRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="Repositories\UsersRepository.cs" />
-    <Compile Include="URL.cs" />
-    <EmbeddedResource Include="Properties\Libraries.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="Microsoft.NET.Native.Runtime.1.1, Version=1.1">
-      <Name>Microsoft .NET Native Runtime Package for Windows</Name>
-    </SDKReference>
+    <ProjectReference Include="..\Libraries\Libraries.csproj">
+      <Project>{dab762da-3b6e-418c-ba16-4a49cebf1c7f}</Project>
+      <Name>Libraries</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

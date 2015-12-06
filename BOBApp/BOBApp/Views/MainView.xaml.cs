@@ -1,9 +1,12 @@
 ﻿using BOBApp.ViewModels;
+using Libraries.Models;
+using Libraries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -27,6 +30,9 @@ namespace BOBApp.Views
         {
             this.InitializeComponent();
             this.ShellSplitView.Content = frame;
+
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
         }
 
 
@@ -34,54 +40,117 @@ namespace BOBApp.Views
         {
             ShellSplitView.IsPaneOpen = !ShellSplitView.IsPaneOpen;
             ((RadioButton)sender).IsChecked = false;
+
+            CheckIsPaneOpen();
+
         }
 
-        private void OnItem1Checked(object sender, RoutedEventArgs e)
+        private void OnVindEenRitChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(Ritten));
+                ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+            CheckIsPaneOpen();
         }
 
 
-        private void OnItem2Checked(object sender, RoutedEventArgs e)
+        private void OnVindVriendenChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(ZoekVrienden));
+            CheckIsPaneOpen();
         }
 
-        private void OnItem3Checked(object sender, RoutedEventArgs e)
+        private void OnMijnRittenChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(MijnRitten));
+            CheckIsPaneOpen();
         }
 
-        private void OnItem4Checked(object sender, RoutedEventArgs e)
+        private void OnFeestjesInDeBuurtChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(FeestjesOverzicht));
+            CheckIsPaneOpen();
         }
-        private void OnItem5Checked(object sender, RoutedEventArgs e)
+        private void OnBestemmingenChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(Bestemmingen));
+            CheckIsPaneOpen();
         }
-        private void OnItem6Checked(object sender, RoutedEventArgs e)
+        private void OnProfielChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(Profiel));
+            CheckIsPaneOpen();
         }
 
-        private void OnItem7Checked(object sender, RoutedEventArgs e)
+
+        private void OnBiedJeAanChecked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(Punten));
+                ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+            CheckIsPaneOpen();
+        }
+
+       
+        private void OnChangeChecked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+            {
+                changeToBob();
+            }
+            CheckIsPaneOpen();
+
+
+        }
+        bool isBob = BaseViewModelLocator.USER.IsBob;
+        private async void changeToBob()
+        {
+           
+            Response ok = await UserRepository.ChanteToBob(isBob);
+            if (ok.Success == true)
+            {
+                if (isBob == true)
+                {
+                    //bob
+                    bobBiedJeAan.Visibility = Visibility.Visible;
+                    isBob = false;
+                    Change.Content = "BOB";
+                }
+                else
+                {
+                    //user
+                    bobBiedJeAan.Visibility = Visibility.Collapsed;
+                    isBob = true;
+                    Change.Content = "USER";
+                }
+            }
+
+        }
+
+
+        //functions
+
+        private void CheckIsPaneOpen()
+        {
+            if (ShellSplitView.IsPaneOpen == true)
+            {
+                user.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                user.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

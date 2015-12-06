@@ -1,7 +1,7 @@
-﻿using BOBApp.Models;
-using BOBApp.Repositories;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Libraries.Models;
+using Libraries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

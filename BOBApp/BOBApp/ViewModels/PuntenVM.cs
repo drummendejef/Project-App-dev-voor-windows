@@ -1,5 +1,6 @@
-﻿using BOBApp.Repositories;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
+using Libraries.Models;
+using Libraries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace BOBApp.ViewModels
     public class PuntenVM : ViewModelBase
     {
         //Properties
-        public List<Models.Point> Points { get; set; }
+        public List<Point> Points { get; set; }
         public string TotalPoints { get; set; }
         public string PointsText { get; set; }
 
