@@ -21,7 +21,6 @@ namespace BOBApp.ViewModels
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
         public ObservableCollection<Autotype> Merken { get; set; }
-        public Autotype selectedType { get; set; }
 
         //Constructor
         public ProfielVM()
@@ -33,7 +32,6 @@ namespace BOBApp.ViewModels
 
             RaisePropertyChanged("Merken");
 
-
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
             AanpasCommand = new RelayCommand(Aanpassen);
@@ -44,12 +42,12 @@ namespace BOBApp.ViewModels
         //Methods
         public async void Aanpassen()
         {
-            /*
+            
             //Dit werkt
             Debug.WriteLine("knop werkt");
 
             //databinding werkt/Password veranderen werkt ook
-            if(PasswordRepeat == null){
+          /*  if(PasswordRepeat == null){
                 Debug.WriteLine("Password niet verandert");
                 
                 //Updaten naar database
@@ -92,12 +90,12 @@ namespace BOBApp.ViewModels
                 //de wachtwoorden zijn niet hetzelfde
                 var dialog = new MessageDialog("De twee wachtwoorden zijn niet hetzelfde.");
                 await dialog.ShowAsync();
-            }
+            } */
 
            
             //Testcode voor databinding
             //Debug.WriteLine("naam: " + User.Lastname + " - Voornaam: " + User.Firstname + " - Email: " + User.Email + " - Cellphone: " + User.Cellphone + " - LicensePlate: " + User.LicensePlate + " - Password: " + User.Password);
-             */
+             
         }
 
 

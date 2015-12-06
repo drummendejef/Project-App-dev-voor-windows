@@ -31,7 +31,7 @@ namespace BOBApp.Repositories
 
                 var result = client.GetAsync(URL.USER_PROFILE);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                Models.User.Profile data = JsonConvert.DeserializeObject<Models.User.Profile>(json);
+                User.Profile data = JsonConvert.DeserializeObject<User.Profile>(json);
 
                 return data;
             }
