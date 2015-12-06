@@ -377,7 +377,6 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="DisplayMemberPath" />
       <RootProperty Name="SelectedItem" />
-      <RootProperty Name="SelectedIndex" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />

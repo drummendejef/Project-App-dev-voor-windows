@@ -17,7 +17,7 @@ namespace BOBApp.ViewModels
     {
         //Properties
         public RelayCommand AanpasCommand { get; set; }
-        public User User { get; set; }
+        public User.Profile User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
         public ObservableCollection<Autotype> Merken { get; set; }
@@ -44,6 +44,7 @@ namespace BOBApp.ViewModels
         //Methods
         public async void Aanpassen()
         {
+            /*
             //Dit werkt
             Debug.WriteLine("knop werkt");
 
@@ -96,13 +97,14 @@ namespace BOBApp.ViewModels
            
             //Testcode voor databinding
             //Debug.WriteLine("naam: " + User.Lastname + " - Voornaam: " + User.Firstname + " - Email: " + User.Email + " - Cellphone: " + User.Cellphone + " - LicensePlate: " + User.LicensePlate + " - Password: " + User.Password);
-            
+             */
         }
 
-       //Dit werkt
+
+        //Dit werkt
         private async void GetUserDetails()
         {
-            this.User = await UserRepository.GetUser();
+            this.User = await UserRepository.GetProfile();
         }
 
         private async void GetMerken()

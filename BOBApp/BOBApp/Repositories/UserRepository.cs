@@ -29,7 +29,7 @@ namespace BOBApp.Repositories
             using (HttpClient client = new HttpClient())
             {
 
-                var result = client.GetAsync(URL.USER_LOCATION);
+                var result = client.GetAsync(URL.USER_PROFILE);
                 string json = await result.Result.Content.ReadAsStringAsync();
                 Models.User.Profile data = JsonConvert.DeserializeObject<Models.User.Profile>(json);
 

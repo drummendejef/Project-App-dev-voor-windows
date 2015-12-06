@@ -11,7 +11,6 @@ namespace BOBApp.Models
 {
     public class Register
     {
-        public int ID { get; set; }
         [Required(ErrorMessage= "Gelieve een naam in te geven")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "De naam moet tussen 2 - 50 tekens bevatten")]
         public string Firstname { get; set; }
