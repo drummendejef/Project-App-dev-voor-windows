@@ -84,6 +84,7 @@ namespace BOBApp.ViewModels
             else if (Password == PasswordRepeat)
             {
                 register.Password = Password;
+                register.AutoType_ID = SelectedAutoType.ID;
                 Response res = await UserRepository.Register(register);
                 if (res.Success == true)
                 {
@@ -132,7 +133,7 @@ namespace BOBApp.ViewModels
         private async void GetMerken()
         {
 
-            List<Autotype> merkenLijst = await AutotypeRepository.GetMerken();
+            List<Autotype> merkenLijst = await AutotypeRepository.GetAutotypes();
             this.Merken = new ObservableCollection<Autotype>();
             foreach(Autotype merk in merkenLijst)
             {

@@ -48,3 +48,4 @@ C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windo
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.csprojResolveAssemblyReference.cache

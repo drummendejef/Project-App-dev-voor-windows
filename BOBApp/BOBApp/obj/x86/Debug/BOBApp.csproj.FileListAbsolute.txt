@@ -1418,9 +1418,7 @@ C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windo
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\Styles\fonts\Raleway-Regular.otf
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\Styles\fonts\Raleway-SemiBold.otf
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\Styles\fonts\Raleway-Thin.otf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\testpin.png
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\BOBpin.png
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\feestlocatie.png
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\feestpin.png
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\userpin.png
 C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Assets\vriendpin.png
@@ -1990,3 +1988,10 @@ C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBA
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\NotificationsExtensions.winmd
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\QueryString.NETCore.dll
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\NotificationsExtensions.pri.xml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\NotificationsExtensions.winmd
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\QueryString.NETCore.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\NotificationsExtensions.winmd
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\QueryString.NETCore.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\NotificationsExtensions.pri.xml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\QueryString.NETCore.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Core\NotificationsExtensions.winmd

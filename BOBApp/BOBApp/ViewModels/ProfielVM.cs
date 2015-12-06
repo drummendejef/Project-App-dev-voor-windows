@@ -103,7 +103,7 @@ namespace BOBApp.ViewModels
 
         private async void GetMerken()
         {
-            this.Merken = await AutotypeRepository.GetMerken();
+            this.Merken = await AutotypeRepository.GetAutotypes();
         }
 
     }
