@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,8 @@ namespace BOBApp.ViewModels
         public User User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
-        public List<Autotype> Merken { get; set; }
+        public ObservableCollection<Autotype> Merken { get; set; }
+        public Autotype selectedType { get; set; }
 
         //Constructor
         public ProfielVM()
@@ -27,8 +29,10 @@ namespace BOBApp.ViewModels
 
             //GetUserDetails() werkt
             GetUserDetails();
-
             GetMerken();
+
+            RaisePropertyChanged("Merken");
+
 
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
@@ -103,7 +107,12 @@ namespace BOBApp.ViewModels
 
         private async void GetMerken()
         {
-            this.Merken = await AutotypeRepository.GetAutotypes();
+            List<Autotype> merkenLijst = await AutotypeRepository.GetAutotypes();
+            this.Merken = new ObservableCollection<Autotype>();
+            foreach (Autotype merk in merkenLijst)
+            {
+                this.Merken.Add(merk);
+            }
         }
 
     }
