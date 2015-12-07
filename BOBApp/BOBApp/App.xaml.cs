@@ -22,6 +22,7 @@ using Windows.Devices.Geolocation;
 using Microsoft.QueryStringDotNET;
 using Windows.System;
 using System.Diagnostics;
+using Windows.UI.Core;
 
 namespace BOBApp
 {
@@ -64,7 +65,6 @@ namespace BOBApp
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
-
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
@@ -74,6 +74,8 @@ namespace BOBApp
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+              
             }
 
             if (rootFrame.Content == null)
@@ -101,10 +103,14 @@ namespace BOBApp
                 case "Bestemmingen":
                     rootFrame.Navigate(typeof(Bestemmingen));
                     break;
+                case "Bestemmingen_Nieuw":
+                    rootFrame.Navigate(typeof(Bestemmingen_Nieuw));
+                    break;
                 case "FeestjesOverzicht":
                     rootFrame.Navigate(typeof(FeestjesOverzicht));
                     break;
                 case "Login":
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
                     rootFrame.Navigate(typeof(Login));
                     break;
                 case "MainView":
@@ -237,5 +243,6 @@ namespace BOBApp
         }
 
 
+       
     }
 }

@@ -24,6 +24,17 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+        public static async Task<Models.relations.Users_Destinations> GetDestinationById(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.DESTINATIONS + "/" + id.ToString());
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Models.relations.Users_Destinations data = JsonConvert.DeserializeObject<Models.relations.Users_Destinations>(json);
+                return data;
+            }
+        }
+
         public static async Task<Models.relations.Users_Destinations> GetDefaultDestination()
         {
             using (HttpClient client = new HttpClient())

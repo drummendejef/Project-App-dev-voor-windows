@@ -582,6 +582,54 @@
         </StackPanel>
     </DataTemplate>
 
+    <!--templates-->
+    <DataTemplate x:Key="TemplatePunten">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Text="{Binding PointsDescription.Description}" />
+            <TextBlock Grid.Row="1" Text="{Binding PointsDescription.Points}" Grid.Column="2"/>
+            <TextBlock Grid.Row="1" Text="{Binding Added}" Grid.Column="1"/>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="TemplateDestinations">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Text="{Binding Name}" />
+            <TextBlock Grid.Row="1" Text="{Binding Default}" Grid.Column="2"/>
+            <TextBlock Grid.Row="1" Text="{Binding Added}" Grid.Column="1"/>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TemplateTrips">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Text="{Binding User.FullName}" />
+            <TextBlock Grid.Row="1" Text="{Binding Bob.FullName}" Grid.Column="2"/>
+            <TextBlock Grid.Row="1" Text="{Binding Destination.Name}" Grid.Column="1"/>
+        </Grid>
+    </DataTemplate>
+
 
 
 </ResourceDictionary>

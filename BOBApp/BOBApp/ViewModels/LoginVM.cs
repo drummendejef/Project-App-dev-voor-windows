@@ -22,7 +22,7 @@ namespace BOBApp.ViewModels
     public class LoginVM:ViewModelBase
     {
         //Properties
-        private Task loginTask;
+        private Task task;
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand RegisterCommand { get; set; }
         public RelayCommand Login_FacebookCommand { get; set; }
@@ -55,11 +55,11 @@ namespace BOBApp.ViewModels
         //Methods 
         public void Login()
         {
-            loginTask = LoginUser(this.Email,this.Pass);
+            task = Login_task(this.Email,this.Pass);
         }
         private void Login_Facebook()
         {
-            loginTask = LoginFacebook();
+            task = Login_Facebook_task();
         }
         private void Register()
         {
@@ -69,7 +69,7 @@ namespace BOBApp.ViewModels
             });
         }
 
-        private async Task<Boolean> LoginUser(string email, string pass)
+        private async Task<Boolean> Login_task(string email, string pass)
         {
             Response res = await LoginRepository.Login(email, md5.Create(pass));
             if (res.Success == true)
@@ -91,7 +91,7 @@ namespace BOBApp.ViewModels
 
             return res.Success;
         }
-        private async Task<Boolean> LoginFacebook()
+        private async Task<Boolean> Login_Facebook_task()
         {
             Boolean ok = await LoginRepository.LoginFacebook();
             if (ok == true)

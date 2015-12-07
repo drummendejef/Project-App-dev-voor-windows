@@ -14,13 +14,23 @@ namespace Libraries.Repositories
     public class UsersRepository
     {
         #region get
-        public static async Task<Models.User> GetUsers()
+        public static async Task<List<Models.User.All>> GetUsers()
         {
             using (HttpClient client = new HttpClient())
             {
                 var result = client.GetAsync(URL.USERS);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                Models.User data = JsonConvert.DeserializeObject<Models.User>(json);
+                List<Models.User.All> data = JsonConvert.DeserializeObject<List<Models.User.All>>(json);
+                return data;
+            }
+        }
+        public static async Task<Models.User.All> GetUserById(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.USERS + "/" + id.ToString());
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Models.User.All data = JsonConvert.DeserializeObject<Models.User.All>(json);
                 return data;
             }
         }

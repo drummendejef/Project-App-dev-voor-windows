@@ -20,6 +20,8 @@
     <SolidColorBrush x:Key="NavButtonCheckedPressedBackgroundBrush" Color="#3e5d94" />
     <SolidColorBrush x:Key="NavButtonCheckedHoverBackgroundBrush" Color="#3e5d94" />
 
+    <SolidColorBrush x:Key="Yellow" Color="#efc730"/>
+
     <x:Double x:Key="SplitViewNormalNavFontSize">16</x:Double>
     <x:Double x:Key="SplitViewLargeNavFontSize">20</x:Double>
     <x:Double x:Key="SplitViewBackButtonHeight">32</x:Double>

@@ -29,10 +29,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding User.Firstname}" />
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding User.Lastname}" />
-                    <TextBlock Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points}" />
+                    <TextBlock Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User.Firstname}" />
+                    <TextBlock Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User.Lastname}" />
+                    <TextBlock Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points}" />
+                    <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Afmelden" Command="{Binding LogOffCommand}" />
                 </Grid>
 
                 <RadioButton Tag="&#xe10f;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />

@@ -16,7 +16,7 @@
     
     <RelativePanel>
         <TextBlock x:Name="textBlockPunten" Margin="30" Height="20" TextWrapping="Wrap" Text="{Binding PointsText, Mode=OneWay}" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" />
-        <ListView x:Name="listviewPunten" Margin="30" ItemsSource="{Binding Points, Mode=OneWay}" ItemTemplate="{StaticResource TemplatePunten}"/>
+        <ListView x:Name="listviewPunten" Margin="30" ItemsSource="{Binding Points, Mode=OneWay}" ItemTemplate="{StaticResource TemplatePunten}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textBlockPunten"/>
     </RelativePanel>
     
 </Page>

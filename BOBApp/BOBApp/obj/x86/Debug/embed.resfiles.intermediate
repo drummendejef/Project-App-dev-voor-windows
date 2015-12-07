@@ -3,6 +3,7 @@ MainPage.xbf
 Styles\SplitView.xbf
 Styles\Theme.xbf
 Views\Bestemmingen.xbf
+Views\Bestemmingen_Nieuw.xbf
 Views\FeestjesOverzicht.xbf
 Views\Login.xbf
 Views\MainView.xbf
@@ -10,7 +11,6 @@ Views\MijnRitten.xbf
 Views\Profiel.xbf
 Views\Punten.xbf
 Views\Register.xbf
-Views\Ritten.xbf
 Views\VindRit.xbf
 Views\VindRit1.xbf
 Views\ZoekVrienden.xbf

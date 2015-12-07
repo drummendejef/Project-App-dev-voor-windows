@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libraries.Models.relations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace Libraries.Models
         public string Friends { get; set; }
         public DateTime Added { get; set; }
     
-        
+        public class All
+        {
+            public Trip Trip { get; set; }
+            public Users_Destinations Destination { get; set; }
+            public User User { get; set; }
+            public Bob Bob { get; set; }
+        }
     }
 }

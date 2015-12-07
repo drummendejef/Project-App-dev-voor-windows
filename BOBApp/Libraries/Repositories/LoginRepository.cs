@@ -43,6 +43,24 @@ namespace Libraries.Repositories
             return launched;
         }
 
-     
+
+        public static async Task<Response> LogOff()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(new { });
+
+                HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGOFF, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+
+
+        }
+
     }
 }

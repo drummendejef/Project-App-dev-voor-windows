@@ -15,13 +15,23 @@ namespace Libraries.Repositories
     public class BobsRepository
     {
         #region get
-        public static async Task<Bob> GetBobs()
+        public static async Task<List<Bob.All>> GetBobs()
         {
             using (HttpClient client = new HttpClient())
             {
                 var result = client.GetAsync(URL.BOBS);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                Bob data = JsonConvert.DeserializeObject<Bob>(json);
+                List<Bob.All> data = JsonConvert.DeserializeObject<List<Bob.All>>(json);
+                return data;
+            }
+        }
+        public static async Task<Models.Bob.All> GetBobById(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.USERS + "/" + id.ToString());
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Models.Bob.All data = JsonConvert.DeserializeObject<Models.Bob.All>(json);
                 return data;
             }
         }

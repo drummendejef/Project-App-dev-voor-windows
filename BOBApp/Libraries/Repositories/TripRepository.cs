@@ -14,14 +14,14 @@ namespace Libraries.Repositories
     {
         #region get
         //string moet nog verandert worden
-        public static async Task<Trip> GetTrips()
+        public static async Task<List<Trip>> GetTrips()
         {
 
             using (HttpClient client = new HttpClient())
             {
                 var result = client.GetAsync(URL.TRIPS);
                 string json = await result.Result.Content.ReadAsStringAsync();
-                Trip data = JsonConvert.DeserializeObject<Trip>(json);
+                List<Trip> data = JsonConvert.DeserializeObject<List<Trip>>(json);
                 return data;
             }
         }

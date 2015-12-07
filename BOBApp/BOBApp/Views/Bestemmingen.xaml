@@ -17,6 +17,10 @@
  
 
     <RelativePanel>
-        <TextBox x:Name="textBoxZoekLocaties" Height="32" TextWrapping="Wrap" Text="" PlaceholderText="Locatie" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" />
+        <TextBox RelativePanel.AlignLeftWithPanel="True" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchLocation, Mode=TwoWay}" Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" />
+        <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding GoDestinationCommand}" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBoxZoekLocaties" />
+        <ListView x:Name="listviewDestinations" Margin="30" ItemsSource="{Binding Destinations, Mode=OneWay}" ItemTemplate="{StaticResource TemplateDestinations}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="btnAdd"/>
+
+
     </RelativePanel>
 </Page>

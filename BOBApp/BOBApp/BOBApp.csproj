@@ -132,6 +132,9 @@
     <Compile Include="Views\Bestemmingen.xaml.cs">
       <DependentUpon>Bestemmingen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Bestemmingen_Nieuw.xaml.cs">
+      <DependentUpon>Bestemmingen_Nieuw.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FeestjesOverzicht.xaml.cs">
       <DependentUpon>FeestjesOverzicht.xaml</DependentUpon>
     </Compile>
@@ -199,6 +202,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Bestemmingen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Bestemmingen_Nieuw.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

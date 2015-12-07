@@ -1,7 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="Destination" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="Bob" />
+    <RootPropertyPathName Name="FullName" />
+    <RootPropertyPathName Name="User" />
+    <RootPropertyPathName Name="Added" />
+    <RootPropertyPathName Name="Default" />
+    <RootPropertyPathName Name="PointsDescription" />
+    <RootPropertyPathName Name="Points" />
+    <RootPropertyPathName Name="Description" />
     <RootPropertyPathName Name="BestemmingenVM" />
+    <RootPropertyPathName Name="Destinations" />
+    <RootPropertyPathName Name="GoDestinationCommand" />
+    <RootPropertyPathName Name="SearchLocation" />
+    <RootPropertyPathName Name="AddDestinationCommand" />
+    <RootPropertyPathName Name="Cities" />
+    <RootPropertyPathName Name="Cities_ID" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="ZoekVeld" />
     <RootPropertyPathName Name="LoginVM" />
@@ -12,19 +28,19 @@
     <RootPropertyPathName Name="Email" />
     <RootPropertyPathName Name="Login_FacebookCommand" />
     <RootPropertyPathName Name="MainViewVM" />
+    <RootPropertyPathName Name="LogOffCommand" />
+    <RootPropertyPathName Name="Lastname" />
+    <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="MijnRittenVM" />
+    <RootPropertyPathName Name="Trips" />
     <RootPropertyPathName Name="ProfielVM" />
-    <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="AanpasCommand" />
     <RootPropertyPathName Name="PasswordRepeat" />
     <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="Merken" />
-    <RootPropertyPathName Name="selectedType" />
-    <RootPropertyPathName Name="User" />
+    <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
     <RootPropertyPathName Name="Cellphone" />
-    <RootPropertyPathName Name="Firstname" />
-    <RootPropertyPathName Name="Lastname" />
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
@@ -32,7 +48,6 @@
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Error" />
-    <RootPropertyPathName Name="RittenVM" />
     <RootPropertyPathName Name="VindRitVM" />
     <RootPropertyPathName Name="VindRit1VM" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
@@ -61,6 +76,7 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Height" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetColumn" />
@@ -86,12 +102,12 @@
       <RootProperty Name="FontStyle" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Height" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="VerticalAlignment" />
@@ -108,6 +124,7 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="Content" />
       <RootProperty Name="IsChecked" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="Click" />
       <RootEvent Name="Checked" />
     </RootType>
@@ -220,14 +237,14 @@
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="SelectionHighlightColor" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Text" />
       <RootProperty Name="Height" />
       <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Text" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Width" />
       <RootProperty Name="IsReadOnly" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
@@ -259,12 +276,13 @@
       <RootProperty Name="Style" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Width" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="Width" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />
@@ -286,6 +304,10 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Mode" />
+      <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="HorizontalAlignment" />
@@ -309,16 +331,14 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
-    <RootType FullName="Windows.UI.Xaml.Data.Binding">
-      <RootProperty Name="Mode" />
-      <RootProperty Name="Source" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="Children" />
-      <RootMethod Name="GetAlignRightWithPanel" />
-      <RootMethod Name="SetAlignRightWithPanel" />
       <RootMethod Name="GetAlignLeftWithPanel" />
       <RootMethod Name="SetAlignLeftWithPanel" />
+      <RootMethod Name="GetAlignRightWithPanel" />
+      <RootMethod Name="SetAlignRightWithPanel" />
+      <RootMethod Name="GetRightOf" />
+      <RootMethod Name="SetRightOf" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="SetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="GetBelow" />
@@ -335,14 +355,28 @@
       <RootMethod Name="SetAlignBottomWith" />
       <RootMethod Name="GetAlignTopWith" />
       <RootMethod Name="SetAlignTopWith" />
-      <RootMethod Name="GetRightOf" />
-      <RootMethod Name="SetRightOf" />
       <RootMethod Name="GetAlignTopWithPanel" />
       <RootMethod Name="SetAlignTopWithPanel" />
       <RootMethod Name="GetAbove" />
       <RootMethod Name="SetAbove" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+    </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="DisplayMemberPath" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="MapServiceToken" />
       <RootProperty Name="Margin" />
@@ -372,15 +406,6 @@
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo" />
     <RootType FullName="BOBApp.Views.MainView" />
     <RootType FullName="BOBApp.Views.MijnRitten" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="DisplayMemberPath" />
-      <RootProperty Name="SelectedItem" />
-      <RootProperty Name="PlaceholderText" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Height" />
-    </RootType>
     <RootType FullName="BOBApp.Views.Profiel" />
     <RootType FullName="BOBApp.Views.Punten" />
     <RootType FullName="Windows.UI.Xaml.Thickness" />
@@ -391,14 +416,7 @@
       <RootEvent Name="Unchecked" />
     </RootType>
     <RootType FullName="BOBApp.Views.Register" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
-      <RootProperty Name="Margin" />
-    </RootType>
-    <RootType FullName="BOBApp.Views.Ritten" />
     <RootType FullName="BOBApp.Views.VindRit" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="Margin" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Slider">
       <RootProperty Name="Margin" />
     </RootType>

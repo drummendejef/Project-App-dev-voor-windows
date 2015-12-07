@@ -18,8 +18,9 @@ namespace BOBApp.ViewModels
     public class MainViewVM:ViewModelBase
     {
         //Properties
-
+        private Task logoffTask;
         public User User { get; set; }
+        public RelayCommand LogOffCommand { get; set; }
         public double Points { get; set; }
         private IBackgroundTaskRegistration regTask = null;
 
@@ -30,13 +31,32 @@ namespace BOBApp.ViewModels
             GetPoints();
 
             SetupBackgroundTask();
-
+            LogOffCommand = new RelayCommand(LogOff);
             RaisePropertyChanged("User");
         }
 
-       
+
+
+
 
         //Methods
+        private void LogOff()
+        {
+            logoffTask = LogOffUser();
+        }
+        private async Task<Boolean> LogOffUser()
+        {
+            Response res = await LoginRepository.LogOff();
+            if (res.Success == true)
+            {
+                Messenger.Default.Send<GoToPage>(new GoToPage()
+                {
+                    Name = "Login"
+                });
+            }
+        
+            return res.Success;
+        }
         private async void GetPoints()
         {
             string points = await PointRepository.GetTotalPoints();
@@ -83,7 +103,9 @@ namespace BOBApp.ViewModels
                     builder.Name = BackgroundTaskName;
                     builder.TaskEntryPoint = BackgroundTaskEntryPoint;
 
-                    var trigger = new TimeTrigger(2, false);// om de 2 minuten
+                    var trigger = new TimeTrigger(15, false);// om de 2 minuten
+
+                   
                     builder.SetTrigger(trigger);
 
                     var condition = new SystemCondition(SystemConditionType.InternetAvailable);
