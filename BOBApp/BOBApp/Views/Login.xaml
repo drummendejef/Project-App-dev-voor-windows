@@ -18,7 +18,7 @@
     </Page.Resources>
 
 
-    <ScrollViewer Background="{ThemeResource DarkBlue}">
+    <Grid Background="{ThemeResource DarkBlue}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Under800">
@@ -51,5 +51,5 @@
             <Button Style="{ThemeResource login_button}" x:Name="buttonRegistreren" Content="Registreren >"  Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Command="{Binding RegisterCommand}"/>
 
         </RelativePanel>
-    </ScrollViewer>
+    </Grid>
 </Page>

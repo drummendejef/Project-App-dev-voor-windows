@@ -268,7 +268,6 @@
       <RootProperty Name="VerticalScrollMode" />
       <RootProperty Name="ZoomMode" />
       <RootProperty Name="IsDeferredScrollingEnabled" />
-      <RootProperty Name="Background" />
       <RootProperty Name="Content" />
       <RootMethod Name="GetHorizontalScrollBarVisibility" />
       <RootMethod Name="SetHorizontalScrollBarVisibility" />
@@ -434,6 +433,7 @@
     <RootType FullName="BOBApp.Views.VindRitChat" />
     <RootType FullName="Windows.UI.Xaml.Controls.Slider">
       <RootProperty Name="Margin" />
+      <RootProperty Name="Maximum" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
       <RootProperty Name="Margin" />

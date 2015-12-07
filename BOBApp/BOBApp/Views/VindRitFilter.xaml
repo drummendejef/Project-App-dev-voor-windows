@@ -23,7 +23,7 @@
         <TextBox x:Name="textBoxSelecteerVrienden" Margin="10,0" Height="32" TextWrapping="Wrap" Text=""  RelativePanel.AlignLeftWith="" RelativePanel.Below="comboBoxBestemming" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBlock1" Style="{StaticResource textBox}"/>
         <ListView x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockMinRating" />
         <TextBlock x:Name="textBlockMinRating" Margin="30,10" Text="Minimum rating van gebruikers:" RelativePanel.Above="sliderMinRating" Style="{StaticResource textblock}" />
-        <Slider x:Name="sliderMinRating" Margin="30,10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockLaatstVervoer"  />
+        <Slider x:Name="sliderMinRating" Margin="492,10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockLaatstVervoer" Maximum="5"  />
         <TextBlock x:Name="textBlockLaatstVervoer" Margin="10" Text="Wanneer wil je ten laatste vervoer?" RelativePanel.Above="datePicker" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}"  />
         <DatePicker x:Name="datePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="timePicker" />
         <TimePicker x:Name="timePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="textBlockSoortVervoer"/>

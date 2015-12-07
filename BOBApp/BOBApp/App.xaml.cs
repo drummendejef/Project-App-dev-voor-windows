@@ -23,6 +23,9 @@ using Microsoft.QueryStringDotNET;
 using Windows.System;
 using System.Diagnostics;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
+using Windows.UI;
+using Windows.ApplicationModel.Core;
 
 namespace BOBApp
 {
@@ -59,6 +62,13 @@ namespace BOBApp
 
             Frame rootFrame = Window.Current.Content as Frame;
 
+            //color titlebar
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.BackgroundColor = Color.FromArgb(255, 62, 93, 148);
+            titleBar.ForegroundColor = Colors.White;
+            titleBar.ButtonBackgroundColor = Color.FromArgb(255, 62, 93, 148);
+            titleBar.ButtonForegroundColor = Colors.White;
+
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -75,7 +85,9 @@ namespace BOBApp
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
 
-              
+
+               
+
             }
 
             if (rootFrame.Content == null)
