@@ -9,8 +9,9 @@
     DataContext="{Binding VindRitChatVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -18,7 +19,7 @@
     <RelativePanel>
         <ItemsControl RelativePanel.AlignHorizontalCenterWithPanel="True" Height="400" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" ItemTemplate="{ThemeResource TemplateChatComments}" />
 
-        <TextBox x:Name="txtComment" Text="{Binding ChatComment.Comment, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True"  RelativePanel.Below="comments"/>
-        <Button x:Name="addComment" Content="Add comment" RelativePanel.RightOf="txtComment" Command="{Binding AddCommentCommand}"/>
+        <TextBox x:Name="txtComment" Text="{Binding ChatComment.Comment, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True"  RelativePanel.Below="comments" Style="{StaticResource textBox}"/>
+        <Button x:Name="addComment" Content="Add comment" RelativePanel.RightOf="txtComment" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
     </RelativePanel>
 </Page>

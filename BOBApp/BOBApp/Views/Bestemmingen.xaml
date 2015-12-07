@@ -9,16 +9,17 @@
     DataContext="{Binding BestemmingenVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
  
 
     <RelativePanel>
-        <TextBox RelativePanel.AlignLeftWithPanel="True" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchLocation, Mode=TwoWay}" Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" />
-        <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding GoDestinationCommand}" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBoxZoekLocaties" />
+        <TextBox RelativePanel.AlignLeftWithPanel="True" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchLocation, Mode=TwoWay}" Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" Style="{StaticResource textBox}" />
+        <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding GoDestinationCommand}" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBoxZoekLocaties" Style="{StaticResource button}" />
         <ListView x:Name="listviewDestinations" Margin="30" ItemsSource="{Binding Destinations, Mode=OneWay}" ItemTemplate="{StaticResource TemplateDestinations}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="btnAdd"/>
 
 

@@ -10,14 +10,15 @@
     DataContext="{Binding LoginVM, Mode=TwoWay, Source={StaticResource Locator}}">
     
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
 
-    <ScrollViewer>
+    <ScrollViewer Background="{ThemeResource DarkBlue}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Under800">
@@ -30,26 +31,24 @@
                         <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="800"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="textBoxEmail.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <!--<Setter Target="textBoxEmail.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
                         <Setter Target="textBoxEmail.(RelativePanel.AlignHorizontalCenterWithPanel)" Value="False"/>
                         <Setter Target="textBoxEmail.(RelativePanel.AlignRightWithPanel)" Value="True"/>
                         <Setter Target="passwordBox.(RelativePanel.AlignRightWithPanel)" Value="True"/>
-                        <Setter Target="buttonFacebook.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
                         <Setter Target="buttonAanmelden.(RelativePanel.AlignRightWithPanel)" Value="True"/>
                         <Setter Target="textBoxEmail.(RelativePanel.Below)" Value="imageLogo"/>
                         <Setter Target="buttonRegistreren.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
-                        <Setter Target="buttonRegistreren.(RelativePanel.Below)" Value=""/>
+                        <Setter Target="buttonRegistreren.(RelativePanel.Below)" Value=""/>-->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <RelativePanel >
             <Image x:Name="imageLogo" HorizontalAlignment="Center" MaxWidth="300"  VerticalAlignment="Top"  Source="ms-appx:///Assets/BOB.png" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-            <Button x:Name="buttonFacebook" Width="250" Content="Registreer via Facebook" RelativePanel.Below="imageLogo" RelativePanel.AlignHorizontalCenterWith="" RelativePanel.AlignHorizontalCenterWithPanel="True" VerticalAlignment="Bottom" Margin="20,10" Command="{Binding Login_FacebookCommand}" />
-            <TextBox x:Name="textBoxEmail"  HorizontalAlignment="Center" PlaceholderText="Email" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}"  VerticalAlignment="Top" Width="250" Margin="20,10" RelativePanel.Below="buttonFacebook" RelativePanel.AlignHorizontalCenterWithPanel="True" d:LayoutOverrides="HorizontalAlignment"/>
-            <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" PlaceholderText="Wachtwoord" Height="32" VerticalAlignment="Top" Width="250" RelativePanel.Below="textBoxEmail" Margin="20,10" RelativePanel.AlignHorizontalCenterWithPanel="True" Password="{Binding Pass,Mode=TwoWay}"/>
-            <Button x:Name="buttonAanmelden" IsEnabled="{Binding isLocationGiven}" Content="Aanmelden" Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBox" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="20,10" Command="{Binding LoginCommand}" RelativePanel.AlignLeftWith="passwordBox" RelativePanel.AlignRightWith=""/>
-            <Button x:Name="buttonRegistreren" Content="Registreren >"  Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Command="{Binding RegisterCommand}"/>
+            <TextBox x:Name="textBoxEmail"  HorizontalAlignment="Center" PlaceholderText="Email" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}"  VerticalAlignment="Top" Width="250" Margin="20,10" RelativePanel.Below="imageLogo" RelativePanel.AlignHorizontalCenterWithPanel="True" d:LayoutOverrides="HorizontalAlignment" Style="{StaticResource textBox}"/>
+            <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" PlaceholderText="Wachtwoord" Height="32" VerticalAlignment="Top" Width="250" RelativePanel.Below="textBoxEmail" Margin="20,10" RelativePanel.AlignHorizontalCenterWithPanel="True" Password="{Binding Pass,Mode=TwoWay}" Style="{StaticResource passwordBox}"/>
+            <Button Style="{ThemeResource login_button}" x:Name="buttonAanmelden" IsEnabled="{Binding isLocationGiven}" Content="Aanmelden >" Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBox" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="20,10" Command="{Binding LoginCommand}" RelativePanel.AlignLeftWith="passwordBox" RelativePanel.AlignRightWith=""/>
+            <Button Style="{ThemeResource login_button}" x:Name="buttonRegistreren" Content="Registreren >"  Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Command="{Binding RegisterCommand}"/>
 
         </RelativePanel>
     </ScrollViewer>

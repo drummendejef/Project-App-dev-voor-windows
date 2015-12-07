@@ -14,8 +14,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
+    
     <SplitView x:Name="ShellSplitView" DisplayMode="CompactOverlay"
-               IsPaneOpen="False" CompactPaneLength="48" OpenPaneLength="200"
+               IsPaneOpen="False" CompactPaneLength="41" OpenPaneLength="200"
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
             <StackPanel>

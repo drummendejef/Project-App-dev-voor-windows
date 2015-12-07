@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="FromUser_ID" />
+    <RootPropertyPathName Name="Added" />
+    <RootPropertyPathName Name="Comment" />
     <RootPropertyPathName Name="Destination" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Bob" />
     <RootPropertyPathName Name="FullName" />
     <RootPropertyPathName Name="User" />
-    <RootPropertyPathName Name="Added" />
     <RootPropertyPathName Name="Default" />
     <RootPropertyPathName Name="PointsDescription" />
     <RootPropertyPathName Name="Points" />
@@ -26,7 +28,6 @@
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="Pass" />
     <RootPropertyPathName Name="Email" />
-    <RootPropertyPathName Name="Login_FacebookCommand" />
     <RootPropertyPathName Name="MainViewVM" />
     <RootPropertyPathName Name="LogOffCommand" />
     <RootPropertyPathName Name="Lastname" />
@@ -49,7 +50,14 @@
     <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="VindRitVM" />
-    <RootPropertyPathName Name="VindRit1VM" />
+    <RootPropertyPathName Name="GoFilterCommand" />
+    <RootPropertyPathName Name="GoChatCommand" />
+    <RootPropertyPathName Name="VindRitChatVM" />
+    <RootPropertyPathName Name="AddCommentCommand" />
+    <RootPropertyPathName Name="ChatComment" />
+    <RootPropertyPathName Name="ChatRoom" />
+    <RootPropertyPathName Name="ChatComments" />
+    <RootPropertyPathName Name="VindRitFilterVM" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -58,8 +66,8 @@
       <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="Source" />
       <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
     </RootType>
     <RootType FullName="BOBApp.BaseViewModelLocator" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
@@ -243,6 +251,7 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Style" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="IsReadOnly" />
@@ -259,6 +268,7 @@
       <RootProperty Name="VerticalScrollMode" />
       <RootProperty Name="ZoomMode" />
       <RootProperty Name="IsDeferredScrollingEnabled" />
+      <RootProperty Name="Background" />
       <RootProperty Name="Content" />
       <RootMethod Name="GetHorizontalScrollBarVisibility" />
       <RootMethod Name="SetHorizontalScrollBarVisibility" />
@@ -278,8 +288,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
-      <RootProperty Name="Width" />
       <RootProperty Name="IsEnabled" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="Click" />
@@ -293,6 +303,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Password" />
+      <RootProperty Name="Style" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="Content" />
@@ -345,8 +356,6 @@
       <RootMethod Name="SetBelow" />
       <RootMethod Name="GetAlignBottomWithPanel" />
       <RootMethod Name="SetAlignBottomWithPanel" />
-      <RootMethod Name="GetAlignHorizontalCenterWith" />
-      <RootMethod Name="SetAlignHorizontalCenterWith" />
       <RootMethod Name="GetAlignLeftWith" />
       <RootMethod Name="SetAlignLeftWith" />
       <RootMethod Name="GetAlignRightWith" />
@@ -417,6 +426,12 @@
     </RootType>
     <RootType FullName="BOBApp.Views.Register" />
     <RootType FullName="BOBApp.Views.VindRit" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
+      <RootProperty Name="Height" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+    </RootType>
+    <RootType FullName="BOBApp.Views.VindRitChat" />
     <RootType FullName="Windows.UI.Xaml.Controls.Slider">
       <RootProperty Name="Margin" />
     </RootType>
@@ -426,7 +441,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="BOBApp.Views.VindRit1" />
+    <RootType FullName="BOBApp.Views.VindRitFilter" />
     <RootType FullName="BOBApp.Views.ZoekVrienden" />
   </Roots.RootTypes>
 </Roots>

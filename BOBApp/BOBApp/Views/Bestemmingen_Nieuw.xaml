@@ -9,17 +9,18 @@
     DataContext="{Binding BestemmingenVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
 
     <RelativePanel>
-        <TextBox x:Name="textBoxZoekLocaties" Text="{Binding Destination.Name, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="200"  Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" />
+        <TextBox x:Name="textBoxZoekLocaties" Text="{Binding Destination.Name, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="200"  Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" Style="{StaticResource textBox}" />
         <ComboBox x:Name="cbxCities" ItemsSource="{Binding Cities,Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding Destination.Cities_ID}"  Width="200" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textBoxZoekLocaties"/>
-        <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding AddDestinationCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="cbxCities" />
+        <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding AddDestinationCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="cbxCities" Style="{StaticResource button}" />
 
 
     </RelativePanel>

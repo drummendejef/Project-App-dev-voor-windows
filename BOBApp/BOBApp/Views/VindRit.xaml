@@ -10,18 +10,19 @@
     DataContext="{Binding VindRitVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
     <RelativePanel>
-        <TextBox x:Name="textBoxZoekLocatieFeestje" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" TextWrapping="Wrap" Text="" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
+        <TextBox x:Name="textBoxZoekLocatieFeestje" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" TextWrapping="Wrap" Text="" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource textBox}" />
         <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="textBoxZoekLocatieFeestje" RelativePanel.Above="buttonZoekChauffeur" />
-        <Button x:Name="buttonZoekChauffeur" Margin="10" Content="Zoek een Chauffeur" Height="32" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <Button x:Name="buttonZoekChauffeur" Margin="10" Content="Zoek een Chauffeur" Height="32" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource button}" />
 
-        <Button Content="Chat" Command="{Binding GoChatCommand}"/>
-        <Button Content="Filter" Command="{Binding GoFilterCommand}"/>
+        <Button Content="Chat" Command="{Binding GoChatCommand}" Style="{StaticResource button}"/>
+        <Button Content="Filter" Command="{Binding GoFilterCommand}" Style="{StaticResource button}"/>
     </RelativePanel>
 </Page>

@@ -10,11 +10,13 @@
     DataContext="{Binding RegisterVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
+    
 
     <ScrollViewer>
         <VisualStateManager.VisualStateGroups>
@@ -44,20 +46,20 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <RelativePanel>
-            <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="checkBoxAkkoordVoorwaarden" Foreground="Red" FontWeight="Bold" TextAlignment="Center"/>
-            <Button x:Name="buttonRegisterFacebook" Margin="10" Content="Registreren via Facebook" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-            <TextBox Text="{Binding NewRegister.Lastname, Mode=TwoWay}" x:Name="textBoxNaam" TextWrapping="Wrap" PlaceholderText="Naam" RelativePanel.Below="buttonRegisterFacebook" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-            <TextBox Text="{Binding NewRegister.Firstname, Mode=TwoWay}"  x:Name="textBoxVoornaam" TextWrapping="Wrap"  PlaceholderText="Voornaam" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-            <TextBox Text="{Binding NewRegister.Email, Mode=TwoWay}"  x:Name="textBoxEmail" TextWrapping="Wrap" PlaceholderText="Email" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-            <TextBox Text="{Binding NewRegister.Cellphone, Mode=TwoWay}"  x:Name="textBoxGSMnr" TextWrapping="Wrap"  PlaceholderText="GSM Nummer" RelativePanel.Below="textBoxEmail" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-            <TextBox Text="{Binding NewRegister.LicensePlate, Mode=TwoWay}"  x:Name="textBoxNummerplaat" TextWrapping="Wrap" PlaceholderText="Nummerplaat" RelativePanel.Below="textBoxGSMnr" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10"/>
-            <TextBlock x:Name="textBlockAutoType" TextWrapping="Wrap" Text="Automerk" RelativePanel.Below="textBoxNummerplaat" Margin="10" RelativePanel.AlignLeftWith="textBoxNummerplaat" RelativePanel.AlignBottomWith="" RelativePanel.AlignTopWith=""/>
+            <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="checkBoxAkkoordVoorwaarden" Foreground="Red" FontWeight="Bold" TextAlignment="Center" Style="{StaticResource textblock}"/>
+            <Button x:Name="buttonRegisterFacebook" Margin="10" Content="Registreren via Facebook" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource button}"/>
+            <TextBox Text="{Binding NewRegister.Lastname, Mode=TwoWay}" x:Name="textBoxNaam" TextWrapping="Wrap" PlaceholderText="Naam" RelativePanel.Below="buttonRegisterFacebook" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}"/>
+            <TextBox Text="{Binding NewRegister.Firstname, Mode=TwoWay}"  x:Name="textBoxVoornaam" TextWrapping="Wrap"  PlaceholderText="Voornaam" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}"/>
+            <TextBox Text="{Binding NewRegister.Email, Mode=TwoWay}"  x:Name="textBoxEmail" TextWrapping="Wrap" PlaceholderText="Email" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}"/>
+            <TextBox Text="{Binding NewRegister.Cellphone, Mode=TwoWay}"  x:Name="textBoxGSMnr" TextWrapping="Wrap"  PlaceholderText="GSM Nummer" RelativePanel.Below="textBoxEmail" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}"/>
+            <TextBox Text="{Binding NewRegister.LicensePlate, Mode=TwoWay}"  x:Name="textBoxNummerplaat" TextWrapping="Wrap" PlaceholderText="Nummerplaat" RelativePanel.Below="textBoxGSMnr" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}"/>
+            <TextBlock x:Name="textBlockAutoType" TextWrapping="Wrap" Text="Automerk" RelativePanel.Below="textBoxNummerplaat" Margin="10" RelativePanel.AlignLeftWith="textBoxNummerplaat" RelativePanel.AlignBottomWith="" RelativePanel.AlignTopWith="" Style="{StaticResource textblock}"/>
             <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch"  ItemsSource="{Binding Merken, Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedAutoType, Mode=TwoWay}" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10"/>
-            <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
-            <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300"/>
+            <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox" RelativePanel.Below="textBlockAutoType" PlaceholderText="Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300" Style="{StaticResource passwordBox}"/>
+            <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300" Style="{StaticResource passwordBox}"/>
             <CheckBox x:Name="checkBoxAkkoordVoorwaarden" Content="Ik ga akkoord met de voorwaarden" RelativePanel.Below="passwordBoxHerhaal" Margin="10" RelativePanel.AlignLeftWith="passwordBoxHerhaal" Checked="Akkoord_checked" Unchecked="Akkoord_unchecked"/>
-            <Button x:Name="buttonCancel" Content="Annuleer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignLeftWithPanel="True" Width="100" Command="{Binding CancelCommand}"/>
-            <Button x:Name="buttonRegistreer" Content="Registreer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignRightWithPanel="True" Width="100" Command="{Binding RegisterCommand}" IsEnabled="False"/>
+            <Button x:Name="buttonCancel" Content="Annuleer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignLeftWithPanel="True" Width="100" Command="{Binding CancelCommand}" Style="{StaticResource button}"/>
+            <Button x:Name="buttonRegistreer" Content="Registreer" RelativePanel.AlignBottomWithPanel="True" Margin="30" RelativePanel.AlignRightWithPanel="True" Width="100" Command="{Binding RegisterCommand}" IsEnabled="False" Style="{StaticResource button}"/>
         </RelativePanel>
     </ScrollViewer>
 </Page>

@@ -124,11 +124,11 @@
                         <Grid>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="48" />
+                                <RowDefinition Height="41" />
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="48" />
+                                <ColumnDefinition Width="41" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>
@@ -258,11 +258,11 @@
                         <Grid>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="48" />
+                                <RowDefinition Height="41" />
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="48" />
+                                <ColumnDefinition Width="41" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>

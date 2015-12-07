@@ -7,15 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding PuntenVM, Mode=OneWay, Source={StaticResource Locator}}">
+
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+
     <RelativePanel>
-        <TextBlock x:Name="textBlockPunten" Margin="30" Height="20" TextWrapping="Wrap" Text="{Binding PointsText, Mode=OneWay}" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <TextBlock x:Name="textBlockPunten" Margin="30" Height="20" TextWrapping="Wrap" Text="{Binding PointsText, Mode=OneWay}" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}" />
         <ListView x:Name="listviewPunten" Margin="30" ItemsSource="{Binding Points, Mode=OneWay}" ItemTemplate="{StaticResource TemplatePunten}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textBlockPunten"/>
     </RelativePanel>
     
