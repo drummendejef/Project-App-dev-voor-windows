@@ -57,6 +57,23 @@ namespace Libraries.Repositories
             }
         }
 
+        public static async Task<Response> PostChatComment(ChatComment chatComment)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                
+                var newObject = JsonConvert.SerializeObject(chatComment);
+
+                HttpResponseMessage result = await client.PostAsync(URL.CHATROOMS_COMMENT, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
+
         #endregion
 
         #region put

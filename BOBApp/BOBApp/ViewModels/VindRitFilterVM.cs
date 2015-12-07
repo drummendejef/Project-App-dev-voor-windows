@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    public class VindRit1VM: ViewModelBase
+    public class VindRitFilterVM: ViewModelBase
     {
         //Properties
 
         //Constructor
-        public VindRit1VM()
+        public VindRitFilterVM()
         {
 
         }

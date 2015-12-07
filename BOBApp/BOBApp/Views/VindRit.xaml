@@ -21,5 +21,7 @@
         <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="textBoxZoekLocatieFeestje" RelativePanel.Above="buttonZoekChauffeur" />
         <Button x:Name="buttonZoekChauffeur" Margin="10" Content="Zoek een Chauffeur" Height="32" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" />
 
+        <Button Content="Chat" Command="{Binding GoChatCommand}"/>
+        <Button Content="Filter" Command="{Binding GoFilterCommand}"/>
     </RelativePanel>
 </Page>

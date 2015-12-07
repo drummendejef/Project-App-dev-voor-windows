@@ -53,7 +53,7 @@ namespace BOBApp.ViewModels
 
         private void GoDestination()
         {
-            Frame rootFrame =BaseViewModelLocator.MainFrame as Frame;
+            Frame rootFrame =MainViewVM.MainFrame as Frame;
 
             rootFrame.Navigate(typeof(Bestemmingen_Nieuw));
         }

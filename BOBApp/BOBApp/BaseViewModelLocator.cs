@@ -13,9 +13,8 @@ namespace BOBApp
 {
     public class BaseViewModelLocator //Gaat de views aan de viewmodels koppelen. Moet aangeroepen worden (zie app.xaml)
     {
-        public static User USER;
-        public static SplitView ShellSplitView;
-        public static Frame MainFrame;
+       
+     
         public BaseViewModelLocator()
         {//Zorgen dat je geen harde verbinding hebt tussen 2 dingen, objecten injecteren in containers.
 
@@ -31,7 +30,8 @@ namespace BOBApp
             SimpleIoc.Default.Register<PuntenVM>();
             SimpleIoc.Default.Register<RegisterVM>();
             SimpleIoc.Default.Register<VindRitVM>();
-            SimpleIoc.Default.Register<VindRit1VM>();
+            SimpleIoc.Default.Register<VindRitFilterVM>();
+            SimpleIoc.Default.Register<VindRitChatVM>();
             SimpleIoc.Default.Register<ZoekVriendenVM>();
 
 
@@ -77,9 +77,14 @@ namespace BOBApp
             get { return ServiceLocator.Current.GetInstance<VindRitVM>(); }//Viewmodels opvragen
         }
 
-        public VindRit1VM VindRit1VM
+        public VindRitFilterVM VindRitFilterVM
         {
-            get { return ServiceLocator.Current.GetInstance<VindRit1VM>(); }//Viewmodels opvragen
+            get { return ServiceLocator.Current.GetInstance<VindRitFilterVM>(); }//Viewmodels opvragen
+        }
+
+        public VindRitChatVM VindRitChatVM
+        {
+            get { return ServiceLocator.Current.GetInstance<VindRitChatVM>(); }//Viewmodels opvragen
         }
 
         public ZoekVriendenVM ZoekVriendenVM

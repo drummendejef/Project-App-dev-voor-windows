@@ -114,7 +114,7 @@ namespace BOBApp.ViewModels
             if (res.Success == true)
             {
                 User user = await UserRepository.GetUser();
-                BaseViewModelLocator.USER = user;
+                MainViewVM.USER = user;
                 //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()
                 {

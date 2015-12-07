@@ -12,12 +12,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
     public class MainViewVM:ViewModelBase
     {
         //Properties
+        //public static
+        public static Frame MainFrame;
+        public static User USER;
+        public static ChatRoom ChatRoom;
+
         private Task logoffTask;
         public User User { get; set; }
         public RelayCommand LogOffCommand { get; set; }
@@ -27,7 +33,7 @@ namespace BOBApp.ViewModels
         //Constructor
         public MainViewVM()
         {
-            User = BaseViewModelLocator.USER;
+            User = MainViewVM.USER;
             GetPoints();
 
             SetupBackgroundTask();

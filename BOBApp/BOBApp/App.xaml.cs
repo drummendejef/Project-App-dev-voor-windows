@@ -131,8 +131,11 @@ namespace BOBApp
                 case "VindRit":
                     rootFrame.Navigate(typeof(VindRit));
                     break;
-                case "VindRit1":
-                    rootFrame.Navigate(typeof(VindRit1));
+                case "VindRitFilter":
+                    rootFrame.Navigate(typeof(VindRitFilter));
+                    break;
+                case "VindRitChat":
+                    rootFrame.Navigate(typeof(VindRitChat));
                     break;
                 case "ZoekVrienden":
                     rootFrame.Navigate(typeof(ZoekVrienden));

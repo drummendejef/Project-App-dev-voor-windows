@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="BOBApp.Views.VindRitChat"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BOBApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding VindRitChatVM, Mode=TwoWay, Source={StaticResource Locator}}">
+
+    <Page.Resources>
+        <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml">
+            <ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <RelativePanel>
+        <ItemsControl RelativePanel.AlignHorizontalCenterWithPanel="True" Height="400" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" ItemTemplate="{ThemeResource TemplateChatComments}" />
+
+        <TextBox x:Name="txtComment" Text="{Binding ChatComment.Comment, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True"  RelativePanel.Below="comments"/>
+        <Button x:Name="addComment" Content="Add comment" RelativePanel.RightOf="txtComment" Command="{Binding AddCommentCommand}"/>
+    </RelativePanel>
+</Page>

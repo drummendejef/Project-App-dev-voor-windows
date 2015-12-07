@@ -36,7 +36,7 @@ namespace BOBApp.Views
                 ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
 
             Frame rootFrame = (Frame)ShellSplitView.Content;
-            BaseViewModelLocator.MainFrame = rootFrame;
+            MainViewVM.MainFrame = rootFrame;
             rootFrame.Navigated += OnNavigated;
 
             // Register a handler for BackRequested events and set the
@@ -155,7 +155,7 @@ namespace BOBApp.Views
 
 
         }
-        bool isBob = BaseViewModelLocator.USER.IsBob;
+        bool isBob = MainViewVM.USER.IsBob;
         private async void changeToBob()
         {
            

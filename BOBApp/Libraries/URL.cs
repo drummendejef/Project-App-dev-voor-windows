@@ -40,6 +40,7 @@ namespace Libraries
         public static string BOBS_FIND = BASE + "/bobs/find/";
 
         public static string CHATROOMS = BASE + "/chatrooms/";
+        public static string CHATROOMS_COMMENT = BASE + "/chatrooms/comment";
 
         public static string DESTINATIONS = BASE + "/destinations/";
         public static string DESTINATIONS_DEFAULT = BASE + "/destinations/default/";

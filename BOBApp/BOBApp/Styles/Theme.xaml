@@ -630,6 +630,22 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="TemplateChatComments">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Comment}" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Added}" />
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding FromUser_ID}"/>
+        </Grid>
+    </DataTemplate>
+
 
 
 </ResourceDictionary>
