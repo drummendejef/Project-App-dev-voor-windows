@@ -15,7 +15,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+
     <RelativePanel>
         <TextBlock x:Name="textBlock" Margin="10,15" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Ik wil naar:" VerticalAlignment="Top" Style="{StaticResource textblock}" />
         <ComboBox x:Name="comboBoxBestemming" Margin="10" Height="32" RelativePanel.RightOf="textBlock" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch" />
@@ -31,6 +31,6 @@
         <Button x:Name="buttonGoedkoop" Margin="10" Content="Goedkoop" Width="80" Height="32" VerticalAlignment="Top"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource button}"/>
         <Button x:Name="buttonMedium" Margin="10" Content="Medium" Width="80" Height="32" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Style="{StaticResource button}" />
         <Button x:Name="buttonSnel" Margin="10" Content="Snel" Width="80" Height="32" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Style="{StaticResource button}" />
-        
+
     </RelativePanel>
 </Page>
