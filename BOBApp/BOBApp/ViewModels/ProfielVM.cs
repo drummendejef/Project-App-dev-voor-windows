@@ -46,10 +46,8 @@ namespace BOBApp.ViewModels
             //Dit werkt
             Debug.WriteLine("knop werkt");
 
-            //databinding werkt/Password veranderen werkt ook
-          /*  if(PasswordRepeat == null){
-                Debug.WriteLine("Password niet verandert");
-                
+            //databinding werkt
+            /*
                 //Updaten naar database
                 Response r = await UserRepository.EditUser(User);
                 //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
@@ -60,37 +58,10 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
-                    var dialog = new MessageDialog("Er is een probleem met het updaten van uw gegevens. Probeer het nog eens opnieuw.");
+                    var dialog = new MessageDialog("Er is een probleem met het opslaan van uw gegevens. Probeer het nog eens opnieuw.");
                     await dialog.ShowAsync();
                 }
-            }
-            else if(PasswordRepeat == Password)
-            {
-                
-                User.Password = Password;
-                
-                //Updaten naar database
-                Response r = await UserRepository.EditUser(User);
-                //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
-                if (r.Success)
-                {
-                    var dialog = new MessageDialog("Uw gegevens zijn opgeslaan en uw wachtwoord is verandert.");
-                    await dialog.ShowAsync();
-                }
-                else
-                {
-                    var dialog = new MessageDialog("Er is een probleem met het updaten van uw gegevens. Probeer het nog eens opnieuw.");
-                    await dialog.ShowAsync();
-                }
-
-                //Debug.WriteLine("Password verandert");
-            }
-            else
-            {
-                //de wachtwoorden zijn niet hetzelfde
-                var dialog = new MessageDialog("De twee wachtwoorden zijn niet hetzelfde.");
-                await dialog.ShowAsync();
-            } */
+         */
 
            
             //Testcode voor databinding
@@ -99,9 +70,10 @@ namespace BOBApp.ViewModels
         }
 
 
-        //Dit werkt
+        
         private async void GetUserDetails()
         {
+            //probleem in de UserRepo
             this.User = await UserRepository.GetProfile();
         }
 
