@@ -36,8 +36,6 @@
     <RootPropertyPathName Name="Trips" />
     <RootPropertyPathName Name="ProfielVM" />
     <RootPropertyPathName Name="AanpasCommand" />
-    <RootPropertyPathName Name="PasswordRepeat" />
-    <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
@@ -46,6 +44,8 @@
     <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
     <RootPropertyPathName Name="CancelCommand" />
+    <RootPropertyPathName Name="PasswordRepeat" />
+    <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Error" />
@@ -384,11 +384,11 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
     </RootType>
-    <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="MapServiceToken" />
       <RootProperty Name="Margin" />
     </RootType>
+    <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
     <RootType FullName="BOBApp.Views.FeestjesOverzicht" />
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowHeight" />
