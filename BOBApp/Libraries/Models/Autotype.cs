@@ -13,5 +13,10 @@ namespace Libraries.Models
         public string Name { get; set; }
         public string Brand { get; set; }
 
+        public override string ToString()
+        {
+            return "ID: " + ID + " - Name: " + Name + " - Brand: " + Brand;
+        }
+
     }
 }

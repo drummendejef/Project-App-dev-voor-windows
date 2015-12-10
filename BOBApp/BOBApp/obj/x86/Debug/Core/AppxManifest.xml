@@ -33,6 +33,15 @@
           <uap:Rotation Preference="landscapeFlipped" />
         </uap:InitialRotationPreference>
       </uap:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="BobWorker.Service">
+          <BackgroundTasks>
+            <Task Type="timer" />
+            <Task Type="pushNotification" />
+            <Task Type="location" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
@@ -76,6 +85,7 @@
         <ActivatableClass ActivatableClassId="NotificationsExtensions.Toasts.ToastActionsSnoozeAndDismiss" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="NotificationsExtensions.Toasts.ToastSelectionBoxItem" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="NotificationsExtensions.Toasts.ToastText" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="BobWorker.Service" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>
