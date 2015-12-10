@@ -45,11 +45,13 @@ namespace BOBApp.ViewModels
             
             //Dit werkt
             Debug.WriteLine("knop werkt");
-
+            Debug.WriteLine(User.Autotype.ToString());
             //databinding werkt
-            /*
-                //Updaten naar database
-                Response r = await UserRepository.EditUser(User);
+
+            //Updaten naar database
+            //Probleem nog met user
+           /* User EditUser = null;
+                Response r = await UserRepository.EditUser(EditUser);
                 //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
                 if (r.Success)
                 {
@@ -62,18 +64,12 @@ namespace BOBApp.ViewModels
                     await dialog.ShowAsync();
                 }
          */
-
-           
-            //Testcode voor databinding
-            //Debug.WriteLine("naam: " + User.Lastname + " - Voornaam: " + User.Firstname + " - Email: " + User.Email + " - Cellphone: " + User.Cellphone + " - LicensePlate: " + User.LicensePlate + " - Password: " + User.Password);
-             
         }
 
 
         
         private async void GetUserDetails()
         {
-            //probleem in de UserRepo
             this.User = await UserRepository.GetProfile();
         }
 
