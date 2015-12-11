@@ -21,6 +21,10 @@
     <RootPropertyPathName Name="Cities" />
     <RootPropertyPathName Name="Cities_ID" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
+    <RootPropertyPathName Name="GeoLocation" />
+    <RootPropertyPathName Name="Amount" />
+    <RootPropertyPathName Name="Organisator" />
+    <RootPropertyPathName Name="Feestjes" />
     <RootPropertyPathName Name="ZoekVeld" />
     <RootPropertyPathName Name="LoginVM" />
     <RootPropertyPathName Name="RegisterCommand" />
@@ -84,6 +88,8 @@
       <RootProperty Name="Visibility" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Padding" />
       <RootProperty Name="Height" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
@@ -110,9 +116,9 @@
       <RootProperty Name="FontStyle" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
       <RootProperty Name="TextWrapping" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
@@ -389,8 +395,15 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="MapServiceToken" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetLocation" />
+      <RootMethod Name="SetLocation" />
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapItemsControl">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+    </RootType>
     <RootType FullName="BOBApp.Views.FeestjesOverzicht" />
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowHeight" />

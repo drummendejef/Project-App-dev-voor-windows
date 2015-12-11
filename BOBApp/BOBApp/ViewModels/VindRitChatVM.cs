@@ -45,6 +45,7 @@ namespace BOBApp.ViewModels
             if (res.Success == true)
             {
                 GetChatComments();
+                this.ChatComment.Comment = "";
                
             }
             return res.Success;
