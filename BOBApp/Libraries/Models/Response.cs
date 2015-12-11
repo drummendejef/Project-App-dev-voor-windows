@@ -10,6 +10,7 @@ namespace Libraries.Models
     {
         public Boolean Success { get; set; }
         public string Error { get; set; }
+        public int? NewID { get; set; }
 
         public static implicit operator Task<object>(Response v)
         {

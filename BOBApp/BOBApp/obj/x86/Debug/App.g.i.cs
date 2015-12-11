@@ -50,7 +50,7 @@ namespace BOBApp
 #if DEBUG && !DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
             UnhandledException += (sender, e) =>
             {
-                if (global::System.Diagnostics.Debugger.IsAttached) global::System.Diagnostics.Debugger.Break();
+                //if (global::System.Diagnostics.Debugger.IsAttached) global::System.Diagnostics.Debugger.Break();
             };
 #endif
         }

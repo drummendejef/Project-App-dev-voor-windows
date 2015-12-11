@@ -20,6 +20,7 @@ namespace Libraries.Repositories
                 var result = client.GetAsync(URL.USER_POINTSAMOUNT);
                 string json = await result.Result.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeAnonymousType(json, definition);
+
                 return data.Points;
             }
         }

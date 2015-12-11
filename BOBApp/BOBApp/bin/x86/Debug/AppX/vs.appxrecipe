@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>D593D86E92953B0B0B7A6840385DB7336B65A5DCC9D2B2106E0F3EA3AC2123B6</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>4BCBB160D7A6F129360999BA93F2C2128BC7710468080CDE34B8E6D648D5C86F</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_1.0.0.0_x86__gwked98mkhbva</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_gwked98mkhbva!App</RegisteredUserModeAppID>
     <RegisteredPackageID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</RegisteredPackageID>
@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-11T14:26:15.199</Modified>
+      <Modified>2015-12-11T20:46:49.061</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-12-11T14:26:14.021</Modified>
+      <Modified>2015-12-11T20:46:47.872</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\CommonServiceLocator\1.3.0\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll">
       <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
@@ -480,7 +480,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
-      <Modified>2015-12-11T14:15:53.777</Modified>
+      <Modified>2015-12-11T19:46:24.424</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\NotificationsExtensions.Win10\10586.0.0\lib\uap10.0\NotificationsExtensions.winmd">
       <PackagePath>NotificationsExtensions.winmd</PackagePath>
@@ -488,7 +488,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\BobWorker.winmd">
       <PackagePath>BobWorker.winmd</PackagePath>
-      <Modified>2015-12-11T14:15:54.428</Modified>
+      <Modified>2015-12-11T19:46:25.030</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -590,7 +590,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
-      <Modified>2015-12-11T14:20:17.214</Modified>
+      <Modified>2015-12-11T18:32:52.418</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -598,11 +598,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-11T14:26:14.946</Modified>
+      <Modified>2015-12-11T20:46:48.807</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-11T14:26:15.194</Modified>
+      <Modified>2015-12-11T20:46:49.055</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

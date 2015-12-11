@@ -47,12 +47,22 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+        public static async Task<List<BobsType>> GetTypes()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.BOB_TYPES);
+                string json = await result.Result.Content.ReadAsStringAsync();
+                List<BobsType> data = JsonConvert.DeserializeObject<List<BobsType>>(json);
+                return data;
+            }
+        }
         #endregion
 
 
 
         #region post
-        public static async Task<List<Bob>> FindBobs(int rating, DateTime minDate, int BobsType_ID, Location location, int maxDistance)
+        public static async Task<List<Bob>> FindBobs(int? rating, DateTime minDate, int BobsType_ID, Location location, int? maxDistance)
         {
             using (HttpClient client = new HttpClient())
             {

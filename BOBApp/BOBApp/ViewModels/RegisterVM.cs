@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 
 namespace BOBApp.ViewModels
 {
@@ -71,7 +72,7 @@ namespace BOBApp.ViewModels
         }
         private async Task<Boolean> RegisterUser(Register register)
         {
-            if(PasswordRepeat == null)
+            if (PasswordRepeat == null)
             {
                 this.Error = Libraries.Error.PasswordEmpty;
                 RaisePropertyChanged("Error");
@@ -88,7 +89,7 @@ namespace BOBApp.ViewModels
                 Response res = await UserRepository.Register(register);
                 if (res.Success == true)
                 {
-                   await LoginUser(register.Email, register.Password);
+                    await LoginUser(register.Email, register.Password);
                 }
                 else
                 {
@@ -107,19 +108,24 @@ namespace BOBApp.ViewModels
                 return false;
             }
 
-          
+
+
         }
 
 
         //login, zelfde als bij loginVM
         private async Task<Boolean> LoginUser(string email, string pass)
         {
-            Response res = await LoginRepository.Login(email, pass);
+            Response res = await LoginRepository.Login(email, md5.Create(pass));
             if (res.Success == true)
             {
+                Geolocator geolocator = new Geolocator();
+                Geoposition pos = await geolocator.GetGeopositionAsync();
+                Location current = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                Location.Current = current;
+
                 User user = await UserRepository.GetUser();
                 MainViewVM.USER = user;
-                //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()
                 {
                     Name = "MainView"
@@ -127,8 +133,16 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                this.Error = res.Error;
-                RaisePropertyChanged("Error");
+                if (res.Error == "Invalid Login")
+                {
+                    this.Error = "Gegeven email en wachtwoord komen niet overeen of bestaan niet.";
+                    RaisePropertyChanged("Error");
+                }
+                if (res.Error == "Server offline")
+                {
+                    this.Error = "De server is offline";
+                    RaisePropertyChanged("Error");
+                }
 
             }
 

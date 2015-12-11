@@ -26,6 +26,8 @@ using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI;
 using Windows.ApplicationModel.Core;
+using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace BOBApp
 {
@@ -59,6 +61,7 @@ namespace BOBApp
         {
 
             Messenger.Default.Register<GoToPage>(this, NavigateToPage);
+            Messenger.Default.Register<Dialog>(this, DialogChange);
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -104,6 +107,20 @@ namespace BOBApp
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        private void DialogChange(Dialog dialog)
+        {
+            if (dialog.Message != null)
+            {
+                Task task = showMesage_task(dialog.Message);
+            }
+           
+        }
+        private async Task<bool> showMesage_task(string text) {
+            var dialog = new MessageDialog(text);
+            await dialog.ShowAsync();
+            return true;
         }
 
         private void NavigateToPage(GoToPage message)

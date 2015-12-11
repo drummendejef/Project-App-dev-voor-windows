@@ -16,6 +16,7 @@ namespace BOBApp.ViewModels
     public class ProfielVM : ViewModelBase
     {
         //Properties
+        public Task task { get; set; }
         public RelayCommand AanpasCommand { get; set; }
         public User.Profile User { get; set; }
         public String Password { get; set; }
@@ -35,9 +36,13 @@ namespace BOBApp.ViewModels
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
             AanpasCommand = new RelayCommand(Aanpassen);
+
+           
         }
 
-    
+       
+
+
 
         //Methods
         public async void Aanpassen()

@@ -1,4 +1,6 @@
-﻿using BOBApp.ViewModels;
+﻿using BOBApp.Messages;
+using BOBApp.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Repositories;
 using System;
@@ -162,25 +164,43 @@ namespace BOBApp.Views
         bool isBob = MainViewVM.USER.IsBob;
         private async void changeToBob()
         {
-           
-            Response ok = await UserRepository.ChanteToBob(isBob);
-            if (ok.Success == true)
-            {
-                if (isBob == true)
+            if(MainViewVM.USER.IsBob == true){
+
+                Response ok = await UserRepository.ChanteToBob(isBob);
+                if (ok.Success == true)
                 {
-                    //bob
-                    bobBiedJeAan.Visibility = Visibility.Visible;
-                    isBob = false;
-                    Change.Content = "BOB";
+                    if (isBob == true)
+                    {
+                        //bob
+                        bobBiedJeAan.Visibility = Visibility.Visible;
+                        isBob = false;
+                        Change.Content = "BOB";
+                    }
+                    else
+                    {
+                        //user
+                        bobBiedJeAan.Visibility = Visibility.Collapsed;
+                        isBob = true;
+                        Change.Content = "USER";
+                    }
                 }
-                else
-                {
-                    //user
-                    bobBiedJeAan.Visibility = Visibility.Collapsed;
-                    isBob = true;
-                    Change.Content = "USER";
-                }
+
             }
+            else
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message= "Gelieve bob gegevens in te vullen"
+                });
+
+               
+                ShellSplitView.IsPaneOpen = false;
+                if (ShellSplitView.Content != null)
+                    ((Frame)ShellSplitView.Content).Navigate(typeof(Profiel));
+                CheckIsPaneOpen();
+            }
+           
+            
 
         }
 

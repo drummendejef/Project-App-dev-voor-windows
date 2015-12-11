@@ -8,10 +8,12 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
@@ -23,6 +25,7 @@ namespace BOBApp.ViewModels
         public static Frame MainFrame;
         public static User USER;
         public static ChatRoom ChatRoom;
+      
 
         private Task logoffTask;
         public User User { get; set; }
@@ -66,12 +69,16 @@ namespace BOBApp.ViewModels
         private async void GetPoints()
         {
             string points = await PointRepository.GetTotalPoints();
+
             this.Points = double.Parse(points);
         }
         private void SetupBackgroundTask()
         {
             string BackgroundTaskName = "UserLocation";
             string BackgroundTaskEntryPoint = "BobWorker.Service";
+
+           
+
 
             foreach (var item in BackgroundTaskRegistration.AllTasks)
             {
@@ -105,6 +112,9 @@ namespace BOBApp.ViewModels
                 else
                 {
                     //toegang
+                   
+
+
                     BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
                     builder.Name = BackgroundTaskName;
                     builder.TaskEntryPoint = BackgroundTaskEntryPoint;
@@ -133,15 +143,15 @@ namespace BOBApp.ViewModels
 
         private async void RegTask_Completed(BackgroundTaskRegistration sender, BackgroundTaskCompletedEventArgs args)
         {
-            //string json = await readStringFromLocalFile("parking.json");
-            // ParkingResult[] results = JsonConvert.DeserializeObject<ParkingResult[]>(json);
-
+            
             Debug.WriteLine("Niewue locatie gestuurd");
            
 
             //done
 
         }
+
+       
 
 
     }

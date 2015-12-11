@@ -26,11 +26,11 @@ namespace Libraries.Models
         }
 
         public string FacebookID { get; set; }
-        public bool IsBob { get; set; }
-        public double PricePerKm { get; set; }
-        public int BobsType_ID { get; set; }
+        public bool? IsBob { get; set; }
+        public double? PricePerKm { get; set; }
+        public int? BobsType_ID { get; set; }
         public string LicensePlate { get; set; }
-        public int AutoType_ID { get; set; }
+        public int? AutoType_ID { get; set; }
 
 
         //IDataErrorInfo hier uitvoeren (voor de error te laten zien)

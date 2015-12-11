@@ -35,9 +35,10 @@ namespace Libraries
         public static string AUTOTYPES = BASE + "/autotypes/";
         public static string FRIENDS = BASE + "/friends/";
 
-        public static string BOBS = BASE + "/bobs/";
-        public static string BOBS_ONLINE = BASE + "/bobs/online/";
-        public static string BOBS_FIND = BASE + "/bobs/find/";
+        public static string BOBS = BASE + "/bobs";
+        public static string BOBS_ONLINE = BOBS + "/online";
+        public static string BOBS_FIND = BOBS + "/find";
+        public static string BOB_TYPES = BOBS + "/types";
 
         public static string CHATROOMS = BASE + "/chatrooms/";
         public static string CHATROOMS_COMMENT = BASE + "/chatrooms/comment";
@@ -50,5 +51,6 @@ namespace Libraries
 
         public static string STATUSES = BASE + "/statuses/";
 
+      
     }
 }

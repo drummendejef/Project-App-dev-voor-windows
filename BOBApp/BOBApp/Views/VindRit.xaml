@@ -18,16 +18,17 @@
     </Page.Resources>
 
     <RelativePanel>
-        <TextBox x:Name="textBoxZoekLocatieFeestje" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" TextWrapping="Wrap" Text="" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource textBox}" />
-        <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="textBoxZoekLocatieFeestje" RelativePanel.Above="stackpanelDown" />
-
-        <StackPanel Orientation="Horizontal" x:Name="stackpanelDown" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <Button Content="Chat" Command="{Binding GoChatCommand}" Margin="10"  Height="32" Style="{StaticResource button}"/>
-            <Button Content="Filter" Command="{Binding GoFilterCommand}" Margin="10"  Height="32" Style="{StaticResource button}"/>
-            <Button x:Name="buttonZoekChauffeur" Margin="10" Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Height="32" Style="{StaticResource button}" />
-        </StackPanel>
-       
-       
+        <AutoSuggestBox x:Name="textBoxZoekLocatieFeestje" Text="{Binding SelectedPartyString, Mode=TwoWay}" ItemsSource="{Binding Parties, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True"  />
       
+        <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="textBoxZoekLocatieFeestje" RelativePanel.Above="commandbar" Canvas.ZIndex="10" />
+
+        <Button RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />
+
+        <CommandBar RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="commandbar" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RequestedTheme="Light" IsSticky="True" >
+            <AppBarButton Padding="10" Margin="0,0,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}" />
+            <AppBarButton Padding="10" Margin="0,0,10,0" Width="auto" Content="Filter" Command="{Binding GoFilterCommand}"  />
+        </CommandBar>
+
+
     </RelativePanel>
 </Page>

@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    
     DataContext="{Binding VindRitFilterVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
     <Page.Resources>
@@ -16,21 +17,20 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <RelativePanel>
-        <TextBlock x:Name="textBlock" Margin="10,15" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Ik wil naar:" VerticalAlignment="Top" Style="{StaticResource textblock}" />
-        <ComboBox x:Name="comboBoxBestemming" Margin="10" Height="32" RelativePanel.RightOf="textBlock" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch" />
-        <TextBlock x:Name="textBlock1" Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Met volgende vrienden: " VerticalAlignment="Top" RelativePanel.Below="comboBoxBestemming" Style="{StaticResource textblock}"/>
-        <TextBox x:Name="textBoxSelecteerVrienden" Margin="10,0" Height="32" TextWrapping="Wrap" Text=""  RelativePanel.AlignLeftWith="" RelativePanel.Below="comboBoxBestemming" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBlock1" Style="{StaticResource textBox}"/>
-        <ListView x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockMinRating" />
-        <TextBlock x:Name="textBlockMinRating" Margin="30,10" Text="Minimum rating van gebruikers:" RelativePanel.Above="sliderMinRating" Style="{StaticResource textblock}" />
-        <Slider x:Name="sliderMinRating" Margin="492,10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="textBlockLaatstVervoer" Maximum="5"  />
-        <TextBlock x:Name="textBlockLaatstVervoer" Margin="10" Text="Wanneer wil je ten laatste vervoer?" RelativePanel.Above="datePicker" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}"  />
-        <DatePicker x:Name="datePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="timePicker" />
-        <TimePicker x:Name="timePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="textBlockSoortVervoer"/>
-        <TextBlock x:Name="textBlockSoortVervoer" Margin="10" Height="20" TextWrapping="Wrap" Text="Soort vervoer: " RelativePanel.AlignLeftWithPanel="True" RelativePanel.Above="buttonSnel" Style="{StaticResource textblock}"/>
-        <Button x:Name="buttonGoedkoop" Margin="10" Content="Goedkoop" Width="90" Height="32" VerticalAlignment="Top"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource button}"/>
-        <Button x:Name="buttonMedium" Margin="10" Content="Medium" Width="90" Height="32" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Style="{StaticResource button}" />
-        <Button x:Name="buttonSnel" Margin="10" Content="Snel" Width="90" Height="32" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Style="{StaticResource button}" />
+    <RelativePanel Background="White">
 
+        <TextBlock  RelativePanel.AlignHorizontalCenterWithPanel="True"   x:Name="textBlock1" Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Met volgende vrienden: " VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+        <AutoSuggestBox RelativePanel.Below="textBlock1" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="textBoxSelecteerVrienden" Margin="10,0" Height="32" ItemsSource="{Binding Friends, Mode=TwoWay}" Text="{Binding SelectedFriendText, Mode=TwoWay}" DisplayMemberPath="User2" TextMemberPath="User2" Width="400" />
+        <Button  Content="Add" Command="{Binding AddFriendCommand}" Margin="10,0" Height="32" Width="auto" RelativePanel.Below="textBlock1"  RelativePanel.RightOf="textBoxSelecteerVrienden" RelativePanel.AlignRightWithPanel="True"/>
+
+        <ListView Height="300" x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignHorizontalCenterWithPanel="True" MinWidth="500" RelativePanel.Above="" />
+        <TextBlock x:Name="textBlockMinRating" Margin="30,10" Text="Minimum rating van gebruikers:"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="" Style="{StaticResource textblock}" RelativePanel.Below="listViewGeselecteerdeVrienden" />
+        <Slider x:Name="sliderMinRating" Margin="492,10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="" Maximum="5" RelativePanel.Below="textBlockMinRating"  />
+        <TextBlock x:Name="textBlockLaatstVervoer" Margin="10" Text="Wanneer wil je ten laatste vervoer?" RelativePanel.Below="sliderMinRating" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}"  />
+        <DatePicker x:Name="datePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="" RelativePanel.Below="textBlockLaatstVervoer" />
+        <TimePicker RelativePanel.Below="datePicker" x:Name="timePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+       
+        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="textBlockSoortVervoer" Margin="10" Height="20" TextWrapping="Wrap" Text="Soort vervoer:" RelativePanel.Below="timePicker" Style="{StaticResource textblock}"/>
+        <ComboBox RelativePanel.Below="textBlockSoortVervoer" Width="200" x:Name="bobsType" RelativePanel.AlignHorizontalCenterWithPanel="True" ItemsSource="{Binding BobsTypes,Mode=TwoWay}" SelectedItem="{Binding SelectedBobsType, Mode=TwoWay}" DisplayMemberPath="Name" />
     </RelativePanel>
 </Page>

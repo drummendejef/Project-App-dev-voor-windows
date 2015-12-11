@@ -1,5 +1,6 @@
 ﻿using Libraries.Models;
 using Libraries.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,14 +27,33 @@ namespace BobWorker
             BackgroundTaskDeferral deferal = taskInstance.GetDeferral();
 
 
-            Location location = Location.Current;
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
-            Response ok = await UserRepository.PostLocation(location);
+            string json = await readStringFromLocalFile("user.json");
+            var definition = new { Email="", Password=""};
+            var user = JsonConvert.DeserializeAnonymousType(json, definition);
 
-            Debug.WriteLine(ok);
 
-            //var json = JsonConvert.SerializeObject(resul);
-            //await saveStringToLocalFile("parking.json", json);
+
+            Response res = await LoginRepository.Login(user.Email,user.Password);
+            if (res.Success == true)
+            {
+                if (location != null)
+                {
+                    Response ok = await UserRepository.PostLocation(location);
+                    Debug.WriteLine(ok);
+                }
+            }
+
+           
+
+           
+
+           
+
+           
 
 
             deferal.Complete();
@@ -49,22 +69,22 @@ namespace BobWorker
         //pasted methods
 
 
-        async Task saveStringToLocalFile(string filename, string content)
+        async Task<string> readStringFromLocalFile(string filename)
         {
-            // saves the string 'content' to a file 'filename' in the app's local storage folder
-            byte[] fileBytes = System.Text.Encoding.UTF8.GetBytes(content.ToCharArray());
+            string text;
 
             // create a file with the given filename in the local folder; replace any existing file with the same name
-            StorageFile file = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+            StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
 
             // write the char array created from the content string into the file
-            using (var stream = await file.OpenStreamForWriteAsync())
+            Stream stream = await local.OpenStreamForReadAsync(filename);
+            using (StreamReader reader = new StreamReader(stream))
             {
-                stream.Write(fileBytes, 0, fileBytes.Length);
+                text = reader.ReadToEnd();
             }
+
+            return text;
         }
-
-
 
     }
 }

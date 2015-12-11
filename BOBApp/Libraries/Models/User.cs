@@ -14,8 +14,10 @@ namespace Libraries.Models
         public string Email { get; set; }
         public string Cellphone { get; set; }
         public int Bobs_ID { get; set; }
+        
+
         public string FacebookID { get; set; }
-        public DateTime Added { get; set; }
+        public DateTime? Added { get; set; }
         public bool Online { get; set; }
         public string Password { get; set; }
 
@@ -32,6 +34,11 @@ namespace Libraries.Models
         {
             public User User { get; set; }
             public Bob Bob { get; set; }
+        }
+
+        public override string ToString()
+        {
+            return this.Firstname + " " + this.Lastname;
         }
     }
 }

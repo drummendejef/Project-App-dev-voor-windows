@@ -782,19 +782,23 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TemplateChatComments">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Comment}" />
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Added}" />
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding FromUser_ID}"/>
-        </Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Added}" />
+            <Grid Background="{StaticResource DarkBlue}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding FromUser_ID}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Comment}" />
+
+            </Grid>
+        </StackPanel>
+        
     </DataTemplate>
 
 

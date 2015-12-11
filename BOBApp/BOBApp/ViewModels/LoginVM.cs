@@ -17,6 +17,9 @@ using Windows.UI.Core;
 using Libraries.Repositories;
 using Libraries.Models;
 using Windows.Networking.Connectivity;
+using Newtonsoft.Json;
+using Windows.Storage;
+using System.IO;
 
 namespace BOBApp.ViewModels
 {
@@ -49,9 +52,11 @@ namespace BOBApp.ViewModels
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
 
-           
+            SendLocation();
 
         }
+
+       
 
 
         //Methods 
@@ -73,6 +78,9 @@ namespace BOBApp.ViewModels
 
         private async Task<Boolean> Login_task(string email, string pass)
         {
+            this.Error = "";
+            RaisePropertyChanged("Error");
+
             bool ok= serverOnline();
             bool internet = IsInternet();
             if (ok == true && internet==true)
@@ -80,10 +88,9 @@ namespace BOBApp.ViewModels
                 Response res = await LoginRepository.Login(email, md5.Create(pass));
                 if (res.Success == true)
                 {
-                    Geolocator geolocator = new Geolocator();
-                    Geoposition pos = await geolocator.GetGeopositionAsync();
-                    Location current = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-                    Location.Current = current;
+                    var json = JsonConvert.SerializeObject(new { Email =email, Password= md5.Create(pass) });
+                    await saveStringToLocalFile("user.json", json);
+
 
                     User user = await UserRepository.GetUser();
                     MainViewVM.USER = user;
@@ -116,6 +123,19 @@ namespace BOBApp.ViewModels
                 return false;
             }
             
+        }
+
+        private async void SendLocation()
+        {
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+            if (location != null)
+            {
+                Response ok = await UserRepository.PostLocation(location);
+                Debug.WriteLine(ok);
+            }
         }
 
         private bool serverOnline()
@@ -262,5 +282,19 @@ namespace BOBApp.ViewModels
             (App.Current as App).UserLocation = e.Position;
         }
 
+        async Task saveStringToLocalFile(string filename, string content)
+        {
+            // saves the string 'content' to a file 'filename' in the app's local storage folder
+            byte[] fileBytes = System.Text.Encoding.UTF8.GetBytes(content.ToCharArray());
+
+            // create a file with the given filename in the local folder; replace any existing file with the same name
+            StorageFile file = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+
+            // write the char array created from the content string into the file
+            using (var stream = await file.OpenStreamForWriteAsync())
+            {
+                stream.Write(fileBytes, 0, fileBytes.Length);
+            }
+        }
     }
 }
