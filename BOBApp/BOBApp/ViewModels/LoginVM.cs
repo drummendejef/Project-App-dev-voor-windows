@@ -25,7 +25,7 @@ namespace BOBApp.ViewModels
         private Task task;
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand RegisterCommand { get; set; }
-        public RelayCommand Login_FacebookCommand { get; set; }
+     //   public RelayCommand Login_FacebookCommand { get; set; }
         public string Email { get; set; }
         public string Pass { get; set; }
         public string Error { get; set; }
@@ -43,7 +43,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Pass");
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(Register);
-            Login_FacebookCommand = new RelayCommand(Login_Facebook);
+          //  Login_FacebookCommand = new RelayCommand(Login_Facebook);
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
 
@@ -57,10 +57,10 @@ namespace BOBApp.ViewModels
         {
             task = Login_task(this.Email,this.Pass);
         }
-        private void Login_Facebook()
+    /*    private void Login_Facebook()
         {
             task = Login_Facebook_task();
-        }
+        }*/
         private void Register()
         {
             Messenger.Default.Send<GoToPage>(new GoToPage()
@@ -88,7 +88,7 @@ namespace BOBApp.ViewModels
 
             return res.Success;
         }
-        private async Task<Boolean> Login_Facebook_task()
+  /*      private async Task<Boolean> Login_Facebook_task()
         {
             Boolean ok = await LoginRepository.LoginFacebook();
             if (ok == true)
@@ -103,7 +103,7 @@ namespace BOBApp.ViewModels
             }
 
             return ok;
-        }
+        } */
 
 
         //Een (eenmalige) pop up tonen om toestemming aan de gebruiker te vragen voor zijn locatie
