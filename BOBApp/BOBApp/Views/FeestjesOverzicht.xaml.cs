@@ -1,7 +1,9 @@
-﻿using Libraries.Models;
+﻿using BOBApp.ViewModels;
+using Libraries.Models;
 using Libraries.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -36,6 +38,11 @@ namespace BOBApp.Views
 
             MapFeestOverzicht.Loaded += myMap_Loaded;
             mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/userpin.png"));
+
+            FeestjesOverzichtVM vm = new FeestjesOverzichtVM();
+            vm.GetFeestjes();
+            Root.DataContext = vm;
+
             mapIconStreamReferenceParty = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/feestpin.png"));
         }
 
@@ -58,6 +65,7 @@ namespace BOBApp.Views
                 MapFeestOverzicht.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
             }
 
+            
             //Feestjes ophalen
             List<Party> feestjes = await PartyRepository.GetParties();
 
@@ -83,7 +91,7 @@ namespace BOBApp.Views
 
                 MapIcon mapIconFeestLocation = new MapIcon();
                 mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
                 mapIconFeestLocation.Image = mapIconStreamReferenceParty;
                 MapFeestOverzicht.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
             }
