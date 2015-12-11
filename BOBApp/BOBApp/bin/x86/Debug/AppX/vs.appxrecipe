@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-11T10:41:36.374</Modified>
+      <Modified>2015-12-11T10:45:41.878</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -86,7 +86,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-11T10:41:36.363</Modified>
+      <Modified>2015-12-11T10:45:41.871</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
@@ -102,7 +102,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-12-11T10:41:34.109</Modified>
+      <Modified>2015-12-11T10:45:39.869</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
@@ -166,7 +166,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-11T10:41:35.565</Modified>
+      <Modified>2015-12-11T10:45:41.189</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\Styles\fonts\Raleway-Bold.otf">
       <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>

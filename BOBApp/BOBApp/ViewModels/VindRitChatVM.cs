@@ -46,6 +46,7 @@ namespace BOBApp.ViewModels
             {
                 GetChatComments();
                 this.ChatComment.Comment = "";
+                RaisePropertyChanged("ChatComment");
                
             }
             return res.Success;
