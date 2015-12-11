@@ -65,6 +65,7 @@ namespace BOBApp.ViewModels
         private async void GetCities()
         {
             this.Cities = await CityRepository.GetCities();
+            this.Cities.Sort((a, b) => a.Name.CompareTo(b.Name));
 
         }
     }
