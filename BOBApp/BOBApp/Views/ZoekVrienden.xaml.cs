@@ -54,7 +54,7 @@ namespace BOBApp.Views
                 MapZoekVriend.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
             }
 
-            //TODO: locaties van vrienden ophalen (Joren) - API nog niet geschreven
+            /*//TODO: locaties van vrienden ophalen (Joren) - API nog niet geschreven
             int aantalvrienden = 0;
             for(int i = 0; i < aantalvrienden; i++)//Alle vrienden overlopen en markers zetten op hun locatie
             {
@@ -63,7 +63,7 @@ namespace BOBApp.Views
                 //mapIconVriendLocation.Title = //Naam van de vriend;
                 mapIconVriendLocation.Image = mapIconStreamReferenceVriend;
                 MapZoekVriend.MapElements.Add(mapIconVriendLocation);
-            }
+            }*/
 
         }
     }

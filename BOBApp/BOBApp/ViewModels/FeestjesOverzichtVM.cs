@@ -48,7 +48,7 @@ namespace BOBApp.ViewModels
                 Party feest = omtezettenfeestjes[i];
 
                 //Feestlocatie opsplitsen (word opgeslagen als string)
-                string[] splittedcoord = feest.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
+                //string[] splittedcoord = feest.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
 
                 //Naam
                /* NaamFeest = feest.Name;

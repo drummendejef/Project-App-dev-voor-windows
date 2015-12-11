@@ -25,7 +25,8 @@
                     <TextBlock Text="{Binding Organisator}" Margin="85,20,0,0"/>
                     <TextBlock Text="Aanwezig: " Margin="0,40,0,0"/>
                     <TextBlock Text="{Binding Amount}" Margin="85,40,0,0"/>
-                    <Button Content="Facebook(doetnogniets)" Margin="0,60,0,0"/>
+                    <!--<Button Content="Facebook(doetnogniets)" Click="" Margin="0,60,0,0"/>-->
+                    <HyperlinkButton Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="0,60,0,0" />
                 </Grid>
             </ContentControl>
         </DataTemplate>
