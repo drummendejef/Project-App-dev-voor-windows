@@ -36,7 +36,7 @@ namespace BOBApp.ViewModels
         {
             //Stap 1. Toestemming vragen voor locatie te krijgen
             isLocationGiven = true;//Moet op false staan, maar even op true zetten voor de commit
-            //LocatieToestemmingVragen();
+            LocatieToestemmingVragen();
 
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
             RaisePropertyChanged("Email");
@@ -76,11 +76,8 @@ namespace BOBApp.ViewModels
             {
                 User user = await UserRepository.GetUser();
                 MainViewVM.USER = user;
-                //navigate to ritten
                 Messenger.Default.Send<GoToPage>(new GoToPage()
                 {
-                    //Verander naar iets anders afhankelijk van wat je wil testen, zolang navigatie niet werkt ( MainView is de default)
-                    //Name = "Profiel"
                     Name = "MainView"
                 });
             }

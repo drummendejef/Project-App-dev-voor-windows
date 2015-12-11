@@ -28,50 +28,116 @@ namespace BOBApp.Views
             this.InitializeComponent();
         }
 
-        private void Akkoord_checked(object sender, RoutedEventArgs e)//Gebruiker heeft op de "akkoord" radiobutton geklikt.
+        private void textBoxNaam_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //Alle mogelijke fouten overlopen.
             if (textBoxNaam.Text.Length <= 2)
             {
-                textBlockError.Text = "Vul een naam in";
-                Debug.WriteLine("Er staat niets in de naam textbox");
-                checkBoxAkkoordVoorwaarden.IsChecked = false;
+                buttonRegistreer.IsEnabled = false;
+
             }
             else if (textBoxVoornaam.Text.Length <= 1)
             {
-                textBlockError.Text = "Vul een Voornaam in";
-                Debug.WriteLine("Er staat niets in de textboxVoornaam");
-                checkBoxAkkoordVoorwaarden.IsChecked = false;
+                buttonRegistreer.IsEnabled = false;
+
             }
             else if (textBoxEmail.Text.Length <= 5)
             {
-                textBlockError.Text = "Vul een Emailadres in";
-                Debug.WriteLine("Er staat niets in de Email textbox");
-                checkBoxAkkoordVoorwaarden.IsChecked = false;
+                buttonRegistreer.IsEnabled = false;
+
             }
             else if (textBoxGSMnr.Text.Length <= 4)
             {
-                textBlockError.Text = "Vul een GSM nummer in";
-                Debug.WriteLine("Er staat niets in de GSM nummer");
-                checkBoxAkkoordVoorwaarden.IsChecked = false;
+                buttonRegistreer.IsEnabled = false;
+
             }
             else
             {
                 buttonRegistreer.IsEnabled = true;
-                textBlockError.Text = "";
             }
-
-
-
-#if DEBUG
-            Debug.WriteLine("Akkoord checkbox checked");
-#endif
         }
 
-        private void Akkoord_unchecked(object sender, RoutedEventArgs e)//Gebruiker heeft de "akkoord" radiobutton ontklikt.
+        private void textBoxVoornaam_TextChanged(object sender, TextChangedEventArgs e)
         {
-            buttonRegistreer.IsEnabled = false;
+            if (textBoxNaam.Text.Length <= 2)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else
+            {
+                buttonRegistreer.IsEnabled = true;
+            }
         }
 
+        private void textBoxEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBoxNaam.Text.Length <= 2)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else
+            {
+                buttonRegistreer.IsEnabled = true;
+            }
+        }
+
+        private void textBoxGSMnr_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBoxNaam.Text.Length <= 2)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else
+            {
+                buttonRegistreer.IsEnabled = true;
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace BOBApp.ViewModels
     public class RegisterVM : ViewModelBase
     {
         //Properties
-        private Task RegisterTask;
+        private Boolean RegisterTask;
         private Task LoginTask;
         public RelayCommand RegisterCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
@@ -60,31 +60,31 @@ namespace BOBApp.ViewModels
                 Name = "Login"
             });
         }
-        public void Register()
+        public async void Register()
         {
-            /* if (NewRegister.Lastname == null)
-             {
-                 Debug.WriteLine("foutje");
-             }*/
-
             NewRegister.IsBob = false;
-            RegisterTask = RegisterUser(NewRegister);
-            if(RegisterTask.IsCompleted == true)
+            RegisterTask = await RegisterUser(NewRegister);
+         /*   if(RegisterTask == true)
             {
                LoginTask = LoginUser(NewRegister.Email, NewRegister.Password);
-            }
+            }*/
         }
         private async Task<Boolean> RegisterUser(Register register)
         {
             if(PasswordRepeat == null)
             {
                 this.Error = Libraries.Error.PasswordEmpty;
+                RaisePropertyChanged("Error");
+
                 return false;
             }
             else if (Password == PasswordRepeat)
             {
                 register.Password = Password;
-                register.AutoType_ID = SelectedAutoType.ID;
+                if (SelectedAutoType != null)
+                {
+                    register.AutoType_ID = SelectedAutoType.ID;
+                }
                 Response res = await UserRepository.Register(register);
                 if (res.Success == true)
                 {
@@ -93,6 +93,8 @@ namespace BOBApp.ViewModels
                 else
                 {
                     this.Error = res.Error;
+                    RaisePropertyChanged("Error");
+
                 }
 
                 return res.Success;
@@ -100,6 +102,8 @@ namespace BOBApp.ViewModels
             else
             {
                 this.Error = Libraries.Error.Password;
+                RaisePropertyChanged("Error");
+
                 return false;
             }
 
@@ -124,6 +128,8 @@ namespace BOBApp.ViewModels
             else
             {
                 this.Error = res.Error;
+                RaisePropertyChanged("Error");
+
             }
 
             return res.Success;
@@ -139,9 +145,6 @@ namespace BOBApp.ViewModels
             {
                 this.Merken.Add(merk);
             }
-
         }
-
-
     }
 }
