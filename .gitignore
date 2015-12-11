@@ -66,3 +66,4 @@ BOBApp/BOBApp/bin/x86/Debug/BOBApp.exe
 # Debug
 BOBApp/BOBApp/obj/x86/Debug/*
 BOBApp/BOBApp/bin/x86/Debug/QueryString.NETCore.dll
+BOBApp/.vs/BOBApp/v14/.suo
