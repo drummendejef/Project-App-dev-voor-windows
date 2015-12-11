@@ -52,16 +52,16 @@ namespace Libraries.Repositories
 
 
         #region post
-        public static async Task<List<Bob>> FindBobs(int rating, DateTime date, int BobsType_ID, Location location)
+        public static async Task<List<Bob>> FindBobs(int rating, DateTime minDate, int BobsType_ID, Location location, int maxDistance)
         {
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri(URL.BASE);
 
-                var definition = new { Rating = rating, Date= date, BobsType_ID= BobsType_ID, Location= JsonConvert.SerializeObject(location) };
+                var definition = new { Rating = rating, MinDate= minDate, BobsType_ID= BobsType_ID, Location= JsonConvert.SerializeObject(location), MaxDistance=maxDistance };
                 var newObject = JsonConvert.SerializeObject(definition);
 
-                HttpResponseMessage result = await client.PostAsync(URL.CHATROOMS, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                HttpResponseMessage result = await client.PostAsync(URL.BOBS_FIND, new StringContent(newObject, Encoding.UTF8, "application/json"));
                 string json = await result.Content.ReadAsStringAsync();
                 List<Bob> data = JsonConvert.DeserializeObject<List<Bob>>(json);
 

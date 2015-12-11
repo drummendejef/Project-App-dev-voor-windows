@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
+using Windows.Devices.Geolocation;
 using Windows.Storage;
 
 namespace BobWorker
@@ -24,7 +25,8 @@ namespace BobWorker
 
             BackgroundTaskDeferral deferal = taskInstance.GetDeferral();
 
-            Location location = new Location() { Latitude = 50, Longitude = 13 };
+
+            Location location = Location.Current;
 
             Response ok = await UserRepository.PostLocation(location);
 

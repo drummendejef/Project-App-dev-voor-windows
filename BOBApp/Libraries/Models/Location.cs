@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 
 namespace Libraries.Models
 {
@@ -11,9 +12,9 @@ namespace Libraries.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
-        public static explicit operator Location(string v)
-        {
-            throw new NotImplementedException();
-        }
+
+        public static Location Current = null;
+       
+
     }
 }

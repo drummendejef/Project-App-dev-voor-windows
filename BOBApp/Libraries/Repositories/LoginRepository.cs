@@ -17,18 +17,27 @@ namespace Libraries.Repositories
        
         public static async Task<Response> Login(string email, string password)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
-                var newObject = JsonConvert.SerializeObject(new {Email=email,Password =password });
-           
-                HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGIN,new StringContent(newObject, Encoding.UTF8, "application/json"));
-                string json = await result.Content.ReadAsStringAsync();
-                Response data = JsonConvert.DeserializeObject<Response>(json);
+                    var newObject = JsonConvert.SerializeObject(new { Email = email, Password = password });
 
-                return data;
+                    HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGIN, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
             }
+            catch (Exception ex ) 
+            {
+
+                return new Response() { Error = "Server offline", Success = false };
+            }
+           
 
 
         }

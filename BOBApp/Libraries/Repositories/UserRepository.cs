@@ -41,13 +41,13 @@ namespace Libraries.Repositories
         {
             using (HttpClient client = new HttpClient())
             {
-                var definition = new { Users_ID = 0, Location = "", Added = "" };
+                var definition = new { Users_ID = 0, Location = Location.Current, Added = "" };
 
 
                 var result = client.GetAsync(URL.USER_LOCATION);
                 string json = await result.Result.Content.ReadAsStringAsync();
                 var data = JsonConvert.DeserializeAnonymousType(json, definition);
-                Location location = (Models.Location)data.Location;
+                Location location = data.Location as Location;
                 return location;
             }
         }

@@ -22,11 +22,13 @@
     <RootPropertyPathName Name="Cities_ID" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
+    <RootPropertyPathName Name="FacebookLinkID" />
     <RootPropertyPathName Name="Amount" />
     <RootPropertyPathName Name="Organisator" />
     <RootPropertyPathName Name="Feestjes" />
     <RootPropertyPathName Name="ZoekVeld" />
     <RootPropertyPathName Name="LoginVM" />
+    <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="RegisterCommand" />
     <RootPropertyPathName Name="isLocationGiven" />
     <RootPropertyPathName Name="LoginCommand" />
@@ -52,8 +54,8 @@
     <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="NewRegister" />
-    <RootPropertyPathName Name="Error" />
     <RootPropertyPathName Name="VindRitVM" />
+    <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="GoFilterCommand" />
     <RootPropertyPathName Name="GoChatCommand" />
     <RootPropertyPathName Name="VindRitChatVM" />
@@ -330,6 +332,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Children" />
+      <RootProperty Name="Orientation" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
       <RootProperty Name="Source" />
@@ -400,6 +403,11 @@
       <RootMethod Name="SetLocation" />
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
+    <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
+      <RootProperty Name="Content" />
+      <RootProperty Name="NavigateUri" />
+      <RootProperty Name="Margin" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapItemsControl">
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />

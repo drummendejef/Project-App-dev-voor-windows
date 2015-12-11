@@ -49,7 +49,7 @@
             <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" PlaceholderText="Wachtwoord" Height="32" VerticalAlignment="Top" Width="250" RelativePanel.Below="textBoxEmail" Margin="20,10" RelativePanel.AlignHorizontalCenterWithPanel="True" Password="{Binding Pass,Mode=TwoWay}" Style="{StaticResource passwordBox}"/>
             <Button Style="{ThemeResource login_button}" x:Name="buttonAanmelden" IsEnabled="{Binding isLocationGiven}" Content="Aanmelden" Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBox" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="20,10" Command="{Binding LoginCommand}" RelativePanel.AlignLeftWith="passwordBox" RelativePanel.AlignRightWith=""/>
             <Button Style="{ThemeResource login_button}" x:Name="buttonRegistreren" Content="Registreren"  Width="250" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Command="{Binding RegisterCommand}"/>
-
+            <TextBlock Style="{ThemeResource textblock}" Foreground="White" Text="{Binding Error, Mode=TwoWay}"  Height="30" Margin="10" RelativePanel.Below="buttonRegistreren" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         </RelativePanel>
     </Grid>
 </Page>

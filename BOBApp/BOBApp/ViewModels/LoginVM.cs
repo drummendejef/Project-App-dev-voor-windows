@@ -16,6 +16,7 @@ using Microsoft.QueryStringDotNET; //QueryString.NET
 using Windows.UI.Core;
 using Libraries.Repositories;
 using Libraries.Models;
+using Windows.Networking.Connectivity;
 
 namespace BOBApp.ViewModels
 {
@@ -41,6 +42,7 @@ namespace BOBApp.ViewModels
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
             RaisePropertyChanged("Email");
             RaisePropertyChanged("Pass");
+            RaisePropertyChanged("Error");
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(Register);
           //  Login_FacebookCommand = new RelayCommand(Login_Facebook);
@@ -71,39 +73,78 @@ namespace BOBApp.ViewModels
 
         private async Task<Boolean> Login_task(string email, string pass)
         {
-            Response res = await LoginRepository.Login(email, md5.Create(pass));
-            if (res.Success == true)
+            bool ok= serverOnline();
+            bool internet = IsInternet();
+            if (ok == true && internet==true)
             {
-                User user = await UserRepository.GetUser();
-                MainViewVM.USER = user;
-                Messenger.Default.Send<GoToPage>(new GoToPage()
+                Response res = await LoginRepository.Login(email, md5.Create(pass));
+                if (res.Success == true)
                 {
-                    Name = "MainView"
-                });
+                    Geolocator geolocator = new Geolocator();
+                    Geoposition pos = await geolocator.GetGeopositionAsync();
+                    Location current = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                    Location.Current = current;
+
+                    User user = await UserRepository.GetUser();
+                    MainViewVM.USER = user;
+                    Messenger.Default.Send<GoToPage>(new GoToPage()
+                    {
+                        Name = "MainView"
+                    });
+                }
+                else
+                {
+                    if (res.Error == "Invalid Login")
+                    {
+                        this.Error = "Gegeven email en wachtwoord komen niet overeen of bestaan niet.";
+                        RaisePropertyChanged("Error");
+                    }
+                    if (res.Error == "Server offline")
+                    {
+                        this.Error = "De server is offline";
+                        RaisePropertyChanged("Error");
+                    }
+
+                }
+
+                return res.Success;
             }
             else
             {
-                this.Error = res.Error;
+                this.Error = "Server is offline, even geduld aub";
+                RaisePropertyChanged("Error");
+                return false;
             }
-
-            return res.Success;
+            
         }
-  /*      private async Task<Boolean> Login_Facebook_task()
-        {
-            Boolean ok = await LoginRepository.LoginFacebook();
-            if (ok == true)
-            {
-                User user = await UserRepository.GetUser();
-                MainViewVM.USER = user;
-                //navigate to ritten
-                Messenger.Default.Send<GoToPage>(new GoToPage()
-                {
-                    Name = "MainView"
-                });
-            }
 
-            return ok;
-        } */
+        private bool serverOnline()
+        {
+            return true;
+        }
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
+        }
+
+        /*      private async Task<Boolean> Login_Facebook_task()
+     {
+         Boolean ok = await LoginRepository.LoginFacebook();
+         if (ok == true)
+         {
+             User user = await UserRepository.GetUser();
+             MainViewVM.USER = user;
+             //navigate to ritten
+             Messenger.Default.Send<GoToPage>(new GoToPage()
+             {
+                 Name = "MainView"
+             });
+         }
+
+         return ok;
+     } */
 
 
         //Een (eenmalige) pop up tonen om toestemming aan de gebruiker te vragen voor zijn locatie
