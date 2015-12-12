@@ -29,7 +29,7 @@ namespace Libraries.Repositories
         {
             using (HttpClient client = new HttpClient())
             {
-                var result = client.GetAsync(URL.USERS + "/" + id.ToString());
+                var result = client.GetAsync(URL.BOBS + "/" + id.ToString());
                 string json = await result.Result.Content.ReadAsStringAsync();
                 Models.Bob.All data = JsonConvert.DeserializeObject<Models.Bob.All>(json);
                 return data;

@@ -130,6 +130,7 @@ namespace BOBApp
             switch (message.Name)
             {
                 case "Bestemmingen":
+            
                     rootFrame.Navigate(typeof(Bestemmingen));
                     break;
                 case "Bestemmingen_Nieuw":
@@ -165,6 +166,9 @@ namespace BOBApp
                     break;
                 case "VindRitChat":
                     rootFrame.Navigate(typeof(VindRitChat));
+                    break;
+                case "VindRitBob":
+                    rootFrame.Navigate(typeof(VindRitBob));
                     break;
                 case "ZoekVrienden":
                     rootFrame.Navigate(typeof(ZoekVrienden));

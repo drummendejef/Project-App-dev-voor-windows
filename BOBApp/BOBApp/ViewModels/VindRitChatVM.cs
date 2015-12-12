@@ -1,19 +1,23 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BOBApp.Views;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Libraries;
 using Libraries.Models;
 using Libraries.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
     public class VindRitChatVM : ViewModelBase
     {
         //Properties
-        public static int ID;
+        public static int? ID;
 
         public string SearchLocation { get; set; }
         private Task task;
@@ -26,17 +30,48 @@ namespace BOBApp.ViewModels
         //Constructor
         public VindRitChatVM()
         {
+           
             AddCommentCommand = new RelayCommand(AddComment);
-            //nieuwe chatroom virutaal aanmaken
-            MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID };
-
-            this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
-            GetChatComments();
+           
+            getChatroom();
         }
 
 
 
+
         //Methods
+        private async void getChatroom()
+        {
+            if (VindRitChatVM.ID == null)
+            {
+                try
+                {
+                    string json = await Localdata.read("chatroom.json");
+                    var definition = new { ID = 0 };
+                    var data = JsonConvert.DeserializeAnonymousType(json, definition);
+                    VindRitChatVM.ID = data.ID;
+                }
+                catch (Exception ex)
+                {
+
+                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+                    rootFrame.Navigate(typeof(VindRit));
+                }
+
+            }
+
+
+
+            MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
+
+            this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
+            GetChatComments();
+
+
+
+        }
+
+
         private void AddComment()
         {
             //add comment to db

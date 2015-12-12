@@ -52,7 +52,7 @@ namespace BOBApp.ViewModels
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
 
-            SendLocation();
+           
 
         }
 
@@ -123,19 +123,6 @@ namespace BOBApp.ViewModels
                 return false;
             }
             
-        }
-
-        private async void SendLocation()
-        {
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
-            if (location != null)
-            {
-                Response ok = await UserRepository.PostLocation(location);
-                Debug.WriteLine(ok);
-            }
         }
 
         private bool serverOnline()

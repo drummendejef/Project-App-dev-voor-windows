@@ -18,12 +18,12 @@
     </Page.Resources>
 
     <RelativePanel Background="White">
-
-        <TextBlock  RelativePanel.AlignHorizontalCenterWithPanel="True"   x:Name="textBlock1" Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Met volgende vrienden: " VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+        <ComboBox Width="400" x:Name="cboDestinations"  RelativePanel.AlignHorizontalCenterWithPanel="True"  ItemsSource="{Binding Destinations,Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBobsType}" />
+        <TextBlock RelativePanel.Below="cboDestinations"  RelativePanel.AlignHorizontalCenterWithPanel="True"   x:Name="textBlock1" Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Met volgende vrienden: " VerticalAlignment="Top" Style="{StaticResource textblock}"/>
         <AutoSuggestBox RelativePanel.Below="textBlock1" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="textBoxSelecteerVrienden" Margin="10,0" Height="32" ItemsSource="{Binding Friends, Mode=TwoWay}" Text="{Binding SelectedFriendText, Mode=TwoWay}" DisplayMemberPath="User2" TextMemberPath="User2" Width="400" />
         <Button  Content="Add" Command="{Binding AddFriendCommand}" Margin="10,0" Height="32" Width="auto" RelativePanel.Below="textBlock1"  RelativePanel.RightOf="textBoxSelecteerVrienden" RelativePanel.AlignRightWithPanel="True"/>
 
-        <ListView Height="300" x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignHorizontalCenterWithPanel="True" MinWidth="500" RelativePanel.Above="" />
+        <ListView Height="100" x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignHorizontalCenterWithPanel="True" MinWidth="500" RelativePanel.Above="" />
         <TextBlock x:Name="textBlockMinRating" Margin="30,10" Text="Minimum rating van gebruikers:"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="" Style="{StaticResource textblock}" RelativePanel.Below="listViewGeselecteerdeVrienden" />
         <Slider x:Name="sliderMinRating" Margin="492,10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="" Maximum="5" RelativePanel.Below="textBlockMinRating"  />
         <TextBlock x:Name="textBlockLaatstVervoer" Margin="10" Text="Wanneer wil je ten laatste vervoer?" RelativePanel.Below="sliderMinRating" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}"  />

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Libraries.Models.relations;
 
 namespace Libraries.Repositories
 {
@@ -54,10 +55,52 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+        public static async Task<Response> Difference(Location from, Location to)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var newObject = JsonConvert.SerializeObject(new { From =from, To = to });
+
+                HttpResponseMessage result = await client.PostAsync(URL.TRIPS_DIFFERENECE, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
+
+        public static async Task<Response> PostLocation(Trips_Locations trip)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(trip);
+
+                HttpResponseMessage result = await client.PostAsync(URL.TRIPS_LOCATION, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
 
         #endregion
+
+        public static async Task<Response> PutActive(int tripsID, bool active)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var newObject = JsonConvert.SerializeObject(new { TripsID = tripsID, Active = active });
+
+                HttpResponseMessage result = await client.PostAsync(URL.TRIPS_ACTIVE, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
+
     }
-
-
 
 }

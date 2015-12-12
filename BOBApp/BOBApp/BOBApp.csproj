@@ -118,7 +118,9 @@
     </Compile>
     <Compile Include="Messages\Dialog.cs" />
     <Compile Include="Messages\GoToPage.cs" />
+    <Compile Include="Messages\NavigateTo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Windows\Navigation.cs" />
     <Compile Include="ViewModels\BestemmingenVM.cs" />
     <Compile Include="ViewModels\FeestjesOverzichtVM.cs" />
     <Compile Include="ViewModels\MainViewVM.cs" />
@@ -160,6 +162,9 @@
     </Compile>
     <Compile Include="Views\VindRit.xaml.cs">
       <DependentUpon>VindRit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VindRitBob.xaml.cs">
+      <DependentUpon>VindRitBob.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VindRitChat.xaml.cs">
       <DependentUpon>VindRitChat.xaml</DependentUpon>
@@ -243,6 +248,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\VindRit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VindRitBob.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

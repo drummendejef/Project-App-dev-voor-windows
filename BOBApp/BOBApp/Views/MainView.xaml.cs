@@ -56,7 +56,6 @@ namespace BOBApp.Views
             
         }
 
-
         private void OnMenuButtonClicked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = !ShellSplitView.IsPaneOpen;
@@ -217,6 +216,21 @@ namespace BOBApp.Views
             {
                 user.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (e.Parameter != null)
+            {
+                bool reload = (bool)e.Parameter;
+
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                {
+                    Reload = reload
+                });
+            }
+
+            base.OnNavigatedTo(e);
         }
     }
 }

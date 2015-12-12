@@ -8,6 +8,8 @@ namespace Libraries
 {
     public class URL
     {
+        public static string SOCKET = "http://bob-2u15832u.cloudapp.net/";
+
         public static string BASE = "http://bob-2u15832u.cloudapp.net/api";
         public static string AUTH_LOGIN = BASE + "/auth/local";
         public static string AUTH_FACEBOOK = BASE + "/auth/facebook";
@@ -25,7 +27,11 @@ namespace Libraries
 
 
         public static string TRIPS = BASE + "/trips";
+        public static string TRIPS_LOCATION = BASE + "/trips/location";
+        public static string TRIPS_ACTIVE = BASE + "/trips/active";
+        public static string TRIPS_DIFFERENECE = BASE + "/trips/difference";
         public static string CURRENTTRIP = BASE + "/trips/current";
+      
 
         public static string PARTIES = BASE + "/parties";
         public static string PARTIES_AREA = BASE + "/parties/area";

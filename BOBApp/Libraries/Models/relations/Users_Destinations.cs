@@ -17,6 +17,6 @@ namespace Libraries.Models.relations
         //optional
 
         public int Cities_ID { get; set; }
-        public string Location { get; set; }
+        public Location Location { get; set; }
     }
 }

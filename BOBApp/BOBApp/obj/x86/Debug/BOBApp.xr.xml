@@ -60,6 +60,7 @@
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="SelectedPartyString" />
     <RootPropertyPathName Name="Parties" />
+    <RootPropertyPathName Name="BobRequests" />
     <RootPropertyPathName Name="VindRitChatVM" />
     <RootPropertyPathName Name="AddCommentCommand" />
     <RootPropertyPathName Name="ChatComment" />
@@ -443,6 +444,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="ContentTransitions" />
+      <RootEvent Name="Navigated" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition">
@@ -478,6 +480,7 @@
       <RootProperty Name="Command" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
+    <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="Margin" />
       <RootProperty Name="ItemsSource" />

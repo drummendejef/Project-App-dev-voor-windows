@@ -148,6 +148,8 @@
     <Compile Include="Repositories\TripRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Localdata.cs" />
+    <Compile Include="Socket.cs" />
     <Compile Include="URL.cs" />
     <EmbeddedResource Include="Properties\Libraries.rd.xml" />
   </ItemGroup>
