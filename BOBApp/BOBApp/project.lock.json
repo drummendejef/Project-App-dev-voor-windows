@@ -11,7 +11,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -295,9 +295,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -1652,7 +1652,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -1979,9 +1979,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -3383,7 +3383,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -3696,9 +3696,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -5086,7 +5086,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -5418,9 +5418,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -6822,7 +6822,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -7135,9 +7135,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -8525,7 +8525,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -8857,9 +8857,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -10261,7 +10261,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.21": {
+      "EngineIoClientDotNet/0.9.18": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -10574,9 +10574,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.12": {
+      "SocketIoClientDotNet/0.9.11": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.21, )",
+          "EngineIoClientDotNet": "[0.9.18, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -11972,15 +11972,13 @@
         "package/services/metadata/core-properties/99be0c88b2fd41c8b07c42071005ee47.psmdcp"
       ]
     },
-    "EngineIoClientDotNet/0.9.21": {
-      "sha512": "q3COYzIBre9M4aBx4o30DYOUyBT8PNJ0gWGt6XvreB3qm0shNx1X8kEQN5FGMXREU+EVN+h+nL7WMOjYt3BISg==",
+    "EngineIoClientDotNet/0.9.18": {
+      "sha512": "fup8ZUOc93xUDz7MQzh2Co0v4/KNFGx7vDIRz14BHYlCF5tskdpY8rPCh+eUXnzzveExC+M395g+RawLktGxVg==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
         "EngineIoClientDotNet.nuspec",
-        "lib/monoandroid10/EngineIoClientDotNet.dll",
-        "lib/monotouch10/EngineIoClientDotNet.dll",
         "lib/net35/EngineIoClientDotNet.dll",
         "lib/net40/EngineIoClientDotNet.dll",
         "lib/net45/EngineIoClientDotNet.dll",
@@ -11988,8 +11986,7 @@
         "lib/portable-win81+wpa81/EngineIoClientDotNet.dll",
         "lib/portable-wpa81+wp81/EngineIoClientDotNet.dll",
         "lib/windowsphone8/EngineIoClientDotNet.dll",
-        "lib/xamarinios10/EngineIoClientDotNet.dll",
-        "package/services/metadata/core-properties/76a0f22f32074643b4f90d6d6968abe8.psmdcp"
+        "package/services/metadata/core-properties/5276631303544040ad2e07a3f79c5804.psmdcp"
       ]
     },
     "Microsoft.ApplicationInsights/1.2.3": {
@@ -12904,14 +12901,12 @@
         "QueryString.NET.nuspec"
       ]
     },
-    "SocketIoClientDotNet/0.9.12": {
-      "sha512": "22ORJxzNFlNk8CTFU2wYmGve+rF+U7Uy0fy2XyMdFQdTKIiGZlV2qOFqrLz2gc8M6aqips9u3GfbMdZUxnzxsw==",
+    "SocketIoClientDotNet/0.9.11": {
+      "sha512": "MDCSuBWpY+EoiFl7j2IxxAbglbPVwFXTuaO8xQJOgBaLrRe90CYPZWcVf71DvUKH944D7M4ZLWkPvglxCZBt7g==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "lib/monoandroid10/SocketIoClientDotNet.dll",
-        "lib/monotouch10/SocketIoClientDotNet.dll",
         "lib/net35/SocketIoClientDotNet.dll",
         "lib/net40/SocketIoClientDotNet.dll",
         "lib/net45/SocketIoClientDotNet.dll",
@@ -12919,8 +12914,7 @@
         "lib/portable-win81+wpa81/SocketIoClientDotNet.dll",
         "lib/portable-wpa81+wp81/SocketIoClientDotNet.dll",
         "lib/windowsphone8/SocketIoClientDotNet.dll",
-        "lib/xamarinios10/SocketIoClientDotNet.dll",
-        "package/services/metadata/core-properties/a9dcae1fc0004815a877b19edd742b79.psmdcp",
+        "package/services/metadata/core-properties/576c431cfb9945fab3487a1fb573d4ad.psmdcp",
         "SocketIoClientDotNet.nuspec"
       ]
     },
@@ -15630,7 +15624,7 @@
       "Newtonsoft.Json >= 7.0.1",
       "NotificationsExtensions.Win10 >= 10586.0.0",
       "QueryString.NET >= 1.0.0",
-      "SocketIoClientDotNet >= 0.9.12"
+      "SocketIoClientDotNet >= 0.9.11"
     ],
     "UAP,Version=v10.0": []
   }

@@ -22,21 +22,21 @@
     <AppXManifest Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-14T19:09:51.090</Modified>
+      <Modified>2015-12-14T19:17:10.642</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-12-14T19:09:43.022</Modified>
+      <Modified>2015-12-14T19:17:09.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\CommonServiceLocator\1.3.0\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll">
       <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
       <Modified>2015-10-02T06:47:27.206</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\EngineIoClientDotNet\0.9.21\lib\netcore45\EngineIoClientDotNet.dll">
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\EngineIoClientDotNet\0.9.18\lib\netcore45\EngineIoClientDotNet.dll">
       <PackagePath>EngineIoClientDotNet.dll</PackagePath>
-      <Modified>2015-12-12T10:56:34.175</Modified>
+      <Modified>2015-12-14T19:16:47.287</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\Microsoft.ApplicationInsights\1.2.3\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -130,9 +130,9 @@
       <PackagePath>QueryString.NETCore.dll</PackagePath>
       <Modified>2015-12-04T10:18:20.396</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\SocketIoClientDotNet\0.9.12\lib\netcore45\SocketIoClientDotNet.dll">
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\SocketIoClientDotNet\0.9.11\lib\netcore45\SocketIoClientDotNet.dll">
       <PackagePath>SocketIoClientDotNet.dll</PackagePath>
-      <Modified>2015-12-12T10:56:34.144</Modified>
+      <Modified>2015-12-14T19:16:47.266</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\System.AppContext\4.0.0\lib\netcore50\System.AppContext.dll">
       <PackagePath>System.AppContext.dll</PackagePath>
@@ -488,7 +488,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
-      <Modified>2015-12-14T19:09:38.622</Modified>
+      <Modified>2015-12-14T19:13:44.161</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\NotificationsExtensions.Win10\10586.0.0\lib\uap10.0\NotificationsExtensions.winmd">
       <PackagePath>NotificationsExtensions.winmd</PackagePath>
@@ -496,7 +496,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\BobWorker.winmd">
       <PackagePath>BobWorker.winmd</PackagePath>
-      <Modified>2015-12-14T19:09:39.482</Modified>
+      <Modified>2015-12-14T19:13:44.848</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -610,11 +610,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-14T19:09:44.172</Modified>
+      <Modified>2015-12-14T19:17:10.360</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-14T19:09:51.083</Modified>
+      <Modified>2015-12-14T19:17:10.633</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
