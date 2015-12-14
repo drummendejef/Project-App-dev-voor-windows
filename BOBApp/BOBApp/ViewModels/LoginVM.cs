@@ -34,6 +34,8 @@ namespace BOBApp.ViewModels
         public string Pass { get; set; }
         public string Error { get; set; }
         public Boolean isLocationGiven { get; set; }
+        public bool Loading { get; set; }
+        public bool EnableLogin { get; set; }
 
         //Constructor
         public LoginVM()
@@ -46,6 +48,9 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Email");
             RaisePropertyChanged("Pass");
             RaisePropertyChanged("Error");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("EnableLogin");
+            this.EnableLogin = true;
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(Register);
           //  Login_FacebookCommand = new RelayCommand(Login_Facebook);
@@ -80,6 +85,11 @@ namespace BOBApp.ViewModels
         {
             this.Error = "";
             RaisePropertyChanged("Error");
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+            this.EnableLogin = false;
+            RaisePropertyChanged("EnableLogin");
+
 
             bool ok= serverOnline();
             bool internet = IsInternet();
@@ -88,6 +98,12 @@ namespace BOBApp.ViewModels
                 Response res = await LoginRepository.Login(email, md5.Create(pass));
                 if (res.Success == true)
                 {
+                    Loading = false;
+                    RaisePropertyChanged("Loading");
+
+                    this.EnableLogin = true;
+                    RaisePropertyChanged("EnableLogin");
+
                     var json = JsonConvert.SerializeObject(new { Email =email, Password= md5.Create(pass) });
                     await saveStringToLocalFile("user.json", json);
 
@@ -101,13 +117,29 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
+                  
+
+                    if(res.Error== "connect ETIMEDOUT")
+                    {
+                        this.Error = "Server offline error";
+                        RaisePropertyChanged("Error");
+
+                        task = Login_task(this.Email, this.Pass);
+                    }
+
                     if (res.Error == "Invalid Login")
                     {
+                        this.EnableLogin = true;
+                        RaisePropertyChanged("EnableLogin");
+
                         this.Error = "Gegeven email en wachtwoord komen niet overeen of bestaan niet.";
                         RaisePropertyChanged("Error");
                     }
                     if (res.Error == "Server offline")
                     {
+                        this.EnableLogin = true;
+                        RaisePropertyChanged("EnableLogin");
+
                         this.Error = "De server is offline";
                         RaisePropertyChanged("Error");
                     }
@@ -166,7 +198,7 @@ namespace BOBApp.ViewModels
                 case GeolocationAccessStatus.Allowed: //De gebruiker heeft ons toegang gegeven
 
                     //Mag verdergaan en inloggen
-                    isLocationGiven = true;
+                    this.EnableLogin = true;
 
                     //aanmaken Geolocator
                     Geolocator geolocator = new Geolocator();

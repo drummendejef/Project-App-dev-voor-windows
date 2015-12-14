@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,36 @@ namespace Libraries.Models.relations
         public DateTime Added { get; set; }
         public string Name { get; set; }
 
+
         //optional
 
         public int Cities_ID { get; set; }
-        public Location Location { get; set; }
+
+
+        private object _Location;
+
+        public object Location
+        {
+            get { return _Location; }
+            set {
+
+                try
+                {
+                    string v = value.ToString();
+                    _Location = JsonConvert.DeserializeObject<Location>(v);
+                }
+                catch (Exception)
+                {
+
+                    
+                }
+              
+
+
+            }
+
+        }
+
+
     }
 }

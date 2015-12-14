@@ -16,7 +16,7 @@ namespace BOBApp.ViewModels
         {
 
         }
-
+    
         //Methods
     }
 }

@@ -8,6 +8,7 @@
     mc:Ignorable="d"
     DataContext="{Binding PuntenVM, Mode=OneWay, Source={StaticResource Locator}}">
 
+    
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

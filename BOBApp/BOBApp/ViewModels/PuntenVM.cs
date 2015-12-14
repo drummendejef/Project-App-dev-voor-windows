@@ -17,6 +17,7 @@ namespace BOBApp.ViewModels
         public string PointsText { get; set; }
 
         //Constructor
+
         public PuntenVM()
         {
            

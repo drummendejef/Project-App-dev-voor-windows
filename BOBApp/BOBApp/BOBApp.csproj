@@ -95,6 +95,7 @@
     </Content>
     <None Include="project.json" />
     <Content Include="Assets\BOBpin.png" />
+    <Content Include="Assets\car.png" />
     <Content Include="Assets\feestpin.png" />
     <Content Include="Assets\userpin.png" />
     <Content Include="Assets\vriendpin.png" />
@@ -120,7 +121,6 @@
     <Compile Include="Messages\GoToPage.cs" />
     <Compile Include="Messages\NavigateTo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\Windows\Navigation.cs" />
     <Compile Include="ViewModels\BestemmingenVM.cs" />
     <Compile Include="ViewModels\FeestjesOverzichtVM.cs" />
     <Compile Include="ViewModels\MainViewVM.cs" />

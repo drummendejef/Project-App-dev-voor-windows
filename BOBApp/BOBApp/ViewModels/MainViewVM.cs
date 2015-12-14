@@ -25,6 +25,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BOBApp.ViewModels
 {
+
     public class MainViewVM:ViewModelBase
     {
         //Properties
@@ -34,6 +35,7 @@ namespace BOBApp.ViewModels
         public static ChatRoom ChatRoom;
         public static Quobject.SocketIoClientDotNet.Client.Socket socket;
         public static Libraries.Socket LatestSocket;
+        public static int searchArea = 10000;
 
         private Task logoffTask;
         public User User { get; set; }
@@ -73,6 +75,11 @@ namespace BOBApp.ViewModels
                     Task task = NavigateAccept();
                 }
                
+            });
+
+            MainViewVM.socket.On("disconnect", (msg) =>
+            {
+                LogOff();
             });
 
             MainViewVM.socket.On("trip_DONE", (msg) =>

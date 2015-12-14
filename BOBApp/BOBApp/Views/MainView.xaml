@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
      DataContext="{Binding MainViewVM, Mode=TwoWay, Source={StaticResource Locator}}">
-
     <Page.Resources>
         <ResourceDictionary Source="ms-appx:///Styles/SplitView.xaml">
             <ResourceDictionary.MergedDictionaries>
@@ -38,14 +37,14 @@
                     <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Afmelden" Command="{Binding LogOffCommand}" />
                 </Grid>
 
-                <RadioButton Tag="&#xe10f;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
-                <RadioButton Tag="&#xe783;" x:Name="bobBiedJeAan" Visibility="Collapsed" Content="Bied je aan" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBiedJeAanChecked" />
+                <RadioButton Tag="&#xE724;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
+                <RadioButton Tag="&#xE724;" x:Name="bobBiedJeAan" Visibility="Collapsed" Content="Bied je aan" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBiedJeAanChecked" />
 
-                <RadioButton Tag="&#xe783;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindVriendenChecked" />
-                <RadioButton Tag="&#xe783;" Content="Mijn ritten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnMijnRittenChecked" />
-                <RadioButton Tag="&#xe783;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnFeestjesInDeBuurtChecked" />
-                <RadioButton Tag="&#xe783;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBestemmingenChecked" />
-                <RadioButton Tag="&#xe783;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
+                <RadioButton Tag="&#xE716;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindVriendenChecked" />
+                <RadioButton Tag="&#xE707;" Content="Mijn ritten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnMijnRittenChecked" />
+                <RadioButton Tag="&#xE909;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnFeestjesInDeBuurtChecked" />
+                <RadioButton Tag="&#xE913;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBestemmingenChecked" />
+                <RadioButton Tag="&#xe77B;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
                 <Button x:Name="Change" Content="User" HorizontalAlignment="Stretch" Click="OnChangeChecked" />
 
             </StackPanel>

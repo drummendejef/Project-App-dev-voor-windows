@@ -26,6 +26,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BOBApp.Views
 {
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -53,7 +54,8 @@ namespace BOBApp.Views
                 AppViewBackButtonVisibility.Visible :
                 AppViewBackButtonVisibility.Collapsed;
 
-            
+
+            IsBob();
         }
 
         private void OnMenuButtonClicked(object sender, RoutedEventArgs e)
@@ -144,7 +146,7 @@ namespace BOBApp.Views
         {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+                ((Frame)ShellSplitView.Content).Navigate(typeof(VindRitBob));
             CheckIsPaneOpen();
         }
 
@@ -160,28 +162,17 @@ namespace BOBApp.Views
 
 
         }
-        bool isBob = MainViewVM.USER.IsBob;
+        bool isBob;
         private async void changeToBob()
         {
-            if(MainViewVM.USER.IsBob == true){
+            isBob = MainViewVM.USER.IsBob;
+
+            if (isBob == true){
 
                 Response ok = await UserRepository.ChanteToBob(isBob);
                 if (ok.Success == true)
                 {
-                    if (isBob == true)
-                    {
-                        //bob
-                        bobBiedJeAan.Visibility = Visibility.Visible;
-                        isBob = false;
-                        Change.Content = "BOB";
-                    }
-                    else
-                    {
-                        //user
-                        bobBiedJeAan.Visibility = Visibility.Collapsed;
-                        isBob = true;
-                        Change.Content = "USER";
-                    }
+                    IsBob();
                 }
 
             }
@@ -201,6 +192,24 @@ namespace BOBApp.Views
            
             
 
+        }
+
+        private void IsBob()
+        {
+            if (isBob == true)
+            {
+                //bob
+                bobBiedJeAan.Visibility = Visibility.Visible;
+                isBob = false;
+                Change.Content = "BOB";
+            }
+            else
+            {
+                //user
+                bobBiedJeAan.Visibility = Visibility.Collapsed;
+                isBob = true;
+                Change.Content = "USER";
+            }
         }
 
 

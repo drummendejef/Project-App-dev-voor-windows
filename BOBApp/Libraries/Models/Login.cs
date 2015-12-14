@@ -15,5 +15,6 @@ namespace Libraries.Models
         public string Cellphone { get; set; }
         public Boolean IsBob { get; set; }
 
+
     }
 }

@@ -25,6 +25,7 @@ namespace Libraries.Repositories
             }
         }
 
+
         public static async Task<List<Models.Point>> GetPoints()
         {
             using (HttpClient client = new HttpClient())

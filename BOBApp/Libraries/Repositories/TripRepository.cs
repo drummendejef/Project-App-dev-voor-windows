@@ -87,6 +87,7 @@ namespace Libraries.Repositories
 
         #endregion
 
+
         public static async Task<Response> PutActive(int tripsID, bool active)
         {
             using (HttpClient client = new HttpClient())

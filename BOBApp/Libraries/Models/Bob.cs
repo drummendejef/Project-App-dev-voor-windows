@@ -15,11 +15,17 @@ namespace Libraries.Models
         public double PricePerKm { get; set; }
         public int? Autotype_ID { get; set; }
 
+
         public int? BobsType_ID { get; set; }
         public class All
         {
             public User User { get; set; }
             public Bob Bob { get; set; }
+        }
+
+        public override string ToString()
+        {
+            return this.LicensePlate;
         }
     }
 }

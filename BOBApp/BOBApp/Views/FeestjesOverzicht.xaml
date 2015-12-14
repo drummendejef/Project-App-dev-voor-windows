@@ -8,6 +8,7 @@
     x:Class="BOBApp.Views.FeestjesOverzicht"
     mc:Ignorable="d"
     DataContext="{Binding FeestjesOverzichtVM, Mode=TwoWay, Source={StaticResource Locator}}">
+    
 
     <Page.Resources>
         <!--Dit moet in commentaar omdat ik anders die datatemplate niet kan aanmaken? Geen idee hoe dat op te lossen, en tbh is dat niet een van m'n grootste zorgen atm, Joren-->

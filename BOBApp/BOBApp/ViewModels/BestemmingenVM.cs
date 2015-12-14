@@ -39,6 +39,7 @@ namespace BOBApp.ViewModels
 
 
 
+
         //Methods
         private void AddDestination()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace Libraries.Models
 {
@@ -13,6 +14,8 @@ namespace Libraries.Models
         public int Bobs_ID { get; set; }
         public DateTime Added { get; set; }
         public bool Active{ get; set; }
+      
+
         public class All
         {
             public ChatRoom     ChatRoom { get; set; }

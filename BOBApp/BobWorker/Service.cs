@@ -24,6 +24,7 @@ namespace BobWorker
                 return;
             }
 
+
             BackgroundTaskDeferral deferal = taskInstance.GetDeferral();
 
 

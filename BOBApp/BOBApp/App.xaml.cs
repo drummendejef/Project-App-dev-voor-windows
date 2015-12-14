@@ -29,6 +29,7 @@ using Windows.ApplicationModel.Core;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 
+
 namespace BOBApp
 {
     /// <summary>
@@ -50,6 +51,9 @@ namespace BOBApp
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+          
+         
         }
 
         /// <summary>

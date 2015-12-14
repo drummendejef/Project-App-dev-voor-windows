@@ -38,25 +38,26 @@ namespace Libraries
 
         public static string CITIES = BASE + "/cities";
         public static string COUNTRIES = BASE + "/countries";
-        public static string AUTOTYPES = BASE + "/autotypes/";
-        public static string FRIENDS = BASE + "/friends/";
+        public static string AUTOTYPES = BASE + "/autotypes";
+        public static string FRIENDS = BASE + "/friends";
 
         public static string BOBS = BASE + "/bobs";
         public static string BOBS_ONLINE = BOBS + "/online";
         public static string BOBS_FIND = BOBS + "/find";
         public static string BOB_TYPES = BOBS + "/types";
 
-        public static string CHATROOMS = BASE + "/chatrooms/";
+        public static string CHATROOMS = BASE + "/chatrooms";
         public static string CHATROOMS_COMMENT = BASE + "/chatrooms/comment";
 
-        public static string DESTINATIONS = BASE + "/destinations/";
-        public static string DESTINATIONS_DEFAULT = BASE + "/destinations/default/";
+        public static string DESTINATIONS = BASE + "/destinations";
+        public static string DESTINATIONS_DEFAULT = BASE + "/destinations/default";
 
-        public static string USERS = BASE + "/users/";
-        public static string USERS_ONLINE = BASE + "/users/online/";
+        public static string USERS = BASE + "/users";
+        public static string USERS_ONLINE = BASE + "/users/online";
 
-        public static string STATUSES = BASE + "/statuses/";
+        public static string STATUSES = BASE + "/statuses";
 
       
+
     }
 }
