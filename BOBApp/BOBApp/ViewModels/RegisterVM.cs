@@ -65,7 +65,8 @@ namespace BOBApp.ViewModels
         public async void Register()
         {
             //TODO: Databinding IsBob met toggleswitch
-            if(NewRegister.IsBob == null)
+            RaisePropertyChanged("NewRegister");
+            if (NewRegister.IsBob == null)
             {
                 NewRegister.IsBob = false;
             }
@@ -119,7 +120,7 @@ namespace BOBApp.ViewModels
         //login, zelfde als bij loginVM
         private async Task<Boolean> LoginUser(string email, string pass)
         {
-            Response res = await LoginRepository.Login(email, md5.Create(pass));
+            Response res = await LoginRepository.Login(email, pass);
             if (res.Success == true)
             {
                 Geolocator geolocator = new Geolocator();
