@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-14T14:45:20.563</Modified>
+      <Modified>2015-12-14T18:36:31.672</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -86,11 +86,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-14T14:45:20.555</Modified>
+      <Modified>2015-12-14T18:36:31.662</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
-      <Modified>2015-12-14T14:45:17.530</Modified>
+      <Modified>2015-12-14T18:36:27.462</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BobWorker.winmd">
       <PackagePath>BobWorker.winmd</PackagePath>
@@ -106,7 +106,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\entrypoint\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-12-14T14:45:18.187</Modified>
+      <Modified>2015-12-14T18:36:28.270</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\GalaSoft.MvvmLight.dll">
       <PackagePath>GalaSoft.MvvmLight.dll</PackagePath>
@@ -170,7 +170,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-14T14:45:19.813</Modified>
+      <Modified>2015-12-14T18:36:30.262</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\SocketIoClientDotNet.dll">
       <PackagePath>SocketIoClientDotNet.dll</PackagePath>

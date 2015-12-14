@@ -42,6 +42,8 @@
     <RootPropertyPathName Name="Trips" />
     <RootPropertyPathName Name="ProfielVM" />
     <RootPropertyPathName Name="AanpasCommand" />
+    <RootPropertyPathName Name="PricePerKm" />
+    <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
@@ -52,8 +54,8 @@
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="PasswordRepeat" />
     <RootPropertyPathName Name="Password" />
+    <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="SelectedAutoType" />
-    <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="VindRitVM" />
     <RootPropertyPathName Name="GoFilterCommand" />
     <RootPropertyPathName Name="GoChatCommand" />
@@ -133,7 +135,6 @@
       <RootProperty Name="Width" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="VerticalAlignment" />
@@ -273,7 +274,6 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="IsReadOnly" />
-      <RootProperty Name="Visibility" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
@@ -411,7 +411,6 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Visibility" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
@@ -457,16 +456,17 @@
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo" />
     <RootType FullName="BOBApp.Views.MainView" />
     <RootType FullName="BOBApp.Views.MijnRitten" />
-    <RootType FullName="BOBApp.Views.Profiel" />
-    <RootType FullName="BOBApp.Views.Punten" />
     <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
       <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
       <RootProperty Name="OffContent" />
       <RootProperty Name="OnContent" />
       <RootProperty Name="Header" />
+      <RootProperty Name="IsOn" />
       <RootEvent Name="Toggled" />
     </RootType>
+    <RootType FullName="BOBApp.Views.Profiel" />
+    <RootType FullName="BOBApp.Views.Punten" />
     <RootType FullName="BOBApp.Views.Register" />
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
       <RootProperty Name="Text" />
