@@ -12,6 +12,7 @@ namespace Libraries.Repositories
 {
     public class AutotypeRepository
     {
+
         public static async Task<List<Autotype>> GetAutotypes()
         {
             using (HttpClient client = new HttpClient())
@@ -22,6 +23,7 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+
         public static async Task<Response> PostAutotype(Autotype autotype)
         {
             using (HttpClient client = new HttpClient())

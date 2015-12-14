@@ -15,6 +15,7 @@ namespace Libraries.Models
 
         public class All
         {
+
             public User User1 { get; set; }
             public User User2 { get; set; }
             public DateTime Added { get; set; }

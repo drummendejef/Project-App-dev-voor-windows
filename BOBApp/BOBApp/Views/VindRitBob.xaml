@@ -9,7 +9,6 @@
     DataContext="{Binding VindRitVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
 
-
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

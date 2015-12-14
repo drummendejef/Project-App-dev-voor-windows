@@ -20,6 +20,7 @@ namespace BOBApp
 
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);//In onze Ioc container zal een bepaalde view zitten en gekoppeld worden.
 
+
             //VMs registreren.
             SimpleIoc.Default.Register<MainViewVM>();
             SimpleIoc.Default.Register<BestemmingenVM>();

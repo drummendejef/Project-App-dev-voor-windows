@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
@@ -18,7 +19,7 @@ namespace BOBApp.ViewModels
     {
         //Properties
         public static int? ID;
-
+       
         public string SearchLocation { get; set; }
         private Task task;
         public ChatRoom.All ChatRoom { get; set; }
@@ -93,7 +94,24 @@ namespace BOBApp.ViewModels
 
         private async void GetChatComments()
         {
-            this.ChatRoom = await ChatRoomRepository.GetChatRoom(MainViewVM.ChatRoom.ID);
+            ChatRoom.All lijst = await ChatRoomRepository.GetChatRoom(MainViewVM.ChatRoom.ID);
+
+            for (int i = 0; i < lijst.ChatComments.Count; i++)
+            {
+                HorizontalAlignment aligment = HorizontalAlignment.Left; ;
+
+                if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
+                {
+                    aligment = HorizontalAlignment.Left;
+                }
+                else
+                {
+                    aligment = HorizontalAlignment.Right;
+                }
+                lijst.ChatComments[i].Alignment = aligment;
+
+            }
+            this.ChatRoom = lijst;
             RaisePropertyChanged("ChatRoom");
         }
     }

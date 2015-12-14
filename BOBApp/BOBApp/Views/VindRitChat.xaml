@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     DataContext="{Binding VindRitChatVM, Mode=TwoWay, Source={StaticResource Locator}}">
-
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +16,9 @@
     </Page.Resources>
 
     <RelativePanel>
-        <ItemsControl Margin="0,0,0,35" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" ItemTemplate="{ThemeResource TemplateChatComments}" RelativePanel.AlignBottomWithPanel="True" />
+        <ItemsControl HorizontalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,35" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" ItemTemplate="{ThemeResource TemplateChatComments}" RelativePanel.AlignBottomWithPanel="True">
+ 
+        </ItemsControl>
 
         <RelativePanel x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,0,80,0" Text="{Binding ChatComment.Comment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>

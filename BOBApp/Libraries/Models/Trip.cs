@@ -12,16 +12,20 @@ namespace Libraries.Models
         public int ID { get; set; }
         public int Users_ID { get; set; }
         public int Bobs_ID { get; set; }
+        public int Party_ID { get; set; }
         public int Destinations_ID { get; set; }
         public string Friends { get; set; }
         public DateTime Added { get; set; }
-    
+        public string Status_Name { get; set; }
+
+
         public class All
         {
             public Trip Trip { get; set; }
+            public Party Party { get; set; }
             public Users_Destinations Destination { get; set; }
             public User User { get; set; }
-            public Bob Bob { get; set; }
+            public User Bob { get; set; }
         }
     }
 }

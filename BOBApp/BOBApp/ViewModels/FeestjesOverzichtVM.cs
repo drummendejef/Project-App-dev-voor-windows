@@ -16,6 +16,7 @@ namespace BOBApp.ViewModels
     public class FeestjesOverzichtVM : ViewModelBase
     {
         //Properties
+
         public string ZoekVeld { get; set; }
 
         //Dingen die te maken hebben met de kaart

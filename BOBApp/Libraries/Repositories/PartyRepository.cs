@@ -24,6 +24,19 @@ namespace Libraries.Repositories
             }
         }
 
+
+        public static async Task<Party> GetPartyById(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.PARTIES + '/' + id.ToString());
+                string json = await result.Result.Content.ReadAsStringAsync();
+                Party data = JsonConvert.DeserializeObject<Party>(json);
+                return data;
+            }
+        }
+
+
         public static async Task<List<Party>> GetPartiesInArea(string location, double distance)
         {
             using (HttpClient client = new HttpClient())
