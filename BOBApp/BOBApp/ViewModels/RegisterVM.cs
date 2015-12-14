@@ -38,7 +38,9 @@ namespace BOBApp.ViewModels
         public RegisterVM()
         {
             this.NewRegister = new Register();
-            GetMerken();
+
+            //Uit commentaar halen als server online is
+            //GetMerken();
 
             RaisePropertyChanged("Merken");
             RaisePropertyChanged("NewRegister");
@@ -47,7 +49,6 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Error");
             RegisterCommand = new RelayCommand(Register);
             CancelCommand = new RelayCommand(Cancel);
-
         }
 
 
@@ -63,12 +64,10 @@ namespace BOBApp.ViewModels
         }
         public async void Register()
         {
+            //TODO: Databinding IsBob met toggleswitch
             NewRegister.IsBob = false;
             RegisterTask = await RegisterUser(NewRegister);
-         /*   if(RegisterTask == true)
-            {
-               LoginTask = LoginUser(NewRegister.Email, NewRegister.Password);
-            }*/
+      
         }
         private async Task<Boolean> RegisterUser(Register register)
         {

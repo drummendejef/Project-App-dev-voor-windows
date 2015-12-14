@@ -26,5 +26,6 @@ namespace BOBApp.Views
         {
             this.InitializeComponent();
         }
+
     }
 }

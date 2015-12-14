@@ -15,23 +15,6 @@ E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pdb
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pri
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.dll
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.pdb
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml.intermediate
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\layout.resfiles
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\layout.resfiles.intermediate
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\resources.resfiles
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\resources.resfiles.intermediate
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\pri.resfiles
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\pri.resfiles.intermediate
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.csprojResolveAssemblyReference.cache
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pdb
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pri
@@ -49,3 +32,20 @@ C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libr
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pdb
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pri
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.csprojResolveAssemblyReference.cache
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.pdb
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml.intermediate
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\layout.resfiles
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\layout.resfiles.intermediate
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\resources.resfiles
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\resources.resfiles.intermediate
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\pri.resfiles
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\pri.resfiles.intermediate
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\qualifiers.txt.intermediate
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
