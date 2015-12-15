@@ -41,7 +41,7 @@ namespace BOBApp.ViewModels
             this.NewRegister = new Register();
 
             //Uit commentaar halen als server online is
-            //GetMerken();
+            GetMerken();
 
             RaisePropertyChanged("Merken");
             RaisePropertyChanged("NewRegister");
