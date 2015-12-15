@@ -67,3 +67,5 @@ BOBApp/BOBApp/bin/x86/Debug/BOBApp.exe
 BOBApp/BOBApp/obj/x86/Debug/*
 BOBApp/BOBApp/bin/x86/Debug/QueryString.NETCore.dll
 BOBApp/.vs/BOBApp/v14/.suo
+BOBApp/Libraries/obj/x86/Debug/Libraries.csprojResolveAssemblyReference.cache
+BOBApp/BOBApp/bin/x86/Debug/AppX/BOBApp.exe
