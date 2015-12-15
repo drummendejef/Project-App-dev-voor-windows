@@ -40,35 +40,22 @@ namespace BOBApp.ViewModels
            
         }
 
-       
-
-
-
         //Methods
         public async void Aanpassen()
         {
-            
-            //Dit werkt
-            Debug.WriteLine("knop werkt");
-            Debug.WriteLine(User.Autotype.ToString());
-            //databinding werkt
-
-            //Updaten naar database
-            //Probleem nog met user
-           /* User EditUser = null;
-                Response r = await UserRepository.EditUser(EditUser);
-                //na de edit ( en deze is correct) toon bevestiging aan de gebruiker
-                if (r.Success)
-                {
-                    var dialog = new MessageDialog("Uw gegevens zijn opgeslaan.");
-                    await dialog.ShowAsync();
-                }
-                else
-                {
-                    var dialog = new MessageDialog("Er is een probleem met het opslaan van uw gegevens. Probeer het nog eens opnieuw.");
-                    await dialog.ShowAsync();
-                }
-         */
+           
+            //Updaten naar DB
+            Response r = await UserRepository.EditUser(User);
+            if (r.Success)
+            {
+                var dialog = new MessageDialog("Uw gegevens zijn opgeslaan.");
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                var dialog = new MessageDialog("Er is een probleem met het opslaan van uw gegevens. Probeer het nog eens opnieuw.");
+                await dialog.ShowAsync();
+            }
         }
 
 
