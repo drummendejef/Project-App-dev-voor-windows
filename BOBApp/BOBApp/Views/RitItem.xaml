@@ -15,75 +15,113 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
-    <RelativePanel Background="White">
-        <RelativePanel x:Name="party" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="200" BorderThickness="0" Padding="5" Background="{ThemeResource Yellow }">
-            <StackPanel Orientation="Horizontal" x:Name="panel">
-                <TextBlock Tag="&#xE909;" FontSize="12" FontFamily="Segoe MDL2 Assets"></TextBlock>
-                <TextBlock Foreground="{ThemeResource White}" Text="{Binding Rit.Party.Name, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="textBlockHuidigeRit" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
-            </StackPanel>
-            <TextBlock RelativePanel.Below="panel" Foreground="White" x:Name="organistator_text" Text="Organisator: "></TextBlock>
-            <TextBlock RelativePanel.Below="panel" Foreground="White" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="organistator_text" x:Name="organistator" Text="Centaura"></TextBlock>
-            
-            <TextBlock x:Name="rating" RelativePanel.Below="organistator" Foreground="White"  RelativePanel.AlignHorizontalCenterWithPanel="True" Text="RATING" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+
+    <ScrollViewer>
+        <RelativePanel Background="White">
+            <RelativePanel x:Name="party" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="200" BorderThickness="0" Padding="5" Background="{ThemeResource Yellow }">
+                <StackPanel Orientation="Horizontal" x:Name="panel">
+                    <TextBlock Tag="&#xE909;" FontSize="12" FontFamily="Segoe MDL2 Assets"></TextBlock>
+                    <TextBlock Foreground="{ThemeResource White}" Text="{Binding SelectedTrip.Party.Name, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="textBlockHuidigeRit" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
+                </StackPanel>
+                <TextBlock RelativePanel.Below="panel" Foreground="White" x:Name="organistator_text" Text="Organisator: "></TextBlock>
+                <TextBlock RelativePanel.Below="panel" Foreground="White" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="organistator_text" x:Name="organistator" Text="Centaura"></TextBlock>
+
+                <TextBlock x:Name="rating" RelativePanel.Below="organistator" Foreground="White"  RelativePanel.AlignHorizontalCenterWithPanel="True" Text="RATING" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+            </RelativePanel>
+
+
+
+            <TextBlock RelativePanel.Below="party" x:Name="bob_text" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="BOB" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+            <Grid x:Name="bob" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="bob_text">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0"  Text="Name: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1"  Text="Email: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="2"  Text="Licenseplate: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="3"  Text="PricePerKm: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="4"  Text="Autotype: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+
+                <TextBlock Grid.Column="0" Grid.Row="5"  Text="Rating: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="5"  Text="2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+
+
+
+            </Grid>
+
+            <TextBlock RelativePanel.Below="bob"  x:Name="user_text" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="USER" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+            <Grid x:Name="user" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="user_text">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0"  Text="Name: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1"  Text="Email: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="4"  Text="Friends: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+            </Grid>
+
+            <TextBlock RelativePanel.Below="user"  x:Name="destination_text" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Destination" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+            <Grid x:Name="destination" HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="destination_text">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0"  Text="Name:" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <TextBlock Grid.Column="0" Grid.Row="1"  Text="IsDefeult: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+                <!--map kaart destination-->
+
+            </Grid>
+
         </RelativePanel>
-
-
-
-        <TextBlock RelativePanel.Below="party" x:Name="bob_text" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="BOB" HorizontalAlignment="Center" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-        <Grid HorizontalAlignment="Stretch" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="bob_text">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0"  Text="Name: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <TextBlock Grid.Column="1" Grid.Row="0"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-            <TextBlock Grid.Column="0" Grid.Row="1"  Text="Email: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <TextBlock Grid.Column="1" Grid.Row="1"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-            <TextBlock Grid.Column="0" Grid.Row="2"  Text="Licenseplate: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <TextBlock Grid.Column="1" Grid.Row="2"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-            <TextBlock Grid.Column="0" Grid.Row="3"  Text="PricePerKm: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <TextBlock Grid.Column="1" Grid.Row="3"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-            <TextBlock Grid.Column="0" Grid.Row="4"  Text="Autotype: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <TextBlock Grid.Column="1" Grid.Row="4"  Text="Stijn van hulle" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-
-            <TextBlock Grid.Column="0" Grid.Row="5"  Text="Rating: " HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <TextBlock Grid.Column="1" Grid.Row="5"  Text="2" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-
-
-
-        </Grid>
-        
-        
-        <TextBlock Grid.Column="2" Grid.Row="0"  Text="{Binding Destination.Name, Mode=TwoWay}" HorizontalAlignment="Right" x:Name="textBlockBestemming" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-
-        <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" >
-            <TextBlock Text="User: " Width="100"></TextBlock>
-            <TextBlock Text="{Binding User, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="user" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" >
-            <TextBlock Text="Bob: " Width="100"></TextBlock>
-            <TextBlock Text="{Binding Bob, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="bob" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
-        </StackPanel>
-
-        <TextBlock Text="{Binding Trip.Added, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"></TextBlock>
-
-    </RelativePanel>
+    </ScrollViewer>
 </Page>

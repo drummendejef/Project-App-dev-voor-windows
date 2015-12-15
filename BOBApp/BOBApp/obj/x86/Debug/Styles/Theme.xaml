@@ -766,8 +766,8 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TemplateTrips">
-     
-            <Grid HorizontalAlignment="Center">
+        <RelativePanel >
+            <Grid RelativePanel.AlignHorizontalCenterWithPanel="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
@@ -799,10 +799,12 @@
                     <TextBlock Text="{Binding Bob, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="bob" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
                 </StackPanel>
 
-                <TextBlock Text="{Binding Trip.Added, Mode=TwoWay}" Grid.Row="1" Grid.Column="2"></TextBlock>
+                <TextBlock Text="{Binding Trip.Added, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"></TextBlock>
 
-                
+
             </Grid>
+        </RelativePanel>
+           
        
     </DataTemplate>
 

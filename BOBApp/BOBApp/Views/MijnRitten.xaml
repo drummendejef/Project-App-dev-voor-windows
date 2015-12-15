@@ -39,8 +39,8 @@
             <Image HorizontalAlignment="{Binding Car, Mode=TwoWay}" VerticalAlignment="Top" Height="25" x:Name="car" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,21,0,0" Source="ms-appx:///Assets/car.png"/>
             <TextBlock Width="auto" Height="auto" HorizontalAlignment="Center" FontSize="20" Text="{Binding CurrentTrip.Trip.Status_Name}" x:Name="status" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,70,0,0"/>
         </Grid>
-        <ScrollViewer RelativePanel.Below="current" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
-            <ListView ItemTemplate="{StaticResource TemplateTrips}" ItemsSource="{Binding Trips, Mode=TwoWay}" x:Name="ItemsControlRitten" Margin="10" />
+        <ScrollViewer RelativePanel.Below="current" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch">
+            <ListView SelectedItem="{Binding SelectedTrip, Mode=TwoWay}" ItemTemplate="{StaticResource TemplateTrips}" ItemsSource="{Binding Trips, Mode=TwoWay}" x:Name="ItemsControlRitten" Margin="10 "/>
 
         </ScrollViewer>
        

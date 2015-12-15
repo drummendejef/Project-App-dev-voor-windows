@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BOBApp.Views;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Libraries.Models;
 using Libraries.Models.relations;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
@@ -22,6 +24,20 @@ namespace BOBApp.ViewModels
 
         public List<Trip.All> Trips { get; set; }
         public Trip.All CurrentTrip { get; set; }
+
+        private Trip.All _SelectedTrip;
+
+        public Trip.All SelectedTrip
+        {
+            get { return _SelectedTrip; }
+            set { _SelectedTrip = value;
+                Frame rootFrame = MainViewVM.MainFrame as Frame;
+
+                rootFrame.Navigate(typeof(RitItem));
+
+            }
+        }
+
         public HorizontalAlignment Car { get; set; }
 
         //Constructor

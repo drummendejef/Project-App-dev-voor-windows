@@ -766,7 +766,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TemplateTrips">
-        <RelativePanel>
+        <RelativePanel >
             <Grid RelativePanel.AlignHorizontalCenterWithPanel="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
