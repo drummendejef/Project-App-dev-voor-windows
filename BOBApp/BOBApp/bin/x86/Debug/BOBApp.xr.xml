@@ -5,11 +5,12 @@
     <RootPropertyPathName Name="Comment" />
     <RootPropertyPathName Name="FromUser_ID" />
     <RootPropertyPathName Name="Added" />
+    <RootPropertyPathName Name="Trip" />
+    <RootPropertyPathName Name="Bob" />
+    <RootPropertyPathName Name="User" />
     <RootPropertyPathName Name="Destination" />
     <RootPropertyPathName Name="Name" />
-    <RootPropertyPathName Name="Bob" />
-    <RootPropertyPathName Name="FullName" />
-    <RootPropertyPathName Name="User" />
+    <RootPropertyPathName Name="Party" />
     <RootPropertyPathName Name="Default" />
     <RootPropertyPathName Name="PointsDescription" />
     <RootPropertyPathName Name="Points" />
@@ -42,11 +43,9 @@
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="MijnRittenVM" />
     <RootPropertyPathName Name="Trips" />
-    <RootPropertyPathName Name="Car" />
     <RootPropertyPathName Name="CurrentTrip" />
-    <RootPropertyPathName Name="Trip" />
     <RootPropertyPathName Name="Status_Name" />
-    <RootPropertyPathName Name="Party" />
+    <RootPropertyPathName Name="Car" />
     <RootPropertyPathName Name="ProfielVM" />
     <RootPropertyPathName Name="AanpasCommand" />
     <RootPropertyPathName Name="PricePerKm" />
@@ -116,6 +115,7 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
+      <RootProperty Name="CornerRadius" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetColumn" />
@@ -139,12 +139,13 @@
       <RootProperty Name="Foreground" />
       <RootProperty Name="Padding" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="FontStyle" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
       <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="FontStyle" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
     </RootType>
@@ -195,6 +196,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Child" />
+      <RootProperty Name="Padding" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Opacity" />
     </RootType>
@@ -300,6 +302,7 @@
       <RootProperty Name="VerticalScrollMode" />
       <RootProperty Name="ZoomMode" />
       <RootProperty Name="IsDeferredScrollingEnabled" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Content" />
       <RootMethod Name="GetHorizontalScrollBarVisibility" />
       <RootMethod Name="SetHorizontalScrollBarVisibility" />
@@ -366,7 +369,7 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
+      <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
       <RootProperty Name="Name" />

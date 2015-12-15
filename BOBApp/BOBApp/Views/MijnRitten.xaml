@@ -18,7 +18,7 @@
 
 
     <RelativePanel Background="White">
-        <Grid x:Name="current" Background="#FFD8D8D8" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="600">
+        <Grid x:Name="current" Background="#CCDEDEDE" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="600" CornerRadius="0,0,4,4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -35,11 +35,14 @@
 
             <TextBlock Text="{Binding CurrentTrip.Party.Name, Mode=TwoWay}" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" x:Name="textBlockHuidigeRit" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
             <TextBlock Text="{Binding CurrentTrip.Destination.Name, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" x:Name="textBlockBestemming" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-            <Image HorizontalAlignment="Stretch" x:Name="baan" Height="50" Grid.Row="1" Grid.ColumnSpan="2" Source="ms-appx:///Assets/road.png" Stretch="Fill"/>
-            <Image HorizontalAlignment="{Binding Car, Mode=TwoWay}"  Height="auto" Width="50" x:Name="car" Grid.ColumnSpan="2" Grid.Row="1" Margin="0" Source="ms-appx:///Assets/car.png"/>
-            <TextBlock Width="auto" Height="auto" HorizontalAlignment="{Binding Car, Mode=TwoWay}" Text="{Binding CurrentTrip.Trip.Status_Name}" x:Name="status" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,50,0,0"/>
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Top" x:Name="baan" Height="50" Grid.Row="1" Grid.ColumnSpan="2" Source="ms-appx:///Assets/road.png" Stretch="Fill"/>
+            <Image HorizontalAlignment="{Binding Car, Mode=TwoWay}" VerticalAlignment="Top" Height="25" x:Name="car" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,21,0,0" Source="ms-appx:///Assets/car.png"/>
+            <TextBlock Width="auto" Height="auto" HorizontalAlignment="Center" FontSize="20" Text="{Binding CurrentTrip.Trip.Status_Name}" x:Name="status" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,70,0,0"/>
         </Grid>
-        <ListView ItemTemplate="{StaticResource TemplateTrips}" ItemsSource="{Binding Trips, Mode=TwoWay}" x:Name="ItemsControlRitten" Margin="10" RelativePanel.Below="current" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+        <ScrollViewer RelativePanel.Below="current" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
+            <ListView ItemTemplate="{StaticResource TemplateTrips}" ItemsSource="{Binding Trips, Mode=TwoWay}" x:Name="ItemsControlRitten" Margin="10" />
 
+        </ScrollViewer>
+       
     </RelativePanel>
 </Page>

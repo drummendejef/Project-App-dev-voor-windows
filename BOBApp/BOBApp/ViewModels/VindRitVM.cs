@@ -299,6 +299,7 @@ namespace BOBApp.ViewModels
         {
 
             this.Parties = await PartyRepository.GetParties();
+            VindRitVM.SelectedParty = this.Parties[0];
 
             if (this.Parties.Count > 0)
             {

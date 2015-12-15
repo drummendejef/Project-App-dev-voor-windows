@@ -766,19 +766,46 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TemplateTrips">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.ColumnSpan="2" Text="{Binding User.FullName}" />
-            <TextBlock Grid.Row="1" Text="{Binding Bob.FullName}" Grid.Column="2"/>
-            <TextBlock Grid.Row="1" Text="{Binding Destination.Name}" Grid.Column="1"/>
-        </Grid>
+        <RelativePanel>
+            <Grid RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="5" Background="{ThemeResource Yellow }">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Tag="&#xE909;" FontSize="12" FontFamily="Segoe MDL2 Assets"></TextBlock>
+                        <TextBlock Foreground="{ThemeResource White}" Text="{Binding Party.Name, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="textBlockHuidigeRit" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Grid.Column="2" Grid.Row="0"  Text="{Binding Destination.Name, Mode=TwoWay}" HorizontalAlignment="Right" x:Name="textBlockBestemming" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+
+
+                <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" >
+                    <TextBlock Text="User: " Width="100"></TextBlock>
+                    <TextBlock Text="{Binding User, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="user" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" >
+                    <TextBlock Text="Bob: " Width="100"></TextBlock>
+                    <TextBlock Text="{Binding Bob, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="bob" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
+                </StackPanel>
+
+                <TextBlock Text="{Binding Trip.Added, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"></TextBlock>
+
+
+            </Grid>
+        </RelativePanel>
+           
+       
     </DataTemplate>
 
     <DataTemplate x:Key="TemplateChatComments">
