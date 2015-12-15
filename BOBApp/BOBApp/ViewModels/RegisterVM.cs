@@ -31,6 +31,7 @@ namespace BOBApp.ViewModels
         public ObservableCollection<Autotype> Merken {get;set;}
 
         public Autotype SelectedAutoType { get; set; }
+        public String PricePerKm { get; set; }
 
 
 
@@ -40,7 +41,7 @@ namespace BOBApp.ViewModels
             this.NewRegister = new Register();
 
             //Uit commentaar halen als server online is
-            GetMerken();
+            //GetMerken();
 
             RaisePropertyChanged("Merken");
             RaisePropertyChanged("NewRegister");
@@ -65,12 +66,14 @@ namespace BOBApp.ViewModels
         public async void Register()
         {
             //TODO: Databinding IsBob met toggleswitch
-            RaisePropertyChanged("NewRegister");
             if (NewRegister.IsBob == null)
             {
                 NewRegister.IsBob = false;
             }
-
+            double price;
+            Double.TryParse(PricePerKm, out price);
+            NewRegister.PricePerKm = price;
+            
             RegisterTask = await RegisterUser(NewRegister);
       
         }
