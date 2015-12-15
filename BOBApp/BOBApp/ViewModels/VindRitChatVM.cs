@@ -96,23 +96,34 @@ namespace BOBApp.ViewModels
         {
             ChatRoom.All lijst = await ChatRoomRepository.GetChatRoom(MainViewVM.ChatRoom.ID);
 
-            for (int i = 0; i < lijst.ChatComments.Count; i++)
+            if (lijst.ChatComments != null)
             {
-                HorizontalAlignment aligment = HorizontalAlignment.Left; ;
-
-                if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
+                for (int i = 0; i < lijst.ChatComments.Count; i++)
                 {
-                    aligment = HorizontalAlignment.Left;
-                }
-                else
-                {
-                    aligment = HorizontalAlignment.Right;
-                }
-                lijst.ChatComments[i].Alignment = aligment;
+                    HorizontalAlignment aligment = HorizontalAlignment.Left; ;
 
+                    if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
+                    {
+                        aligment = HorizontalAlignment.Left;
+                    }
+                    else
+                    {
+                        aligment = HorizontalAlignment.Right;
+                    }
+                    lijst.ChatComments[i].Alignment = aligment;
+
+                }
+                
             }
+            else
+            {
+                //geen comments
+            }
+
             this.ChatRoom = lijst;
             RaisePropertyChanged("ChatRoom");
+
+
         }
     }
 }

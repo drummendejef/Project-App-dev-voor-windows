@@ -109,13 +109,27 @@ namespace BOBApp.ViewModels
                     case "trip_location":
                         trip_location();
                         break;
-
                     case "find_bob":
                         find_bob((bool) obj.Result);
+                        break;
+                    case "bob_accepted":
+                            bob_accepted((bool) obj.Result);
                         break;
                     default:
                         break;
                 }
+
+            }
+        }
+
+        private void bob_accepted(bool accepted)
+        {
+            if (accepted == true)
+            {
+
+            }
+            else
+            {
 
             }
         }
@@ -144,8 +158,6 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
-                   
-
                     ShowBob(bobs.First());
                 }
             }
@@ -194,7 +206,7 @@ namespace BOBApp.ViewModels
         private void StartTripLocationTimer()
         {
             timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 2, 0);
+            timer.Interval = new TimeSpan(0, 0, 20);
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -480,9 +492,9 @@ namespace BOBApp.ViewModels
                 var data = JsonConvert.SerializeObject(CurrentTrip);
                 bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
 
-                if (ok == true && currentTrip != null)
-                    VindRitVM.CurrentTrip = currentTrip;
+                if (ok == true && currentTrip != null)   
                 {
+                    VindRitVM.CurrentTrip = currentTrip;
                     //update very minuten location for trip
                     Messenger.Default.Send<NavigateTo>(new NavigateTo()
                     {

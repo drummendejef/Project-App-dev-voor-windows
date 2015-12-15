@@ -118,39 +118,49 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
+
+                    switch (res.Error)
+                    {
+                        case "Invalid Login":
+                            this.Loading = false;
+                            RaisePropertyChanged("Loading");
+
+                            this.EnableLogin = true;
+                            RaisePropertyChanged("EnableLogin");
+
+                            this.Error = "Gegeven email en wachtwoord komen niet overeen of bestaan niet.";
+                            RaisePropertyChanged("Error");
+
+                            break;
+                        case "Server offline":
+                            this.Loading = false;
+                            RaisePropertyChanged("Loading");
+
+                            this.EnableLogin = true;
+                            RaisePropertyChanged("EnableLogin");
+
+                            this.Error = "De server is offline";
+                            RaisePropertyChanged("Error");
+                            break;
+                        case "Connectie error":
+                            this.Loading = false;
+                            RaisePropertyChanged("Loading");
+
+                            this.EnableLogin = true;
+                            RaisePropertyChanged("EnableLogin");
+
+                            this.Error = "Connectie error";
+                            RaisePropertyChanged("Error");
+                            break;
+                        default:
+                            this.Error = "Connectie error";
+                            RaisePropertyChanged("Error");
+
+                            task = Login_task(this.Email, this.Pass);
+                            break;
+                    }
+
                   
-
-
-                    if (res.Error== "connect ETIMEDOUT")
-                    {
-                        this.Error = "Connectie error";
-                        RaisePropertyChanged("Error");
-
-                        task = Login_task(this.Email, this.Pass);
-                    }
-
-                    if (res.Error == "Invalid Login")
-                    {
-                        this.Loading = false;
-                        RaisePropertyChanged("Loading");
-
-                        this.EnableLogin = true;
-                        RaisePropertyChanged("EnableLogin");
-
-                        this.Error = "Gegeven email en wachtwoord komen niet overeen of bestaan niet.";
-                        RaisePropertyChanged("Error");
-                    }
-                    if (res.Error == "Server offline")
-                    {
-                        this.Loading = false;
-                        RaisePropertyChanged("Loading");
-
-                        this.EnableLogin = true;
-                        RaisePropertyChanged("EnableLogin");
-
-                        this.Error = "De server is offline";
-                        RaisePropertyChanged("Error");
-                    }
 
                 }
 

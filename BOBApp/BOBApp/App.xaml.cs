@@ -113,13 +113,18 @@ namespace BOBApp
             Window.Current.Activate();
         }
 
-        private void DialogChange(Dialog dialog)
+        private async void DialogChange(Dialog dialog)
         {
             if (dialog.Message != null)
             {
-                Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+               async () =>
+               {
+                   Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+
+               });
             }
-           
+
         }
         private async Task<bool> ShowDialog(string text, string ok, string nok, Type viewOk, Type viewNok, bool paramView, string cb)
         {
@@ -148,48 +153,61 @@ namespace BOBApp
                 dialog.DefaultCommandIndex = 0;
             }
 
-           
 
-            var result = await dialog.ShowAsync();
-
-            int id = int.Parse(result.Id.ToString());
-            if (id == 0)
+            try
             {
-                if (viewOk != null)
-                {
-                    Frame rootFrame = MainViewVM.MainFrame as Frame;
-                    rootFrame.Navigate(viewOk, paramView);
+                var result = await dialog.ShowAsync();
+  
 
-                }
-                if (cb != null)
+                int id = int.Parse(result.Id.ToString());
+                if (id == 0)
                 {
-                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                    if (viewOk != null)
                     {
-                        Name = cb,
-                        Result=true
-                    });
+                        Frame rootFrame = MainViewVM.MainFrame as Frame;
+                        rootFrame.Navigate(viewOk, paramView);
+
+                    }
+                    if (cb != null)
+                    {
+                        Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                        {
+                            Name = cb,
+                            Result = true
+                        });
+                    }
+
+                    return true;
                 }
-                return true;
+                else
+                {
+                    if (viewOk != null)
+                    {
+                        Frame rootFrame = MainViewVM.MainFrame as Frame;
+                        rootFrame.Navigate(viewNok, paramView);
+
+                    }
+
+                    if (cb != null)
+                    {
+                        Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                        {
+                            Name = cb,
+                            Result = false
+                        });
+                    }
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                if (viewOk != null)
-                {
-                    Frame rootFrame = MainViewVM.MainFrame as Frame;
-                    rootFrame.Navigate(viewNok, paramView);
-
-                }
-
-                if (cb != null)
-                {
-                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
-                    {
-                        Name = cb,
-                        Result = false
-                    });
-                }
-                return false;
+                var test = ex.Message;
+                throw;
             }
+
+            
+
+            
         }
 
 

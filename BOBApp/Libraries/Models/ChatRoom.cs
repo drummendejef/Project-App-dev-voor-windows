@@ -18,7 +18,7 @@ namespace Libraries.Models
 
         public class All
         {
-            public ChatRoom     ChatRoom { get; set; }
+            public ChatRoom ChatRoom { get; set; }
             public List<ChatComment> ChatComments { get; set; }
         }
     }

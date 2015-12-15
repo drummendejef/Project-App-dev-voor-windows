@@ -72,7 +72,9 @@ namespace BOBApp.ViewModels
                 {
                     MainViewVM.LatestSocket = _socket;
                     VindRitVM.Request = VindRitVM.Request + 1;
-                    Task task = NavigateAccept(_socket.From);
+
+                    Bob_Accept(_socket.From);
+
                 }
                
             });
@@ -112,6 +114,31 @@ namespace BOBApp.ViewModels
 
         }
 
+        private async void Bob_Accept(int from)
+        {
+            User bob = Task.FromResult<User.All>(await UsersRepository.GetUserById(from)).Result.User;
+
+            VindRitVM.BobAccepted = true;
+            if (bob != null)
+            {
+               
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = bob.ToString() + " wilt u als bob",
+                    Ok = "Accept",
+                    Nok = "Ignore",
+                    ViewOk = typeof(VindRitChat),
+                    ViewNok = typeof(VindRitBob),
+                    ParamView = true,
+                    Cb= "bob_accepted"
+                });
+            }
+            else
+            {
+                //error
+            }
+        }
+
 
 
 
@@ -121,41 +148,9 @@ namespace BOBApp.ViewModels
 
 
         //Methods
-     
-
-        private async Task NavigateAccept(int from)
-        {
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-             async () =>
-             {
-                 User bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(from)).Result.User;
-
-                 VindRitVM.BobAccepted = true;
-                 if (bob != null)
-                 {
-                     Messenger.Default.Send<Dialog>(new Dialog()
-                     {
-                         Message = bob.ToString() + " wilt u als bob",
-                         Ok = "Accept",
-                         Nok = "Ignore",
-                         ViewOk = typeof(VindRitBob),
-                         ViewNok= typeof(MainView),
-                         ParamView = true
-                     });
-                 }
-                 else
-                 {
-                     //error
-                 }
-
-                
 
 
-             }
-             );
-        }
 
-       
 
         private void LogOff()
         {
