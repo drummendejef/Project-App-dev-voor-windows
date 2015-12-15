@@ -10,5 +10,11 @@ namespace BOBApp.Messages
     {
       
         public string Message { get; internal set; }
+        public string Ok { get; internal set; }
+        public string Nok { get; internal set; }
+        public Type ViewOk { get; internal set; }
+        public Type ViewNok { get; internal set; }
+        public bool ParamView { get; internal set; }
+        public string Cb { get; internal set; }
     }
 }

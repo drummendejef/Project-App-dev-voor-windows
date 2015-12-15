@@ -117,15 +117,81 @@ namespace BOBApp
         {
             if (dialog.Message != null)
             {
-                Task task = showMesage_task(dialog.Message);
+                Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
             }
            
         }
-        private async Task<bool> showMesage_task(string text) {
+        private async Task<bool> ShowDialog(string text, string ok, string nok, Type viewOk, Type viewNok, bool paramView, string cb)
+        {
             var dialog = new MessageDialog(text);
-            await dialog.ShowAsync();
-            return true;
+            var test2Command = nok;
+
+            if (ok == null) ok = "Ok";
+            if (ok == null && nok == null)
+            {
+                ok = "Yes"; nok = "No";
+            }
+
+
+            if (test2Command != null)
+            {
+                dialog.Commands.Add(new UICommand(ok) { Id = 0 });
+                dialog.Commands.Add(new UICommand(nok) { Id = 1 });
+
+                dialog.DefaultCommandIndex = 0;
+                dialog.CancelCommandIndex = 1;
+            }
+            else
+            {
+                dialog.Commands.Add(new UICommand(ok) { Id = 0 });
+
+                dialog.DefaultCommandIndex = 0;
+            }
+
+           
+
+            var result = await dialog.ShowAsync();
+
+            int id = int.Parse(result.Id.ToString());
+            if (id == 0)
+            {
+                if (viewOk != null)
+                {
+                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+                    rootFrame.Navigate(viewOk, paramView);
+
+                }
+                if (cb != null)
+                {
+                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                    {
+                        Name = cb,
+                        Result=true
+                    });
+                }
+                return true;
+            }
+            else
+            {
+                if (viewOk != null)
+                {
+                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+                    rootFrame.Navigate(viewNok, paramView);
+
+                }
+
+                if (cb != null)
+                {
+                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                    {
+                        Name = cb,
+                        Result = false
+                    });
+                }
+                return false;
+            }
         }
+
 
         private void NavigateToPage(GoToPage message)
         {
@@ -134,7 +200,6 @@ namespace BOBApp
             switch (message.Name)
             {
                 case "Bestemmingen":
-            
                     rootFrame.Navigate(typeof(Bestemmingen));
                     break;
                 case "Bestemmingen_Nieuw":
@@ -205,6 +270,7 @@ namespace BOBApp
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
+          
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }

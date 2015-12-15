@@ -35,6 +35,16 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+        public static async Task<string> GetBobAverageById(int id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var result = client.GetAsync(URL.BOBS_AVG + "/" + id.ToString());
+                string json = await result.Result.Content.ReadAsStringAsync();
+                string data = JsonConvert.DeserializeObject<string>(json);
+                return data;
+            }
+        }
         public static async Task<List<Bob.All>> GetBobsOnline()
         {
             using (HttpClient client = new HttpClient())

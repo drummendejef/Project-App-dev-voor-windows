@@ -44,6 +44,7 @@ namespace Libraries
         public static string BOBS = BASE + "/bobs";
         public static string BOBS_ONLINE = BOBS + "/online";
         public static string BOBS_FIND = BOBS + "/find";
+        public static string BOBS_AVG = BOBS + "/AVG";
         public static string BOB_TYPES = BOBS + "/types";
 
         public static string CHATROOMS = BASE + "/chatrooms";

@@ -72,7 +72,7 @@ namespace BOBApp.ViewModels
                 {
                     MainViewVM.LatestSocket = _socket;
                     VindRitVM.Request = VindRitVM.Request + 1;
-                    Task task = NavigateAccept();
+                    Task task = NavigateAccept(_socket.From);
                 }
                
             });
@@ -95,6 +95,21 @@ namespace BOBApp.ViewModels
                 }
 
             });
+
+            MainViewVM.socket.On("friend_request", async (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true)
+                {
+                    //friend add
+                    User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+
+
+                }
+
+            });
+
         }
 
 
@@ -108,54 +123,39 @@ namespace BOBApp.ViewModels
         //Methods
      
 
-        private async Task NavigateAccept()
+        private async Task NavigateAccept(int from)
         {
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
              async () =>
              {
+                 User bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(from)).Result.User;
+
                  VindRitVM.BobAccepted = true;
-
-
-                 bool ok = Task.FromResult<bool>(await AcceptUser("U choose Stijn as your user?")).Result;
-
-                 if (ok == true)
+                 if (bob != null)
                  {
-                     Frame rootFrame = MainViewVM.MainFrame as Frame;
-                     rootFrame.Navigate(typeof(VindRitBob), true);
+                     Messenger.Default.Send<Dialog>(new Dialog()
+                     {
+                         Message = bob.ToString() + " wilt u als bob",
+                         Ok = "Accept",
+                         Nok = "Ignore",
+                         ViewOk = typeof(VindRitBob),
+                         ViewNok= typeof(MainView),
+                         ParamView = true
+                     });
                  }
+                 else
+                 {
+                     //error
+                 }
+
                 
+
+
              }
              );
         }
 
-        private async Task<bool> AcceptUser(string text)
-        {
-            var dialog = new MessageDialog(text);
-
-            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
-            dialog.Commands.Add(new UICommand("No") { Id = 1 });
-
-            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
-            {
-                // Adding a 3rd command will crash the app when running on Mobile !!!
-                dialog.Commands.Add(new UICommand("Maybe later") { Id = 2 });
-            }
-
-            dialog.DefaultCommandIndex = 0;
-            dialog.CancelCommandIndex = 1;
-
-            var result = await dialog.ShowAsync();
-
-            int id = int.Parse(result.Id.ToString());
-            if (id == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+       
 
         private void LogOff()
         {
@@ -164,16 +164,13 @@ namespace BOBApp.ViewModels
         private async Task<Boolean> LogOffUser()
         {
             Response res = await LoginRepository.LogOff();
-            if (res.Success == true)
-            {
-                MainViewVM.socket.Disconnect();
+            MainViewVM.socket.Disconnect();
 
-                Messenger.Default.Send<GoToPage>(new GoToPage()
-                {
-                    Name = "Login"
-                });
-            }
-        
+            Messenger.Default.Send<GoToPage>(new GoToPage()
+            {
+                Name = "Login"
+            });
+
             return res.Success;
         }
         private async void GetPoints()

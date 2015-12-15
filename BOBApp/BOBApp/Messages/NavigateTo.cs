@@ -10,6 +10,9 @@ namespace BOBApp.Messages
     {
         public bool Reload { get; internal set; }
         public string Name { get; internal set; }
+        public Type View { get; internal set; }
+
+        public object Result { get; internal set; }
 
     }
 }

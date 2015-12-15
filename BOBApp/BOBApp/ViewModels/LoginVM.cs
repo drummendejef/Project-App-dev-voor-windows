@@ -98,12 +98,6 @@ namespace BOBApp.ViewModels
                 Response res = await LoginRepository.Login(email, md5.Create(pass));
                 if (res.Success == true)
                 {
-                    Loading = false;
-                    RaisePropertyChanged("Loading");
-
-                    this.EnableLogin = true;
-                    RaisePropertyChanged("EnableLogin");
-
                     var json = JsonConvert.SerializeObject(new { Email =email, Password= md5.Create(pass) });
                     await saveStringToLocalFile("user.json", json);
 
@@ -114,14 +108,22 @@ namespace BOBApp.ViewModels
                     {
                         Name = "MainView"
                     });
+
+                    this.Loading = false;
+                    RaisePropertyChanged("Loading");
+
+                    this.EnableLogin = true;
+                    RaisePropertyChanged("EnableLogin");
+
                 }
                 else
                 {
                   
 
-                    if(res.Error== "connect ETIMEDOUT")
+
+                    if (res.Error== "connect ETIMEDOUT")
                     {
-                        this.Error = "Server offline error";
+                        this.Error = "Connectie error";
                         RaisePropertyChanged("Error");
 
                         task = Login_task(this.Email, this.Pass);
@@ -129,6 +131,9 @@ namespace BOBApp.ViewModels
 
                     if (res.Error == "Invalid Login")
                     {
+                        this.Loading = false;
+                        RaisePropertyChanged("Loading");
+
                         this.EnableLogin = true;
                         RaisePropertyChanged("EnableLogin");
 
@@ -137,6 +142,9 @@ namespace BOBApp.ViewModels
                     }
                     if (res.Error == "Server offline")
                     {
+                        this.Loading = false;
+                        RaisePropertyChanged("Loading");
+
                         this.EnableLogin = true;
                         RaisePropertyChanged("EnableLogin");
 

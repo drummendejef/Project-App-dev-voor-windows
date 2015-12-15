@@ -180,7 +180,9 @@ namespace BOBApp.Views
             {
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
-                    Message= "Gelieve bob gegevens in te vullen"
+                    Message= "Gelieve bob gegevens in te vullen",
+                    Ok=null,
+                    Nok=null
                 });
 
                
@@ -235,7 +237,8 @@ namespace BOBApp.Views
 
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
-                    Reload = reload
+                    Reload = reload,
+                    View=typeof(VindRit)
                 });
             }
 

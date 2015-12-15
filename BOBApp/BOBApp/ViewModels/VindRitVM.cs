@@ -104,33 +104,91 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                //update location user/bob naar de db
-                if (obj.Name == "trip_location")
+                switch (obj.Name)
                 {
-                    VindRitVM.StatusID = 1;
-                    Geolocator geolocator = new Geolocator();
-                    Geoposition pos = await geolocator.GetGeopositionAsync();
-                    Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                    case "trip_location":
+                        trip_location();
+                        break;
 
-
-                    Trips_Locations item = new Trips_Locations()
-                    {
-                        Trips_ID = VindRitVM.CurrentTrip.ID,
-                        Location = JsonConvert.SerializeObject(location),
-                        Statuses_ID = VindRitVM.StatusID
-                    };
-                    Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
-
-                    if (ok.Success == true)
-                    {
-                        VindRitVM.StatusID = 2;
-
-                        StartTripLocationTimer();
-                    }
-                    
+                    case "find_bob":
+                        find_bob((bool) obj.Result);
+                        break;
+                    default:
+                        break;
                 }
+
             }
         }
+
+        #region navigateTo
+
+        #endregion
+        private async void find_bob(bool ok)
+        {
+            if (ok == false)
+            {
+                bobs.Remove(bobs.First());
+
+                if (bobs.Count == 0)
+                {
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = "Geen bob gevonden",
+                        Ok = "Ok",
+                        Nok = null,
+                        ViewOk = null,
+                        ViewNok = null,
+                        ParamView = false,
+                        Cb = null
+                    });
+                }
+                else
+                {
+                   
+
+                    ShowBob(bobs.First());
+                }
+            }
+            else
+            {
+                //take this bob
+                VindRitVM.SelectedBob = bobs.First();
+
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
+                Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                MainViewVM.socket.Emit("findBob_DONE", JsonConvert.SerializeObject(socketSend));
+                
+
+            }
+        }
+
+        //update location user/bob naar de db
+
+        private async void trip_location()
+        {
+            VindRitVM.StatusID = 1;
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+
+            Trips_Locations item = new Trips_Locations()
+            {
+                Trips_ID = VindRitVM.CurrentTrip.ID,
+                Location = JsonConvert.SerializeObject(location),
+                Statuses_ID = VindRitVM.StatusID
+            };
+            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+
+            if (ok.Success == true)
+            {
+                VindRitVM.StatusID = 2;
+
+                StartTripLocationTimer();
+            }
+        }
+
+
         #region  StartTripLocationTimer
         DispatcherTimer timer = new DispatcherTimer();
         private void StartTripLocationTimer()
@@ -343,79 +401,44 @@ namespace BOBApp.ViewModels
 
 
         //find bob
+        List<Bob> bobs;
         private async void FindBob()
         {
             this.Loading = true;
             RaisePropertyChanged("Loading");
 
-            List<Bob> bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
+            bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
 
             this.Loading = false;
             RaisePropertyChanged("Loading");
 
-            while (bobs.Count > 0)
-            {
-                bool ok = Task.FromResult<bool>(await ShowBob(bobs.First())).Result;
-                if (ok == false)
-                {
-                    bobs.Remove(bobs.First());
-                    if (bobs.Count == 0)
-                    {
-                        var dialog = new MessageDialog("Geen Bob gevonden");
-                        await dialog.ShowAsync();
-                    }
-                }
-                else
-                {
-                    //take this bob
-                    VindRitVM.SelectedBob = bobs.First();
-
-                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
-                    Libraries.Socket socketSend =new Libraries.Socket() { From=MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                    MainViewVM.socket.Emit("findBob_DONE", JsonConvert.SerializeObject(socketSend));
-                    break;
-
-                }
-
-            }
-            if (bobs.Count == 0)
-            {
-                var dialog = new MessageDialog("Geen Bob gevonden");
-                await dialog.ShowAsync();
-            }
-
-
+            ShowBob(bobs.First());
         }
 
 
 
-        private async Task<bool> ShowBob(Bob bob)
+        private async void ShowBob(Bob bob)
         {
-            var dialog = new MessageDialog(bob.LicensePlate);
+            Bob.All bob_full = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bob.ID.Value)).Result;
+            string bob_text = bob_full.User.ToString() + " is in de buurt met volgende nummerplaat " + bob_full.Bob.LicensePlate + " voor een bedrag van " + bob_full.Bob.PricePerKm  + " euro per km.";
 
-            dialog.Commands.Add(new UICommand("Take bob") { Id = 0 });
-            dialog.Commands.Add(new UICommand("Next bob") { Id = 1 });
-
-            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+            if (bob_full != null)
             {
-                // Adding a 3rd command will crash the app when running on Mobile !!!
-                dialog.Commands.Add(new UICommand("Maybe later") { Id = 2 });
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Volgende bob gevonden: " + "\n" + bob_text,
+                    Ok = "Take bob",
+                    Nok = "Next bob",
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = "find_bob"
+                });
             }
 
-            dialog.DefaultCommandIndex = 0;
-            dialog.CancelCommandIndex = 1;
+           
 
-            var result = await dialog.ShowAsync();
 
-            int id = int.Parse(result.Id.ToString());
-            if(id == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
 
