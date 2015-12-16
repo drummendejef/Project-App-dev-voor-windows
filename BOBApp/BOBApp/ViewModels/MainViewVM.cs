@@ -163,27 +163,42 @@ namespace BOBApp.ViewModels
 
 
                 }
+            });
 
+            MainViewVM.socket.On("chatroom_COMMENT", (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
+                //if (_socket.Status == true)
+                {
+                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                    {
+                        Name = "newComment"
+                    });
+
+
+
+                }
             });
 
         }
 
         private async void TripDone()
         {
-            var definition = new { ID =-1 };
+            var definition = new { ID =-1 , UserID =-1};
             var data = JsonConvert.SerializeObject(definition);
             var data2 = JsonConvert.SerializeObject(new Trip() { ID = -1 });
-
+           
 
             bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
-            bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+            bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data2)).Result;
 
 
         }
 
         private async void OpenChatroom(int chatroomID)
         {
-            var definition = new { ID = chatroomID };
+            var definition = new { ID = chatroomID, UserID= MainViewVM.USER.ID };
             var data = JsonConvert.SerializeObject(definition);
             bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
 

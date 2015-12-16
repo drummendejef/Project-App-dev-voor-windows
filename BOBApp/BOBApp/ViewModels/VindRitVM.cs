@@ -109,6 +109,7 @@ namespace BOBApp.ViewModels
                     case "bob_accepted":
                         bob_accepted((bool) obj.Result);
                         break;
+                    
                     default:
                         break;
                 }
@@ -447,13 +448,13 @@ namespace BOBApp.ViewModels
             List<Bob> bobs = await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance);
 
 
-
             return bobs;
         }
         private async void FindBob()
         {
             this.Loading = true;
             RaisePropertyChanged("Loading");
+            bobs = new List<Bob>();
 
             bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
 

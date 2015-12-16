@@ -46,6 +46,15 @@ namespace BOBApp.ViewModels
             {
                 getChatroom();
             }
+
+            switch (obj.Name)
+            {
+                case "newComment":
+                    getChatroom();
+                    break;
+                default:
+                    break;
+            }
         }
 
 
@@ -117,7 +126,24 @@ namespace BOBApp.ViewModels
             Response res = await ChatRoomRepository.PostChatComment(this.ChatComment);
             if (res.Success == true)
             {
-                GetChatComments();
+
+                int bobID=ChatRoom.ChatRoom.Bobs_ID;
+                int userID = ChatRoom.ChatRoom.Users_ID;
+                Libraries.Socket socketSendToBob = new Libraries.Socket()
+                {
+                    To = bobID,
+                    Status = true
+                };
+                Libraries.Socket socketSendToUser = new Libraries.Socket()
+                {
+                    To = userID,
+                    Status = true
+                };
+
+                MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));
+                MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToBob));
+
+
                 this.ChatComment.Comment = "";
                 RaisePropertyChanged("ChatComment");
                

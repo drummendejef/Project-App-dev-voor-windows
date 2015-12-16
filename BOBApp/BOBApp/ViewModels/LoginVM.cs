@@ -20,6 +20,7 @@ using Windows.Networking.Connectivity;
 using Newtonsoft.Json;
 using Windows.Storage;
 using System.IO;
+using Windows.ApplicationModel.Core;
 
 namespace BOBApp.ViewModels
 {
@@ -101,9 +102,28 @@ namespace BOBApp.ViewModels
                     var json = JsonConvert.SerializeObject(new { Email =email, Password= md5.Create(pass) });
                     await saveStringToLocalFile("user.json", json);
 
-
+                
                     User user = await UserRepository.GetUser();
                     MainViewVM.USER = user;
+
+                    //test json
+                    //update json
+                    string jsonChat = await Localdata.read("chatroom.json");
+                    string jsonTrip = await Localdata.read("trip.json");
+                    var definition = new { ID = 0, UserID = 0 };
+                    var dataChat = JsonConvert.DeserializeAnonymousType(jsonChat, definition);
+                    var dataTrip = JsonConvert.DeserializeObject<Trip>(jsonTrip);
+
+                    if (dataChat.UserID != MainViewVM.USER.ID)
+                    {
+                        Clear();
+                    }
+                    if (dataTrip.Users_ID != MainViewVM.USER.ID)
+                    {
+                        Clear();
+                    }
+
+
                     Messenger.Default.Send<GoToPage>(new GoToPage()
                     {
                         Name = "MainView"
@@ -173,6 +193,25 @@ namespace BOBApp.ViewModels
                 return false;
             }
             
+        }
+
+        private async void Clear()
+        {
+            try
+            {
+                var definition = new { ID = -1, UserID = -1 };
+                var data = JsonConvert.SerializeObject(definition);
+                var data2 = JsonConvert.SerializeObject(new Trip() { ID = -1 });
+
+
+                bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
+                bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data2)).Result;
+            }
+                catch (Exception ex)
+            {
+                var error = ex.Message;
+            }
+
         }
 
         private bool serverOnline()

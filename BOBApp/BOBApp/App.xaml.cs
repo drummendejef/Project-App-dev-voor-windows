@@ -316,10 +316,17 @@ namespace BOBApp
         /// </summary>
         /// <param name="sender">The source of the suspend request.</param>
         /// <param name="e">Details about the suspend request.</param>
-        private void OnSuspending(object sender, SuspendingEventArgs e)
+        private async void OnSuspending(object sender, SuspendingEventArgs e)
         {
+            if (MainViewVM.USER != null)
+            {
+                Libraries.Models.Response res = await Libraries.Repositories.LoginRepository.LogOff();
+                MainViewVM.socket.Disconnect();
+            }
+
+
             var deferral = e.SuspendingOperation.GetDeferral();
-          
+
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
