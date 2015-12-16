@@ -324,8 +324,20 @@ namespace BOBApp.ViewModels
                 {
                     Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
 
-                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSend));
+                    Libraries.Socket socketSendToBob = new Libraries.Socket() {
+                        To = bob.User.ID,
+                        Status = true
+                    };
+
+                    Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    {
+                        To = MainViewVM.USER.ID,
+                        Status = true
+                    };
+
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
+
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
 
 
                     //todo: rating

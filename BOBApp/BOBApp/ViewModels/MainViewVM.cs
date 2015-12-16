@@ -194,6 +194,10 @@ namespace BOBApp.ViewModels
             bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data2)).Result;
 
 
+            VindRitVM.Filter.SelectedDestination = new Users_Destinations();
+            MainViewVM.ChatRoom = null;
+            //alles op null zetten, van start
+
         }
 
         private async void OpenChatroom(int chatroomID)
