@@ -51,7 +51,7 @@
         </SplitView.Pane>
         <SplitView.Content>
             <!-- Navigation Frame -->
-            <Frame x:Name="frame" Navigating="frame_Navigating" >
+            <Frame x:Name="frame" Navigated="frame_Navigated" Navigating="frame_Navigating" >
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>

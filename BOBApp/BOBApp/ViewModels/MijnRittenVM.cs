@@ -1,6 +1,8 @@
-﻿using BOBApp.Views;
+﻿using BOBApp.Messages;
+using BOBApp.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Models.relations;
 using Libraries.Repositories;
@@ -49,7 +51,9 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("CurrentTrip");
             RaisePropertyChanged("Car");
 
-            MainViewVM.socket.On("update_trip", (msg) =>
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+
+            MainViewVM.socket.On("trip_UPDATE", (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
                 //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
@@ -62,6 +66,17 @@ namespace BOBApp.ViewModels
             });
         }
 
+        #region navigate to
+        private async void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name== "loaded")
+            {
+                Type from = obj.View;
+            }
+        }
+
+
+        #endregion
 
 
         //Methods

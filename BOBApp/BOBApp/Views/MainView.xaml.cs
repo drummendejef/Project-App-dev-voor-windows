@@ -257,5 +257,14 @@ namespace BOBApp.Views
         {
             user.Visibility = Visibility.Collapsed;
         }
+
+        private void frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+            {
+                Name="loaded",
+                View = e.SourcePageType
+            });
+        }
     }
 }
