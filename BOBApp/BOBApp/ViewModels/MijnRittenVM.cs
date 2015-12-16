@@ -45,7 +45,7 @@ namespace BOBApp.ViewModels
         //Constructor
         public MijnRittenVM()
         {
-            GetTrips();
+           
             GetCurrentTrip();
             RaisePropertyChanged("Trips");
             RaisePropertyChanged("CurrentTrip");
@@ -72,6 +72,9 @@ namespace BOBApp.ViewModels
             if (obj.Name== "loaded")
             {
                 Type from = obj.View;
+                if (from == typeof(MijnRitten)){
+                    GetTrips();
+                }
             }
         }
 
