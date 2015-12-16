@@ -323,11 +323,7 @@ namespace BOBApp.ViewModels
             dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
             dialog.Commands.Add(new UICommand("No") { Id = 1 });
 
-            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
-            {
-                // Adding a 3rd command will crash the app when running on Mobile !!!
-                dialog.Commands.Add(new UICommand("Maybe later") { Id = 2 });
-            }
+            
 
             dialog.DefaultCommandIndex = 0;
             dialog.CancelCommandIndex = 1;

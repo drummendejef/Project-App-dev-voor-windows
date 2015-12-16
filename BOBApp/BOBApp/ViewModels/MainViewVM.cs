@@ -68,8 +68,8 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("bob_ACCEPT", (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
-                if (_socket.Status == true)
+                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                //if (_socket.Status == true)
                 {
                     MainViewVM.LatestSocket = _socket;
                     VindRitVM.Request = VindRitVM.Request + 1;
@@ -88,8 +88,8 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("trip_START", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
-                if (_socket.Status == true)
+                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                //if (_socket.Status == true)
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
@@ -103,8 +103,8 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("trip_DONE", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
-                if (_socket.Status == true)
+                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                //if (_socket.Status == true)
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
@@ -116,8 +116,8 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("friend_REQUEST", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
-                if (_socket.Status == true)
+                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                //if (_socket.Status == true)
                 {
                     //friend add
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
@@ -132,8 +132,8 @@ namespace BOBApp.ViewModels
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
                 
-                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
-                if (_socket.Status == true)
+                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                //if (_socket.Status == true)
                 {
                     //from bob
                     Bob.All fromBob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(_socket.From)).Result;
@@ -151,15 +151,17 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("chatroom_OPEN", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
-                if (_socket.Status == true)
+                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                //if (_socket.Status == true)
                 {
                     //friend add
+                    
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     int bobsID = JsonConvert.DeserializeObject<int>(_socket.Object.ToString());
 
 
                     OpenChatroom(bobsID);
+
 
                 }
 
@@ -188,8 +190,11 @@ namespace BOBApp.ViewModels
 
             if (ok_chatroom == true)
             {
-                Frame rootFrame = MainViewVM.MainFrame as Frame;
-                rootFrame.Navigate(typeof(VindRitChat));
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+                    rootFrame.Navigate(typeof(VindRitChat),true);
+                });
             }
 
            

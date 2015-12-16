@@ -1,6 +1,8 @@
-﻿using BOBApp.Views;
+﻿using BOBApp.Messages;
+using BOBApp.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Libraries;
 using Libraries.Models;
 using Libraries.Repositories;
@@ -31,10 +33,19 @@ namespace BOBApp.ViewModels
         //Constructor
         public VindRitChatVM()
         {
-           
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+
             AddCommentCommand = new RelayCommand(AddComment);
            
             getChatroom();
+        }
+
+        private void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.View == typeof(VindRitChat))
+            {
+                getChatroom();
+            }
         }
 
 
@@ -43,9 +54,11 @@ namespace BOBApp.ViewModels
         //Methods
         private async void getChatroom()
         {
-            if (VindRitChatVM.ID == null)
+           
+            try
             {
-                try
+
+                if (VindRitChatVM.ID == null)
                 {
                     string json = await Localdata.read("chatroom.json");
                     var definition = new { ID = 0 };
@@ -59,24 +72,30 @@ namespace BOBApp.ViewModels
                     }else
                     {
                         VindRitChatVM.ID = data.ID;
-
-
                         MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
 
                         this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
                         GetChatComments();
                     }
+                }
+                else
+                {
+                    MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
+
+                    this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
+                    GetChatComments();
+                }
                    
 
-                }
-                catch (Exception ex)
-                {
-
-                    Frame rootFrame = MainViewVM.MainFrame as Frame;
-                    rootFrame.Navigate(typeof(VindRit));
-                }
-
             }
+            catch (Exception ex)
+            {
+
+                Frame rootFrame = MainViewVM.MainFrame as Frame;
+                rootFrame.Navigate(typeof(VindRit));
+            }
+
+           
 
 
 
