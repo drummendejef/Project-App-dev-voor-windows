@@ -106,28 +106,54 @@ namespace BOBApp.ViewModels
                     User user = await UserRepository.GetUser();
                     MainViewVM.USER = user;
 
-                    //test json
-                    //update json
-                    string jsonChat = await Localdata.read("chatroom.json");
-                    string jsonTrip = await Localdata.read("trip.json");
-                    var definition = new { ID = 0, UserID = 0 };
-                    var dataChat = JsonConvert.DeserializeAnonymousType(jsonChat, definition);
-                    var dataTrip = JsonConvert.DeserializeObject<Trip>(jsonTrip);
-
-                    if (dataChat.UserID != MainViewVM.USER.ID)
-                    {
-                        Clear();
-                    }
-                    if (dataTrip.Users_ID != MainViewVM.USER.ID)
-                    {
-                        Clear();
-                    }
-
 
                     Messenger.Default.Send<GoToPage>(new GoToPage()
                     {
                         Name = "MainView"
                     });
+
+
+                    //test json
+                    //update json
+                    try
+                    {
+                        string jsonChat = await Localdata.read("chatroom.json");
+                        string jsonTrip = await Localdata.read("trip.json");
+                        var definition = new { ID = 0, UserID = 0 };
+                        var dataChat = JsonConvert.DeserializeAnonymousType(jsonChat, definition);
+                        var dataTrip = JsonConvert.DeserializeObject<Trip>(jsonTrip);
+
+                        if (dataChat.UserID != MainViewVM.USER.ID)
+                        {
+                            Clear();
+                        }
+                        else if (dataTrip.Users_ID != MainViewVM.USER.ID)
+                        {
+                            Clear();
+                        }
+                        else
+                        {
+                            VindRitVM.CurrentTrip = await TripRepository.GetCurrentTrip();
+                          
+                            VindRitChatVM.ID = dataChat.ID;
+                            if (dataTrip.ID != null && VindRitVM.CurrentTrip.ID==dataTrip.ID)
+                            {
+                                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                                {
+                                    Name = "trip_location:reload"
+                                });
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        var error = ex.Message;
+                    }
+                    
+
+
+                   
 
                     this.Loading = false;
                     RaisePropertyChanged("Loading");

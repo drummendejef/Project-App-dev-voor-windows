@@ -94,7 +94,7 @@ namespace Libraries.Repositories
             {
                 var newObject = JsonConvert.SerializeObject(new { TripsID = tripsID, Active = active });
 
-                HttpResponseMessage result = await client.PostAsync(URL.TRIPS_ACTIVE, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                HttpResponseMessage result = await client.PutAsync(URL.TRIPS_ACTIVE, new StringContent(newObject, Encoding.UTF8, "application/json"));
                 string json = await result.Content.ReadAsStringAsync();
                 Response data = JsonConvert.DeserializeObject<Response>(json);
 

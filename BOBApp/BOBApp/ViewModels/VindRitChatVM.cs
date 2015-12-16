@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -36,13 +38,18 @@ namespace BOBApp.ViewModels
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             AddCommentCommand = new RelayCommand(AddComment);
-           
+
+            RaisePropertyChanged("ChatComment");
             getChatroom();
         }
 
         private void ExecuteNavigatedTo(NavigateTo obj)
         {
             if (obj.View == typeof(VindRitChat))
+            {
+                getChatroom();
+            }
+            if (obj.Reload == true)
             {
                 getChatroom();
             }
@@ -75,8 +82,11 @@ namespace BOBApp.ViewModels
                     if (data.ID == -1)
                     {
                         //geen chatroom
-                        Frame rootFrame = MainViewVM.MainFrame as Frame;
-                        rootFrame.Navigate(typeof(VindRit));
+                        await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                        {
+                            Frame rootFrame = MainViewVM.MainFrame as Frame;
+                            rootFrame.Navigate(typeof(VindRit));
+                        });
 
                     }else
                     {
@@ -85,6 +95,8 @@ namespace BOBApp.ViewModels
 
                         this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
                         GetChatComments();
+
+                     
                     }
                 }
                 else
@@ -93,6 +105,8 @@ namespace BOBApp.ViewModels
 
                     this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
                     GetChatComments();
+
+
                 }
                    
 
@@ -100,8 +114,11 @@ namespace BOBApp.ViewModels
             catch (Exception ex)
             {
 
-                Frame rootFrame = MainViewVM.MainFrame as Frame;
-                rootFrame.Navigate(typeof(VindRit));
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+                    rootFrame.Navigate(typeof(VindRit));
+                });
             }
 
            
@@ -180,8 +197,10 @@ namespace BOBApp.ViewModels
             }
 
             this.ChatRoom = lijst;
-            RaisePropertyChanged("ChatRoom");
-
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("ChatRoom");
+            });
 
         }
     }

@@ -474,10 +474,11 @@
       <RootProperty Name="PaneBackground" />
       <RootProperty Name="Pane" />
       <RootProperty Name="Content" />
+      <RootEvent Name="PaneClosing" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="ContentTransitions" />
-      <RootEvent Name="Navigated" />
+      <RootEvent Name="Navigating" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition">

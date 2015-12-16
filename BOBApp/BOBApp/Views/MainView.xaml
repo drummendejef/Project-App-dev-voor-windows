@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </Page.Resources>
     
-    <SplitView x:Name="ShellSplitView" DisplayMode="CompactOverlay"
+    <SplitView PaneClosing="ShellSplitView_PaneClosing" x:Name="ShellSplitView" DisplayMode="CompactOverlay"
                IsPaneOpen="False" CompactPaneLength="41" OpenPaneLength="200"
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
@@ -37,7 +37,7 @@
                     <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Afmelden" Command="{Binding LogOffCommand}" />
                 </Grid>
 
-                <RadioButton Tag="&#xE724;" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
+                <RadioButton Tag="&#xE724;" x:Name="bobVindEenRit" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
                 <RadioButton Tag="&#xE724;" x:Name="bobBiedJeAan" Visibility="Collapsed" Content="Bied je aan" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBiedJeAanChecked" />
 
                 <RadioButton Tag="&#xE716;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindVriendenChecked" />
@@ -51,7 +51,7 @@
         </SplitView.Pane>
         <SplitView.Content>
             <!-- Navigation Frame -->
-            <Frame x:Name="frame" Navigated="frame_Navigated">
+            <Frame x:Name="frame" Navigating="frame_Navigating" >
                 <Frame.ContentTransitions>
                     <TransitionCollection>
                         <NavigationThemeTransition>

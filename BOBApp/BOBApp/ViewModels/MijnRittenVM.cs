@@ -69,26 +69,36 @@ namespace BOBApp.ViewModels
         {
             Trip currenttrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
 
-            Trip.All trips_all = new Trip.All();
+            if (currenttrip.Active == true)
+            {
+                Trip.All trips_all = new Trip.All();
 
 
-            User.All user = await UsersRepository.GetUserById(currenttrip.Users_ID);
-            Bob.All bob = await BobsRepository.GetBobById(currenttrip.Bobs_ID);
-            Users_Destinations destination = await DestinationRepository.GetDestinationById((currenttrip.Destinations_ID));
-            Party party = await PartyRepository.GetPartyById(currenttrip.Party_ID);
-            Trip.All newTrip = new Trip.All();
+                User.All user = await UsersRepository.GetUserById(currenttrip.Users_ID);
+                Bob.All bob = await BobsRepository.GetBobById(currenttrip.Bobs_ID);
+                Users_Destinations destination = await DestinationRepository.GetDestinationById((currenttrip.Destinations_ID));
+                Party party = await PartyRepository.GetPartyById(currenttrip.Party_ID);
+                Trip.All newTrip = new Trip.All();
+
+
+
+                newTrip.Trip = currenttrip;
+                newTrip.Party = party;
+                newTrip.User = user.User;
+                newTrip.Bob = bob.User;
+                newTrip.Destination = destination;
+
+                MoveCar(newTrip.Trip.Status_Name);
+
+                this.CurrentTrip = newTrip;
+            }
+            else
+            {
+                //geen current trip nu
+
+            }
 
            
-
-            newTrip.Trip = currenttrip;
-            newTrip.Party = party;
-            newTrip.User = user.User;
-            newTrip.Bob = bob.User;
-            newTrip.Destination = destination;
-
-            MoveCar(newTrip.Trip.Status_Name);
-
-            this.CurrentTrip = newTrip;
 
         }
 

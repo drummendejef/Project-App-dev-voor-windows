@@ -18,6 +18,8 @@ namespace Libraries.Models
         public DateTime Added { get; set; }
         public string Status_Name { get; set; }
 
+        public bool Active { get; set; }
+
 
         public class All
         {

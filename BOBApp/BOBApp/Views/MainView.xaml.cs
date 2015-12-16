@@ -198,10 +198,12 @@ namespace BOBApp.Views
 
         private void IsBob()
         {
+            isBob=MainViewVM.USER.IsBob;
             if (isBob == true)
             {
                 //bob
                 bobBiedJeAan.Visibility = Visibility.Visible;
+                bobVindEenRit.Visibility = Visibility.Collapsed;
                 isBob = false;
                 Change.Content = "BOB";
             }
@@ -209,6 +211,7 @@ namespace BOBApp.Views
             {
                 //user
                 bobBiedJeAan.Visibility = Visibility.Collapsed;
+                bobVindEenRit.Visibility = Visibility.Visible;
                 isBob = true;
                 Change.Content = "USER";
             }
@@ -229,7 +232,8 @@ namespace BOBApp.Views
             }
         }
 
-        private void frame_Navigated(object sender, NavigationEventArgs e)
+
+        private void frame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
             if (e.Parameter != null)
             {
@@ -238,11 +242,20 @@ namespace BOBApp.Views
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
                     Reload = reload,
-                    View=typeof(VindRit)
+                    View = typeof(VindRit)
                 });
-            }
 
-            base.OnNavigatedTo(e);
+                if (reload == false)
+                {
+                    e.Cancel = true;
+                    //e.Cancel = true;
+                }
+            }
+        }
+
+        private void ShellSplitView_PaneClosing(SplitView sender, SplitViewPaneClosingEventArgs args)
+        {
+            user.Visibility = Visibility.Collapsed;
         }
     }
 }

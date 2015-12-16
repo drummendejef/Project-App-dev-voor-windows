@@ -109,7 +109,18 @@ namespace BOBApp.ViewModels
                     case "bob_accepted":
                         bob_accepted((bool) obj.Result);
                         break;
-                    
+                    case "trip_location:reload":
+                        Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
+
+                        VindRitVM.Filter.SelectedDestination = dest;
+                        if (VindRitVM.Filter.SelectedDestination != null)
+                        {
+                            VindRitVM.StatusID = 2;
+                            StartTripLocationTimer();
+                        }
+                        
+
+                        break;
                     default:
                         break;
                 }
@@ -246,7 +257,9 @@ namespace BOBApp.ViewModels
                     Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
                     if (ok.Success == true)
                     {
-                        Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = MainViewVM.LatestSocket.From, Status = true };
+                       
+                        Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                        Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID , Status = true };
                         MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
                     }
                     else
@@ -309,8 +322,13 @@ namespace BOBApp.ViewModels
                 int id = int.Parse(result.Id.ToString());
                 if (id == 0)
                 {
-                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = MainViewVM.LatestSocket.From, Status = true };
+                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSend));
+
+
+                    //todo: rating
                 }
                 
             }
@@ -407,7 +425,17 @@ namespace BOBApp.ViewModels
         {
             Frame rootFrame = MainViewVM.MainFrame as Frame;
 
-            rootFrame.Navigate(typeof(VindRitChat));
+            if (VindRitChatVM.ID != null)
+            {
+                rootFrame.Navigate(typeof(VindRitChat), true);
+            }
+            else
+            {
+                rootFrame.Navigate(typeof(VindRitChat), false);
+            }
+
+           
+
         }
         private void GoFilter()
         {
