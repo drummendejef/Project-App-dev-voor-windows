@@ -18,6 +18,8 @@ using Libraries.Models.relations;
 using Libraries;
 using Windows.UI.Xaml;
 using Windows.Devices.Geolocation;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 
 namespace BOBApp.ViewModels
 {
@@ -92,7 +94,12 @@ namespace BOBApp.ViewModels
                     case "trip_location":
                         if (VindRitVM.CurrentTrip != null)
                         {
-                            trip_location();
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+                            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                trip_location();
+                            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         }
                         
                         break;
@@ -122,8 +129,10 @@ namespace BOBApp.ViewModels
                     Object= GetTripObject(),
                     Object2=user
                 };
+ 
+                   MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
 
-                MainViewVM.socket.Emit("make_trip", JsonConvert.SerializeObject(socketSend));
+
             }
             else
             {
@@ -162,7 +171,7 @@ namespace BOBApp.ViewModels
 
                 Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
                 Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                MainViewVM.socket.Emit("findBob_DONE", JsonConvert.SerializeObject(socketSend));
+                MainViewVM.socket.Emit("bob_ACCEPT:send", JsonConvert.SerializeObject(socketSend));
 
 
             }
@@ -193,8 +202,9 @@ namespace BOBApp.ViewModels
             if (ok.Success == true)
             {
                 VindRitVM.StatusID = 2;
-
                 StartTripLocationTimer();
+ 
+
             }
         }
 
@@ -237,7 +247,7 @@ namespace BOBApp.ViewModels
                     if (ok.Success == true)
                     {
                         Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = MainViewVM.LatestSocket.From, Status = true };
-                        MainViewVM.socket.Emit("update_trip", JsonConvert.SerializeObject(socketSend));
+                        MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
                     }
                     else
                     {
@@ -300,7 +310,7 @@ namespace BOBApp.ViewModels
                 if (id == 0)
                 {
                     Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = MainViewVM.LatestSocket.From, Status = true };
-                    MainViewVM.socket.Emit("trip_DONE", JsonConvert.SerializeObject(socketSend));
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSend));
                 }
                 
             }

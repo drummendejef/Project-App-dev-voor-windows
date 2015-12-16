@@ -117,12 +117,13 @@ namespace BOBApp
         {
             if (dialog.Message != null)
             {
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-               async () =>
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,async () =>
                {
                    Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
 
                });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
         }
