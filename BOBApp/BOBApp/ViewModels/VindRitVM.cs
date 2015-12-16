@@ -126,8 +126,7 @@ namespace BOBApp.ViewModels
                     From = MainViewVM.USER.ID,//from bob
                     To = user.User.ID,//to user
                     Status = true,
-                    Object= GetTripObject(),
-                    Object2=user
+                    Object=user
                 };
  
                    MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
@@ -461,7 +460,24 @@ namespace BOBApp.ViewModels
             this.Loading = false;
             RaisePropertyChanged("Loading");
 
-            ShowBob(bobs.First());
+            if (bobs.Count <= 0) {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Geen bob gevonden",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+
+            }else
+            {
+                ShowBob(bobs.First());
+
+            }
+
         }
 
 
@@ -497,40 +513,7 @@ namespace BOBApp.ViewModels
 
         #region methods
 
-        private object GetTripObject()
-        {
-            try
-            {
-                Bob selectedBob = VindRitVM.SelectedBob;
-                Party SelectedParty = VindRitVM.SelectedParty;
-                Users_Destinations SelectedDestination = VindRitVM.Filter.SelectedDestination;
-                List<Friend.All> selectedFriends = VindRitVM.Filter.SelectedFriends;
-                BobsType type = VindRitVM.Filter.SelectedBobsType;
-                DateTime? minDate = VindRitVM.Filter.SelectedMinDate;
-                int? rating = VindRitVM.Filter.SelectedRating;
-
-
-                //destinations edit
-
-                Trip trip = new Trip()
-                {
-                    Bobs_ID = selectedBob.ID.Value,
-                    Party_ID = SelectedParty.ID,
-                    Friends = JsonConvert.SerializeObject(selectedFriends),
-                    Destinations_ID = SelectedDestination.Destinations_ID
-                };
-
-                return trip;
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-                //return null;
-            }
-
-        }
+       
         #endregion
 
        

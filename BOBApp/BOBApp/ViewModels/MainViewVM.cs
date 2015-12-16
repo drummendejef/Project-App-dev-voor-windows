@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Libraries;
 using Libraries.Models;
+using Libraries.Models.relations;
 using Libraries.Repositories;
 using Newtonsoft.Json;
 using Quobject.SocketIoClientDotNet.Client;
@@ -136,11 +137,9 @@ namespace BOBApp.ViewModels
                 //if (_socket.Status == true)
                 {
                     //from bob
-                    Bob.All fromBob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(_socket.From)).Result;
-                    User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object2.ToString());
-                    Trip newTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
-
-
+                    User.All fromBob = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+                    User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object.ToString());
+                    Trip newTrip =(Trip) GetTripObject();
 
 
                     MakeTrip(newTrip, fromBob.Bob.ID.Value);
@@ -439,5 +438,41 @@ namespace BOBApp.ViewModels
 
 
         #endregion
+
+
+        private object GetTripObject()
+        {
+            try
+            {
+                Bob selectedBob = VindRitVM.SelectedBob;
+                Party SelectedParty = VindRitVM.SelectedParty;
+                Users_Destinations SelectedDestination = VindRitVM.Filter.SelectedDestination;
+                List<Friend.All> selectedFriends = VindRitVM.Filter.SelectedFriends;
+                BobsType type = VindRitVM.Filter.SelectedBobsType;
+                DateTime? minDate = VindRitVM.Filter.SelectedMinDate;
+                int? rating = VindRitVM.Filter.SelectedRating;
+
+
+                //destinations edit
+
+                Trip trip = new Trip()
+                {
+                    Bobs_ID = selectedBob.ID.Value,
+                    Party_ID = SelectedParty.ID,
+                    Friends = JsonConvert.SerializeObject(selectedFriends),
+                    Destinations_ID = SelectedDestination.Destinations_ID
+                };
+
+                return trip;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+                //return null;
+            }
+
+        }
     }
 }

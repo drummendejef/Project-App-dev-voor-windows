@@ -52,6 +52,7 @@ namespace BOBApp
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
+
           
          
         }
@@ -111,6 +112,35 @@ namespace BOBApp
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        
+        protected override void OnWindowCreated(WindowCreatedEventArgs args)
+        {
+            Window.Current.CoreWindow.SizeChanged += (ss, ee) =>
+            {
+                var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+                if (appView.IsFullScreen)
+                {
+                    //maximized
+
+                }
+                ee.Handled = true;
+            };
+            Window.Current.VisibilityChanged += (ss, ee) =>
+            {
+                if (!ee.Visible)
+                {
+                    //minimized
+                }
+            };
+            Window.Current.Closed += (ss, ee) =>
+            {
+                //closed
+                var test = "";
+            };
+
+            base.OnWindowCreated(args);
         }
 
         private async void DialogChange(Dialog dialog)
