@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -26,7 +28,7 @@ namespace BOBApp.ViewModels
 
         public List<Trip.All> Trips { get; set; }
         public Trip.All CurrentTrip { get; set; }
-
+        public bool Loading { get; set; }
         private Trip.All _SelectedTrip;
 
         public Trip.All SelectedTrip
@@ -45,42 +47,62 @@ namespace BOBApp.ViewModels
         //Constructor
         public MijnRittenVM()
         {
-           
-            GetCurrentTrip();
             RaisePropertyChanged("Trips");
             RaisePropertyChanged("CurrentTrip");
             RaisePropertyChanged("Car");
+            RaisePropertyChanged("Loading");
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
-            MainViewVM.socket.On("trip_UPDATE", (msg) =>
+            MainViewVM.socket.On("update_trip", (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
                 //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
                 if (_socket.Status == true)
                 {
                     GetCurrentTrip();
-                    GetTrips();
                 }
 
             });
         }
 
-        #region navigate to
+
         private async void ExecuteNavigatedTo(NavigateTo obj)
         {
-            if (obj.Name== "loaded")
+            if (obj.Name=="loaded")
             {
-                Type from = obj.View;
-                if (from == typeof(MijnRitten)){
-                    GetTrips();
+                Type view = (Type)obj.View;
+                if (view == (typeof(MijnRitten))){
+                    //loaded
+                    Loaded();
                 }
             }
         }
 
+        private async void Loaded()
+        {
+            await Task.Run(async () =>
+            {
+                // running in background
+                this.Loading = true;
+                RaisePropertyChanged("Loading");
 
-        #endregion
+                GetCurrentTrip();
+                GetTrips();
+                #pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaisePropertyChanged("Loading");
 
+                    RaisePropertyChanged("Trips");
+                    RaisePropertyChanged("CurrentTrip");
+
+                });
+                #pragma warning restore CS1998
+
+            });
+        }
 
         //Methods
         private async void GetCurrentTrip()
@@ -176,6 +198,7 @@ namespace BOBApp.ViewModels
             }
 
             this.Trips = trips_all;
+          
 
         }
     }

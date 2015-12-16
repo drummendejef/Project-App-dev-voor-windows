@@ -19,7 +19,7 @@
     </Page.Resources>
 
     <RelativePanel>
-        <ProgressRing Foreground="White" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
+        <ProgressRing Foreground="black" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
 
         
         <AutoSuggestBox x:Name="textBoxZoekLocatieFeestje" Text="{Binding SelectedPartyString, Mode=TwoWay}" ItemsSource="{Binding Parties, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True"  />
