@@ -41,7 +41,7 @@ namespace BOBApp.ViewModels
         public User User { get; set; }
         public RelayCommand LogOffCommand { get; set; }
         public double Points { get; set; }
-        public object Console { get; private set; }
+        public bool Loading { get; set; }
 
         private IBackgroundTaskRegistration regTask = null;
 
@@ -64,6 +64,7 @@ namespace BOBApp.ViewModels
             MainViewVM.socket = IO.Socket(URL.SOCKET);
             MainViewVM.socket.Connect();
 
+            //to bob
             MainViewVM.socket.On("bob_ACCEPT", (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
@@ -83,21 +84,34 @@ namespace BOBApp.ViewModels
             {
                 LogOff();
             });
-
-            MainViewVM.socket.On("trip_DONE", (msg) =>
+            //to bob
+            MainViewVM.socket.On("trip_START", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
                 //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
                 if (_socket.Status == true)
                 {
-                    //rating van bob voor gebruiker
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
-                    //add points to user
-                    //add rating to bobs-parties
+                    StartTrip((Trip)_socket.Object);
+
                 }
 
             });
+            //to bob
+            MainViewVM.socket.On("trip_DONE", async (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true)
+                {
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
+                    TripDone();
+                }
+
+            });
+            //to bob and user
             MainViewVM.socket.On("friend_request", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
@@ -105,8 +119,42 @@ namespace BOBApp.ViewModels
                 if (_socket.Status == true)
                 {
                     //friend add
-                    User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
+
+                }
+
+            });
+
+            //to user
+            MainViewVM.socket.On("make_trip", async (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                
+                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true)
+                {
+                    //from bob
+                    Bob.All fromBob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(_socket.From)).Result;
+                    User.All user = (User.All)_socket.Object2;
+
+                    MakeTrip((Trip)_socket.Object, user.User.ID);
+                }
+
+            });
+            //to bob and user
+            MainViewVM.socket.On("open_chatroom", async (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true)
+                {
+                    //friend add
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+
+
+
+                    OpenChatroom((int)_socket.Object);
 
                 }
 
@@ -114,17 +162,46 @@ namespace BOBApp.ViewModels
 
         }
 
+        private async void TripDone()
+        {
+            var definition = new { ID =-1 };
+            var data = JsonConvert.SerializeObject(definition);
+            var data2 = JsonConvert.SerializeObject(new Trip() { ID = -1 });
+
+
+            bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
+            bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+
+
+        }
+
+        private async void OpenChatroom(int chatroomID)
+        {
+            var definition = new { ID = chatroomID };
+            var data = JsonConvert.SerializeObject(definition);
+            bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
+
+            if (ok_chatroom == true)
+            {
+                Frame rootFrame = MainViewVM.MainFrame as Frame;
+
+                rootFrame.Navigate(typeof(VindRitChat));
+            }
+
+           
+        }
+
         private async void Bob_Accept(int from)
         {
-            User bob = Task.FromResult<User.All>(await UsersRepository.GetUserById(from)).Result.User;
+            User user = Task.FromResult<User.All>(await UsersRepository.GetUserById(from)).Result.User;
 
-            VindRitVM.BobAccepted = true;
-            if (bob != null)
+            VindRitVM.SelectedUser = user;
+            if (user != null)
             {
                
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
-                    Message = bob.ToString() + " wilt u als bob",
+                    Message = user.ToString() + " wilt u als bob",
                     Ok = "Accept",
                     Nok = "Ignore",
                     ViewOk = typeof(VindRitChat),
@@ -253,8 +330,112 @@ namespace BOBApp.ViewModels
 
         }
 
-       
 
 
+
+
+        #region methods
+        //by user
+        //wanneer bob accepteer, wordt door gebruiker die aanvraagd aangemaakt
+        private async void MakeTrip(Trip trip, int bobID)
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            Response res = Task.FromResult<Response>(await TripRepository.PostTrip(trip)).Result;
+
+            if (res.Success == true)
+            {
+                this.Loading = false;
+                RaisePropertyChanged("Loading");
+
+                Trip currentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
+
+
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
+                Libraries.Socket socketSendToBob = new Libraries.Socket()
+                {
+                    From = MainViewVM.USER.ID,//from user
+                    To = bob.User.ID,//to bob
+                    Status = true,
+                    Object = currentTrip
+                };
+
+
+                MainViewVM.socket.Emit("trip_START", JsonConvert.SerializeObject(socketSendToBob)); //bob
+                StartTrip(currentTrip); //user
+
+
+                MakeChatroom(bobID);
+
+                
+
+
+            }
+        }
+
+        private async void StartTrip(Trip currentTrip)
+        {
+            var data = JsonConvert.SerializeObject(currentTrip);
+            bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+
+            if (ok == true && currentTrip != null)
+            {
+                VindRitVM.CurrentTrip = currentTrip;
+                //update very minuten location for trip
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                {
+                    Name = "trip_location"
+                });
+
+
+            }
+        }
+
+
+
+        private async void MakeChatroom(int bobs_ID)
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            Response res = Task.FromResult<Response>(await ChatRoomRepository.PostChatRoom(bobs_ID)).Result;
+
+            if (res.Success == true)
+            {
+                this.Loading = false;
+                RaisePropertyChanged("Loading");
+
+
+                VindRitChatVM.ID = res.NewID.Value;
+
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
+                Libraries.Socket socketSendToBob = new Libraries.Socket()
+                {
+                    From = MainViewVM.USER.ID,//from user
+                    To = bob.User.ID,//to bob
+                    Status = true,
+                    Object = res.NewID.Value
+                };
+
+                Libraries.Socket socketSendToUser = new Libraries.Socket()
+                {
+                    From = bob.User.ID,//from bob
+                    To = MainViewVM.USER.ID,//to user
+                    Status = true,
+                    Object = res.NewID.Value
+                };
+
+
+                MainViewVM.socket.Emit("open_chatroom", JsonConvert.SerializeObject(socketSendToBob)); //bob
+                MainViewVM.socket.Emit("open_chatroom", JsonConvert.SerializeObject(socketSendToUser)); //bob
+
+               
+            }
+
+        }
+
+
+        #endregion
     }
 }

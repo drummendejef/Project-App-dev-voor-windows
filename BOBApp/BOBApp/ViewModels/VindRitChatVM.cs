@@ -50,7 +50,24 @@ namespace BOBApp.ViewModels
                     string json = await Localdata.read("chatroom.json");
                     var definition = new { ID = 0 };
                     var data = JsonConvert.DeserializeAnonymousType(json, definition);
-                    VindRitChatVM.ID = data.ID;
+                    if (data.ID == -1)
+                    {
+                        //geen chatroom
+                        Frame rootFrame = MainViewVM.MainFrame as Frame;
+                        rootFrame.Navigate(typeof(VindRit));
+
+                    }else
+                    {
+                        VindRitChatVM.ID = data.ID;
+
+
+                        MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
+
+                        this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
+                        GetChatComments();
+                    }
+                   
+
                 }
                 catch (Exception ex)
                 {
@@ -63,10 +80,7 @@ namespace BOBApp.ViewModels
 
 
 
-            MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
-
-            this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
-            GetChatComments();
+            
 
 
 

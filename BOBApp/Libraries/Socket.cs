@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libraries.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,10 @@ namespace Libraries
         public bool Status { get; set; }
         public int From { get; set; }
         public int To { get; set; }
+
+        //optional
+        public object Object { get; set; }
+        public object Object2 { get; set; }
 
     }
 }

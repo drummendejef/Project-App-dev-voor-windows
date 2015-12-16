@@ -28,7 +28,8 @@ namespace BOBApp.ViewModels
         //static
         public static Party SelectedParty;
         public static Bob SelectedBob;
-        public static Trip CurrentTrip;
+        public static User SelectedUser;
+        public static Trip CurrentTrip = new Trip();
         public static bool BobAccepted;
         public static int StatusID = 1;
 
@@ -79,54 +80,50 @@ namespace BOBApp.ViewModels
 
 
 
-
-
-
-
-
-
-
         //Methods
 
-       
+        #region navigate to
         private async void ExecuteNavigatedTo(NavigateTo obj)
         {
-            if (obj.Reload == true && (obj.Name == null || obj.Name == ""))
+            if (obj.Name != null && obj.Name != "")
             {
-                if (VindRitVM.BobAccepted == true)
-                {
-
-                    MakeTrip();
-                    BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
-
-                    VindRitVM.BobAccepted = false;
-                }
-            }
-            else
-            {
-                switch (obj.Name)
+               switch (obj.Name)
                 {
                     case "trip_location":
-                        trip_location();
+                        if (VindRitVM.CurrentTrip != null)
+                        {
+                            trip_location();
+                        }
+                        
                         break;
                     case "find_bob":
                         find_bob((bool) obj.Result);
                         break;
                     case "bob_accepted":
-                            bob_accepted((bool) obj.Result);
+                        bob_accepted((bool) obj.Result);
                         break;
                     default:
                         break;
                 }
-
             }
         }
 
-        private void bob_accepted(bool accepted)
+        private async void bob_accepted(bool accepted)
         {
+            //uitgevoerd bij de bob
             if (accepted == true)
             {
+                //verstuur trip
+                User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserById(VindRitVM.SelectedUser.ID)).Result;
+                Libraries.Socket socketSend = new Libraries.Socket() {
+                    From = MainViewVM.USER.ID,//from bob
+                    To = user.User.ID,//to user
+                    Status = true,
+                    Object= GetTripObject(),
+                    Object2=user
+                };
 
+                MainViewVM.socket.Emit("make_trip", JsonConvert.SerializeObject(socketSend));
             }
             else
             {
@@ -134,9 +131,6 @@ namespace BOBApp.ViewModels
             }
         }
 
-        #region navigateTo
-
-        #endregion
         private async void find_bob(bool ok)
         {
             if (ok == false)
@@ -169,16 +163,20 @@ namespace BOBApp.ViewModels
                 Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
                 Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
                 MainViewVM.socket.Emit("findBob_DONE", JsonConvert.SerializeObject(socketSend));
-                
+
 
             }
         }
+        
+        #endregion
+
 
         //update location user/bob naar de db
 
         private async void trip_location()
         {
             VindRitVM.StatusID = 1;
+           
             Geolocator geolocator = new Geolocator();
             Geoposition pos = await geolocator.GetGeopositionAsync();
             Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
@@ -339,6 +337,7 @@ namespace BOBApp.ViewModels
 
         #endregion
 
+
         #region gets
         private async Task GetBobTypes()
         {
@@ -354,7 +353,11 @@ namespace BOBApp.ViewModels
                     string json = await Localdata.read("trip.json");
 
                     var data = JsonConvert.DeserializeObject<Trip>(json);
-                    VindRitVM.CurrentTrip = data;
+                    if (data.ID != -1)
+                    {
+                        VindRitVM.CurrentTrip = data;
+                    }
+                   
                 }
                 catch (Exception ex)
                 {
@@ -413,133 +416,9 @@ namespace BOBApp.ViewModels
 
 
         //find bob
+        #region findbob
         List<Bob> bobs;
-        private async void FindBob()
-        {
-            this.Loading = true;
-            RaisePropertyChanged("Loading");
-
-            bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
-
-            this.Loading = false;
-            RaisePropertyChanged("Loading");
-
-            ShowBob(bobs.First());
-        }
-
-
-
-        private async void ShowBob(Bob bob)
-        {
-            Bob.All bob_full = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bob.ID.Value)).Result;
-            string bob_text = bob_full.User.ToString() + " is in de buurt met volgende nummerplaat " + bob_full.Bob.LicensePlate + " voor een bedrag van " + bob_full.Bob.PricePerKm  + " euro per km.";
-
-            if (bob_full != null)
-            {
-                Messenger.Default.Send<Dialog>(new Dialog()
-                {
-                    Message = "Volgende bob gevonden: " + "\n" + bob_text,
-                    Ok = "Take bob",
-                    Nok = "Next bob",
-                    ViewOk = null,
-                    ViewNok = null,
-                    ParamView = false,
-                    Cb = "find_bob"
-                });
-            }
-
-           
-
-
-        }
-
-
-
-        //wanneer bob accepteer
-        private async void MakeTrip()
-        {
-            Bob selectedBob = VindRitVM.SelectedBob;
-            Party SelectedParty = VindRitVM.SelectedParty;
-            Users_Destinations SelectedDestination = VindRitVM.Filter.SelectedDestination;
-            List<Friend.All> selectedFriends = VindRitVM.Filter.SelectedFriends;
-            BobsType type= VindRitVM.Filter.SelectedBobsType;
-            DateTime? minDate= VindRitVM.Filter.SelectedMinDate;
-            int? rating= VindRitVM.Filter.SelectedRating;
-
-
-            //destinations edit
-
-            Trip trip = new Trip()
-            {
-                Bobs_ID = selectedBob.ID.Value,
-                Party_ID = SelectedParty.ID,
-                Friends = JsonConvert.SerializeObject(selectedFriends),
-                Destinations_ID = SelectedDestination.Destinations_ID
-            };
-
-            this.Loading = true;
-            RaisePropertyChanged("Loading");
-
-            Response res = Task.FromResult<Response>(await TripRepository.PostTrip(trip)).Result;
-            
-            if (res.Success == true)
-            {
-                this.Loading = false;
-                RaisePropertyChanged("Loading");
-
-                Trip currentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
-
-                var data = JsonConvert.SerializeObject(CurrentTrip);
-                bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
-
-                if (ok == true && currentTrip != null)   
-                {
-                    VindRitVM.CurrentTrip = currentTrip;
-                    //update very minuten location for trip
-                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
-                    {
-                        Name = "trip_location"
-                    });
-
-
-                    MakeChatroom(selectedBob.ID.Value);
-                }
-
-                
-            }
-        }
-
-       
-
-        private async void MakeChatroom(int bobs_ID)
-        {
-            this.Loading = true;
-            RaisePropertyChanged("Loading");
-
-            Response res = Task.FromResult<Response>(await ChatRoomRepository.PostChatRoom(bobs_ID)).Result;
-
-            if (res.Success == true)
-            {
-                this.Loading = false;
-                RaisePropertyChanged("Loading");
-
-
-                VindRitChatVM.ID = res.NewID.Value;
-
-                
-
-                var definition = new { ID = res.NewID.Value };
-                var data = JsonConvert.SerializeObject(definition);
-                await Localdata.save("chatroom.json", data);
-               
-
-                Frame rootFrame = MainViewVM.MainFrame as Frame;
-
-                rootFrame.Navigate(typeof(VindRitChat));
-            }
-           
-        }
-
+     
 
         //tasks
         private async Task<List<Bob>> FindBob_task()
@@ -562,10 +441,93 @@ namespace BOBApp.ViewModels
 
             List<Bob> bobs = await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance);
 
-          
+
 
             return bobs;
         }
+        private async void FindBob()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
+
+            this.Loading = false;
+            RaisePropertyChanged("Loading");
+
+            ShowBob(bobs.First());
+        }
+
+
+
+        private async void ShowBob(Bob bob)
+        {
+            Bob.All bob_full = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bob.ID.Value)).Result;
+            string bob_text = bob_full.User.ToString() + " is in de buurt met volgende nummerplaat " + bob_full.Bob.LicensePlate + " voor een bedrag van " + bob_full.Bob.PricePerKm + " euro per km.";
+
+            if (bob_full != null)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Volgende bob gevonden: " + "\n" + bob_text,
+                    Ok = "Take bob",
+                    Nok = "Next bob",
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = "find_bob"
+                });
+            }
+
+
+
+
+        }
+
+        #endregion
+
+
+       
+
+        #region methods
+
+        private object GetTripObject()
+        {
+            try
+            {
+                Bob selectedBob = VindRitVM.SelectedBob;
+                Party SelectedParty = VindRitVM.SelectedParty;
+                Users_Destinations SelectedDestination = VindRitVM.Filter.SelectedDestination;
+                List<Friend.All> selectedFriends = VindRitVM.Filter.SelectedFriends;
+                BobsType type = VindRitVM.Filter.SelectedBobsType;
+                DateTime? minDate = VindRitVM.Filter.SelectedMinDate;
+                int? rating = VindRitVM.Filter.SelectedRating;
+
+
+                //destinations edit
+
+                Trip trip = new Trip()
+                {
+                    Bobs_ID = selectedBob.ID.Value,
+                    Party_ID = SelectedParty.ID,
+                    Friends = JsonConvert.SerializeObject(selectedFriends),
+                    Destinations_ID = SelectedDestination.Destinations_ID
+                };
+
+                return trip;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+                //return null;
+            }
+
+        }
+        #endregion
+
+       
 
       
 

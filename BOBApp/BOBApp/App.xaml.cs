@@ -126,7 +126,7 @@ namespace BOBApp
             }
 
         }
-        private async Task<bool> ShowDialog(string text, string ok, string nok, Type viewOk, Type viewNok, bool paramView, string cb)
+        private async Task<bool> ShowDialog(string text, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb)
         {
             var dialog = new MessageDialog(text);
             var test2Command = nok;
