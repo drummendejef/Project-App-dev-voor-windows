@@ -65,6 +65,7 @@
     <RootPropertyPathName Name="VindRitVM" />
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="GoFilterCommand" />
+    <RootPropertyPathName Name="VisibleCancel" />
     <RootPropertyPathName Name="GoChatCommand" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
@@ -519,12 +520,12 @@
       <RootProperty Name="PrimaryCommands" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
-      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />

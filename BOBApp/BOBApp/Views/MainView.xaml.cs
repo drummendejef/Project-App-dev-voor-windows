@@ -41,11 +41,18 @@ namespace BOBApp.Views
             {
                 if (MainViewVM.USER.IsBob==true)
                 {
-                    ((Frame)ShellSplitView.Content).Navigate(typeof(VindRitBob));
+                    ShellSplitView.IsPaneOpen = false;
+                    if (ShellSplitView.Content != null)
+                        ((Frame)ShellSplitView.Content).Navigate(typeof(VindRitBob));
+                    CheckIsPaneOpen();
+
                 }
                 else
                 {
-                    ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+                    ShellSplitView.IsPaneOpen = false;
+                    if (ShellSplitView.Content != null)
+                        ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+                    CheckIsPaneOpen();
                 }
                
             }

@@ -26,12 +26,12 @@
       
         <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="textBoxZoekLocatieFeestje" RelativePanel.Above="commandbar" Canvas.ZIndex="10" />
 
-        <Button IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />
+        <Button Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />
         <Button Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel trip" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
 
 
         <CommandBar RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="commandbar" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RequestedTheme="Light" IsSticky="True" >
-            <AppBarButton Padding="10" Margin="0,0,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}" />
+            <AppBarButton Visibility="{Binding VisibleCancel,Mode=TwoWay}" Padding="10" Margin="0,0,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}" />
             <AppBarButton Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10" Margin="0,0,10,0" Width="auto" Content="Filter" Command="{Binding GoFilterCommand}"  />
         </CommandBar>
 

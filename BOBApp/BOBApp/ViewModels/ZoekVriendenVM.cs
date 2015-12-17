@@ -95,7 +95,7 @@ namespace BOBApp.ViewModels
 
         private void GetFriends()
         {
-            throw new NotImplementedException();
+            //
         }
 
     }
