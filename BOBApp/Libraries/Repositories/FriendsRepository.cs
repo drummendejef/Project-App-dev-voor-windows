@@ -24,17 +24,34 @@ namespace Libraries.Repositories
                 return data;
             }
         }
-       
+
         #endregion
 
 
         #region post
-    
-        
+
+        public static async Task<Response> PostFriend(int usersID, int friendsID, bool accepted)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(new { UsersID = usersID, FriendsID=friendsID, Accepted= accepted });
+
+                HttpResponseMessage result = await client.PostAsync(URL.FRIENDS, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+
+
+
+        }
         #endregion
 
         #region put
-     
+
         #endregion
 
 

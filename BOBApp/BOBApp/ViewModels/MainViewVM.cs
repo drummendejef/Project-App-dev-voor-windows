@@ -197,13 +197,15 @@ namespace BOBApp.ViewModels
 
         private void FriendRequest(User.All fromUser)
         {
+           
+
             Messenger.Default.Send<Dialog>(new Dialog()
             {
                 Message = fromUser.ToString() + " wilt u toevoegen als vriend",
                 Ok = "Accept",
                 Nok = "Ignore",
                 ParamView = fromUser,
-                Cb = "friend_accepted"
+                Cb = "friend_accepted",
             });
         }
 
@@ -218,12 +220,19 @@ namespace BOBApp.ViewModels
             bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data2)).Result;
 
 
+            //alles op null zetten, van start
             VindRitVM.Filter.SelectedDestination = new Users_Destinations();
             MainViewVM.ChatRoom = null;
             VindRitChatVM.ID = null;
-            //alles op null zetten, van start
+            VindRitVM.SelectedParty = null;
+            VindRitVM.SelectedBob = null;
+            VindRitVM.SelectedUser = null;
+            VindRitVM.CurrentTrip = new Trip();
+            VindRitVM.BobAccepted = false;
+            VindRitVM.StatusID = 1;
+       
 
-            Frame rootFrame = MainViewVM.MainFrame as Frame;
+        Frame rootFrame = MainViewVM.MainFrame as Frame;
 
             if (MainViewVM.USER.IsBob==true)
             {

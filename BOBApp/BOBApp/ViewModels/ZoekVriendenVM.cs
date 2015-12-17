@@ -70,12 +70,23 @@ namespace BOBApp.ViewModels
 
             if (obj.Name == "friend_accepted")
             {
-                
                 User.All user = (User.All)obj.Result2;
-                Messenger.Default.Send<Dialog>(new Dialog()
+                bool accepted = (bool) obj.Result;
+                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID,user.User.ID,accepted)).Result;
+
+                if (response.Success == true)
                 {
-                    Message = user.ToString() + " is toegevoegd",
-                });
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = user.ToString() + " is toegevoegd",
+                    });
+                }
+                else
+                {
+                    //iets misgelopen
+                }
+               
+              
             }
         }
 

@@ -469,12 +469,20 @@ namespace BOBApp.ViewModels
                         this.EnableFind = false;
                         RaisePropertyChanged("EnableFind");
                     }
+                    else
+                    {
+                        this.EnableFind = true;
+                        RaisePropertyChanged("EnableFind");
+                        
+                    }
+                    
                    
                 }
                 catch (Exception ex)
                 {
-                  
 
+                    this.EnableFind = true;
+                    RaisePropertyChanged("EnableFind");
                 }
             }
             else
