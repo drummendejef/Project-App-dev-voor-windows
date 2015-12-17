@@ -59,7 +59,11 @@ namespace Libraries
 
         public static string STATUSES = BASE + "/statuses";
 
-      
+        //URLs om locaties op te halen
+        public static string BASISURLTOWNTOCOORD = "http://dev.virtualearth.net/REST/v1/Locations?locality=";
+        public static string URLBINGKEY = "&key=";
+        public static string BINGKEY = "dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5";
+
 
     }
 }
