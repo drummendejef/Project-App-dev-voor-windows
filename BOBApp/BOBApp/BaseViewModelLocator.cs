@@ -25,6 +25,7 @@ namespace BOBApp
             SimpleIoc.Default.Register<MainViewVM>();
             SimpleIoc.Default.Register<BestemmingenVM>();
             SimpleIoc.Default.Register<FeestjesOverzichtVM>();
+            SimpleIoc.Default.Register<VeranderWachtwoordVM>();
             SimpleIoc.Default.Register<LoginVM>();
             SimpleIoc.Default.Register<MijnRittenVM>();
             SimpleIoc.Default.Register<ProfielVM>();
@@ -95,6 +96,10 @@ namespace BOBApp
         public MijnRittenVM MijnRittenVM
         {
             get { return ServiceLocator.Current.GetInstance<MijnRittenVM>(); }//Viewmodels opvragen
+        }
+        public VeranderWachtwoordVM VeranderWachtwoordVM
+        {
+            get { return ServiceLocator.Current.GetInstance<VeranderWachtwoordVM>(); }//Viewmodels opvragen
         }
     }
 }

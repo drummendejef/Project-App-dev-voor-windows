@@ -1,4 +1,5 @@
 ﻿using BOBApp.Messages;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BOBApp.ViewModels
 {
-    public class VeranderWachtwoordVM
+    public class VeranderWachtwoordVM : ViewModelBase
     {
         public RelayCommand WijzigCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }

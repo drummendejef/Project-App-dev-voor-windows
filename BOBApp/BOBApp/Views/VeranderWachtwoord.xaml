@@ -51,7 +51,7 @@
             <Button x:Name="buttonWijzig" Content="Registreer" RelativePanel.AlignBottomWithPanel="True" Height="32" Margin="10" RelativePanel.AlignRightWithPanel="True" Width="100" Command="{Binding WijzigCommand}" Style="{StaticResource button}"/>
 
         </RelativePanel>
-        
+
     </ScrollViewer>
 
 </Page>
