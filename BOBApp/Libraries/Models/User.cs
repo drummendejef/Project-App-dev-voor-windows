@@ -37,6 +37,23 @@ namespace Libraries.Models
             public Bob Bob { get; set; }
         }
 
+        public class PutUser
+        {
+            public int? Bobs_ID { get; set; }
+            public int Users_ID { get; set; }
+            public String Firstname { get; set; }
+            public String Lastname { get; set; }
+            public String Email { get; set; }
+            public String Cellphone { get; set; }
+            public String Password { get; set; }
+            public int FacebookID { get; set; }
+            public Boolean IsBob { get; set; }
+            public Double PricePerKm { get; set; }
+            public int? BobsType_ID { get; set; }
+            public String LicensePlate { get; set; }
+            public int? AutoType_ID { get; set; }
+        }
+
         public override string ToString()
         {
             return this.Firstname + " " + this.Lastname;

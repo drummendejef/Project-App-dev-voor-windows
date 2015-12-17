@@ -22,6 +22,7 @@ namespace BOBApp.ViewModels
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
         public ObservableCollection<Autotype> Merken { get; set; }
+        public User.PutUser EditUser { get; set; }
 
         //Constructor
         public ProfielVM()
@@ -43,9 +44,27 @@ namespace BOBApp.ViewModels
         //Methods
         public async void Aanpassen()
         {
-           
+            EditUser = new User.PutUser();
+
+            //Alle gegevens van ene klasse naar andere overbrengen
+            if (User.Bob != null)
+            {
+                User.Bob = new Bob();
+            }
+                EditUser.Bobs_ID = User.Bob.ID;
+                EditUser.Users_ID = User.User.ID;
+                EditUser.Firstname = User.User.Firstname;
+                EditUser.Lastname = User.User.Lastname;
+                EditUser.Email = User.User.Email;
+                EditUser.Cellphone = User.User.Cellphone;
+                EditUser.IsBob = User.User.IsBob;
+                EditUser.PricePerKm = User.Bob.PricePerKm;
+                EditUser.BobsType_ID = User.Bob.BobsType_ID;
+                EditUser.LicensePlate = User.Bob.LicensePlate;
+                EditUser.AutoType_ID = User.Autotype.ID;
+            
             //Updaten naar DB
-            Response r = await UserRepository.EditUser(User);
+            Response r = await UserRepository.EditUser(EditUser);
             if (r.Success)
             {
                 var dialog = new MessageDialog("Uw gegevens zijn opgeslaan.");

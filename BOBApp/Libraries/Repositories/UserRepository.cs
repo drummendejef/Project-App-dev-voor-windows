@@ -90,7 +90,7 @@ namespace Libraries.Repositories
         #endregion
 
         #region put
-        public static async Task<Response> EditUser(User.Profile user)
+        public static async Task<Response> EditUser(User.PutUser user)
         {
             using (HttpClient client = new HttpClient())
             {
