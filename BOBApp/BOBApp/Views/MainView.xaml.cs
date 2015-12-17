@@ -38,7 +38,18 @@ namespace BOBApp.Views
             this.ShellSplitView.Content = frame;
 
             if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+            {
+                if (MainViewVM.USER.IsBob==true)
+                {
+                    ((Frame)ShellSplitView.Content).Navigate(typeof(VindRitBob));
+                }
+                else
+                {
+                    ((Frame)ShellSplitView.Content).Navigate(typeof(VindRit));
+                }
+               
+            }
+               
 
             Frame rootFrame = (Frame)ShellSplitView.Content;
             MainViewVM.MainFrame = rootFrame;

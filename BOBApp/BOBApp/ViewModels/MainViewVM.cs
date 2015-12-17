@@ -196,6 +196,7 @@ namespace BOBApp.ViewModels
 
             VindRitVM.Filter.SelectedDestination = new Users_Destinations();
             MainViewVM.ChatRoom = null;
+            VindRitChatVM.ID = null;
             //alles op null zetten, van start
 
         }

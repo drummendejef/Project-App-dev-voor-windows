@@ -39,7 +39,10 @@ namespace BOBApp.ViewModels
 
             AddCommentCommand = new RelayCommand(AddComment);
 
+            this.ChatComment = new ChatComment();
+            this.ChatComment.Comment = null;
             RaisePropertyChanged("ChatComment");
+
             getChatroom();
         }
 
@@ -145,10 +148,12 @@ namespace BOBApp.ViewModels
             {
 
                 int bobID=ChatRoom.ChatRoom.Bobs_ID;
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bobID)).Result;
+
                 int userID = ChatRoom.ChatRoom.Users_ID;
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
                 {
-                    To = bobID,
+                    To = bob.User.ID,
                     Status = true
                 };
                 Libraries.Socket socketSendToUser = new Libraries.Socket()
@@ -160,8 +165,8 @@ namespace BOBApp.ViewModels
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToBob));
 
-
-                this.ChatComment.Comment = "";
+                this.ChatComment = new ChatComment();
+                this.ChatComment.Comment = null;
                 RaisePropertyChanged("ChatComment");
                
             }

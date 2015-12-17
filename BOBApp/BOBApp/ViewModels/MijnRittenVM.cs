@@ -81,11 +81,13 @@ namespace BOBApp.ViewModels
 
         private async void Loaded()
         {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
             await Task.Run(async () =>
             {
                 // running in background
-                this.Loading = true;
-                RaisePropertyChanged("Loading");
+               
 
                 GetCurrentTrip();
                 GetTrips();
@@ -108,35 +110,38 @@ namespace BOBApp.ViewModels
         private async void GetCurrentTrip()
         {
             Trip currenttrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
-
-            if (currenttrip.Active == true)
+            if(MainViewVM.USER.IsBob == false && currenttrip != null)
             {
-                Trip.All trips_all = new Trip.All();
+                if (currenttrip.Active == true)
+                {
+                    Trip.All trips_all = new Trip.All();
 
 
-                User.All user = await UsersRepository.GetUserById(currenttrip.Users_ID);
-                Bob.All bob = await BobsRepository.GetBobById(currenttrip.Bobs_ID);
-                Users_Destinations destination = await DestinationRepository.GetDestinationById((currenttrip.Destinations_ID));
-                Party party = await PartyRepository.GetPartyById(currenttrip.Party_ID);
-                Trip.All newTrip = new Trip.All();
+                    User.All user = await UsersRepository.GetUserById(currenttrip.Users_ID);
+                    Bob.All bob = await BobsRepository.GetBobById(currenttrip.Bobs_ID);
+                    Users_Destinations destination = await DestinationRepository.GetDestinationById((currenttrip.Destinations_ID));
+                    Party party = await PartyRepository.GetPartyById(currenttrip.Party_ID);
+                    Trip.All newTrip = new Trip.All();
 
 
 
-                newTrip.Trip = currenttrip;
-                newTrip.Party = party;
-                newTrip.User = user.User;
-                newTrip.Bob = bob.User;
-                newTrip.Destination = destination;
+                    newTrip.Trip = currenttrip;
+                    newTrip.Party = party;
+                    newTrip.User = user.User;
+                    newTrip.Bob = bob.User;
+                    newTrip.Destination = destination;
 
-                MoveCar(newTrip.Trip.Status_Name);
+                    MoveCar(newTrip.Trip.Status_Name);
 
-                this.CurrentTrip = newTrip;
+                    this.CurrentTrip = newTrip;
+                }
+                else
+                {
+                    //geen current trip nu
+
+                }
             }
-            else
-            {
-                //geen current trip nu
-
-            }
+           
 
            
 
@@ -174,31 +179,51 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("CurrentTrip");
         }
 
+        List<Trip.All> trips_all= new List<Trip.All>();
         private async void GetTrips()
         {
+            bool canRun = true;
             List<Trip> trips = await TripRepository.GetTrips();
 
-            List<Trip.All> trips_all = new List<Trip.All>();
+            trips_all = new List<Trip.All>();
 
            
             for (int i = 0; i < trips.Count; i++)
             {
-                User.All user= await UsersRepository.GetUserById(trips[i].Users_ID);
-                Bob.All bob = await BobsRepository.GetBobById(trips[i].Bobs_ID);
-                Users_Destinations destination = await DestinationRepository.GetDestinationById((trips[i].Destinations_ID));
-                Party party = await PartyRepository.GetPartyById(trips[i].Party_ID);
+                Task<User.All> user= Task.FromResult<User.All>(await UsersRepository.GetUserById(trips[i].Users_ID));
+                Task<Bob.All> bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(trips[i].Bobs_ID));
+                Task<Users_Destinations> destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById((trips[i].Destinations_ID)));
+                Task<Party> party = Task.FromResult<Party>(await PartyRepository.GetPartyById(trips[i].Party_ID));
                 Trip.All newTrip = new Trip.All();
-
+                
+                
                 newTrip.Trip = trips[i];
-                newTrip.User = user.User;
-                newTrip.Bob = bob.User;
-                newTrip.Party = party;
-                newTrip.Destination = destination;
+                newTrip.User = user.Result.User;
+                newTrip.Bob = bob.Result.User;
+                newTrip.Party = party.Result;
+                newTrip.Destination = destination.Result;
                 trips_all.Add(newTrip);
+
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    if (trips_all.Count >= 10 && canRun == true)
+                    {
+                        this.Trips = trips_all.Take(10).ToList();
+                        RaisePropertyChanged("Trips");
+                        canRun = false;
+                    }
+
+
+
+                });
+#pragma warning restore CS1998
+
             }
 
-            this.Trips = trips_all;
-          
+
+
+
 
         }
     }
