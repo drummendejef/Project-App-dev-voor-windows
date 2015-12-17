@@ -52,7 +52,6 @@ C:\Users\stijnvanhulle\Desktop\Project-App-dev-voor-windows\BOBApp\Libraries\obj
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pdb
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.pri
-C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.csprojResolveAssemblyReference.cache
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.dll
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\Libraries.pdb
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\x86\Debug\priconfig.xml

@@ -132,7 +132,7 @@ namespace BOBApp.BOBApp_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[39];
+            _typeNameTable = new string[41];
             _typeNameTable[0] = "BOBApp.BaseViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "BOBApp.ViewModels.MainViewVM";
@@ -149,31 +149,33 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             _typeNameTable[13] = "BOBApp.ViewModels.VindRitChatVM";
             _typeNameTable[14] = "BOBApp.ViewModels.ZoekVriendenVM";
             _typeNameTable[15] = "BOBApp.ViewModels.MijnRittenVM";
-            _typeNameTable[16] = "BOBApp.MainPage";
-            _typeNameTable[17] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[18] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[19] = "Windows.UI.Color";
-            _typeNameTable[20] = "System.ValueType";
-            _typeNameTable[21] = "Byte";
-            _typeNameTable[22] = "BOBApp.Views.Bestemmingen";
-            _typeNameTable[23] = "BOBApp.Views.Bestemmingen_Nieuw";
-            _typeNameTable[24] = "System.Collections.Generic.IList`1<Windows.UI.Xaml.DependencyObject>";
-            _typeNameTable[25] = "Windows.UI.Xaml.DependencyObject";
-            _typeNameTable[26] = "BOBApp.Views.FeestjesOverzicht";
-            _typeNameTable[27] = "BOBApp.Views.Login";
-            _typeNameTable[28] = "BOBApp.Views.MainView";
-            _typeNameTable[29] = "BOBApp.Views.MijnRitten";
-            _typeNameTable[30] = "BOBApp.Views.Profiel";
-            _typeNameTable[31] = "BOBApp.Views.Punten";
-            _typeNameTable[32] = "BOBApp.Views.Register";
-            _typeNameTable[33] = "BOBApp.Views.RitItem";
-            _typeNameTable[34] = "BOBApp.Views.VindRit";
-            _typeNameTable[35] = "BOBApp.Views.VindRitBob";
-            _typeNameTable[36] = "BOBApp.Views.VindRitChat";
-            _typeNameTable[37] = "BOBApp.Views.VindRitFilter";
-            _typeNameTable[38] = "BOBApp.Views.ZoekVrienden";
+            _typeNameTable[16] = "BOBApp.ViewModels.VeranderWachtwoordVM";
+            _typeNameTable[17] = "BOBApp.MainPage";
+            _typeNameTable[18] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[19] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[20] = "Windows.UI.Color";
+            _typeNameTable[21] = "System.ValueType";
+            _typeNameTable[22] = "Byte";
+            _typeNameTable[23] = "BOBApp.Views.Bestemmingen";
+            _typeNameTable[24] = "BOBApp.Views.Bestemmingen_Nieuw";
+            _typeNameTable[25] = "System.Collections.Generic.IList`1<Windows.UI.Xaml.DependencyObject>";
+            _typeNameTable[26] = "Windows.UI.Xaml.DependencyObject";
+            _typeNameTable[27] = "BOBApp.Views.FeestjesOverzicht";
+            _typeNameTable[28] = "BOBApp.Views.Login";
+            _typeNameTable[29] = "BOBApp.Views.MainView";
+            _typeNameTable[30] = "BOBApp.Views.MijnRitten";
+            _typeNameTable[31] = "BOBApp.Views.Profiel";
+            _typeNameTable[32] = "BOBApp.Views.Punten";
+            _typeNameTable[33] = "BOBApp.Views.Register";
+            _typeNameTable[34] = "BOBApp.Views.RitItem";
+            _typeNameTable[35] = "BOBApp.Views.VeranderWachtwoord";
+            _typeNameTable[36] = "BOBApp.Views.VindRit";
+            _typeNameTable[37] = "BOBApp.Views.VindRitBob";
+            _typeNameTable[38] = "BOBApp.Views.VindRitChat";
+            _typeNameTable[39] = "BOBApp.Views.VindRitFilter";
+            _typeNameTable[40] = "BOBApp.Views.ZoekVrienden";
 
-            _typeTable = new global::System.Type[39];
+            _typeTable = new global::System.Type[41];
             _typeTable[0] = typeof(global::BOBApp.BaseViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::BOBApp.ViewModels.MainViewVM);
@@ -190,29 +192,31 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             _typeTable[13] = typeof(global::BOBApp.ViewModels.VindRitChatVM);
             _typeTable[14] = typeof(global::BOBApp.ViewModels.ZoekVriendenVM);
             _typeTable[15] = typeof(global::BOBApp.ViewModels.MijnRittenVM);
-            _typeTable[16] = typeof(global::BOBApp.MainPage);
-            _typeTable[17] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[18] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[19] = typeof(global::Windows.UI.Color);
-            _typeTable[20] = typeof(global::System.ValueType);
-            _typeTable[21] = typeof(global::System.Byte);
-            _typeTable[22] = typeof(global::BOBApp.Views.Bestemmingen);
-            _typeTable[23] = typeof(global::BOBApp.Views.Bestemmingen_Nieuw);
-            _typeTable[24] = typeof(global::System.Collections.Generic.IList<global::Windows.UI.Xaml.DependencyObject>);
-            _typeTable[25] = typeof(global::Windows.UI.Xaml.DependencyObject);
-            _typeTable[26] = typeof(global::BOBApp.Views.FeestjesOverzicht);
-            _typeTable[27] = typeof(global::BOBApp.Views.Login);
-            _typeTable[28] = typeof(global::BOBApp.Views.MainView);
-            _typeTable[29] = typeof(global::BOBApp.Views.MijnRitten);
-            _typeTable[30] = typeof(global::BOBApp.Views.Profiel);
-            _typeTable[31] = typeof(global::BOBApp.Views.Punten);
-            _typeTable[32] = typeof(global::BOBApp.Views.Register);
-            _typeTable[33] = typeof(global::BOBApp.Views.RitItem);
-            _typeTable[34] = typeof(global::BOBApp.Views.VindRit);
-            _typeTable[35] = typeof(global::BOBApp.Views.VindRitBob);
-            _typeTable[36] = typeof(global::BOBApp.Views.VindRitChat);
-            _typeTable[37] = typeof(global::BOBApp.Views.VindRitFilter);
-            _typeTable[38] = typeof(global::BOBApp.Views.ZoekVrienden);
+            _typeTable[16] = typeof(global::BOBApp.ViewModels.VeranderWachtwoordVM);
+            _typeTable[17] = typeof(global::BOBApp.MainPage);
+            _typeTable[18] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[19] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[20] = typeof(global::Windows.UI.Color);
+            _typeTable[21] = typeof(global::System.ValueType);
+            _typeTable[22] = typeof(global::System.Byte);
+            _typeTable[23] = typeof(global::BOBApp.Views.Bestemmingen);
+            _typeTable[24] = typeof(global::BOBApp.Views.Bestemmingen_Nieuw);
+            _typeTable[25] = typeof(global::System.Collections.Generic.IList<global::Windows.UI.Xaml.DependencyObject>);
+            _typeTable[26] = typeof(global::Windows.UI.Xaml.DependencyObject);
+            _typeTable[27] = typeof(global::BOBApp.Views.FeestjesOverzicht);
+            _typeTable[28] = typeof(global::BOBApp.Views.Login);
+            _typeTable[29] = typeof(global::BOBApp.Views.MainView);
+            _typeTable[30] = typeof(global::BOBApp.Views.MijnRitten);
+            _typeTable[31] = typeof(global::BOBApp.Views.Profiel);
+            _typeTable[32] = typeof(global::BOBApp.Views.Punten);
+            _typeTable[33] = typeof(global::BOBApp.Views.Register);
+            _typeTable[34] = typeof(global::BOBApp.Views.RitItem);
+            _typeTable[35] = typeof(global::BOBApp.Views.VeranderWachtwoord);
+            _typeTable[36] = typeof(global::BOBApp.Views.VindRit);
+            _typeTable[37] = typeof(global::BOBApp.Views.VindRitBob);
+            _typeTable[38] = typeof(global::BOBApp.Views.VindRitChat);
+            _typeTable[39] = typeof(global::BOBApp.Views.VindRitFilter);
+            _typeTable[40] = typeof(global::BOBApp.Views.ZoekVrienden);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -261,23 +265,25 @@ namespace BOBApp.BOBApp_XamlTypeInfo
         private object Activate_13_VindRitChatVM() { return new global::BOBApp.ViewModels.VindRitChatVM(); }
         private object Activate_14_ZoekVriendenVM() { return new global::BOBApp.ViewModels.ZoekVriendenVM(); }
         private object Activate_15_MijnRittenVM() { return new global::BOBApp.ViewModels.MijnRittenVM(); }
-        private object Activate_16_MainPage() { return new global::BOBApp.MainPage(); }
-        private object Activate_22_Bestemmingen() { return new global::BOBApp.Views.Bestemmingen(); }
-        private object Activate_23_Bestemmingen_Nieuw() { return new global::BOBApp.Views.Bestemmingen_Nieuw(); }
-        private object Activate_26_FeestjesOverzicht() { return new global::BOBApp.Views.FeestjesOverzicht(); }
-        private object Activate_27_Login() { return new global::BOBApp.Views.Login(); }
-        private object Activate_28_MainView() { return new global::BOBApp.Views.MainView(); }
-        private object Activate_29_MijnRitten() { return new global::BOBApp.Views.MijnRitten(); }
-        private object Activate_30_Profiel() { return new global::BOBApp.Views.Profiel(); }
-        private object Activate_31_Punten() { return new global::BOBApp.Views.Punten(); }
-        private object Activate_32_Register() { return new global::BOBApp.Views.Register(); }
-        private object Activate_33_RitItem() { return new global::BOBApp.Views.RitItem(); }
-        private object Activate_34_VindRit() { return new global::BOBApp.Views.VindRit(); }
-        private object Activate_35_VindRitBob() { return new global::BOBApp.Views.VindRitBob(); }
-        private object Activate_36_VindRitChat() { return new global::BOBApp.Views.VindRitChat(); }
-        private object Activate_37_VindRitFilter() { return new global::BOBApp.Views.VindRitFilter(); }
-        private object Activate_38_ZoekVrienden() { return new global::BOBApp.Views.ZoekVrienden(); }
-        private void VectorAdd_24_IList(object instance, object item)
+        private object Activate_16_VeranderWachtwoordVM() { return new global::BOBApp.ViewModels.VeranderWachtwoordVM(); }
+        private object Activate_17_MainPage() { return new global::BOBApp.MainPage(); }
+        private object Activate_23_Bestemmingen() { return new global::BOBApp.Views.Bestemmingen(); }
+        private object Activate_24_Bestemmingen_Nieuw() { return new global::BOBApp.Views.Bestemmingen_Nieuw(); }
+        private object Activate_27_FeestjesOverzicht() { return new global::BOBApp.Views.FeestjesOverzicht(); }
+        private object Activate_28_Login() { return new global::BOBApp.Views.Login(); }
+        private object Activate_29_MainView() { return new global::BOBApp.Views.MainView(); }
+        private object Activate_30_MijnRitten() { return new global::BOBApp.Views.MijnRitten(); }
+        private object Activate_31_Profiel() { return new global::BOBApp.Views.Profiel(); }
+        private object Activate_32_Punten() { return new global::BOBApp.Views.Punten(); }
+        private object Activate_33_Register() { return new global::BOBApp.Views.Register(); }
+        private object Activate_34_RitItem() { return new global::BOBApp.Views.RitItem(); }
+        private object Activate_35_VeranderWachtwoord() { return new global::BOBApp.Views.VeranderWachtwoord(); }
+        private object Activate_36_VindRit() { return new global::BOBApp.Views.VindRit(); }
+        private object Activate_37_VindRitBob() { return new global::BOBApp.Views.VindRitBob(); }
+        private object Activate_38_VindRitChat() { return new global::BOBApp.Views.VindRitChat(); }
+        private object Activate_39_VindRitFilter() { return new global::BOBApp.Views.VindRitFilter(); }
+        private object Activate_40_ZoekVrienden() { return new global::BOBApp.Views.ZoekVrienden(); }
+        private void VectorAdd_25_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
@@ -309,6 +315,7 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 userType.AddMemberName("VindRitChatVM");
                 userType.AddMemberName("ZoekVriendenVM");
                 userType.AddMemberName("MijnRittenVM");
+                userType.AddMemberName("VeranderWachtwoordVM");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -412,22 +419,29 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 16:   //  BOBApp.MainPage
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_16_MainPage;
+            case 16:   //  BOBApp.ViewModels.VeranderWachtwoordVM
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GalaSoft.MvvmLight.ViewModelBase"));
+                userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 17:   //  Windows.UI.Xaml.Controls.Page
+            case 17:   //  BOBApp.MainPage
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_17_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 18:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 18:   //  Windows.UI.Xaml.Controls.UserControl
+            case 19:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 19:   //  Windows.UI.Color
+            case 20:   //  Windows.UI.Color
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.AddMemberName("A");
                 userType.AddMemberName("B");
@@ -436,128 +450,135 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 20:   //  System.ValueType
+            case 21:   //  System.ValueType
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 21:   //  Byte
+            case 22:   //  Byte
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 22:   //  BOBApp.Views.Bestemmingen
+            case 23:   //  BOBApp.Views.Bestemmingen
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_22_Bestemmingen;
+                userType.Activator = Activate_23_Bestemmingen;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 23:   //  BOBApp.Views.Bestemmingen_Nieuw
+            case 24:   //  BOBApp.Views.Bestemmingen_Nieuw
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_23_Bestemmingen_Nieuw;
+                userType.Activator = Activate_24_Bestemmingen_Nieuw;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 24:   //  System.Collections.Generic.IList`1<Windows.UI.Xaml.DependencyObject>
+            case 25:   //  System.Collections.Generic.IList`1<Windows.UI.Xaml.DependencyObject>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_24_IList;
+                userType.CollectionAdd = VectorAdd_25_IList;
                 xamlType = userType;
                 break;
 
-            case 25:   //  Windows.UI.Xaml.DependencyObject
+            case 26:   //  Windows.UI.Xaml.DependencyObject
                 xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 26:   //  BOBApp.Views.FeestjesOverzicht
+            case 27:   //  BOBApp.Views.FeestjesOverzicht
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_26_FeestjesOverzicht;
+                userType.Activator = Activate_27_FeestjesOverzicht;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 27:   //  BOBApp.Views.Login
+            case 28:   //  BOBApp.Views.Login
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_27_Login;
+                userType.Activator = Activate_28_Login;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 28:   //  BOBApp.Views.MainView
+            case 29:   //  BOBApp.Views.MainView
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_28_MainView;
+                userType.Activator = Activate_29_MainView;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 29:   //  BOBApp.Views.MijnRitten
+            case 30:   //  BOBApp.Views.MijnRitten
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_29_MijnRitten;
+                userType.Activator = Activate_30_MijnRitten;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 30:   //  BOBApp.Views.Profiel
+            case 31:   //  BOBApp.Views.Profiel
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_30_Profiel;
+                userType.Activator = Activate_31_Profiel;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 31:   //  BOBApp.Views.Punten
+            case 32:   //  BOBApp.Views.Punten
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_31_Punten;
+                userType.Activator = Activate_32_Punten;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 32:   //  BOBApp.Views.Register
+            case 33:   //  BOBApp.Views.Register
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_32_Register;
+                userType.Activator = Activate_33_Register;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 33:   //  BOBApp.Views.RitItem
+            case 34:   //  BOBApp.Views.RitItem
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_33_RitItem;
+                userType.Activator = Activate_34_RitItem;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 34:   //  BOBApp.Views.VindRit
+            case 35:   //  BOBApp.Views.VeranderWachtwoord
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_34_VindRit;
+                userType.Activator = Activate_35_VeranderWachtwoord;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 35:   //  BOBApp.Views.VindRitBob
+            case 36:   //  BOBApp.Views.VindRit
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_35_VindRitBob;
+                userType.Activator = Activate_36_VindRit;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 36:   //  BOBApp.Views.VindRitChat
+            case 37:   //  BOBApp.Views.VindRitBob
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_36_VindRitChat;
+                userType.Activator = Activate_37_VindRitBob;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 37:   //  BOBApp.Views.VindRitFilter
+            case 38:   //  BOBApp.Views.VindRitChat
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_37_VindRitFilter;
+                userType.Activator = Activate_38_VindRitChat;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 38:   //  BOBApp.Views.ZoekVrienden
+            case 39:   //  BOBApp.Views.VindRitFilter
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_38_ZoekVrienden;
+                userType.Activator = Activate_39_VindRitFilter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 40:   //  BOBApp.Views.ZoekVrienden
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_40_ZoekVrienden;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -626,42 +647,47 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             var that = (global::BOBApp.BaseViewModelLocator)instance;
             return that.MijnRittenVM;
         }
-        private object get_12_Color_A(object instance)
+        private object get_12_BaseViewModelLocator_VeranderWachtwoordVM(object instance)
+        {
+            var that = (global::BOBApp.BaseViewModelLocator)instance;
+            return that.VeranderWachtwoordVM;
+        }
+        private object get_13_Color_A(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.A;
         }
-        private void set_12_Color_A(object instance, object Value)
+        private void set_13_Color_A(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.A = (global::System.Byte)Value;
         }
-        private object get_13_Color_B(object instance)
+        private object get_14_Color_B(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.B;
         }
-        private void set_13_Color_B(object instance, object Value)
+        private void set_14_Color_B(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.B = (global::System.Byte)Value;
         }
-        private object get_14_Color_G(object instance)
+        private object get_15_Color_G(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.G;
         }
-        private void set_14_Color_G(object instance, object Value)
+        private void set_15_Color_G(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.G = (global::System.Byte)Value;
         }
-        private object get_15_Color_R(object instance)
+        private object get_16_Color_R(object instance)
         {
             var that = (global::Windows.UI.Color)instance;
             return that.R;
         }
-        private void set_15_Color_R(object instance, object Value)
+        private void set_16_Color_R(object instance, object Value)
         {
             var that = (global::Windows.UI.Color)instance;
             that.R = (global::System.Byte)Value;
@@ -746,29 +772,35 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlMember.Getter = get_11_BaseViewModelLocator_MijnRittenVM;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "BOBApp.BaseViewModelLocator.VeranderWachtwoordVM":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.BaseViewModelLocator");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VeranderWachtwoordVM", "BOBApp.ViewModels.VeranderWachtwoordVM");
+                xamlMember.Getter = get_12_BaseViewModelLocator_VeranderWachtwoordVM;
+                xamlMember.SetIsReadOnly();
+                break;
             case "Windows.UI.Color.A":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "A", "Byte");
-                xamlMember.Getter = get_12_Color_A;
-                xamlMember.Setter = set_12_Color_A;
+                xamlMember.Getter = get_13_Color_A;
+                xamlMember.Setter = set_13_Color_A;
                 break;
             case "Windows.UI.Color.B":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "B", "Byte");
-                xamlMember.Getter = get_13_Color_B;
-                xamlMember.Setter = set_13_Color_B;
+                xamlMember.Getter = get_14_Color_B;
+                xamlMember.Setter = set_14_Color_B;
                 break;
             case "Windows.UI.Color.G":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "G", "Byte");
-                xamlMember.Getter = get_14_Color_G;
-                xamlMember.Setter = set_14_Color_G;
+                xamlMember.Getter = get_15_Color_G;
+                xamlMember.Setter = set_15_Color_G;
                 break;
             case "Windows.UI.Color.R":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Windows.UI.Color");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "R", "Byte");
-                xamlMember.Getter = get_15_Color_R;
-                xamlMember.Setter = set_15_Color_R;
+                xamlMember.Getter = get_16_Color_R;
+                xamlMember.Setter = set_16_Color_R;
                 break;
             }
             return xamlMember;

@@ -62,6 +62,8 @@
     <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="SelectedAutoType" />
+    <RootPropertyPathName Name="VeranderWachtwoordVM" />
+    <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="GoFilterCommand" />
@@ -503,6 +505,7 @@
     <RootType FullName="BOBApp.Views.Punten" />
     <RootType FullName="BOBApp.Views.Register" />
     <RootType FullName="BOBApp.Views.RitItem" />
+    <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
       <RootProperty Name="Text" />
       <RootProperty Name="ItemsSource" />

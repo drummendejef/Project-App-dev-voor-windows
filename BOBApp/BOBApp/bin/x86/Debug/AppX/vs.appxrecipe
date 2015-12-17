@@ -10,25 +10,25 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>4BCBB160D7A6F129360999BA93F2C2128BC7710468080CDE34B8E6D648D5C86F</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_1.0.0.0_x86__gwked98mkhbva</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_gwked98mkhbva!App</RegisteredUserModeAppID>
+    <RegisteredManifestChecksum>370BF033A5C2F60672EB7A93AF4DDDCC6AE62D6FE5F0B422EBDE72C5BDDE622C</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_0.1.2.0_x86__2vx82wt1422pg</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4_2vx82wt1422pg!App</RegisteredUserModeAppID>
     <RegisteredPackageID>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=Joren</RegisteredPackagePublisher>
-    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <RegisteredPackagePublisher>CN=stijnvanhulle</RegisteredPackagePublisher>
+    <RegisteredVersion>0.1.2.0</RegisteredVersion>
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-17T13:59:47.073</Modified>
+      <Modified>2015-12-17T14:42:12.806</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.exe">
       <PackagePath>entrypoint\BOBApp.exe</PackagePath>
-      <Modified>2015-12-17T13:59:45.280</Modified>
+      <Modified>2015-12-17T14:42:04.940</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\CommonServiceLocator\1.3.0\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll">
       <PackagePath>Microsoft.Practices.ServiceLocation.dll</PackagePath>
@@ -488,7 +488,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\x86\Debug\Libraries.dll">
       <PackagePath>Libraries.dll</PackagePath>
-      <Modified>2015-12-17T13:38:26.347</Modified>
+      <Modified>2015-12-17T14:41:26.044</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\.nuget\packages\NotificationsExtensions.Win10\10586.0.0\lib\uap10.0\NotificationsExtensions.winmd">
       <PackagePath>NotificationsExtensions.winmd</PackagePath>
@@ -496,7 +496,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\BobWorker.winmd">
       <PackagePath>BobWorker.winmd</PackagePath>
-      <Modified>2015-12-17T13:38:27.288</Modified>
+      <Modified>2015-12-17T14:41:27.060</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\ApplicationInsights.config">
       <PackagePath>ApplicationInsights.config</PackagePath>
@@ -606,7 +606,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\BOBApp.xr.xml">
       <PackagePath>BOBApp.xr.xml</PackagePath>
-      <Modified>2015-12-17T13:59:44.707</Modified>
+      <Modified>2015-12-17T14:42:04.378</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -614,11 +614,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-17T13:59:46.685</Modified>
+      <Modified>2015-12-17T14:42:06.932</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-17T13:59:47.063</Modified>
+      <Modified>2015-12-17T14:42:12.798</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
