@@ -18,10 +18,10 @@
     </Page.Resources>
 
     <RelativePanel>
-        <TextBlock Text="{Binding BobRequests, Mode=TwoWay}"></TextBlock>
+        <TextBlock Text="{Binding BobRequests, Mode=TwoWay}" Width="300"></TextBlock>
         <CommandBar RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="commandbar" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RequestedTheme="Light" IsSticky="True" >
             <AppBarButton Padding="10" Margin="0,0,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}" />
-            <AppBarButton Padding="10" Margin="0,0,10,0" Width="auto" Content="Filter" Command="{Binding GoFilterCommand}"  />
+            
         </CommandBar>
 
 

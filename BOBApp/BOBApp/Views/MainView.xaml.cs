@@ -265,8 +265,8 @@ namespace BOBApp.Views
 
                 if (reload == false)
                 {
-                    e.Cancel = true;
                     //e.Cancel = true;
+                    
                 }
             }
         }

@@ -211,6 +211,18 @@ namespace BOBApp.ViewModels
             VindRitChatVM.ID = null;
             //alles op null zetten, van start
 
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
+
+            if (MainViewVM.USER.IsBob)
+            {
+                rootFrame.Navigate(typeof(VindRit), true);
+            }
+            else
+            {
+                rootFrame.Navigate(typeof(VindRitBob), true);
+            }
+
+
         }
 
         private async void OpenChatroom(int chatroomID)

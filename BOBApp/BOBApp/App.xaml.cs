@@ -320,8 +320,18 @@ namespace BOBApp
         {
             if (MainViewVM.USER != null)
             {
-                Libraries.Models.Response res = await Libraries.Repositories.LoginRepository.LogOff();
-                MainViewVM.socket.Disconnect();
+                try
+                {
+                    Libraries.Models.Response res = await Libraries.Repositories.LoginRepository.LogOff();
+                    MainViewVM.socket.Disconnect();
+
+                }
+                catch (Exception)
+                {
+
+                    Debug.WriteLine("app exist");
+                }
+               
             }
 
 

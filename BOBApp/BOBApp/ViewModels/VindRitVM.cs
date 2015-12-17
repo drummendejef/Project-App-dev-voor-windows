@@ -119,7 +119,7 @@ namespace BOBApp.ViewModels
                     Task task2 = GetDestinations();
                     Task task3 = GetBobTypes();
                     RaisePropertyChanged("SelectedPartyString");
-                    BobRequests = "Momenteel 0 aanvragen";
+                    this.BobRequests = "Momenteel 0 aanvragen";
                     RaisePropertyChanged("BobRequests");
 
 
@@ -149,11 +149,15 @@ namespace BOBApp.ViewModels
             if (obj.Name == "loaded")
             {
                 Type view = (Type)obj.View;
-                if (view == (typeof(VindRit)))
+                if (view == typeof(VindRit) || view==typeof(VindRitBob))
                 {
                     //loaded
                     Loaded();
                 }
+            }
+            if (obj.Reload == true)
+            {
+                Loaded();
             }
 
             if (obj.Name != null && obj.Name != "")
@@ -663,6 +667,9 @@ namespace BOBApp.ViewModels
             }
 
             BobisDone(location, "Trip is geannuleerd");
+
+            this.EnableFind = true;
+            RaisePropertyChanged("EnableFind");
         }
 
 
