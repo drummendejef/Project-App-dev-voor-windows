@@ -82,13 +82,26 @@ namespace BOBApp.ViewModels
                     if (data.ID == -1)
                     {
                         //geen chatroom
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                         await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                         {
-                            Frame rootFrame = MainViewVM.MainFrame as Frame;
-                            rootFrame.Navigate(typeof(VindRit));
-                        });
 
-                    }else
+                            Type type = null;
+                            if (MainViewVM.USER.IsBob == true)
+                            {
+                                type = typeof(VindRitBob);
+                            }
+                            else
+                            {
+                                type = typeof(VindRit);
+                            }
+                            Frame rootFrame = MainViewVM.MainFrame as Frame;
+                            rootFrame.Navigate(type);
+                        });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
+                    }
+                    else
                     {
                         VindRitChatVM.ID = data.ID;
                         MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
@@ -114,11 +127,23 @@ namespace BOBApp.ViewModels
             catch (Exception ex)
             {
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
+                    Type type = null;
+                    if (MainViewVM.USER.IsBob == true)
+                    {
+                        type = typeof(VindRitBob);
+                    }
+                    else
+                    {
+                        type = typeof(VindRit);
+                    }
                     Frame rootFrame = MainViewVM.MainFrame as Frame;
-                    rootFrame.Navigate(typeof(VindRit));
+                    rootFrame.Navigate(type);
+
                 });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
            

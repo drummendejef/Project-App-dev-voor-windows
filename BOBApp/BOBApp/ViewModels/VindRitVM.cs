@@ -525,6 +525,7 @@ namespace BOBApp.ViewModels
 
             if (VindRitChatVM.ID != null)
             {
+
                 rootFrame.Navigate(typeof(VindRitChat), true);
             }
             else

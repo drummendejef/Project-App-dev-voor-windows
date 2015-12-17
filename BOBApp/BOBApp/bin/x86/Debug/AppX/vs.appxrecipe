@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-12-17T14:42:12.806</Modified>
+      <Modified>2015-12-17T14:44:24.708</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -614,11 +614,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-12-17T14:42:06.932</Modified>
+      <Modified>2015-12-17T14:44:24.381</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Core\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2015-12-17T14:42:12.798</Modified>
+      <Modified>2015-12-17T14:44:24.701</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
