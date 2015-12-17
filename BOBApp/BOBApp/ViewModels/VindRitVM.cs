@@ -473,8 +473,7 @@ namespace BOBApp.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    this.EnableFind = true;
-                    RaisePropertyChanged("EnableFind");
+                  
 
                 }
             }

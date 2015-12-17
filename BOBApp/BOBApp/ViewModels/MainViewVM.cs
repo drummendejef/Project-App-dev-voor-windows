@@ -46,6 +46,7 @@ namespace BOBApp.ViewModels
         public bool Loading { get; set; }
 
         private IBackgroundTaskRegistration regTask = null;
+        private object currentTrip;
 
 
 
@@ -98,6 +99,9 @@ namespace BOBApp.ViewModels
                     Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
 
                     //StartTrip(currentTrip);
+
+                    //svave trip
+                    TripStart();
 
                 }
 
@@ -185,7 +189,11 @@ namespace BOBApp.ViewModels
 
         }
 
-        
+        private async void TripStart()
+        {
+            var data = JsonConvert.SerializeObject(currentTrip);
+            bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+        }
 
         private void FriendRequest(User.All fromUser)
         {
@@ -434,10 +442,9 @@ namespace BOBApp.ViewModels
 
         private async void StartTrip(Trip currentTrip)
         {
-            var data = JsonConvert.SerializeObject(currentTrip);
-            bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+            
 
-            if (ok == true && currentTrip != null)
+            if (currentTrip != null)
             {
                 VindRitVM.CurrentTrip = currentTrip;
                 //update very minuten location for trip

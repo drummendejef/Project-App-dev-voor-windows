@@ -13,6 +13,7 @@ namespace BOBApp.Messages
         public Type View { get; internal set; }
 
         public object Result { get; internal set; }
+        public object Result2 { get; internal set; }
 
     }
 }

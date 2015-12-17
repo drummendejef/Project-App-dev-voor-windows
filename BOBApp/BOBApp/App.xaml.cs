@@ -204,7 +204,8 @@ namespace BOBApp
                         Messenger.Default.Send<NavigateTo>(new NavigateTo()
                         {
                             Name = cb,
-                            Result = true
+                            Result = true,
+                            Result2 = paramView
                         });
                     }
 
@@ -224,7 +225,8 @@ namespace BOBApp
                         Messenger.Default.Send<NavigateTo>(new NavigateTo()
                         {
                             Name = cb,
-                            Result = false
+                            Result = false,
+                            Result2=paramView
                         });
                     }
                     return false;

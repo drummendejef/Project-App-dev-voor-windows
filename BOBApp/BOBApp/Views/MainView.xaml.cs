@@ -253,6 +253,24 @@ namespace BOBApp.Views
 
         private void frame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
+            if (e.SourcePageType == typeof(VindRit))
+            {
+                bobVindEenRit.IsChecked = true;
+                
+            }else if (e.SourcePageType == typeof(VindRitBob))
+            {
+                bobBiedJeAan.IsChecked = true;
+
+            }
+            else
+            {
+                bobVindEenRit.IsChecked =false;
+                bobBiedJeAan.IsChecked = false;
+
+            }
+
+
+
             if (e.Parameter != null)
             {
                 bool reload = (bool)e.Parameter;

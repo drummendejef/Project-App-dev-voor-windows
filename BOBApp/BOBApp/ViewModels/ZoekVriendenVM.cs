@@ -70,7 +70,8 @@ namespace BOBApp.ViewModels
 
             if (obj.Name == "friend_accepted")
             {
-                User.All user = (User.All)obj.Result;
+                
+                User.All user = (User.All)obj.Result2;
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
                     Message = user.ToString() + " is toegevoegd",
