@@ -21,7 +21,6 @@
     <RootPropertyPathName Name="SearchLocation" />
     <RootPropertyPathName Name="AddDestinationCommand" />
     <RootPropertyPathName Name="Cities" />
-    <RootPropertyPathName Name="Cities_ID" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
     <RootPropertyPathName Name="FacebookLinkID" />

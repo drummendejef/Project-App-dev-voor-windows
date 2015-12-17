@@ -25,7 +25,22 @@ namespace BOBApp.ViewModels
 
         public List<City> Cities { get; set; }
         public List<Users_Destinations> Destinations { get; set; }
-        public Destination Destination { get; set; }
+        //public Destination Destination { get; set; }
+
+        private City _Destination;
+
+        public City Destination
+        {
+            get { return _Destination; }
+            set { _Destination = value;
+
+                
+
+            }
+        }
+
+
+
 
         //Constructor
         public BestemmingenVM()
@@ -34,6 +49,7 @@ namespace BOBApp.ViewModels
             AddDestinationCommand = new RelayCommand(AddDestination);
             GoDestinationCommand = new RelayCommand(GoDestination);
             RaisePropertyChanged("SearchLocation");
+            this.Destination = new City();
             RaisePropertyChanged("Destination");
         }
 
@@ -49,7 +65,11 @@ namespace BOBApp.ViewModels
 
         private async Task AddDestination_task()
         {
-           Libraries.Models.Response ok = await DestinationRepository.PostDestination(this.Destination);
+            Destination destination = new Destination()
+            {
+                Cities_ID= this.Destination.ID
+            };
+            Libraries.Models.Response ok = await DestinationRepository.PostDestination(destination);
         }
 
         private void GoDestination()
