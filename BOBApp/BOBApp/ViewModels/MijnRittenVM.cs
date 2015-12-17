@@ -66,6 +66,34 @@ namespace BOBApp.ViewModels
             });
         }
 
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+
+
+                GetCurrentTrip();
+                GetTrips();
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaisePropertyChanged("Loading");
+
+                    RaisePropertyChanged("Trips");
+                    RaisePropertyChanged("CurrentTrip");
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
+
+
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
         {
@@ -79,32 +107,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async void Loaded()
-        {
-            this.Loading = true;
-            RaisePropertyChanged("Loading");
-
-            await Task.Run(async () =>
-            {
-                // running in background
-               
-
-                GetCurrentTrip();
-                GetTrips();
-                #pragma warning disable CS1998
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-                {
-                    this.Loading = false;
-                    RaisePropertyChanged("Loading");
-
-                    RaisePropertyChanged("Trips");
-                    RaisePropertyChanged("CurrentTrip");
-
-                });
-                #pragma warning restore CS1998
-
-            });
-        }
+       
 
         //Methods
         private async void GetCurrentTrip()

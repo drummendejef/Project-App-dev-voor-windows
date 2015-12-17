@@ -34,6 +34,23 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+        public static async Task<Models.User.All> GetUserByEmail(string email)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(new { Email = email });
+
+                HttpResponseMessage result = await client.PostAsync(URL.USERS_FIND, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Models.User.All data = JsonConvert.DeserializeObject<Models.User.All>(json);
+
+                return data;
+            }
+
+          
+        }
         public static async Task<List<Models.User.All>> GetUsersOnline()
         {
             using (HttpClient client = new HttpClient())

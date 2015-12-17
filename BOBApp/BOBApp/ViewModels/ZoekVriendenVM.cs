@@ -1,4 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BOBApp.Messages;
+using BOBApp.Views;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Repositories;
 using Newtonsoft.Json;
@@ -7,30 +10,93 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 
 namespace BOBApp.ViewModels
 {
     public class ZoekVriendenVM : ViewModelBase
     {
         //Properties
+        public bool Loading { get; set; }
 
         //Constructor
         public ZoekVriendenVM()
         {
-            AddFriend("Email");
+            AddFriend("1@bob.com");
+
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
         }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+
+
+            await Task.Run(async () =>
+            {
+                // running in background
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+
+
+                    GetFriends();
+                    this.Loading = false;
+                    RaisePropertyChanged("Loading");
+
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
+
+      
+
+        private async void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(ZoekVrienden)))
+                {
+                    //loaded
+                    Loaded();
+                }
+            }
+
+            if (obj.Name == "friend_accepted")
+            {
+                User.All user = (User.All)obj.Result;
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = user.ToString() + " is toegevoegd",
+                });
+            }
+        }
+
+
+
+        //Methods
 
         private async void AddFriend(string email)
         {
-            int userID = 0;//get bob from friend
-            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(userID)).Result;
-            Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+            email = email.Trim().ToLower();
+
+
+            User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserByEmail(email)).Result;
+            Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.User.ID, Status = true };
 
             MainViewVM.socket.Emit("friend_REQUEST:send", JsonConvert.SerializeObject(socketSend));
         }
 
-        //Methods
-
+        private void GetFriends()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

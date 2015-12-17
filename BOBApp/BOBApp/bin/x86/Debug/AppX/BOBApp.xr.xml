@@ -63,8 +63,10 @@
     <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="VindRitVM" />
+    <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="GoFilterCommand" />
     <RootPropertyPathName Name="GoChatCommand" />
+    <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="SelectedPartyString" />
     <RootPropertyPathName Name="Parties" />
@@ -522,6 +524,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />

@@ -123,7 +123,7 @@ namespace BOBApp.ViewModels
                     //friend add
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
-
+                    FriendRequest(fromUser);
                 }
 
             });
@@ -181,6 +181,18 @@ namespace BOBApp.ViewModels
                 }
             });
 
+        }
+
+        private void FriendRequest(User.All fromUser)
+        {
+            Messenger.Default.Send<Dialog>(new Dialog()
+            {
+                Message = fromUser.ToString() + " wilt u toevoegen als vriend",
+                Ok = "Accept",
+                Nok = "Ignore",
+                ParamView = fromUser,
+                Cb = "friend_accepted"
+            });
         }
 
         private async void TripDone()

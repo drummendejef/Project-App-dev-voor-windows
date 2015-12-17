@@ -54,7 +54,8 @@ namespace Libraries
         public static string DESTINATIONS_DEFAULT = BASE + "/destinations/default";
 
         public static string USERS = BASE + "/users";
-        public static string USERS_ONLINE = BASE + "/users/online";
+        public static string USERS_ONLINE = USERS + "/online";
+        public static string USERS_FIND = USERS + "/find";
 
         public static string STATUSES = BASE + "/statuses";
 

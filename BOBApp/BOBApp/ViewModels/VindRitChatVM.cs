@@ -28,7 +28,7 @@ namespace BOBApp.ViewModels
         private Task task;
         public ChatRoom.All ChatRoom { get; set; }
         public RelayCommand AddCommentCommand { get; set; }
-        public ChatComment ChatComment { get; set; }
+        public string ChatComment { get; set; }
 
        
 
@@ -38,9 +38,6 @@ namespace BOBApp.ViewModels
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             AddCommentCommand = new RelayCommand(AddComment);
-
-            this.ChatComment = new ChatComment();
-            this.ChatComment.Comment = null;
             RaisePropertyChanged("ChatComment");
 
             getChatroom();
@@ -96,7 +93,7 @@ namespace BOBApp.ViewModels
                         VindRitChatVM.ID = data.ID;
                         MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
 
-                        this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
+                      
                         GetChatComments();
 
                      
@@ -106,7 +103,7 @@ namespace BOBApp.ViewModels
                 {
                     MainViewVM.ChatRoom = new ChatRoom() { ID = VindRitChatVM.ID.Value };
 
-                    this.ChatComment = new ChatComment() { ChatRooms_ID = MainViewVM.ChatRoom.ID };
+                   
                     GetChatComments();
 
 
@@ -143,7 +140,12 @@ namespace BOBApp.ViewModels
 
         private async Task<Boolean> AddComment_task()
         {
-            Response res = await ChatRoomRepository.PostChatComment(this.ChatComment);
+            ChatComment comment = new ChatComment()
+            {
+                ChatRooms_ID= MainViewVM.ChatRoom.ID,
+                Comment=this.ChatComment
+            };
+            Response res = await ChatRoomRepository.PostChatComment(comment);
             if (res.Success == true)
             {
 
@@ -165,8 +167,7 @@ namespace BOBApp.ViewModels
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToBob));
 
-                this.ChatComment = new ChatComment();
-                this.ChatComment.Comment = null;
+                this.ChatComment = "";
                 RaisePropertyChanged("ChatComment");
                
             }

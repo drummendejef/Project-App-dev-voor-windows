@@ -21,7 +21,7 @@
         </ItemsControl>
 
         <RelativePanel x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,0,80,0" Text="{Binding ChatComment.Comment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
+            <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,0,80,0" Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
             <Button Width="80" x:Name="addComment" Content="Add comment" HorizontalAlignment="Right"  RelativePanel.AlignRightWithPanel="True" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
 
         </RelativePanel>
