@@ -32,6 +32,8 @@ namespace BobWorker
             Geoposition pos = await geolocator.GetGeopositionAsync();
             Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
+
+
             string json = await readStringFromLocalFile("user.json");
             var definition = new { Email="", Password=""};
             var user = JsonConvert.DeserializeAnonymousType(json, definition);

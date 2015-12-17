@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
+using Windows.Devices.Geolocation;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Popups;
@@ -53,6 +54,7 @@ namespace BOBApp.ViewModels
         {
             User = MainViewVM.USER;
             GetPoints();
+            PostLocation();
 
             SetupBackgroundTask();
             LogOffCommand = new RelayCommand(LogOff);
@@ -182,6 +184,8 @@ namespace BOBApp.ViewModels
             });
 
         }
+
+        
 
         private void FriendRequest(User.All fromUser)
         {
@@ -489,6 +493,14 @@ namespace BOBApp.ViewModels
 
         #endregion
 
+        private async void PostLocation()
+        {
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+            Response ok = await UserRepository.PostLocation(location);
+        }
 
         private object GetTripObject()
         {
