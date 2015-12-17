@@ -225,18 +225,18 @@ namespace BOBApp.ViewModels
 
             Frame rootFrame = MainViewVM.MainFrame as Frame;
 
-            if (MainViewVM.USER.IsBob)
+            if (MainViewVM.USER.IsBob==true)
             {
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
-                    rootFrame.Navigate(typeof(VindRit), true);
+                    rootFrame.Navigate(typeof(VindRitBob), true);
                 });
             }
             else
             {
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
-                    rootFrame.Navigate(typeof(VindRitBob), true);
+                    rootFrame.Navigate(typeof(VindRit), true);
                 });
             }
 
