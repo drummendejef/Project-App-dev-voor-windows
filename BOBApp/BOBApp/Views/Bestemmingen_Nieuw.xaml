@@ -22,7 +22,7 @@
         <ComboBox x:Name="cbxCities" ItemsSource="{Binding Cities,Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding Destination, Mode=TwoWay}"  Width="200" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textBoxZoekLocaties"/>
         <Button x:Name="btnGoTo" Content="Go To On Map" Command="{Binding GoToCityCommand}" Margin="10" Height="32" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="cbxCities" Style="{StaticResource button}" />
         <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding AddDestinationCommand}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="btnGoTo" Style="{StaticResource button}" />
-        <Maps:MapControl x:Name="MapNieuweBestemming" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="btnAdd" RelativePanel.AlignBottomWithPanel="True" Margin="10" />
+        <Maps:MapControl x:Name="MapNieuweBestemming" Center="{Binding MapCenter, Mode=TwoWay}" ZoomLevel="13" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="btnAdd" RelativePanel.AlignBottomWithPanel="True" Margin="10" />
         
 
     </RelativePanel>
