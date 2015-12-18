@@ -19,7 +19,9 @@
     <RootPropertyPathName Name="Destinations" />
     <RootPropertyPathName Name="GoDestinationCommand" />
     <RootPropertyPathName Name="SearchLocation" />
+    <RootPropertyPathName Name="MapCenter" />
     <RootPropertyPathName Name="AddDestinationCommand" />
+    <RootPropertyPathName Name="GoToCityCommand" />
     <RootPropertyPathName Name="Cities" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
@@ -327,9 +329,9 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="Height" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Height" />
       <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="Click" />
     </RootType>
@@ -441,6 +443,8 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
+      <RootProperty Name="Center" />
+      <RootProperty Name="ZoomLevel" />
       <RootProperty Name="MapServiceToken" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Children" />

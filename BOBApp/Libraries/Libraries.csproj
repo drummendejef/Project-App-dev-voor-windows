@@ -131,6 +131,7 @@
     <Compile Include="Models\relations\Users_PointsDescription.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\TownToCoordinates.cs" />
     <Compile Include="Models\Trip.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
