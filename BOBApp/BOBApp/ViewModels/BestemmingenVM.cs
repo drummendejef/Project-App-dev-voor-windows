@@ -7,12 +7,17 @@ using Libraries;
 using Libraries.Models;
 using Libraries.Models.relations;
 using Libraries.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
@@ -28,7 +33,7 @@ namespace BOBApp.ViewModels
 
         public List<City> Cities { get; set; }
         public List<Users_Destinations> Destinations { get; set; }
-        //public Destination Destination { get; set; }
+        public Point CityLocation { get; set; }
 
         private City _Destination;
 
@@ -41,13 +46,18 @@ namespace BOBApp.ViewModels
 
             }
         }
-
-
+        
+        //databinding voor het center van de map
+        public Geopoint MapCenter { get; set; }
 
 
         //Constructor
         public BestemmingenVM()
         {
+            if ((App.Current as App).UserLocation != null)//Kijken of we de locatie van de gebruiker hebben.
+                MapCenter = (App.Current as App).UserLocation.Coordinate.Point;//Zoja, center van de map eerst op de persoon focussen.
+
+
             GetCities();
             AddDestinationCommand = new RelayCommand(AddDestination);
             GoDestinationCommand = new RelayCommand(GoDestination);
@@ -55,6 +65,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("SearchLocation");
             this.Destination = new City();
             RaisePropertyChanged("Destination");
+            RaisePropertyChanged("MapCenter");
         }
 
 
@@ -100,21 +111,32 @@ namespace BOBApp.ViewModels
             //Naam ophalen uit de geselecteerde stad.
             string Town = Destination.Name;
 
-            //URL aanmaken (tijdelijk, later in URL klasse zetten)
-            /*string bingkey = "dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5";
-            string URLBasisTownToCoord = "http://dev.virtualearth.net/REST/v1/Locations?locality=";
-            string URLBingKey = "&key=";*/
-
             //Volledige string maken
-            string URLFullTownToCoord = URL.BASISURLTOWNTOCOORD + Town + URL.URLBINGKEY + URL.BINGKEY;
+            string URLFullTownToCoord = URL.BASISURLTOWNTOCOORD + Town + URL.URLBINGKEY + URL.BINGKEY + "&maxRes=1";//Volledige request url aanmaken, maar 1 resultaat terugvragen.
 
             using (HttpClient client = new HttpClient())
             {
                 var result = client.GetAsync(URLFullTownToCoord);
                 string json = await result.Result.Content.ReadAsStringAsync();
+                var root = JsonConvert.DeserializeObject<TownToCoordinates.RootObject>(json);
 
+                foreach(var rs in root.resourceSets)//In de Json resourcessets gaan
+                {
+                    foreach(var r in rs.resources)//Alle resources overlopen (maar 1, door onze vraag)
+                    {
+                        Debug.WriteLine("Geselecteerde stadsnaam: " + Destination.Name + ", ontvangen stadsnaam: " + r.name);
+                        Debug.WriteLine("Coordinaten ontvangen stad: " + r.point.coordinates[0] + ", " + r.point.coordinates[1]);
+                        Debug.WriteLine("Coordinaten persoon: " + MapCenter.Position.Latitude + ", " + MapCenter.Position.Longitude);
+
+                        //Coordinaten aanmaken
+                        Geopoint temppoint = new Geopoint(new BasicGeoposition() { Latitude = r.point.coordinates[0], Longitude = r.point.coordinates[1] });
+
+                        MapCenter = temppoint;
+                        RaisePropertyChanged("MapCenter");//Gebruiken zodat de mapcenter meteen veranderd
+                    }
+                }
             }
-
+            
             // https://msdn.microsoft.com/en-us/library/ff701714.aspx 
         }
     }
