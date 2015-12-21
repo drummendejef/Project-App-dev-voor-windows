@@ -178,8 +178,11 @@ namespace BOBApp.ViewModels
                 default:
                     break;
             }
-            RaisePropertyChanged("Car");
-            RaisePropertyChanged("CurrentTrip");
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Car");
+                RaisePropertyChanged("CurrentTrip");
+            });
         }
 
         List<Trip.All> trips_all= new List<Trip.All>();

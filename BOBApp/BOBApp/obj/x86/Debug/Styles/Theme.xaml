@@ -809,7 +809,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="TemplateChatComments">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+        <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Column="1" Text="{Binding Added}" />
             <Grid HorizontalAlignment="{Binding Alignment}">
                 <Grid.RowDefinitions>
@@ -822,8 +822,8 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding FromUser_ID}"/>
 
-                <Border CornerRadius="2,2,6,6" BorderThickness="0" Background="{StaticResource DarkBlue}">
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Comment}" />
+                <Border Margin="8" Padding="10" CornerRadius="5,5,5,2" BorderThickness="0" Background="{Binding Background}">
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Comment}" Foreground="{Binding Foreground}" />
                 </Border>
                 
 
