@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="BOBApp.Views.VindRitFilter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BOBApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    DataContext="{Binding VindRitFilterVM, Mode=TwoWay, Source={StaticResource Locator}}">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <RelativePanel Background="White" Padding="0,20,0,0">
+        <ComboBox x:ConnectionId='1' Width="400" x:Name="cboDestinations"  RelativePanel.AlignHorizontalCenterWithPanel="True"  ItemsSource="{Binding Destinations,Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedBobsType}" />
+        <TextBlock x:ConnectionId='2' RelativePanel.Below="cboDestinations"  RelativePanel.AlignHorizontalCenterWithPanel="True"   x:Name="textBlock1" Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Met volgende vrienden: " VerticalAlignment="Top" Style="{StaticResource textblock}"/>
+        <AutoSuggestBox x:ConnectionId='3' RelativePanel.Below="textBlock1" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="textBoxSelecteerVrienden" Margin="10,0" Height="32" ItemsSource="{Binding Friends, Mode=TwoWay}" Text="{Binding SelectedFriendText, Mode=TwoWay}" DisplayMemberPath="User2" TextMemberPath="User2" Width="400" />
+        <Button  Content="Add" Command="{Binding AddFriendCommand}" Margin="10,0" Height="32" Width="auto" RelativePanel.Below="textBlock1"  RelativePanel.RightOf="textBoxSelecteerVrienden" RelativePanel.AlignRightWithPanel="True"/>
+
+        <ListView x:ConnectionId='4' Height="100" x:Name="listViewGeselecteerdeVrienden" Margin="10" RelativePanel.Below="textBoxSelecteerVrienden" RelativePanel.AlignHorizontalCenterWithPanel="True" MinWidth="500" RelativePanel.Above="" />
+        <TextBlock x:ConnectionId='5' x:Name="textBlockMinRating" Margin="30,10" Text="Minimum rating van gebruikers:"  RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="" Style="{StaticResource textblock}" RelativePanel.Below="listViewGeselecteerdeVrienden" />
+        <Slider x:ConnectionId='6' Value="{Binding SelectedRating, Mode=TwoWay}" x:Name="sliderMinRating" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="200" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="" Maximum="5" RelativePanel.Below="textBlockMinRating"  />
+        <TextBlock x:ConnectionId='7' x:Name="textBlockLaatstVervoer" Margin="10" Text="Wanneer wil je ten laatste vervoer?" RelativePanel.Below="sliderMinRating" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}"  />
+        <DatePicker x:ConnectionId='8' Date="{Binding SelectedDate, Mode=TwoWay}" x:Name="datePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Above="" RelativePanel.Below="textBlockLaatstVervoer" />
+        <TimePicker x:ConnectionId='9' Time="{Binding SelectedTime, Mode=TwoWay}" RelativePanel.Below="datePicker" x:Name="timePicker" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+       
+        <TextBlock x:ConnectionId='10' RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="textBlockSoortVervoer" Margin="10" Height="20" TextWrapping="Wrap" Text="Soort vervoer:" RelativePanel.Below="timePicker" Style="{StaticResource textblock}"/>
+        <ComboBox x:ConnectionId='11' RelativePanel.Below="textBlockSoortVervoer" Width="200" x:Name="bobsType" RelativePanel.AlignHorizontalCenterWithPanel="True" ItemsSource="{Binding BobsTypes,Mode=TwoWay}" SelectedItem="{Binding SelectedBobsType, Mode=TwoWay}" DisplayMemberPath="Name" />
+    </RelativePanel>
+</Page>
+

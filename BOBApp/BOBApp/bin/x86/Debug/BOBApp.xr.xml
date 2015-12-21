@@ -451,6 +451,9 @@
       <RootProperty Name="MapServiceToken" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Children" />
+      <RootEvent Name="Holding" />
+      <RootEvent Name="MapHolding" />
+      <RootEvent Name="RightTapped" />
       <RootMethod Name="GetLocation" />
       <RootMethod Name="SetLocation" />
     </RootType>
