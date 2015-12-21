@@ -14,3 +14,19 @@ E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\qualifiers.txt
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\qualifiers.txt.intermediate
 E:\School\2015 - 2016\App Dev For Windows\Project 2\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\bin\ARM\Debug\Libraries.dll
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\bin\ARM\Debug\Libraries.pdb
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\bin\ARM\Debug\Libraries.pri
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\Libraries.dll
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\Libraries.pdb
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\priconfig.xml
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\priconfig.xml.intermediate
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\layout.resfiles
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\layout.resfiles.intermediate
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\resources.resfiles
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\resources.resfiles.intermediate
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\pri.resfiles
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\pri.resfiles.intermediate
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\qualifiers.txt
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\qualifiers.txt.intermediate
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Debug\MultipleQualifiersPerDimensionFound.txt
