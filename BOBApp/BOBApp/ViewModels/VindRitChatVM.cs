@@ -13,9 +13,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace BOBApp.ViewModels
 {
@@ -207,15 +209,21 @@ namespace BOBApp.ViewModels
             {
                 for (int i = 0; i < lijst.ChatComments.Count; i++)
                 {
-                    HorizontalAlignment aligment = HorizontalAlignment.Left; ;
+                    HorizontalAlignment aligment = HorizontalAlignment.Left;
+                    SolidColorBrush background = new SolidColorBrush(Color.FromArgb(200,200,200,200));
+                    SolidColorBrush forground = new SolidColorBrush(Color.FromArgb(200, 200, 200, 200));
 
                     if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
                     {
                         aligment = HorizontalAlignment.Left;
+                        background = new SolidColorBrush(Color.FromArgb(255, 100, 200, 200));
+                        forground = new SolidColorBrush(Color.FromArgb(200, 200, 200, 200));
                     }
                     else
                     {
                         aligment = HorizontalAlignment.Right;
+                        background = new SolidColorBrush(Color.FromArgb(255, 200, 200, 200));
+                        forground = new SolidColorBrush(Color.FromArgb(200, 200, 200, 200));
                     }
                     lijst.ChatComments[i].Alignment = aligment;
 

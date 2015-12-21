@@ -821,7 +821,8 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding FromUser_ID}"/>
-                <Border BorderThickness="0" Background="{StaticResource DarkBlue}">
+
+                <Border CornerRadius="2,2,6,6" BorderThickness="0" Background="{StaticResource DarkBlue}">
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Comment}" />
                 </Border>
                 

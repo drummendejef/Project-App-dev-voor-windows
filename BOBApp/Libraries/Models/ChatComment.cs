@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
 
 namespace Libraries.Models
 {
@@ -19,5 +20,7 @@ namespace Libraries.Models
 
         public int FromUser_ID { get; set; }
         public HorizontalAlignment Alignment { get; set; }
+        public SolidColorBrush Background { get; set; }
+        public SolidColorBrush Foreground { get; set; }
     }
 }

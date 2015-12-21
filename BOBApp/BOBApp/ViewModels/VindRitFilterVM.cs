@@ -16,7 +16,17 @@ namespace BOBApp.ViewModels
         //Properties
 
         //static
+
+        //filter
+        public static List<Friend.All> SelectedFriends { get; set; }
+        public static Users_Destinations SelectedDestination { get; set; }
+        public static BobsType SelectedBobsType { get; set; }
+        public static int SelectedRating { get; set; }
+        public static DateTime? SelectedMinDate { get; set; }
+        public static string SelectedParty { get; set; }
        
+
+
 
         //others
         private Task task;
@@ -29,33 +39,10 @@ namespace BOBApp.ViewModels
         public RelayCommand AddFriendCommand { get; set; }
 
         public List<BobsType> BobsTypes { get; set; }
-     
-
-        private int __SelectedRating;
-
-        public int _SelectedRating
-        {
-            get { return __SelectedRating; }
-            set { __SelectedRating = value; VindRitVM.Filter.SelectedRating = value; }
-        }
-
-        private BobsType __SelectedBobsType;
-
-        public BobsType _SelectedBobsType
-        {
-            get { return __SelectedBobsType; }
-            set { __SelectedBobsType = value; VindRitVM.Filter.SelectedBobsType = value; }
-        }
-
+        public List<Party> Parties { get; set; }
 
         public List<Users_Destinations> Destinations { get; set; }
-        private Users_Destinations __SelectedDestinations;
 
-        public Users_Destinations _SelectedDestination
-        {
-            get { return __SelectedDestinations; }
-            set { __SelectedDestinations = value; VindRitVM.Filter.SelectedDestination = value; }
-        }
         
        
 
@@ -65,8 +52,15 @@ namespace BOBApp.ViewModels
             Task task = GetFriends();
             Task task2 = GetBobTypes();
             Task task3 = GetDestinations();
+            Task task4 = GetParties();
             AddFriendCommand = new RelayCommand(AddFriend);
             RaisePropertyChanged("SelectedFriendString");
+
+            VindRitFilterVM.SelectedFriends = new List<Friend.All>();
+            VindRitFilterVM.SelectedDestination = new Users_Destinations();
+            VindRitFilterVM.SelectedBobsType = new BobsType();
+            VindRitFilterVM.SelectedParty = "";
+            VindRitFilterVM.SelectedMinDate = DateTime.Today;
         }
 
         
@@ -76,7 +70,8 @@ namespace BOBApp.ViewModels
         private void AddFriend()
         {
             Friend.All friend = this.Friends.Where(r => r.User2.ToString() == this.SelectedFriendString).First();
-            VindRitVM.Filter.SelectedFriends.Add(friend);
+            VindRitFilterVM.SelectedFriends.Add(friend);
+
         }
 
         #region gets
@@ -84,14 +79,14 @@ namespace BOBApp.ViewModels
         private async Task GetBobTypes()
         {
             this.BobsTypes = await BobsRepository.GetTypes();
-            _SelectedBobsType = this.BobsTypes[0];
+            VindRitFilterVM.SelectedBobsType= this.BobsTypes[0];
         
             RaisePropertyChanged("_SelectedBobsType");
         }
         private async Task GetDestinations()
         {
             this.Destinations = await DestinationRepository.GetDestinations();
-            _SelectedDestination = this.Destinations[0];
+            VindRitFilterVM.SelectedDestination= this.Destinations[0];
          
             RaisePropertyChanged("_SelectedDestination");
         }
@@ -101,6 +96,23 @@ namespace BOBApp.ViewModels
             this.Friends = await FriendsRepository.GetFriends();
 
             if (this.Friends.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        private async Task<Boolean> GetParties()
+        {
+
+            this.Parties = await PartyRepository.GetParties();
+
+            RaisePropertyChanged("Parties");
+            if (this.Parties.Count > 0)
             {
                 return true;
             }

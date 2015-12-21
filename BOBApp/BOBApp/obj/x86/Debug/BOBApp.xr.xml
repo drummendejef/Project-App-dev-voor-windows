@@ -67,14 +67,13 @@
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
-    <RootPropertyPathName Name="VisibleFind" />
-    <RootPropertyPathName Name="GoFilterCommand" />
     <RootPropertyPathName Name="VisibleCancel" />
     <RootPropertyPathName Name="GoChatCommand" />
+    <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
-    <RootPropertyPathName Name="SelectedPartyString" />
-    <RootPropertyPathName Name="Parties" />
+    <RootPropertyPathName Name="GoFilterCommand" />
+    <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="BobRequests" />
     <RootPropertyPathName Name="VindRitChatVM" />
     <RootPropertyPathName Name="AddCommentCommand" />
@@ -91,6 +90,8 @@
     <RootPropertyPathName Name="AddFriendCommand" />
     <RootPropertyPathName Name="Friends" />
     <RootPropertyPathName Name="SelectedFriendText" />
+    <RootPropertyPathName Name="SelectedDestination" />
+    <RootPropertyPathName Name="Parties" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -203,6 +204,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Child" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Opacity" />
@@ -333,6 +335,7 @@
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Padding" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
@@ -510,16 +513,8 @@
     <RootType FullName="BOBApp.Views.Register" />
     <RootType FullName="BOBApp.Views.RitItem" />
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
-    <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
-      <RootProperty Name="Text" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="TextMemberPath" />
-      <RootProperty Name="DisplayMemberPath" />
-      <RootProperty Name="PlaceholderText" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
-    </RootType>
+    <RootType FullName="BOBApp.ViewModels.VindRitVM" />
+    <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="RequestedTheme" />
@@ -534,7 +529,6 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
     </RootType>
-    <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="HorizontalAlignment" />
@@ -543,6 +537,17 @@
       <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRitChat" />
+    <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
+    <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="TextMemberPath" />
+      <RootProperty Name="DisplayMemberPath" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="PlaceholderText" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Slider">
       <RootProperty Name="Value" />
       <RootProperty Name="Width" />

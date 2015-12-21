@@ -221,7 +221,7 @@ namespace BOBApp.ViewModels
 
 
             //alles op null zetten, van start
-            VindRitVM.Filter.SelectedDestination = new Users_Destinations();
+            VindRitFilterVM.SelectedDestination = new Users_Destinations();
             MainViewVM.ChatRoom = null;
             VindRitChatVM.ID = null;
             VindRitVM.SelectedParty = null;
@@ -524,11 +524,11 @@ namespace BOBApp.ViewModels
             {
                 Bob selectedBob = VindRitVM.SelectedBob;
                 Party SelectedParty = VindRitVM.SelectedParty;
-                Users_Destinations SelectedDestination = VindRitVM.Filter.SelectedDestination;
-                List<Friend.All> selectedFriends = VindRitVM.Filter.SelectedFriends;
-                BobsType type = VindRitVM.Filter.SelectedBobsType;
-                DateTime? minDate = VindRitVM.Filter.SelectedMinDate;
-                int? rating = VindRitVM.Filter.SelectedRating;
+                Users_Destinations SelectedDestination = VindRitFilterVM.SelectedDestination;
+                List<Friend.All> selectedFriends = VindRitFilterVM.SelectedFriends;
+                BobsType type = VindRitFilterVM.SelectedBobsType;
+                DateTime? minDate = VindRitFilterVM.SelectedMinDate;
+                int? rating = VindRitFilterVM.SelectedRating;
 
 
                 //destinations edit

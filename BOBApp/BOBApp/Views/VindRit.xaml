@@ -2,6 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BOBApp.Views"
+    xmlns:vm="using:BOBApp.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
@@ -15,25 +16,46 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <vm:VindRitVM x:Key="this"/>
         </ResourceDictionary>
     </Page.Resources>
 
     <RelativePanel>
         <ProgressRing Foreground="black" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
 
+        <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
+            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding SelectedParty.Name, Source={StaticResource this}, Mode=TwoWay}"/>
+
+            <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding GoFilterCommand}"   />
+
+            <RelativePanel  RelativePanel.Below="lblFeest" RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="filter" >
+
+                <TextBlock x:Name="lblBobType" Margin="0,0,0,8" Text="Bobtype: "/>
+                <TextBlock RelativePanel.RightOf="lblBobType" Margin="10,0,0,0" Text="HET FEESTJE"/>
+
+                <TextBlock x:Name="lblFriends" Margin="0,0,0,8" RelativePanel.Below="lblBobType" Text="Friends: "/>
+                <TextBlock RelativePanel.RightOf="lblFriends" Margin="10,0,0,0" RelativePanel.Below="lblBobType" Text="HET FEESTJE"/>
+
+                <RelativePanel RelativePanel.Below="lblFriends" >
+                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="TIME TO YOUR DESTINATION WITH BOB "/>
+                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime" Margin="10,0,0,0"  Text="NAAM"/>
+                    <TextBlock RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="3 uur"/>
+
+                </RelativePanel>
+
+            </RelativePanel>
+           
+        </RelativePanel>
         
-        <AutoSuggestBox x:Name="textBoxZoekLocatieFeestje" Text="{Binding SelectedPartyString, Mode=TwoWay}" ItemsSource="{Binding Parties, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" PlaceholderText="Zoek locatie/feestje" Height="32" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True"  />
-      
-        <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="textBoxZoekLocatieFeestje" RelativePanel.Above="commandbar" Canvas.ZIndex="10" />
 
-        <Button Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />
-        <Button Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel trip" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
+        <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10" />
+
+        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />
+        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel trip" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
 
 
-        <CommandBar RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="commandbar" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RequestedTheme="Light" IsSticky="True" >
-            <AppBarButton Visibility="{Binding VisibleCancel,Mode=TwoWay}" Padding="10" Margin="0,0,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}" />
-            <AppBarButton Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10" Margin="0,0,10,0" Width="auto" Content="Filter" Command="{Binding GoFilterCommand}"  />
-        </CommandBar>
+        <Button Style="{ThemeResource button}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Visibility="{Binding VisibleCancel,Mode=TwoWay}" Padding="10" Margin="0,-100,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
+        
 
 
     </RelativePanel>
