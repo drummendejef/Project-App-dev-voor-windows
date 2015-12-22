@@ -11,7 +11,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -41,10 +41,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -295,9 +295,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -1652,7 +1652,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -1682,10 +1682,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -1979,9 +1979,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -3383,7 +3383,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -3413,10 +3413,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -3696,9 +3696,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -5086,7 +5086,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -5116,10 +5116,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -5418,9 +5418,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -6822,7 +6822,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -6852,10 +6852,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -7135,9 +7135,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -8525,7 +8525,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -8555,10 +8555,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -8857,9 +8857,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -10261,7 +10261,7 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
-      "EngineIoClientDotNet/0.9.18": {
+      "EngineIoClientDotNet/0.9.21": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -10291,10 +10291,10 @@
           "lib/portable-win81+wpa81/Microsoft.ApplicationInsights.PersistenceChannel.dll": {}
         }
       },
-      "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
+      "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "[1.1.0, )",
-          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.1.0, )"
+          "Microsoft.ApplicationInsights": "[1.2.3, 1.2.3]",
+          "Microsoft.ApplicationInsights.PersistenceChannel": "[1.2.3, 1.2.3]"
         },
         "compile": {
           "lib/win81/Microsoft.ApplicationInsights.Extensibility.Windows.dll": {}
@@ -10574,9 +10574,9 @@
           "lib/dotnet/QueryString.NETCore.dll": {}
         }
       },
-      "SocketIoClientDotNet/0.9.11": {
+      "SocketIoClientDotNet/0.9.12": {
         "dependencies": {
-          "EngineIoClientDotNet": "[0.9.18, )",
+          "EngineIoClientDotNet": "[0.9.21, )",
           "Newtonsoft.Json": "[7.0.1, )"
         },
         "compile": {
@@ -11972,13 +11972,15 @@
         "package/services/metadata/core-properties/99be0c88b2fd41c8b07c42071005ee47.psmdcp"
       ]
     },
-    "EngineIoClientDotNet/0.9.18": {
-      "sha512": "fup8ZUOc93xUDz7MQzh2Co0v4/KNFGx7vDIRz14BHYlCF5tskdpY8rPCh+eUXnzzveExC+M395g+RawLktGxVg==",
+    "EngineIoClientDotNet/0.9.21": {
+      "sha512": "q3COYzIBre9M4aBx4o30DYOUyBT8PNJ0gWGt6XvreB3qm0shNx1X8kEQN5FGMXREU+EVN+h+nL7WMOjYt3BISg==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
         "EngineIoClientDotNet.nuspec",
+        "lib/monoandroid10/EngineIoClientDotNet.dll",
+        "lib/monotouch10/EngineIoClientDotNet.dll",
         "lib/net35/EngineIoClientDotNet.dll",
         "lib/net40/EngineIoClientDotNet.dll",
         "lib/net45/EngineIoClientDotNet.dll",
@@ -11986,7 +11988,8 @@
         "lib/portable-win81+wpa81/EngineIoClientDotNet.dll",
         "lib/portable-wpa81+wp81/EngineIoClientDotNet.dll",
         "lib/windowsphone8/EngineIoClientDotNet.dll",
-        "package/services/metadata/core-properties/5276631303544040ad2e07a3f79c5804.psmdcp"
+        "lib/xamarinios10/EngineIoClientDotNet.dll",
+        "package/services/metadata/core-properties/76a0f22f32074643b4f90d6d6968abe8.psmdcp"
       ]
     },
     "Microsoft.ApplicationInsights/1.2.3": {
@@ -12025,8 +12028,8 @@
         "package/services/metadata/core-properties/f973733421c14c3594986b3f2c22213a.psmdcp"
       ]
     },
-    "Microsoft.ApplicationInsights.WindowsApps/1.1.0": {
-      "sha512": "H6nhyM+ZVOhLmF8cqQj70fc5HZOS6dxh18nNwEM7+HD8NzArdSLK0gwGJkEOUYPtjner/0/3aOxgGZbFi9OVdA==",
+    "Microsoft.ApplicationInsights.WindowsApps/1.1.1": {
+      "sha512": "Orj0UQrjQ2z0aWZZoexl734Ge7Q4oVev3VFSsk6t8l2kImrfJ1eygkJWtQ1d7u0kF6MLLrvUvsMSxo+0rgPiMQ==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
@@ -12038,7 +12041,7 @@
         "lib/wpa81/Microsoft.ApplicationInsights.Extensibility.Windows.dll",
         "lib/wpa81/Microsoft.ApplicationInsights.Extensibility.Windows.XML",
         "Microsoft.ApplicationInsights.WindowsApps.nuspec",
-        "package/services/metadata/core-properties/441e5d0bc7164e089277ae041b2043cc.psmdcp"
+        "package/services/metadata/core-properties/8265b8c93c244c80b4e8bce27f31849d.psmdcp"
       ]
     },
     "Microsoft.CSharp/4.0.0": {
@@ -12901,12 +12904,14 @@
         "QueryString.NET.nuspec"
       ]
     },
-    "SocketIoClientDotNet/0.9.11": {
-      "sha512": "MDCSuBWpY+EoiFl7j2IxxAbglbPVwFXTuaO8xQJOgBaLrRe90CYPZWcVf71DvUKH944D7M4ZLWkPvglxCZBt7g==",
+    "SocketIoClientDotNet/0.9.12": {
+      "sha512": "22ORJxzNFlNk8CTFU2wYmGve+rF+U7Uy0fy2XyMdFQdTKIiGZlV2qOFqrLz2gc8M6aqips9u3GfbMdZUxnzxsw==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
+        "lib/monoandroid10/SocketIoClientDotNet.dll",
+        "lib/monotouch10/SocketIoClientDotNet.dll",
         "lib/net35/SocketIoClientDotNet.dll",
         "lib/net40/SocketIoClientDotNet.dll",
         "lib/net45/SocketIoClientDotNet.dll",
@@ -12914,7 +12919,8 @@
         "lib/portable-win81+wpa81/SocketIoClientDotNet.dll",
         "lib/portable-wpa81+wp81/SocketIoClientDotNet.dll",
         "lib/windowsphone8/SocketIoClientDotNet.dll",
-        "package/services/metadata/core-properties/576c431cfb9945fab3487a1fb573d4ad.psmdcp",
+        "lib/xamarinios10/SocketIoClientDotNet.dll",
+        "package/services/metadata/core-properties/a9dcae1fc0004815a877b19edd742b79.psmdcp",
         "SocketIoClientDotNet.nuspec"
       ]
     },
@@ -15618,13 +15624,13 @@
     "": [
       "Microsoft.ApplicationInsights >= 1.2.3",
       "Microsoft.ApplicationInsights.PersistenceChannel >= 1.2.3",
-      "Microsoft.ApplicationInsights.WindowsApps >= 1.1.0",
+      "Microsoft.ApplicationInsights.WindowsApps >= 1.1.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "MvvmLight >= 5.2.0",
       "Newtonsoft.Json >= 7.0.1",
       "NotificationsExtensions.Win10 >= 10586.0.0",
       "QueryString.NET >= 1.0.0",
-      "SocketIoClientDotNet >= 0.9.11"
+      "SocketIoClientDotNet >= 0.9.12"
     ],
     "UAP,Version=v10.0": []
   }

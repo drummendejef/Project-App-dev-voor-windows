@@ -229,10 +229,31 @@ namespace BOBApp.ViewModels
         {
             if (ok == false)
             {
-                bobs.Remove(bobs.First());
-
-                if (bobs.Count == 0)
+                if (bobs != null)
                 {
+                    bobs.Remove(bobs.First());
+
+                    if (bobs.Count == 0)
+                    {
+                        Messenger.Default.Send<Dialog>(new Dialog()
+                        {
+                            Message = "Geen bob gevonden",
+                            Ok = "Ok",
+                            Nok = null,
+                            ViewOk = null,
+                            ViewNok = null,
+                            ParamView = false,
+                            Cb = null
+                        });
+                    }
+                    else
+                    {
+                        ShowBob(bobs.First());
+                    }
+                }
+                else
+                {
+
                     Messenger.Default.Send<Dialog>(new Dialog()
                     {
                         Message = "Geen bob gevonden",
@@ -244,10 +265,7 @@ namespace BOBApp.ViewModels
                         Cb = null
                     });
                 }
-                else
-                {
-                    ShowBob(bobs.First());
-                }
+               
               
             }
             else

@@ -28,7 +28,10 @@ using Windows.UI;
 using Windows.ApplicationModel.Core;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
-
+using Windows.UI.Notifications;
+using NotificationsExtensions.Toasts; // NotificationsExtensions.Win10
+using Libraries;
+using Newtonsoft.Json;
 
 namespace BOBApp
 {
@@ -114,7 +117,7 @@ namespace BOBApp
             Window.Current.Activate();
         }
 
-        
+        bool IsMinimized = false;
         protected override void OnWindowCreated(WindowCreatedEventArgs args)
         {
             Window.Current.CoreWindow.SizeChanged += (ss, ee) =>
@@ -132,12 +135,18 @@ namespace BOBApp
                 if (!ee.Visible)
                 {
                     //minimized
+                    IsMinimized = true;
+                }
+                else
+                {
+                    IsMinimized = false;
                 }
             };
             Window.Current.Closed += (ss, ee) =>
             {
                 //closed
                 var test = "";
+              
             };
 
             base.OnWindowCreated(args);
@@ -150,8 +159,15 @@ namespace BOBApp
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,async () =>
                {
-                   Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                   if (IsMinimized == true)
+                   {
+                       bool ok = Toast.Show(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
 
+                   }
+                   else
+                   {
+                       Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                   }
                });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
@@ -195,8 +211,8 @@ namespace BOBApp
                 {
                     if (viewOk != null)
                     {
-                        Frame rootFrame = MainViewVM.MainFrame as Frame;
-                        rootFrame.Navigate(viewOk, paramView);
+                        Frame mainFrame = MainViewVM.MainFrame as Frame;
+                        mainFrame.Navigate(viewOk, paramView);
 
                     }
                     if (cb != null)
@@ -213,10 +229,10 @@ namespace BOBApp
                 }
                 else
                 {
-                    if (viewOk != null)
+                    if (viewNok != null)
                     {
-                        Frame rootFrame = MainViewVM.MainFrame as Frame;
-                        rootFrame.Navigate(viewNok, paramView);
+                        Frame mainFrame = MainViewVM.MainFrame as Frame;
+                        mainFrame.Navigate(viewNok, paramView);
 
                     }
 
@@ -361,6 +377,53 @@ namespace BOBApp
                 //Kijk welke actie gevraagd is
                 switch (args["action"])
                 {
+                    case "ok":
+                        string ok = args["value"];
+                        Type viewOk= JsonConvert.DeserializeObject<Type>(args["viewOk"]);
+                        object paramView = JsonConvert.DeserializeObject<object>(args["paramView"]);
+                        string cb = args["cb"];
+
+                        if (viewOk != null)
+                        {
+                            Frame mainFrame = MainViewVM.MainFrame as Frame;
+                            mainFrame.Navigate(viewOk, paramView);
+
+                        }
+                        if (cb != null)
+                        {
+                            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                            {
+                                Name = cb,
+                                Result = true,
+                                Result2 = paramView
+                            });
+                        }
+
+                        break;
+                    case "nok":
+                        string nok = args["value"];
+                        Type viewNok = JsonConvert.DeserializeObject<Type>(args["viewNok"]);
+                        object _paramView = JsonConvert.DeserializeObject<object>(args["paramView"]);
+                        string _cb = args["cb"];
+
+                        if (viewNok != null)
+                        {
+                            Frame mainFrame = MainViewVM.MainFrame as Frame;
+                            mainFrame.Navigate(viewNok, _paramView);
+
+                        }
+
+                        if (_cb != null)
+                        {
+                            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                            {
+                                Name = _cb,
+                                Result = false,
+                                Result2 = _paramView
+                            });
+                        }
+
+                        break;
                     //Open de application
                     case "openBobApp":
                         //Nog uitzoeken hoe je dat moet doen, nog niet zo heel belangrijk

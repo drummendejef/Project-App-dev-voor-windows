@@ -203,41 +203,42 @@ namespace BOBApp.ViewModels
 
         private async void GetChatComments()
         {
-            ChatRoom.All lijst = await ChatRoomRepository.GetChatRoom(MainViewVM.ChatRoom.ID);
-
-            if (lijst.ChatComments != null)
-            {
-                for (int i = 0; i < lijst.ChatComments.Count; i++)
-                {
-                    HorizontalAlignment aligment = HorizontalAlignment.Left;
-                    SolidColorBrush background = new SolidColorBrush(Color.FromArgb(200,200,200,200));
-                    SolidColorBrush forground = new SolidColorBrush(Color.FromArgb(200, 200, 200, 200));
-
-                    if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
-                    {
-                        aligment = HorizontalAlignment.Left;
-                        background = new SolidColorBrush(Color.FromArgb(255, 100, 200, 200));
-                        forground = new SolidColorBrush(Color.FromArgb(200, 200, 200, 200));
-                    }
-                    else
-                    {
-                        aligment = HorizontalAlignment.Right;
-                        background = new SolidColorBrush(Color.FromArgb(255, 200, 200, 200));
-                        forground = new SolidColorBrush(Color.FromArgb(200, 200, 200, 200));
-                    }
-                    lijst.ChatComments[i].Alignment = aligment;
-
-                }
-                
-            }
-            else
-            {
-                //geen comments
-            }
-
-            this.ChatRoom = lijst;
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
+                ChatRoom.All lijst = await ChatRoomRepository.GetChatRoom(MainViewVM.ChatRoom.ID);
+
+                if (lijst.ChatComments != null)
+                {
+                    for (int i = 0; i < lijst.ChatComments.Count; i++)
+                    {
+                        HorizontalAlignment aligment = HorizontalAlignment.Left;
+                        SolidColorBrush background = new SolidColorBrush(Color.FromArgb(0,0,0,0));
+                        SolidColorBrush forground = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+
+                        if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
+                        {
+                            aligment = HorizontalAlignment.Left;
+                            background = new SolidColorBrush(Color.FromArgb(0, 100, 200, 200));
+                            forground = new SolidColorBrush(Color.FromArgb(0, 200, 200, 200));
+                        }
+                        else
+                        {
+                            aligment = HorizontalAlignment.Right;
+                            background = new SolidColorBrush(Color.FromArgb(0, 200, 200, 200));
+                            forground = new SolidColorBrush(Color.FromArgb(0, 200, 200, 200));
+                        }
+                        lijst.ChatComments[i].Alignment = aligment;
+
+                    }
+                
+                }
+                else
+                {
+                    //geen comments
+                }
+
+                this.ChatRoom = lijst;
+            
                 RaisePropertyChanged("ChatRoom");
             });
 
