@@ -46,11 +46,7 @@ namespace BOBApp.ViewModels
         {
             EditUser = new User.PutUser();
 
-            //Alle gegevens van ene klasse naar andere overbrengen
-            if (User.Bob != null)
-            {
-                User.Bob = new Bob();
-            }
+            
                 EditUser.Bobs_ID = User.Bob.ID;
                 EditUser.Users_ID = User.User.ID;
                 EditUser.Firstname = User.User.Firstname;
@@ -82,6 +78,15 @@ namespace BOBApp.ViewModels
         private async void GetUserDetails()
         {
             this.User = await UserRepository.GetProfile();
+            if (User.Bob == null)
+            {
+                User.Bob = new Bob();
+            }
+            if (User.Autotype == null)
+            {
+                User.Autotype = new Autotype();
+            }
+
         }
 
         private async void GetMerken()
