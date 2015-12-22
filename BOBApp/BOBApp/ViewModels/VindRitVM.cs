@@ -30,12 +30,45 @@ namespace BOBApp.ViewModels
         //static
         public static Party SelectedParty { get; set; }
 
-        public static Bob SelectedBob { get; set; }
+        public static Bob.All SelectedBob { get; set; }
         public static User SelectedUser { get; set; }
         public static Trip CurrentTrip { get; set; }
         public static bool BobAccepted { get; set; }
         public static int StatusID { get; set; }
         public static int Request { get; set; }
+
+        private static string _RitTime;
+
+        public static string RitTime
+        {
+            get
+            {
+                return _RitTime;
+            }
+            set
+            {
+                _RitTime = value;
+            }
+           
+        }
+
+        private static async void getRitTime(Location location)
+        {
+            if (location != null)
+            {
+                //checkhowfaraway
+                Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
+
+                double distance = (double)farEnough.Value;
+
+                double speed = 50;
+                double time = distance / speed;
+
+                VindRitVM.RitTime = ": " + time.ToString();
+               
+            }
+        }
+
 
 
         //others
@@ -142,10 +175,17 @@ namespace BOBApp.ViewModels
                     this.EnableFind = true;
                     RaisePropertyChanged("EnableFind");
 
+
+
                     GetCurrentTrip();
                     this.Loading = false;
                     RaisePropertyChanged("Loading");
 
+
+                    RaisePropertyChanged("SelectedParty");
+                    RaisePropertyChanged("SelectedFriendsString");
+                    RaisePropertyChanged("SelectedBob");
+                    RaisePropertyChanged("RitTime");
 
                 });
 #pragma warning restore CS1998
@@ -287,10 +327,12 @@ namespace BOBApp.ViewModels
                 //take this bob
                 if (bobs != null)
                 {
-                    VindRitVM.SelectedBob = bobs.First();
+                    Bob bob = bobs.First();
 
-                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
-                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                    Bob.All bobAll = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bob.ID.Value)).Result;
+                    VindRitVM.SelectedBob = bobAll;
+
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bobAll.User.ID, Status = true };
                     MainViewVM.socket.Emit("bob_ACCEPT:send", JsonConvert.SerializeObject(socketSend));
 
                 }
@@ -346,6 +388,8 @@ namespace BOBApp.ViewModels
             Geolocator geolocator = new Geolocator();
             Geoposition pos = await geolocator.GetGeopositionAsync();
             Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+            getRitTime(location);
 
             if (location != null)
             {
@@ -746,6 +790,8 @@ namespace BOBApp.ViewModels
         {
             VisibleModal = Visibility.Collapsed;
             RaisePropertyChanged("VisibleModal");
+            Loaded();
+           
         }
         private void ShowModal()
         {

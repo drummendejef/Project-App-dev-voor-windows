@@ -179,17 +179,17 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             _typeNameTable[43] = "Windows.UI.Xaml.Visibility";
             _typeNameTable[44] = "Windows.UI.Xaml.Controls.Frame";
             _typeNameTable[45] = "Boolean";
-            _typeNameTable[46] = "BOBApp.Views.VindRit";
-            _typeNameTable[47] = "BOBApp.Views.VindRitBob";
-            _typeNameTable[48] = "BOBApp.Views.VindRitChat";
-            _typeNameTable[49] = "System.Collections.Generic.List`1<Libraries.Models.Friend.All>";
-            _typeNameTable[50] = "Libraries.Models.Friend.All";
-            _typeNameTable[51] = "Libraries.Models.User";
-            _typeNameTable[52] = "System.Collections.Generic.List`1<Libraries.Models.BobsType>";
-            _typeNameTable[53] = "Libraries.Models.BobsType";
-            _typeNameTable[54] = "System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>";
-            _typeNameTable[55] = "Libraries.Models.relations.Users_Destinations";
-            _typeNameTable[56] = "GalaSoft.MvvmLight.Command.RelayCommand`1<Object>";
+            _typeNameTable[46] = "System.Collections.Generic.List`1<Libraries.Models.Friend.All>";
+            _typeNameTable[47] = "Libraries.Models.Friend.All";
+            _typeNameTable[48] = "Libraries.Models.User";
+            _typeNameTable[49] = "System.Collections.Generic.List`1<Libraries.Models.BobsType>";
+            _typeNameTable[50] = "Libraries.Models.BobsType";
+            _typeNameTable[51] = "System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>";
+            _typeNameTable[52] = "Libraries.Models.relations.Users_Destinations";
+            _typeNameTable[53] = "GalaSoft.MvvmLight.Command.RelayCommand`1<Object>";
+            _typeNameTable[54] = "BOBApp.Views.VindRit";
+            _typeNameTable[55] = "BOBApp.Views.VindRitBob";
+            _typeNameTable[56] = "BOBApp.Views.VindRitChat";
             _typeNameTable[57] = "BOBApp.Views.VindRitFilter";
             _typeNameTable[58] = "BOBApp.Views.ZoekVrienden";
             _typeNameTable[59] = "BOBApp.Views.ZoekVrienden_Add";
@@ -241,17 +241,17 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             _typeTable[43] = typeof(global::Windows.UI.Xaml.Visibility);
             _typeTable[44] = typeof(global::Windows.UI.Xaml.Controls.Frame);
             _typeTable[45] = typeof(global::System.Boolean);
-            _typeTable[46] = typeof(global::BOBApp.Views.VindRit);
-            _typeTable[47] = typeof(global::BOBApp.Views.VindRitBob);
-            _typeTable[48] = typeof(global::BOBApp.Views.VindRitChat);
-            _typeTable[49] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>);
-            _typeTable[50] = typeof(global::Libraries.Models.Friend.All);
-            _typeTable[51] = typeof(global::Libraries.Models.User);
-            _typeTable[52] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.BobsType>);
-            _typeTable[53] = typeof(global::Libraries.Models.BobsType);
-            _typeTable[54] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>);
-            _typeTable[55] = typeof(global::Libraries.Models.relations.Users_Destinations);
-            _typeTable[56] = typeof(global::GalaSoft.MvvmLight.Command.RelayCommand<global::System.Object>);
+            _typeTable[46] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>);
+            _typeTable[47] = typeof(global::Libraries.Models.Friend.All);
+            _typeTable[48] = typeof(global::Libraries.Models.User);
+            _typeTable[49] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.BobsType>);
+            _typeTable[50] = typeof(global::Libraries.Models.BobsType);
+            _typeTable[51] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>);
+            _typeTable[52] = typeof(global::Libraries.Models.relations.Users_Destinations);
+            _typeTable[53] = typeof(global::GalaSoft.MvvmLight.Command.RelayCommand<global::System.Object>);
+            _typeTable[54] = typeof(global::BOBApp.Views.VindRit);
+            _typeTable[55] = typeof(global::BOBApp.Views.VindRitBob);
+            _typeTable[56] = typeof(global::BOBApp.Views.VindRitChat);
             _typeTable[57] = typeof(global::BOBApp.Views.VindRitFilter);
             _typeTable[58] = typeof(global::BOBApp.Views.ZoekVrienden);
             _typeTable[59] = typeof(global::BOBApp.Views.ZoekVrienden_Add);
@@ -318,15 +318,15 @@ namespace BOBApp.BOBApp_XamlTypeInfo
         private object Activate_35_VeranderWachtwoord() { return new global::BOBApp.Views.VeranderWachtwoord(); }
         private object Activate_38_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Party>(); }
         private object Activate_39_Party() { return new global::Libraries.Models.Party(); }
-        private object Activate_46_VindRit() { return new global::BOBApp.Views.VindRit(); }
-        private object Activate_47_VindRitBob() { return new global::BOBApp.Views.VindRitBob(); }
-        private object Activate_48_VindRitChat() { return new global::BOBApp.Views.VindRitChat(); }
-        private object Activate_49_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>(); }
-        private object Activate_51_User() { return new global::Libraries.Models.User(); }
-        private object Activate_52_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.BobsType>(); }
-        private object Activate_53_BobsType() { return new global::Libraries.Models.BobsType(); }
-        private object Activate_54_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>(); }
-        private object Activate_55_Users_Destinations() { return new global::Libraries.Models.relations.Users_Destinations(); }
+        private object Activate_46_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>(); }
+        private object Activate_48_User() { return new global::Libraries.Models.User(); }
+        private object Activate_49_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.BobsType>(); }
+        private object Activate_50_BobsType() { return new global::Libraries.Models.BobsType(); }
+        private object Activate_51_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>(); }
+        private object Activate_52_Users_Destinations() { return new global::Libraries.Models.relations.Users_Destinations(); }
+        private object Activate_54_VindRit() { return new global::BOBApp.Views.VindRit(); }
+        private object Activate_55_VindRitBob() { return new global::BOBApp.Views.VindRitBob(); }
+        private object Activate_56_VindRitChat() { return new global::BOBApp.Views.VindRitChat(); }
         private object Activate_57_VindRitFilter() { return new global::BOBApp.Views.VindRitFilter(); }
         private object Activate_58_ZoekVrienden() { return new global::BOBApp.Views.ZoekVrienden(); }
         private object Activate_59_ZoekVrienden_Add() { return new global::BOBApp.Views.ZoekVrienden_Add(); }
@@ -342,19 +342,19 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             var newItem = (global::Libraries.Models.Party)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_49_List(object instance, object item)
+        private void VectorAdd_46_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.Friend.All>)instance;
             var newItem = (global::Libraries.Models.Friend.All)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_52_List(object instance, object item)
+        private void VectorAdd_49_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.BobsType>)instance;
             var newItem = (global::Libraries.Models.BobsType)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_54_List(object instance, object item)
+        private void VectorAdd_51_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.relations.Users_Destinations>)instance;
             var newItem = (global::Libraries.Models.relations.Users_Destinations)item;
@@ -704,35 +704,14 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 46:   //  BOBApp.Views.VindRit
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_46_VindRit;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 47:   //  BOBApp.Views.VindRitBob
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_47_VindRitBob;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 48:   //  BOBApp.Views.VindRitChat
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_48_VindRitChat;
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 49:   //  System.Collections.Generic.List`1<Libraries.Models.Friend.All>
+            case 46:   //  System.Collections.Generic.List`1<Libraries.Models.Friend.All>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_49_List;
+                userType.CollectionAdd = VectorAdd_46_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 50:   //  Libraries.Models.Friend.All
+            case 47:   //  Libraries.Models.Friend.All
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.AddMemberName("User1");
                 userType.AddMemberName("User2");
@@ -741,37 +720,37 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 51:   //  Libraries.Models.User
+            case 48:   //  Libraries.Models.User
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 52:   //  System.Collections.Generic.List`1<Libraries.Models.BobsType>
+            case 49:   //  System.Collections.Generic.List`1<Libraries.Models.BobsType>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_52_List;
+                userType.CollectionAdd = VectorAdd_49_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 53:   //  Libraries.Models.BobsType
+            case 50:   //  Libraries.Models.BobsType
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_53_BobsType;
+                userType.Activator = Activate_50_BobsType;
                 userType.AddMemberName("ID");
                 userType.AddMemberName("Name");
                 xamlType = userType;
                 break;
 
-            case 54:   //  System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>
+            case 51:   //  System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_54_List;
+                userType.CollectionAdd = VectorAdd_51_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 55:   //  Libraries.Models.relations.Users_Destinations
+            case 52:   //  Libraries.Models.relations.Users_Destinations
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_55_Users_Destinations;
+                userType.Activator = Activate_52_Users_Destinations;
                 userType.AddMemberName("Users_ID");
                 userType.AddMemberName("Destinations_ID");
                 userType.AddMemberName("Default");
@@ -783,9 +762,30 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 56:   //  GalaSoft.MvvmLight.Command.RelayCommand`1<Object>
+            case 53:   //  GalaSoft.MvvmLight.Command.RelayCommand`1<Object>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 54:   //  BOBApp.Views.VindRit
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_54_VindRit;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 55:   //  BOBApp.Views.VindRitBob
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_55_VindRitBob;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 56:   //  BOBApp.Views.VindRitChat
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_56_VindRitChat;
+                userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 

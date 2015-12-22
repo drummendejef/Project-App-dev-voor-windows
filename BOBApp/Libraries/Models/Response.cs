@@ -12,9 +12,7 @@ namespace Libraries.Models
         public string Error { get; set; }
         public int? NewID { get; set; }
 
-        public static implicit operator Task<object>(Response v)
-        {
-            throw new NotImplementedException();
-        }
+
+        public object Value { get; set; }
     }
 }

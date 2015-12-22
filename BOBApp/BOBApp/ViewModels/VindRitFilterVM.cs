@@ -19,6 +19,34 @@ namespace BOBApp.ViewModels
 
         //filter
         public static List<Friend.All> SelectedFriends { get; set; }
+        private static string _SelectedFriendsString;
+
+        public static string SelectedFriendsString
+        {
+            get {
+
+                if (VindRitFilterVM.SelectedFriends != null)
+                {
+                    string friends="";
+                    for (int i = 0; i < VindRitFilterVM.SelectedFriends.Count; i++)
+                    {
+                        if (VindRitFilterVM.SelectedFriends[i].User1.ID != MainViewVM.USER.ID)
+                        {
+                            friends += VindRitFilterVM.SelectedFriends[i].User1.ToString() + " - ";
+                        }
+                    }
+                    return friends;
+                }
+                else
+                {
+                    return "";
+                }
+
+            }
+            //Source={StaticResource filter},Mode=TwoWay
+        }
+
+
         public static Users_Destinations SelectedDestination { get; set; }
         public static BobsType SelectedBobsType { get; set; }
         public static int SelectedRating { get; set; }
@@ -69,8 +97,12 @@ namespace BOBApp.ViewModels
         //Methods
         private void AddFriend()
         {
-            Friend.All friend = this.Friends.Where(r => r.User2.ToString() == this.SelectedFriendString).First();
-            VindRitFilterVM.SelectedFriends.Add(friend);
+            if (this.SelectedFriendString != null)
+            {
+                Friend.All friend = this.Friends.Where(r => r.User2.ToString() == this.SelectedFriendString).First();
+                VindRitFilterVM.SelectedFriends.Add(friend);
+            }
+           
 
         }
 

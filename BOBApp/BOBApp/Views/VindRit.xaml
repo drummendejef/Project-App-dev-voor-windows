@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:VindRitVM x:Key="this"/>
+            <vm:VindRitFilterVM x:Key="filter"/>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -51,15 +52,15 @@
             <RelativePanel  RelativePanel.Below="lblFeest" RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="filter" >
 
                 <TextBlock x:Name="lblBobType" Margin="0,0,0,8" Text="Bobtype: "/>
-                <TextBlock RelativePanel.RightOf="lblBobType" Margin="10,0,0,0" Text="HET FEESTJE"/>
+                <TextBlock RelativePanel.RightOf="lblBobType" Margin="10,0,0,0" Text="{Binding SelectedBobType.Name,Source={StaticResource filter},Mode=TwoWay}"/>
 
                 <TextBlock x:Name="lblFriends" Margin="0,0,0,8" RelativePanel.Below="lblBobType" Text="Friends: "/>
-                <TextBlock RelativePanel.RightOf="lblFriends" Margin="10,0,0,0" RelativePanel.Below="lblBobType" Text="HET FEESTJE"/>
+                <TextBlock RelativePanel.RightOf="lblFriends" Margin="10,0,0,0" RelativePanel.Below="lblBobType" Text="{Binding SelectedFriendsString, Source={StaticResource filter},Mode=TwoWay}"/>
 
                 <RelativePanel RelativePanel.Below="lblFriends" >
                     <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="TIME TO YOUR DESTINATION WITH BOB "/>
-                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime" Margin="10,0,0,0"  Text="NAAM"/>
-                    <TextBlock RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="3 uur"/>
+                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime" Margin="10,0,0,0"  Text="{Binding SelectedBob.User, Source={StaticResource this},Mode=TwoWay}"/>
+                    <TextBlock RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding RitTime, Source={StaticResource this}, Mode=TwoWay}"/>
 
                 </RelativePanel>
 

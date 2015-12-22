@@ -76,6 +76,10 @@
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
+    <RootPropertyPathName Name="RitTime" />
+    <RootPropertyPathName Name="SelectedBob" />
+    <RootPropertyPathName Name="SelectedFriendsString" />
+    <RootPropertyPathName Name="SelectedBobType" />
     <RootPropertyPathName Name="ShowModalCommand" />
     <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="VisibleModal" />
@@ -91,8 +95,6 @@
     <RootPropertyPathName Name="User2" />
     <RootPropertyPathName Name="BobsTypes" />
     <RootPropertyPathName Name="SelectedBobsType" />
-    <RootPropertyPathName Name="SelectedTime" />
-    <RootPropertyPathName Name="SelectedDate" />
     <RootPropertyPathName Name="SelectedRating" />
     <RootPropertyPathName Name="AddFriendCommand" />
     <RootPropertyPathName Name="Friends" />
@@ -416,8 +418,6 @@
       <RootMethod Name="SetAlignTopWith" />
       <RootMethod Name="GetAlignTopWithPanel" />
       <RootMethod Name="SetAlignTopWithPanel" />
-      <RootMethod Name="GetAbove" />
-      <RootMethod Name="SetAbove" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
@@ -449,7 +449,6 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="Margin" />
       <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="Height" />
       <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen" />
@@ -461,6 +460,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
@@ -534,6 +534,7 @@
     <RootType FullName="BOBApp.Views.RitItem" />
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
     <RootType FullName="BOBApp.ViewModels.VindRitVM" />
+    <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="VerticalAlignment" />
@@ -557,29 +558,22 @@
       <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRitChat" />
-    <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
-      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Text" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="TextMemberPath" />
       <RootProperty Name="DisplayMemberPath" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Height" />
       <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Slider">
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Value" />
-      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
       <RootProperty Name="Maximum" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
-      <RootProperty Name="Date" />
-      <RootProperty Name="Margin" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
-      <RootProperty Name="Time" />
-      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRitFilter" />
     <RootType FullName="BOBApp.Views.ZoekVrienden" />

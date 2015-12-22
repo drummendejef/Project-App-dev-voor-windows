@@ -427,7 +427,7 @@ namespace BOBApp.ViewModels
                 Trip currentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
 
 
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
+                Bob.All bob = VindRitVM.SelectedBob;
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
                 {
                     From = MainViewVM.USER.ID,//from user
@@ -480,7 +480,7 @@ namespace BOBApp.ViewModels
 
                 VindRitChatVM.ID = res.NewID.Value;
 
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.SelectedBob.ID.Value)).Result;
+                Bob.All bob = VindRitVM.SelectedBob;
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
                 {
                     From = MainViewVM.USER.ID,//from user
@@ -522,7 +522,7 @@ namespace BOBApp.ViewModels
         {
             try
             {
-                Bob selectedBob = VindRitVM.SelectedBob;
+                Bob selectedBob = VindRitVM.SelectedBob.Bob;
                 Party SelectedParty = VindRitVM.SelectedParty;
                 Users_Destinations SelectedDestination = VindRitFilterVM.SelectedDestination;
                 List<Friend.All> selectedFriends = VindRitFilterVM.SelectedFriends;
