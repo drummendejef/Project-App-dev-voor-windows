@@ -20,6 +20,7 @@ using Windows.UI.Xaml;
 using Windows.Devices.Geolocation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
+using System.ComponentModel;
 
 namespace BOBApp.ViewModels
 {
@@ -37,22 +38,62 @@ namespace BOBApp.ViewModels
         public static int StatusID { get; set; }
         public static int Request { get; set; }
 
-        private static string _RitTime;
 
-        public static string RitTime
+        //public
+        //gets from static from filter
+        public string GetSelectedFriendsString
         {
             get
             {
-                return _RitTime;
+
+                if (VindRitFilterVM.SelectedFriends != null)
+                {
+                    string friends = "";
+                    for (int i = 0; i < VindRitFilterVM.SelectedFriends.Count; i++)
+                    {
+                        if (VindRitFilterVM.SelectedFriends[i].User1.ID != MainViewVM.USER.ID)
+                        {
+                            friends += VindRitFilterVM.SelectedFriends[i].User1.ToString() + " - ";
+                        }
+                    }
+                    return friends;
+                }
+                else
+                {
+                    return "";
+                }
+
             }
-            set
+        }
+       
+        public Users_Destinations GetSelectedDestination
+        {
+            get
             {
-                _RitTime = value;
+                return VindRitFilterVM.SelectedDestination;
             }
-           
+        }
+        public int GetSelectedRating
+        {
+            get
+            {
+                return VindRitFilterVM.SelectedRating;
+            }
+        }
+     
+      
+        public BobsType GetSelectedBobsType
+        {
+            get
+            {
+                return VindRitFilterVM.SelectedBobsType;
+            }
         }
 
-        private static async void getRitTime(Location location)
+        public string RitTime { get; set; }
+
+
+        private async void getRitTime(Location location)
         {
             if (location != null)
             {
@@ -64,8 +105,9 @@ namespace BOBApp.ViewModels
                 double speed = 50;
                 double time = distance / speed;
 
-                VindRitVM.RitTime = ": " + time.ToString();
-               
+                RitTime = ": " + time.ToString();
+                RaisePropertyChanged("RitTime");
+                
             }
         }
 
@@ -181,11 +223,8 @@ namespace BOBApp.ViewModels
                     this.Loading = false;
                     RaisePropertyChanged("Loading");
 
-
-                    RaisePropertyChanged("SelectedParty");
-                    RaisePropertyChanged("SelectedFriendsString");
-                    RaisePropertyChanged("SelectedBob");
-                    RaisePropertyChanged("RitTime");
+                   
+                   
 
                 });
 #pragma warning restore CS1998
@@ -788,9 +827,19 @@ namespace BOBApp.ViewModels
 
         private void CloseModal()
         {
+            Loaded();
+
             VisibleModal = Visibility.Collapsed;
             RaisePropertyChanged("VisibleModal");
-            Loaded();
+
+            RaisePropertyChanged("SelectedParty");
+            RaisePropertyChanged("SelectedBob");
+
+            RaisePropertyChanged("GetSelectedRating");
+            RaisePropertyChanged("GetSelectedBobsType");
+            RaisePropertyChanged("GetSelectedFriendsString");
+
+           
            
         }
         private void ShowModal()
