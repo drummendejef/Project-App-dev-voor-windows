@@ -65,6 +65,21 @@ namespace Libraries.Repositories
                 return data;
             }
         }
+        public static async Task<Response> PostDefaultDestination(int destinationsID)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(URL.BASE);
+
+                var newObject = JsonConvert.SerializeObject(new { DestinationsID = destinationsID });
+
+                HttpResponseMessage result = await client.PostAsync(URL.DESTINATIONS_DEFAULT, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                string json = await result.Content.ReadAsStringAsync();
+                Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                return data;
+            }
+        }
 
         #endregion
 

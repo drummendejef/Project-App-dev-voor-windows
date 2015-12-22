@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Libraries.Models.relations
         //optional
 
         public int Cities_ID { get; set; }
-
+        public RelayCommand<object> SetDefault { get; set; }
 
         private object _Location;
 

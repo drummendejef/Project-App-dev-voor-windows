@@ -1,6 +1,7 @@
 ﻿using BOBApp.Messages;
 using BOBApp.Views;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Repositories;
@@ -12,21 +13,42 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
     public class ZoekVriendenVM : ViewModelBase
     {
+        //public static Frame Frame;
         //Properties
         public bool Loading { get; set; }
+        public RelayCommand AddFriendCommand { get; set; }
+        public RelayCommand ShowModalCommand { get; set; }
+       
+        public RelayCommand CloseModalCommand { get; set; }
+        public Visibility VisibleModal { get; set; }
+        public Frame Frame { get; set; }
 
         //Constructor
         public ZoekVriendenVM()
         {
-            AddFriend("1@bob.com");
+           
+          
+            AddFriendCommand = new RelayCommand(AddFriend);
+            CloseModalCommand = new RelayCommand(CloseModal);
+            ShowModalCommand = new RelayCommand(ShowModal);
+
+
+            VisibleModal = Visibility.Collapsed;
+            RaisePropertyChanged("VisibleModal");
+            this.Frame = new Frame();
+            RaisePropertyChanged("Frame");
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
         }
+
+       
 
         private async void Loaded()
         {
@@ -46,6 +68,8 @@ namespace BOBApp.ViewModels
                     GetFriends();
                     this.Loading = false;
                     RaisePropertyChanged("Loading");
+
+
 
 
                 });
@@ -93,6 +117,22 @@ namespace BOBApp.ViewModels
 
 
         //Methods
+        private void CloseModal()
+        {
+            VisibleModal = Visibility.Collapsed;
+            RaisePropertyChanged("VisibleModal");
+        }
+
+        private void ShowModal()
+        {
+            this.Frame = new Frame();
+            this.Frame.Navigate(typeof(ZoekVrienden_Add));
+            RaisePropertyChanged("Frame");
+
+            VisibleModal = Visibility.Visible;
+            RaisePropertyChanged("VisibleModal");
+
+        }
 
         private async void AddFriend(string email)
         {
@@ -110,5 +150,47 @@ namespace BOBApp.ViewModels
             //
         }
 
-    }
+
+        #region add friend
+        private string _SearchUser;
+
+        public string SearchUser
+        {
+            get { return _SearchUser; }
+            set {
+                _SearchUser = value;
+                FindUserByEmail(_SearchUser.Trim());
+            }
+        }
+
+        private async void FindUserByEmail(string email)
+        {
+            User.All item = await UsersRepository.GetUserByEmail(email);
+            if (item != null)
+            {
+                this.SearchUsers = new List<User.All>();
+                this.SearchUsers.Add(item);
+            }
+            else
+            {
+                
+                this.SearchUsers = await UsersRepository.GetUsersOnline();
+               
+            }
+            RaisePropertyChanged("SearchUsers");
+        }
+
+        public List<User.All> SearchUsers { get; set; }
+        public User.All SelectedUser { get; set; }
+        private void AddFriend()
+        {
+            
+
+        }
+
+
+
+            #endregion
+
+        }
 }

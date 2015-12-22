@@ -16,5 +16,7 @@ namespace BOBApp.Messages
         public Type ViewNok { get; internal set; }
         public object ParamView { get; internal set; }
         public string Cb { get; internal set; }
+
+        public bool IsNotification { get; internal set; }
     }
 }

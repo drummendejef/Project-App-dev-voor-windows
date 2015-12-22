@@ -97,6 +97,7 @@
     <None Include="project.json" />
     <Content Include="Assets\BOBpin.png" />
     <Content Include="Assets\car.png" />
+    <Content Include="Assets\close.png" />
     <Content Include="Assets\feestpin.png" />
     <Content Include="Assets\road.png" />
     <Content Include="Assets\userpin.png" />
@@ -183,6 +184,9 @@
     </Compile>
     <Compile Include="Views\ZoekVrienden.xaml.cs">
       <DependentUpon>ZoekVrienden.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ZoekVrienden_Add.xaml.cs">
+      <DependentUpon>ZoekVrienden_Add.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +285,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ZoekVrienden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ZoekVrienden_Add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

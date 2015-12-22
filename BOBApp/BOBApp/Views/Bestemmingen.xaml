@@ -16,11 +16,21 @@
     </Page.Resources>
  
 
-    <RelativePanel>
-        <TextBox RelativePanel.AlignLeftWithPanel="True" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchLocation, Mode=TwoWay}" Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" Style="{StaticResource textBox}" />
+    <RelativePanel Background="White">
+        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchLocation, Mode=TwoWay}" Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" Style="{StaticResource textBox}" />
         <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding GoDestinationCommand}" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBoxZoekLocaties" Style="{StaticResource button}" />
-        <ListView x:Name="listviewDestinations" Margin="30" ItemsSource="{Binding Destinations, Mode=OneWay}" ItemTemplate="{StaticResource TemplateDestinations}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="btnAdd"/>
+        <ListView x:Name="Friends" Width="400" MinHeight="100" SelectedItem="{Binding SelectedDestination, Mode=TwoWay}" ItemsSource="{Binding Destinations, Mode=TwoWay}"  Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="btnAdd">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Name, Mode=TwoWay}" />
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Default, Mode=TwoWay}" />
+                        <Button Command="{Binding SetDefault,Mode=TwoWay}" CommandParameter="{Binding Destinations_ID, Mode=TwoWay}" Content="Setdefault"/>
+                    </StackPanel>
+                </DataTemplate>
 
+            </ListView.ItemTemplate>
+        </ListView>
 
     </RelativePanel>
 </Page>

@@ -381,6 +381,9 @@
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\car.png">
       <PackagePath>Assets\car.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\close.png">
+      <PackagePath>Assets\close.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\Assets\feestpin.png">
       <PackagePath>Assets\feestpin.png</PackagePath>
     </AppxPackagedFile>

@@ -33,6 +33,7 @@ namespace BOBApp.ViewModels
 
         public List<City> Cities { get; set; }
         public List<Users_Destinations> Destinations { get; set; }
+        public Users_Destinations SelectedDestination { get; set; }
         public Point CityLocation { get; set; }
 
         private City _Destination;
@@ -66,6 +67,9 @@ namespace BOBApp.ViewModels
             this.Destination = new City();
             RaisePropertyChanged("Destination");
             RaisePropertyChanged("MapCenter");
+
+            GetDestinations();
+           
         }
 
 
@@ -97,7 +101,37 @@ namespace BOBApp.ViewModels
         {
             this.Destinations = await DestinationRepository.GetDestinations();
 
+            for (int i = 0; i < this.Destinations.Count; i++)
+            {
+                this.Destinations[i].SetDefault = new RelayCommand<object>(SetDefault);
+            }
         }
+
+        private async void SetDefault(object id)
+        {
+            int DestinationsID = int.Parse(id.ToString());
+
+            Response response = Task.FromResult<Response>(await DestinationRepository.PostDefaultDestination(DestinationsID)).Result;
+
+            if (response.Success == true)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Nieuwe standaard loctie ingesteld",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+            }
+            else
+            {
+                //error
+            }
+        }
+
         private async void GetCities()
         {
             this.Cities = await CityRepository.GetCities();

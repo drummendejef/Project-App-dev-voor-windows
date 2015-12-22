@@ -23,10 +23,30 @@
     <RelativePanel>
         <ProgressRing Foreground="black" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
 
+        <RelativePanel Visibility="{Binding VisibleModal, Mode=TwoWay}" Canvas.ZIndex="9998" Background="#B2000000" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+            
+        </RelativePanel>
+        <RelativePanel Visibility="{Binding VisibleModal, Mode=TwoWay}" Background="White" x:Name="modal" Canvas.ZIndex="9999" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Width="500" Height="500">
+            <Button Canvas.ZIndex="10000" Style="{ThemeResource button:close}" Command="{Binding CloseModalCommand}"  RelativePanel.AlignRightWithPanel="True" Margin="0,8,8,0">
+            </Button>
+            <Frame x:Name="frame" Content="{Binding Frame, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </RelativePanel>
+        
+        
         <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
             <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding SelectedParty.Name, Source={StaticResource this}, Mode=TwoWay}"/>
 
-            <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding GoFilterCommand}"   />
+            <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding ShowModalCommand}"   />
 
             <RelativePanel  RelativePanel.Below="lblFeest" RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="filter" >
 

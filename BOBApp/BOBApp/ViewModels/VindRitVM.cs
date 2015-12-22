@@ -49,6 +49,9 @@ namespace BOBApp.ViewModels
 
         public List<Party> Parties { get; set; }
 
+        public Visibility VisibleModal { get; set; }
+        public Frame Frame { get; set; }
+
         private bool _EnableFind;
 
         public bool EnableFind
@@ -78,6 +81,9 @@ namespace BOBApp.ViewModels
         public Visibility VisibleFilterContext { get; set; }
 
 
+        public RelayCommand ShowModalCommand { get; set; }
+        public RelayCommand CloseModalCommand { get; set; }
+
 
         //Constructor
         public VindRitVM()
@@ -87,6 +93,8 @@ namespace BOBApp.ViewModels
             GoFilterCommand = new RelayCommand(GoFilter);
             FindBobCommand = new RelayCommand(FindBob);
             CancelCommand = new RelayCommand(CancelTrip);
+            CloseModalCommand = new RelayCommand(CloseModal);
+            ShowModalCommand = new RelayCommand(ShowModal);
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
@@ -95,6 +103,12 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Loading");
             this.EnableFind = true;
             RaisePropertyChanged("EnableFind");
+
+
+            VisibleModal = Visibility.Collapsed;
+            RaisePropertyChanged("VisibleModal");
+            this.Frame = new Frame();
+            RaisePropertyChanged("Frame");
 
             this.VisibleFilterContext = Visibility.Collapsed;
             RaisePropertyChanged("VisibleFilterContext");
@@ -674,7 +688,8 @@ namespace BOBApp.ViewModels
                     ViewOk = null,
                     ViewNok = null,
                     ParamView = false,
-                    Cb = "find_bob"
+                    Cb = "find_bob",
+                    IsNotification=true
                 });
             }
 
@@ -727,7 +742,21 @@ namespace BOBApp.ViewModels
 
 
 
+        private void CloseModal()
+        {
+            VisibleModal = Visibility.Collapsed;
+            RaisePropertyChanged("VisibleModal");
+        }
+        private void ShowModal()
+        {
+            this.Frame = new Frame();
+            this.Frame.Navigate(typeof(VindRitFilter));
+            RaisePropertyChanged("Frame");
 
+            VisibleModal = Visibility.Visible;
+            RaisePropertyChanged("VisibleModal");
+
+        }
 
     }
 }
