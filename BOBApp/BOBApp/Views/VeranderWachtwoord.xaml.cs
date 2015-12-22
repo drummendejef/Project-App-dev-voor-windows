@@ -26,5 +26,29 @@ namespace BOBApp.Views
         {
             this.InitializeComponent();
         }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (passwordBox.Password.Length > 0 && passwordBoxHerhaal.Password.Length > 0)
+            {
+                buttonWijzig.IsEnabled = true;
+            }
+            else
+            {
+                buttonWijzig.IsEnabled = false;
+            }
+        }
+
+        private void passwordBoxHerhaal_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if(passwordBox.Password.Length > 0 && passwordBoxHerhaal.Password.Length > 0)
+            {
+                buttonWijzig.IsEnabled = true;
+            }
+            else
+            {
+                buttonWijzig.IsEnabled = false;
+            }
+        }
     }
 }
