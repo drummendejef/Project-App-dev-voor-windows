@@ -64,6 +64,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -90,6 +94,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if(passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -134,6 +142,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -160,6 +172,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -204,6 +220,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -230,6 +250,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -274,6 +298,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -300,6 +328,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -344,6 +376,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -370,6 +406,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -414,6 +454,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -440,6 +484,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -480,7 +528,11 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
-                else if(textboxPrice.Text.Length < 1)
+                else if (textboxPrice.Text.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
@@ -510,6 +562,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {
@@ -554,6 +610,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else
                 {
                     buttonRegistreer.IsEnabled = true;
@@ -580,6 +640,166 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
 
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else
+                {
+                    buttonRegistreer.IsEnabled = true;
+                }
+            }
+        }
+
+        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (tglIsBob.IsOn)
+            {
+                if (textBoxNaam.Text.Length <= 2)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxVoornaam.Text.Length <= 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxEmail.Text.Length <= 5)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxGSMnr.Text.Length <= 4)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxNummerplaat.Text.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (comboBox.SelectedIndex < 0)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (textboxPrice.Text.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else
+                {
+                    buttonRegistreer.IsEnabled = true;
+                }
+            }
+            else
+            {
+                if (textBoxNaam.Text.Length <= 2)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxVoornaam.Text.Length <= 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxEmail.Text.Length <= 5)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxGSMnr.Text.Length <= 4)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else
+                {
+                    buttonRegistreer.IsEnabled = true;
+                }
+            }
+        }
+
+        private void passwordBoxHerhaal_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (tglIsBob.IsOn)
+            {
+                if (textBoxNaam.Text.Length <= 2)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxVoornaam.Text.Length <= 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxEmail.Text.Length <= 5)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxGSMnr.Text.Length <= 4)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxNummerplaat.Text.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (comboBox.SelectedIndex < 0)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (textboxPrice.Text.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else
+                {
+                    buttonRegistreer.IsEnabled = true;
+                }
+            }
+            else
+            {
+                if (textBoxNaam.Text.Length <= 2)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxVoornaam.Text.Length <= 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxEmail.Text.Length <= 5)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (textBoxGSMnr.Text.Length <= 4)
+                {
+                    buttonRegistreer.IsEnabled = false;
+
+                }
+                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
                 }
                 else
                 {

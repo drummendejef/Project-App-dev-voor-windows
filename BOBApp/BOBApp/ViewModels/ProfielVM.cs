@@ -1,5 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using BOBApp.Messages;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Repositories;
 using System;
@@ -18,6 +20,8 @@ namespace BOBApp.ViewModels
         //Properties
         public Task task { get; set; }
         public RelayCommand AanpasCommand { get; set; }
+        public RelayCommand WachtwoordCommand { get; set; }
+
         public User.Profile User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
@@ -37,11 +41,21 @@ namespace BOBApp.ViewModels
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
             AanpasCommand = new RelayCommand(Aanpassen);
+            WachtwoordCommand = new RelayCommand(Wachtwoord);
 
            
         }
 
         //Methods
+
+        public void Wachtwoord()
+        {
+            Messenger.Default.Send<GoToPage>(new GoToPage()
+            {
+                //Keer terug naar login scherm
+                Name = "WijzigWachtwoord"
+            });
+        }
         public async void Aanpassen()
         {
             EditUser = new User.PutUser();

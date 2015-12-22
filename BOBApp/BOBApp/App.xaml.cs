@@ -309,6 +309,9 @@ namespace BOBApp
                 case "ZoekVrienden":
                     rootFrame.Navigate(typeof(ZoekVrienden));
                     break;
+                case "WijzigWachtwoord":
+                    rootFrame.Navigate(typeof(VeranderWachtwoord));
+                    break;
                 default:
                     rootFrame.Navigate(typeof(Login));
                     break;
