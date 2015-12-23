@@ -41,13 +41,11 @@ namespace BOBApp.ViewModels
         public City Destination
         {
             get { return _Destination; }
-            set { _Destination = value;
-
-                
-
-            }
+            set { _Destination = value;}
         }
-        
+
+        public Destination NewDestination { get; set; }
+
         //databinding voor het center van de map
         public Geopoint MapCenter { get; set; }
 
@@ -65,6 +63,7 @@ namespace BOBApp.ViewModels
             GoToCityCommand = new RelayCommand(TownToCoord);
             RaisePropertyChanged("SearchLocation");
             this.Destination = new City();
+            this.NewDestination = new Destination();
             RaisePropertyChanged("Destination");
             RaisePropertyChanged("MapCenter");
 
@@ -86,7 +85,9 @@ namespace BOBApp.ViewModels
         {
             Destination destination = new Destination()
             {
-                Cities_ID= this.Destination.ID
+                Cities_ID= this.Destination.ID,
+                Location = this.NewDestination.Location
+
             };
             Libraries.Models.Response ok = await DestinationRepository.PostDestination(destination);
         }
@@ -172,6 +173,12 @@ namespace BOBApp.ViewModels
             }
             
             // https://msdn.microsoft.com/en-us/library/ff701714.aspx 
+        }
+
+        //Locatie van nieuwe destinatie opslaan
+        public void setDestinationLocation(string location)
+        {
+            NewDestination.Location = location;
         }
     }
 }

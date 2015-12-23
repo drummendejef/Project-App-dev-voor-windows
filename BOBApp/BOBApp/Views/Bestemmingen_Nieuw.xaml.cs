@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -63,8 +64,18 @@ namespace BOBApp.Views
             mapIconDestinationLocation.Location = temppoint;
             mapIconDestinationLocation.Image = mapIconStreamReference;
             mapIconDestinationLocation.Title = "Bestemming";
-            mapIconDestinationLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+            mapIconDestinationLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
             MapNieuweBestemming.MapElements.Add(mapIconDestinationLocation); //Marker op de map plaatsen
+
+            //TODO: Op bestemming zetten, opslaan als ie op de knop drukt.
+            //Bestemming in string opslaan
+            string locatie = "{latitude:" + tempbasic.Latitude + ",longitude:" + tempbasic.Longitude + "}";
+
+            //string doorsturen 
+            //BestemmingenVM.setDestinationLocation(locatie);
+            txtBlockNewDestinationLocation.Text = locatie;
+
+
 
         }
     }
