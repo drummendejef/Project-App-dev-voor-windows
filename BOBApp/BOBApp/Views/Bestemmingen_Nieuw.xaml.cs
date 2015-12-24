@@ -67,7 +67,6 @@ namespace BOBApp.Views
             mapIconDestinationLocation.NormalizedAnchorPoint = new Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
             MapNieuweBestemming.MapElements.Add(mapIconDestinationLocation); //Marker op de map plaatsen
 
-            //TODO: Op bestemming zetten, opslaan als ie op de knop drukt.
             //Bestemming in string opslaan
             string locatie = "{latitude:" + tempbasic.Latitude + ",longitude:" + tempbasic.Longitude + "}";
 
