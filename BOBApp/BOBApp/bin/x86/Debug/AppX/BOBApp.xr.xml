@@ -29,6 +29,7 @@
     <RootPropertyPathName Name="AddDestinationCommand" />
     <RootPropertyPathName Name="GoToCityCommand" />
     <RootPropertyPathName Name="Cities" />
+    <RootPropertyPathName Name="NewCity" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
     <RootPropertyPathName Name="FacebookLinkID" />
@@ -79,6 +80,7 @@
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
+    <RootPropertyPathName Name="BobList" />
     <RootPropertyPathName Name="GetSelectedRating" />
     <RootPropertyPathName Name="RitTime" />
     <RootPropertyPathName Name="SelectedBob" />
@@ -519,6 +521,7 @@
       <RootProperty Name="Content" />
       <RootEvent Name="Navigated" />
       <RootEvent Name="Navigating" />
+      <RootEvent Name="NavigationStopped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition">

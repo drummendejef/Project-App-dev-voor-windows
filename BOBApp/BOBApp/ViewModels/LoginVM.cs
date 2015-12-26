@@ -164,49 +164,30 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
+                    this.Loading = false;
+                    this.EnableLogin = true;
+                    RaiseAll();
 
                     switch (res.Error)
                     {
                         case "Invalid Login":
-                            this.Loading = false;
-                            RaisePropertyChanged("Loading");
-
-                            this.EnableLogin = true;
-                            RaisePropertyChanged("EnableLogin");
-
                             this.Error = "Gegeven email en wachtwoord komen niet overeen of bestaan niet.";
-                            RaisePropertyChanged("Error");
-
                             break;
                         case "Server Offline":
-                            this.Loading = false;
-                            RaisePropertyChanged("Loading");
-
-                            this.EnableLogin = true;
-                            RaisePropertyChanged("EnableLogin");
-
                             this.Error = "De server is offline";
-                            RaisePropertyChanged("Error");
                             break;
                         case "Connectie error":
-                            this.Loading = false;
-                            RaisePropertyChanged("Loading");
-
-                            this.EnableLogin = true;
-                            RaisePropertyChanged("EnableLogin");
-
                             this.Error = "Connectie error";
-                            RaisePropertyChanged("Error");
                             break;
                         default:
                             this.Error = "Connectie error";
-                            RaisePropertyChanged("Error");
-
                             task = Login_task(this.Email, this.Pass);
                             break;
                     }
 
-                  
+                    RaiseAll();
+
+
 
                 }
 
@@ -214,8 +195,19 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                this.Error = "Even geduld aub";
+                if (internet== false)
+                {
+                    this.Error = "Geen internet";
+                }
+                if (ok == false)
+                {
+                    this.Error = "Geen connectie met de serer";
+                }
+
+                this.Loading = false;
+                this.EnableLogin = true;
                 RaiseAll();
+
                 return false;
             }
             
