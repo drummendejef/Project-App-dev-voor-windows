@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Libraries.Repositories
 {
@@ -16,51 +17,111 @@ namespace Libraries.Repositories
         #region get
         public static async Task<List<Models.User.All>> GetUsers()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.USERS);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                List<Models.User.All> data = JsonConvert.DeserializeObject<List<Models.User.All>>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.USERS);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    List<Models.User.All> data = JsonConvert.DeserializeObject<List<Models.User.All>>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
         public static async Task<Models.User.All> GetUserById(int id)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.USERS + "/" + id.ToString());
-                string json = await result.Result.Content.ReadAsStringAsync();
-                Models.User.All data = JsonConvert.DeserializeObject<Models.User.All>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.USERS + "/" + id.ToString());
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    Models.User.All data = JsonConvert.DeserializeObject<Models.User.All>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
         public static async Task<Models.User.All> GetUserByEmail(string email)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
-                var newObject = JsonConvert.SerializeObject(new { Email = email });
+                    var newObject = JsonConvert.SerializeObject(new { Email = email });
 
-                HttpResponseMessage result = await client.PostAsync(URL.USERS_FIND, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                string json = await result.Content.ReadAsStringAsync();
-                Models.User.All data = JsonConvert.DeserializeObject<Models.User.All>(json);
+                    HttpResponseMessage result = await client.PostAsync(URL.USERS_FIND, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Models.User.All data = JsonConvert.DeserializeObject<Models.User.All>(json);
 
-                return data;
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
 
-          
+
         }
         public static async Task<List<Models.User.All>> GetUsersOnline()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-           
-                var result = client.GetAsync(URL.USERS_ONLINE);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                List<Models.User.All> data = JsonConvert.DeserializeObject<List<Models.User.All>>(json);
+                using (HttpClient client = new HttpClient())
+                {
 
-                return data;
+                    var result = client.GetAsync(URL.USERS_ONLINE);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    List<Models.User.All> data = JsonConvert.DeserializeObject<List<Models.User.All>>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
         #endregion

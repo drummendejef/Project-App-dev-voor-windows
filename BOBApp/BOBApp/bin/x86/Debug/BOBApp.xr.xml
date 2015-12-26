@@ -23,6 +23,8 @@
     <RootPropertyPathName Name="Destinations_ID" />
     <RootPropertyPathName Name="GoDestinationCommand" />
     <RootPropertyPathName Name="SearchLocation" />
+    <RootPropertyPathName Name="NewDestination" />
+    <RootPropertyPathName Name="Location" />
     <RootPropertyPathName Name="MapCenter" />
     <RootPropertyPathName Name="AddDestinationCommand" />
     <RootPropertyPathName Name="GoToCityCommand" />
@@ -53,9 +55,10 @@
     <RootPropertyPathName Name="Status_Name" />
     <RootPropertyPathName Name="Car" />
     <RootPropertyPathName Name="ProfielVM" />
+    <RootPropertyPathName Name="WachtwoordCommand" />
     <RootPropertyPathName Name="AanpasCommand" />
+    <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="PricePerKm" />
-    <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
@@ -66,7 +69,7 @@
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="PasswordRepeat" />
     <RootPropertyPathName Name="Password" />
-    <RootPropertyPathName Name="IsBob" />
+    <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
@@ -76,10 +79,11 @@
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
+    <RootPropertyPathName Name="GetSelectedRating" />
     <RootPropertyPathName Name="RitTime" />
     <RootPropertyPathName Name="SelectedBob" />
-    <RootPropertyPathName Name="SelectedFriendsString" />
-    <RootPropertyPathName Name="SelectedBobType" />
+    <RootPropertyPathName Name="GetSelectedFriendsString" />
+    <RootPropertyPathName Name="GetSelectedBobsType" />
     <RootPropertyPathName Name="ShowModalCommand" />
     <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="VisibleModal" />
@@ -166,6 +170,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Tag" />
       <RootProperty Name="FontStyle" />
+      <RootProperty Name="Opacity" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
     </RootType>
@@ -362,6 +367,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Password" />
       <RootProperty Name="Style" />
+      <RootEvent Name="PasswordChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
       <RootProperty Name="Content" />
@@ -416,6 +422,8 @@
       <RootMethod Name="SetAlignBottomWith" />
       <RootMethod Name="GetAlignTopWith" />
       <RootMethod Name="SetAlignTopWith" />
+      <RootMethod Name="GetAbove" />
+      <RootMethod Name="SetAbove" />
       <RootMethod Name="GetAlignTopWithPanel" />
       <RootMethod Name="SetAlignTopWithPanel" />
     </RootType>

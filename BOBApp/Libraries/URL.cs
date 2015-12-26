@@ -11,26 +11,29 @@ namespace Libraries
         public static string SOCKET = "http://bob-2u15832u.cloudapp.net/";
 
         public static string BASE = "http://bob-2u15832u.cloudapp.net/api";
+
+        public static string ONLINE = BASE + "/auth/online";
+
         public static string AUTH_LOGIN = BASE + "/auth/local";
         public static string AUTH_FACEBOOK = BASE + "/auth/facebook";
         public static string AUTH_SUCCESS = BASE + "/auth/success";
         public static string AUTH_LOGOFF = BASE + "/auth/logoff";
 
         public static string USER = BASE + "/user";
-        public static string USER_POINTS = BASE + "/user/points";
-        public static string USER_POINTSAMOUNT = BASE + "/user/points/amount";
-        public static string USER_PROFILE = BASE + "/user/profile";
-        public static string USER_REGISTER = BASE + "/user/register";
-        public static string USER_EDIT = BASE + "/user/edit";
-        public static string USER_LOCATION = BASE + "/user/location";
-        public static string USER_CHANGETOBOB = BASE + "/user/change";
+        public static string USER_POINTS = USER + "/points";
+        public static string USER_POINTSAMOUNT = USER + "/points/amount";
+        public static string USER_PROFILE = USER + "/profile";
+        public static string USER_REGISTER = USER + "/register";
+        public static string USER_EDIT = USER + "/edit";
+        public static string USER_LOCATION = USER + "/location";
+        public static string USER_CHANGETOBOB = USER + "/change";
 
 
         public static string TRIPS = BASE + "/trips";
-        public static string TRIPS_LOCATION = BASE + "/trips/location";
-        public static string TRIPS_ACTIVE = BASE + "/trips/active";
-        public static string TRIPS_DIFFERENECE = BASE + "/trips/difference";
-        public static string CURRENTTRIP = BASE + "/trips/current";
+        public static string TRIPS_LOCATION = TRIPS + "/location";
+        public static string TRIPS_ACTIVE = TRIPS + "/active";
+        public static string TRIPS_DIFFERENECE = TRIPS + "/difference";
+        public static string CURRENTTRIP = TRIPS + "/current";
       
 
         public static string PARTIES = BASE + "/parties";
@@ -44,7 +47,7 @@ namespace Libraries
         public static string BOBS = BASE + "/bobs";
         public static string BOBS_ONLINE = BOBS + "/online";
         public static string BOBS_FIND = BOBS + "/find";
-        public static string BOBS_AVG = BOBS + "/AVG";
+        public static string BOBS_AVG = BOBS + "/avg";
         public static string BOB_TYPES = BOBS + "/types";
 
         public static string CHATROOMS = BASE + "/chatrooms";

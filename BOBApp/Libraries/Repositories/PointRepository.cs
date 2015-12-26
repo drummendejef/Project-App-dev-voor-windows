@@ -1,7 +1,9 @@
 ﻿using Libraries;
+using Libraries.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -13,28 +15,58 @@ namespace Libraries.Repositories
     {
         public static async Task<string> GetTotalPoints()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var definition = new { Points = "" };
+                using (HttpClient client = new HttpClient())
+                {
+                    var definition = new { Points = "" };
 
-                var result = client.GetAsync(URL.USER_POINTSAMOUNT);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeAnonymousType(json, definition);
+                    var result = client.GetAsync(URL.USER_POINTSAMOUNT);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeAnonymousType(json, definition);
 
-                return data.Points;
+                    return data.Points;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
 
 
         public static async Task<List<Models.Point>> GetPoints()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.USER_POINTS);
-                string json = await result.Result.Content.ReadAsStringAsync();
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.USER_POINTS);
+                    string json = await result.Result.Content.ReadAsStringAsync();
 
-                List<Models.Point> data = JsonConvert.DeserializeObject<List<Models.Point>>(json);
-                return data;
+                    List<Models.Point> data = JsonConvert.DeserializeObject<List<Models.Point>>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
     }

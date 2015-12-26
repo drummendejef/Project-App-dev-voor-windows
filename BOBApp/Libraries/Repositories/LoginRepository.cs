@@ -17,30 +17,63 @@ namespace Libraries.Repositories
       
         public static async Task<Response> Login(string email, string password)
         {
+            Response online = await Online();
+            if (online.Success == true)
+            {
+                try
+                {
+                    using (HttpClient client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri(URL.BASE);
+
+                        var newObject = JsonConvert.SerializeObject(new { Email = email, Password = password });
+
+                        HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGIN, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                        string json = await result.Content.ReadAsStringAsync();
+                        Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                        return data;
+                    }
+
+                }
+                catch(JsonException jex)
+                {
+                    return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                }
+                catch (Exception ex)
+                {
+                    return new Response() { Error = ex.Message.ToString(), Success = false };
+                }
+            }
+            else
+            {
+                return online;
+            }
+
+        }
+
+        public static async Task<Response> Online()
+        {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(URL.BASE);
-
-                    var newObject = JsonConvert.SerializeObject(new { Email = email, Password = password });
-
-                    HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGIN, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                    string json = await result.Content.ReadAsStringAsync();
+                    var result = client.GetAsync(URL.ONLINE);
+                    string json = await result.Result.Content.ReadAsStringAsync();
                     Response data = JsonConvert.DeserializeObject<Response>(json);
-
                     return data;
                 }
             }
-            catch (Exception ex ) 
+            catch (Exception ex)
             {
 
-                return new Response() { Error = "Server offline", Success = false };
+                return new Response() { Error = "Server Offline", Success = false };
             }
-           
+
 
 
         }
+
         public static async Task<Boolean> LoginFacebook()
         {
             //Deze Boolean nodig? Voorlopig in commentaar
@@ -55,18 +88,30 @@ namespace Libraries.Repositories
 
         public static async Task<Response> LogOff()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
-                var newObject = JsonConvert.SerializeObject(new { });
+                    var newObject = JsonConvert.SerializeObject(new { });
 
-                HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGOFF, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                string json = await result.Content.ReadAsStringAsync();
-                Response data = JsonConvert.DeserializeObject<Response>(json);
+                    HttpResponseMessage result = await client.PostAsync(URL.AUTH_LOGOFF, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
 
-                return data;
+                    return data;
+                }
             }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+            }
+
 
 
         }

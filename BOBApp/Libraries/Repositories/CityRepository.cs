@@ -3,6 +3,7 @@ using Libraries.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
@@ -16,12 +17,27 @@ namespace Libraries.Repositories
         #region get
         public static async Task<List<City>> GetCities()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.CITIES);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                List<City> data = JsonConvert.DeserializeObject<List<City>>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.CITIES);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    List<City> data = JsonConvert.DeserializeObject<List<City>>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
        
