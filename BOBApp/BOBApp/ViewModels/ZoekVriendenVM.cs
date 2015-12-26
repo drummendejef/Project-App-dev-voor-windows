@@ -23,13 +23,18 @@ namespace BOBApp.ViewModels
         //public static Frame Frame;
         //Properties
         public bool Loading { get; set; }
+        public string Error { get; set; }
+
+
+        public Visibility VisibleModal { get; set; }
+        public Frame Frame { get; set; }
+
+
         public RelayCommand AddFriendCommand { get; set; }
         public RelayCommand ShowModalCommand { get; set; }
        
         public RelayCommand CloseModalCommand { get; set; }
-        public Visibility VisibleModal { get; set; }
-        public Frame Frame { get; set; }
-
+     
         //Constructor
         public ZoekVriendenVM()
         {
@@ -40,15 +45,19 @@ namespace BOBApp.ViewModels
             ShowModalCommand = new RelayCommand(ShowModal);
 
 
-            VisibleModal = Visibility.Collapsed;
-            RaisePropertyChanged("VisibleModal");
-            this.Frame = new Frame();
-            RaisePropertyChanged("Frame");
-
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+            RaiseAll();
         }
 
-       
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("VisibleModal");
+            RaisePropertyChanged("Frame");
+            RaisePropertyChanged("SearchUsers");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Error");
+
+        }
 
         private async void Loaded()
         {
@@ -64,10 +73,14 @@ namespace BOBApp.ViewModels
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
 
+                    VisibleModal = Visibility.Collapsed;
+
+                    this.Frame = new Frame();
+
 
                     GetFriends();
                     this.Loading = false;
-                    RaisePropertyChanged("Loading");
+                    RaiseAll();
 
 
 
@@ -117,22 +130,25 @@ namespace BOBApp.ViewModels
 
 
         //Methods
+
+        #region modal
         private void CloseModal()
         {
             VisibleModal = Visibility.Collapsed;
-            RaisePropertyChanged("VisibleModal");
+            RaiseAll();
         }
 
         private void ShowModal()
         {
             this.Frame = new Frame();
             this.Frame.Navigate(typeof(ZoekVrienden_Add));
-            RaisePropertyChanged("Frame");
+           
 
             VisibleModal = Visibility.Visible;
-            RaisePropertyChanged("VisibleModal");
+            RaiseAll();
 
         }
+        #endregion
 
         private async void AddFriend(string email)
         {
@@ -177,7 +193,7 @@ namespace BOBApp.ViewModels
                 this.SearchUsers = await UsersRepository.GetUsersOnline();
                
             }
-            RaisePropertyChanged("SearchUsers");
+            RaiseAll();
         }
 
         public List<User.All> SearchUsers { get; set; }

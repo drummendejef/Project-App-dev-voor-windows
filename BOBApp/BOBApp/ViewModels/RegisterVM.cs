@@ -1,4 +1,5 @@
 ﻿using BOBApp.Messages;
+using BOBApp.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -12,54 +13,100 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Devices.Geolocation;
+using Windows.UI.Core;
 
 namespace BOBApp.ViewModels
 {
     public class RegisterVM : ViewModelBase
     {
+        #region props
         //Properties
-        private Boolean RegisterTask;
-        private Task LoginTask;
-        public RelayCommand RegisterCommand { get; set; }
-        public RelayCommand CancelCommand { get; set; }
-        public Register NewRegister { get; set; }
-        public string Password { get; set; }
-        public string PasswordRepeat { get; set; }
+        public bool Loading { get; set; }
         public string Error { get; set; }
 
-        public ObservableCollection<Autotype> Merken {get;set;}
+
+        public RelayCommand RegisterCommand { get; set; }
+        public RelayCommand CancelCommand { get; set; }
+        public Libraries.Models.Register NewRegister { get; set; }
+        public string Password { get; set; }
+        public string PasswordRepeat { get; set; }
+      
+
+        public List<Autotype> Merken {get;set;}
 
         public Autotype SelectedAutoType { get; set; }
         public String PricePerKm { get; set; }
 
-
+        #endregion
 
         //Constructor
         public RegisterVM()
         {
-            this.NewRegister = new Register();
+            RegisterCommand = new RelayCommand(Register);
+            CancelCommand = new RelayCommand(Cancel);
 
-            //Uit commentaar halen als server online is
-            GetMerken();
+            this.NewRegister = new Libraries.Models.Register();
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+            RaiseAll();
+        }
 
+        private void RaiseAll()
+        {
             RaisePropertyChanged("Merken");
             RaisePropertyChanged("NewRegister");
             RaisePropertyChanged("Password");
             RaisePropertyChanged("PasswordRepeat");
+            RaisePropertyChanged("Merken");
+            RaisePropertyChanged("SelectedAutoType");
             RaisePropertyChanged("Error");
-            RegisterCommand = new RelayCommand(Register);
-            CancelCommand = new RelayCommand(Cancel);
+            RaisePropertyChanged("PicePerKm");
+            RaisePropertyChanged("Loading");
         }
 
+        private void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(Views.Register)))
+                {
+                    Loaded();
+                }
 
+                
+            }
+        }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+                GetMerken();
+                this.NewRegister = new Libraries.Models.Register();
+
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaiseAll();
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
 
         //Methods
         private void Cancel()
         {
             Messenger.Default.Send<GoToPage>(new GoToPage()
             {
-                //Keer terug naar login scherm
                 Name = "Login"
             });
         }
@@ -74,15 +121,15 @@ namespace BOBApp.ViewModels
             Double.TryParse(PricePerKm, out price);
             NewRegister.PricePerKm = price;
             
-            RegisterTask = await RegisterUser(NewRegister);
+            bool task = await RegisterUser(NewRegister);
       
         }
-        private async Task<Boolean> RegisterUser(Register register)
+        private async Task<Boolean> RegisterUser(Libraries.Models.Register register)
         {
             if (PasswordRepeat == null)
             {
                 this.Error = Libraries.Error.PasswordEmpty;
-                RaisePropertyChanged("Error");
+                RaiseAll();
 
                 return false;
             }
@@ -107,7 +154,7 @@ namespace BOBApp.ViewModels
                 else
                 {
                     this.Error = res.Error;
-                    RaisePropertyChanged("Error");
+                    RaiseAll();
 
                 }
 
@@ -116,7 +163,7 @@ namespace BOBApp.ViewModels
             else
             {
                 this.Error = Libraries.Error.Password;
-                RaisePropertyChanged("Error");
+                RaiseAll();
 
                 return false;
             }
@@ -165,13 +212,8 @@ namespace BOBApp.ViewModels
 
         private async void GetMerken()
         {
-
-            List<Autotype> merkenLijst = await AutotypeRepository.GetAutotypes();
-            this.Merken = new ObservableCollection<Autotype>();
-            foreach(Autotype merk in merkenLijst)
-            {
-                this.Merken.Add(merk);
-            }
+            this.Merken = await AutotypeRepository.GetAutotypes();
+            RaiseAll();
         }
     }
 }

@@ -27,16 +27,20 @@ namespace BOBApp.ViewModels
     public class LoginVM:ViewModelBase
     {
         //Properties
+        #region props
+        public bool Loading { get; set; }
+
         private Task task;
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand RegisterCommand { get; set; }
-     //   public RelayCommand Login_FacebookCommand { get; set; }
         public string Email { get; set; }
         public string Pass { get; set; }
         public string Error { get; set; }
         public Boolean isLocationGiven { get; set; }
-        public bool Loading { get; set; }
+      
         public bool EnableLogin { get; set; }
+
+        #endregion
 
         //Constructor
         public LoginVM()
@@ -46,15 +50,12 @@ namespace BOBApp.ViewModels
             LocatieToestemmingVragen();
 
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
-            RaisePropertyChanged("Email");
-            RaisePropertyChanged("Pass");
-            RaisePropertyChanged("Error");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("EnableLogin");
+            RaiseAll();
             this.EnableLogin = true;
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(Register);
-          //  Login_FacebookCommand = new RelayCommand(Login_Facebook);
+        
+            //DEVELOP
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
 
@@ -62,18 +63,24 @@ namespace BOBApp.ViewModels
 
         }
 
-       
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("Email");
+            RaisePropertyChanged("Pass");
+            RaisePropertyChanged("Error");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("EnableLogin");
+        }
+
+
 
 
         //Methods 
         public void Login()
         {
-            task = Login_task(this.Email,this.Pass);
+            task = Login_task(this.Email, this.Pass);
         }
-    /*    private void Login_Facebook()
-        {
-            task = Login_Facebook_task();
-        }*/
+
         private void Register()
         {
             Messenger.Default.Send<GoToPage>(new GoToPage()
@@ -85,14 +92,12 @@ namespace BOBApp.ViewModels
         private async Task<Boolean> Login_task(string email, string pass)
         {
             this.Error = "";
-            RaisePropertyChanged("Error");
             this.Loading = true;
-            RaisePropertyChanged("Loading");
             this.EnableLogin = false;
-            RaisePropertyChanged("EnableLogin");
+            RaiseAll();
 
 
-            bool ok= serverOnline();
+            bool ok= await serverOnline();
             bool internet = IsInternet();
             if (ok == true && internet==true)
             {
@@ -100,7 +105,7 @@ namespace BOBApp.ViewModels
                 if (res.Success == true)
                 {
                     var json = JsonConvert.SerializeObject(new { Email =email, Password= md5.Create(pass) });
-                    await saveStringToLocalFile("user.json", json);
+                    await Localdata.save("user.json", json);
 
                 
                     User user = await UserRepository.GetUser();
@@ -152,14 +157,9 @@ namespace BOBApp.ViewModels
                     }
                     
 
-
-                   
-
                     this.Loading = false;
-                    RaisePropertyChanged("Loading");
-
                     this.EnableLogin = true;
-                    RaisePropertyChanged("EnableLogin");
+                    RaiseAll();
 
                 }
                 else
@@ -178,7 +178,7 @@ namespace BOBApp.ViewModels
                             RaisePropertyChanged("Error");
 
                             break;
-                        case "Server offline":
+                        case "Server Offline":
                             this.Loading = false;
                             RaisePropertyChanged("Loading");
 
@@ -214,8 +214,8 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                this.Error = "Server is offline, even geduld aub";
-                RaisePropertyChanged("Error");
+                this.Error = "Even geduld aub";
+                RaiseAll();
                 return false;
             }
             
@@ -240,9 +240,10 @@ namespace BOBApp.ViewModels
 
         }
 
-        private bool serverOnline()
+        private async Task<bool> serverOnline()
         {
-            return true;
+            bool ok = Task.FromResult<Response>(await LoginRepository.Online()).Result.Success;
+            return ok;
         }
         public static bool IsInternet()
         {
@@ -250,24 +251,6 @@ namespace BOBApp.ViewModels
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
             return internet;
         }
-
-        /*      private async Task<Boolean> Login_Facebook_task()
-     {
-         Boolean ok = await LoginRepository.LoginFacebook();
-         if (ok == true)
-         {
-             User user = await UserRepository.GetUser();
-             MainViewVM.USER = user;
-             //navigate to ritten
-             Messenger.Default.Send<GoToPage>(new GoToPage()
-             {
-                 Name = "MainView"
-             });
-         }
-
-         return ok;
-     } */
-
 
         //Een (eenmalige) pop up tonen om toestemming aan de gebruiker te vragen voor zijn locatie
         private async void LocatieToestemmingVragen()
@@ -368,6 +351,7 @@ namespace BOBApp.ViewModels
         //Als de status van de locatie permissies veranderd is.
         async private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
         {
+<<<<<<< HEAD
             //TODO: Locatie opvragen afwerken? - Joren
             //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
 
@@ -375,6 +359,9 @@ namespace BOBApp.ViewModels
             {
 
             });*/
+=======
+            //TODO: Locatie opvragen afwerken?
+>>>>>>> origin/master
 
         }
 
@@ -384,19 +371,6 @@ namespace BOBApp.ViewModels
             (App.Current as App).UserLocation = e.Position;
         }
 
-        async Task saveStringToLocalFile(string filename, string content)
-        {
-            // saves the string 'content' to a file 'filename' in the app's local storage folder
-            byte[] fileBytes = System.Text.Encoding.UTF8.GetBytes(content.ToCharArray());
-
-            // create a file with the given filename in the local folder; replace any existing file with the same name
-            StorageFile file = await Windows.Storage.ApplicationData.Current.LocalFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
-
-            // write the char array created from the content string into the file
-            using (var stream = await file.OpenStreamForWriteAsync())
-            {
-                stream.Write(fileBytes, 0, fileBytes.Length);
-            }
-        }
+       
     }
 }

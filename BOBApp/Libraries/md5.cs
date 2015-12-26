@@ -13,11 +13,20 @@ namespace Libraries
     {
         public static string Create(string str)
         {
-            var alg = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
-            IBuffer buff = CryptographicBuffer.ConvertStringToBinary(str, BinaryStringEncoding.Utf8);
-            var hashed = alg.HashData(buff);
-            var res = CryptographicBuffer.EncodeToHexString(hashed);
-            return res;
+            try
+            {
+                var alg = HashAlgorithmProvider.OpenAlgorithm(HashAlgorithmNames.Md5);
+                IBuffer buff = CryptographicBuffer.ConvertStringToBinary(str, BinaryStringEncoding.Utf8);
+                var hashed = alg.HashData(buff);
+                var res = CryptographicBuffer.EncodeToHexString(hashed);
+                return res;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+           
         }
     }
 }

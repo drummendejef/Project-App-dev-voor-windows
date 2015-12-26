@@ -1,4 +1,5 @@
 ﻿using BOBApp.Messages;
+using BOBApp.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -11,23 +12,31 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
-    public class ProfielVM : ViewModelBase
-    {
+    public class ProfielVM : ViewModelBase {
+
+        #region props
         //Properties
-        public Task task { get; set; }
+        public bool Loading { get; set; }
+        public string Error { get; set; }
+
+
         public RelayCommand AanpasCommand { get; set; }
         public RelayCommand WachtwoordCommand { get; set; }
 
         public User.Profile User { get; set; }
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
-        public ObservableCollection<Autotype> Merken { get; set; }
+        public List<Autotype> Merken { get; set; }
         public User.PutUser EditUser { get; set; }
 
+        #endregion
         //Constructor
         public ProfielVM()
         {
@@ -36,25 +45,70 @@ namespace BOBApp.ViewModels
             GetUserDetails();
             GetMerken();
 
-            RaisePropertyChanged("Merken");
+          
 
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
             AanpasCommand = new RelayCommand(Aanpassen);
             WachtwoordCommand = new RelayCommand(Wachtwoord);
 
-           
+
+            RaiseAll();
+
+        }
+
+        private void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(Profiel)))
+                {
+                    Loaded();
+                }
+            }
+        }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+                GetUserDetails();
+                GetMerken();
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaiseAll();
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
+
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("SearchLocation");
+            RaisePropertyChanged("Destination");
+            RaisePropertyChanged("Destinations");
+            RaisePropertyChanged("MapCenter");
+            RaisePropertyChanged("NewDestination");
+            RaisePropertyChanged("Merken");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Error");
         }
 
         //Methods
 
         public void Wachtwoord()
         {
-            Messenger.Default.Send<GoToPage>(new GoToPage()
-            {
-                //Keer terug naar login scherm
-                Name = "WijzigWachtwoord"
-            });
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
+            rootFrame.Navigate(typeof(VeranderWachtwoord), true);
         }
         public async void Aanpassen()
         {
@@ -105,12 +159,8 @@ namespace BOBApp.ViewModels
 
         private async void GetMerken()
         {
-            List<Autotype> merkenLijst = await AutotypeRepository.GetAutotypes();
-            this.Merken = new ObservableCollection<Autotype>();
-            foreach (Autotype merk in merkenLijst)
-            {
-                this.Merken.Add(merk);
-            }
+            this.Merken = await AutotypeRepository.GetAutotypes();
+            RaiseAll();
         }
 
     }

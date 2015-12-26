@@ -21,14 +21,16 @@ namespace BOBApp.ViewModels
 {
     public class MijnRittenVM : ViewModelBase
     {
-        //Properties
-        public string SearchLocation { get; set; }
-        private Task task;
-     
+        //for viewNavigation
+        public bool Loading { get; set; }
+        public string Error { get; set; }
+        public HorizontalAlignment Car { get; set; }
 
+
+        public string SearchLocation { get; set; }
         public List<Trip.All> Trips { get; set; }
         public Trip.All CurrentTrip { get; set; }
-        public bool Loading { get; set; }
+       
         private Trip.All _SelectedTrip;
 
         public Trip.All SelectedTrip
@@ -36,24 +38,21 @@ namespace BOBApp.ViewModels
             get { return _SelectedTrip; }
             set { _SelectedTrip = value;
                 Frame rootFrame = MainViewVM.MainFrame as Frame;
-
                 rootFrame.Navigate(typeof(RitItem));
 
             }
         }
 
-        public HorizontalAlignment Car { get; set; }
+      
 
         //Constructor
         public MijnRittenVM()
         {
-            RaisePropertyChanged("Trips");
-            RaisePropertyChanged("CurrentTrip");
-            RaisePropertyChanged("Car");
-            RaisePropertyChanged("Loading");
+          
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
+            //sockets
             MainViewVM.socket.On("update_trip", (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
@@ -64,7 +63,32 @@ namespace BOBApp.ViewModels
                 }
 
             });
+
+            //raise
+            RaiseAll();
         }
+
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("Trips");
+            RaisePropertyChanged("CurrentTrip");
+            RaisePropertyChanged("Car");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Error");
+        }
+
+        private async void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(MijnRitten)))
+                {
+                    Loaded();
+                }
+            }
+        }
+
 
         private async void Loaded()
         {
@@ -74,18 +98,13 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-
-
                 GetCurrentTrip();
                 GetTrips();
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     this.Loading = false;
-                    RaisePropertyChanged("Loading");
-
-                    RaisePropertyChanged("Trips");
-                    RaisePropertyChanged("CurrentTrip");
+                    RaiseAll();
 
                 });
 #pragma warning restore CS1998
@@ -93,21 +112,6 @@ namespace BOBApp.ViewModels
             });
         }
 
-
-
-        private async void ExecuteNavigatedTo(NavigateTo obj)
-        {
-            if (obj.Name=="loaded")
-            {
-                Type view = (Type)obj.View;
-                if (view == (typeof(MijnRitten))){
-                    //loaded
-                    Loaded();
-                }
-            }
-        }
-
-       
 
         //Methods
         private async void GetCurrentTrip()
@@ -178,11 +182,12 @@ namespace BOBApp.ViewModels
                 default:
                     break;
             }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
-                RaisePropertyChanged("Car");
-                RaisePropertyChanged("CurrentTrip");
+                RaiseAll();
             });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         List<Trip.All> trips_all= new List<Trip.All>();
@@ -216,7 +221,7 @@ namespace BOBApp.ViewModels
                     if (trips_all.Count >= 10 && canRun == true)
                     {
                         this.Trips = trips_all.Take(10).ToList();
-                        RaisePropertyChanged("Trips");
+                        RaiseAll();
                         canRun = false;
                     }
 

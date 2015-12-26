@@ -1,4 +1,5 @@
 ﻿using BOBApp.Messages;
+using BOBApp.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -9,12 +10,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
     public class VeranderWachtwoordVM : ViewModelBase
     {
+
+        public bool Loading { get; set; }
+        public string Error { get; set; }
+
+
+
         public RelayCommand WijzigCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
         public User.PutUser EditUser { get; set; }
@@ -22,25 +32,73 @@ namespace BOBApp.ViewModels
 
         public string Password { get; set; }
         public string PasswordRepeat { get; set; }
-        public string Error { get; set; }
+      
 
 
 
 
         public VeranderWachtwoordVM()
         {
-            GetUserDetails();
+           
             WijzigCommand = new RelayCommand(Wijzig);
             CancelCommand = new RelayCommand(Cancel);
+
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
         }
+
+
+        private void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(VeranderWachtwoord)))
+                {
+                    Loaded();
+                }
+
+              
+
+            }
+        }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+                GetUserDetails();
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaiseAll();
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
+
+      
+
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Password");
+            RaisePropertyChanged("PasswordRepeat");
+            RaisePropertyChanged("Error");
+        }
+
 
         private void Cancel()
         {
-            Messenger.Default.Send<GoToPage>(new GoToPage()
-            {
-                //Keer terug naar profiel scherm
-                Name = "Profiel"
-            });
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
+            rootFrame.GoBack();
+           
         }
 
         private void Wijzig()
@@ -53,7 +111,7 @@ namespace BOBApp.ViewModels
             else
             {
                 this.Error = Libraries.Error.Password;
-                RaisePropertyChanged("Error");
+                RaiseAll();
             }
         }
 

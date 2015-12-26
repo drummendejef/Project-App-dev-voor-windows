@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Libraries.Repositories
 {
@@ -16,33 +17,78 @@ namespace Libraries.Repositories
         #region get
         public static async Task<List<Models.relations.Users_Destinations>> GetDestinations()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.DESTINATIONS);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                List<Models.relations.Users_Destinations> data = JsonConvert.DeserializeObject<List<Models.relations.Users_Destinations>>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.DESTINATIONS);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    List<Models.relations.Users_Destinations> data = JsonConvert.DeserializeObject<List<Models.relations.Users_Destinations>>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
         public static async Task<Models.relations.Users_Destinations> GetDestinationById(int id)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.DESTINATIONS + "/" + id.ToString());
-                string json = await result.Result.Content.ReadAsStringAsync();
-                Models.relations.Users_Destinations data = JsonConvert.DeserializeObject<Models.relations.Users_Destinations>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.DESTINATIONS + "/" + id.ToString());
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    Models.relations.Users_Destinations data = JsonConvert.DeserializeObject<Models.relations.Users_Destinations>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
 
         public static async Task<Models.relations.Users_Destinations> GetDefaultDestination()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.DESTINATIONS_DEFAULT);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                Models.relations.Users_Destinations data = JsonConvert.DeserializeObject<Models.relations.Users_Destinations>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.DESTINATIONS_DEFAULT);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    Models.relations.Users_Destinations data = JsonConvert.DeserializeObject<Models.relations.Users_Destinations>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
 
@@ -52,32 +98,54 @@ namespace Libraries.Repositories
         #region post
         public static async Task<Response> PostDestination(Destination destination)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
-                var newObject = JsonConvert.SerializeObject(destination);
+                    var newObject = JsonConvert.SerializeObject(destination);
 
-                HttpResponseMessage result = await client.PostAsync(URL.DESTINATIONS, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                string json = await result.Content.ReadAsStringAsync();
-                Response data = JsonConvert.DeserializeObject<Response>(json);
+                    HttpResponseMessage result = await client.PostAsync(URL.DESTINATIONS, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
 
-                return data;
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
             }
         }
         public static async Task<Response> PostDefaultDestination(int destinationsID)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
-                var newObject = JsonConvert.SerializeObject(new { DestinationsID = destinationsID });
+                    var newObject = JsonConvert.SerializeObject(new { DestinationsID = destinationsID });
 
-                HttpResponseMessage result = await client.PostAsync(URL.DESTINATIONS_DEFAULT, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                string json = await result.Content.ReadAsStringAsync();
-                Response data = JsonConvert.DeserializeObject<Response>(json);
+                    HttpResponseMessage result = await client.PostAsync(URL.DESTINATIONS_DEFAULT, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
 
-                return data;
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
             }
         }
 

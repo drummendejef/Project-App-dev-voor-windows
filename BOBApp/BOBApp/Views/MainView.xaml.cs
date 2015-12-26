@@ -278,7 +278,7 @@ namespace BOBApp.Views
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
                     Reload = reload,
-                    View = typeof(VindRit)
+                    View = e.SourcePageType
                 });
 
                 if (reload == false)
@@ -301,6 +301,11 @@ namespace BOBApp.Views
                 Name="loaded",
                 View = e.SourcePageType
             });
+        }
+
+        private void frame_NavigationStopped(object sender, NavigationEventArgs e)
+        {
+          
         }
     }
 }

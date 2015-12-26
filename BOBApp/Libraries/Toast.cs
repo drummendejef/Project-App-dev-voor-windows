@@ -8,6 +8,7 @@ using NotificationsExtensions.Toasts; // NotificationsExtensions.Win10
 using Microsoft.QueryStringDotNET; // QueryString.NET
 using Newtonsoft.Json;
 using NotificationsExtensions.Tiles;
+using System.Diagnostics;
 
 namespace Libraries
 {
@@ -16,41 +17,56 @@ namespace Libraries
 
         public static bool Tile(string line1, string line2, string line3)
         {
-            TileContent content = GetTileContent(line1,line2,line3);
+            try
+            {
+                TileContent content = GetTileContent(line1, line2, line3);
 
 
-            // Create the tile notification
-            var notification = new TileNotification(content.GetXml());
+                // Create the tile notification
+                var notification = new TileNotification(content.GetXml());
 
-            notification.ExpirationTime = DateTimeOffset.UtcNow.AddMinutes(10);
+                notification.ExpirationTime = DateTimeOffset.UtcNow.AddMinutes(10);
 
-            // And send the notification
-            TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
+                // And send the notification
+                TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
 
-            return true;
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+            
         }
         public static void TileClear()
         {
 
-            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            try
+            {
+                TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message.ToString());
+            }
         }
 
         private static TileContent GetTileContent(string line1, string line2, string line3)
         {
-
-            // In a real app, these would be initialized with actual data
-           
-
-            // Construct the tile content
-            TileContent content = new TileContent()
+            try
             {
-                Visual = new TileVisual()
+                // Construct the tile content
+                TileContent content = new TileContent()
                 {
-                    TileMedium = new TileBinding()
+                    Visual = new TileVisual()
                     {
-                        Content = new TileBindingContentAdaptive()
+                        TileMedium = new TileBinding()
                         {
-                            Children =
+                            Content = new TileBindingContentAdaptive()
+                            {
+                                Children =
                 {
                     new TileText()
                     {
@@ -69,14 +85,14 @@ namespace Libraries
                         Style = TileTextStyle.CaptionSubtle
                     }
                 }
-                        }
-                    },
+                            }
+                        },
 
-                    TileWide = new TileBinding()
-                    {
-                        Content = new TileBindingContentAdaptive()
+                        TileWide = new TileBinding()
                         {
-                            Children =
+                            Content = new TileBindingContentAdaptive()
+                            {
+                                Children =
                 {
                     new TileText()
                     {
@@ -96,12 +112,19 @@ namespace Libraries
                         Style = TileTextStyle.CaptionSubtle
                     }
                 }
+                            }
                         }
                     }
-                }
-            };
+                };
 
-            return content;
+                return content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message.ToString());
+                return null;
+                
+            }
         }
 
         private static int conversationId = 384928;

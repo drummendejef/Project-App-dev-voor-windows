@@ -24,6 +24,8 @@ namespace Libraries.Models
 
         //optional
         public bool IsBob { get; set; }
+        public bool CanBeBob { get; set; }
+        public string Location { get; set; }
 
         public class Profile
         {

@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Libraries.Repositories
 {
@@ -16,12 +17,27 @@ namespace Libraries.Repositories
         #region get
         public static async Task<List<Models.Friend.All>> GetFriends()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                var result = client.GetAsync(URL.FRIENDS);
-                string json = await result.Result.Content.ReadAsStringAsync();
-                List<Models.Friend.All> data = JsonConvert.DeserializeObject<List<Models.Friend.All>>(json);
-                return data;
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.FRIENDS);
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    List<Models.Friend.All> data = JsonConvert.DeserializeObject<List<Models.Friend.All>>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
             }
         }
 
@@ -32,17 +48,30 @@ namespace Libraries.Repositories
 
         public static async Task<Response> PostFriend(int usersID, int friendsID, bool accepted)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri(URL.BASE);
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
-                var newObject = JsonConvert.SerializeObject(new { UsersID = usersID, FriendsID=friendsID, Accepted= accepted });
+                    var newObject = JsonConvert.SerializeObject(new { UsersID = usersID, FriendsID = friendsID, Accepted = accepted });
 
-                HttpResponseMessage result = await client.PostAsync(URL.FRIENDS, new StringContent(newObject, Encoding.UTF8, "application/json"));
-                string json = await result.Content.ReadAsStringAsync();
-                Response data = JsonConvert.DeserializeObject<Response>(json);
+                    HttpResponseMessage result = await client.PostAsync(URL.FRIENDS, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
 
-                return data;
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+               
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+                
             }
 
 
