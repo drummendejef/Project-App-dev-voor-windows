@@ -37,6 +37,7 @@ namespace Libraries.Models
         {
             public User User { get; set; }
             public Bob Bob { get; set; }
+            public string Location { get; set; }
         }
 
         public class PutUser
