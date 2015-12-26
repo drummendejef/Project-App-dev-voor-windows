@@ -368,7 +368,7 @@ namespace BOBApp.ViewModels
         //Als de status van de locatie permissies veranderd is.
         async private void OnStatusChanged(Geolocator sender, StatusChangedEventArgs args)
         {
-            //TODO: Locatie opvragen afwerken?
+            //TODO: Locatie opvragen afwerken? - Joren
             //  https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
 
             /*await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>

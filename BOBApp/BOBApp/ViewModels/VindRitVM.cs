@@ -38,6 +38,8 @@ namespace BOBApp.ViewModels
         public static int StatusID { get; set; }
         public static int Request { get; set; }
 
+        public List<Bob> BobList { get; set; }
+
 
         //public
         //gets from static from filter
