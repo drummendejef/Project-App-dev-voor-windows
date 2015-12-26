@@ -76,7 +76,7 @@ namespace Libraries.Repositories
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    var definition = new { Users_ID = 0, Location = Location.Current, Added = "" };
+                    var definition = new {Location = Location.Current, Added = "" };
 
 
                     var result = client.GetAsync(URL.USER_LOCATION);

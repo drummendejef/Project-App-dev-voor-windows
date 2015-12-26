@@ -21,6 +21,7 @@ using Windows.Devices.Geolocation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace BOBApp.ViewModels
 {
@@ -176,13 +177,8 @@ namespace BOBApp.ViewModels
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
 
-            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
-
-            
-           
-
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo); 
             RaiseAll();
-         
         }
 
         private void RaiseAll()
@@ -321,10 +317,6 @@ namespace BOBApp.ViewModels
 
 
             }
-            else
-            {
-
-            }
         }
 
         private async void find_bob(bool ok)
@@ -333,25 +325,34 @@ namespace BOBApp.ViewModels
             {
                 if (bobs != null)
                 {
-                    bobs.Remove(bobs.First());
+                    try
+                    {
+                        bobs.Remove(bobs.First());
 
-                    if (bobs.Count == 0)
-                    {
-                        Messenger.Default.Send<Dialog>(new Dialog()
+                        if (bobs.Count == 0)
                         {
-                            Message = "Geen bob gevonden",
-                            Ok = "Ok",
-                            Nok = null,
-                            ViewOk = null,
-                            ViewNok = null,
-                            ParamView = false,
-                            Cb = null
-                        });
+                            Messenger.Default.Send<Dialog>(new Dialog()
+                            {
+                                Message = "Geen bob gevonden",
+                                Ok = "Ok",
+                                Nok = null,
+                                ViewOk = null,
+                                ViewNok = null,
+                                ParamView = false,
+                                Cb = null
+                            });
+                        }
+                        else
+                        {
+                            ShowBob(bobs.First());
+                        }
                     }
-                    else
+                    catch (Exception ex )
                     {
-                        ShowBob(bobs.First());
+
+                        Debug.WriteLine(ex.Message.ToString());
                     }
+                    
                 }
                 else
                 {
@@ -602,7 +603,7 @@ namespace BOBApp.ViewModels
                     {
                         this.EnableFind = true;
                     }
-                    RaiseAll();
+                  
 
 
                 }
@@ -701,22 +702,30 @@ namespace BOBApp.ViewModels
         {
             if (VindRitFilterVM.SelectedParty != "")
             {
+
+                try
+                {
+                    Geolocator geolocator = new Geolocator();
+                    Geoposition pos = await geolocator.GetGeopositionAsync();
+
+
+                    int? rating = VindRitFilterVM.SelectedRating;
+                    DateTime minDate = DateTime.Today; //moet nog gedaan worden
+                    int bobsType_ID = VindRitFilterVM.SelectedBobsType.ID;
+                    Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                    int? maxDistance = MainViewVM.searchArea;
+
+                    List<Bob> bobs = await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance);
+
+
+                    return bobs;
+                }
+                catch (Exception ex)
+                {
+
+                    return null;
+                }
                
-
-                Geolocator geolocator = new Geolocator();
-                Geoposition pos = await geolocator.GetGeopositionAsync();
-
-
-                int? rating = VindRitFilterVM.SelectedRating;
-                DateTime minDate = DateTime.Today; //moet nog gedaan worden
-                int bobsType_ID = VindRitFilterVM.SelectedBobsType.ID;
-                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-                int? maxDistance = MainViewVM.searchArea;
-
-                List<Bob> bobs = await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance);
-
-
-                return bobs;
             }
             else
             {
@@ -732,11 +741,10 @@ namespace BOBApp.ViewModels
             this.Loading = true;
             RaiseAll();
             bobs = new List<Bob>();
-
             bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
 
             this.Loading = false;
-           
+            RaiseAll();
 
             if (bobs == null || bobs.Count <= 0) {
                 Messenger.Default.Send<Dialog>(new Dialog()
@@ -755,7 +763,6 @@ namespace BOBApp.ViewModels
                 ShowBob(bobs.First());
 
             }
-            RaiseAll();
 
         }
 
