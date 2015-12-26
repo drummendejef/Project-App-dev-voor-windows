@@ -223,7 +223,7 @@ namespace BOBApp.Views
                 bobBiedJeAan.Visibility = Visibility.Visible;
                 bobVindEenRit.Visibility = Visibility.Collapsed;
                 isBob = false;
-                Change.Content = "BOB";
+                Change.Content = "Type: BOB";
             }
             else
             {
@@ -231,7 +231,7 @@ namespace BOBApp.Views
                 bobBiedJeAan.Visibility = Visibility.Collapsed;
                 bobVindEenRit.Visibility = Visibility.Visible;
                 isBob = true;
-                Change.Content = "USER";
+                Change.Content = "Type: USER";
             }
         }
 

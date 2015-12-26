@@ -35,6 +35,7 @@ namespace BOBApp
             SimpleIoc.Default.Register<VindRitFilterVM>();
             SimpleIoc.Default.Register<VindRitChatVM>();
             SimpleIoc.Default.Register<ZoekVriendenVM>();
+            SimpleIoc.Default.Register<VindRitBobVM>();
 
 
 
@@ -77,6 +78,10 @@ namespace BOBApp
         public VindRitVM VindRitVM
         {
             get { return ServiceLocator.Current.GetInstance<VindRitVM>(); }//Viewmodels opvragen
+        }
+        public VindRitBobVM VindRitBobVM
+        {
+            get { return ServiceLocator.Current.GetInstance<VindRitBobVM>(); }//Viewmodels opvragen
         }
 
         public VindRitFilterVM VindRitFilterVM

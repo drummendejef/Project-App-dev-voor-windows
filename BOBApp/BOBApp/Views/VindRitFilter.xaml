@@ -20,7 +20,7 @@
     </Page.Resources>
 
     <RelativePanel Background="White" Padding="10">
-        <ScrollViewer RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" HorizontalScrollMode="Disabled" VerticalScrollMode="Disabled">
+        <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
             <Grid HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="160"/>
@@ -41,10 +41,10 @@
                 <AutoSuggestBox Grid.Column="1" Grid.Row="0"  Margin="20,0,20,0" MinWidth="100" HorizontalAlignment="Stretch" Text="{Binding SelectedParty, Source={StaticResource this}, Mode=TwoWay}" ItemsSource="{Binding Parties, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name"  PlaceholderText="Zoek locatie/feestje"  />
 
                 <TextBlock Grid.Column="0" Grid.Row="1" Margin="10" Text="Destination:"></TextBlock>
-                <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,0,20,0" PlaceholderText="Zoek bestemmingen" MinWidth="150" ItemsSource="{Binding Destinations,Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDestination,  Source={StaticResource this},Mode=TwoWay}" />
+                <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,0,20,0" PlaceholderText="Zoek bestemmingen" SelectedValuePath="Destinations_ID" SelectedValue="{Binding SelectedDestinations_ID, Mode=TwoWay}" MinWidth="150" DisplayMemberPath="Name" ItemsSource="{Binding Destinations,Mode=OneWay}" />
 
                 <TextBlock Grid.Column="0" Grid.Row="2"  Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Voeg vrienden toe:" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-                <AutoSuggestBox Grid.Column="1" Grid.Row="2" Height="32" PlaceholderText="Voeg vrienden toe"  Margin="20,0,20,0" ItemsSource="{Binding Friends, Mode=TwoWay}" Text="{Binding SelectedFriendText, Mode=TwoWay}" DisplayMemberPath="User2" TextMemberPath="User2" />
+                <AutoSuggestBox Grid.Column="1" Grid.Row="2" Height="32" PlaceholderText="Voeg vrienden toe"  Margin="20,0,20,0" ItemsSource="{Binding Friends, Mode=OneWay}" Text="{Binding SelectedFriendText, Mode=TwoWay}" DisplayMemberPath="User2" TextMemberPath="User2" />
                 <Button Grid.Column="2" Style="{ThemeResource button}" Grid.Row="2" Content="Add" Command="{Binding AddFriendCommand}" Margin="10,0" Height="32" Width="auto" />
 
                 <ListView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" MinHeight="100" Margin="10"  MinWidth="500" />
@@ -53,11 +53,11 @@
                 <Slider Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Value="{Binding SelectedRating, Source={StaticResource this}, Mode=TwoWay}" Margin="20,0,20,0" Maximum="5" />
 
                 <TextBlock Grid.Column="0" Grid.Row="5" Margin="10" Height="20" TextWrapping="Wrap" Text="Soort vervoer:"  Style="{StaticResource textblock}"/>
-                <ComboBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="20,0,20,0" ItemsSource="{Binding BobsTypes,Mode=TwoWay}" SelectedItem="{Binding SelectedBobsType, Source={StaticResource this}, Mode=TwoWay}" DisplayMemberPath="Name" />
+                <ComboBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="20,0,20,0" PlaceholderText="Bobtypes" SelectedValuePath="ID" SelectedValue="{Binding SelectedBobsType_ID, Mode=TwoWay}"  ItemsSource="{Binding BobsTypes,Mode=OneWay}" DisplayMemberPath="Name" />
 
                 </Grid>
         
               
-        </ScrollViewer>
+        </RelativePanel>
   </RelativePanel>
 </Page>

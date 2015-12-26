@@ -135,6 +135,7 @@
     <Compile Include="ViewModels\VeranderWachtwoordVM.cs" />
     <Compile Include="ViewModels\VindRitFilterVM.cs" />
     <Compile Include="ViewModels\VindRitChatVM.cs" />
+    <Compile Include="ViewModels\VindRitBobVM.cs" />
     <Compile Include="ViewModels\VindRitVM.cs" />
     <Compile Include="ViewModels\ZoekVriendenVM.cs" />
     <Compile Include="Views\Bestemmingen.xaml.cs">

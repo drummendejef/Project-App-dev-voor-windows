@@ -8,33 +8,36 @@
     mc:Ignorable="d"
      DataContext="{Binding MainViewVM, Mode=TwoWay, Source={StaticResource Locator}}">
     <Page.Resources>
-        <ResourceDictionary Source="ms-appx:///Styles/SplitView.xaml">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/SplitView.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
     
     <SplitView PaneClosing="ShellSplitView_PaneClosing" x:Name="ShellSplitView" DisplayMode="CompactOverlay"
-               IsPaneOpen="False" CompactPaneLength="41" OpenPaneLength="200"
+               IsPaneOpen="True" CompactPaneLength="41" OpenPaneLength="200"
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
             <StackPanel>
-                <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
+                <RadioButton Canvas.ZIndex="99999" Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
 
-                <Grid x:Name="user" Height="70" Visibility="Collapsed">
+                <Grid Canvas.ZIndex="99" x:Name="user" Visibility="Visible" Margin="45,-40,20,0" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User.Firstname}" />
-                    <TextBlock Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User.Lastname}" />
-                    <TextBlock Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points}" />
-                    <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Afmelden" Command="{Binding LogOffCommand}" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Grid.ColumnSpan="2" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User, Mode=TwoWay}" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="Points:" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" TextAlignment="Right" Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points, Mode=TwoWay}" />
+
+                    <Button Margin="0,0,0,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Stretch" Content="Afmelden" Command="{Binding LogOffCommand}" />
                 </Grid>
 
                 <RadioButton Tag="&#xE724;" x:Name="bobVindEenRit" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
@@ -45,7 +48,7 @@
                 <RadioButton Tag="&#xE909;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnFeestjesInDeBuurtChecked" />
                 <RadioButton Tag="&#xE913;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBestemmingenChecked" />
                 <RadioButton Tag="&#xe77B;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
-                <Button x:Name="Change" Content="User" HorizontalAlignment="Stretch" Click="OnChangeChecked" />
+                <RadioButton x:Name="Change" Content="Type: User" HorizontalAlignment="Stretch" Click="OnChangeChecked" Tag="" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
 
             </StackPanel>
         </SplitView.Pane>

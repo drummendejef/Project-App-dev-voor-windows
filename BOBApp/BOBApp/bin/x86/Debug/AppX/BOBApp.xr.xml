@@ -47,8 +47,6 @@
     <RootPropertyPathName Name="Loading" />
     <RootPropertyPathName Name="MainViewVM" />
     <RootPropertyPathName Name="LogOffCommand" />
-    <RootPropertyPathName Name="Lastname" />
-    <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="MijnRittenVM" />
     <RootPropertyPathName Name="SelectedTrip" />
     <RootPropertyPathName Name="Trips" />
@@ -64,6 +62,8 @@
     <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
     <RootPropertyPathName Name="Cellphone" />
+    <RootPropertyPathName Name="Firstname" />
+    <RootPropertyPathName Name="Lastname" />
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
@@ -75,22 +75,25 @@
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
-    <RootPropertyPathName Name="VisibleCancel" />
+    <RootPropertyPathName Name="VisibleChat" />
     <RootPropertyPathName Name="GoChatCommand" />
+    <RootPropertyPathName Name="VisibleCancel" />
+    <RootPropertyPathName Name="CancelText" />
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="BobList" />
     <RootPropertyPathName Name="GetSelectedRating" />
-    <RootPropertyPathName Name="RitTime" />
+    <RootPropertyPathName Name="GetRitTime" />
     <RootPropertyPathName Name="SelectedBob" />
     <RootPropertyPathName Name="GetSelectedFriendsString" />
     <RootPropertyPathName Name="GetSelectedBobsType" />
     <RootPropertyPathName Name="ShowModalCommand" />
-    <RootPropertyPathName Name="SelectedParty" />
+    <RootPropertyPathName Name="GetStatus" />
     <RootPropertyPathName Name="VisibleModal" />
     <RootPropertyPathName Name="Frame" />
     <RootPropertyPathName Name="CloseModalCommand" />
+    <RootPropertyPathName Name="VindRitBobVM" />
     <RootPropertyPathName Name="BobRequests" />
     <RootPropertyPathName Name="VindRitChatVM" />
     <RootPropertyPathName Name="AddCommentCommand" />
@@ -99,12 +102,14 @@
     <RootPropertyPathName Name="ChatComments" />
     <RootPropertyPathName Name="VindRitFilterVM" />
     <RootPropertyPathName Name="User2" />
+    <RootPropertyPathName Name="ID" />
+    <RootPropertyPathName Name="SelectedBobsType_ID" />
     <RootPropertyPathName Name="BobsTypes" />
-    <RootPropertyPathName Name="SelectedBobsType" />
     <RootPropertyPathName Name="SelectedRating" />
     <RootPropertyPathName Name="AddFriendCommand" />
     <RootPropertyPathName Name="Friends" />
     <RootPropertyPathName Name="SelectedFriendText" />
+    <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="Parties" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
     <RootPropertyPathName Name="SelectedFriend" />
@@ -139,7 +144,6 @@
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="CornerRadius" />
       <RootMethod Name="GetColumnSpan" />
@@ -173,8 +177,8 @@
       <RootProperty Name="Tag" />
       <RootProperty Name="FontStyle" />
       <RootProperty Name="Opacity" />
-      <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
+      <RootProperty Name="FontWeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="VerticalAlignment" />
@@ -192,6 +196,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="IsChecked" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="Click" />
       <RootEvent Name="Checked" />
     </RootType>
@@ -356,7 +361,6 @@
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Padding" />
-      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />
@@ -471,6 +475,8 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
       <RootProperty Name="MinWidth" />
+      <RootProperty Name="SelectedValuePath" />
+      <RootProperty Name="SelectedValue" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">

@@ -52,7 +52,7 @@
         
         
         <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
-            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding SelectedParty.Name, Source={StaticResource this}, Mode=TwoWay}"/>
+            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetStatus, Mode=TwoWay}"/>
 
             <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding ShowModalCommand}"   />
 
@@ -67,7 +67,7 @@
                 <RelativePanel RelativePanel.Below="lblFriends" >
                     <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="TIME TO YOUR DESTINATION WITH BOB "/>
                     <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime" Margin="10,0,0,0"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
-                    <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding RitTime, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding GetRitTime, Mode=TwoWay}"/>
                     <TextBlock RelativePanel.Below="lblTime3" Margin="10,0,0,0"  Text="{Binding GetSelectedRating, Mode=TwoWay}"/>
 
                 </RelativePanel>
@@ -82,10 +82,10 @@
         </Maps:MapControl>
 
         <Button Style="{ThemeResource button}" Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />
-        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel trip" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
+        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="{Binding CancelText, Mode=TwoWay}" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
 
 
-        <Button Style="{ThemeResource button}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Visibility="{Binding VisibleCancel,Mode=TwoWay}" Padding="10" Margin="0,-100,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
+        <Button Style="{ThemeResource button}" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" Visibility="{Binding VisibleChat,Mode=TwoWay}" Padding="10" Margin="0,-100,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
         
 
 

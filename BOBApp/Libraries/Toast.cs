@@ -13,7 +13,7 @@ using System.Diagnostics;
 namespace Libraries
 {
     public class Toast
-    {
+    { 
 
         public static bool Tile(string line1, string line2, string line3)
         {
@@ -154,16 +154,23 @@ namespace Libraries
                 // Arguments when the user taps body of toast
                 Launch = new QueryString()
                 {
-                    { "action", "viewConversation" },
-                    { "conversationId", conversationId.ToString() }
+                    { "action", "viewBob" },
+                    { "message", message.ToString() },
+                    { "ok", ok.ToString() },
+                    { "nok", nok.ToString() },
+                    { "viewOk", JsonConvert.SerializeObject(viewOk) },
+                    { "viewNok",JsonConvert.SerializeObject(viewNok) },
+                    { "paramView", JsonConvert.SerializeObject(paramView) },
+                    { "cb", cb }
 
-                }.ToString()
+                }.ToString(),
+               
             };
 
             // And create the toast notification
             var toast = new ToastNotification(toastContent.GetXml());
             toast.ExpirationTime = DateTime.Now.AddDays(2);
-            toast.Tag = "1";
+            toast.Tag = "dialog";
             toast.Group = "wallPosts";
 
             ToastNotificationManager.CreateToastNotifier().Show(toast);
@@ -174,6 +181,7 @@ namespace Libraries
 
         private static ToastActionsCustom GetAction(string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb)
         {
+           
             // In a real app, these would be initialized with actual data
             ToastActionsCustom actions;
             if (nok != null)
@@ -186,7 +194,6 @@ namespace Libraries
                     new ToastButton(ok, new QueryString()
                     {
                         { "action", "ok" },
-                        { "conversationId", conversationId.ToString() },
                         { "value", ok.ToString() },
                         { "viewOk", JsonConvert.SerializeObject(viewOk) },
                         { "viewNok",JsonConvert.SerializeObject(viewNok) },
@@ -201,7 +208,6 @@ namespace Libraries
                     new ToastButton(nok, new QueryString()
                     {
                         { "action", "nok" },
-                        { "conversationId", conversationId.ToString() },
                         { "value", nok.ToString() },
                         { "viewOk", JsonConvert.SerializeObject(viewOk) },
                         { "viewNok",JsonConvert.SerializeObject(viewNok) },

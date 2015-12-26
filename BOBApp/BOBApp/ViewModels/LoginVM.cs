@@ -39,8 +39,11 @@ namespace BOBApp.ViewModels
         public Boolean isLocationGiven { get; set; }
       
         public bool EnableLogin { get; set; }
+        public bool Online { get; set; }
 
         #endregion
+
+
 
         //Constructor
         public LoginVM()
@@ -59,13 +62,39 @@ namespace BOBApp.ViewModels
             Email = "stijn.vanhulle@outlook.com";
             Pass = "test";
 
+            Tests();
+        }
+
+        private async void Tests()
+        {
+            bool serverOnline = await ServerOnline();
+            bool hasInternet= IsInternet();
+
+            if (!serverOnline)
+            {
+                this.Error = "Geen connectie met de serer";
+            }
+            if (!hasInternet)
+            {
+                this.Error = "Geen internet";
+            }
            
 
+            if (serverOnline && hasInternet)
+            {
+                this.Online = true;
+            }
+            else
+            {
+                this.Online = false;
+            }
+            RaiseAll();
         }
 
         private void RaiseAll()
         {
             RaisePropertyChanged("Email");
+            RaisePropertyChanged("Online");
             RaisePropertyChanged("Pass");
             RaisePropertyChanged("Error");
             RaisePropertyChanged("Loading");
@@ -96,10 +125,7 @@ namespace BOBApp.ViewModels
             this.EnableLogin = false;
             RaiseAll();
 
-
-            bool ok= await serverOnline();
-            bool internet = IsInternet();
-            if (ok == true && internet==true)
+            if (this.Online==true)
             {
                 Response res = await LoginRepository.Login(email, md5.Create(pass));
                 if (res.Success == true)
@@ -195,14 +221,6 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                if (internet== false)
-                {
-                    this.Error = "Geen internet";
-                }
-                if (ok == false)
-                {
-                    this.Error = "Geen connectie met de serer";
-                }
 
                 this.Loading = false;
                 this.EnableLogin = true;
@@ -232,7 +250,7 @@ namespace BOBApp.ViewModels
 
         }
 
-        private async Task<bool> serverOnline()
+        private async Task<bool> ServerOnline()
         {
             bool ok = Task.FromResult<Response>(await LoginRepository.Online()).Result.Success;
             return ok;

@@ -375,11 +375,25 @@ namespace BOBApp
             {
                 var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
 
+   
                 QueryString args = QueryString.Parse(toastActivationArgs.Argument);
 
                 //Kijk welke actie gevraagd is
                 switch (args["action"])
                 {
+                    case "viewBob":
+                        Dialog dialog = new Dialog()
+                        {
+                            Message= args["message"],
+                            Ok=args["ok"],
+                            Nok=args["nok"],
+                            ViewOk= JsonConvert.DeserializeObject<Type>(args["viewOk"]),
+                            ViewNok= JsonConvert.DeserializeObject<Type>(args["viewNok"]),
+                            ParamView= JsonConvert.DeserializeObject<object>(args["paramView"]),
+                            Cb=args["cb"]
+                        };
+                        Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                        break;
                     case "ok":
                         string ok = args["value"];
                         Type viewOk= JsonConvert.DeserializeObject<Type>(args["viewOk"]);

@@ -48,9 +48,11 @@ namespace BOBApp.ViewModels
         public string Error { get; set; }
         public Visibility VisibleFind { get; set; }
         public Visibility VisibleCancel { get; set; }
+        public Visibility VisibleChat { get; set; }
         public Visibility VisibleFilterContext { get; set; }
         public Visibility VisibleModal { get; set; }
         public Frame Frame { get; set; }
+        public string CancelText { get; set; }
 
         #region gets
 
@@ -103,8 +105,35 @@ namespace BOBApp.ViewModels
                 return VindRitFilterVM.SelectedBobsType;
             }
         }
-
-      
+        public Party GetSelectedParty
+        {
+            get
+            {
+                return VindRitVM.SelectedParty;
+            }
+        }
+        public string GetStatus
+        {
+            get
+            {
+               if((this.Status=="" || this.Status==null))
+                {
+                    if (VindRitVM.SelectedParty != null)
+                    {
+                        return VindRitVM.SelectedParty.Name;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                   
+                }
+                else
+                {
+                    return this.Status;
+                }
+            }
+        }
 
 
         private async void getRitTime(Location location)
@@ -138,8 +167,8 @@ namespace BOBApp.ViewModels
         public string BobRequests { get; set; }
         public string RitTime { get; set; }
         public List<Party> Parties { get; set; }
+        public string Status { get; set; }
 
-      
 
         private bool _EnableFind;
 
@@ -153,13 +182,18 @@ namespace BOBApp.ViewModels
                 {
                     this.VisibleFind = Visibility.Visible;
                     this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleChat = Visibility.Collapsed;
+                    this.CancelText = "Annuleer";
                 }
                 else
                 {
                     this.VisibleFind = Visibility.Collapsed;
                     this.VisibleCancel = Visibility.Visible;
+                    this.VisibleChat = Visibility.Visible;
+                    this.CancelText = "Annuleer huidige trip";
                 }
-                RaisePropertyChanged("VisibleFind"); RaisePropertyChanged("VisibleCancel");
+                RaisePropertyChanged("CancelText");
+                RaisePropertyChanged("VisibleFind"); RaisePropertyChanged("VisibleCancel"); RaisePropertyChanged("VisibleChat");
             }
         }
 
@@ -182,7 +216,17 @@ namespace BOBApp.ViewModels
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
 
-            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo); 
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+
+            this.Loading = false;
+            this.EnableFind = true;
+            VisibleModal = Visibility.Collapsed;
+            this.Frame = new Frame();
+            this.VisibleFilterContext = Visibility.Collapsed;
+            this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
+
+
+            //Loaded();
             RaiseAll();
         }
 
@@ -191,17 +235,33 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("EnableFind");
             RaisePropertyChanged("VisibleModal");
+            RaisePropertyChanged("VisibleFind");
+            RaisePropertyChanged("VisibleCancel");
+            RaisePropertyChanged("CancelText");
+            RaisePropertyChanged("VisibleChat");
             RaisePropertyChanged("Frame");
             RaisePropertyChanged("VisibleFilterContext");
             RaisePropertyChanged("BobRequests");
 
             RaisePropertyChanged("SelectedParty");
+            RaisePropertyChanged("SelectedUser");
+            RaisePropertyChanged("CurrentTrip");
+            RaisePropertyChanged("BobAccepted");
             RaisePropertyChanged("SelectedBob");
+            RaisePropertyChanged("StatusID");
+            RaisePropertyChanged("Request");
+            RaisePropertyChanged("Status");
 
+            RaisePropertyChanged("GetStatus");
             RaisePropertyChanged("GetSelectedRating");
+            RaisePropertyChanged("GetRitTime");
+            RaisePropertyChanged("GetSelectedDestination");
             RaisePropertyChanged("GetSelectedBobsType");
+            RaisePropertyChanged("GetSelectedParty");
             RaisePropertyChanged("GetSelectedFriendsString");
-        }
+
+           
+    }
 
         private async void Loaded()
         {
@@ -222,16 +282,15 @@ namespace BOBApp.ViewModels
                     VisibleModal = Visibility.Collapsed;
                     this.Frame = new Frame();
                     this.VisibleFilterContext = Visibility.Collapsed;
-
+                    this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
+   
 
                     Task task = GetParties();
                     Task task2 = GetDestinations();
                     Task task3 = GetBobTypes();
                     GetCurrentTrip();
 
-                    this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
-                    this.EnableFind = true;
-                    this.Loading = false;
+                   
                 
 
                     RaiseAll();
@@ -261,7 +320,12 @@ namespace BOBApp.ViewModels
             }
             if (obj.Reload == true)
             {
-                Loaded();
+                Type view = (Type)obj.View;
+                if (view == typeof(VindRit))
+                {
+                    //loaded
+                    Loaded();
+                }
             }
 
             if (obj.Name != null && obj.Name != "")
@@ -284,7 +348,11 @@ namespace BOBApp.ViewModels
                         find_bob((bool)obj.Result);
                         break;
                     case "bob_accepted":
-                        bob_accepted((bool)obj.Result);
+                        if (this.VisibleFind == Visibility.Collapsed)
+                        {
+                            bob_accepted((bool)obj.Result);
+                        }
+                       
                         break;
                     case "trip_location:reload":
                         Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
@@ -306,6 +374,11 @@ namespace BOBApp.ViewModels
 
         private async void bob_accepted(bool accepted)
         {
+            this.Status = null;
+
+            this.Loading = false;
+            RaiseAll();
+
             //uitgevoerd bij de bob
             if (accepted == true)
             {
@@ -319,7 +392,9 @@ namespace BOBApp.ViewModels
                 };
 
                 MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
-
+            }
+            else
+            {
 
             }
         }
@@ -328,6 +403,10 @@ namespace BOBApp.ViewModels
         {
             if (ok == false)
             {
+                this.Loading = false;
+               
+
+                RaiseAll();
                 if (bobs != null)
                 {
                     try
@@ -346,6 +425,8 @@ namespace BOBApp.ViewModels
                                 ParamView = false,
                                 Cb = null
                             });
+                            this.VisibleFind = Visibility.Visible;
+                            RaiseAll();
                         }
                         else
                         {
@@ -372,6 +453,9 @@ namespace BOBApp.ViewModels
                         ParamView = false,
                         Cb = null
                     });
+                    this.VisibleFind = Visibility.Visible;
+                    this.VisibleCancel = Visibility.Collapsed;
+                    RaiseAll();
                 }
                
               
@@ -389,6 +473,11 @@ namespace BOBApp.ViewModels
                     Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bobAll.User.ID, Status = true };
                     MainViewVM.socket.Emit("bob_ACCEPT:send", JsonConvert.SerializeObject(socketSend));
 
+
+                    this.Status = "Wachten op antwoord van bob";
+
+                    this.Loading = true;
+                    RaiseAll();
                 }
 
 
@@ -587,7 +676,7 @@ namespace BOBApp.ViewModels
         private async Task GetBobTypes()
         {
             List<BobsType> lijst = await BobsRepository.GetTypes();
-            VindRitFilterVM.SelectedBobsType = lijst[0];
+           
         }
         private async void GetCurrentTrip()
         {
@@ -655,7 +744,7 @@ namespace BOBApp.ViewModels
         {
             List<Users_Destinations> lijst = await DestinationRepository.GetDestinations();
 
-            VindRitFilterVM.SelectedDestination = lijst[0];
+          
 
         }
 
@@ -687,9 +776,10 @@ namespace BOBApp.ViewModels
             this.VisibleFilterContext = Visibility.Visible;
             RaiseAll();
 
+           
 
             Frame rootFrame = MainViewVM.MainFrame as Frame;
-            rootFrame.Navigate(typeof(VindRitFilter));
+            rootFrame.Navigate(typeof(VindRitFilter),true);
         }
 
 
@@ -744,6 +834,9 @@ namespace BOBApp.ViewModels
         {
             this.VisibleFilterContext = Visibility.Visible;
             this.Loading = true;
+            this.VisibleFind = Visibility.Collapsed;
+            this.VisibleCancel = Visibility.Visible;
+
             RaiseAll();
             bobs = new List<Bob>();
             bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
@@ -762,6 +855,8 @@ namespace BOBApp.ViewModels
                     ParamView = false,
                     Cb = null
                 });
+                this.EnableFind = true;
+                RaiseAll();
 
             }else
             {
@@ -776,10 +871,11 @@ namespace BOBApp.ViewModels
         private async void ShowBob(Bob bob)
         {
             Bob.All bob_full = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bob.ID.Value)).Result;
-            string bob_text = bob_full.User.ToString() + " is in de buurt met volgende nummerplaat " + bob_full.Bob.LicensePlate + " voor een bedrag van " + bob_full.Bob.PricePerKm + " euro per km.";
-
-            if (bob_full != null)
+            
+            if (bob_full != null && bob_full.Bob!=null)
             {
+                string bob_text = bob_full.User.ToString() + " is in de buurt met volgende nummerplaat " + bob_full.Bob.LicensePlate + " voor een bedrag van " + bob_full.Bob.PricePerKm + " euro per km.";
+
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
                     Message = "Volgende bob gevonden: " + "\n" + bob_text,
@@ -791,6 +887,7 @@ namespace BOBApp.ViewModels
                     Cb = "find_bob",
                     IsNotification=true
                 });
+               
             }
 
 
@@ -807,34 +904,48 @@ namespace BOBApp.ViewModels
 
         private async void CancelTrip()
         {
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
-
-            VindRitVM.StatusID = 5; //canceld
-            timer.Stop();
-
-
-            Trips_Locations item = new Trips_Locations()
+            if (this.EnableFind == true)
             {
-                Trips_ID = VindRitVM.CurrentTrip.ID,
-                Location = JsonConvert.SerializeObject(location),
-                Statuses_ID = VindRitVM.StatusID
-            };
-            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
-            if (ok.Success == true)
-            {
+                this.VisibleCancel = Visibility.Collapsed;
+                this.VisibleFind = Visibility.Visible;
+                this.Loading = false;
+                this.Status = null;
 
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
-                Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                RaiseAll();
+            }
+            else
+            {
+                Geolocator geolocator = new Geolocator();
+                Geoposition pos = await geolocator.GetGeopositionAsync();
+                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+
+                VindRitVM.StatusID = 5; //canceld
+                timer.Stop();
+
+
+                Trips_Locations item = new Trips_Locations()
+                {
+                    Trips_ID = VindRitVM.CurrentTrip.ID,
+                    Location = JsonConvert.SerializeObject(location),
+                    Statuses_ID = VindRitVM.StatusID
+                };
+                Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+                if (ok.Success == true)
+                {
+
+                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                    MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                }
+
+                BobisDone(location, "Trip is geannuleerd");
+
+                this.EnableFind = true;
+                RaiseAll();
             }
 
-            BobisDone(location, "Trip is geannuleerd");
-
-            this.EnableFind = true;
-            RaiseAll();
+            
         }
 
 
@@ -844,7 +955,14 @@ namespace BOBApp.ViewModels
 
         private void CloseModal()
         {
-            Loaded();
+            //Loaded();
+
+            if (this.Parties != null && VindRitFilterVM.SelectedParty!=null)
+            {
+                Party foundParty=  this.Parties.Find(r => r.Name.Trim() == VindRitFilterVM.SelectedParty.Trim());
+                VindRitVM.SelectedParty = foundParty;
+               
+            }
 
             VisibleModal = Visibility.Collapsed;
             RaiseAll();
@@ -855,7 +973,8 @@ namespace BOBApp.ViewModels
         private void ShowModal()
         {
             this.Frame = new Frame();
-            this.Frame.Navigate(typeof(VindRitFilter));
+            this.Frame.Navigated += Frame_Navigated;
+            this.Frame.Navigate(typeof(VindRitFilter),true);
            
 
             VisibleModal = Visibility.Visible;
@@ -863,5 +982,25 @@ namespace BOBApp.ViewModels
 
         }
 
+        private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            if (e.Parameter != null)
+            {
+                bool reload = (bool)e.Parameter;
+
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                {
+                    Reload = reload,
+                    View=typeof(VindRitFilter)
+                   
+                });
+
+                if (reload == false)
+                {
+                    //e.Cancel = true;
+
+                }
+            }
+        }
     }
 }

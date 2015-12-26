@@ -193,7 +193,7 @@ namespace BOBApp.ViewModels
                 this.SearchUsers = await UsersRepository.GetUsersOnline();
                
             }
-            RaiseAll();
+           RaisePropertyChanged("SearchUsers");
         }
 
         public List<User.All> SearchUsers { get; set; }

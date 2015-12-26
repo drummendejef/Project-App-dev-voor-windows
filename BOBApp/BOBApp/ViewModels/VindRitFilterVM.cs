@@ -32,6 +32,8 @@ namespace BOBApp.ViewModels
         public static int SelectedRating { get; set; }
         public static DateTime? SelectedMinDate { get; set; }
         public static string SelectedParty { get; set; }
+        
+
         #endregion
 
 
@@ -44,6 +46,36 @@ namespace BOBApp.ViewModels
         public List<Party> Parties { get; set; }
         public List<Users_Destinations> Destinations { get; set; }
 
+        private int _SelectedBobsType_ID;
+
+        public int SelectedBobsType_ID
+        {
+            get { return _SelectedBobsType_ID; }
+            set {
+                if (this.BobsTypes != null)
+                {
+                    VindRitFilterVM.SelectedBobsType = this.BobsTypes.Find(r => r.ID == value);
+                }
+                
+                _SelectedBobsType_ID = value;
+                
+            }
+        }
+        private int _SelectedDestination_ID;
+
+        public int SelectedDestination_ID
+        {
+            get { return _SelectedDestination_ID; }
+            set {
+                if (this.Destinations!=null)
+                {
+                    VindRitFilterVM.SelectedDestination = this.Destinations.Find(r => r.Destinations_ID == value);
+                }
+                _SelectedDestination_ID = value;
+            }
+        }
+
+
 
         #endregion
 
@@ -55,6 +87,7 @@ namespace BOBApp.ViewModels
            
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+            Loaded();
             RaiseAll();
         }
 
@@ -63,23 +96,32 @@ namespace BOBApp.ViewModels
         {
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");
+
             RaisePropertyChanged("SelectedFriendString");
+            RaisePropertyChanged("SelectedFriends");
+ 
+            RaisePropertyChanged("SelectedRating");
+            RaisePropertyChanged("SelectedParty");
+
+
             RaisePropertyChanged("BobsTypes");
             RaisePropertyChanged("Parties");
             RaisePropertyChanged("Destinations");
             RaisePropertyChanged("Friends");
+
+            RaisePropertyChanged("SelectedDestination_ID");
+            RaisePropertyChanged("SelectedBobsType_ID");
         }
         private void ExecuteNavigatedTo(NavigateTo obj)
         {
-            if (obj.Name == "loaded")
+
+            if (obj.Reload==true)
             {
                 Type view = (Type)obj.View;
                 if (view == (typeof(VindRitFilter)))
                 {
                     Loaded();
                 }
-
-
             }
         }
 
@@ -90,12 +132,7 @@ namespace BOBApp.ViewModels
 
             await Task.Run(async () =>
             {
-                // running in background
-                VindRitFilterVM.SelectedFriends = new List<Friend.All>();
-                VindRitFilterVM.SelectedDestination = new Users_Destinations();
-                VindRitFilterVM.SelectedBobsType = new BobsType();
-                VindRitFilterVM.SelectedParty = "";
-                VindRitFilterVM.SelectedMinDate = DateTime.Today;
+               
 
                 Task task = GetFriends();
                 Task task2 = GetBobTypes();
@@ -131,13 +168,18 @@ namespace BOBApp.ViewModels
         private async Task GetBobTypes()
         {
             this.BobsTypes = await BobsRepository.GetTypes();
-            VindRitFilterVM.SelectedBobsType= this.BobsTypes[0];
+            if (VindRitFilterVM.SelectedBobsType == null)
+            {
+               // VindRitFilterVM.SelectedBobsType = this.BobsTypes[0];
+            }
+          
             RaiseAll();
         }
         private async Task GetDestinations()
         {
             this.Destinations = await DestinationRepository.GetDestinations();
-            VindRitFilterVM.SelectedDestination= this.Destinations[0];
+           
+           
             RaiseAll();
         }
         private async Task<Boolean> GetFriends()
@@ -158,9 +200,8 @@ namespace BOBApp.ViewModels
 
         private async Task<Boolean> GetParties()
         {
-
             this.Parties = await PartyRepository.GetParties();
-
+           
             RaiseAll();
             if (this.Parties.Count > 0)
             {
@@ -170,8 +211,6 @@ namespace BOBApp.ViewModels
             {
                 return false;
             }
-
-
         }
 
         #endregion
