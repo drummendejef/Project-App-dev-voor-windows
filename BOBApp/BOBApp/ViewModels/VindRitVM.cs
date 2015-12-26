@@ -38,10 +38,10 @@ namespace BOBApp.ViewModels
         public static int StatusID { get; set; }
         public static int Request { get; set; }
 
-<<<<<<< HEAD
+
         public List<Bob> BobList { get; set; }
 
-=======
+
         #endregion
 
         public bool Loading { get; set; }
@@ -53,7 +53,7 @@ namespace BOBApp.ViewModels
         public Frame Frame { get; set; }
 
         #region gets
->>>>>>> origin/master
+
 
         public string GetSelectedFriendsString
         {
