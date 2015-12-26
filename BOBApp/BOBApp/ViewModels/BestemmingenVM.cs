@@ -17,16 +17,20 @@ using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Devices.Geolocation;
+using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
     public class BestemmingenVM: ViewModelBase
     {
-        //Properties
+        #region props
+        public bool Loading { get; set; }
+        public string Error { get; set; }
+
         public string SearchLocation { get; set; }
-        private Task task;
         public RelayCommand GoDestinationCommand { get; set; }
         public RelayCommand AddDestinationCommand { get; set; }
         public RelayCommand GoToCityCommand { get; set; }
@@ -36,12 +40,12 @@ namespace BOBApp.ViewModels
         public Users_Destinations SelectedDestination { get; set; }
         public Point CityLocation { get; set; }
 
-        private City _Destination;
+        private City _NewCity;
 
-        public City Destination
+        public City NewCity
         {
-            get { return _Destination; }
-            set { _Destination = value;}
+            get { return _NewCity; }
+            set { _NewCity = value;}
         }
 
         public Destination NewDestination { get; set; }
@@ -49,6 +53,7 @@ namespace BOBApp.ViewModels
         //databinding voor het center van de map
         public Geopoint MapCenter { get; set; }
 
+        #endregion
 
         //Constructor
         public BestemmingenVM()
@@ -56,47 +61,120 @@ namespace BOBApp.ViewModels
             if ((App.Current as App).UserLocation != null)//Kijken of we de locatie van de gebruiker hebben.
                 MapCenter = (App.Current as App).UserLocation.Coordinate.Point;//Zoja, center van de map eerst op de persoon focussen.
 
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+           
 
-            GetCities();
+
             AddDestinationCommand = new RelayCommand(AddDestination);
             GoDestinationCommand = new RelayCommand(GoDestination);
             GoToCityCommand = new RelayCommand(TownToCoord);
-            RaisePropertyChanged("SearchLocation");
-            this.Destination = new City();
-            this.NewDestination = new Destination();
-            RaisePropertyChanged("Destination");
-            RaisePropertyChanged("MapCenter");
-
-            GetDestinations();
            
+           
+
+            RaiseAll();
+
+
         }
 
+        private void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(Bestemmingen)))
+                {
+                    Loaded();
+                }
 
+                Type view2 = (Type)obj.View;
+                if (view2 == (typeof(Bestemmingen_Nieuw)))
+                {
+                    LoadedNew();
+                }
 
+            }
+        }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+                GetCities();
+                GetDestinations();
+                this.NewCity = new City();
+                this.NewDestination = new Destination();
+
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaiseAll();
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
+
+        private async void LoadedNew()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+                this.NewCity = new City();
+                this.NewDestination = new Destination();
+
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaiseAll();
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
+
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Error");
+            RaisePropertyChanged("SearchLocation");
+            RaisePropertyChanged("Destination");
+            RaisePropertyChanged("Destinations");
+            RaisePropertyChanged("MapCenter");
+            RaisePropertyChanged("NewDestination");
+        }
 
         //Methods
         private void AddDestination()
         {
-            task = AddDestination_task();
-            
+           Task task = AddDestination_task(); 
         }
 
         private async Task AddDestination_task()
         {
             Destination destination = new Destination()
             {
-                Cities_ID= this.Destination.ID,
+                Cities_ID = this.NewCity.ID,
                 Location = this.NewDestination.Location
 
             };
-            Libraries.Models.Response ok = await DestinationRepository.PostDestination(destination);
+            Response ok = await DestinationRepository.PostDestination(destination);
         }
 
         private void GoDestination()
         {
             Frame rootFrame =MainViewVM.MainFrame as Frame;
-
-            rootFrame.Navigate(typeof(Bestemmingen_Nieuw));
+            rootFrame.Navigate(typeof(Bestemmingen_Nieuw),true);
         }
         private async void GetDestinations()
         {
@@ -144,7 +222,7 @@ namespace BOBApp.ViewModels
         private async void TownToCoord()
         {
             //Naam ophalen uit de geselecteerde stad.
-            string Town = Destination.Name;
+            string Town = NewCity.Name;
 
             //Volledige string maken
             string URLFullTownToCoord = URL.BASISURLTOWNTOCOORD + Town + URL.URLBINGKEY + URL.BINGKEY + "&maxRes=1";//Volledige request url aanmaken, maar 1 resultaat terugvragen.
@@ -159,7 +237,7 @@ namespace BOBApp.ViewModels
                 {
                     foreach(var r in rs.resources)//Alle resources overlopen (maar 1, door onze vraag)
                     {
-                        Debug.WriteLine("Geselecteerde stadsnaam: " + Destination.Name + ", ontvangen stadsnaam: " + r.name);
+                        Debug.WriteLine("Geselecteerde stadsnaam: " + NewCity.Name + ", ontvangen stadsnaam: " + r.name);
                         Debug.WriteLine("Coordinaten ontvangen stad: " + r.point.coordinates[0] + ", " + r.point.coordinates[1]);
                         Debug.WriteLine("Coordinaten persoon: " + MapCenter.Position.Latitude + ", " + MapCenter.Position.Longitude);
 
@@ -167,7 +245,7 @@ namespace BOBApp.ViewModels
                         Geopoint temppoint = new Geopoint(new BasicGeoposition() { Latitude = r.point.coordinates[0], Longitude = r.point.coordinates[1] });
 
                         MapCenter = temppoint;
-                        RaisePropertyChanged("MapCenter");//Gebruiken zodat de mapcenter meteen veranderd
+                        RaiseAll();//Gebruiken zodat de mapcenter meteen veranderd
                     }
                 }
             }
@@ -178,7 +256,7 @@ namespace BOBApp.ViewModels
         //Locatie van nieuwe destinatie opslaan
         public void setDestinationLocation(string location)
         {
-            NewDestination.Location = location;
+            this.NewDestination.Location = location;
         }
     }
 }

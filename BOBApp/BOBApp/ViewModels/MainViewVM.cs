@@ -30,8 +30,7 @@ namespace BOBApp.ViewModels
 
     public class MainViewVM:ViewModelBase
     {
-        //Properties
-        //public static
+        #region props
         public static Frame MainFrame;
         public static User USER;
         public static ChatRoom ChatRoom;
@@ -39,16 +38,16 @@ namespace BOBApp.ViewModels
         public static Libraries.Socket LatestSocket;
         public static int searchArea = 10000;
 
-        private Task logoffTask;
         public User User { get; set; }
         public RelayCommand LogOffCommand { get; set; }
-        public double Points { get; set; }
-        public bool Loading { get; set; }
-
         private IBackgroundTaskRegistration regTask = null;
         private object currentTrip;
 
+        public double Points { get; set; }
+        public bool Loading { get; set; }
 
+
+        #endregion
 
         //Constructor
         public MainViewVM()
@@ -58,13 +57,15 @@ namespace BOBApp.ViewModels
             PostLocation();
 
             SetupBackgroundTask();
+            StartSocket();
             LogOffCommand = new RelayCommand(LogOff);
+
             RaisePropertyChanged("User");
+        }
 
-
-    
-
-
+        #region socket
+        private void StartSocket()
+        {
             MainViewVM.socket = IO.Socket(URL.SOCKET);
             MainViewVM.socket.Connect();
 
@@ -72,7 +73,7 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("bob_ACCEPT", (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
                     MainViewVM.LatestSocket = _socket;
@@ -81,7 +82,7 @@ namespace BOBApp.ViewModels
                     Bob_Accept(_socket.From);
 
                 }
-               
+
             });
 
             MainViewVM.socket.On("disconnect", (msg) =>
@@ -92,7 +93,7 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("trip_START", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
@@ -110,7 +111,7 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("trip_DONE", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
@@ -123,7 +124,7 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("friend_REQUEST", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
                     //friend add
@@ -138,14 +139,14 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("trip_MAKE", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                
-                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
                     //from bob
                     User.All fromBob = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object.ToString());
-                    Trip newTrip =(Trip) GetTripObject();
+                    Trip newTrip = (Trip)GetTripObject();
 
 
                     MakeTrip(newTrip, fromBob.Bob.ID.Value);
@@ -156,11 +157,11 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("chatroom_OPEN", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
-                if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
                     //friend add
-                    
+
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     int bobsID = JsonConvert.DeserializeObject<int>(_socket.Object.ToString());
 
@@ -186,7 +187,6 @@ namespace BOBApp.ViewModels
 
                 }
             });
-
         }
 
         private async void TripStart()
@@ -197,8 +197,7 @@ namespace BOBApp.ViewModels
 
         private void FriendRequest(User.All fromUser)
         {
-           
-
+          
             Messenger.Default.Send<Dialog>(new Dialog()
             {
                 Message = fromUser.ToString() + " wilt u toevoegen als vriend",
@@ -236,17 +235,21 @@ namespace BOBApp.ViewModels
 
             if (MainViewVM.USER.IsBob==true)
             {
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     rootFrame.Navigate(typeof(VindRitBob), true);
                 });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
             else
             {
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     rootFrame.Navigate(typeof(VindRit), true);
                 });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
 
@@ -260,11 +263,13 @@ namespace BOBApp.ViewModels
 
             if (ok_chatroom == true)
             {
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     Frame rootFrame = MainViewVM.MainFrame as Frame;
                     rootFrame.Navigate(typeof(VindRitChat),true);
                 });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
            
@@ -292,7 +297,7 @@ namespace BOBApp.ViewModels
                 //error
             }
         }
-
+        #endregion
 
 
 
@@ -305,35 +310,15 @@ namespace BOBApp.ViewModels
 
 
 
+        #region methods
 
-        private void LogOff()
-        {
-            logoffTask = LogOffUser();
-        }
-        private async Task<Boolean> LogOffUser()
-        {
-            Response res = await LoginRepository.LogOff();
-            MainViewVM.socket.Disconnect();
-
-            Messenger.Default.Send<GoToPage>(new GoToPage()
-            {
-                Name = "Login"
-            });
-
-            return res.Success;
-        }
-        private async void GetPoints()
-        {
-            string points = await PointRepository.GetTotalPoints();
-
-            this.Points = double.Parse(points);
-        }
-        private void SetupBackgroundTask()
+        #region background
+        private async void SetupBackgroundTask()
         {
             string BackgroundTaskName = "UserLocation";
             string BackgroundTaskEntryPoint = "BobWorker.Service";
 
-           
+
 
 
             foreach (var item in BackgroundTaskRegistration.AllTasks)
@@ -350,7 +335,7 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                RegisterTask(BackgroundTaskName, BackgroundTaskEntryPoint);
+                await RegisterTask(BackgroundTaskName, BackgroundTaskEntryPoint);
             }
 
         }
@@ -363,12 +348,12 @@ namespace BOBApp.ViewModels
                 if (status == BackgroundAccessStatus.Denied)
                 {
                     //geen toegang
-                  
+
                 }
                 else
                 {
                     //toegang
-                   
+
 
 
                     BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
@@ -377,7 +362,7 @@ namespace BOBApp.ViewModels
 
                     var trigger = new TimeTrigger(15, false);// om de 2 minuten
 
-                   
+
                     builder.SetTrigger(trigger);
 
                     var condition = new SystemCondition(SystemConditionType.InternetAvailable);
@@ -399,31 +384,41 @@ namespace BOBApp.ViewModels
 
         private async void RegTask_Completed(BackgroundTaskRegistration sender, BackgroundTaskCompletedEventArgs args)
         {
-            
             Debug.WriteLine("Niewue locatie gestuurd");
-           
+        }
+        #endregion
 
-            //done
+        private void LogOff()
+        {
+            Task<bool> task = LogOffUser();
+        }
+        private async Task<Boolean> LogOffUser()
+        {
+            Response res = await LoginRepository.LogOff();
+            MainViewVM.socket.Disconnect();
 
+            Messenger.Default.Send<GoToPage>(new GoToPage()
+            {
+                Name = "Login"
+            });
+
+            return res.Success;
+        }
+        private async void GetPoints()
+        {
+            string points = await PointRepository.GetTotalPoints();
+
+            this.Points = double.Parse(points);
         }
 
-
-
-
-
-        #region methods
         //by user
         //wanneer bob accepteer, wordt door gebruiker die aanvraagd aangemaakt
         private async void MakeTrip(Trip trip, int bobID)
         {
-          
-
             Response res = Task.FromResult<Response>(await TripRepository.PostTrip(trip)).Result;
 
             if (res.Success == true)
             {
-               
-
                 Trip currentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
 
 
@@ -443,16 +438,11 @@ namespace BOBApp.ViewModels
 
                 MakeChatroom(bobID);
 
-                
-
-
             }
         }
 
-        private async void StartTrip(Trip currentTrip)
+        private void StartTrip(Trip currentTrip)
         {
-            
-
             if (currentTrip != null)
             {
                 VindRitVM.CurrentTrip = currentTrip;
@@ -470,15 +460,11 @@ namespace BOBApp.ViewModels
 
         private async void MakeChatroom(int bobs_ID)
         {
-
             Response res = Task.FromResult<Response>(await ChatRoomRepository.PostChatRoom(bobs_ID)).Result;
 
             if (res.Success == true)
             {
-               
-
-
-                VindRitChatVM.ID = res.NewID.Value;
+               VindRitChatVM.ID = res.NewID.Value;
 
                 Bob.All bob = VindRitVM.SelectedBob;
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
@@ -500,14 +486,10 @@ namespace BOBApp.ViewModels
 
                 MainViewVM.socket.Emit("chatroom_OPEN:send", JsonConvert.SerializeObject(socketSendToBob)); //bob
                 MainViewVM.socket.Emit("chatroom_OPEN:send", JsonConvert.SerializeObject(socketSendToUser)); //bob
-
-               
             }
 
         }
 
-
-        #endregion
 
         private async void PostLocation()
         {
@@ -546,11 +528,13 @@ namespace BOBApp.ViewModels
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Debug.WriteLine(ex.Message.ToString());
+                return null;
                 //return null;
             }
 
         }
+
+        #endregion
     }
 }

@@ -24,10 +24,16 @@ namespace BOBApp.ViewModels
     public class VindRitChatVM : ViewModelBase
     {
         //Properties
+
         public static int? ID;
-       
+
+
+        public bool Loading { get; set; }
+        public string Error { get; set; }
+
+
+
         public string SearchLocation { get; set; }
-        private Task task;
         public ChatRoom.All ChatRoom { get; set; }
         public RelayCommand AddCommentCommand { get; set; }
         public string ChatComment { get; set; }
@@ -40,20 +46,36 @@ namespace BOBApp.ViewModels
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             AddCommentCommand = new RelayCommand(AddComment);
-            RaisePropertyChanged("ChatComment");
 
-            getChatroom();
+
+           
+            RaiseAll();
+        }
+
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("ChatComment");
+            RaisePropertyChanged("SearchLocation");
+            RaisePropertyChanged("ChatRoom");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Error");
         }
 
         private void ExecuteNavigatedTo(NavigateTo obj)
         {
-            if (obj.View == typeof(VindRitChat))
-            {
-                getChatroom();
-            }
             if (obj.Reload == true)
             {
                 getChatroom();
+            }
+
+
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == (typeof(VindRitChat)))
+                {
+                    Loaded();
+                }
             }
 
             switch (obj.Name)
@@ -64,6 +86,27 @@ namespace BOBApp.ViewModels
                 default:
                     break;
             }
+        }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
+            {
+                // running in background
+                getChatroom();
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    this.Loading = false;
+                    RaiseAll();
+
+                });
+#pragma warning restore CS1998
+
+            });
         }
 
 
@@ -159,10 +202,10 @@ namespace BOBApp.ViewModels
         }
 
 
-        private void AddComment()
+        private async void AddComment()
         {
             //add comment to db
-            task = AddComment_task();
+            await AddComment_task();
         }
 
         private async Task<Boolean> AddComment_task()
@@ -195,7 +238,7 @@ namespace BOBApp.ViewModels
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToBob));
 
                 this.ChatComment = "";
-                RaisePropertyChanged("ChatComment");
+                RaiseAll();
                
             }
             return res.Success;
@@ -238,8 +281,7 @@ namespace BOBApp.ViewModels
                 }
 
                 this.ChatRoom = lijst;
-            
-                RaisePropertyChanged("ChatRoom");
+                RaiseAll();
             });
 
         }

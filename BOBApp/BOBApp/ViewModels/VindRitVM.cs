@@ -26,9 +26,8 @@ namespace BOBApp.ViewModels
 {
     public class VindRitVM : ViewModelBase
     {
-        //Properties
-
-        //static
+        #region props
+        #region static
         public static Party SelectedParty { get; set; }
 
         public static Bob.All SelectedBob { get; set; }
@@ -38,9 +37,18 @@ namespace BOBApp.ViewModels
         public static int StatusID { get; set; }
         public static int Request { get; set; }
 
+        #endregion
 
-        //public
-        //gets from static from filter
+        public bool Loading { get; set; }
+        public string Error { get; set; }
+        public Visibility VisibleFind { get; set; }
+        public Visibility VisibleCancel { get; set; }
+        public Visibility VisibleFilterContext { get; set; }
+        public Visibility VisibleModal { get; set; }
+        public Frame Frame { get; set; }
+
+        #region gets
+
         public string GetSelectedFriendsString
         {
             get
@@ -90,7 +98,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        public string RitTime { get; set; }
+      
 
 
         private async void getRitTime(Location location)
@@ -111,21 +119,21 @@ namespace BOBApp.ViewModels
             }
         }
 
-
+        #endregion
 
         //others
-        private Task task;
         public RelayCommand GoChatCommand { get; set; }
         public RelayCommand GoFilterCommand { get; set; }
         public RelayCommand FindBobCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
-        public string Error { get; set; }
-        public string BobRequests { get; set; }
+        public RelayCommand ShowModalCommand { get; set; }
+        public RelayCommand CloseModalCommand { get; set; }
 
+        public string BobRequests { get; set; }
+        public string RitTime { get; set; }
         public List<Party> Parties { get; set; }
 
-        public Visibility VisibleModal { get; set; }
-        public Frame Frame { get; set; }
+      
 
         private bool _EnableFind;
 
@@ -149,16 +157,13 @@ namespace BOBApp.ViewModels
             }
         }
 
-        public bool Loading { get; set; }
-        public Visibility VisibleFind { get; set; }
-
-        public Visibility VisibleCancel { get; set; }
-        public Visibility VisibleFilterContext { get; set; }
+       
 
 
-        public RelayCommand ShowModalCommand { get; set; }
-        public RelayCommand CloseModalCommand { get; set; }
+      
 
+
+        #endregion
 
         //Constructor
         public VindRitVM()
@@ -173,25 +178,29 @@ namespace BOBApp.ViewModels
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
-            //default on start
-            this.Loading = false;
-            RaisePropertyChanged("Loading");
-            this.EnableFind = true;
-            RaisePropertyChanged("EnableFind");
+            
+           
 
-
-            VisibleModal = Visibility.Collapsed;
-            RaisePropertyChanged("VisibleModal");
-            this.Frame = new Frame();
-            RaisePropertyChanged("Frame");
-
-            this.VisibleFilterContext = Visibility.Collapsed;
-            RaisePropertyChanged("VisibleFilterContext");
-
-
+            RaiseAll();
          
         }
 
+        private void RaiseAll()
+        {
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("EnableFind");
+            RaisePropertyChanged("VisibleModal");
+            RaisePropertyChanged("Frame");
+            RaisePropertyChanged("VisibleFilterContext");
+            RaisePropertyChanged("BobRequests");
+
+            RaisePropertyChanged("SelectedParty");
+            RaisePropertyChanged("SelectedBob");
+
+            RaisePropertyChanged("GetSelectedRating");
+            RaisePropertyChanged("GetSelectedBobsType");
+            RaisePropertyChanged("GetSelectedFriendsString");
+        }
 
         private async void Loaded()
         {
@@ -206,25 +215,25 @@ namespace BOBApp.ViewModels
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
+                    //default on start
+                    this.Loading = false;
+                    this.EnableFind = true;
+                    VisibleModal = Visibility.Collapsed;
+                    this.Frame = new Frame();
+                    this.VisibleFilterContext = Visibility.Collapsed;
+
+
                     Task task = GetParties();
                     Task task2 = GetDestinations();
                     Task task3 = GetBobTypes();
+                    GetCurrentTrip();
 
                     this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
-                    RaisePropertyChanged("BobRequests");
-
-
                     this.EnableFind = true;
-                    RaisePropertyChanged("EnableFind");
-
-
-
-                    GetCurrentTrip();
                     this.Loading = false;
-                    RaisePropertyChanged("Loading");
+                
 
-                   
-                   
+                    RaiseAll();
 
                 });
 #pragma warning restore CS1998
@@ -588,14 +597,12 @@ namespace BOBApp.ViewModels
                         VindRitVM.CurrentTrip = data;
 
                         this.EnableFind = false;
-                        RaisePropertyChanged("EnableFind");
                     }
                     else
                     {
                         this.EnableFind = true;
-                        RaisePropertyChanged("EnableFind");
-
                     }
+                    RaiseAll();
 
 
                 }
@@ -603,15 +610,15 @@ namespace BOBApp.ViewModels
                 {
 
                     this.EnableFind = true;
-                    RaisePropertyChanged("EnableFind");
+                   
                 }
             }
             else
             {
                 this.EnableFind = false;
-                RaisePropertyChanged("EnableFind");
+             
             }
-
+            RaiseAll();
 
 
 
@@ -623,8 +630,7 @@ namespace BOBApp.ViewModels
             this.Parties = await PartyRepository.GetParties();
             VindRitVM.SelectedParty = this.Parties[0];
 
-            RaisePropertyChanged("Parties");
-            RaisePropertyChanged("SelectedParty");
+            RaiseAll();
 
             if (this.Parties.Count > 0)
             {
@@ -673,7 +679,7 @@ namespace BOBApp.ViewModels
         private void GoFilter()
         {
             this.VisibleFilterContext = Visibility.Visible;
-            RaisePropertyChanged("VisibleFilterContext");
+            RaiseAll();
 
 
             Frame rootFrame = MainViewVM.MainFrame as Frame;
@@ -723,16 +729,14 @@ namespace BOBApp.ViewModels
         private async void FindBob()
         {
             this.VisibleFilterContext = Visibility.Visible;
-            RaisePropertyChanged("VisibleFilterContext");
-
             this.Loading = true;
-            RaisePropertyChanged("Loading");
+            RaiseAll();
             bobs = new List<Bob>();
 
             bobs = Task.FromResult<List<Bob>>(await FindBob_task()).Result;
 
             this.Loading = false;
-            RaisePropertyChanged("Loading");
+           
 
             if (bobs == null || bobs.Count <= 0) {
                 Messenger.Default.Send<Dialog>(new Dialog()
@@ -751,6 +755,7 @@ namespace BOBApp.ViewModels
                 ShowBob(bobs.First());
 
             }
+            RaiseAll();
 
         }
 
@@ -817,7 +822,7 @@ namespace BOBApp.ViewModels
             BobisDone(location, "Trip is geannuleerd");
 
             this.EnableFind = true;
-            RaisePropertyChanged("EnableFind");
+            RaiseAll();
         }
 
 
@@ -830,14 +835,7 @@ namespace BOBApp.ViewModels
             Loaded();
 
             VisibleModal = Visibility.Collapsed;
-            RaisePropertyChanged("VisibleModal");
-
-            RaisePropertyChanged("SelectedParty");
-            RaisePropertyChanged("SelectedBob");
-
-            RaisePropertyChanged("GetSelectedRating");
-            RaisePropertyChanged("GetSelectedBobsType");
-            RaisePropertyChanged("GetSelectedFriendsString");
+            RaiseAll();
 
            
            
@@ -846,10 +844,10 @@ namespace BOBApp.ViewModels
         {
             this.Frame = new Frame();
             this.Frame.Navigate(typeof(VindRitFilter));
-            RaisePropertyChanged("Frame");
+           
 
             VisibleModal = Visibility.Visible;
-            RaisePropertyChanged("VisibleModal");
+            RaiseAll();
 
         }
 
