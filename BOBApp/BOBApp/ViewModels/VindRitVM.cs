@@ -40,7 +40,7 @@ namespace BOBApp.ViewModels
 
 
 
-        public List<Bob> BobList { get; set; }
+        public List<Bob.All> BobList { get; set; }
 
 
         #endregion
@@ -278,9 +278,26 @@ namespace BOBApp.ViewModels
             this.VisibleFilterContext = Visibility.Collapsed;
            
 
+            //Ritten ophalen
+            getBobs();
 
             //Loaded();
             RaiseAll();
+        }
+
+        private async void getBobs()
+        {
+            this.BobList = new List<Bob.All>();
+
+            //Ingeladen bobs ophalen
+            List<Bob.All> omtezettenbobs = await BobsRepository.GetBobs();
+
+            for (int i = 0; i < omtezettenbobs.Count(); i++)
+            {
+                Bob.All bob = omtezettenbobs[i];
+
+                BobList.Add(bob);
+            }
         }
 
         private void RaiseAll()
