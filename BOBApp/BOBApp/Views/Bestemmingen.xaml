@@ -33,10 +33,10 @@
                         <TextBlock x:Name="title" HorizontalAlignment="left" FontSize="20" FontWeight="Light" Text="{Binding Name, Mode=TwoWay, Converter={StaticResource ToUpperConverter}}" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
                         <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding Cities_Name, Mode=TwoWay}" />
                         
-                        <Button x:Name="go" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" VerticalAlignment="Center" Command="{Binding SetDefault,Mode=TwoWay}" CommandParameter="{Binding Destinations_ID, Mode=TwoWay}" Content="Setdefault"/>
+                        <Button x:Name="go" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWith="date"  VerticalAlignment="Center" Command="{Binding SetDefault,Mode=TwoWay}" CommandParameter="{Binding Destinations_ID, Mode=TwoWay}" Content="Setdefault"/>
                         <TextBlock x:Name="date" RelativePanel.Below="subTitle" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,10,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding Added, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" />
 
-                        <Maps:MapControl x:Name="map" Margin="-15,10,-15,-15" Height="80" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="go" RelativePanel.AlignBottomWithPanel="True">
+                        <Maps:MapControl x:Name="map" Margin="-15,10,-15,-15" Height="180" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="go" RelativePanel.AlignBottomWithPanel="True">
                             <Maps:MapItemsControl />
                         </Maps:MapControl>
                     </RelativePanel>

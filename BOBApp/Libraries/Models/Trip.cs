@@ -21,13 +21,16 @@ namespace Libraries.Models
         public bool Active { get; set; }
 
 
+        //optional
+        public double Rating { get; set; }
+
         public class All
         {
             public Trip Trip { get; set; }
             public Party Party { get; set; }
             public Users_Destinations Destination { get; set; }
-            public User User { get; set; }
-            public User Bob { get; set; }
+            public User.All User { get; set; }
+            public Bob.All Bob { get; set; }
         }
     }
 }

@@ -30,12 +30,20 @@ namespace Libraries.Models
             {
                 get
                 {
-                    string[] splittedcoord = Location.Split(',', ':', '}');
-                    BasicGeoposition tempbasic = new BasicGeoposition();
-                    tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
-                    tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
-                    geolocation = new Geopoint(tempbasic);
-                    return geolocation;
+                    try
+                    {
+                        string[] splittedcoord = Location.Split(',', ':', '}');
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
+                        tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
+                        geolocation = new Geopoint(tempbasic);
+                        return geolocation;
+                    }
+                    catch (Exception)
+                    {
+
+                        return null;
+                    }
                 }
                 set { geolocation = value; }
             }

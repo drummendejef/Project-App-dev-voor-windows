@@ -64,17 +64,23 @@ namespace BOBApp.ViewModels
 
             });
 
+            GetCurrentTrip();
+            GetTrips();
             //raise
             RaiseAll();
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Trips");
-            RaisePropertyChanged("CurrentTrip");
-            RaisePropertyChanged("Car");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
+#pragma warning disable CS1998
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Trips");
+                RaisePropertyChanged("CurrentTrip");
+                RaisePropertyChanged("Car");
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
+            });
         }
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
@@ -134,8 +140,8 @@ namespace BOBApp.ViewModels
 
                     newTrip.Trip = currenttrip;
                     newTrip.Party = party;
-                    newTrip.User = user.User;
-                    newTrip.Bob = bob.User;
+                    newTrip.User = user;
+                    newTrip.Bob = bob;
                     newTrip.Destination = destination;
 
                     MoveCar(newTrip.Trip.Status_Name);
@@ -194,46 +200,115 @@ namespace BOBApp.ViewModels
         private async void GetTrips()
         {
             bool canRun = true;
-            List<Trip> trips = await TripRepository.GetTrips();
-
-            trips_all = new List<Trip.All>();
-
-           
-            for (int i = 0; i < trips.Count; i++)
-            {
-                Task<User.All> user= Task.FromResult<User.All>(await UsersRepository.GetUserById(trips[i].Users_ID));
-                Task<Bob.All> bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(trips[i].Bobs_ID));
-                Task<Users_Destinations> destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById((trips[i].Destinations_ID)));
-                Task<Party> party = Task.FromResult<Party>(await PartyRepository.GetPartyById(trips[i].Party_ID));
-                Trip.All newTrip = new Trip.All();
-                
-                
-                newTrip.Trip = trips[i];
-                newTrip.User = user.Result.User;
-                newTrip.Bob = bob.Result.User;
-                newTrip.Party = party.Result;
-                newTrip.Destination = destination.Result;
-                trips_all.Add(newTrip);
-
 #pragma warning disable CS1998
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                List<Trip> trips = await TripRepository.GetTrips();
+
+                trips_all = new List<Trip.All>();
+
+                if (trips_all==null || trips_all.Count == 0)
                 {
-                    if (trips_all.Count >= 10 && canRun == true)
-                    {
-                        this.Trips = trips_all.Take(10).ToList();
-                        RaiseAll();
-                        canRun = false;
-                    }
+                    this.Error = "Geen trips gevonden";
+                    canRun = false;
+                    RaiseAll();
+                }
+
+
+                for (int i = 0; i < trips.Count; i++)
+                {
+                    Task<User.All> user= Task.FromResult<User.All>(await UsersRepository.GetUserById(trips[i].Users_ID));
+                    Task<Bob.All> bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(trips[i].Bobs_ID));
+                    Task<Users_Destinations> destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById((trips[i].Destinations_ID)));
+                    Task<Party> party = Task.FromResult<Party>(await PartyRepository.GetPartyById(trips[i].Party_ID));
+                    Trip.All newTrip = new Trip.All();
+                
+                
+                    newTrip.Trip = trips[i];
+                    newTrip.User = user.Result;
+                    newTrip.Bob = bob.Result;
+                    newTrip.Party = party.Result;
+                    newTrip.Destination = destination.Result;
+                    trips_all.Add(newTrip);
 
 
 
-                });
+                }
+
+
+                if ((trips_all.Count >= 10 || trips_all.Count < 10) && canRun == true)
+                {
+                    this.Trips = trips_all.Take(10).ToList();
+                    canRun = false;
+                    RaiseAll();
+                }
+
+
+            });
 #pragma warning restore CS1998
 
+        }
+
+
+
+        //bind events
+        public async void Changed(object sender, SelectionChangedEventArgs e)
+        {
+            ListView item = (ListView)sender;
+            if (item.SelectedIndex == -1)
+            {
+                return;
             }
 
 
+            var dialog = new ContentDialog()
+            {
+                Title = "",
+            };
 
+            // Setup Content
+            var panel = new StackPanel();
+
+            panel.Children.Add(new TextBlock
+            {
+                Text = "Volgende bestemming wilt u wijzigen: ",
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 15)
+            });
+
+            var cb = new TextBox
+            {
+                TextWrapping = TextWrapping.Wrap,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
+            };
+
+
+
+            panel.Children.Add(cb);
+            dialog.Content = panel;
+
+            // Add Buttons
+            dialog.PrimaryButtonText = "Ok";
+            dialog.PrimaryButtonClick += async delegate
+            {
+                string text = cb.Text;
+                
+                Loaded();
+            };
+
+            dialog.SecondaryButtonText = "Cancel";
+            dialog.SecondaryButtonClick += delegate
+            {
+
+            };
+
+            // Show Dialog
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.None)
+            {
+
+            }
+            item.SelectedIndex = -1;
 
 
         }

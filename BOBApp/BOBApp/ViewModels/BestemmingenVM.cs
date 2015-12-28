@@ -187,7 +187,11 @@ namespace BOBApp.ViewModels
 
             for (int i = 0; i < this.Destinations.Count; i++)
             {
-                this.Destinations[i].SetDefault = new RelayCommand<object>(SetDefault);
+                if (this.Destinations[i].Default == false)
+                {
+                    this.Destinations[i].SetDefault = new RelayCommand<object>(SetDefault);
+                }
+                
             }
         }
 

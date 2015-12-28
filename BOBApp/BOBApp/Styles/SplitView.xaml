@@ -294,6 +294,7 @@
 
                             <!-- text -->
                             <ContentPresenter x:Name="ContentPresenter"
+                                    FontWeight="Light"
                         			Grid.Column="1"
                         			Margin="{TemplateBinding Padding}"
                         			HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"

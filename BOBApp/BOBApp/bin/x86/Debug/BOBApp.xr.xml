@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="Alignment" />
     <RootPropertyPathName Name="Background" />
@@ -21,6 +24,7 @@
     <RootPropertyPathName Name="Destinations" />
     <RootPropertyPathName Name="SetDefault" />
     <RootPropertyPathName Name="Destinations_ID" />
+    <RootPropertyPathName Name="Cities_Name" />
     <RootPropertyPathName Name="GoDestinationCommand" />
     <RootPropertyPathName Name="SearchLocation" />
     <RootPropertyPathName Name="NewDestination" />
@@ -65,6 +69,7 @@
     <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="Lastname" />
     <RootPropertyPathName Name="PuntenVM" />
+    <RootPropertyPathName Name="SelectedPoint" />
     <RootPropertyPathName Name="PointsText" />
     <RootPropertyPathName Name="RegisterVM" />
     <RootPropertyPathName Name="CancelCommand" />
@@ -72,6 +77,8 @@
     <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="SelectedAutoType" />
+    <RootPropertyPathName Name="Licenseplate" />
+    <RootPropertyPathName Name="Rating" />
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
@@ -83,10 +90,11 @@
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="BobList" />
-    <RootPropertyPathName Name="GetSelectedRating" />
     <RootPropertyPathName Name="VisibleSelectedParty" />
     <RootPropertyPathName Name="GetRitTime" />
     <RootPropertyPathName Name="SelectedBob" />
+    <RootPropertyPathName Name="VisibleSelectedRating" />
+    <RootPropertyPathName Name="GetSelectedRating" />
     <RootPropertyPathName Name="VisibleSelectedFriends" />
     <RootPropertyPathName Name="GetSelectedFriendsString" />
     <RootPropertyPathName Name="VisibleSelectedBobsType" />
@@ -171,6 +179,7 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Text" />
       <RootProperty Name="Style" />
+      <RootProperty Name="FontWeight" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Padding" />
       <RootProperty Name="HorizontalAlignment" />
@@ -183,7 +192,6 @@
       <RootProperty Name="FontStyle" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="FontWeight" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="Tapped" />
     </RootType>
@@ -194,7 +202,6 @@
       <RootProperty Name="MinHeight" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RadioButton">
       <RootProperty Name="GroupName" />
@@ -217,9 +224,11 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontSize" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="UseSystemFocusVisuals" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="TabNavigation" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Setter">
       <RootProperty Name="Property" />
@@ -293,6 +302,7 @@
       <RootProperty Name="StrokeEndLineCap" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
+      <RootProperty Name="FontWeight" />
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
@@ -301,7 +311,6 @@
       <RootProperty Name="ContentTransitions" />
       <RootProperty Name="Height" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="FontWeight" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
@@ -315,7 +324,6 @@
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Color" />
-    <RootType FullName="Windows.UI.Xaml.Controls.UserControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="SelectionHighlightColor" />
       <RootProperty Name="Width" />
@@ -331,25 +339,41 @@
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="TabNavigation" />
       <RootProperty Name="HorizontalScrollMode" />
       <RootProperty Name="HorizontalScrollBarVisibility" />
-      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="IsHorizontalScrollChainingEnabled" />
+      <RootProperty Name="VerticalScrollMode" />
+      <RootProperty Name="VerticalScrollBarVisibility" />
+      <RootProperty Name="IsVerticalScrollChainingEnabled" />
       <RootProperty Name="IsHorizontalRailEnabled" />
       <RootProperty Name="IsVerticalRailEnabled" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Padding" />
-      <RootProperty Name="VerticalScrollBarVisibility" />
-      <RootProperty Name="VerticalScrollMode" />
       <RootProperty Name="ZoomMode" />
       <RootProperty Name="IsDeferredScrollingEnabled" />
-      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="BringIntoViewOnFocusChange" />
       <RootProperty Name="Content" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootMethod Name="GetHorizontalScrollBarVisibility" />
       <RootMethod Name="SetHorizontalScrollBarVisibility" />
       <RootMethod Name="GetVerticalScrollBarVisibility" />
       <RootMethod Name="SetVerticalScrollBarVisibility" />
       <RootMethod Name="GetIsDeferredScrollingEnabled" />
       <RootMethod Name="SetIsDeferredScrollingEnabled" />
+      <RootMethod Name="GetHorizontalScrollMode" />
+      <RootMethod Name="SetHorizontalScrollMode" />
+      <RootMethod Name="GetIsHorizontalRailEnabled" />
+      <RootMethod Name="SetIsHorizontalRailEnabled" />
+      <RootMethod Name="GetVerticalScrollMode" />
+      <RootMethod Name="SetVerticalScrollMode" />
+      <RootMethod Name="GetIsVerticalRailEnabled" />
+      <RootMethod Name="SetIsVerticalRailEnabled" />
+      <RootMethod Name="GetZoomMode" />
+      <RootMethod Name="SetZoomMode" />
+      <RootMethod Name="GetBringIntoViewOnFocusChange" />
+      <RootMethod Name="SetBringIntoViewOnFocusChange" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="BorderThickness" />
@@ -362,11 +386,11 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Content" />
       <RootProperty Name="Command" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="CommandParameter" />
       <RootProperty Name="Height" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
@@ -390,8 +414,32 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="MinWidth" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewBase">
+      <RootProperty Name="IsSwipeEnabled" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
+      <RootProperty Name="ItemContainerTransitions" />
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
       <RootProperty Name="Margin" />
@@ -402,15 +450,18 @@
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
       <RootProperty Name="Source" />
-      <RootProperty Name="Path" />
       <RootProperty Name="UpdateSourceTrigger" />
+      <RootProperty Name="Converter" />
+      <RootProperty Name="Path" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="BorderThickness" />
-      <RootProperty Name="Padding" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
@@ -421,6 +472,8 @@
       <RootMethod Name="SetRightOf" />
       <RootMethod Name="GetBelow" />
       <RootMethod Name="SetBelow" />
+      <RootMethod Name="GetAlignVerticalCenterWith" />
+      <RootMethod Name="SetAlignVerticalCenterWith" />
       <RootMethod Name="GetAlignLeftWithPanel" />
       <RootMethod Name="SetAlignLeftWithPanel" />
       <RootMethod Name="GetAlignBottomWithPanel" />
@@ -431,6 +484,8 @@
       <RootMethod Name="SetAlignRightWith" />
       <RootMethod Name="GetAlignVerticalCenterWithPanel" />
       <RootMethod Name="SetAlignVerticalCenterWithPanel" />
+      <RootMethod Name="GetLeftOf" />
+      <RootMethod Name="SetLeftOf" />
       <RootMethod Name="GetAlignBottomWith" />
       <RootMethod Name="SetAlignBottomWith" />
       <RootMethod Name="GetAlignTopWith" />
@@ -439,6 +494,28 @@
       <RootMethod Name="SetAbove" />
       <RootMethod Name="GetAlignTopWithPanel" />
       <RootMethod Name="SetAlignTopWithPanel" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter">
+      <RootProperty Name="Header" />
+      <RootProperty Name="HeaderTemplate" />
+      <RootProperty Name="HeaderTransitions" />
+      <RootProperty Name="Footer" />
+      <RootProperty Name="FooterTemplate" />
+      <RootProperty Name="FooterTransitions" />
+      <RootProperty Name="Padding" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsStackPanel">
+      <RootProperty Name="Orientation" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.AddDeleteThemeTransition" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.ContentThemeTransition" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.ReorderThemeTransition" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceThemeTransition">
+      <RootProperty Name="IsStaggeringEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
@@ -463,14 +540,23 @@
       <RootMethod Name="GetZIndex" />
       <RootMethod Name="SetZIndex" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
-      <RootProperty Name="Width" />
-      <RootProperty Name="MinHeight" />
-      <RootProperty Name="SelectedItem" />
-      <RootProperty Name="ItemsSource" />
+    <RootType FullName="BOBApp.Converters.StringToUpperConverter" />
+    <RootType FullName="BOBApp.Converters.DateTimeConverter" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="MapServiceToken" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Center" />
+      <RootProperty Name="ZoomLevel" />
+      <RootEvent Name="MapHolding" />
+      <RootMethod Name="GetLocation" />
+      <RootMethod Name="SetLocation" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapItemsControl">
+      <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="MinWidth" />
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
@@ -486,25 +572,11 @@
       <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
-      <RootProperty Name="Center" />
-      <RootProperty Name="ZoomLevel" />
-      <RootProperty Name="MapServiceToken" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Children" />
-      <RootEvent Name="MapHolding" />
-      <RootMethod Name="GetLocation" />
-      <RootMethod Name="SetLocation" />
-    </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
       <RootProperty Name="Content" />
       <RootProperty Name="NavigateUri" />
       <RootProperty Name="Margin" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapItemsControl">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
     </RootType>
     <RootType FullName="BOBApp.Views.FeestjesOverzicht" />
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
@@ -536,7 +608,6 @@
       <RootEvent Name="Navigating" />
       <RootEvent Name="NavigationStopped" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition">
       <RootProperty Name="DefaultNavigationTransitionInfo" />
     </RootType>
@@ -575,12 +646,6 @@
       <RootProperty Name="Command" />
     </RootType>
     <RootType FullName="BOBApp.Views.VindRitBob" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
-    </RootType>
     <RootType FullName="BOBApp.Views.VindRitChat" />
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
       <RootProperty Name="Margin" />

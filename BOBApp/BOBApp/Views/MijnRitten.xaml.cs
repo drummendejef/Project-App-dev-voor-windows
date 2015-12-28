@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,13 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class MijnRitten : Page
     {
+        public MijnRittenVM Vm
+        {
+            get
+            {
+                return this.DataContext as MijnRittenVM;
+            }
+        }
         public MijnRitten()
         {
             this.InitializeComponent();

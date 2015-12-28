@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
@@ -22,6 +24,7 @@ namespace BOBApp.ViewModels
 
 
         public List<Point> Points { get; set; }
+        public Point SelectedPoint { get; set; }
         public string TotalPoints { get; set; }
         public string PointsText { get; set; }
 
@@ -40,6 +43,7 @@ namespace BOBApp.ViewModels
             this.PointsText = "U hebt " + TotalPoints + " punten.";
             RaisePropertyChanged("Points");
             RaisePropertyChanged("TotalPoints");
+            RaisePropertyChanged("SelectedPoint");
             RaisePropertyChanged("PointsText");
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");
@@ -91,6 +95,68 @@ namespace BOBApp.ViewModels
         private async void GetPoints()
         {
             this.Points = await PointRepository.GetPoints();
+
+        }
+
+        //bind events
+        public async void Changed(object sender, SelectionChangedEventArgs e)
+        {
+            ListView item = (ListView)sender;
+            if (item.SelectedIndex == -1)
+            {
+                return;
+            }
+
+
+            var dialog = new ContentDialog()
+            {
+                Title = "",
+            };
+
+            // Setup Content
+            var panel = new StackPanel();
+
+            panel.Children.Add(new TextBlock
+            {
+                Text = "Volgende bestemming wilt u wijzigen: ",
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 15)
+            });
+
+            var cb = new TextBox
+            {
+                TextWrapping = TextWrapping.Wrap,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
+            };
+
+
+
+            panel.Children.Add(cb);
+            dialog.Content = panel;
+
+            // Add Buttons
+            dialog.PrimaryButtonText = "Ok";
+            dialog.PrimaryButtonClick += async delegate
+            {
+                string text = cb.Text;
+              
+                Loaded();
+            };
+
+            dialog.SecondaryButtonText = "Cancel";
+            dialog.SecondaryButtonClick += delegate
+            {
+
+            };
+
+            // Show Dialog
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.None)
+            {
+
+            }
+            item.SelectedIndex = -1;
+
 
         }
 

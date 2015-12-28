@@ -19,8 +19,13 @@
     <Color x:Key="cWhite">#CCFFFFFF</Color>
 
     <!--STANDAARD STYLES-->
-    <Style TargetType="UserControl">
-        <Setter Property="FontFamily" Value="/BOBApp;component/Styles/Fonts/#Raleway"/>
+    <Style TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Light"/>
+    </Style>
+    <Style x:Key="h1" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="20"/>
     </Style>
     <Style x:Key="LoginText" TargetType="TextBox">
         <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
@@ -31,6 +36,7 @@
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource SystemControlHighlightAccentBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
@@ -183,6 +189,7 @@
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource SystemControlHighlightAccentBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
@@ -334,7 +341,8 @@
         <Setter Property="Padding" Value="8,4,8,4"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="/BOBApp;component/Styles/Fonts/#Raleway"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="UseSystemFocusVisuals" Value="True"/>
@@ -394,7 +402,7 @@
         <Setter Property="SelectionHighlightColor" Value="{ThemeResource SystemControlHighlightAccentBrush}"/>
         <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundChromeDisabledLowBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontFamily" Value="/BOBApp;component/Styles/Fonts/#Raleway"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
@@ -549,16 +557,22 @@
     <Style x:Key="login_textblock" TargetType="TextBlock">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
     <Style x:Key="login_textbox" TargetType="TextBox">
         <Setter Property="Padding" Value="10,8,0,8" />
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="20,20,20,10"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
     <Style x:Key="pass_textbox" TargetType="PasswordBox">
         <Setter Property="Padding" Value="10,8,0,8" />
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="20,10,20,10"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
 
     <Style x:Key="login_button" TargetType="Button" BasedOn="{StaticResource button}">
@@ -566,10 +580,20 @@
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Height" Value="60"/>
         <Setter Property="Content" Value="Login"/>
-    
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
 
     </Style>
 
+    <Style x:Key="listViewItem" TargetType="ListViewItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <ContentPresenter/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <!--MENU-->
 
@@ -580,7 +604,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Margin" Value="0,0,0,5"/>
-        <Setter Property="FontFamily" Value="/BOBApp;component/Styles/Fonts/#Raleway"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
         <Setter Property="FontWeight" Value="Light"/>
 
         <Setter Property="Template">
@@ -621,10 +645,14 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="Height" Value="auto"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
     <Style x:Key="TextBlock_items" TargetType="TextBlock">
         <Setter Property="Margin" Value="20,4,20,4"/>
         <Setter Property="Height" Value="30"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
 
 
@@ -632,6 +660,8 @@
     <Style x:Key="textblock" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
+        <Setter Property="FontWeight" Value="Light"/>
     </Style>
 
     <!--EDIT button-->
@@ -651,6 +681,8 @@
     </Style>
     <Style x:Key="delete" TargetType="Button" BasedOn="{StaticResource menu_button}">
         <Setter Property="Background"  Value="#10FFFFFF"/>
+      
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -662,37 +694,14 @@
         </Setter>
 
     </Style>
-    <Style x:Key="min" TargetType="Button" BasedOn="{StaticResource menu_button}">
-        <Setter Property="Background"  Value="#10FFFFFF"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border  Background="{TemplateBinding Background}">
-                        <Image Source="images/delete.png" MaxHeight="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-    </Style>
-    <Style x:Key="plus" TargetType="Button" BasedOn="{StaticResource menu_button}">
-        <Setter Property="Background"  Value="#10FFFFFF"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border  Background="{TemplateBinding Background}">
-                        <Image Source="images/delete.png" MaxHeight="25"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-    </Style>
+  
     <!--CANCEL BUTTON-->
     <Style x:Key="cancel" TargetType="Button">
         <Setter Property="Background"  Value="#FFDCDCDC"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="Margin" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -709,22 +718,6 @@
 
 
 
-    <Style x:Key="eid" TargetType="Button" BasedOn="{StaticResource menu_button}">
-        <Setter Property="Background"  Value="#10FFFFFF"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="50"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border  Background="{TemplateBinding Background}">
-                        <Image Source="images/id.png" MaxHeight="40"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-    </Style>
-
 
 
     <DataTemplate x:Key="DataTemplate">
@@ -739,7 +732,7 @@
         <Setter Property="Padding" Value="8"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="/BOBApp;component/Styles/Fonts/#Raleway"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="UseSystemFocusVisuals" Value="True"/>
@@ -798,7 +791,7 @@
         <Setter Property="Padding" Value="8"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="/BOBApp;component/Styles/Fonts/#Raleway"/>
+        <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
         <Setter Property="UseSystemFocusVisuals" Value="True"/>
@@ -851,6 +844,71 @@
         </Setter>
     </Style>
 
+    <Style x:Key="listView" TargetType="ListView">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="TabNavigation" Value="Once" />
+        <Setter Property="IsSwipeEnabled" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled" />
+        <Setter Property="ScrollViewer.IsHorizontalRailEnabled" Value="False" />
+        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Enabled" />
+        <Setter Property="ScrollViewer.IsVerticalRailEnabled" Value="True" />
+        <Setter Property="ScrollViewer.ZoomMode" Value="Disabled" />
+        <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
+        <Setter Property="ScrollViewer.BringIntoViewOnFocusChange" Value="True" />
+        <Setter Property="ItemContainerTransitions">
+            <Setter.Value>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition />
+                    <ContentThemeTransition />
+                    <ReorderThemeTransition />
+                    <EntranceThemeTransition IsStaggeringEnabled="False" />
+                </TransitionCollection>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListView">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                Background="{TemplateBinding Background}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer x:Name="ScrollViewer"
+                        TabNavigation="{TemplateBinding TabNavigation}"
+                        HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}"
+                        HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}"
+                        IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}"
+                        VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}"
+                        VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}"
+                        IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}"
+                        IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}"
+                        IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}"
+                        ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}"
+                        IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}"
+                        BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}"
+                        AutomationProperties.AccessibilityView="Raw">
+                            <ItemsPresenter
+                Header="{TemplateBinding Header}"
+                HeaderTemplate="{TemplateBinding HeaderTemplate}"
+                HeaderTransitions="{TemplateBinding HeaderTransitions}"
+                Footer="{TemplateBinding Footer}"
+                FooterTemplate="{TemplateBinding FooterTemplate}"
+                FooterTransitions="{TemplateBinding FooterTransitions}"
+                Padding="{TemplateBinding Padding}"/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--templates-->
     <DataTemplate x:Key="TemplatePunten">
         <Grid>
@@ -882,6 +940,9 @@
             <TextBlock Grid.Row="1" Text="{Binding Added}" Grid.Column="1"/>
         </Grid>
     </DataTemplate>
+
+
+    
 
     <DataTemplate x:Key="TemplateTrips">
         <RelativePanel >

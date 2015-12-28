@@ -309,7 +309,16 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("VisibleCancel");
             RaisePropertyChanged("CancelText");
             RaisePropertyChanged("VisibleChat");
-            RaisePropertyChanged("Frame");
+            try
+            {
+                RaisePropertyChanged("Frame");
+            }
+            catch (Exception)
+            {
+
+                
+            }
+           
             RaisePropertyChanged("VisibleFilterContext");
             RaisePropertyChanged("BobRequests");
 
