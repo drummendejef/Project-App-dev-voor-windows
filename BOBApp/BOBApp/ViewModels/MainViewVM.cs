@@ -77,9 +77,9 @@ namespace BOBApp.ViewModels
                 //if (_socket.Status == true)
                 {
                     MainViewVM.LatestSocket = _socket;
-                    VindRitVM.Request = VindRitVM.Request + 1;
+                    VindRitBobVM.Request = VindRitBobVM.Request + 1;
 
-                    Bob_Accept(_socket.From);
+                    Bob_Accept(_socket.From,_socket.ID);
 
                 }
 
@@ -275,21 +275,22 @@ namespace BOBApp.ViewModels
            
         }
 
-        private async void Bob_Accept(int from)
+        private async void Bob_Accept(int from, int id)
         {
             User user = Task.FromResult<User.All>(await UsersRepository.GetUserById(from)).Result.User;
 
             VindRitVM.SelectedUser = user;
             if (user != null)
             {
-               
+
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
                     Message = user.ToString() + " wilt u als bob",
                     Ok = "Accept",
                     Nok = "Ignore",
                     ParamView = true,
-                    Cb= "bob_accepted"
+                    Cb = "bob_accepted",
+                    Data = id
                 });
             }
             else

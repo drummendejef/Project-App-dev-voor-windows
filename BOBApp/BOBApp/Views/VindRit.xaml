@@ -52,24 +52,29 @@
         
         
         <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
-            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetStatus, Mode=TwoWay}"/>
+            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="16" x:Name="lblStatus" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetStatus, Mode=TwoWay}"/>
+            <TextBlock Visibility="{Binding VisibleSelectedParty, Mode=TwoWay}" RelativePanel.Below="lblStatus" Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedParty.Name, Mode=TwoWay}"/>
+
 
             <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding ShowModalCommand}"   />
 
             <RelativePanel  RelativePanel.Below="lblFeest" RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="filter" >
 
-                <TextBlock x:Name="lblBobType" Margin="0,0,0,8" Text="Bobtype: "/>
-                <TextBlock RelativePanel.RightOf="lblBobType" Margin="10,0,0,0" Text="{Binding GetSelectedBobsType.Name,Mode=TwoWay}"/>
+                <TextBlock Visibility="{Binding VisibleSelectedBobsType, Mode=TwoWay}" x:Name="lblBobType" Margin="0,0,0,8" Text="Bobtype: "/>
+                <TextBlock Visibility="{Binding VisibleSelectedBobsType, Mode=TwoWay}" RelativePanel.RightOf="lblBobType" Margin="10,0,0,0" Text="{Binding GetSelectedBobsType.Name,Mode=TwoWay}"/>
 
-                <TextBlock x:Name="lblFriends" Margin="0,0,0,8" RelativePanel.Below="lblBobType" Text="Friends: "/>
-                <TextBlock RelativePanel.RightOf="lblFriends" Margin="10,0,0,0" RelativePanel.Below="lblBobType" Text="{Binding GetSelectedFriendsString, Mode=TwoWay}"/>
+                <TextBlock Visibility="{Binding VisibleSelectedFriends, Mode=TwoWay}" x:Name="lblFriends" Margin="0,0,0,8" RelativePanel.Below="lblBobType" Text="Friends: "/>
+                <TextBlock Visibility="{Binding VisibleSelectedFriends, Mode=TwoWay}" RelativePanel.RightOf="lblFriends" Margin="10,0,0,0" RelativePanel.Below="lblBobType" Text="{Binding GetSelectedFriendsString, Mode=TwoWay}"/>
 
-                <RelativePanel RelativePanel.Below="lblFriends" >
+                <TextBlock Visibility="{Binding VisibleSelectedFriends, Mode=TwoWay}" x:Name="lblRating" Margin="0,0,0,8" RelativePanel.Below="lblFriends" Text="Rating: "/>
+
+                <TextBlock Visibility="{Binding VisibleSelectedRating, Mode=TwoWay}" RelativePanel.Below="lblRating" Margin="10,0,0,0"  Text="{Binding GetSelectedRating, Mode=TwoWay}"/>
+
+
+                <RelativePanel Visibility="{Binding VisibleSelectedParty, Mode=TwoWay}"  RelativePanel.Below="lblFriends" >
                     <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="TIME TO YOUR DESTINATION WITH BOB "/>
                     <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime" Margin="10,0,0,0"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
                     <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding GetRitTime, Mode=TwoWay}"/>
-                    <TextBlock RelativePanel.Below="lblTime3" Margin="10,0,0,0"  Text="{Binding GetSelectedRating, Mode=TwoWay}"/>
-
                 </RelativePanel>
 
             </RelativePanel>

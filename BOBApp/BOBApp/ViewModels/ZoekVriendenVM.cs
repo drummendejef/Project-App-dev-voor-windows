@@ -107,7 +107,7 @@ namespace BOBApp.ViewModels
 
             if (obj.Name == "friend_accepted")
             {
-                User.All user = (User.All)obj.Result2;
+                User.All user = (User.All)obj.ParamView;
                 bool accepted = (bool) obj.Result;
                 Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID,user.User.ID,accepted)).Result;
 

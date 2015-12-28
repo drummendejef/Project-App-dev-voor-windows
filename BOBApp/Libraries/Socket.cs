@@ -9,6 +9,7 @@ namespace Libraries
 {
     public class Socket
     {
+        public int ID { get; set; }
         public bool Status { get; set; }
         public int From { get; set; }
         public int To { get; set; }

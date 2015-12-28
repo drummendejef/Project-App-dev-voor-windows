@@ -84,11 +84,15 @@
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="BobList" />
     <RootPropertyPathName Name="GetSelectedRating" />
+    <RootPropertyPathName Name="VisibleSelectedParty" />
     <RootPropertyPathName Name="GetRitTime" />
     <RootPropertyPathName Name="SelectedBob" />
+    <RootPropertyPathName Name="VisibleSelectedFriends" />
     <RootPropertyPathName Name="GetSelectedFriendsString" />
+    <RootPropertyPathName Name="VisibleSelectedBobsType" />
     <RootPropertyPathName Name="GetSelectedBobsType" />
     <RootPropertyPathName Name="ShowModalCommand" />
+    <RootPropertyPathName Name="GetSelectedParty" />
     <RootPropertyPathName Name="GetStatus" />
     <RootPropertyPathName Name="VisibleModal" />
     <RootPropertyPathName Name="Frame" />
@@ -109,6 +113,7 @@
     <RootPropertyPathName Name="AddFriendCommand" />
     <RootPropertyPathName Name="Friends" />
     <RootPropertyPathName Name="SelectedFriendText" />
+    <RootPropertyPathName Name="SelectedDestination_ID" />
     <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="Parties" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
@@ -179,6 +184,8 @@
       <RootProperty Name="Opacity" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
       <RootProperty Name="VerticalAlignment" />
@@ -474,9 +481,9 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="MinWidth" />
       <RootProperty Name="SelectedValuePath" />
       <RootProperty Name="SelectedValue" />
+      <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">

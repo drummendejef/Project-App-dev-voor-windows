@@ -35,7 +35,7 @@
                     </Grid.RowDefinitions>
                     <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Grid.ColumnSpan="2" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User, Mode=TwoWay}" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="Points:" />
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" TextAlignment="Right" Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points, Mode=TwoWay}" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" TextAlignment="Right" Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points, Mode=TwoWay}" Tapped="TextBlock_Tapped" />
 
                     <Button Margin="0,0,0,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Stretch" Content="Afmelden" Command="{Binding LogOffCommand}" />
                 </Grid>

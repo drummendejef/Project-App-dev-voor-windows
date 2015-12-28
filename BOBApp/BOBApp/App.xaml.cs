@@ -161,19 +161,19 @@ namespace BOBApp
                {
                    if (IsMinimized == true || dialog.IsNotification==true)
                    {
-                       bool ok = Toast.Show(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                       bool ok = Toast.Show(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb,dialog.Data);
 
                    }
                    else
                    {
-                       Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                       Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb,dialog.Data);
                    }
                });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
         }
-        private async Task<bool> ShowDialog(string text, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb)
+        private async Task<bool> ShowDialog(string text, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb,object data)
         {
             var dialog = new MessageDialog(text);
             var test2Command = nok;
@@ -221,7 +221,8 @@ namespace BOBApp
                         {
                             Name = cb,
                             Result = true,
-                            Result2 = paramView
+                            ParamView = paramView,
+                            Data=data
                         });
                     }
 
@@ -242,7 +243,8 @@ namespace BOBApp
                         {
                             Name = cb,
                             Result = false,
-                            Result2=paramView
+                            ParamView=paramView,
+                            Data=data
                         });
                     }
                     return false;
@@ -390,14 +392,16 @@ namespace BOBApp
                             ViewOk= JsonConvert.DeserializeObject<Type>(args["viewOk"]),
                             ViewNok= JsonConvert.DeserializeObject<Type>(args["viewNok"]),
                             ParamView= JsonConvert.DeserializeObject<object>(args["paramView"]),
-                            Cb=args["cb"]
+                            Cb=args["cb"],
+                            Data = args["data"]
                         };
-                        Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb);
+                        Task task = ShowDialog(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb, dialog.Data);
                         break;
                     case "ok":
                         string ok = args["value"];
                         Type viewOk= JsonConvert.DeserializeObject<Type>(args["viewOk"]);
                         object paramView = JsonConvert.DeserializeObject<object>(args["paramView"]);
+                        object data = JsonConvert.DeserializeObject<object>(args["data"]);
                         string cb = args["cb"];
 
                         if (viewOk != null)
@@ -412,7 +416,8 @@ namespace BOBApp
                             {
                                 Name = cb,
                                 Result = true,
-                                Result2 = paramView
+                                ParamView = paramView,
+                                Data= data
                             });
                         }
 
@@ -421,6 +426,7 @@ namespace BOBApp
                         string nok = args["value"];
                         Type viewNok = JsonConvert.DeserializeObject<Type>(args["viewNok"]);
                         object _paramView = JsonConvert.DeserializeObject<object>(args["paramView"]);
+                        object _data = JsonConvert.DeserializeObject<object>(args["data"]);
                         string _cb = args["cb"];
 
                         if (viewNok != null)
@@ -436,7 +442,8 @@ namespace BOBApp
                             {
                                 Name = _cb,
                                 Result = false,
-                                Result2 = _paramView
+                                ParamView = _paramView,
+                                Data=_data
                             });
                         }
 

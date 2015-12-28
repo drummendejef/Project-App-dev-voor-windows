@@ -307,5 +307,13 @@ namespace BOBApp.Views
         {
           
         }
+
+        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(Punten));
+            CheckIsPaneOpen();
+        }
     }
 }

@@ -29,8 +29,8 @@ namespace BOBApp.ViewModels
     {
         #region props
         #region static
-     
 
+        public static int Request { get; set; }
         public List<Bob> BobList { get; set; }
 
 
@@ -41,12 +41,13 @@ namespace BOBApp.ViewModels
 
         public Visibility VisibleModal { get; set; }
         public Frame Frame { get; set; }
+       
 
 
         #region gets
 
 
-       
+
         #endregion
 
         //others
@@ -76,7 +77,7 @@ namespace BOBApp.ViewModels
 
             this.Loading = false;
           
-            this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
+            this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
 
 
           
@@ -121,13 +122,8 @@ namespace BOBApp.ViewModels
                     VisibleModal = Visibility.Collapsed;
                  
                   
-                    this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
+                    this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
    
-
-
-                   
-                
-
                     RaiseAll();
 
                 });

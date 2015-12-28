@@ -36,7 +36,8 @@ namespace BOBApp.ViewModels
         public static Trip CurrentTrip { get; set; }
         public static bool BobAccepted { get; set; }
         public static int StatusID { get; set; }
-        public static int Request { get; set; }
+       
+
 
 
         public List<Bob> BobList { get; set; }
@@ -51,12 +52,15 @@ namespace BOBApp.ViewModels
         public Visibility VisibleChat { get; set; }
         public Visibility VisibleFilterContext { get; set; }
         public Visibility VisibleModal { get; set; }
+
+       
         public Frame Frame { get; set; }
+        public int FindID { get; set; }
         public string CancelText { get; set; }
 
         #region gets
 
-
+        public Visibility VisibleSelectedFriends { get; set; }
         public string GetSelectedFriendsString
         {
             get
@@ -72,46 +76,95 @@ namespace BOBApp.ViewModels
                             friends += VindRitFilterVM.SelectedFriends[i].User1.ToString() + " - ";
                         }
                     }
+                    this.VisibleSelectedFriends = Visibility.Visible;
                     return friends;
                 }
                 else
                 {
+                    this.VisibleSelectedFriends = Visibility.Collapsed;
                     return "";
                 }
 
             }
         }
-       
+        
+        public Visibility VisibleSelectedDestination { get; set; }
         public Users_Destinations GetSelectedDestination
         {
             get
             {
-                return VindRitFilterVM.SelectedDestination;
+                if (VindRitFilterVM.SelectedDestination != null)
+                {
+                    this.VisibleSelectedDestination = Visibility.Visible;
+                    return VindRitFilterVM.SelectedDestination;
+                }
+                else
+                {
+                    this.VisibleSelectedDestination = Visibility.Collapsed;
+                    return null;
+                }
+               
             }
         }
+
+        public Visibility VisibleSelectedRating { get; set; }
         public int GetSelectedRating
         {
             get
             {
-                return VindRitFilterVM.SelectedRating;
+                if(VindRitFilterVM.SelectedRating!=0 || VindRitFilterVM.SelectedRating != -1)
+                {
+                    this.VisibleSelectedRating = Visibility.Visible;
+                    return VindRitFilterVM.SelectedRating;
+                }
+                else
+                {
+                    this.VisibleSelectedRating = Visibility.Collapsed;
+                    return 0;
+                }
+               
             }
         }
-     
-      
+
+        public Visibility VisibleSelectedBobsType { get; set; }
         public BobsType GetSelectedBobsType
         {
             get
             {
-                return VindRitFilterVM.SelectedBobsType;
+                if (VindRitFilterVM.SelectedBobsType != null)
+                {
+                    this.VisibleSelectedBobsType = Visibility.Visible;
+                    return VindRitFilterVM.SelectedBobsType;
+                }
+                else
+                {
+                    this.VisibleSelectedBobsType = Visibility.Collapsed;
+                    return null;
+                }
+                
             }
         }
+
+        public Visibility VisibleSelectedParty { get; set; }
         public Party GetSelectedParty
         {
             get
             {
-                return VindRitVM.SelectedParty;
+                if (VindRitVM.SelectedParty != null)
+                {
+                    this.VisibleSelectedParty = Visibility.Visible;
+                    return VindRitVM.SelectedParty;
+
+                }
+                else
+                {
+                    this.VisibleSelectedParty = Visibility.Collapsed;
+                    return null;
+                }
+
             }
         }
+
         public string GetStatus
         {
             get
@@ -223,7 +276,7 @@ namespace BOBApp.ViewModels
             VisibleModal = Visibility.Collapsed;
             this.Frame = new Frame();
             this.VisibleFilterContext = Visibility.Collapsed;
-            this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
+           
 
 
             //Loaded();
@@ -260,8 +313,14 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("GetSelectedParty");
             RaisePropertyChanged("GetSelectedFriendsString");
 
-           
-    }
+
+            RaisePropertyChanged("VisibleSelectedFriends");
+            RaisePropertyChanged("VisibleSelectedDestination");
+            RaisePropertyChanged("VisibleSelectedRating");
+            RaisePropertyChanged("VisibleSelectedParty");
+            RaisePropertyChanged("VisibleSelectedBobsType");
+
+        }
 
         private async void Loaded()
         {
@@ -282,7 +341,7 @@ namespace BOBApp.ViewModels
                     VisibleModal = Visibility.Collapsed;
                     this.Frame = new Frame();
                     this.VisibleFilterContext = Visibility.Collapsed;
-                    this.BobRequests = "Momenteel " + VindRitVM.Request.ToString() + " aanvragen";
+                   
    
 
                     Task task = GetParties();
@@ -350,7 +409,7 @@ namespace BOBApp.ViewModels
                     case "bob_accepted":
                         if (this.VisibleFind == Visibility.Collapsed)
                         {
-                            bob_accepted((bool)obj.Result);
+                            bob_accepted((bool)obj.Result,(int) obj.Data);
                         }
                        
                         break;
@@ -372,31 +431,44 @@ namespace BOBApp.ViewModels
         }
 
 
-        private async void bob_accepted(bool accepted)
+        private async void bob_accepted(bool accepted, int id)
         {
             this.Status = null;
 
             this.Loading = false;
             RaiseAll();
 
-            //uitgevoerd bij de bob
-            if (accepted == true)
+            if(this.FindID == id)
             {
-                //verstuur trip
-                User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserById(VindRitVM.SelectedUser.ID)).Result;
-                Libraries.Socket socketSend = new Libraries.Socket() {
-                    From = MainViewVM.USER.ID,//from bob
-                    To = user.User.ID,//to user
-                    Status = true,
-                    Object = user
-                };
+                //uitgevoerd bij de bob
+                if (accepted == true)
+                {
+                    //verstuur trip
+                    User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserById(VindRitVM.SelectedUser.ID)).Result;
+                    Libraries.Socket socketSend = new Libraries.Socket()
+                    {
+                        From = MainViewVM.USER.ID,//from bob
+                        To = user.User.ID,//to user
+                        Status = true,
+                        Object = user
+                    };
 
-                MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
+                    MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
+
+                }
+                else
+                {
+
+                }
             }
             else
             {
-
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Komt niet overeen met de aangevraagd bob"
+                });
             }
+            
         }
 
         private async void find_bob(bool ok)
@@ -465,12 +537,16 @@ namespace BOBApp.ViewModels
                 //take this bob
                 if (bobs != null)
                 {
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 1000);
+                    this.FindID = randomNumber;
+
                     Bob bob = bobs.First();
 
                     Bob.All bobAll = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bob.ID.Value)).Result;
                     VindRitVM.SelectedBob = bobAll;
 
-                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bobAll.User.ID, Status = true };
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bobAll.User.ID, Status = true, ID=randomNumber };
                     MainViewVM.socket.Emit("bob_ACCEPT:send", JsonConvert.SerializeObject(socketSend));
 
 
@@ -723,7 +799,7 @@ namespace BOBApp.ViewModels
         {
 
             this.Parties = await PartyRepository.GetParties();
-            VindRitVM.SelectedParty = this.Parties[0];
+            
 
             RaiseAll();
 
@@ -961,6 +1037,7 @@ namespace BOBApp.ViewModels
             {
                 Party foundParty=  this.Parties.Find(r => r.Name.Trim() == VindRitFilterVM.SelectedParty.Trim());
                 VindRitVM.SelectedParty = foundParty;
+                this.VisibleSelectedParty = Visibility.Visible;
                
             }
 

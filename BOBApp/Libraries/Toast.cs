@@ -131,7 +131,7 @@ namespace Libraries
         private static string title = "Boba-pp";
         private static string content = "";
         private static string logo = "";
-        public static bool Show(string message, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb)
+        public static bool Show(string message, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb, object data)
         {
             if (ok == null) ok = "Ok";
             if (ok == null && nok == null)
@@ -142,7 +142,7 @@ namespace Libraries
 
 
             ToastVisual visual = GetVisual();
-            ToastActionsCustom actions = GetAction(ok,nok,viewOk,viewNok,paramView,cb);
+            ToastActionsCustom actions = GetAction(ok,nok,viewOk,viewNok,paramView,cb, data);
 
 
             // Now we can construct the final toast content
@@ -161,7 +161,8 @@ namespace Libraries
                     { "viewOk", JsonConvert.SerializeObject(viewOk) },
                     { "viewNok",JsonConvert.SerializeObject(viewNok) },
                     { "paramView", JsonConvert.SerializeObject(paramView) },
-                    { "cb", cb }
+                    { "cb", cb },
+                    { "data", JsonConvert.SerializeObject(data) }
 
                 }.ToString(),
                
@@ -179,7 +180,7 @@ namespace Libraries
 
         }
 
-        private static ToastActionsCustom GetAction(string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb)
+        private static ToastActionsCustom GetAction(string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb, object data)
         {
            
             // In a real app, these would be initialized with actual data
@@ -198,7 +199,8 @@ namespace Libraries
                         { "viewOk", JsonConvert.SerializeObject(viewOk) },
                         { "viewNok",JsonConvert.SerializeObject(viewNok) },
                         { "paramView", JsonConvert.SerializeObject(paramView) },
-                        { "cb", cb }
+                        { "cb", cb },
+                        { "data", JsonConvert.SerializeObject(data) }
 
                     }.ToString())
                     {
@@ -212,7 +214,8 @@ namespace Libraries
                         { "viewOk", JsonConvert.SerializeObject(viewOk) },
                         { "viewNok",JsonConvert.SerializeObject(viewNok) },
                         { "paramView", JsonConvert.SerializeObject(paramView) },
-                        { "cb", cb }
+                        { "cb", cb },
+                        { "data", JsonConvert.SerializeObject(data) }
 
                     }.ToString())
                     {
@@ -238,7 +241,8 @@ namespace Libraries
                         { "viewOk", JsonConvert.SerializeObject(viewOk) },
                         { "viewNok",JsonConvert.SerializeObject(viewNok) },
                         { "paramView", JsonConvert.SerializeObject(paramView) },
-                        { "cb", cb }
+                        { "cb", cb },
+                        { "data", JsonConvert.SerializeObject(data) }
 
                     }.ToString())
                     {
