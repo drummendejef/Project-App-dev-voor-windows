@@ -21,9 +21,9 @@
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
             <StackPanel>
-                <RadioButton Canvas.ZIndex="99999" Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
+                <RadioButton Canvas.ZIndex="99998" Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
 
-                <Grid Canvas.ZIndex="99" x:Name="user" Visibility="Visible" Margin="45,-40,20,0" HorizontalAlignment="Stretch">
+                <Grid Canvas.ZIndex="99999" x:Name="user" Visibility="Visible" Margin="45,-40,20,0" HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>

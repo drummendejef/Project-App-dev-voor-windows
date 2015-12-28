@@ -264,59 +264,68 @@ namespace BOBApp
 
         private void NavigateToPage(GoToPage message)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-         
-            switch (message.Name)
+
+            try
             {
-                case "Bestemmingen":
-                    rootFrame.Navigate(typeof(Bestemmingen));
-                    break;
-                case "Bestemmingen_Nieuw":
-                    rootFrame.Navigate(typeof(Bestemmingen_Nieuw));
-                    break;
-                case "FeestjesOverzicht":
-                    rootFrame.Navigate(typeof(FeestjesOverzicht));
-                    break;
-                case "Login":
-                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-                    rootFrame.Navigate(typeof(Login));
-                    break;
-                case "MainView":
-                    rootFrame.Navigate(typeof(MainView));
-                    break;
-                case "Profiel":
-                    rootFrame.Navigate(typeof(Profiel));
-                    break;
-                case "Punten":
-                    rootFrame.Navigate(typeof(Punten));
-                    break;
-                case "Register":
-                    rootFrame.Navigate(typeof(Register));
-                    break;
-                case "MijnRitten":
-                    rootFrame.Navigate(typeof(MijnRitten));
-                    break;
-                case "VindRit":
-                    rootFrame.Navigate(typeof(VindRit));
-                    break;
-                case "VindRitFilter":
-                    rootFrame.Navigate(typeof(VindRitFilter));
-                    break;
-                case "VindRitChat":
-                    rootFrame.Navigate(typeof(VindRitChat));
-                    break;
-                case "VindRitBob":
-                    rootFrame.Navigate(typeof(VindRitBob));
-                    break;
-                case "ZoekVrienden":
-                    rootFrame.Navigate(typeof(ZoekVrienden));
-                    break;
-                case "WijzigWachtwoord":
-                    rootFrame.Navigate(typeof(VeranderWachtwoord));
-                    break;
-                default:
-                    rootFrame.Navigate(typeof(Login));
-                    break;
+                Frame rootFrame = Window.Current.Content as Frame;
+
+                switch (message.Name)
+                {
+                    case "Bestemmingen":
+                        rootFrame.Navigate(typeof(Bestemmingen));
+                        break;
+                    case "Bestemmingen_Nieuw":
+                        rootFrame.Navigate(typeof(Bestemmingen_Nieuw));
+                        break;
+                    case "FeestjesOverzicht":
+                        rootFrame.Navigate(typeof(FeestjesOverzicht));
+                        break;
+                    case "Login":
+                        SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+                        rootFrame.Navigate(typeof(Login));
+                        break;
+                    case "MainView":
+                        rootFrame.Navigate(typeof(MainView));
+                        break;
+                    case "Profiel":
+                        rootFrame.Navigate(typeof(Profiel));
+                        break;
+                    case "Punten":
+                        rootFrame.Navigate(typeof(Punten));
+                        break;
+                    case "Register":
+                        rootFrame.Navigate(typeof(Register));
+                        break;
+                    case "MijnRitten":
+                        rootFrame.Navigate(typeof(MijnRitten));
+                        break;
+                    case "VindRit":
+                        rootFrame.Navigate(typeof(VindRit));
+                        break;
+                    case "VindRitFilter":
+                        rootFrame.Navigate(typeof(VindRitFilter));
+                        break;
+                    case "VindRitChat":
+                        rootFrame.Navigate(typeof(VindRitChat));
+                        break;
+                    case "VindRitBob":
+                        rootFrame.Navigate(typeof(VindRitBob));
+                        break;
+                    case "ZoekVrienden":
+                        rootFrame.Navigate(typeof(ZoekVrienden));
+                        break;
+                    case "WijzigWachtwoord":
+                        rootFrame.Navigate(typeof(VeranderWachtwoord));
+                        break;
+                    default:
+                        rootFrame.Navigate(typeof(Login));
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -329,7 +338,7 @@ namespace BOBApp
         /// <param name="e">Details about the navigation failure</param>
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
-            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+            //throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
         /// <summary>

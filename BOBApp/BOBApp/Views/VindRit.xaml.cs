@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,6 +25,14 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class VindRit : Page
     {
+        public VindRitVM Vm
+        {
+            get
+            {
+                return this.DataContext as VindRitVM;
+            }
+        }
+
         RandomAccessStreamReference mapIconStreamReference;//Eigen icoon
         RandomAccessStreamReference mapIconStreamReferenceRit;//Icoon van de bobs
 

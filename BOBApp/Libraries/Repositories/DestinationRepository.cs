@@ -122,6 +122,8 @@ namespace Libraries.Repositories
                 return new Response() { Error = ex.Message.ToString(), Success = false };
             }
         }
+
+
         public static async Task<Response> PostDefaultDestination(int destinationsID)
         {
             try
@@ -152,6 +154,32 @@ namespace Libraries.Repositories
         #endregion
 
         #region put
+        public static async Task<Response> PutDestinationName(int destinationsID, string name)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
+
+                    var newObject = JsonConvert.SerializeObject(new { DestinationsID = destinationsID, Name=name });
+
+                    HttpResponseMessage result = await client.PutAsync(URL.DESTINATIONS, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+            }
+        }
 
         #endregion
 

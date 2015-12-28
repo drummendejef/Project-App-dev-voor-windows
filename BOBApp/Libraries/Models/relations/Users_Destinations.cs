@@ -20,6 +20,7 @@ namespace Libraries.Models.relations
         //optional
 
         public int Cities_ID { get; set; }
+        public string Cities_Name { get; set; }
         public RelayCommand<object> SetDefault { get; set; }
 
         private object _Location;
@@ -36,7 +37,6 @@ namespace Libraries.Models.relations
                 }
                 catch (Exception)
                 {
-
                     
                 }
               

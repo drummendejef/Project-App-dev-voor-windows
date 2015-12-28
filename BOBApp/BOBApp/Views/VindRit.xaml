@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:BOBApp.Converters"
     x:Class="BOBApp.Views.VindRit"
     mc:Ignorable="d"
     DataContext="{Binding VindRitVM, Mode=TwoWay, Source={StaticResource Locator}}">

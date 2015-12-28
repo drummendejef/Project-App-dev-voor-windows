@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,23 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class Bestemmingen : Page
     {
+        public BestemmingenVM Vm
+        {
+            get
+            {
+                return this.DataContext as BestemmingenVM;
+            }
+        }
         public Bestemmingen()
         {
             this.InitializeComponent();
         }
+
+        private void Friends_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+       
     }
 }
