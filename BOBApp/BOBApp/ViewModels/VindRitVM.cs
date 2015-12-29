@@ -197,7 +197,9 @@ namespace BOBApp.ViewModels
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
-                double distance = (double)farEnough.Value;
+                double distance;
+                double.TryParse(farEnough.Value.ToString(), out distance);
+               
 
                 double speed = 50;
                 double time = distance / speed;
@@ -804,8 +806,9 @@ namespace BOBApp.ViewModels
         private async Task GetDestinations()
         {
             List<Users_Destinations> lijst = await DestinationRepository.GetDestinations();
+            VindRitFilterVM.SelectedDestination = lijst.Where(r => r.Default == true).First() ;
 
-          
+
 
         }
 

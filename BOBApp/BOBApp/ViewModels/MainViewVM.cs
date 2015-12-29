@@ -94,14 +94,11 @@ namespace BOBApp.ViewModels
                 if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
-                    if (VindRitVM.FindID == _socket.ID)
-                    {
-                        User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
-                        Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
+                  
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+                    Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
 
-                        TripStart();
-                    }
-                    
+                    TripStart();
 
                 }
 
@@ -143,12 +140,16 @@ namespace BOBApp.ViewModels
                 //if (_socket.Status == true)
                 {
                     //from bob
-                    User.All fromBob = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
-                    User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object.ToString());
-                    Trip newTrip = (Trip)GetTripObject();
+                    if (VindRitVM.FindID == _socket.ID)
+                    {
+
+                        User.All fromBob = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+                        User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object.ToString());
+                        Trip newTrip = (Trip)GetTripObject();
 
 
-                    MakeTrip(newTrip, fromBob.Bob.ID.Value);
+                        MakeTrip(newTrip, fromBob.Bob.ID.Value);
+                    }
                 }
 
             });
@@ -456,9 +457,16 @@ namespace BOBApp.ViewModels
         }
         private async void GetPoints()
         {
-            string points = await PointRepository.GetTotalPoints();
+            try
+            {
+                string points = await PointRepository.GetTotalPoints();
+                this.Points = double.Parse(points);
+            }
+            catch (Exception ex)
+            {
 
-            this.Points = double.Parse(points);
+               
+            }
         }
 
         //by user

@@ -42,6 +42,32 @@ namespace Libraries.Repositories
                 return null;
             }
         }
+        public static async Task<Trip> GetTripByID(int id)
+        {
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var result = client.GetAsync(URL.TRIPS + "/" + id.ToString());
+                    string json = await result.Result.Content.ReadAsStringAsync();
+                    Trip data = JsonConvert.DeserializeObject<Trip>(json);
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+        }
         //string moet nog verandert worden
         public static async Task<Trip> GetCurrentTrip()
         {

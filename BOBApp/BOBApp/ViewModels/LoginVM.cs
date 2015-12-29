@@ -124,6 +124,7 @@ namespace BOBApp.ViewModels
             this.Loading = true;
             this.EnableLogin = false;
             RaiseAll();
+            Tests();
 
             if (this.Online==true)
             {
@@ -265,96 +266,104 @@ namespace BOBApp.ViewModels
         //Een (eenmalige) pop up tonen om toestemming aan de gebruiker te vragen voor zijn locatie
         private async void LocatieToestemmingVragen()
         {
-            //De pop up tonen en toestemming vragen
-            var accessStatus = await Geolocator.RequestAccessAsync();
-
-            //De mogelijke antwoorden overlopen
-            switch (accessStatus)
+            try
             {
-                case GeolocationAccessStatus.Allowed: //De gebruiker heeft ons toegang gegeven
+                //De pop up tonen en toestemming vragen
+                var accessStatus = await Geolocator.RequestAccessAsync();
 
-                    //Mag verdergaan en inloggen
-                    this.EnableLogin = true;
+                //De mogelijke antwoorden overlopen
+                switch (accessStatus)
+                {
+                    case GeolocationAccessStatus.Allowed: //De gebruiker heeft ons toegang gegeven
 
-                    //aanmaken Geolocator
-                    Geolocator geolocator = new Geolocator();
+                        //Mag verdergaan en inloggen
+                        this.EnableLogin = true;
 
-                    //Inschrijven op de StatusChanged voor updates van de permissies voor locaties.
-                    geolocator.StatusChanged += OnStatusChanged;
+                        //aanmaken Geolocator
+                        Geolocator geolocator = new Geolocator();
 
-                    //Locatie opvragen
-                    Geoposition pos = await geolocator.GetGeopositionAsync();
-                    Debug.WriteLine("Positie opgevraagd, lat: " + pos.Coordinate.Point.Position.Latitude + " lon: " + pos.Coordinate.Point.Position.Longitude);
+                        //Inschrijven op de StatusChanged voor updates van de permissies voor locaties.
+                        geolocator.StatusChanged += OnStatusChanged;
 
-                    //Locatie opslaan als gebruikerslocatie
-                    (App.Current as App).UserLocation = pos;
+                        //Locatie opvragen
+                        Geoposition pos = await geolocator.GetGeopositionAsync();
+                        Debug.WriteLine("Positie opgevraagd, lat: " + pos.Coordinate.Point.Position.Latitude + " lon: " + pos.Coordinate.Point.Position.Longitude);
 
-                    break;
+                        //Locatie opslaan als gebruikerslocatie
+                        (App.Current as App).UserLocation = pos;
 
-                case GeolocationAccessStatus.Denied: //De gebruiker heeft ons geen toegang gegeven.
-                    Debug.WriteLine("Geen locatie: Toestemming geweigerd");
+                        break;
 
-                    //We gaan een Toast tonen om te zeggen dat we de locatie nodig hebben.
-                    //Aanmaken tekst voor in Toast
-                    string title = "Locatie Nodig";
-                    string content = "We krijgen geen toegang tot uw locatie, deze staat softwarematig uitgeschakeld of u geeft ons geen toegang.";
-                    
-                    //De visuals van de Toast aanmaken
-                    ToastVisual visual = new ToastVisual()
-                    {
-                        TitleText = new ToastText()
+                    case GeolocationAccessStatus.Denied: //De gebruiker heeft ons geen toegang gegeven.
+                        Debug.WriteLine("Geen locatie: Toestemming geweigerd");
+
+                        //We gaan een Toast tonen om te zeggen dat we de locatie nodig hebben.
+                        //Aanmaken tekst voor in Toast
+                        string title = "Locatie Nodig";
+                        string content = "We krijgen geen toegang tot uw locatie, deze staat softwarematig uitgeschakeld of u geeft ons geen toegang.";
+
+                        //De visuals van de Toast aanmaken
+                        ToastVisual visual = new ToastVisual()
                         {
-                            Text = title
-                        },
-                        BodyTextLine1 = new ToastText()
-                        {
-                            Text = content
-                        },
-                        AppLogoOverride = new ToastAppLogo()
-                        {
-                            Source = new ToastImageSource("../Assets/StoreLogo.png"),
-                            Crop = ToastImageCrop.Circle
-                        }
-                    };
+                            TitleText = new ToastText()
+                            {
+                                Text = title
+                            },
+                            BodyTextLine1 = new ToastText()
+                            {
+                                Text = content
+                            },
+                            AppLogoOverride = new ToastAppLogo()
+                            {
+                                Source = new ToastImageSource("../Assets/StoreLogo.png"),
+                                Crop = ToastImageCrop.Circle
+                            }
+                        };
 
-                    //De interacties met de toast aanmaken
-                    ToastActionsCustom actions = new ToastActionsCustom()
-                    {
-                        Buttons =
+                        //De interacties met de toast aanmaken
+                        ToastActionsCustom actions = new ToastActionsCustom()
+                        {
+                            Buttons =
                         {
                             new ToastButton("Geef Toestemming", new QueryString()
                             {
                                 {"action", "openLocationServices" }
                             }.ToString())
                         }
-                    };
+                        };
 
-                    //De final toast content aanmaken
-                    ToastContent toastContent = new ToastContent()
-                    {
-                        Visual = visual,
-                        Actions = actions,
+                        //De final toast content aanmaken
+                        ToastContent toastContent = new ToastContent()
+                        {
+                            Visual = visual,
+                            Actions = actions,
 
-                        //Argumenten wanneer de user de body van de toast aanklikt
-                        Launch = new QueryString()
+                            //Argumenten wanneer de user de body van de toast aanklikt
+                            Launch = new QueryString()
                         {
                             { "action", "openBobApp"}
                         }.ToString()
-                    };
+                        };
 
-                    //De toast notification maken
-                    var toast = new ToastNotification(toastContent.GetXml());
-                    toast.ExpirationTime = DateTime.Now.AddDays(2);//Tijd totdat de notification vanzelf verdwijnt
+                        //De toast notification maken
+                        var toast = new ToastNotification(toastContent.GetXml());
+                        toast.ExpirationTime = DateTime.Now.AddDays(2);//Tijd totdat de notification vanzelf verdwijnt
 
-                    //En uiteindelijk de toast tonen
-                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                        //En uiteindelijk de toast tonen
+                        ToastNotificationManager.CreateToastNotifier().Show(toast);
 
-                    break;
+                        break;
 
-                case GeolocationAccessStatus.Unspecified: //Er is iets vreemds misgelopen
-                    Debug.WriteLine("Geen locatie: Unspecified");
-                    break;
+                    case GeolocationAccessStatus.Unspecified: //Er is iets vreemds misgelopen
+                        Debug.WriteLine("Geen locatie: Unspecified");
+                        break;
 
+                }
+            }
+            catch (Exception ex)
+            {
+
+                
             }
         }
 

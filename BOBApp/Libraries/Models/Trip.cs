@@ -22,7 +22,7 @@ namespace Libraries.Models
 
 
         //optional
-        public double Rating { get; set; }
+        public double? Rating { get; set; }
 
         public class All
         {
