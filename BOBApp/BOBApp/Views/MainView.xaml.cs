@@ -39,7 +39,7 @@ namespace BOBApp.Views
 
             if (ShellSplitView.Content != null)
             {
-                if (MainViewVM.USER.IsActive==true)
+                if (MainViewVM.USER.IsBob==true)
                 {
                     ShellSplitView.IsPaneOpen = false;
                     if (ShellSplitView.Content != null)
@@ -215,7 +215,7 @@ namespace BOBApp.Views
 
         private void IsBob()
         {
-            isBob=MainViewVM.USER.IsActive;
+            isBob = MainViewVM.USER.IsBob;
             if (isBob == true)
             {
                 //bob
