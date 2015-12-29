@@ -99,7 +99,7 @@ namespace BOBApp.ViewModels
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
 
-                    TripStartBob(currentTrip);
+                    TripSave(currentTrip);
 
                 }
 
@@ -186,7 +186,7 @@ namespace BOBApp.ViewModels
                         Name = "newComment"
                     });
 
-                    if (fromUser != null)
+                    if (fromUser != null && _socket.Object!=null)
                     {
                         Messenger.Default.Send<Dialog>(new Dialog()
                         {
@@ -207,7 +207,7 @@ namespace BOBApp.ViewModels
             });
         }
 
-        private async void TripStartBob(Trip trip)
+        private async void TripSave(Trip trip)
         {
             var data = JsonConvert.SerializeObject(trip);
             bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
@@ -219,11 +219,8 @@ namespace BOBApp.ViewModels
                 Data=trip
             });
         }
-        private async void TripStart(Trip trip)
-        {
-            var data = JsonConvert.SerializeObject(trip);
-            bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
-        }
+       
+       
 
         private void FriendRequest(User.All fromUser)
         {
@@ -523,7 +520,7 @@ namespace BOBApp.ViewModels
 
                 MainViewVM.socket.Emit("trip_START:send", JsonConvert.SerializeObject(socketSendToBob)); //bob
                 StartTrip(currentTrip); //user
-                TripStart(currentTrip);
+                TripSave(currentTrip);
 
 
                 MakeChatroom(bobID);
