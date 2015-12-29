@@ -369,12 +369,30 @@ namespace BOBApp.ViewModels
                 {
                     //default on start
                     this.Loading = false;
-                    this.EnableFind = true;
+                 
                     VisibleModal = Visibility.Collapsed;
                     
                     this.VisibleFilterContext = Visibility.Collapsed;
-                   
-   
+                    this.EnableFind = true;
+                    this.VisibleSelectedFriends = Visibility.Collapsed;
+                    this.VisibleSelectedBob = Visibility.Collapsed;
+                    this.VisibleSelectedBobsType = Visibility.Collapsed;
+                    this.VisibleSelectedRating = Visibility.Collapsed;
+                    this.VisibleSelectedParty = Visibility.Collapsed;
+
+                    this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleFind = Visibility.Visible;
+                    this.Loading = false;
+                    this.Status = null;
+
+                    SetStatus(0);
+
+
+
+                    canShowDialog = true;
+                    RaiseAll();
+
+
 
                     await GetParties();
                     await GetDestinations();
@@ -673,7 +691,10 @@ namespace BOBApp.ViewModels
                         bool done = Task.FromResult<bool>(await OnDestination()).Result;
                         if (done == true)
                         {
+                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+
                             BobisDone(location, "Trip is afgerond");
+                            RatingDialog(bob, VindRitVM.CurrentTrip);
                         }
                     }
 
@@ -702,7 +723,7 @@ namespace BOBApp.ViewModels
         private async void BobisDone(Location location, string text)
         {
             SetStatus(4);
-            timer.Stop();
+            if(timer.IsEnabled) timer.Stop();
 
             Trips_Locations item = new Trips_Locations()
             {
@@ -745,7 +766,7 @@ namespace BOBApp.ViewModels
 
                     //todo: rating
 
-                    RatingDialog(bob, VindRitVM.CurrentTrip);
+                   
 
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
@@ -1062,6 +1083,8 @@ namespace BOBApp.ViewModels
 
         private async void CancelTrip()
         {
+            timer.Stop();
+            timer = null;
             if (this.EnableFind == true)
             {
                 this.VisibleSelectedFriends = Visibility.Collapsed;
@@ -1074,7 +1097,7 @@ namespace BOBApp.ViewModels
                 this.VisibleFind = Visibility.Visible;
                 this.Loading = false;
                 this.Status = null;
-                timer.Stop();
+              
                 SetStatus(0);
 
                 RaiseAll();
@@ -1084,10 +1107,6 @@ namespace BOBApp.ViewModels
                 Geolocator geolocator = new Geolocator();
                 Geoposition pos = await geolocator.GetGeopositionAsync();
                 Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
-
-              
-
 
                 Trips_Locations item = new Trips_Locations()
                 {
@@ -1117,7 +1136,7 @@ namespace BOBApp.ViewModels
                 this.VisibleFind = Visibility.Visible;
                 this.Loading = false;
                 this.Status = null;
-                timer.Stop();
+               
                 SetStatus(0);
 
                 RaiseAll();
