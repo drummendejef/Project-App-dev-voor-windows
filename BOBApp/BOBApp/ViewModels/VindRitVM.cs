@@ -31,6 +31,7 @@ namespace BOBApp.ViewModels
         #region static
         public static Party SelectedParty { get; set; }
 
+        public Visibility VisibleSelectedBob { get; set; }
         public static Bob.All SelectedBob { get; set; }
         public static User SelectedUser { get; set; }
         public static Trip CurrentTrip { get; set; }
@@ -108,11 +109,11 @@ namespace BOBApp.ViewModels
         }
 
         public Visibility VisibleSelectedRating { get; set; }
-        public int GetSelectedRating
+        public int? GetSelectedRating
         {
             get
             {
-                if(VindRitFilterVM.SelectedRating!=0 || VindRitFilterVM.SelectedRating != -1)
+                if(VindRitFilterVM.SelectedRating.HasValue)
                 {
                     this.VisibleSelectedRating = Visibility.Visible;
                     return VindRitFilterVM.SelectedRating;
@@ -120,7 +121,7 @@ namespace BOBApp.ViewModels
                 else
                 {
                     this.VisibleSelectedRating = Visibility.Collapsed;
-                    return 0;
+                    return null;
                 }
                
             }
@@ -206,7 +207,7 @@ namespace BOBApp.ViewModels
                     double speed = 50;
                     double time = distance / speed;
 
-                    RitTime = ": " + time.ToString();
+                    this.RitTime = ": " + time.ToString();
                     RaisePropertyChanged("RitTime");
                 }
                 
@@ -352,7 +353,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("VisibleSelectedRating");
             RaisePropertyChanged("VisibleSelectedParty");
             RaisePropertyChanged("VisibleSelectedBobsType");
-
+            RaisePropertyChanged("VisibleSelectedBob");
         }
 
         private async void Loaded()
@@ -404,7 +405,7 @@ namespace BOBApp.ViewModels
             if (obj.Name == "loaded")
             {
                 Type view = (Type)obj.View;
-                if (view == typeof(VindRit) || view == typeof(VindRitBob))
+                if (view == typeof(VindRit))
                 {
                     //loaded
                     Loaded();
@@ -415,6 +416,7 @@ namespace BOBApp.ViewModels
                 Type view = (Type)obj.View;
                 if (view == typeof(VindRit))
                 {
+                    this.VisibleFind = Visibility.Visible;
                     //loaded
                     Loaded();
                 }
@@ -447,28 +449,11 @@ namespace BOBApp.ViewModels
                         VindRitFilterVM.SelectedDestination = dest;
                         if (VindRitFilterVM.SelectedDestination != null)
                         {
-                            VindRitVM.StatusID = 2;
-
-                            switch (VindRitVM.StatusID)
-                            {
-                                case 1:
-                                    this.Status = "Bob is aangevraagd";
-                                    break;
-                                case 2:
-                                    this.Status = "Bob is onderweg";
-                                    break;
-                                case 3:
-                                    this.Status = "Bob is toegekomen";
-                                    break;
-                                case 4:
-                                    this.Status = "Rit is gedaan";
-                                    break;
-                                case 5:
-                                    this.Status = "Rit is geannuleerd";
-                                    break;
-                                default:
-                                    break;
-                            }
+                         
+                            VindRitVM.SelectedParty = await PartyRepository.GetPartyById(VindRitVM.CurrentTrip.Party_ID);
+                            this.EnableFind = false;
+                            SetStatus(2);
+                            
                             StartTripLocationTimer();
                            
                         }
@@ -481,8 +466,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-
-      
+   
 
         private async void find_bob(bool ok)
         {
@@ -565,7 +549,7 @@ namespace BOBApp.ViewModels
 
 
                     this.Status = "Wachten op antwoord van bob";
-
+                    this.VisibleSelectedBob = Visibility.Visible;
                     this.Loading = true;
                     RaiseAll();
                 }
@@ -581,12 +565,13 @@ namespace BOBApp.ViewModels
 
         private async Task<bool> trip_location()
         {
-
-            this.Status = "Bob is onderweg";
+            SetStatus(2);
+            this.EnableFind = false;
+            this.Loading = false;
             //todo: swtich
             RaiseAll();
 
-            VindRitVM.StatusID = 2;
+          
 
             Geolocator geolocator = new Geolocator();
             Geoposition pos = await geolocator.GetGeopositionAsync();
@@ -603,7 +588,6 @@ namespace BOBApp.ViewModels
 
             if (ok.Success == true)
             {
-                VindRitVM.StatusID = 2;
                 StartTripLocationTimer();
 
                 return true;
@@ -1035,6 +1019,7 @@ namespace BOBApp.ViewModels
             {
                 this.VisibleCancel = Visibility.Collapsed;
                 this.VisibleFind = Visibility.Visible;
+                this.VisibleSelectedBob = Visibility.Collapsed;
                 this.Loading = false;
                 this.Status = null;
 
@@ -1047,7 +1032,7 @@ namespace BOBApp.ViewModels
                 Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
 
-                VindRitVM.StatusID = 5; //canceld
+               
                 RaiseAll();
                 timer.Stop();
 
@@ -1070,6 +1055,11 @@ namespace BOBApp.ViewModels
                 BobisDone(location, "Trip is geannuleerd");
 
                 this.EnableFind = true;
+                this.VisibleSelectedBob = Visibility.Collapsed;
+                this.Status = null;
+
+                Loaded();
+                
                 RaiseAll();
             }
 
@@ -1109,6 +1099,31 @@ namespace BOBApp.ViewModels
             VisibleModal = Visibility.Visible;
             RaiseAll();
 
+        }
+        private void SetStatus(int statusID)
+        {
+            VindRitVM.StatusID = statusID;
+            switch (statusID)
+            {
+                case 1:
+                    this.Status = "Bob is aangevraagd";
+                    break;
+                case 2:
+                    this.Status = "Bob is onderweg";
+                    break;
+                case 3:
+                    this.Status = "Bob is toegekomen";
+                    break;
+                case 4:
+                    this.Status = "Rit is gedaan";
+                    break;
+                case 5:
+                    this.Status = "Rit is geannuleerd";
+                    break;
+                default:
+                    break;
+            }
+            RaiseAll();
         }
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)

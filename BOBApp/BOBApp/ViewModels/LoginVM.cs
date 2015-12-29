@@ -166,6 +166,7 @@ namespace BOBApp.ViewModels
                         }
                         else
                         {
+                           
                             VindRitVM.CurrentTrip = await TripRepository.GetCurrentTrip();
                           
                             VindRitChatVM.ID = dataChat.ID;

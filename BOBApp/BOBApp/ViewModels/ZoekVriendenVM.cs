@@ -52,7 +52,15 @@ namespace BOBApp.ViewModels
         private void RaiseAll()
         {
             RaisePropertyChanged("VisibleModal");
-            RaisePropertyChanged("Frame");
+            try
+            {
+                RaisePropertyChanged("Frame");
+            }
+            catch (Exception ex)
+            {
+
+                
+            }
             RaisePropertyChanged("SearchUsers");
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");

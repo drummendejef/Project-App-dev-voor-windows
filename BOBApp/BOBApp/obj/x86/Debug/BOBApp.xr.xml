@@ -89,8 +89,9 @@
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="BobList" />
     <RootPropertyPathName Name="VisibleSelectedParty" />
-    <RootPropertyPathName Name="GetRitTime" />
+    <RootPropertyPathName Name="RitTime" />
     <RootPropertyPathName Name="SelectedBob" />
+    <RootPropertyPathName Name="GetSelectedDestination" />
     <RootPropertyPathName Name="VisibleSelectedRating" />
     <RootPropertyPathName Name="GetSelectedRating" />
     <RootPropertyPathName Name="VisibleSelectedFriends" />

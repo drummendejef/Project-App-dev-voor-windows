@@ -69,15 +69,15 @@
                 <TextBlock Visibility="{Binding VisibleSelectedFriends, Mode=TwoWay}" x:Name="lblFriends" Margin="0,0,0,8" RelativePanel.Below="lblBobType" Text="Friends: "/>
                 <TextBlock Visibility="{Binding VisibleSelectedFriends, Mode=TwoWay}" RelativePanel.RightOf="lblFriends" Margin="10,0,0,0" RelativePanel.Below="lblBobType" Text="{Binding GetSelectedFriendsString, Mode=TwoWay}"/>
 
-                <TextBlock Visibility="{Binding VisibleSelectedFriends, Mode=TwoWay}" x:Name="lblRating" Margin="0,0,0,8" RelativePanel.Below="lblFriends" Text="Rating: "/>
+                <TextBlock Visibility="{Binding VisibleSelectedRating, Mode=TwoWay}" x:Name="lblRating" Margin="0,0,0,8" RelativePanel.Below="lblFriends" Text="Rating: "/>
+                <TextBlock Visibility="{Binding VisibleSelectedRating, Mode=TwoWay}" RelativePanel.RightOf="lblRating" RelativePanel.Below="lblFriends" Margin="10,0,0,0"  Text="{Binding GetSelectedRating, Mode=TwoWay}"/>
 
-                <TextBlock Visibility="{Binding VisibleSelectedRating, Mode=TwoWay}" RelativePanel.Below="lblRating" Margin="10,0,0,0"  Text="{Binding GetSelectedRating, Mode=TwoWay}"/>
 
-
-                <RelativePanel Visibility="{Binding VisibleSelectedParty, Mode=TwoWay}"  RelativePanel.Below="lblFriends" >
-                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="TIME TO YOUR DESTINATION WITH BOB "/>
-                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime" Margin="10,0,0,0"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
-                    <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding GetRitTime, Mode=TwoWay}"/>
+                <RelativePanel Visibility="{Binding VisibleSelectedBob, Mode=TwoWay}"  RelativePanel.Below="lblRating" >
+                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="Geschactte toekomsttijd  "/>
+                    <TextBlock x:Name="lblTime4" RelativePanel.RightOf="lblTime" Margin="0" Text="{Binding GetSelectedDestination.Name, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,0"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding RitTime, Mode=TwoWay}"/>
                 </RelativePanel>
 
             </RelativePanel>
