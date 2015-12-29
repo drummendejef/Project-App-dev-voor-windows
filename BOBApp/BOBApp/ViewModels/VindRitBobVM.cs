@@ -65,7 +65,7 @@ namespace BOBApp.ViewModels
         private async void SetActive(bool value)
         {
             //todo in db
-            Response res = Task.FromResult<Response>(await BobsRepository.SetActive(value, MainViewVM.USER.Bobs_ID.Value)).Result;
+            Response res = Task.FromResult<Response>(await BobsRepository.SetOffer(value, MainViewVM.USER.Bobs_ID.Value)).Result;
          
         }
 

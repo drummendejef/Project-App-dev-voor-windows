@@ -182,7 +182,7 @@ namespace Libraries.Repositories
             }
         }
 
-        public static async Task<Response> SetActive(bool active, int bobs_ID)
+        public static async Task<Response> SetOffer(bool active, int bobs_ID)
         {
             try
             {

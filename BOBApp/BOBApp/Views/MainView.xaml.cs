@@ -39,13 +39,12 @@ namespace BOBApp.Views
 
             if (ShellSplitView.Content != null)
             {
-                if (MainViewVM.USER.IsBob==true)
+                if (MainViewVM.USER.IsActive==true)
                 {
                     ShellSplitView.IsPaneOpen = false;
                     if (ShellSplitView.Content != null)
                         ((Frame)ShellSplitView.Content).Navigate(typeof(VindRitBob));
                     CheckIsPaneOpen();
-
                 }
                 else
                 {
@@ -183,7 +182,7 @@ namespace BOBApp.Views
         bool isBob;
         private async void changeToBob()
         {
-            isBob = MainViewVM.USER.IsBob;
+            isBob = MainViewVM.USER.CanBeBob;
 
             if (isBob == true){
 
@@ -216,7 +215,7 @@ namespace BOBApp.Views
 
         private void IsBob()
         {
-            isBob=MainViewVM.USER.IsBob;
+            isBob=MainViewVM.USER.IsActive;
             if (isBob == true)
             {
                 //bob

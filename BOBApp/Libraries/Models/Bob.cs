@@ -13,6 +13,7 @@ namespace Libraries.Models
         public string LicensePlate { get; set; }
         public DateTime? Added { get; set; }
         public bool? Active { get; set; }
+        public bool? Offer { get; set; }
         public double PricePerKm { get; set; }
         public int? Autotype_ID { get; set; }
 

@@ -46,7 +46,7 @@ namespace Libraries
         public static string FRIENDS = BASE + "/friends";
 
         public static string BOBS = BASE + "/bobs";
-        public static string BOBS_ACTIVE = BOBS + "/active";
+        public static string BOBS_ACTIVE = BOBS + "/offer";
         public static string BOBS_ONLINE = BOBS + "/online";
         public static string BOBS_FIND = BOBS + "/find";
         public static string BOBS_AVG = BOBS + "/avg";
