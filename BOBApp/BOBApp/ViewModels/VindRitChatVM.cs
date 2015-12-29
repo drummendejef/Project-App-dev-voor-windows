@@ -228,6 +228,7 @@ namespace BOBApp.ViewModels
                 int userID = ChatRoom.ChatRoom.Users_ID;
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
                 {
+                    From= MainViewVM.USER.ID,
                     To = bob.User.ID,
                     Status = true,
                     Object= comment.Comment

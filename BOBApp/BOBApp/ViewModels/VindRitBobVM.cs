@@ -199,7 +199,8 @@ namespace BOBApp.ViewModels
                 switch (obj.Name)
                 {
                     case "bob_accepted":
-                        bob_accepted((bool)obj.Result, (float)obj.Data);
+                        float id = float.Parse(obj.Data.ToString());
+                        bob_accepted((bool)obj.Result, id);
                         break;
                     case "newtrip_bob":
                         newtrip_bob((Trip)obj.Data);
@@ -255,28 +256,32 @@ namespace BOBApp.ViewModels
 
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("VisibleModal");
-            RaisePropertyChanged("VisibleCancel");
-            RaisePropertyChanged("VisibleOffer");
-            RaisePropertyChanged("Frame");
-            RaisePropertyChanged("BobRequests");
-            RaisePropertyChanged("Status");
-            RaisePropertyChanged("UserRequests");
-            RaisePropertyChanged("OfferText");
-            RaisePropertyChanged("RitTime");
-            RaisePropertyChanged("CanOffer");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("VisibleModal");
+                RaisePropertyChanged("VisibleCancel");
+                RaisePropertyChanged("VisibleOffer");
+                RaisePropertyChanged("Frame");
+                RaisePropertyChanged("BobRequests");
+                RaisePropertyChanged("Status");
+                RaisePropertyChanged("UserRequests");
+                RaisePropertyChanged("OfferText");
+                RaisePropertyChanged("RitTime");
+                RaisePropertyChanged("CanOffer");
 
 
-            RaisePropertyChanged("GetSelectedTrip");
+                RaisePropertyChanged("GetSelectedTrip");
 
 
-            RaisePropertyChanged("VisibleSelectedTrip");
-          
-           
-    }
+                RaisePropertyChanged("VisibleSelectedTrip");
+
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        }
 
         private async void Loaded()
         {

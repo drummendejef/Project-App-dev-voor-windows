@@ -186,16 +186,20 @@ namespace BOBApp.ViewModels
                         Name = "newComment"
                     });
 
-                    Messenger.Default.Send<Dialog>(new Dialog()
+                    if (fromUser != null)
                     {
-                        Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
-                        Ok = "Antwoord",
-                        Nok = "Negeer",
-                        ViewOk = typeof(VindRitChat),
-                        ViewNok = null,
-                        ParamView = false,
-                        Cb = null
-                    });
+                        Messenger.Default.Send<Dialog>(new Dialog()
+                        {
+                            Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
+                            Ok = "Antwoord",
+                            Nok = "Negeer",
+                            ViewOk = typeof(VindRitChat),
+                            ViewNok = null,
+                            ParamView = false,
+                            Cb = null
+                        });
+                    }
+                    
 
 
                 }
