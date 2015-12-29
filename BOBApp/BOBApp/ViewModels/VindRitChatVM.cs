@@ -238,6 +238,7 @@ namespace BOBApp.ViewModels
                     From = bob.User.ID,
                     To = MainViewVM.USER.ID,
                     Status = true,
+                    Object = comment.Comment
                 };
 
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));

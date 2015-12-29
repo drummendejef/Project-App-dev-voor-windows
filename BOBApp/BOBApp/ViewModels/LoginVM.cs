@@ -164,7 +164,11 @@ namespace BOBApp.ViewModels
                         }
                         else if (dataTrip.Users_ID != MainViewVM.USER.ID)
                         {
-                            Clear();
+                            if(dataTrip.Bobs_ID != MainViewVM.USER.Bobs_ID)
+                            {
+                                Clear();
+                            }
+                            
                         }
                         else
                         {
