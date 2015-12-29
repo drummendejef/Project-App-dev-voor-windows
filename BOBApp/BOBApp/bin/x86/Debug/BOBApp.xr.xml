@@ -108,6 +108,12 @@
     <RootPropertyPathName Name="Frame" />
     <RootPropertyPathName Name="CloseModalCommand" />
     <RootPropertyPathName Name="VindRitBobVM" />
+    <RootPropertyPathName Name="UserList" />
+    <RootPropertyPathName Name="VisibleOffer" />
+    <RootPropertyPathName Name="ArrivedCommand" />
+    <RootPropertyPathName Name="CanOffer" />
+    <RootPropertyPathName Name="VisibleSelectedTrip" />
+    <RootPropertyPathName Name="GetSelectedTrip" />
     <RootPropertyPathName Name="BobRequests" />
     <RootPropertyPathName Name="VindRitChatVM" />
     <RootPropertyPathName Name="AddCommentCommand" />
@@ -624,6 +630,8 @@
       <RootProperty Name="OnContent" />
       <RootProperty Name="Header" />
       <RootProperty Name="IsOn" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Height" />
       <RootEvent Name="Toggled" />
     </RootType>
     <RootType FullName="BOBApp.Views.Profiel" />
@@ -634,20 +642,6 @@
     <RootType FullName="BOBApp.ViewModels.VindRitVM" />
     <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="BOBApp.Views.VindRit" />
-    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="RequestedTheme" />
-      <RootProperty Name="IsSticky" />
-      <RootProperty Name="PrimaryCommands" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Visibility" />
-      <RootProperty Name="Padding" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Command" />
-    </RootType>
     <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="BOBApp.Views.VindRitChat" />
     <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">

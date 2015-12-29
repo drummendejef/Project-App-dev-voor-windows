@@ -46,6 +46,7 @@ namespace Libraries
         public static string FRIENDS = BASE + "/friends";
 
         public static string BOBS = BASE + "/bobs";
+        public static string BOBS_ACTIVE = BOBS + "/active";
         public static string BOBS_ONLINE = BOBS + "/online";
         public static string BOBS_FIND = BOBS + "/find";
         public static string BOBS_AVG = BOBS + "/avg";
@@ -68,6 +69,6 @@ namespace Libraries
         public static string URLBINGKEY = "&key=";
         public static string BINGKEY = "dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5";
 
-
+       
     }
 }

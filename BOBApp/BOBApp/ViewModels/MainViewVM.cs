@@ -58,7 +58,7 @@ namespace BOBApp.ViewModels
 
          
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
-
+            this.Loading = false;
             RaisePropertyChanged("User");
         }
 

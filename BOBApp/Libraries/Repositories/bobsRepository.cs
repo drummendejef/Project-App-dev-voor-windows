@@ -182,6 +182,38 @@ namespace Libraries.Repositories
             }
         }
 
+        public static async Task<Response> SetActive(bool active, int bobs_ID)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
+
+                    var definition = new { Active= active, Bobs_ID= bobs_ID};
+                    var newObject = JsonConvert.SerializeObject(definition);
+
+                    HttpResponseMessage result = await client.PutAsync(URL.BOBS_ACTIVE, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                Response res = new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Response res = new Response() { Error = ex.Message.ToString(), Success = false };
+                Debug.WriteLine(res);
+                return null;
+            }
+        }
+
         #endregion
 
 

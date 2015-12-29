@@ -13,7 +13,7 @@ namespace Libraries.Models
         public string Lastname { get; set; }
         public string Email { get; set; }
         public string Cellphone { get; set; }
-        public int Bobs_ID { get; set; }
+        public int? Bobs_ID { get; set; }
         
 
 

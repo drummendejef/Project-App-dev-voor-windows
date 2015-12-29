@@ -49,6 +49,27 @@ namespace BOBApp.ViewModels
         public Trip SelectedTrip { get; set; }
         public List<User> UserRequest { get; set; }
 
+        private bool _CanOffer;
+
+        public bool CanOffer
+        {
+            get { return _CanOffer; }
+            set {
+                    SetActive(value);
+                    _CanOffer = value;
+                    
+
+            }
+        }
+
+        private async void SetActive(bool value)
+        {
+            //todo in db
+            Response res = Task.FromResult<Response>(await BobsRepository.SetActive(value, MainViewVM.USER.Bobs_ID.Value)).Result;
+         
+        }
+
+
         #region gets
 
         public Visibility VisibleSelectedTrip { get; set; }
@@ -79,7 +100,7 @@ namespace BOBApp.ViewModels
         public RelayCommand ShowModalCommand { get; set; }
         public RelayCommand CloseModalCommand { get; set; }
         public RelayCommand GoChatCommand { get; set; }
-        public RelayCommand OfferCommand { get; set; }
+       
         public RelayCommand CancelCommand { get; set; }
         public string BobRequests { get; set; }
         public string RitTime { get; set; }
@@ -123,7 +144,7 @@ namespace BOBApp.ViewModels
             ShowModalCommand = new RelayCommand(ShowModal);
             ArrivedCommand = new RelayCommand(Arrived);
             GoChatCommand = new RelayCommand(GoChat);
-            OfferCommand = new RelayCommand(Offer);
+         
             CancelCommand = new RelayCommand(Cancel);
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
@@ -132,8 +153,10 @@ namespace BOBApp.ViewModels
           
             this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
 
-            this.VisibleOffer = Visibility.Collapsed;
 
+            this.VisibleCancel = Visibility.Collapsed;
+            this.VisibleOffer = Visibility.Collapsed;
+            this.CanOffer = true;
 
             RaiseAll();
         }
@@ -143,10 +166,7 @@ namespace BOBApp.ViewModels
             throw new NotImplementedException();
         }
 
-        private void Offer()
-        {
-            throw new NotImplementedException();
-        }
+      
 
         private void Arrived()
         {
@@ -203,6 +223,7 @@ namespace BOBApp.ViewModels
 
         private void newtrip_bob(Trip data)
         {
+            this.VisibleCancel = Visibility.Visible;
             this.VisibleOffer = Visibility.Visible;
             this.SelectedTrip = data;
             RaiseAll();
@@ -246,6 +267,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("UserRequests");
             RaisePropertyChanged("OfferText");
             RaisePropertyChanged("RitTime");
+            RaisePropertyChanged("CanOffer");
 
 
             RaisePropertyChanged("GetSelectedTrip");
@@ -273,9 +295,10 @@ namespace BOBApp.ViewModels
                   
                     VisibleModal = Visibility.Collapsed;
                  
+
                   
                     this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
-   
+                    this.Loading = false;
                     RaiseAll();
 
                 });
