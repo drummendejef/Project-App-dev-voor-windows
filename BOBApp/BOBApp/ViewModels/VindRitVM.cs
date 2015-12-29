@@ -1042,6 +1042,8 @@ namespace BOBApp.ViewModels
                 this.Loading = false;
                 this.Status = null;
 
+                SetStatus(0);
+
                 RaiseAll();
             }
             else
@@ -1128,6 +1130,8 @@ namespace BOBApp.ViewModels
         {
             switch (statusID)
             {
+                case 0:
+                    return "";
                 case 1:
                      return "Bob is aangevraagd";
                 case 2:
