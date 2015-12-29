@@ -301,7 +301,7 @@ namespace BOBApp.ViewModels
            
         }
 
-        private async void Bob_Accept(int from, int id)
+        private async void Bob_Accept(int from, float id)
         {
             User user = Task.FromResult<User.All>(await UsersRepository.GetUserById(from)).Result.User;
 

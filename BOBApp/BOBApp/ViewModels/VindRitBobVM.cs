@@ -199,7 +199,7 @@ namespace BOBApp.ViewModels
                 switch (obj.Name)
                 {
                     case "bob_accepted":
-                        bob_accepted((bool)obj.Result, (int)obj.Data);
+                        bob_accepted((bool)obj.Result, (float)obj.Data);
                         break;
                     case "newtrip_bob":
                         newtrip_bob((Trip)obj.Data);
@@ -229,7 +229,7 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-        private async void bob_accepted(bool accepted, int id)
+        private async void bob_accepted(bool accepted, float id)
         {
             this.Status = null;
 

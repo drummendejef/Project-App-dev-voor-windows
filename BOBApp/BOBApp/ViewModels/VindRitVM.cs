@@ -37,7 +37,7 @@ namespace BOBApp.ViewModels
         public static Trip CurrentTrip { get; set; }
         public static bool BobAccepted { get; set; }
         public static int StatusID { get; set; }
-        public static int FindID { get; set; }
+        public static float FindID { get; set; }
 
 
 
@@ -286,6 +286,8 @@ namespace BOBApp.ViewModels
             this.VisibleSelectedFriends = Visibility.Collapsed;
             this.VisibleSelectedBob = Visibility.Collapsed;
             this.VisibleSelectedBobsType = Visibility.Collapsed;
+            this.VisibleSelectedRating = Visibility.Collapsed;
+            this.VisibleSelectedParty = Visibility.Collapsed;
             this.Frame = new Frame();
             RaisePropertyChanged("Frame");
             this.VisibleFilterContext = Visibility.Collapsed;
@@ -533,7 +535,7 @@ namespace BOBApp.ViewModels
                 if (bobs != null)
                 {
                     Random random = new Random();
-                    int randomNumber = random.Next(0, 1000);
+                    float randomNumber = random.Next(0, 1000);
                     VindRitVM.FindID = randomNumber;
 
                     Bob bob = bobs.First();
