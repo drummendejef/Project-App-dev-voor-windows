@@ -125,7 +125,7 @@ namespace BOBApp.ViewModels
                 if (VindRitChatVM.ID == null)
                 {
                     string json = await Localdata.read("chatroom.json");
-                    var definition = new { ID = 0 };
+                    var definition = new { ID = 0, UserID=0 };
                     var data = JsonConvert.DeserializeAnonymousType(json, definition);
                     if (data.ID == -1)
                     {
@@ -238,7 +238,6 @@ namespace BOBApp.ViewModels
                     From = bob.User.ID,
                     To = MainViewVM.USER.ID,
                     Status = true,
-                    Object = comment.Comment
                 };
 
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));
