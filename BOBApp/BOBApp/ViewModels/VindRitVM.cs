@@ -641,7 +641,7 @@ namespace BOBApp.ViewModels
                 if (farEnough.Success == true)
                 {
                     //kleiner dan 1km
-                    VindRitVM.StatusID = 3;
+                    SetStatus(3);
                     RaiseAll();
                     timer.Stop();
 
@@ -701,8 +701,8 @@ namespace BOBApp.ViewModels
 
         private async void BobisDone(Location location, string text)
         {
-            VindRitVM.StatusID = 4;
-            RaiseAll();
+            SetStatus(4);
+            timer.Stop();
 
             Trips_Locations item = new Trips_Locations()
             {
@@ -736,18 +736,38 @@ namespace BOBApp.ViewModels
                         To = bob.User.ID,
                         Status = true
                     };
+                    Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    {
+                        To = MainViewVM.USER.ID,
+                        Status = true
+                    };
 
-   
+
                     //todo: rating
 
                     RatingDialog(bob, VindRitVM.CurrentTrip);
 
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
+
+                    this.EnableFind = true;
+                    this.VisibleSelectedFriends = Visibility.Collapsed;
+                    this.VisibleSelectedBob = Visibility.Collapsed;
+                    this.VisibleSelectedBobsType = Visibility.Collapsed;
+                    this.VisibleSelectedRating = Visibility.Collapsed;
+                    this.VisibleSelectedParty = Visibility.Collapsed;
+
+                    this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleFind = Visibility.Visible;
+                    this.Loading = false;
+                    this.Status = null;
+                   
+                    SetStatus(0);
 
                   
 
                     canShowDialog = true;
-                    
+                    RaiseAll();
                 }
 
             }
@@ -1044,12 +1064,17 @@ namespace BOBApp.ViewModels
         {
             if (this.EnableFind == true)
             {
+                this.VisibleSelectedFriends = Visibility.Collapsed;
+                this.VisibleSelectedBob = Visibility.Collapsed;
+                this.VisibleSelectedBobsType = Visibility.Collapsed;
+                this.VisibleSelectedRating = Visibility.Collapsed;
+                this.VisibleSelectedParty = Visibility.Collapsed;
+
                 this.VisibleCancel = Visibility.Collapsed;
                 this.VisibleFind = Visibility.Visible;
-                this.VisibleSelectedBob = Visibility.Collapsed;
                 this.Loading = false;
                 this.Status = null;
-
+                timer.Stop();
                 SetStatus(0);
 
                 RaiseAll();
@@ -1061,9 +1086,7 @@ namespace BOBApp.ViewModels
                 Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
 
-               
-                RaiseAll();
-                timer.Stop();
+              
 
 
                 Trips_Locations item = new Trips_Locations()
@@ -1084,12 +1107,24 @@ namespace BOBApp.ViewModels
                 BobisDone(location, "Trip is geannuleerd");
 
                 this.EnableFind = true;
+                this.VisibleSelectedFriends = Visibility.Collapsed;
                 this.VisibleSelectedBob = Visibility.Collapsed;
-                this.Status = null;
+                this.VisibleSelectedBobsType = Visibility.Collapsed;
+                this.VisibleSelectedRating = Visibility.Collapsed;
+                this.VisibleSelectedParty = Visibility.Collapsed;
 
-                Loaded();
-                
+                this.VisibleCancel = Visibility.Collapsed;
+                this.VisibleFind = Visibility.Visible;
+                this.Loading = false;
+                this.Status = null;
+                timer.Stop();
+                SetStatus(0);
+
                 RaiseAll();
+
+                
+                
+               
             }
 
             
@@ -1216,7 +1251,7 @@ namespace BOBApp.ViewModels
 
                 await AddRating(comment, item);
 
-                Loaded();
+               
             };
 
 

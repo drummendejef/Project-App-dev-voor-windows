@@ -256,12 +256,11 @@ namespace BOBApp.ViewModels
             VindRitVM.SelectedParty = null;
             VindRitVM.SelectedBob = null;
             VindRitVM.SelectedUser = null;
-            VindRitVM.CurrentTrip = new Trip();
+            VindRitVM.CurrentTrip = null;
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 1;
 
 
-           
 
 
             Frame rootFrame = MainViewVM.MainFrame as Frame;
