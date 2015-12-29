@@ -723,7 +723,7 @@ namespace BOBApp.ViewModels
         private async void BobisDone(Location location, string text)
         {
             SetStatus(4);
-            if(timer.IsEnabled) timer.Stop();
+           
 
             Trips_Locations item = new Trips_Locations()
             {
