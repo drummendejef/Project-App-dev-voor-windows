@@ -382,7 +382,15 @@ namespace BOBApp.ViewModels
                     await GetCurrentTrip();
 
                     this.Frame = new Frame();
-                    RaisePropertyChanged("Frame");
+                    try
+                    {
+                        RaisePropertyChanged("Frame");
+                    }
+                    catch (Exception)
+                    {
+
+                        
+                    }
 
 
                     RaiseAll();
