@@ -191,7 +191,12 @@ namespace BOBApp.ViewModels
 
         private async void TripStart()
         {
-            var data = JsonConvert.SerializeObject(currentTrip);
+            var data = JsonConvert.SerializeObject(this.currentTrip);
+            bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+        }
+        private async void TripStart(Trip trip)
+        {
+            var data = JsonConvert.SerializeObject(trip);
             bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
         }
 
@@ -229,27 +234,27 @@ namespace BOBApp.ViewModels
             VindRitVM.CurrentTrip = new Trip();
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 1;
-       
 
-        Frame rootFrame = MainViewVM.MainFrame as Frame;
+           
+
+
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
 
             if (MainViewVM.USER.IsBob==true)
             {
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
-                    rootFrame.Navigate(typeof(VindRitBob), true);
+                    Reload = true,
+                    View = typeof(VindRit)
                 });
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
             else
             {
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
-                    rootFrame.Navigate(typeof(VindRit), true);
+                    Reload = true,
+                    View = typeof(VindRitBob)
                 });
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
 
@@ -263,13 +268,13 @@ namespace BOBApp.ViewModels
 
             if (ok_chatroom == true)
             {
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-                {
-                    Frame rootFrame = MainViewVM.MainFrame as Frame;
-                    rootFrame.Navigate(typeof(VindRitChat),true);
-                });
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+//#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+//                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+//                {
+//                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+//                    rootFrame.Navigate(typeof(VindRitChat),true);
+//                });
+//#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
            
@@ -492,6 +497,7 @@ namespace BOBApp.ViewModels
 
                 MainViewVM.socket.Emit("trip_START:send", JsonConvert.SerializeObject(socketSendToBob)); //bob
                 StartTrip(currentTrip); //user
+                TripStart(currentTrip);
 
 
                 MakeChatroom(bobID);

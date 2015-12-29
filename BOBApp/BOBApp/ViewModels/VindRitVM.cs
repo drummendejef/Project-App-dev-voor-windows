@@ -197,15 +197,19 @@ namespace BOBApp.ViewModels
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
-                double distance;
-                double.TryParse(farEnough.Value.ToString(), out distance);
-               
+                if(farEnough.Success== true)
+                {
+                    double distance;
+                    double.TryParse(farEnough.Value.ToString(), out distance);
 
-                double speed = 50;
-                double time = distance / speed;
 
-                RitTime = ": " + time.ToString();
-                RaisePropertyChanged("RitTime");
+                    double speed = 50;
+                    double time = distance / speed;
+
+                    RitTime = ": " + time.ToString();
+                    RaisePropertyChanged("RitTime");
+                }
+                
                 
             }
         }
@@ -426,7 +430,7 @@ namespace BOBApp.ViewModels
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                trip_location();
+                               await trip_location();
                             });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         }
@@ -439,12 +443,36 @@ namespace BOBApp.ViewModels
                     case "trip_location:reload":
                         Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
 
+                        //instellen voor timer, niet gebruiken in filter
                         VindRitFilterVM.SelectedDestination = dest;
                         if (VindRitFilterVM.SelectedDestination != null)
                         {
                             VindRitVM.StatusID = 2;
+
+                            switch (VindRitVM.StatusID)
+                            {
+                                case 1:
+                                    this.Status = "Bob is aangevraagd";
+                                    break;
+                                case 2:
+                                    this.Status = "Bob is onderweg";
+                                    break;
+                                case 3:
+                                    this.Status = "Bob is toegekomen";
+                                    break;
+                                case 4:
+                                    this.Status = "Rit is gedaan";
+                                    break;
+                                case 5:
+                                    this.Status = "Rit is geannuleerd";
+                                    break;
+                                default:
+                                    break;
+                            }
                             StartTripLocationTimer();
+                           
                         }
+                        RaiseAll();
                         break;
 
                     default:
@@ -551,9 +579,14 @@ namespace BOBApp.ViewModels
 
         //update location user/bob naar de db
 
-        private async void trip_location()
+        private async Task<bool> trip_location()
         {
-            VindRitVM.StatusID = 1;
+
+            this.Status = "Bob is onderweg";
+            //todo: swtich
+            RaiseAll();
+
+            VindRitVM.StatusID = 2;
 
             Geolocator geolocator = new Geolocator();
             Geoposition pos = await geolocator.GetGeopositionAsync();
@@ -573,7 +606,11 @@ namespace BOBApp.ViewModels
                 VindRitVM.StatusID = 2;
                 StartTripLocationTimer();
 
-
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -605,6 +642,7 @@ namespace BOBApp.ViewModels
                 {
                     //kleiner dan 1km
                     VindRitVM.StatusID = 3;
+                    RaiseAll();
                     timer.Stop();
 
 
@@ -658,6 +696,9 @@ namespace BOBApp.ViewModels
 
         private async void BobisDone(Location location, string text)
         {
+            VindRitVM.StatusID = 4;
+            RaiseAll();
+
             Trips_Locations item = new Trips_Locations()
             {
                 Trips_ID = VindRitVM.CurrentTrip.ID,
@@ -1007,6 +1048,7 @@ namespace BOBApp.ViewModels
 
 
                 VindRitVM.StatusID = 5; //canceld
+                RaiseAll();
                 timer.Stop();
 
 

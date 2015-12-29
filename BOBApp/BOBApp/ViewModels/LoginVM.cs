@@ -53,7 +53,7 @@ namespace BOBApp.ViewModels
             LocatieToestemmingVragen();
 
             // Cities = new ObservableCollection<string>(new CityRepository().GetCities());
-            RaiseAll();
+           
             this.EnableLogin = true;
             LoginCommand = new RelayCommand(Login);
             RegisterCommand = new RelayCommand(Register);
@@ -63,6 +63,7 @@ namespace BOBApp.ViewModels
             Pass = "test";
 
             Tests();
+             RaiseAll();
         }
 
         private async void Tests()

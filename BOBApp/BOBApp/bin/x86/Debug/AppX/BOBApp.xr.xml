@@ -82,8 +82,6 @@
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
-    <RootPropertyPathName Name="VisibleChat" />
-    <RootPropertyPathName Name="GoChatCommand" />
     <RootPropertyPathName Name="VisibleCancel" />
     <RootPropertyPathName Name="CancelText" />
     <RootPropertyPathName Name="VisibleFind" />
@@ -99,6 +97,8 @@
     <RootPropertyPathName Name="GetSelectedFriendsString" />
     <RootPropertyPathName Name="VisibleSelectedBobsType" />
     <RootPropertyPathName Name="GetSelectedBobsType" />
+    <RootPropertyPathName Name="VisibleChat" />
+    <RootPropertyPathName Name="GoChatCommand" />
     <RootPropertyPathName Name="ShowModalCommand" />
     <RootPropertyPathName Name="GetSelectedParty" />
     <RootPropertyPathName Name="GetStatus" />
