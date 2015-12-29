@@ -227,6 +227,7 @@ namespace BOBApp.ViewModels
             this.VisibleCancel = Visibility.Visible;
             this.VisibleOffer = Visibility.Visible;
             this.SelectedTrip = data;
+            VindRitBobVM.Request += 1;
             RaiseAll();
         }
 
@@ -299,9 +300,9 @@ namespace BOBApp.ViewModels
                     //default on start
                   
                     VisibleModal = Visibility.Collapsed;
-                 
 
-                  
+                    await GetCurrentTrip();
+
                     this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
                     this.Loading = false;
                     RaiseAll();
@@ -590,6 +591,49 @@ namespace BOBApp.ViewModels
         #endregion
 
 
+
+        private async Task GetCurrentTrip()
+        {
+            if (this.SelectedTrip == null || this.SelectedTrip.ID == 0)
+            {
+                try
+                {
+                    string json = await Localdata.read("trip.json");
+
+                    var data = JsonConvert.DeserializeObject<Trip>(json);
+                    if (data.ID != -1)
+                    {
+                        newtrip_bob(data);
+                    }
+                    else
+                    {
+                        this.VisibleCancel = Visibility.Collapsed;
+                        this.VisibleOffer = Visibility.Collapsed;
+                    }
+
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleOffer = Visibility.Collapsed;
+
+                }
+            }
+            else
+            {
+                this.VisibleCancel = Visibility.Visible;
+                this.VisibleOffer = Visibility.Visible;
+
+            }
+            RaiseAll();
+
+
+
+
+        }
 
     }
 }

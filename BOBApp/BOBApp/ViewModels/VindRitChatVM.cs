@@ -235,7 +235,8 @@ namespace BOBApp.ViewModels
                 };
                 Libraries.Socket socketSendToUser = new Libraries.Socket()
                 {
-                    To = userID,
+                    From = bob.User.ID,
+                    To = MainViewVM.USER.ID,
                     Status = true,
                     Object = comment.Comment
                 };

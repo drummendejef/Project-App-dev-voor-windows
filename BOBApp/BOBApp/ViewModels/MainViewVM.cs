@@ -196,7 +196,8 @@ namespace BOBApp.ViewModels
                             ViewOk = typeof(VindRitChat),
                             ViewNok = null,
                             ParamView = false,
-                            Cb = null
+                            Cb = null,
+                            IsNotification = true
                         });
                     }
                     
@@ -208,7 +209,7 @@ namespace BOBApp.ViewModels
 
         private async void TripStartBob(Trip trip)
         {
-            var data = JsonConvert.SerializeObject(this.currentTrip);
+            var data = JsonConvert.SerializeObject(trip);
             bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
 
 
@@ -583,11 +584,20 @@ namespace BOBApp.ViewModels
 
         private async void PostLocation()
         {
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+            try
+            {
+                Geolocator geolocator = new Geolocator();
+                Geoposition pos = await geolocator.GetGeopositionAsync();
+                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
-            Response ok = await UserRepository.PostLocation(location);
+                Response ok = await UserRepository.PostLocation(location);
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine(ex.Message);
+            }
+           
         }
 
         private object GetTripObject()
