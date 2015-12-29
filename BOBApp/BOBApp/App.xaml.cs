@@ -87,6 +87,7 @@ namespace BOBApp
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
                 rootFrame.NavigationFailed += OnNavigationFailed;
+                rootFrame.Navigated += RootFrame_Navigated;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -270,52 +271,13 @@ namespace BOBApp
                 Frame rootFrame = Window.Current.Content as Frame;
 
                 switch (message.Name)
-                {
-                    case "Bestemmingen":
-                        rootFrame.Navigate(typeof(Bestemmingen));
-                        break;
-                    case "Bestemmingen_Nieuw":
-                        rootFrame.Navigate(typeof(Bestemmingen_Nieuw));
-                        break;
-                    case "FeestjesOverzicht":
-                        rootFrame.Navigate(typeof(FeestjesOverzicht));
-                        break;
+                { 
                     case "Login":
                         SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
                         rootFrame.Navigate(typeof(Login));
                         break;
                     case "MainView":
-                        rootFrame.Navigate(typeof(MainView));
-                        break;
-                    case "Profiel":
-                        rootFrame.Navigate(typeof(Profiel));
-                        break;
-                    case "Punten":
-                        rootFrame.Navigate(typeof(Punten));
-                        break;
-                    case "Register":
-                        rootFrame.Navigate(typeof(Register));
-                        break;
-                    case "MijnRitten":
-                        rootFrame.Navigate(typeof(MijnRitten));
-                        break;
-                    case "VindRit":
-                        rootFrame.Navigate(typeof(VindRit));
-                        break;
-                    case "VindRitFilter":
-                        rootFrame.Navigate(typeof(VindRitFilter));
-                        break;
-                    case "VindRitChat":
-                        rootFrame.Navigate(typeof(VindRitChat));
-                        break;
-                    case "VindRitBob":
-                        rootFrame.Navigate(typeof(VindRitBob));
-                        break;
-                    case "ZoekVrienden":
-                        rootFrame.Navigate(typeof(ZoekVrienden));
-                        break;
-                    case "WijzigWachtwoord":
-                        rootFrame.Navigate(typeof(VeranderWachtwoord));
+                        rootFrame.Navigate(typeof(MainView),true);
                         break;
                     default:
                         rootFrame.Navigate(typeof(Login));
@@ -379,6 +341,8 @@ namespace BOBApp
             //De rootframe ophalen
             Frame rootFrame = Window.Current.Content as Frame;
 
+
+          
             //TODO: initialiseren van root frame, net als in OnLaunched
 
             //Toast Activation opvangen
@@ -470,6 +434,15 @@ namespace BOBApp
 
             //Maak zeker dat het scherm nu actief is
             Window.Current.Activate();
+        }
+
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+            {
+                Name = "loaded",
+                View = typeof(MainView)
+            });
         }
 
         //Als de status van de locatie permissies veranderd is.

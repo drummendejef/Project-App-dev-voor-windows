@@ -184,6 +184,7 @@ namespace BOBApp.ViewModels
             User.All item = await UsersRepository.GetUserByEmail(email);
             if (item != null)
             {
+                this.SearchUsers.Clear();
                 this.SearchUsers = new List<User.All>();
                 this.SearchUsers.Add(item);
             }

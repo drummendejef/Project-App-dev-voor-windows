@@ -36,7 +36,7 @@ namespace BOBApp.ViewModels
         public static Trip CurrentTrip { get; set; }
         public static bool BobAccepted { get; set; }
         public static int StatusID { get; set; }
-       
+        public static int FindID { get; set; }
 
 
 
@@ -55,7 +55,7 @@ namespace BOBApp.ViewModels
 
        
         public Frame Frame { get; set; }
-        public int FindID { get; set; }
+     
         public string CancelText { get; set; }
 
         #region gets
@@ -138,6 +138,7 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
+                  
                     this.VisibleSelectedBobsType = Visibility.Collapsed;
                     return null;
                 }
@@ -432,13 +433,7 @@ namespace BOBApp.ViewModels
                     case "find_bob":
                         find_bob((bool)obj.Result);
                         break;
-                    case "bob_accepted":
-                        if (this.VisibleFind == Visibility.Collapsed)
-                        {
-                            bob_accepted((bool)obj.Result,(int) obj.Data);
-                        }
-                       
-                        break;
+                   
                     case "trip_location:reload":
                         Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
 
@@ -457,45 +452,7 @@ namespace BOBApp.ViewModels
         }
 
 
-        private async void bob_accepted(bool accepted, int id)
-        {
-            this.Status = null;
-
-            this.Loading = false;
-            RaiseAll();
-
-            if(this.FindID == id)
-            {
-                //uitgevoerd bij de bob
-                if (accepted == true)
-                {
-                    //verstuur trip
-                    User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserById(VindRitVM.SelectedUser.ID)).Result;
-                    Libraries.Socket socketSend = new Libraries.Socket()
-                    {
-                        From = MainViewVM.USER.ID,//from bob
-                        To = user.User.ID,//to user
-                        Status = true,
-                        Object = user
-                    };
-
-                    MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
-
-                }
-                else
-                {
-
-                }
-            }
-            else
-            {
-                Messenger.Default.Send<Dialog>(new Dialog()
-                {
-                    Message = "Komt niet overeen met de aangevraagd bob"
-                });
-            }
-            
-        }
+      
 
         private async void find_bob(bool ok)
         {
@@ -524,6 +481,7 @@ namespace BOBApp.ViewModels
                                 Cb = null
                             });
                             this.VisibleFind = Visibility.Visible;
+                            this.VisibleCancel = Visibility.Collapsed;
                             RaiseAll();
                         }
                         else
@@ -565,7 +523,7 @@ namespace BOBApp.ViewModels
                 {
                     Random random = new Random();
                     int randomNumber = random.Next(0, 1000);
-                    this.FindID = randomNumber;
+                    VindRitVM.FindID = randomNumber;
 
                     Bob bob = bobs.First();
 
@@ -778,6 +736,7 @@ namespace BOBApp.ViewModels
         private async Task GetBobTypes()
         {
             List<BobsType> lijst = await BobsRepository.GetTypes();
+            VindRitFilterVM.SelectedBobsType = lijst.Where(r => r.ID == 2).First();
            
         }
         private async void GetCurrentTrip()
@@ -897,7 +856,7 @@ namespace BOBApp.ViewModels
         //tasks
         private async Task<List<Bob>> FindBob_task()
         {
-            if (VindRitFilterVM.SelectedParty != "")
+            if (VindRitFilterVM.SelectedParty != "" && VindRitFilterVM.SelectedParty!=null)
             {
 
                 try
@@ -926,7 +885,13 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                return null;
+                Bob bob= new Bob()
+                {
+                    ID = -1
+                };
+                List<Bob> bobs = new List<Bob>();
+                bobs.Add(bob);
+                return bobs;
             }
 
             //location
@@ -960,7 +925,23 @@ namespace BOBApp.ViewModels
                 this.EnableFind = true;
                 RaiseAll();
 
-            }else
+            }else if (bobs[0].ID == -1)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Geen Feestje geselecteerd",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+                this.EnableFind = true;
+                RaiseAll();
+
+            }
+            else
             {
                 ShowBob(bobs.First());
 

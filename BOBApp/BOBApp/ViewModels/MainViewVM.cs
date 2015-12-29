@@ -53,12 +53,10 @@ namespace BOBApp.ViewModels
         public MainViewVM()
         {
             User = MainViewVM.USER;
-            GetPoints();
-            PostLocation();
-
-            SetupBackgroundTask();
-            StartSocket();
+           
             LogOffCommand = new RelayCommand(LogOff);
+
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             RaisePropertyChanged("User");
         }
@@ -96,13 +94,14 @@ namespace BOBApp.ViewModels
                 if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
-                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
-                    Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
+                    if (VindRitVM.FindID == _socket.ID)
+                    {
+                        User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+                        Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
 
-                    //StartTrip(currentTrip);
-
-                    //svave trip
-                    TripStart();
+                        TripStart();
+                    }
+                    
 
                 }
 
@@ -302,8 +301,58 @@ namespace BOBApp.ViewModels
 
 
 
+        private async void ExecuteNavigatedTo(NavigateTo obj)
+        {
+            if (obj.Name == "loaded")
+            {
+                Type view = (Type)obj.View;
+                if (view == typeof(MainView))
+                {
+                    //loaded
+                    Loaded();
+                }
+            }
+            if (obj.Reload == true)
+            {
+                Type view = (Type)obj.View;
+                if (view == typeof(MainView))
+                {
+                    //loaded
+                    Loaded();
+                }
+            }
+        }
+
+        private async void Loaded()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
 
 
+
+            await Task.Run(async () =>
+            {
+                // running in background
+#pragma warning disable CS1998
+                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                {
+                    //default on start
+                    User = MainViewVM.USER;
+                    GetPoints();
+                    PostLocation();
+
+                    SetupBackgroundTask();
+                    StartSocket();
+
+                    this.Loading = false;
+                    RaisePropertyChanged("Loading");
+                    RaisePropertyChanged("User");
+
+                });
+#pragma warning restore CS1998
+
+            });
+        }
 
 
 

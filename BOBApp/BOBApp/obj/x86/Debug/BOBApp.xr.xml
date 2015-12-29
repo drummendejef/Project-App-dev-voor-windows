@@ -391,6 +391,7 @@
       <RootProperty Name="Height" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Foreground" />
       <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
