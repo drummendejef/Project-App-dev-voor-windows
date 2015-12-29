@@ -56,6 +56,7 @@ namespace BOBApp.ViewModels
            
             LogOffCommand = new RelayCommand(LogOff);
 
+         
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             RaisePropertyChanged("User");
@@ -98,7 +99,7 @@ namespace BOBApp.ViewModels
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
 
-                    TripStart();
+                    TripStartBob(currentTrip);
 
                 }
 
@@ -189,10 +190,17 @@ namespace BOBApp.ViewModels
             });
         }
 
-        private async void TripStart()
+        private async void TripStartBob(Trip trip)
         {
             var data = JsonConvert.SerializeObject(this.currentTrip);
             bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+
+
+            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+            {
+                Name = "newtrip_bob",
+                Data=trip
+            });
         }
         private async void TripStart(Trip trip)
         {
@@ -234,6 +242,7 @@ namespace BOBApp.ViewModels
             VindRitVM.CurrentTrip = new Trip();
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 1;
+
 
            
 
@@ -295,7 +304,8 @@ namespace BOBApp.ViewModels
                     Nok = "Ignore",
                     ParamView = true,
                     Cb = "bob_accepted",
-                    Data = id
+                    Data = id,
+                    IsNotification=true
                 });
             }
             else

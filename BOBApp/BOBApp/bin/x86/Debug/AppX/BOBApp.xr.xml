@@ -88,7 +88,7 @@
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
     <RootPropertyPathName Name="BobList" />
-    <RootPropertyPathName Name="VisibleSelectedParty" />
+    <RootPropertyPathName Name="VisibleSelectedBob" />
     <RootPropertyPathName Name="RitTime" />
     <RootPropertyPathName Name="SelectedBob" />
     <RootPropertyPathName Name="GetSelectedDestination" />
@@ -101,6 +101,7 @@
     <RootPropertyPathName Name="VisibleChat" />
     <RootPropertyPathName Name="GoChatCommand" />
     <RootPropertyPathName Name="ShowModalCommand" />
+    <RootPropertyPathName Name="VisibleSelectedParty" />
     <RootPropertyPathName Name="GetSelectedParty" />
     <RootPropertyPathName Name="GetStatus" />
     <RootPropertyPathName Name="VisibleModal" />

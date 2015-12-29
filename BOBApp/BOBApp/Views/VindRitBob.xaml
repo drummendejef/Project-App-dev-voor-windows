@@ -5,6 +5,8 @@
     xmlns:local="using:BOBApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:BOBApp.Converters"
     mc:Ignorable="d"
     DataContext="{Binding VindRitBobVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
@@ -14,17 +16,48 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="DTemplateUsersMap">
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation}" >
+                    <Grid Background="#3e5d94" Padding="5">
+                        <TextBlock Text="Test?" Margin="0" />
+                    </Grid>
+                </ContentControl>
+            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
 
     <RelativePanel>
-        <Button Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,100,10,10" x:Name="buttonCancel"  Content="Cancel trip" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
+        <ProgressRing Foreground="black" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
 
-        <TextBlock Text="{Binding BobRequests, Mode=TwoWay}" Width="300"></TextBlock>
-        <CommandBar RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="commandbar" RelativePanel.AlignBottomWithPanel="True" VerticalAlignment="Top" RequestedTheme="Light" IsSticky="True" >
-            <AppBarButton Visibility="{Binding VisibleCancel,Mode=TwoWay}"  Padding="10" Margin="0,0,10,0" Width="auto" Content="Chat" Command="{Binding GoChatCommand}" />
+       
+
+        <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
+            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="16" x:Name="lblStatus" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding BobRequests, Mode=TwoWay}"/>
+            <TextBlock Visibility="{Binding VisibleSelectedTrip, Mode=TwoWay}" RelativePanel.Below="lblStatus" Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedTrip, Mode=TwoWay}"/>
+
+
+            <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleOffer, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="Aangekomen" Command="{Binding ArrivedCommand}"   />
+            <Button Margin="100,0,0,0" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True"  Visibility="{Binding VisibleOffer,Mode=TwoWay}" Padding="10,0,10,0" Width="auto" Content="Chat" Height="35" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
+
+
+            <RelativePanel  RelativePanel.Below="lblFeest" RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="filter" >
+
             
-        </CommandBar>
+
+            </RelativePanel>
+
+        </RelativePanel>
+
+
+        <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10">
+            <Maps:MapItemsControl ItemsSource="{Binding UserList}" ItemTemplate="{StaticResource DTemplateUsersMap}" />
+        </Maps:MapControl>
+
+        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleOffer,Mode=TwoWay}"  RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="{Binding OfferText, Mode=TwoWay}" Command="{Binding OfferCommand }" Canvas.ZIndex="1000"   />
+        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="{Binding CancelText, Mode=TwoWay}" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
+
+
+
 
 
     </RelativePanel>

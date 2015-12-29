@@ -21,6 +21,7 @@ using Newtonsoft.Json;
 using Windows.Storage;
 using System.IO;
 using Windows.ApplicationModel.Core;
+using BOBApp.Views;
 
 namespace BOBApp.ViewModels
 {
@@ -145,6 +146,7 @@ namespace BOBApp.ViewModels
                         Name = "MainView"
                     });
 
+                   
 
                     //test json
                     //update json
@@ -166,7 +168,7 @@ namespace BOBApp.ViewModels
                         }
                         else
                         {
-                           
+                           // Clear();
                             VindRitVM.CurrentTrip = await TripRepository.GetCurrentTrip();
                           
                             VindRitChatVM.ID = dataChat.ID;
@@ -204,13 +206,15 @@ namespace BOBApp.ViewModels
                             break;
                         case "Server Offline":
                             this.Error = "De server is offline";
+                            task = Login_task(this.Email, this.Pass);
                             break;
                         case "Connectie error":
                             this.Error = "Connectie error";
+                            task = Login_task(this.Email, this.Pass);
                             break;
                         default:
                             this.Error = "Connectie error";
-                            task = Login_task(this.Email, this.Pass);
+                           
                             break;
                     }
 

@@ -74,10 +74,10 @@
 
 
                 <RelativePanel Visibility="{Binding VisibleSelectedBob, Mode=TwoWay}"  RelativePanel.Below="lblRating" >
-                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="Geschactte toekomsttijd  "/>
-                    <TextBlock x:Name="lblTime4" RelativePanel.RightOf="lblTime" Margin="0" Text="{Binding GetSelectedDestination.Name, Mode=TwoWay}"/>
-                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,0"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
-                    <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,0"  Text="{Binding RitTime, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="Geschactte toekomsttijd"/>
+                    <TextBlock x:Name="lblTime4" RelativePanel.RightOf="lblTime" Margin="10,0,0,8" Text="{Binding GetSelectedDestination.Name, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,8"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,8"  Text="{Binding RitTime, Mode=TwoWay}"/>
                 </RelativePanel>
 
             </RelativePanel>

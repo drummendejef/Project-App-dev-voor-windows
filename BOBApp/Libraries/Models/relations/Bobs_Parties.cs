@@ -10,9 +10,9 @@ namespace Libraries.Models.relations
     {
         public int Users_ID { get; set; }
         public int Bobs_ID { get; set; }
-        public int Parties_ID { get; set; }
-        public int Statuses_ID { get; set; }
-        public int Destinations_ID { get; set; }
+        public int Party_ID { get; set; }
+        public int Trips_ID { get; set; }
+        public double Rating { get; set; }
         public DateTime Added { get; set; }
     }
 }

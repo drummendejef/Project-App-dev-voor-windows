@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,14 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class VindRitBob : Page
     {
+        public VindRitBobVM Vm
+        {
+            get
+            {
+                return this.DataContext as VindRitBobVM;
+            }
+        }
+
         public VindRitBob()
         {
             this.InitializeComponent();

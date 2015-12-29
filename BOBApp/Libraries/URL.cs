@@ -30,6 +30,7 @@ namespace Libraries
 
 
         public static string TRIPS = BASE + "/trips";
+        public static string TRIPS_RATING = BASE + "/rating";
         public static string TRIPS_LOCATION = TRIPS + "/location";
         public static string TRIPS_ACTIVE = TRIPS + "/active";
         public static string TRIPS_DIFFERENECE = TRIPS + "/difference";

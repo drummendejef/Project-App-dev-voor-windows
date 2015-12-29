@@ -443,6 +443,7 @@ namespace BOBApp
                 Name = "loaded",
                 View = typeof(MainView)
             });
+
         }
 
         //Als de status van de locatie permissies veranderd is.

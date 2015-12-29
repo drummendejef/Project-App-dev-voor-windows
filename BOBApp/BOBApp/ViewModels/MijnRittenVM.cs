@@ -263,7 +263,7 @@ namespace BOBApp.ViewModels
 
             var dialog = new ContentDialog()
             {
-                Title = "",
+                Title = "Wijzigen",
             };
 
             // Setup Content

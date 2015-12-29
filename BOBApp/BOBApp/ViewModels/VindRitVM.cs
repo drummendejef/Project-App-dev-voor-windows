@@ -175,7 +175,7 @@ namespace BOBApp.ViewModels
                 {
                     if (VindRitVM.SelectedParty != null)
                     {
-                        return VindRitVM.SelectedParty.Name;
+                        return GetStatusName(VindRitVM.StatusID);
                     }
                     else
                     {
@@ -191,7 +191,7 @@ namespace BOBApp.ViewModels
         }
 
 
-        private async void getRitTime(Location location)
+        private async Task getRitTime(Location location)
         {
             if (location != null)
             {
@@ -208,7 +208,7 @@ namespace BOBApp.ViewModels
                     double time = distance / speed;
 
                     this.RitTime = ": " + time.ToString();
-                    RaisePropertyChanged("RitTime");
+                    RaiseAll();
                 }
                 
                 
@@ -277,19 +277,21 @@ namespace BOBApp.ViewModels
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
 
+           
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             this.Loading = false;
             this.EnableFind = true;
             VisibleModal = Visibility.Collapsed;
             this.Frame = new Frame();
+            RaisePropertyChanged("Frame");
             this.VisibleFilterContext = Visibility.Collapsed;
            
 
             //Ritten ophalen
             getBobs();
 
-            //Loaded();
+            Loaded();
             RaiseAll();
         }
 
@@ -317,18 +319,9 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("VisibleCancel");
             RaisePropertyChanged("CancelText");
             RaisePropertyChanged("VisibleChat");
-            try
-            {
-                RaisePropertyChanged("Frame");
-            }
-            catch (Exception)
-            {
 
-                
-            }
-           
+
             RaisePropertyChanged("VisibleFilterContext");
-            RaisePropertyChanged("BobRequests");
 
             RaisePropertyChanged("SelectedParty");
             RaisePropertyChanged("SelectedUser");
@@ -338,10 +331,10 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("StatusID");
             RaisePropertyChanged("Request");
             RaisePropertyChanged("Status");
+            RaisePropertyChanged("RitTime");
 
             RaisePropertyChanged("GetStatus");
             RaisePropertyChanged("GetSelectedRating");
-            RaisePropertyChanged("GetRitTime");
             RaisePropertyChanged("GetSelectedDestination");
             RaisePropertyChanged("GetSelectedBobsType");
             RaisePropertyChanged("GetSelectedParty");
@@ -373,14 +366,14 @@ namespace BOBApp.ViewModels
                     this.Loading = false;
                     this.EnableFind = true;
                     VisibleModal = Visibility.Collapsed;
-                    this.Frame = new Frame();
+                    
                     this.VisibleFilterContext = Visibility.Collapsed;
                    
    
 
-                    Task task = GetParties();
-                    Task task2 = GetDestinations();
-                    Task task3 = GetBobTypes();
+                    await GetParties();
+                    await GetDestinations();
+                    await GetBobTypes();
                     GetCurrentTrip();
 
                    
@@ -601,11 +594,20 @@ namespace BOBApp.ViewModels
 
         #region  StartTripLocationTimer
         DispatcherTimer timer = new DispatcherTimer();
+        bool canShowDialog;
         private void StartTripLocationTimer()
         {
-            timer = new DispatcherTimer();
+            if (timer.IsEnabled == true)
+            {
+                timer.Stop();
+                timer = new DispatcherTimer();
+                
+            }
+
+           
             timer.Interval = new TimeSpan(0, 0, 20);
             timer.Tick += Timer_Tick;
+            canShowDialog = true;
             timer.Start();
         }
 
@@ -615,7 +617,7 @@ namespace BOBApp.ViewModels
             Geoposition pos = await geolocator.GetGeopositionAsync();
             Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
-            getRitTime(location);
+            await getRitTime(location);
 
             if (location != null)
             {
@@ -650,10 +652,15 @@ namespace BOBApp.ViewModels
 
                     }
 
-                    bool done = Task.FromResult<bool>(await OnDestination()).Result;
-                    if (done == true)
+                    if (canShowDialog==true)
                     {
-                        BobisDone(location, "Trip is afgerond");
+                        canShowDialog = false;
+
+                        bool done = Task.FromResult<bool>(await OnDestination()).Result;
+                        if (done == true)
+                        {
+                            BobisDone(location, "Trip is afgerond");
+                        }
                     }
 
 
@@ -707,6 +714,8 @@ namespace BOBApp.ViewModels
                 int id = int.Parse(result.Id.ToString());
                 if (id == 0)
                 {
+
+                   
                     Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
 
                     Libraries.Socket socketSendToBob = new Libraries.Socket() {
@@ -714,22 +723,23 @@ namespace BOBApp.ViewModels
                         Status = true
                     };
 
-                    Libraries.Socket socketSendToUser = new Libraries.Socket()
-                    {
-                        To = MainViewVM.USER.ID,
-                        Status = true
-                    };
+   
+                    //todo: rating
+
+                    RatingDialog(bob, VindRitVM.CurrentTrip);
 
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
 
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                  
 
-
-                    //todo: rating
+                    canShowDialog = true;
+                    
                 }
 
             }
         }
+
+      
 
         private async Task<bool> OnDestination()
         {
@@ -748,10 +758,12 @@ namespace BOBApp.ViewModels
             int id = int.Parse(result.Id.ToString());
             if (id == 0)
             {
+             
                 return true;
             }
             else
             {
+               
                 return false;
             }
         }
@@ -884,6 +896,7 @@ namespace BOBApp.ViewModels
         //tasks
         private async Task<List<Bob>> FindBob_task()
         {
+            SetStatus(1);
             if (VindRitFilterVM.SelectedParty != "" && VindRitFilterVM.SelectedParty!=null)
             {
 
@@ -1073,7 +1086,7 @@ namespace BOBApp.ViewModels
 
         private void CloseModal()
         {
-            //Loaded();
+            
 
             if (this.Parties != null && VindRitFilterVM.SelectedParty!=null)
             {
@@ -1091,39 +1104,117 @@ namespace BOBApp.ViewModels
         }
         private void ShowModal()
         {
-            this.Frame = new Frame();
             this.Frame.Navigated += Frame_Navigated;
-            this.Frame.Navigate(typeof(VindRitFilter),true);
-           
+            this.Frame.Navigate(typeof(VindRitFilter), true);
+
 
             VisibleModal = Visibility.Visible;
             RaiseAll();
-
         }
         private void SetStatus(int statusID)
         {
             VindRitVM.StatusID = statusID;
+            this.Status = GetStatusName(statusID);
+            RaiseAll();
+        }
+
+        private string GetStatusName(int statusID)
+        {
             switch (statusID)
             {
                 case 1:
-                    this.Status = "Bob is aangevraagd";
-                    break;
+                     return "Bob is aangevraagd";
                 case 2:
-                    this.Status = "Bob is onderweg";
-                    break;
+                    return "Bob is onderweg";
                 case 3:
-                    this.Status = "Bob is toegekomen";
-                    break;
+                    return "Bob is toegekomen";
                 case 4:
-                    this.Status = "Rit is gedaan";
-                    break;
+                    return  "Rit is gedaan";
                 case 5:
-                    this.Status = "Rit is geannuleerd";
-                    break;
+                  return "Rit is geannuleerd";
                 default:
-                    break;
+                    return "";
+
             }
-            RaiseAll();
+        }
+
+        private async void RatingDialog(Bob.All bob,Trip trip)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Rating",
+            };
+
+            // Setup Content
+            var panel = new StackPanel();
+
+            panel.Children.Add(new TextBlock
+            {
+                Text = "Uw rit is ten einde, hoeveel rating wilt u deze bob geven? ",
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 15)
+            });
+
+            List<string> items = new List<string>();
+            for (int i = 1; i < 5; i++)
+            {
+                items.Add(i.ToString());
+            }
+            var cb = new ComboBox
+            {
+                HorizontalAlignment = HorizontalAlignment.Stretch
+            };
+            cb.ItemsSource = items;
+
+            var txt = new TextBox
+            {
+                TextWrapping = TextWrapping.Wrap,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch
+            };
+
+
+
+            panel.Children.Add(cb);
+            panel.Children.Add(txt);
+            dialog.Content = panel;
+
+            // Add Buttons
+            dialog.PrimaryButtonText = "Ok";
+            dialog.PrimaryButtonClick += async delegate
+            {
+                double rating;
+                string text = cb.SelectedValue.ToString();
+                string comment = txt.Text;
+
+                double.TryParse(text, out rating);
+
+                Bobs_Parties item = new Bobs_Parties()
+                {
+                    Bobs_ID = bob.Bob.ID.Value,
+                    Party_ID= trip.Party_ID,
+                    Trips_ID= trip.ID,
+                    Rating=rating
+                };
+
+                await AddRating(comment, item);
+
+                Loaded();
+            };
+
+
+
+            // Show Dialog
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.None)
+            {
+
+            }
+        }
+
+        private async Task<bool> AddRating(string comment, Bobs_Parties item)
+        {
+            Response res = await TripRepository.AddRating(item);
+            return res.Success;
         }
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)

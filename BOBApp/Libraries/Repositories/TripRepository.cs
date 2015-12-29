@@ -184,6 +184,36 @@ namespace Libraries.Repositories
         #endregion
 
 
+        public static async Task<Response> AddRating(Bobs_Parties item)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
+
+                    var newObject = JsonConvert.SerializeObject(item);
+
+                    HttpResponseMessage result = await client.PostAsync(URL.TRIPS_RATING, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+
+            }
+        }
+
+
         public static async Task<Response> PutActive(int tripsID, bool active)
         {
             try

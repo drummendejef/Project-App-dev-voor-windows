@@ -40,29 +40,76 @@ namespace BOBApp.ViewModels
         public string Error { get; set; }
 
         public Visibility VisibleModal { get; set; }
+        public Visibility VisibleOffer { get; set; }
+        public Visibility VisibleCancel { get; set; }
         public Frame Frame { get; set; }
-
+        public string OfferText { get; set; }
         public string Status { get; set; }
 
-
+        public Trip SelectedTrip { get; set; }
+        public List<User> UserRequest { get; set; }
 
         #region gets
 
+        public Visibility VisibleSelectedTrip { get; set; }
+        public string GetSelectedTrip
+        {
+            get
+            {
 
+                if (this.SelectedTrip != null)
+                {
+                  
+                    this.VisibleSelectedTrip = Visibility.Visible;
+                    return SelectedTrip.Status_Name;
+                }
+                else
+                {
+                    this.VisibleSelectedTrip = Visibility.Collapsed;
+                    return "";
+                }
+
+            }
+        }
 
         #endregion
 
         //others
-
+        public RelayCommand ArrivedCommand { get; set; }
         public RelayCommand ShowModalCommand { get; set; }
         public RelayCommand CloseModalCommand { get; set; }
-
+        public RelayCommand GoChatCommand { get; set; }
+        public RelayCommand OfferCommand { get; set; }
+        public RelayCommand CancelCommand { get; set; }
         public string BobRequests { get; set; }
- 
-       
+        public string RitTime { get; set; }
+
+        private async Task getRitTime(Location location)
+        {
+            if (location != null)
+            {
+                //checkhowfaraway
+                Users_Destinations destination = await DestinationRepository.GetDestinationById(this.SelectedTrip.Destinations_ID);
+                Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)destination.Location, location)).Result;
+
+                if (farEnough.Success == true)
+                {
+                    double distance;
+                    double.TryParse(farEnough.Value.ToString(), out distance);
 
 
-      
+                    double speed = 50;
+                    double time = distance / speed;
+
+                    this.RitTime = ": " + time.ToString();
+                    RaiseAll();
+                }
+
+
+            }
+        }
+
+
 
 
         #endregion
@@ -74,6 +121,10 @@ namespace BOBApp.ViewModels
            
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
+            ArrivedCommand = new RelayCommand(Arrived);
+            GoChatCommand = new RelayCommand(GoChat);
+            OfferCommand = new RelayCommand(Offer);
+            CancelCommand = new RelayCommand(Cancel);
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
@@ -81,9 +132,25 @@ namespace BOBApp.ViewModels
           
             this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
 
+            this.VisibleOffer = Visibility.Collapsed;
 
-          
+
             RaiseAll();
+        }
+
+        private void Cancel()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Offer()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Arrived()
+        {
+            throw new NotImplementedException();
         }
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
@@ -91,7 +158,7 @@ namespace BOBApp.ViewModels
             if (obj.Name == "loaded")
             {
                 Type view = (Type)obj.View;
-                if (view == typeof(VindRit) || view == typeof(VindRitBob))
+                if (view == typeof(VindRitBob))
                 {
                     //loaded
                     Loaded();
@@ -100,7 +167,7 @@ namespace BOBApp.ViewModels
             if (obj.Reload == true)
             {
                 Type view = (Type)obj.View;
-                if (view == typeof(VindRit))
+                if (view == typeof(VindRitBob))
                 {
                     //loaded
                     Loaded();
@@ -114,12 +181,32 @@ namespace BOBApp.ViewModels
                     case "bob_accepted":
                         bob_accepted((bool)obj.Result, (int)obj.Data);
                         break;
+                    case "newtrip_bob":
+                        newtrip_bob((Trip)obj.Data);
+                        break;
+                    case "trip_location:reload":
+                        Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
+
+                        //instellen voor timer, niet gebruiken in filter
+                        VindRitFilterVM.SelectedDestination = dest;
+                        if (VindRitFilterVM.SelectedDestination != null)
+                        {
+                            StartTripLocationTimer();
+                        }
+                        RaiseAll();
+                        break;
                     default:
                         break;
                 }
             }
         }
 
+        private void newtrip_bob(Trip data)
+        {
+            this.VisibleOffer = Visibility.Visible;
+            this.SelectedTrip = data;
+            RaiseAll();
+        }
 
         private async void bob_accepted(bool accepted, int id)
         {
@@ -151,11 +238,21 @@ namespace BOBApp.ViewModels
         {
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("VisibleModal");
+            RaisePropertyChanged("VisibleCancel");
+            RaisePropertyChanged("VisibleOffer");
             RaisePropertyChanged("Frame");
             RaisePropertyChanged("BobRequests");
             RaisePropertyChanged("Status");
-      
+            RaisePropertyChanged("UserRequests");
+            RaisePropertyChanged("OfferText");
+            RaisePropertyChanged("RitTime");
 
+
+            RaisePropertyChanged("GetSelectedTrip");
+
+
+            RaisePropertyChanged("VisibleSelectedTrip");
+          
            
     }
 
@@ -189,8 +286,24 @@ namespace BOBApp.ViewModels
 
 
 
-        
-        
+        private void GoChat()
+        {
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
+
+            if (VindRitChatVM.ID != null)
+            {
+
+                rootFrame.Navigate(typeof(VindRitChat), true);
+            }
+            else
+            {
+                rootFrame.Navigate(typeof(VindRitChat), false);
+            }
+
+
+
+        }
+
 
         private void CloseModal()
         {
@@ -232,5 +345,223 @@ namespace BOBApp.ViewModels
                 }
             }
         }
+
+
+
+
+        //update location user/bob naar de db
+
+        private async Task<bool> trip_location()
+        {
+           
+            this.Loading = false;
+            //todo: swtich
+            RaiseAll();
+
+
+
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+
+            Trips_Locations item = new Trips_Locations()
+            {
+                Trips_ID = VindRitVM.CurrentTrip.ID,
+                Location = JsonConvert.SerializeObject(location),
+                Statuses_ID = VindRitVM.StatusID
+            };
+            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+
+            if (ok.Success == true)
+            {
+                StartTripLocationTimer();
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+        #region  StartTripLocationTimer
+        DispatcherTimer timer = new DispatcherTimer();
+        bool canShowDialog;
+        private void StartTripLocationTimer()
+        {
+            if (timer.IsEnabled == true)
+            {
+                timer.Stop();
+                timer = new DispatcherTimer();
+
+            }
+
+
+            timer.Interval = new TimeSpan(0, 0, 20);
+            timer.Tick += Timer_Tick;
+            canShowDialog = true;
+            timer.Start();
+        }
+
+        private async void Timer_Tick(object sender, object e)
+        {
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+            await getRitTime(location);
+
+            if (location != null)
+            {
+                //checkhowfaraway
+                Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
+
+                if (farEnough.Success == true)
+                {
+                    //kleiner dan 1km
+                    VindRitVM.StatusID = 3;
+                    RaiseAll();
+                    timer.Stop();
+
+
+                    Trips_Locations item = new Trips_Locations()
+                    {
+                        Trips_ID = VindRitVM.CurrentTrip.ID,
+                        Location = JsonConvert.SerializeObject(location),
+                        Statuses_ID = VindRitVM.StatusID
+                    };
+                    Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+                    if (ok.Success == true)
+                    {
+
+                        Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                        Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                        MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                    }
+                    else
+                    {
+                        timer.Stop();
+
+                    }
+
+                    if (canShowDialog == true)
+                    {
+                        canShowDialog = false;
+
+                        bool done = Task.FromResult<bool>(await OnDestination()).Result;
+                        if (done == true)
+                        {
+                            BobisDone(location, "Trip is afgerond");
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    //VindRitFilterVM.SelectedDestination.Location;
+                    Trips_Locations item = new Trips_Locations()
+                    {
+                        Trips_ID = VindRitVM.CurrentTrip.ID,
+                        Location = JsonConvert.SerializeObject(location),
+                        Statuses_ID = VindRitVM.StatusID
+                    };
+                    Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+                    if (ok.Success == false)
+                    {
+                        timer.Stop();
+                    }
+                }
+
+
+            }
+        }
+
+        private async void BobisDone(Location location, string text)
+        {
+            VindRitVM.StatusID = 4;
+            RaiseAll();
+
+            Trips_Locations item = new Trips_Locations()
+            {
+                Trips_ID = VindRitVM.CurrentTrip.ID,
+                Location = JsonConvert.SerializeObject(location),
+                Statuses_ID = VindRitVM.StatusID
+            };
+            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+            Response active = Task.FromResult<Response>(await TripRepository.PutActive(item.Trips_ID, false)).Result;
+
+            if (ok.Success == true && active.Success == true)
+            {
+                var dialog = new MessageDialog(text);
+
+                dialog.Commands.Add(new UICommand("Ok") { Id = 0 });
+
+
+
+                dialog.DefaultCommandIndex = 0;
+
+                var result = await dialog.ShowAsync();
+
+                int id = int.Parse(result.Id.ToString());
+                if (id == 0)
+                {
+
+
+                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+
+
+
+                    Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    {
+                        To = MainViewVM.USER.ID,
+                        Status = true
+                    };
+
+
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+
+                    canShowDialog = true;
+
+                }
+
+            }
+        }
+
+
+
+        private async Task<bool> OnDestination()
+        {
+            var dialog = new MessageDialog("Bent u toegekomen op de locatie?");
+
+            dialog.Commands.Add(new UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new UICommand("No") { Id = 1 });
+
+
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var result = await dialog.ShowAsync();
+
+            int id = int.Parse(result.Id.ToString());
+            if (id == 0)
+            {
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+
+        #endregion
+
+
+
     }
 }

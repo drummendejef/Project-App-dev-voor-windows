@@ -278,7 +278,7 @@ namespace BOBApp.Views
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
                     Reload = reload,
-                    View = e.SourcePageType
+                    View = ((Frame)ShellSplitView.Content).CurrentSourcePageType
                 });
 
                 if (reload == false)
@@ -296,10 +296,11 @@ namespace BOBApp.Views
 
         private void frame_Navigated(object sender, NavigationEventArgs e)
         {
+            
             Messenger.Default.Send<NavigateTo>(new NavigateTo()
             {
                 Name="loaded",
-                View = e.SourcePageType
+                View= ((Frame)ShellSplitView.Content).CurrentSourcePageType
             });
         }
 
