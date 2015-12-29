@@ -82,6 +82,9 @@ namespace BOBApp.ViewModels
             {
                 case "newComment":
                     getChatroom();
+
+
+
                     break;
                 default:
                     break;
@@ -226,12 +229,14 @@ namespace BOBApp.ViewModels
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
                 {
                     To = bob.User.ID,
-                    Status = true
+                    Status = true,
+                    Object= comment.Comment
                 };
                 Libraries.Socket socketSendToUser = new Libraries.Socket()
                 {
                     To = userID,
-                    Status = true
+                    Status = true,
+                    Object = comment.Comment
                 };
 
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));

@@ -173,17 +173,29 @@ namespace BOBApp.ViewModels
                 }
             });
 
-            MainViewVM.socket.On("chatroom_COMMENT", (msg) =>
+            MainViewVM.socket.On("chatroom_COMMENT", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
                 if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+
                     Messenger.Default.Send<NavigateTo>(new NavigateTo()
                     {
                         Name = "newComment"
                     });
 
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
+                        Ok = "Antwoord",
+                        Nok = "Negeer",
+                        ViewOk = typeof(VindRitChat),
+                        ViewNok = null,
+                        ParamView = false,
+                        Cb = null
+                    });
 
 
                 }

@@ -182,7 +182,7 @@ namespace BOBApp.Views
         bool isBob;
         private async void changeToBob()
         {
-            isBob = MainViewVM.USER.CanBeBob;
+            isBob = MainViewVM.USER.CanBeBob.Value;
 
             if (isBob == true){
 
@@ -215,7 +215,7 @@ namespace BOBApp.Views
 
         private void IsBob()
         {
-            isBob = MainViewVM.USER.IsBob;
+            isBob = MainViewVM.USER.IsBob.Value;
             if (isBob == true)
             {
                 //bob

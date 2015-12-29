@@ -23,9 +23,9 @@ namespace Libraries.Models
         public string Password { get; set; }
 
         //optional
-        public bool IsBob { get; set; }
-        public bool CanBeBob { get; set; }
-        public bool CanOffer { get; set; }
+        public bool? IsBob { get; set; }
+        public bool? CanBeBob { get; set; }
+        public bool? CanOffer { get; set; }
         public string Location { get; set; }
 
         public class Profile
@@ -51,7 +51,7 @@ namespace Libraries.Models
             public String Cellphone { get; set; }
             public String Password { get; set; }
             public int FacebookID { get; set; }
-            public Boolean IsBob { get; set; }
+            public Boolean? IsBob { get; set; }
             public Double PricePerKm { get; set; }
             public int? BobsType_ID { get; set; }
             public String LicensePlate { get; set; }

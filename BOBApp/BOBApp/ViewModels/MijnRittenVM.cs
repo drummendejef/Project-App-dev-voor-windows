@@ -211,7 +211,9 @@ namespace BOBApp.ViewModels
                 {
                     this.Error = "Geen trips gevonden";
                     canRun = false;
+                    this.Loading = false;
                     RaiseAll();
+                    return;
                 }
 
 
@@ -240,9 +242,10 @@ namespace BOBApp.ViewModels
                 {
                     this.Trips = trips_all.Take(10).ToList();
                     canRun = false;
-                    RaiseAll();
+                    this.Loading = false;
                 }
 
+                RaiseAll();
 
             });
 #pragma warning restore CS1998

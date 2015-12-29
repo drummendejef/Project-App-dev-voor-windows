@@ -124,7 +124,7 @@ namespace BOBApp.ViewModels
             EditUser.Lastname = User.User.Lastname;
             EditUser.Email = User.User.Email;
             EditUser.Cellphone = User.User.Cellphone;
-            EditUser.IsBob = User.User.IsBob;
+            EditUser.IsBob = User.User.IsBob.Value;
             EditUser.PricePerKm = User.Bob.PricePerKm;
             EditUser.BobsType_ID = User.Bob.BobsType_ID;
             EditUser.LicensePlate = User.Bob.LicensePlate;

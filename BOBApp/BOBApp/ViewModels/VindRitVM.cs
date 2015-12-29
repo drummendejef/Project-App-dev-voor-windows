@@ -283,6 +283,9 @@ namespace BOBApp.ViewModels
             this.Loading = false;
             this.EnableFind = true;
             VisibleModal = Visibility.Collapsed;
+            this.VisibleSelectedFriends = Visibility.Collapsed;
+            this.VisibleSelectedBob = Visibility.Collapsed;
+            this.VisibleSelectedBobsType = Visibility.Collapsed;
             this.Frame = new Frame();
             RaisePropertyChanged("Frame");
             this.VisibleFilterContext = Visibility.Collapsed;
@@ -374,10 +377,11 @@ namespace BOBApp.ViewModels
                     await GetParties();
                     await GetDestinations();
                     await GetBobTypes();
-                    GetCurrentTrip();
+                    await GetCurrentTrip();
 
-                   
-                
+                    this.Frame = new Frame();
+                    RaisePropertyChanged("Frame");
+
 
                     RaiseAll();
 
@@ -778,7 +782,7 @@ namespace BOBApp.ViewModels
             VindRitFilterVM.SelectedBobsType = lijst.Where(r => r.ID == 2).First();
            
         }
-        private async void GetCurrentTrip()
+        private async Task GetCurrentTrip()
         {
             if (VindRitVM.CurrentTrip == null || VindRitVM.CurrentTrip.ID == 0)
             {
@@ -1107,7 +1111,7 @@ namespace BOBApp.ViewModels
             this.Frame.Navigated += Frame_Navigated;
             this.Frame.Navigate(typeof(VindRitFilter), true);
 
-
+            //RaisePropertyChanged("Frame");
             VisibleModal = Visibility.Visible;
             RaiseAll();
         }
