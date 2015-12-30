@@ -30,6 +30,12 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="1"/>
                     </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="buttonCancel.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="buttonCancel.(RelativePanel.Below)" Value="passwordBoxHerhaal" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.Below)" Value="passwordBoxHerhaal" />
+                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Over800">
                     <VisualState.Setters>
@@ -42,6 +48,10 @@
                         <Setter Target="buttonCancel.(FrameworkElement.Height)" Value="32"/>
                         <Setter Target="buttonRegistreer.(FrameworkElement.Width)" Value="160"/>
                         <Setter Target="buttonRegistreer.(FrameworkElement.Height)" Value="32"/>
+                        <Setter Target="buttonCancel.(RelativePanel.AlignBottomWithPanel)" Value="True" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.AlignBottomWithPanel)" Value="True" />
+                        <Setter Target="buttonCancel.(RelativePanel.Below)" Value="" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.Below)" Value="" />
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="800"/>
