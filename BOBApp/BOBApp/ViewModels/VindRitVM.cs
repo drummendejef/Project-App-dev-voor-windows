@@ -675,7 +675,7 @@ namespace BOBApp.ViewModels
                 if (farEnough.Success == true)
                 {
                     //kleiner dan 1km
-                    SetStatus(3);
+                    SetStatus(7);
                     RaiseAll();
                     timer.Stop();
 
@@ -1223,6 +1223,8 @@ namespace BOBApp.ViewModels
                   return "Rit is geannuleerd";
                 case 6://niet in db
                     return "Wachten op antwoord van bob";
+                case 7: //niet in db
+                    return "Bob is in de buurt";
                 default:
                     return "";
 

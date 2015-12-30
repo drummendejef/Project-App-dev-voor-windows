@@ -158,23 +158,20 @@ namespace BOBApp.ViewModels
                         var dataChat = JsonConvert.DeserializeAnonymousType(jsonChat, definition);
                         var dataTrip = JsonConvert.DeserializeObject<Trip>(jsonTrip);
 
-                        if (dataChat.UserID != MainViewVM.USER.ID)
+                        if (MainViewVM.USER.IsBob == false && dataChat.UserID != MainViewVM.USER.ID)
                         {
                             Clear();
+
                         }
-                        else if (dataTrip.Users_ID != MainViewVM.USER.ID)
+                        else if (MainViewVM.USER.IsBob == false && dataTrip.Users_ID != MainViewVM.USER.ID)
                         {
-                            if(dataTrip.Bobs_ID != MainViewVM.USER.Bobs_ID)
-                            {
-                                Clear();
-                                return true;
-                            }
-                            if(dataTrip.Users_ID!= MainViewVM.USER.ID)
-                            {
-                                Clear();
-                                return true;
-                            }
+                            Clear();
                             
+
+                        }
+                        else if (MainViewVM.USER.IsBob==true && dataTrip.Bobs_ID!=MainViewVM.USER.Bobs_ID)
+                        {
+                            Clear();
                         }
                         else
                         {

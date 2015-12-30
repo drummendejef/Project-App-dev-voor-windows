@@ -113,15 +113,22 @@ namespace BOBApp.ViewModels
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
-                    if (fromUser.User.IsBob.Value == true)
+                    if (fromUser != null)
                     {
-                        Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                        if (fromUser.User.IsBob.Value == true)
                         {
-                            Name = "rating_dialog",
-                            View = typeof(VindRit),
-                            Data = _socket.Object
-                        });
+                            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                            {
+                                Name = "rating_dialog",
+                                View = typeof(VindRit),
+                                Data = _socket.Object
+                            });
 
+                        }
+                        else
+                        {
+                            TripDone();
+                        }
                     }
                     else
                     {
