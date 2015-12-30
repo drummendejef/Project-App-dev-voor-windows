@@ -224,22 +224,51 @@ namespace BOBApp.ViewModels
 
                 int bobID=ChatRoom.ChatRoom.Bobs_ID;
                 Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(bobID)).Result;
-
                 int userID = ChatRoom.ChatRoom.Users_ID;
-                Libraries.Socket socketSendToBob = new Libraries.Socket()
+                Libraries.Socket socketSendToBob;
+                Libraries.Socket socketSendToUser;
+
+                if (MainViewVM.USER.ID != userID)
                 {
-                    From= MainViewVM.USER.ID,
-                    To = bob.User.ID,
-                    Status = true,
-                    Object= comment.Comment
-                };
-                Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    socketSendToBob = new Libraries.Socket()
+                    {
+                        From = MainViewVM.USER.ID,
+                        To = bob.User.ID,
+                        Status = true,
+                        Object = comment.Comment,
+                        Object2 = true
+                    };
+                    socketSendToUser = new Libraries.Socket()
+                    {
+                        From = bob.User.ID,
+                        To = MainViewVM.USER.ID,
+                        Status = true,
+                        Object = comment.Comment,
+                        Object2=false
+                    };
+                }
+                else
                 {
-                    From = bob.User.ID,
-                    To = MainViewVM.USER.ID,
-                    Status = true,
-                    Object = comment.Comment
-                };
+                    socketSendToBob = new Libraries.Socket()
+                    {
+                        From = MainViewVM.USER.ID,
+                        To = bob.User.ID,
+                        Status = true,
+                        Object = comment.Comment,
+                        Object2 = false
+                    };
+                    socketSendToUser = new Libraries.Socket()
+                    {
+                        From = bob.User.ID,
+                        To = MainViewVM.USER.ID,
+                        Status = true,
+                        Object = comment.Comment,
+                        Object2 = true
+                    };
+                }
+
+              
+                
 
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToUser));
                 MainViewVM.socket.Emit("chatroom_COMMENT:send", JsonConvert.SerializeObject(socketSendToBob));

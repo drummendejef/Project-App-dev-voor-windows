@@ -37,6 +37,11 @@ namespace BOBApp.Views
             this.InitializeComponent();
             this.ShellSplitView.Content = frame;
 
+            Frame rootFrame = (Frame)ShellSplitView.Content;
+            rootFrame.Navigated += OnNavigated;
+            MainViewVM.MainFrame = rootFrame;
+
+
             if (ShellSplitView.Content != null)
             {
                 if (MainViewVM.USER.IsBob==true)
@@ -57,9 +62,8 @@ namespace BOBApp.Views
             }
                
 
-            Frame rootFrame = (Frame)ShellSplitView.Content;
-            MainViewVM.MainFrame = rootFrame;
-            rootFrame.Navigated += OnNavigated;
+           
+           
 
             // Register a handler for BackRequested events and set the
             // visibility of the Back button

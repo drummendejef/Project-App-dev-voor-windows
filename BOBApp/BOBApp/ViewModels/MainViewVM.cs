@@ -186,34 +186,33 @@ namespace BOBApp.ViewModels
                         Name = "newComment"
                     });
 
-                    if (fromUser != null)
+
+                    if((bool)_socket.Object2 == true)
                     {
-                        if(MainViewVM.USER.ID!= _socket.To)
+                        Messenger.Default.Send<Dialog>(new Dialog()
                         {
-                            Messenger.Default.Send<Dialog>(new Dialog()
-                            {
-                                Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
-                                Ok = "Antwoord",
-                                Nok = "Negeer",
-                                ViewOk = typeof(VindRitChat),
-                                ViewNok = null,
-                                ParamView = false,
-                                Cb = null,
-                                IsNotification = true
-                            });
-                        }
-                        
+                            Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
+                            Ok = "Antwoord",
+                            Nok = "Negeer",
+                            ViewOk = typeof(VindRitChat),
+                            ViewNok = null,
+                            ParamView = false,
+                            Cb = null,
+                            IsNotification = true
+                        });
                     }
-                    
-
-
                 }
+
+
+
             });
         }
 
         private async void TripSave(Trip trip)
         {
+            trip.StatusID = VindRitVM.StatusID;
             var data = JsonConvert.SerializeObject(trip);
+
             bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
 
 

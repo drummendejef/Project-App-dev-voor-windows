@@ -127,6 +127,25 @@ namespace BOBApp.ViewModels
             }
         }
 
+        public Bob.All GetSelectedBob
+        {
+            get
+            {
+                if (VindRitVM.SelectedBob != null)
+                {
+
+                    return VindRitVM.SelectedBob;
+                }
+                else
+                {
+
+                   
+                    return null;
+                }
+
+            }
+        }
+
         public Visibility VisibleSelectedBobsType { get; set; }
         public BobsType GetSelectedBobsType
         {
@@ -374,23 +393,18 @@ namespace BOBApp.ViewModels
                     
                     this.VisibleFilterContext = Visibility.Collapsed;
                     this.EnableFind = true;
-                    this.VisibleSelectedFriends = Visibility.Collapsed;
-                    this.VisibleSelectedBob = Visibility.Collapsed;
-                    this.VisibleSelectedBobsType = Visibility.Collapsed;
-                    this.VisibleSelectedRating = Visibility.Collapsed;
-                    this.VisibleSelectedParty = Visibility.Collapsed;
 
                     this.VisibleCancel = Visibility.Collapsed;
                     this.VisibleFind = Visibility.Visible;
                     this.Loading = false;
                     this.Status = null;
 
-                    SetStatus(0);
+                    
 
 
 
                     canShowDialog = true;
-                    RaiseAll();
+                  
 
 
 
@@ -573,7 +587,7 @@ namespace BOBApp.ViewModels
                     MainViewVM.socket.Emit("bob_ACCEPT:send", JsonConvert.SerializeObject(socketSend));
 
 
-                    this.Status = "Wachten op antwoord van bob";
+                    SetStatus(6);
                     this.VisibleSelectedBob = Visibility.Visible;
                     this.Loading = true;
                     RaiseAll();
@@ -625,18 +639,20 @@ namespace BOBApp.ViewModels
 
 
         #region  StartTripLocationTimer
-        DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer timer;
         bool canShowDialog;
         private void StartTripLocationTimer()
         {
-            if (timer.IsEnabled == true)
+            if (timer!=null)
             {
                 timer.Stop();
-                timer = new DispatcherTimer();
+                timer = null;
+                return;
+
                 
             }
 
-           
+            timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 20);
             timer.Tick += Timer_Tick;
             canShowDialog = true;
@@ -844,8 +860,9 @@ namespace BOBApp.ViewModels
                     var data = JsonConvert.DeserializeObject<Trip>(json);
                     if (data.ID != -1)
                     {
+                        SetStatus(data.StatusID.Value);
                         VindRitVM.CurrentTrip = data;
-
+                     
                         this.EnableFind = false;
                     }
                     else
@@ -951,7 +968,7 @@ namespace BOBApp.ViewModels
         //tasks
         private async Task<List<Bob>> FindBob_task()
         {
-            SetStatus(1);
+           
             if (VindRitFilterVM.SelectedParty != "" && VindRitFilterVM.SelectedParty!=null)
             {
 
@@ -1204,6 +1221,8 @@ namespace BOBApp.ViewModels
                     return  "Rit is gedaan";
                 case 5:
                   return "Rit is geannuleerd";
+                case 6://niet in db
+                    return "Wachten op antwoord van bob";
                 default:
                     return "";
 

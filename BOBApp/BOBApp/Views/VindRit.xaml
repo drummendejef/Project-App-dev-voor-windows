@@ -17,7 +17,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <vm:VindRitVM x:Key="this"/>
             <vm:VindRitFilterVM x:Key="filter"/>
             <DataTemplate x:Key="DTemplateBobsMap">
                 <ContentControl Maps:MapControl.Location="{Binding GeoLocation}" >
@@ -76,7 +75,7 @@
                 <RelativePanel Visibility="{Binding VisibleSelectedBob, Mode=TwoWay}"  RelativePanel.Below="lblRating" >
                     <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="Geschactte toekomsttijd"/>
                     <TextBlock x:Name="lblTime4" RelativePanel.RightOf="lblTime" Margin="10,0,0,8" Text="{Binding GetSelectedDestination.Name, Mode=TwoWay}"/>
-                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,8"  Text="{Binding SelectedBob.User, Source={StaticResource this}, Mode=TwoWay}"/>
+                    <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,8"  Text="{Binding GetSelectedBob.User, Mode=TwoWay}"/>
                     <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,8"  Text="{Binding RitTime, Mode=TwoWay}"/>
                 </RelativePanel>
 

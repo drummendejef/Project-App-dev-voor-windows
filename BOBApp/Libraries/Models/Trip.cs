@@ -23,6 +23,7 @@ namespace Libraries.Models
 
         //optional
         public double? Rating { get; set; }
+        public int? StatusID { get; set; }
 
         public class All
         {

@@ -603,6 +603,7 @@ namespace BOBApp.ViewModels
                     var data = JsonConvert.DeserializeObject<Trip>(json);
                     if (data.ID != -1)
                     {
+                        
                         newtrip_bob(data);
                     }
                     else
