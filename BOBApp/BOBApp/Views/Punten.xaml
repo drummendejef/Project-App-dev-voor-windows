@@ -24,6 +24,14 @@
         <TextBlock x:Name="textBlockPunten" Margin="30" Height="20" TextWrapping="Wrap" Text="{Binding PointsText, Mode=OneWay}" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" Style="{StaticResource textblock}" />
 
         <ListView SelectionChanged="{x:Bind Vm.Changed}" ItemContainerStyle="{ThemeResource listViewItem}" HorizontalAlignment="Stretch" Width="400" Margin="10" MinHeight="100" x:Name="Friends" RelativePanel.AlignHorizontalCenterWithPanel="True" SelectedItem="{Binding SelectedPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Points, Mode=OneWay}" RelativePanel.Below="textBlockPunten" >
+            <ListView.ItemContainerTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                    <ContentThemeTransition />
+                    <ReorderThemeTransition />
+                    <EntranceThemeTransition IsStaggeringEnabled="False" />
+                </TransitionCollection>
+            </ListView.ItemContainerTransitions>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <RelativePanel Padding="15" Margin="0,0,0,15" HorizontalAlignment="Stretch" Background="#f7f7f7">

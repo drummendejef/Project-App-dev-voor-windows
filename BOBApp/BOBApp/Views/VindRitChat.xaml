@@ -17,7 +17,14 @@
 
     <RelativePanel>
         <ItemsControl HorizontalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,35" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" ItemTemplate="{ThemeResource TemplateChatComments}" RelativePanel.AlignBottomWithPanel="True">
- 
+            <ItemsControl.ItemContainerTransitions>
+                <TransitionCollection>
+                    <AddDeleteThemeTransition/>
+                    <ContentThemeTransition />
+                    <ReorderThemeTransition />
+                    <EntranceThemeTransition IsStaggeringEnabled="False" />
+                </TransitionCollection>
+            </ItemsControl.ItemContainerTransitions>
         </ItemsControl>
 
         <RelativePanel x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">

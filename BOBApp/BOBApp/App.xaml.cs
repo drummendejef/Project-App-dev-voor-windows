@@ -279,6 +279,9 @@ namespace BOBApp
                     case "MainView":
                         rootFrame.Navigate(typeof(MainView),true);
                         break;
+                    case "Register":
+                        rootFrame.Navigate(typeof(Register), true);
+                        break;
                     default:
                         rootFrame.Navigate(typeof(Login));
                         break;

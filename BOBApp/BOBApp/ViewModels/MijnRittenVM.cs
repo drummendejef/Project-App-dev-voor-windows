@@ -70,13 +70,18 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Trips");
-            RaisePropertyChanged("CurrentTrip");
-            RaisePropertyChanged("Car");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Trips");
+                RaisePropertyChanged("CurrentTrip");
+                RaisePropertyChanged("Car");
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
@@ -100,11 +105,13 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-                GetCurrentTrip();
-                GetTrips();
+               
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
+                    await GetCurrentTrip();
+                    await GetTrips();
+
                     this.Loading = false;
                     RaiseAll();
 
@@ -116,40 +123,47 @@ namespace BOBApp.ViewModels
 
 
         //Methods
-        private async void GetCurrentTrip()
+        private async Task GetCurrentTrip()
         {
-            Trip currenttrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
-            if(MainViewVM.USER.IsBob == false && currenttrip != null)
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
             {
-                if (currenttrip.Active == true)
+                Trip currenttrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
+                if (currenttrip != null)
                 {
-                    Trip.All trips_all = new Trip.All();
+                    if (currenttrip.Active == true)
+                    {
+                        Trip.All trips_all = new Trip.All();
 
 
-                    User.All user = await UsersRepository.GetUserById(currenttrip.Users_ID);
-                    Bob.All bob = await BobsRepository.GetBobById(currenttrip.Bobs_ID);
-                    Users_Destinations destination = await DestinationRepository.GetDestinationById((currenttrip.Destinations_ID));
-                    Party party = await PartyRepository.GetPartyById(currenttrip.Party_ID);
-                    Trip.All newTrip = new Trip.All();
+                        User.All user = await UsersRepository.GetUserById(currenttrip.Users_ID);
+                        Bob.All bob = await BobsRepository.GetBobById(currenttrip.Bobs_ID);
+                        Users_Destinations destination = await DestinationRepository.GetDestinationById((currenttrip.Destinations_ID));
+                        Party party = await PartyRepository.GetPartyById(currenttrip.Party_ID);
+                        Trip.All newTrip = new Trip.All();
 
 
 
-                    newTrip.Trip = currenttrip;
-                    newTrip.Party = party;
-                    newTrip.User = user;
-                    newTrip.Bob = bob;
-                    newTrip.Destination = destination;
+                        newTrip.Trip = currenttrip;
+                        newTrip.Party = party;
+                        newTrip.User = user;
+                        newTrip.Bob = bob;
+                        newTrip.Destination = destination;
 
-                    MoveCar(newTrip.Trip.Status_Name);
+                        MoveCar(newTrip.Trip.Status_Name);
+                        this.Loading = false;
+                        this.CurrentTrip = newTrip;
+                    }
+                    else
+                    {
+                        //geen current trip nu
 
-                    this.CurrentTrip = newTrip;
+                    }
                 }
-                else
-                {
-                    //geen current trip nu
-
-                }
-            }
+                RaiseAll();
+            });
            
 
            
@@ -184,21 +198,18 @@ namespace BOBApp.ViewModels
                 default:
                     break;
             }
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-            {
-                RaiseAll();
-            });
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+            RaiseAll();
         }
 
         List<Trip.All> trips_all= new List<Trip.All>();
 
-        private async void GetTrips()
+        private async Task GetTrips()
         {
             bool canRun = true;
-            #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            await Task.Run(async () =>
             {
                 List<Trip> trips = await TripRepository.GetTrips();
 
@@ -242,10 +253,11 @@ namespace BOBApp.ViewModels
                 canRun = false;
                 this.Loading = false;
 
-                RaiseAll();
 
+                 RaiseAll();
+              
             });
-            #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
 
         }
 

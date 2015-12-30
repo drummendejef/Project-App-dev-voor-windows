@@ -108,14 +108,16 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-                GetCities();
-                GetDestinations();
-                this.NewCity = new City();
-                this.NewDestination = new Destination();
+               
 
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
+                    await GetCities();
+                    await GetDestinations();
+                    this.NewCity = new City();
+                    this.NewDestination = new Destination();
+
                     this.Loading = false;
                     RaiseAll();
 
@@ -181,8 +183,11 @@ namespace BOBApp.ViewModels
             Frame rootFrame =MainViewVM.MainFrame as Frame;
             rootFrame.Navigate(typeof(Bestemmingen_Nieuw),true);
         }
-        private async void GetDestinations()
+        private async Task GetDestinations()
         {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
             this.Destinations = await DestinationRepository.GetDestinations();
 
             for (int i = 0; i < this.Destinations.Count; i++)
@@ -193,6 +198,9 @@ namespace BOBApp.ViewModels
                 }
                 
             }
+
+            this.Loading = false;
+            RaisePropertyChanged("Loading");
         }
 
         private async void SetDefault(object id)
@@ -220,11 +228,16 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async void GetCities()
+        private async Task GetCities()
         {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
             this.Cities = await CityRepository.GetCities();
             this.Cities.Sort((a, b) => a.Name.CompareTo(b.Name));
 
+            this.Loading = false;
+            RaisePropertyChanged("Loading");
         }
 
         //De naam van de gemeente omzetten naar de locatie

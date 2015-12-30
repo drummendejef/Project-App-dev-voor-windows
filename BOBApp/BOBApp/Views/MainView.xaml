@@ -16,6 +16,7 @@
         </ResourceDictionary>
     </Page.Resources>
     
+
     <SplitView PaneClosing="ShellSplitView_PaneClosing" x:Name="ShellSplitView" DisplayMode="CompactOverlay"
                IsPaneOpen="True" CompactPaneLength="41" OpenPaneLength="200"
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
