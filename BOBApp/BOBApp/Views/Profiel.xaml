@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <RelativePanel>
+    <RelativePanel Background="White">
         <TextBox x:Name="textBoxNaam" TextWrapping="Wrap" Text="{Binding User.User.Lastname, Mode=TwoWay}" PlaceholderText="Naam" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}" TextChanged="textBoxNaam_TextChanged"/>
         <TextBox x:Name="textBoxVoornaam" TextWrapping="Wrap" Text="{Binding User.User.Firstname, Mode=TwoWay}" PlaceholderText="Voornaam"  RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10,50,10,10" Style="{StaticResource textBox}" TextChanged="textBoxVoornaam_TextChanged"/>
         <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="{Binding User.User.Email, Mode=TwoWay}" PlaceholderText="Email" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}" TextChanged="textBoxEmail_TextChanged"/>
@@ -26,7 +26,7 @@
         <ComboBox x:Name="comboBox" HorizontalAlignment="Stretch" ItemsSource="{Binding Merken, Mode=TwoWay}" DisplayMemberPath="Name" SelectedItem="{Binding Path=User.Autotype, Mode=TwoWay}" PlaceholderText="Kies een merk" RelativePanel.Below="textBoxNummerplaat" RelativePanel.RightOf="textBlockAutoType" RelativePanel.AlignRightWith="textBoxNummerplaat" Margin="10" SelectionChanged="comboBox_SelectionChanged"/>
         <TextBox Text="{Binding User.Bob.PricePerKm, Mode=TwoWay}"  x:Name="textboxPrice" TextWrapping="Wrap" PlaceholderText="Prijs per km" RelativePanel.Below="textBlockAutoType" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}" TextChanged="textboxPrice_TextChanged"/>
         <ToggleSwitch x:Name="tglIsBob" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="textboxPrice" Width="300" Margin="10" OffContent="User" OnContent="Bob" Header="Bob?" IsOn="{Binding User.User.IsBob}" Toggled="tglIsBob_Toggled"/>
-        <Button x:Name="buttonAanpassen" Content="Aanpassen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.Below="tglIsBob" Margin="10" RelativePanel.AlignRightWith="comboBox" Command="{Binding AanpasCommand}" Style="{StaticResource button}"/>
-        <Button x:Name="buttonWachtwoord" Content="Wachtwoord wijzigen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.Below="tglIsBob" Margin="10" RelativePanel.AlignLeftWith="textBlockAutoType" Command="{Binding WachtwoordCommand}" Style="{StaticResource button}"/>
+        <Button x:Name="buttonAanpassen" Content="Aanpassen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.AlignBottomWithPanel="True" Margin="10" RelativePanel.AlignRightWithPanel="True" Command="{Binding AanpasCommand}" Style="{StaticResource button}"/>
+        <Button x:Name="buttonWachtwoord" Content="Wachtwoord wijzigen" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" RelativePanel.AlignBottomWithPanel="True" Margin="10" RelativePanel.AlignLeftWithPanel="True" Command="{Binding WachtwoordCommand}" Style="{StaticResource button}"/>
     </RelativePanel>
 </Page>

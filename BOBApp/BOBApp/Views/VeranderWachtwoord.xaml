@@ -45,7 +45,8 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <RelativePanel>
+        <RelativePanel Background="White">
+            <TextBlock Text="Verander hier je wachtwoord." RelativePanel.Above="textBlockError"  Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" />
             <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" Margin="10" RelativePanel.Above="passwordBox" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Red" FontWeight="Bold" TextAlignment="Center" Style="{StaticResource textblock}"/>
             <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox"  PlaceholderText="Wachtwoord" RelativePanel.AlignVerticalCenterWithPanel="true" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300" Style="{StaticResource passwordBox}" PasswordChanged="passwordBox_PasswordChanged"/>
             <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300" Style="{StaticResource passwordBox}" PasswordChanged="passwordBoxHerhaal_PasswordChanged"/>
