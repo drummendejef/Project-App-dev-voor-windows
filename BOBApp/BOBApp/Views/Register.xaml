@@ -49,7 +49,8 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <RelativePanel>
+        
+        <RelativePanel Background="White">
             <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" Margin="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Red" FontWeight="Bold" TextAlignment="Center" Style="{StaticResource textblock}"/>
             <TextBox Text="{Binding NewRegister.Firstname, Mode=TwoWay}"  x:Name="textBoxVoornaam" TextWrapping="Wrap"  PlaceholderText="Voornaam" RelativePanel.Below="textBlockError" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Margin="10" Style="{StaticResource textBox}" TextChanged="textBoxVoornaam_TextChanged"/>
             <TextBox Text="{Binding NewRegister.Lastname, Mode=TwoWay}" Margin="10" x:Name="textBoxNaam" TextWrapping="Wrap" PlaceholderText="Naam" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="300" Style="{StaticResource textBox}" TextChanged="textBoxNaam_TextChanged"/>
