@@ -132,7 +132,7 @@ namespace BOBApp.BOBApp_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[67];
+            _typeNameTable = new string[61];
             _typeNameTable[0] = "BOBApp.BaseViewModelLocator";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "BOBApp.ViewModels.MainViewVM";
@@ -172,36 +172,30 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             _typeNameTable[36] = "BOBApp.Views.Register";
             _typeNameTable[37] = "BOBApp.Views.RitItem";
             _typeNameTable[38] = "BOBApp.Views.VeranderWachtwoord";
-            _typeNameTable[39] = "Windows.UI.Xaml.Visibility";
-            _typeNameTable[40] = "System.Collections.Generic.List`1<Libraries.Models.Bob.All>";
-            _typeNameTable[41] = "Libraries.Models.Bob.All";
-            _typeNameTable[42] = "Libraries.Models.User";
-            _typeNameTable[43] = "Libraries.Models.Bob";
-            _typeNameTable[44] = "String";
-            _typeNameTable[45] = "Windows.Devices.Geolocation.Geopoint";
-            _typeNameTable[46] = "Boolean";
-            _typeNameTable[47] = "Windows.UI.Xaml.Controls.Frame";
-            _typeNameTable[48] = "Libraries.Models.relations.Users_Destinations";
-            _typeNameTable[49] = "System.Nullable`1<Int32>";
-            _typeNameTable[50] = "Libraries.Models.BobsType";
-            _typeNameTable[51] = "Libraries.Models.Party";
-            _typeNameTable[52] = "GalaSoft.MvvmLight.Command.RelayCommand";
-            _typeNameTable[53] = "System.Collections.Generic.List`1<Libraries.Models.Party>";
-            _typeNameTable[54] = "Int32";
-            _typeNameTable[55] = "System.DateTime";
-            _typeNameTable[56] = "System.Collections.Generic.List`1<Libraries.Models.Friend.All>";
-            _typeNameTable[57] = "Libraries.Models.Friend.All";
-            _typeNameTable[58] = "System.Collections.Generic.List`1<Libraries.Models.BobsType>";
-            _typeNameTable[59] = "System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>";
-            _typeNameTable[60] = "GalaSoft.MvvmLight.Command.RelayCommand`1<Object>";
-            _typeNameTable[61] = "BOBApp.Views.VindRit";
-            _typeNameTable[62] = "BOBApp.Views.VindRitBob";
-            _typeNameTable[63] = "BOBApp.Views.VindRitChat";
-            _typeNameTable[64] = "BOBApp.Views.VindRitFilter";
-            _typeNameTable[65] = "BOBApp.Views.ZoekVrienden";
-            _typeNameTable[66] = "BOBApp.Views.ZoekVrienden_Add";
+            _typeNameTable[39] = "Boolean";
+            _typeNameTable[40] = "String";
+            _typeNameTable[41] = "System.Collections.Generic.List`1<Libraries.Models.Friend.All>";
+            _typeNameTable[42] = "Libraries.Models.Friend.All";
+            _typeNameTable[43] = "Libraries.Models.User";
+            _typeNameTable[44] = "System.DateTime";
+            _typeNameTable[45] = "GalaSoft.MvvmLight.Command.RelayCommand";
+            _typeNameTable[46] = "System.Collections.Generic.List`1<Libraries.Models.BobsType>";
+            _typeNameTable[47] = "Libraries.Models.BobsType";
+            _typeNameTable[48] = "Int32";
+            _typeNameTable[49] = "System.Collections.Generic.List`1<Libraries.Models.Party>";
+            _typeNameTable[50] = "Libraries.Models.Party";
+            _typeNameTable[51] = "Windows.Devices.Geolocation.Geopoint";
+            _typeNameTable[52] = "System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>";
+            _typeNameTable[53] = "Libraries.Models.relations.Users_Destinations";
+            _typeNameTable[54] = "GalaSoft.MvvmLight.Command.RelayCommand`1<Object>";
+            _typeNameTable[55] = "BOBApp.Views.VindRit";
+            _typeNameTable[56] = "BOBApp.Views.VindRitBob";
+            _typeNameTable[57] = "BOBApp.Views.VindRitChat";
+            _typeNameTable[58] = "BOBApp.Views.VindRitFilter";
+            _typeNameTable[59] = "BOBApp.Views.ZoekVrienden";
+            _typeNameTable[60] = "BOBApp.Views.ZoekVrienden_Add";
 
-            _typeTable = new global::System.Type[67];
+            _typeTable = new global::System.Type[61];
             _typeTable[0] = typeof(global::BOBApp.BaseViewModelLocator);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::BOBApp.ViewModels.MainViewVM);
@@ -241,34 +235,28 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             _typeTable[36] = typeof(global::BOBApp.Views.Register);
             _typeTable[37] = typeof(global::BOBApp.Views.RitItem);
             _typeTable[38] = typeof(global::BOBApp.Views.VeranderWachtwoord);
-            _typeTable[39] = typeof(global::Windows.UI.Xaml.Visibility);
-            _typeTable[40] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Bob.All>);
-            _typeTable[41] = typeof(global::Libraries.Models.Bob.All);
-            _typeTable[42] = typeof(global::Libraries.Models.User);
-            _typeTable[43] = typeof(global::Libraries.Models.Bob);
-            _typeTable[44] = typeof(global::System.String);
-            _typeTable[45] = typeof(global::Windows.Devices.Geolocation.Geopoint);
-            _typeTable[46] = typeof(global::System.Boolean);
-            _typeTable[47] = typeof(global::Windows.UI.Xaml.Controls.Frame);
-            _typeTable[48] = typeof(global::Libraries.Models.relations.Users_Destinations);
-            _typeTable[49] = typeof(global::System.Nullable<global::System.Int32>);
-            _typeTable[50] = typeof(global::Libraries.Models.BobsType);
-            _typeTable[51] = typeof(global::Libraries.Models.Party);
-            _typeTable[52] = typeof(global::GalaSoft.MvvmLight.Command.RelayCommand);
-            _typeTable[53] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Party>);
-            _typeTable[54] = typeof(global::System.Int32);
-            _typeTable[55] = typeof(global::System.DateTime);
-            _typeTable[56] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>);
-            _typeTable[57] = typeof(global::Libraries.Models.Friend.All);
-            _typeTable[58] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.BobsType>);
-            _typeTable[59] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>);
-            _typeTable[60] = typeof(global::GalaSoft.MvvmLight.Command.RelayCommand<global::System.Object>);
-            _typeTable[61] = typeof(global::BOBApp.Views.VindRit);
-            _typeTable[62] = typeof(global::BOBApp.Views.VindRitBob);
-            _typeTable[63] = typeof(global::BOBApp.Views.VindRitChat);
-            _typeTable[64] = typeof(global::BOBApp.Views.VindRitFilter);
-            _typeTable[65] = typeof(global::BOBApp.Views.ZoekVrienden);
-            _typeTable[66] = typeof(global::BOBApp.Views.ZoekVrienden_Add);
+            _typeTable[39] = typeof(global::System.Boolean);
+            _typeTable[40] = typeof(global::System.String);
+            _typeTable[41] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>);
+            _typeTable[42] = typeof(global::Libraries.Models.Friend.All);
+            _typeTable[43] = typeof(global::Libraries.Models.User);
+            _typeTable[44] = typeof(global::System.DateTime);
+            _typeTable[45] = typeof(global::GalaSoft.MvvmLight.Command.RelayCommand);
+            _typeTable[46] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.BobsType>);
+            _typeTable[47] = typeof(global::Libraries.Models.BobsType);
+            _typeTable[48] = typeof(global::System.Int32);
+            _typeTable[49] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.Party>);
+            _typeTable[50] = typeof(global::Libraries.Models.Party);
+            _typeTable[51] = typeof(global::Windows.Devices.Geolocation.Geopoint);
+            _typeTable[52] = typeof(global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>);
+            _typeTable[53] = typeof(global::Libraries.Models.relations.Users_Destinations);
+            _typeTable[54] = typeof(global::GalaSoft.MvvmLight.Command.RelayCommand<global::System.Object>);
+            _typeTable[55] = typeof(global::BOBApp.Views.VindRit);
+            _typeTable[56] = typeof(global::BOBApp.Views.VindRitBob);
+            _typeTable[57] = typeof(global::BOBApp.Views.VindRitChat);
+            _typeTable[58] = typeof(global::BOBApp.Views.VindRitFilter);
+            _typeTable[59] = typeof(global::BOBApp.Views.ZoekVrienden);
+            _typeTable[60] = typeof(global::BOBApp.Views.ZoekVrienden_Add);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -333,53 +321,45 @@ namespace BOBApp.BOBApp_XamlTypeInfo
         private object Activate_36_Register() { return new global::BOBApp.Views.Register(); }
         private object Activate_37_RitItem() { return new global::BOBApp.Views.RitItem(); }
         private object Activate_38_VeranderWachtwoord() { return new global::BOBApp.Views.VeranderWachtwoord(); }
-        private object Activate_40_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Bob.All>(); }
-        private object Activate_42_User() { return new global::Libraries.Models.User(); }
-        private object Activate_43_Bob() { return new global::Libraries.Models.Bob(); }
-        private object Activate_48_Users_Destinations() { return new global::Libraries.Models.relations.Users_Destinations(); }
-        private object Activate_50_BobsType() { return new global::Libraries.Models.BobsType(); }
-        private object Activate_51_Party() { return new global::Libraries.Models.Party(); }
-        private object Activate_53_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Party>(); }
-        private object Activate_56_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>(); }
-        private object Activate_58_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.BobsType>(); }
-        private object Activate_59_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>(); }
-        private object Activate_61_VindRit() { return new global::BOBApp.Views.VindRit(); }
-        private object Activate_62_VindRitBob() { return new global::BOBApp.Views.VindRitBob(); }
-        private object Activate_63_VindRitChat() { return new global::BOBApp.Views.VindRitChat(); }
-        private object Activate_64_VindRitFilter() { return new global::BOBApp.Views.VindRitFilter(); }
-        private object Activate_65_ZoekVrienden() { return new global::BOBApp.Views.ZoekVrienden(); }
-        private object Activate_66_ZoekVrienden_Add() { return new global::BOBApp.Views.ZoekVrienden_Add(); }
+        private object Activate_41_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>(); }
+        private object Activate_43_User() { return new global::Libraries.Models.User(); }
+        private object Activate_46_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.BobsType>(); }
+        private object Activate_47_BobsType() { return new global::Libraries.Models.BobsType(); }
+        private object Activate_49_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.Party>(); }
+        private object Activate_50_Party() { return new global::Libraries.Models.Party(); }
+        private object Activate_52_List() { return new global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>(); }
+        private object Activate_53_Users_Destinations() { return new global::Libraries.Models.relations.Users_Destinations(); }
+        private object Activate_55_VindRit() { return new global::BOBApp.Views.VindRit(); }
+        private object Activate_56_VindRitBob() { return new global::BOBApp.Views.VindRitBob(); }
+        private object Activate_57_VindRitChat() { return new global::BOBApp.Views.VindRitChat(); }
+        private object Activate_58_VindRitFilter() { return new global::BOBApp.Views.VindRitFilter(); }
+        private object Activate_59_ZoekVrienden() { return new global::BOBApp.Views.ZoekVrienden(); }
+        private object Activate_60_ZoekVrienden_Add() { return new global::BOBApp.Views.ZoekVrienden_Add(); }
         private void VectorAdd_26_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Windows.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Windows.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_40_List(object instance, object item)
-        {
-            var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.Bob.All>)instance;
-            var newItem = (global::Libraries.Models.Bob.All)item;
-            collection.Add(newItem);
-        }
-        private void VectorAdd_53_List(object instance, object item)
-        {
-            var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.Party>)instance;
-            var newItem = (global::Libraries.Models.Party)item;
-            collection.Add(newItem);
-        }
-        private void VectorAdd_56_List(object instance, object item)
+        private void VectorAdd_41_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.Friend.All>)instance;
             var newItem = (global::Libraries.Models.Friend.All)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_58_List(object instance, object item)
+        private void VectorAdd_46_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.BobsType>)instance;
             var newItem = (global::Libraries.Models.BobsType)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_59_List(object instance, object item)
+        private void VectorAdd_49_List(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.Party>)instance;
+            var newItem = (global::Libraries.Models.Party)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_52_List(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Libraries.Models.relations.Users_Destinations>)instance;
             var newItem = (global::Libraries.Models.relations.Users_Destinations)item;
@@ -484,40 +464,7 @@ namespace BOBApp.BOBApp_XamlTypeInfo
 
             case 11:   //  BOBApp.ViewModels.VindRitVM
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("GalaSoft.MvvmLight.ViewModelBase"));
-                userType.Activator = Activate_11_VindRitVM;
-                userType.AddMemberName("VisibleSelectedBob");
-                userType.AddMemberName("BobList");
-                userType.AddMemberName("Loading");
-                userType.AddMemberName("Error");
-                userType.AddMemberName("VisibleFind");
-                userType.AddMemberName("VisibleCancel");
-                userType.AddMemberName("VisibleChat");
-                userType.AddMemberName("VisibleFilterContext");
-                userType.AddMemberName("VisibleModal");
-                userType.AddMemberName("Frame");
-                userType.AddMemberName("CancelText");
-                userType.AddMemberName("VisibleSelectedFriends");
-                userType.AddMemberName("GetSelectedFriendsString");
-                userType.AddMemberName("VisibleSelectedDestination");
-                userType.AddMemberName("GetSelectedDestination");
-                userType.AddMemberName("VisibleSelectedRating");
-                userType.AddMemberName("GetSelectedRating");
-                userType.AddMemberName("VisibleSelectedBobsType");
-                userType.AddMemberName("GetSelectedBobsType");
-                userType.AddMemberName("VisibleSelectedParty");
-                userType.AddMemberName("GetSelectedParty");
-                userType.AddMemberName("GetStatus");
-                userType.AddMemberName("GoChatCommand");
-                userType.AddMemberName("GoFilterCommand");
-                userType.AddMemberName("FindBobCommand");
-                userType.AddMemberName("CancelCommand");
-                userType.AddMemberName("ShowModalCommand");
-                userType.AddMemberName("CloseModalCommand");
-                userType.AddMemberName("BobRequests");
-                userType.AddMemberName("RitTime");
-                userType.AddMemberName("Parties");
-                userType.AddMemberName("Status");
-                userType.AddMemberName("EnableFind");
+                userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -713,88 +660,77 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 39:   //  Windows.UI.Xaml.Visibility
+            case 39:   //  Boolean
                 xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 40:   //  System.Collections.Generic.List`1<Libraries.Models.Bob.All>
+            case 40:   //  String
+                xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 41:   //  System.Collections.Generic.List`1<Libraries.Models.Friend.All>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_40_List;
+                userType.CollectionAdd = VectorAdd_41_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 41:   //  Libraries.Models.Bob.All
+            case 42:   //  Libraries.Models.Friend.All
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.AddMemberName("User");
-                userType.AddMemberName("Bob");
-                userType.AddMemberName("Location");
-                userType.AddMemberName("GeoLocation");
-                xamlType = userType;
-                break;
-
-            case 42:   //  Libraries.Models.User
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 43:   //  Libraries.Models.Bob
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 44:   //  String
-                xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 45:   //  Windows.Devices.Geolocation.Geopoint
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 46:   //  Boolean
-                xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 47:   //  Windows.UI.Xaml.Controls.Frame
-                xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 48:   //  Libraries.Models.relations.Users_Destinations
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_48_Users_Destinations;
-                userType.AddMemberName("Users_ID");
-                userType.AddMemberName("Destinations_ID");
-                userType.AddMemberName("Default");
+                userType.AddMemberName("User1");
+                userType.AddMemberName("User2");
                 userType.AddMemberName("Added");
-                userType.AddMemberName("Name");
-                userType.AddMemberName("Cities_ID");
-                userType.AddMemberName("Cities_Name");
-                userType.AddMemberName("SetDefault");
-                userType.AddMemberName("Location");
+                userType.AddMemberName("Accepted");
                 xamlType = userType;
                 break;
 
-            case 49:   //  System.Nullable`1<Int32>
+            case 43:   //  Libraries.Models.User
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 44:   //  System.DateTime
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 50:   //  Libraries.Models.BobsType
+            case 45:   //  GalaSoft.MvvmLight.Command.RelayCommand
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_50_BobsType;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 46:   //  System.Collections.Generic.List`1<Libraries.Models.BobsType>
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.CollectionAdd = VectorAdd_46_List;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 47:   //  Libraries.Models.BobsType
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_47_BobsType;
                 userType.AddMemberName("ID");
                 userType.AddMemberName("Name");
                 xamlType = userType;
                 break;
 
-            case 51:   //  Libraries.Models.Party
+            case 48:   //  Int32
+                xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 49:   //  System.Collections.Generic.List`1<Libraries.Models.Party>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_51_Party;
+                userType.CollectionAdd = VectorAdd_49_List;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 50:   //  Libraries.Models.Party
+                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_50_Party;
                 userType.AddMemberName("ID");
                 userType.AddMemberName("Name");
                 userType.AddMemberName("Organisator");
@@ -808,105 +744,80 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 52:   //  GalaSoft.MvvmLight.Command.RelayCommand
+            case 51:   //  Windows.Devices.Geolocation.Geopoint
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 53:   //  System.Collections.Generic.List`1<Libraries.Models.Party>
+            case 52:   //  System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_53_List;
+                userType.CollectionAdd = VectorAdd_52_List;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 54:   //  Int32
-                xamlType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 55:   //  System.DateTime
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 56:   //  System.Collections.Generic.List`1<Libraries.Models.Friend.All>
+            case 53:   //  Libraries.Models.relations.Users_Destinations
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_56_List;
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 57:   //  Libraries.Models.Friend.All
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.AddMemberName("User1");
-                userType.AddMemberName("User2");
+                userType.Activator = Activate_53_Users_Destinations;
+                userType.AddMemberName("Users_ID");
+                userType.AddMemberName("Destinations_ID");
+                userType.AddMemberName("Default");
                 userType.AddMemberName("Added");
-                userType.AddMemberName("Accepted");
+                userType.AddMemberName("Name");
+                userType.AddMemberName("Cities_ID");
+                userType.AddMemberName("Cities_Name");
+                userType.AddMemberName("SetDefault");
+                userType.AddMemberName("Location");
                 xamlType = userType;
                 break;
 
-            case 58:   //  System.Collections.Generic.List`1<Libraries.Models.BobsType>
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_58_List;
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 59:   //  System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>
-                userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.CollectionAdd = VectorAdd_59_List;
-                userType.SetIsReturnTypeStub();
-                xamlType = userType;
-                break;
-
-            case 60:   //  GalaSoft.MvvmLight.Command.RelayCommand`1<Object>
+            case 54:   //  GalaSoft.MvvmLight.Command.RelayCommand`1<Object>
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 61:   //  BOBApp.Views.VindRit
+            case 55:   //  BOBApp.Views.VindRit
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_61_VindRit;
+                userType.Activator = Activate_55_VindRit;
                 userType.AddMemberName("Vm");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 62:   //  BOBApp.Views.VindRitBob
+            case 56:   //  BOBApp.Views.VindRitBob
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_62_VindRitBob;
+                userType.Activator = Activate_56_VindRitBob;
                 userType.AddMemberName("Vm");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 63:   //  BOBApp.Views.VindRitChat
+            case 57:   //  BOBApp.Views.VindRitChat
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_63_VindRitChat;
+                userType.Activator = Activate_57_VindRitChat;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 64:   //  BOBApp.Views.VindRitFilter
+            case 58:   //  BOBApp.Views.VindRitFilter
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_64_VindRitFilter;
+                userType.Activator = Activate_58_VindRitFilter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 65:   //  BOBApp.Views.ZoekVrienden
+            case 59:   //  BOBApp.Views.ZoekVrienden
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_65_ZoekVrienden;
+                userType.Activator = Activate_59_ZoekVrienden;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 66:   //  BOBApp.Views.ZoekVrienden_Add
+            case 60:   //  BOBApp.Views.ZoekVrienden_Add
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_66_ZoekVrienden_Add;
+                userType.Activator = Activate_60_ZoekVrienden_Add;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -1040,707 +951,367 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             var that = (global::BOBApp.Views.Punten)instance;
             return that.Vm;
         }
-        private object get_21_VindRitVM_VisibleSelectedBob(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleSelectedBob;
-        }
-        private void set_21_VindRitVM_VisibleSelectedBob(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleSelectedBob = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_22_VindRitVM_BobList(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.BobList;
-        }
-        private void set_22_VindRitVM_BobList(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.BobList = (global::System.Collections.Generic.List<global::Libraries.Models.Bob.All>)Value;
-        }
-        private object get_23_All_User(object instance)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            return that.User;
-        }
-        private void set_23_All_User(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            that.User = (global::Libraries.Models.User)Value;
-        }
-        private object get_24_All_Bob(object instance)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            return that.Bob;
-        }
-        private void set_24_All_Bob(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            that.Bob = (global::Libraries.Models.Bob)Value;
-        }
-        private object get_25_All_Location(object instance)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            return that.Location;
-        }
-        private void set_25_All_Location(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            that.Location = (global::System.String)Value;
-        }
-        private object get_26_All_GeoLocation(object instance)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            return that.GeoLocation;
-        }
-        private void set_26_All_GeoLocation(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Bob.All)instance;
-            that.GeoLocation = (global::Windows.Devices.Geolocation.Geopoint)Value;
-        }
-        private object get_27_VindRitVM_Loading(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.Loading;
-        }
-        private void set_27_VindRitVM_Loading(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.Loading = (global::System.Boolean)Value;
-        }
-        private object get_28_VindRitVM_Error(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.Error;
-        }
-        private void set_28_VindRitVM_Error(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.Error = (global::System.String)Value;
-        }
-        private object get_29_VindRitVM_VisibleFind(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleFind;
-        }
-        private void set_29_VindRitVM_VisibleFind(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleFind = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_30_VindRitVM_VisibleCancel(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleCancel;
-        }
-        private void set_30_VindRitVM_VisibleCancel(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleCancel = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_31_VindRitVM_VisibleChat(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleChat;
-        }
-        private void set_31_VindRitVM_VisibleChat(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleChat = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_32_VindRitVM_VisibleFilterContext(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleFilterContext;
-        }
-        private void set_32_VindRitVM_VisibleFilterContext(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleFilterContext = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_33_VindRitVM_VisibleModal(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleModal;
-        }
-        private void set_33_VindRitVM_VisibleModal(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleModal = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_34_VindRitVM_Frame(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.Frame;
-        }
-        private void set_34_VindRitVM_Frame(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.Frame = (global::Windows.UI.Xaml.Controls.Frame)Value;
-        }
-        private object get_35_VindRitVM_CancelText(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.CancelText;
-        }
-        private void set_35_VindRitVM_CancelText(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.CancelText = (global::System.String)Value;
-        }
-        private object get_36_VindRitVM_VisibleSelectedFriends(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleSelectedFriends;
-        }
-        private void set_36_VindRitVM_VisibleSelectedFriends(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleSelectedFriends = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_37_VindRitVM_GetSelectedFriendsString(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GetSelectedFriendsString;
-        }
-        private object get_38_VindRitVM_VisibleSelectedDestination(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleSelectedDestination;
-        }
-        private void set_38_VindRitVM_VisibleSelectedDestination(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleSelectedDestination = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_39_VindRitVM_GetSelectedDestination(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GetSelectedDestination;
-        }
-        private object get_40_VindRitVM_VisibleSelectedRating(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleSelectedRating;
-        }
-        private void set_40_VindRitVM_VisibleSelectedRating(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleSelectedRating = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_41_VindRitVM_GetSelectedRating(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GetSelectedRating;
-        }
-        private object get_42_VindRitVM_VisibleSelectedBobsType(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleSelectedBobsType;
-        }
-        private void set_42_VindRitVM_VisibleSelectedBobsType(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleSelectedBobsType = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_43_VindRitVM_GetSelectedBobsType(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GetSelectedBobsType;
-        }
-        private object get_44_VindRitVM_VisibleSelectedParty(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.VisibleSelectedParty;
-        }
-        private void set_44_VindRitVM_VisibleSelectedParty(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.VisibleSelectedParty = (global::Windows.UI.Xaml.Visibility)Value;
-        }
-        private object get_45_VindRitVM_GetSelectedParty(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GetSelectedParty;
-        }
-        private object get_46_VindRitVM_GetStatus(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GetStatus;
-        }
-        private object get_47_VindRitVM_GoChatCommand(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GoChatCommand;
-        }
-        private void set_47_VindRitVM_GoChatCommand(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.GoChatCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
-        }
-        private object get_48_VindRitVM_GoFilterCommand(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.GoFilterCommand;
-        }
-        private void set_48_VindRitVM_GoFilterCommand(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.GoFilterCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
-        }
-        private object get_49_VindRitVM_FindBobCommand(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.FindBobCommand;
-        }
-        private void set_49_VindRitVM_FindBobCommand(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.FindBobCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
-        }
-        private object get_50_VindRitVM_CancelCommand(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.CancelCommand;
-        }
-        private void set_50_VindRitVM_CancelCommand(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.CancelCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
-        }
-        private object get_51_VindRitVM_ShowModalCommand(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.ShowModalCommand;
-        }
-        private void set_51_VindRitVM_ShowModalCommand(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.ShowModalCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
-        }
-        private object get_52_VindRitVM_CloseModalCommand(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.CloseModalCommand;
-        }
-        private void set_52_VindRitVM_CloseModalCommand(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.CloseModalCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
-        }
-        private object get_53_VindRitVM_BobRequests(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.BobRequests;
-        }
-        private void set_53_VindRitVM_BobRequests(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.BobRequests = (global::System.String)Value;
-        }
-        private object get_54_VindRitVM_RitTime(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.RitTime;
-        }
-        private void set_54_VindRitVM_RitTime(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.RitTime = (global::System.String)Value;
-        }
-        private object get_55_VindRitVM_Parties(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.Parties;
-        }
-        private void set_55_VindRitVM_Parties(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.Parties = (global::System.Collections.Generic.List<global::Libraries.Models.Party>)Value;
-        }
-        private object get_56_Party_ID(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.ID;
-        }
-        private void set_56_Party_ID(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.ID = (global::System.Int32)Value;
-        }
-        private object get_57_Party_Name(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.Name;
-        }
-        private void set_57_Party_Name(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.Name = (global::System.String)Value;
-        }
-        private object get_58_Party_Organisator(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.Organisator;
-        }
-        private void set_58_Party_Organisator(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.Organisator = (global::System.String)Value;
-        }
-        private object get_59_Party_Amount(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.Amount;
-        }
-        private void set_59_Party_Amount(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.Amount = (global::System.Int32)Value;
-        }
-        private object get_60_Party_FacebookEventID(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.FacebookEventID;
-        }
-        private void set_60_Party_FacebookEventID(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.FacebookEventID = (global::System.Object)Value;
-        }
-        private object get_61_Party_FacebookLinkID(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.FacebookLinkID;
-        }
-        private void set_61_Party_FacebookLinkID(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.FacebookLinkID = (global::System.String)Value;
-        }
-        private object get_62_Party_Cities_ID(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.Cities_ID;
-        }
-        private void set_62_Party_Cities_ID(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.Cities_ID = (global::System.Int32)Value;
-        }
-        private object get_63_Party_Added(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.Added;
-        }
-        private void set_63_Party_Added(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.Added = (global::System.DateTime)Value;
-        }
-        private object get_64_Party_Location(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.Location;
-        }
-        private void set_64_Party_Location(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.Location = (global::System.String)Value;
-        }
-        private object get_65_Party_GeoLocation(object instance)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            return that.GeoLocation;
-        }
-        private void set_65_Party_GeoLocation(object instance, object Value)
-        {
-            var that = (global::Libraries.Models.Party)instance;
-            that.GeoLocation = (global::Windows.Devices.Geolocation.Geopoint)Value;
-        }
-        private object get_66_VindRitVM_Status(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.Status;
-        }
-        private void set_66_VindRitVM_Status(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.Status = (global::System.String)Value;
-        }
-        private object get_67_VindRitVM_EnableFind(object instance)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            return that.EnableFind;
-        }
-        private void set_67_VindRitVM_EnableFind(object instance, object Value)
-        {
-            var that = (global::BOBApp.ViewModels.VindRitVM)instance;
-            that.EnableFind = (global::System.Boolean)Value;
-        }
-        private object get_68_ViewModelBase_IsInDesignMode(object instance)
-        {
-            var that = (global::GalaSoft.MvvmLight.ViewModelBase)instance;
-            return that.IsInDesignMode;
-        }
-        private object get_69_VindRitFilterVM_Loading(object instance)
+        private object get_21_VindRitFilterVM_Loading(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.Loading;
         }
-        private void set_69_VindRitFilterVM_Loading(object instance, object Value)
+        private void set_21_VindRitFilterVM_Loading(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.Loading = (global::System.Boolean)Value;
         }
-        private object get_70_VindRitFilterVM_Error(object instance)
+        private object get_22_VindRitFilterVM_Error(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.Error;
         }
-        private void set_70_VindRitFilterVM_Error(object instance, object Value)
+        private void set_22_VindRitFilterVM_Error(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.Error = (global::System.String)Value;
         }
-        private object get_71_VindRitFilterVM_Friends(object instance)
+        private object get_23_VindRitFilterVM_Friends(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.Friends;
         }
-        private void set_71_VindRitFilterVM_Friends(object instance, object Value)
+        private void set_23_VindRitFilterVM_Friends(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.Friends = (global::System.Collections.Generic.List<global::Libraries.Models.Friend.All>)Value;
         }
-        private object get_72_All_User1(object instance)
+        private object get_24_All_User1(object instance)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             return that.User1;
         }
-        private void set_72_All_User1(object instance, object Value)
+        private void set_24_All_User1(object instance, object Value)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             that.User1 = (global::Libraries.Models.User)Value;
         }
-        private object get_73_All_User2(object instance)
+        private object get_25_All_User2(object instance)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             return that.User2;
         }
-        private void set_73_All_User2(object instance, object Value)
+        private void set_25_All_User2(object instance, object Value)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             that.User2 = (global::Libraries.Models.User)Value;
         }
-        private object get_74_All_Added(object instance)
+        private object get_26_All_Added(object instance)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             return that.Added;
         }
-        private void set_74_All_Added(object instance, object Value)
+        private void set_26_All_Added(object instance, object Value)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             that.Added = (global::System.DateTime)Value;
         }
-        private object get_75_All_Accepted(object instance)
+        private object get_27_All_Accepted(object instance)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             return that.Accepted;
         }
-        private void set_75_All_Accepted(object instance, object Value)
+        private void set_27_All_Accepted(object instance, object Value)
         {
             var that = (global::Libraries.Models.Friend.All)instance;
             that.Accepted = (global::System.Boolean)Value;
         }
-        private object get_76_VindRitFilterVM_SelectedFriendString(object instance)
+        private object get_28_VindRitFilterVM_SelectedFriendString(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.SelectedFriendString;
         }
-        private void set_76_VindRitFilterVM_SelectedFriendString(object instance, object Value)
+        private void set_28_VindRitFilterVM_SelectedFriendString(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.SelectedFriendString = (global::System.String)Value;
         }
-        private object get_77_VindRitFilterVM_AddFriendCommand(object instance)
+        private object get_29_VindRitFilterVM_AddFriendCommand(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.AddFriendCommand;
         }
-        private void set_77_VindRitFilterVM_AddFriendCommand(object instance, object Value)
+        private void set_29_VindRitFilterVM_AddFriendCommand(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.AddFriendCommand = (global::GalaSoft.MvvmLight.Command.RelayCommand)Value;
         }
-        private object get_78_VindRitFilterVM_BobsTypes(object instance)
+        private object get_30_VindRitFilterVM_BobsTypes(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.BobsTypes;
         }
-        private void set_78_VindRitFilterVM_BobsTypes(object instance, object Value)
+        private void set_30_VindRitFilterVM_BobsTypes(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.BobsTypes = (global::System.Collections.Generic.List<global::Libraries.Models.BobsType>)Value;
         }
-        private object get_79_BobsType_ID(object instance)
+        private object get_31_BobsType_ID(object instance)
         {
             var that = (global::Libraries.Models.BobsType)instance;
             return that.ID;
         }
-        private void set_79_BobsType_ID(object instance, object Value)
+        private void set_31_BobsType_ID(object instance, object Value)
         {
             var that = (global::Libraries.Models.BobsType)instance;
             that.ID = (global::System.Int32)Value;
         }
-        private object get_80_BobsType_Name(object instance)
+        private object get_32_BobsType_Name(object instance)
         {
             var that = (global::Libraries.Models.BobsType)instance;
             return that.Name;
         }
-        private void set_80_BobsType_Name(object instance, object Value)
+        private void set_32_BobsType_Name(object instance, object Value)
         {
             var that = (global::Libraries.Models.BobsType)instance;
             that.Name = (global::System.String)Value;
         }
-        private object get_81_VindRitFilterVM_Parties(object instance)
+        private object get_33_VindRitFilterVM_Parties(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.Parties;
         }
-        private void set_81_VindRitFilterVM_Parties(object instance, object Value)
+        private void set_33_VindRitFilterVM_Parties(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.Parties = (global::System.Collections.Generic.List<global::Libraries.Models.Party>)Value;
         }
-        private object get_82_VindRitFilterVM_Destinations(object instance)
+        private object get_34_Party_ID(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.ID;
+        }
+        private void set_34_Party_ID(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.ID = (global::System.Int32)Value;
+        }
+        private object get_35_Party_Name(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.Name;
+        }
+        private void set_35_Party_Name(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.Name = (global::System.String)Value;
+        }
+        private object get_36_Party_Organisator(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.Organisator;
+        }
+        private void set_36_Party_Organisator(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.Organisator = (global::System.String)Value;
+        }
+        private object get_37_Party_Amount(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.Amount;
+        }
+        private void set_37_Party_Amount(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.Amount = (global::System.Int32)Value;
+        }
+        private object get_38_Party_FacebookEventID(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.FacebookEventID;
+        }
+        private void set_38_Party_FacebookEventID(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.FacebookEventID = (global::System.Object)Value;
+        }
+        private object get_39_Party_FacebookLinkID(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.FacebookLinkID;
+        }
+        private void set_39_Party_FacebookLinkID(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.FacebookLinkID = (global::System.String)Value;
+        }
+        private object get_40_Party_Cities_ID(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.Cities_ID;
+        }
+        private void set_40_Party_Cities_ID(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.Cities_ID = (global::System.Int32)Value;
+        }
+        private object get_41_Party_Added(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.Added;
+        }
+        private void set_41_Party_Added(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.Added = (global::System.DateTime)Value;
+        }
+        private object get_42_Party_Location(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.Location;
+        }
+        private void set_42_Party_Location(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.Location = (global::System.String)Value;
+        }
+        private object get_43_Party_GeoLocation(object instance)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            return that.GeoLocation;
+        }
+        private void set_43_Party_GeoLocation(object instance, object Value)
+        {
+            var that = (global::Libraries.Models.Party)instance;
+            that.GeoLocation = (global::Windows.Devices.Geolocation.Geopoint)Value;
+        }
+        private object get_44_VindRitFilterVM_Destinations(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.Destinations;
         }
-        private void set_82_VindRitFilterVM_Destinations(object instance, object Value)
+        private void set_44_VindRitFilterVM_Destinations(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.Destinations = (global::System.Collections.Generic.List<global::Libraries.Models.relations.Users_Destinations>)Value;
         }
-        private object get_83_Users_Destinations_Users_ID(object instance)
+        private object get_45_Users_Destinations_Users_ID(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Users_ID;
         }
-        private void set_83_Users_Destinations_Users_ID(object instance, object Value)
+        private void set_45_Users_Destinations_Users_ID(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Users_ID = (global::System.Int32)Value;
         }
-        private object get_84_Users_Destinations_Destinations_ID(object instance)
+        private object get_46_Users_Destinations_Destinations_ID(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Destinations_ID;
         }
-        private void set_84_Users_Destinations_Destinations_ID(object instance, object Value)
+        private void set_46_Users_Destinations_Destinations_ID(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Destinations_ID = (global::System.Int32)Value;
         }
-        private object get_85_Users_Destinations_Default(object instance)
+        private object get_47_Users_Destinations_Default(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Default;
         }
-        private void set_85_Users_Destinations_Default(object instance, object Value)
+        private void set_47_Users_Destinations_Default(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Default = (global::System.Boolean)Value;
         }
-        private object get_86_Users_Destinations_Added(object instance)
+        private object get_48_Users_Destinations_Added(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Added;
         }
-        private void set_86_Users_Destinations_Added(object instance, object Value)
+        private void set_48_Users_Destinations_Added(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Added = (global::System.DateTime)Value;
         }
-        private object get_87_Users_Destinations_Name(object instance)
+        private object get_49_Users_Destinations_Name(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Name;
         }
-        private void set_87_Users_Destinations_Name(object instance, object Value)
+        private void set_49_Users_Destinations_Name(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Name = (global::System.String)Value;
         }
-        private object get_88_Users_Destinations_Cities_ID(object instance)
+        private object get_50_Users_Destinations_Cities_ID(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Cities_ID;
         }
-        private void set_88_Users_Destinations_Cities_ID(object instance, object Value)
+        private void set_50_Users_Destinations_Cities_ID(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Cities_ID = (global::System.Int32)Value;
         }
-        private object get_89_Users_Destinations_Cities_Name(object instance)
+        private object get_51_Users_Destinations_Cities_Name(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Cities_Name;
         }
-        private void set_89_Users_Destinations_Cities_Name(object instance, object Value)
+        private void set_51_Users_Destinations_Cities_Name(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Cities_Name = (global::System.String)Value;
         }
-        private object get_90_Users_Destinations_SetDefault(object instance)
+        private object get_52_Users_Destinations_SetDefault(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.SetDefault;
         }
-        private void set_90_Users_Destinations_SetDefault(object instance, object Value)
+        private void set_52_Users_Destinations_SetDefault(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.SetDefault = (global::GalaSoft.MvvmLight.Command.RelayCommand<global::System.Object>)Value;
         }
-        private object get_91_Users_Destinations_Location(object instance)
+        private object get_53_Users_Destinations_Location(object instance)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             return that.Location;
         }
-        private void set_91_Users_Destinations_Location(object instance, object Value)
+        private void set_53_Users_Destinations_Location(object instance, object Value)
         {
             var that = (global::Libraries.Models.relations.Users_Destinations)instance;
             that.Location = (global::System.Object)Value;
         }
-        private object get_92_VindRitFilterVM_SelectedBobsType_ID(object instance)
+        private object get_54_VindRitFilterVM_SelectedBobsType_ID(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.SelectedBobsType_ID;
         }
-        private void set_92_VindRitFilterVM_SelectedBobsType_ID(object instance, object Value)
+        private void set_54_VindRitFilterVM_SelectedBobsType_ID(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.SelectedBobsType_ID = (global::System.Int32)Value;
         }
-        private object get_93_VindRitFilterVM_SelectedDestination_ID(object instance)
+        private object get_55_VindRitFilterVM_SelectedDestination_ID(object instance)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             return that.SelectedDestination_ID;
         }
-        private void set_93_VindRitFilterVM_SelectedDestination_ID(object instance, object Value)
+        private void set_55_VindRitFilterVM_SelectedDestination_ID(object instance, object Value)
         {
             var that = (global::BOBApp.ViewModels.VindRitFilterVM)instance;
             that.SelectedDestination_ID = (global::System.Int32)Value;
         }
-        private object get_94_VindRit_Vm(object instance)
+        private object get_56_ViewModelBase_IsInDesignMode(object instance)
+        {
+            var that = (global::GalaSoft.MvvmLight.ViewModelBase)instance;
+            return that.IsInDesignMode;
+        }
+        private object get_57_VindRit_Vm(object instance)
         {
             var that = (global::BOBApp.Views.VindRit)instance;
             return that.Vm;
         }
-        private object get_95_VindRitBob_Vm(object instance)
+        private object get_58_VindRitBob_Vm(object instance)
         {
             var that = (global::BOBApp.Views.VindRitBob)instance;
             return that.Vm;
@@ -1879,454 +1450,232 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlMember.Getter = get_20_Punten_Vm;
                 xamlMember.SetIsReadOnly();
                 break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleSelectedBob":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleSelectedBob", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_21_VindRitVM_VisibleSelectedBob;
-                xamlMember.Setter = set_21_VindRitVM_VisibleSelectedBob;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.BobList":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "BobList", "System.Collections.Generic.List`1<Libraries.Models.Bob.All>");
-                xamlMember.Getter = get_22_VindRitVM_BobList;
-                xamlMember.Setter = set_22_VindRitVM_BobList;
-                break;
-            case "Libraries.Models.Bob.All.User":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Bob.All");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "User", "Libraries.Models.User");
-                xamlMember.Getter = get_23_All_User;
-                xamlMember.Setter = set_23_All_User;
-                break;
-            case "Libraries.Models.Bob.All.Bob":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Bob.All");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Bob", "Libraries.Models.Bob");
-                xamlMember.Getter = get_24_All_Bob;
-                xamlMember.Setter = set_24_All_Bob;
-                break;
-            case "Libraries.Models.Bob.All.Location":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Bob.All");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Location", "String");
-                xamlMember.Getter = get_25_All_Location;
-                xamlMember.Setter = set_25_All_Location;
-                break;
-            case "Libraries.Models.Bob.All.GeoLocation":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Bob.All");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GeoLocation", "Windows.Devices.Geolocation.Geopoint");
-                xamlMember.Getter = get_26_All_GeoLocation;
-                xamlMember.Setter = set_26_All_GeoLocation;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.Loading":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Loading", "Boolean");
-                xamlMember.Getter = get_27_VindRitVM_Loading;
-                xamlMember.Setter = set_27_VindRitVM_Loading;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.Error":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Error", "String");
-                xamlMember.Getter = get_28_VindRitVM_Error;
-                xamlMember.Setter = set_28_VindRitVM_Error;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleFind":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleFind", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_29_VindRitVM_VisibleFind;
-                xamlMember.Setter = set_29_VindRitVM_VisibleFind;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleCancel":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleCancel", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_30_VindRitVM_VisibleCancel;
-                xamlMember.Setter = set_30_VindRitVM_VisibleCancel;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleChat":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleChat", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_31_VindRitVM_VisibleChat;
-                xamlMember.Setter = set_31_VindRitVM_VisibleChat;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleFilterContext":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleFilterContext", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_32_VindRitVM_VisibleFilterContext;
-                xamlMember.Setter = set_32_VindRitVM_VisibleFilterContext;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleModal":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleModal", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_33_VindRitVM_VisibleModal;
-                xamlMember.Setter = set_33_VindRitVM_VisibleModal;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.Frame":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Frame", "Windows.UI.Xaml.Controls.Frame");
-                xamlMember.Getter = get_34_VindRitVM_Frame;
-                xamlMember.Setter = set_34_VindRitVM_Frame;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.CancelText":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "CancelText", "String");
-                xamlMember.Getter = get_35_VindRitVM_CancelText;
-                xamlMember.Setter = set_35_VindRitVM_CancelText;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleSelectedFriends":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleSelectedFriends", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_36_VindRitVM_VisibleSelectedFriends;
-                xamlMember.Setter = set_36_VindRitVM_VisibleSelectedFriends;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GetSelectedFriendsString":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GetSelectedFriendsString", "String");
-                xamlMember.Getter = get_37_VindRitVM_GetSelectedFriendsString;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleSelectedDestination":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleSelectedDestination", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_38_VindRitVM_VisibleSelectedDestination;
-                xamlMember.Setter = set_38_VindRitVM_VisibleSelectedDestination;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GetSelectedDestination":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GetSelectedDestination", "Libraries.Models.relations.Users_Destinations");
-                xamlMember.Getter = get_39_VindRitVM_GetSelectedDestination;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleSelectedRating":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleSelectedRating", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_40_VindRitVM_VisibleSelectedRating;
-                xamlMember.Setter = set_40_VindRitVM_VisibleSelectedRating;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GetSelectedRating":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GetSelectedRating", "System.Nullable`1<Int32>");
-                xamlMember.Getter = get_41_VindRitVM_GetSelectedRating;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleSelectedBobsType":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleSelectedBobsType", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_42_VindRitVM_VisibleSelectedBobsType;
-                xamlMember.Setter = set_42_VindRitVM_VisibleSelectedBobsType;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GetSelectedBobsType":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GetSelectedBobsType", "Libraries.Models.BobsType");
-                xamlMember.Getter = get_43_VindRitVM_GetSelectedBobsType;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "BOBApp.ViewModels.VindRitVM.VisibleSelectedParty":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "VisibleSelectedParty", "Windows.UI.Xaml.Visibility");
-                xamlMember.Getter = get_44_VindRitVM_VisibleSelectedParty;
-                xamlMember.Setter = set_44_VindRitVM_VisibleSelectedParty;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GetSelectedParty":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GetSelectedParty", "Libraries.Models.Party");
-                xamlMember.Getter = get_45_VindRitVM_GetSelectedParty;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GetStatus":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GetStatus", "String");
-                xamlMember.Getter = get_46_VindRitVM_GetStatus;
-                xamlMember.SetIsReadOnly();
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GoChatCommand":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GoChatCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_47_VindRitVM_GoChatCommand;
-                xamlMember.Setter = set_47_VindRitVM_GoChatCommand;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.GoFilterCommand":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GoFilterCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_48_VindRitVM_GoFilterCommand;
-                xamlMember.Setter = set_48_VindRitVM_GoFilterCommand;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.FindBobCommand":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "FindBobCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_49_VindRitVM_FindBobCommand;
-                xamlMember.Setter = set_49_VindRitVM_FindBobCommand;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.CancelCommand":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "CancelCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_50_VindRitVM_CancelCommand;
-                xamlMember.Setter = set_50_VindRitVM_CancelCommand;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.ShowModalCommand":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "ShowModalCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_51_VindRitVM_ShowModalCommand;
-                xamlMember.Setter = set_51_VindRitVM_ShowModalCommand;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.CloseModalCommand":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "CloseModalCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_52_VindRitVM_CloseModalCommand;
-                xamlMember.Setter = set_52_VindRitVM_CloseModalCommand;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.BobRequests":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "BobRequests", "String");
-                xamlMember.Getter = get_53_VindRitVM_BobRequests;
-                xamlMember.Setter = set_53_VindRitVM_BobRequests;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.RitTime":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "RitTime", "String");
-                xamlMember.Getter = get_54_VindRitVM_RitTime;
-                xamlMember.Setter = set_54_VindRitVM_RitTime;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.Parties":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Parties", "System.Collections.Generic.List`1<Libraries.Models.Party>");
-                xamlMember.Getter = get_55_VindRitVM_Parties;
-                xamlMember.Setter = set_55_VindRitVM_Parties;
-                break;
-            case "Libraries.Models.Party.ID":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "ID", "Int32");
-                xamlMember.Getter = get_56_Party_ID;
-                xamlMember.Setter = set_56_Party_ID;
-                break;
-            case "Libraries.Models.Party.Name":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Name", "String");
-                xamlMember.Getter = get_57_Party_Name;
-                xamlMember.Setter = set_57_Party_Name;
-                break;
-            case "Libraries.Models.Party.Organisator":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Organisator", "String");
-                xamlMember.Getter = get_58_Party_Organisator;
-                xamlMember.Setter = set_58_Party_Organisator;
-                break;
-            case "Libraries.Models.Party.Amount":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Amount", "Int32");
-                xamlMember.Getter = get_59_Party_Amount;
-                xamlMember.Setter = set_59_Party_Amount;
-                break;
-            case "Libraries.Models.Party.FacebookEventID":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "FacebookEventID", "Object");
-                xamlMember.Getter = get_60_Party_FacebookEventID;
-                xamlMember.Setter = set_60_Party_FacebookEventID;
-                break;
-            case "Libraries.Models.Party.FacebookLinkID":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "FacebookLinkID", "String");
-                xamlMember.Getter = get_61_Party_FacebookLinkID;
-                xamlMember.Setter = set_61_Party_FacebookLinkID;
-                break;
-            case "Libraries.Models.Party.Cities_ID":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Cities_ID", "Int32");
-                xamlMember.Getter = get_62_Party_Cities_ID;
-                xamlMember.Setter = set_62_Party_Cities_ID;
-                break;
-            case "Libraries.Models.Party.Added":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Added", "System.DateTime");
-                xamlMember.Getter = get_63_Party_Added;
-                xamlMember.Setter = set_63_Party_Added;
-                break;
-            case "Libraries.Models.Party.Location":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Location", "String");
-                xamlMember.Getter = get_64_Party_Location;
-                xamlMember.Setter = set_64_Party_Location;
-                break;
-            case "Libraries.Models.Party.GeoLocation":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GeoLocation", "Windows.Devices.Geolocation.Geopoint");
-                xamlMember.Getter = get_65_Party_GeoLocation;
-                xamlMember.Setter = set_65_Party_GeoLocation;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.Status":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Status", "String");
-                xamlMember.Getter = get_66_VindRitVM_Status;
-                xamlMember.Setter = set_66_VindRitVM_Status;
-                break;
-            case "BOBApp.ViewModels.VindRitVM.EnableFind":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitVM");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "EnableFind", "Boolean");
-                xamlMember.Getter = get_67_VindRitVM_EnableFind;
-                xamlMember.Setter = set_67_VindRitVM_EnableFind;
-                break;
-            case "GalaSoft.MvvmLight.ViewModelBase.IsInDesignMode":
-                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GalaSoft.MvvmLight.ViewModelBase");
-                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "IsInDesignMode", "Boolean");
-                xamlMember.Getter = get_68_ViewModelBase_IsInDesignMode;
-                xamlMember.SetIsReadOnly();
-                break;
             case "BOBApp.ViewModels.VindRitFilterVM.Loading":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Loading", "Boolean");
-                xamlMember.Getter = get_69_VindRitFilterVM_Loading;
-                xamlMember.Setter = set_69_VindRitFilterVM_Loading;
+                xamlMember.Getter = get_21_VindRitFilterVM_Loading;
+                xamlMember.Setter = set_21_VindRitFilterVM_Loading;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.Error":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Error", "String");
-                xamlMember.Getter = get_70_VindRitFilterVM_Error;
-                xamlMember.Setter = set_70_VindRitFilterVM_Error;
+                xamlMember.Getter = get_22_VindRitFilterVM_Error;
+                xamlMember.Setter = set_22_VindRitFilterVM_Error;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.Friends":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Friends", "System.Collections.Generic.List`1<Libraries.Models.Friend.All>");
-                xamlMember.Getter = get_71_VindRitFilterVM_Friends;
-                xamlMember.Setter = set_71_VindRitFilterVM_Friends;
+                xamlMember.Getter = get_23_VindRitFilterVM_Friends;
+                xamlMember.Setter = set_23_VindRitFilterVM_Friends;
                 break;
             case "Libraries.Models.Friend.All.User1":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Friend.All");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "User1", "Libraries.Models.User");
-                xamlMember.Getter = get_72_All_User1;
-                xamlMember.Setter = set_72_All_User1;
+                xamlMember.Getter = get_24_All_User1;
+                xamlMember.Setter = set_24_All_User1;
                 break;
             case "Libraries.Models.Friend.All.User2":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Friend.All");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "User2", "Libraries.Models.User");
-                xamlMember.Getter = get_73_All_User2;
-                xamlMember.Setter = set_73_All_User2;
+                xamlMember.Getter = get_25_All_User2;
+                xamlMember.Setter = set_25_All_User2;
                 break;
             case "Libraries.Models.Friend.All.Added":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Friend.All");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Added", "System.DateTime");
-                xamlMember.Getter = get_74_All_Added;
-                xamlMember.Setter = set_74_All_Added;
+                xamlMember.Getter = get_26_All_Added;
+                xamlMember.Setter = set_26_All_Added;
                 break;
             case "Libraries.Models.Friend.All.Accepted":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Friend.All");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Accepted", "Boolean");
-                xamlMember.Getter = get_75_All_Accepted;
-                xamlMember.Setter = set_75_All_Accepted;
+                xamlMember.Getter = get_27_All_Accepted;
+                xamlMember.Setter = set_27_All_Accepted;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.SelectedFriendString":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "SelectedFriendString", "String");
-                xamlMember.Getter = get_76_VindRitFilterVM_SelectedFriendString;
-                xamlMember.Setter = set_76_VindRitFilterVM_SelectedFriendString;
+                xamlMember.Getter = get_28_VindRitFilterVM_SelectedFriendString;
+                xamlMember.Setter = set_28_VindRitFilterVM_SelectedFriendString;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.AddFriendCommand":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "AddFriendCommand", "GalaSoft.MvvmLight.Command.RelayCommand");
-                xamlMember.Getter = get_77_VindRitFilterVM_AddFriendCommand;
-                xamlMember.Setter = set_77_VindRitFilterVM_AddFriendCommand;
+                xamlMember.Getter = get_29_VindRitFilterVM_AddFriendCommand;
+                xamlMember.Setter = set_29_VindRitFilterVM_AddFriendCommand;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.BobsTypes":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "BobsTypes", "System.Collections.Generic.List`1<Libraries.Models.BobsType>");
-                xamlMember.Getter = get_78_VindRitFilterVM_BobsTypes;
-                xamlMember.Setter = set_78_VindRitFilterVM_BobsTypes;
+                xamlMember.Getter = get_30_VindRitFilterVM_BobsTypes;
+                xamlMember.Setter = set_30_VindRitFilterVM_BobsTypes;
                 break;
             case "Libraries.Models.BobsType.ID":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.BobsType");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "ID", "Int32");
-                xamlMember.Getter = get_79_BobsType_ID;
-                xamlMember.Setter = set_79_BobsType_ID;
+                xamlMember.Getter = get_31_BobsType_ID;
+                xamlMember.Setter = set_31_BobsType_ID;
                 break;
             case "Libraries.Models.BobsType.Name":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.BobsType");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Name", "String");
-                xamlMember.Getter = get_80_BobsType_Name;
-                xamlMember.Setter = set_80_BobsType_Name;
+                xamlMember.Getter = get_32_BobsType_Name;
+                xamlMember.Setter = set_32_BobsType_Name;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.Parties":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Parties", "System.Collections.Generic.List`1<Libraries.Models.Party>");
-                xamlMember.Getter = get_81_VindRitFilterVM_Parties;
-                xamlMember.Setter = set_81_VindRitFilterVM_Parties;
+                xamlMember.Getter = get_33_VindRitFilterVM_Parties;
+                xamlMember.Setter = set_33_VindRitFilterVM_Parties;
+                break;
+            case "Libraries.Models.Party.ID":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "ID", "Int32");
+                xamlMember.Getter = get_34_Party_ID;
+                xamlMember.Setter = set_34_Party_ID;
+                break;
+            case "Libraries.Models.Party.Name":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Name", "String");
+                xamlMember.Getter = get_35_Party_Name;
+                xamlMember.Setter = set_35_Party_Name;
+                break;
+            case "Libraries.Models.Party.Organisator":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Organisator", "String");
+                xamlMember.Getter = get_36_Party_Organisator;
+                xamlMember.Setter = set_36_Party_Organisator;
+                break;
+            case "Libraries.Models.Party.Amount":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Amount", "Int32");
+                xamlMember.Getter = get_37_Party_Amount;
+                xamlMember.Setter = set_37_Party_Amount;
+                break;
+            case "Libraries.Models.Party.FacebookEventID":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "FacebookEventID", "Object");
+                xamlMember.Getter = get_38_Party_FacebookEventID;
+                xamlMember.Setter = set_38_Party_FacebookEventID;
+                break;
+            case "Libraries.Models.Party.FacebookLinkID":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "FacebookLinkID", "String");
+                xamlMember.Getter = get_39_Party_FacebookLinkID;
+                xamlMember.Setter = set_39_Party_FacebookLinkID;
+                break;
+            case "Libraries.Models.Party.Cities_ID":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Cities_ID", "Int32");
+                xamlMember.Getter = get_40_Party_Cities_ID;
+                xamlMember.Setter = set_40_Party_Cities_ID;
+                break;
+            case "Libraries.Models.Party.Added":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Added", "System.DateTime");
+                xamlMember.Getter = get_41_Party_Added;
+                xamlMember.Setter = set_41_Party_Added;
+                break;
+            case "Libraries.Models.Party.Location":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Location", "String");
+                xamlMember.Getter = get_42_Party_Location;
+                xamlMember.Setter = set_42_Party_Location;
+                break;
+            case "Libraries.Models.Party.GeoLocation":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.Party");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "GeoLocation", "Windows.Devices.Geolocation.Geopoint");
+                xamlMember.Getter = get_43_Party_GeoLocation;
+                xamlMember.Setter = set_43_Party_GeoLocation;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.Destinations":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Destinations", "System.Collections.Generic.List`1<Libraries.Models.relations.Users_Destinations>");
-                xamlMember.Getter = get_82_VindRitFilterVM_Destinations;
-                xamlMember.Setter = set_82_VindRitFilterVM_Destinations;
+                xamlMember.Getter = get_44_VindRitFilterVM_Destinations;
+                xamlMember.Setter = set_44_VindRitFilterVM_Destinations;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Users_ID":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Users_ID", "Int32");
-                xamlMember.Getter = get_83_Users_Destinations_Users_ID;
-                xamlMember.Setter = set_83_Users_Destinations_Users_ID;
+                xamlMember.Getter = get_45_Users_Destinations_Users_ID;
+                xamlMember.Setter = set_45_Users_Destinations_Users_ID;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Destinations_ID":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Destinations_ID", "Int32");
-                xamlMember.Getter = get_84_Users_Destinations_Destinations_ID;
-                xamlMember.Setter = set_84_Users_Destinations_Destinations_ID;
+                xamlMember.Getter = get_46_Users_Destinations_Destinations_ID;
+                xamlMember.Setter = set_46_Users_Destinations_Destinations_ID;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Default":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Default", "Boolean");
-                xamlMember.Getter = get_85_Users_Destinations_Default;
-                xamlMember.Setter = set_85_Users_Destinations_Default;
+                xamlMember.Getter = get_47_Users_Destinations_Default;
+                xamlMember.Setter = set_47_Users_Destinations_Default;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Added":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Added", "System.DateTime");
-                xamlMember.Getter = get_86_Users_Destinations_Added;
-                xamlMember.Setter = set_86_Users_Destinations_Added;
+                xamlMember.Getter = get_48_Users_Destinations_Added;
+                xamlMember.Setter = set_48_Users_Destinations_Added;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Name":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Name", "String");
-                xamlMember.Getter = get_87_Users_Destinations_Name;
-                xamlMember.Setter = set_87_Users_Destinations_Name;
+                xamlMember.Getter = get_49_Users_Destinations_Name;
+                xamlMember.Setter = set_49_Users_Destinations_Name;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Cities_ID":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Cities_ID", "Int32");
-                xamlMember.Getter = get_88_Users_Destinations_Cities_ID;
-                xamlMember.Setter = set_88_Users_Destinations_Cities_ID;
+                xamlMember.Getter = get_50_Users_Destinations_Cities_ID;
+                xamlMember.Setter = set_50_Users_Destinations_Cities_ID;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Cities_Name":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Cities_Name", "String");
-                xamlMember.Getter = get_89_Users_Destinations_Cities_Name;
-                xamlMember.Setter = set_89_Users_Destinations_Cities_Name;
+                xamlMember.Getter = get_51_Users_Destinations_Cities_Name;
+                xamlMember.Setter = set_51_Users_Destinations_Cities_Name;
                 break;
             case "Libraries.Models.relations.Users_Destinations.SetDefault":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "SetDefault", "GalaSoft.MvvmLight.Command.RelayCommand`1<Object>");
-                xamlMember.Getter = get_90_Users_Destinations_SetDefault;
-                xamlMember.Setter = set_90_Users_Destinations_SetDefault;
+                xamlMember.Getter = get_52_Users_Destinations_SetDefault;
+                xamlMember.Setter = set_52_Users_Destinations_SetDefault;
                 break;
             case "Libraries.Models.relations.Users_Destinations.Location":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Libraries.Models.relations.Users_Destinations");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Location", "Object");
-                xamlMember.Getter = get_91_Users_Destinations_Location;
-                xamlMember.Setter = set_91_Users_Destinations_Location;
+                xamlMember.Getter = get_53_Users_Destinations_Location;
+                xamlMember.Setter = set_53_Users_Destinations_Location;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.SelectedBobsType_ID":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "SelectedBobsType_ID", "Int32");
-                xamlMember.Getter = get_92_VindRitFilterVM_SelectedBobsType_ID;
-                xamlMember.Setter = set_92_VindRitFilterVM_SelectedBobsType_ID;
+                xamlMember.Getter = get_54_VindRitFilterVM_SelectedBobsType_ID;
+                xamlMember.Setter = set_54_VindRitFilterVM_SelectedBobsType_ID;
                 break;
             case "BOBApp.ViewModels.VindRitFilterVM.SelectedDestination_ID":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.ViewModels.VindRitFilterVM");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "SelectedDestination_ID", "Int32");
-                xamlMember.Getter = get_93_VindRitFilterVM_SelectedDestination_ID;
-                xamlMember.Setter = set_93_VindRitFilterVM_SelectedDestination_ID;
+                xamlMember.Getter = get_55_VindRitFilterVM_SelectedDestination_ID;
+                xamlMember.Setter = set_55_VindRitFilterVM_SelectedDestination_ID;
+                break;
+            case "GalaSoft.MvvmLight.ViewModelBase.IsInDesignMode":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GalaSoft.MvvmLight.ViewModelBase");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "IsInDesignMode", "Boolean");
+                xamlMember.Getter = get_56_ViewModelBase_IsInDesignMode;
+                xamlMember.SetIsReadOnly();
                 break;
             case "BOBApp.Views.VindRit.Vm":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.Views.VindRit");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Vm", "BOBApp.ViewModels.VindRitVM");
-                xamlMember.Getter = get_94_VindRit_Vm;
+                xamlMember.Getter = get_57_VindRit_Vm;
                 xamlMember.SetIsReadOnly();
                 break;
             case "BOBApp.Views.VindRitBob.Vm":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.Views.VindRitBob");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Vm", "BOBApp.ViewModels.VindRitBobVM");
-                xamlMember.Getter = get_95_VindRitBob_Vm;
+                xamlMember.Getter = get_58_VindRitBob_Vm;
                 xamlMember.SetIsReadOnly();
                 break;
             }

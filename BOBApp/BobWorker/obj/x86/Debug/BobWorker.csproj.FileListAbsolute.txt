@@ -64,3 +64,25 @@ E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BO
 E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\qualifiers.txt
 E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\qualifiers.txt.intermediate
 E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\BobWorker.winmd
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\BobWorker.pdb
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\BobWorker.pri
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\Libraries.dll
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\Libraries.pdb
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\bin\x86\Debug\Libraries.pri
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\BobWorker.csprojResolveAssemblyReference.cache
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\BobWorker.winmd
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\BobWorker.pdb
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\BobWorker.winmdobj
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\BobWorker.compile.pdb
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\priconfig.xml
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\priconfig.xml.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\layout.resfiles
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\layout.resfiles.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\resources.resfiles
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\resources.resfiles.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\pri.resfiles
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\pri.resfiles.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\qualifiers.txt
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\qualifiers.txt.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt

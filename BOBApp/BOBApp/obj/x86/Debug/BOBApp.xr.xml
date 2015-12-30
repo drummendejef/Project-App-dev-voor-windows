@@ -90,7 +90,7 @@
     <RootPropertyPathName Name="BobList" />
     <RootPropertyPathName Name="VisibleSelectedBob" />
     <RootPropertyPathName Name="RitTime" />
-    <RootPropertyPathName Name="SelectedBob" />
+    <RootPropertyPathName Name="GetSelectedBob" />
     <RootPropertyPathName Name="GetSelectedDestination" />
     <RootPropertyPathName Name="VisibleSelectedRating" />
     <RootPropertyPathName Name="GetSelectedRating" />
@@ -639,7 +639,6 @@
     <RootType FullName="BOBApp.Views.Register" />
     <RootType FullName="BOBApp.Views.RitItem" />
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
-    <RootType FullName="BOBApp.ViewModels.VindRitVM" />
     <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />

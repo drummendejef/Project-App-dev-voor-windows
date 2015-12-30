@@ -163,14 +163,51 @@ namespace BOBApp.ViewModels
 
         private void Cancel()
         {
-            throw new NotImplementedException();
+            CancelTrip();
         }
 
-      
 
-        private void Arrived()
+
+        private async void Arrived()
         {
-            throw new NotImplementedException();
+            SetStatus(4);
+
+            RaiseAll();
+            timer.Stop();
+
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+
+            Trips_Locations item = new Trips_Locations()
+            {
+                Trips_ID = this.SelectedTrip.ID,
+                Location = JsonConvert.SerializeObject(location),
+                Statuses_ID = VindRitVM.StatusID
+            };
+            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+            if (ok.Success == true)
+            {
+
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+            }
+            else
+            {
+                timer.Stop();
+
+            }
+
+            if (canShowDialog == true)
+            {
+                canShowDialog = false;
+
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+
+                BobisDone(location, "Trip is afgerond");
+            }
         }
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
@@ -355,6 +392,35 @@ namespace BOBApp.ViewModels
 
         }
 
+        private void SetStatus(int statusID)
+        {
+            VindRitVM.StatusID = statusID;
+            this.Status = GetStatusName(statusID);
+            RaiseAll();
+        }
+
+        private string GetStatusName(int statusID)
+        {
+            switch (statusID)
+            {
+                case 0:
+                    return "";
+                case 1:
+                    return "Bob is aangevraagd";
+                case 2:
+                    return "Bob is onderweg";
+                case 3:
+                    return "Bob is toegekomen";
+                case 4:
+                    return "Rit is gedaan";
+                case 5:
+                    return "Rit is geannuleerd";
+                default:
+                    return "";
+
+            }
+        }
+
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
             if (e.Parameter != null)
@@ -382,7 +448,7 @@ namespace BOBApp.ViewModels
 
         private async Task<bool> trip_location()
         {
-           
+            SetStatus(2);
             this.Loading = false;
             //todo: swtich
             RaiseAll();
@@ -450,9 +516,7 @@ namespace BOBApp.ViewModels
                 if (farEnough.Success == true)
                 {
                     //kleiner dan 1km
-                    VindRitVM.StatusID = 3;
-                    RaiseAll();
-                    timer.Stop();
+                   
 
 
                     Trips_Locations item = new Trips_Locations()
@@ -482,7 +546,14 @@ namespace BOBApp.ViewModels
                         bool done = Task.FromResult<bool>(await OnDestination()).Result;
                         if (done == true)
                         {
+                            SetStatus(3);
+                            timer.Stop();
+                            RaiseAll();
+
+                          
+
                             BobisDone(location, "Trip is afgerond");
+
                         }
                     }
 
@@ -510,8 +581,14 @@ namespace BOBApp.ViewModels
 
         private async void BobisDone(Location location, string text)
         {
-            VindRitVM.StatusID = 4;
-            RaiseAll();
+            SetStatus(4);
+            Bobs_Parties bobs_parties = new Bobs_Parties()
+            {
+                Bobs_ID = this.SelectedTrip.Bobs_ID,
+                Party_ID = this.SelectedTrip.Party_ID,
+                Trips_ID = this.SelectedTrip.ID
+
+            };
 
             Trips_Locations item = new Trips_Locations()
             {
@@ -541,19 +618,41 @@ namespace BOBApp.ViewModels
 
                     Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
 
-
-
+                    Libraries.Socket socketSendToBob = new Libraries.Socket()
+                    {
+                        To = bob.User.ID,
+                        Status = true,
+                        Object=bobs_parties
+                        
+                    };
                     Libraries.Socket socketSendToUser = new Libraries.Socket()
                     {
                         To = MainViewVM.USER.ID,
-                        Status = true
+                        Status = true,
+                        Object = bobs_parties
                     };
 
 
+                    //todo: rating
+
+
+
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
+
+
+                    this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleOffer = Visibility.Collapsed;
+                    VindRitBobVM.Request -= 1;
+                    this.Loading = false;
+                    this.Status = null;
+                    SetStatus(0);
+
+
+
 
                     canShowDialog = true;
-
+                    RaiseAll();
                 }
 
             }
@@ -589,7 +688,6 @@ namespace BOBApp.ViewModels
         }
 
         #endregion
-
 
 
         private async Task GetCurrentTrip()
@@ -632,6 +730,46 @@ namespace BOBApp.ViewModels
             RaiseAll();
 
 
+
+
+        }
+
+
+
+        private async void CancelTrip()
+        {
+            timer.Stop();
+            SetStatus(5);
+
+            Geolocator geolocator = new Geolocator();
+                Geoposition pos = await geolocator.GetGeopositionAsync();
+                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+
+                Trips_Locations item = new Trips_Locations()
+                {
+                    Trips_ID = VindRitVM.CurrentTrip.ID,
+                    Location = JsonConvert.SerializeObject(location),
+                    Statuses_ID = VindRitVM.StatusID
+                };
+                Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+                if (ok.Success == true)
+                {
+
+                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                    MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                }
+
+                BobisDone(location, "Trip is geannuleerd");
+
+                this.VisibleCancel = Visibility.Collapsed;
+                this.VisibleOffer = Visibility.Collapsed;
+                VindRitBobVM.Request -= 1;
+                this.Loading = false;
+                this.Status = null;
+                SetStatus(0);
+
+                RaiseAll();
 
 
         }
