@@ -21,6 +21,8 @@
         <TextBlock x:Name="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,20" Text="Find by email" Style="{ThemeResource h1}" ></TextBlock>
         <TextBox RelativePanel.Below="lblFriend" Margin="12" x:Name="friend" Width="300" Text="{Binding SearchUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{ThemeResource textBox}"></TextBox>
         <Button Margin="10,10,0,10" Width="50" RelativePanel.RightOf="Friends" Style="{ThemeResource button}" RelativePanel.Below="lblFriend" x:Name="friendButton" Content="Zoek" Command="{Binding SearchCommand, Mode=TwoWay}"/>
+        <TextBlock Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99" RelativePanel.Below="friend" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+
         <ListView x:Name="Friends" Width="300" MinHeight="100" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" ItemsSource="{Binding SearchUsers, Mode=TwoWay}" Margin="12"  RelativePanel.Below="friend">
             <ListView.ItemTemplate>
                 <DataTemplate>

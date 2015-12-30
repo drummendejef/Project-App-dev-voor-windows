@@ -167,16 +167,7 @@ namespace BOBApp.ViewModels
             FindUserByEmail(this.SearchUser.Trim());
         }
 
-        private async void AddFriend(string email)
-        {
-            email = email.Trim().ToLower();
-
-
-            User.All user = Task.FromResult<User.All>(await UsersRepository.GetUserByEmail(email)).Result;
-            Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.User.ID, Status = true };
-
-            MainViewVM.socket.Emit("friend_REQUEST:send", JsonConvert.SerializeObject(socketSend));
-        }
+      
 
         private void GetFriends()
         {
@@ -205,8 +196,19 @@ namespace BOBApp.ViewModels
                 
                 this.SearchUsers = await UsersRepository.GetUsersOnline();
                
+               
             }
-           RaisePropertyChanged("SearchUsers");
+
+            this.SearchUsers = this.SearchUsers.Where(r => r.User.ID != MainViewVM.USER.ID).ToList<User.All>();
+            if(this.SearchUsers.Count==0)
+            {
+                this.Error = "Geen gebruikers gevonden met dit email";
+            }
+            else
+            {
+                this.Error = null;
+            }
+            RaiseAll();
         }
 
         public List<User.All> SearchUsers { get; set; }
@@ -214,7 +216,18 @@ namespace BOBApp.ViewModels
         private void AddFriend()
         {
             //todo: friends api
+            User.All user = this.SelectedUser;
 
+            Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.User.ID, Status = true };
+
+            MainViewVM.socket.Emit("friend_REQUEST:send", JsonConvert.SerializeObject(socketSend));
+            CloseModal();
+
+            Messenger.Default.Send<Dialog>(new Dialog()
+            {
+                Message = "Vrienddschapsverzoek is verzonden",
+                Ok = "Ok"
+            });
         }
 
 
