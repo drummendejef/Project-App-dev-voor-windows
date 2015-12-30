@@ -319,12 +319,22 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
+        //De bobs ophalen om op de kaart te tonen.
         private async void getBobs()
         {
             this.BobList = new List<Bob.All>();
+            List<Bob.All> omtezettenbobs = new List<Bob.All>();
 
+            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
+            try
+            { 
             //Ingeladen bobs ophalen
-            List<Bob.All> omtezettenbobs = await BobsRepository.GetBobs();
+            omtezettenbobs = await BobsRepository.GetBobs();
+            }
+            catch
+            {
+                Debug.WriteLine("Lege bob");
+            }
 
             for (int i = 0; i < omtezettenbobs.Count(); i++)
             {
