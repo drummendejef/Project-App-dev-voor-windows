@@ -118,6 +118,7 @@
     </Compile>
     <Compile Include="BaseViewModelLocator.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\MailToConverter.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

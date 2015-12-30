@@ -50,11 +50,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <RelativePanel >
-            <RelativePanel.ChildrenTransitions>
-                <TransitionCollection>
-                    <PopupThemeTransition />
-                </TransitionCollection>
-            </RelativePanel.ChildrenTransitions>
+           
             <ProgressRing Foreground="White" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="buttonRegistreren" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
            
             

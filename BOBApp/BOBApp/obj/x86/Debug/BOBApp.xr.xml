@@ -54,6 +54,8 @@
     <RootPropertyPathName Name="MijnRittenVM" />
     <RootPropertyPathName Name="SelectedTrip" />
     <RootPropertyPathName Name="Trips" />
+    <RootPropertyPathName Name="Lastname" />
+    <RootPropertyPathName Name="Firstname" />
     <RootPropertyPathName Name="CurrentTrip" />
     <RootPropertyPathName Name="Status_Name" />
     <RootPropertyPathName Name="Car" />
@@ -66,8 +68,6 @@
     <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
     <RootPropertyPathName Name="Cellphone" />
-    <RootPropertyPathName Name="Firstname" />
-    <RootPropertyPathName Name="Lastname" />
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="SelectedPoint" />
     <RootPropertyPathName Name="PointsText" />
@@ -82,6 +82,7 @@
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
+    <RootPropertyPathName Name="LastName" />
     <RootPropertyPathName Name="VisibleCancel" />
     <RootPropertyPathName Name="CancelText" />
     <RootPropertyPathName Name="VisibleFind" />
@@ -152,6 +153,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="DataContext" />
       <RootProperty Name="Resources" />
+      <RootProperty Name="Transitions" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Background" />
@@ -435,6 +437,7 @@
       <RootProperty Name="MinHeight" />
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="ItemsSource" />
+      <RootProperty Name="ItemContainerTransitions" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
@@ -469,6 +472,7 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="ChildrenTransitions" />
       <RootProperty Name="Width" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Visibility" />
@@ -481,20 +485,18 @@
       <RootMethod Name="SetRightOf" />
       <RootMethod Name="GetBelow" />
       <RootMethod Name="SetBelow" />
-      <RootMethod Name="GetAlignVerticalCenterWith" />
-      <RootMethod Name="SetAlignVerticalCenterWith" />
       <RootMethod Name="GetAlignLeftWithPanel" />
       <RootMethod Name="SetAlignLeftWithPanel" />
       <RootMethod Name="GetAlignBottomWithPanel" />
       <RootMethod Name="SetAlignBottomWithPanel" />
+      <RootMethod Name="GetAlignVerticalCenterWith" />
+      <RootMethod Name="SetAlignVerticalCenterWith" />
       <RootMethod Name="GetAlignLeftWith" />
       <RootMethod Name="SetAlignLeftWith" />
       <RootMethod Name="GetAlignRightWith" />
       <RootMethod Name="SetAlignRightWith" />
       <RootMethod Name="GetAlignVerticalCenterWithPanel" />
       <RootMethod Name="SetAlignVerticalCenterWithPanel" />
-      <RootMethod Name="GetLeftOf" />
-      <RootMethod Name="SetLeftOf" />
       <RootMethod Name="GetAlignBottomWith" />
       <RootMethod Name="SetAlignBottomWith" />
       <RootMethod Name="GetAlignTopWith" />
@@ -521,7 +523,10 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.AddDeleteThemeTransition" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.ContentThemeTransition" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.ContentThemeTransition">
+      <RootProperty Name="HorizontalOffset" />
+      <RootProperty Name="VerticalOffset" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.ReorderThemeTransition" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.EntranceThemeTransition">
       <RootProperty Name="IsStaggeringEnabled" />
@@ -588,6 +593,7 @@
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="BOBApp.Views.FeestjesOverzicht" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.PopupThemeTransition" />
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowHeight" />
       <RootProperty Name="MinWindowWidth" />
@@ -640,6 +646,10 @@
     <RootType FullName="BOBApp.Views.RitItem" />
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
     <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
+    <RootType FullName="BOBApp.Converters.MailToConverter" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.PaneThemeTransition">
+      <RootProperty Name="Edge" />
+    </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="BOBApp.Views.VindRitChat" />
