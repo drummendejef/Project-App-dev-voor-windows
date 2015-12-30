@@ -70,17 +70,13 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-        private async void RaiseAll()
+        private void RaiseAll()
         {
-#pragma warning disable CS1998
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-            {
-                RaisePropertyChanged("Trips");
-                RaisePropertyChanged("CurrentTrip");
-                RaisePropertyChanged("Car");
-                RaisePropertyChanged("Loading");
-                RaisePropertyChanged("Error");
-            });
+            RaisePropertyChanged("Trips");
+            RaisePropertyChanged("CurrentTrip");
+            RaisePropertyChanged("Car");
+            RaisePropertyChanged("Loading");
+            RaisePropertyChanged("Error");
         }
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
@@ -197,17 +193,18 @@ namespace BOBApp.ViewModels
         }
 
         List<Trip.All> trips_all= new List<Trip.All>();
+
         private async void GetTrips()
         {
             bool canRun = true;
-#pragma warning disable CS1998
+            #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
                 List<Trip> trips = await TripRepository.GetTrips();
 
                 trips_all = new List<Trip.All>();
 
-                if (trips_all==null || trips_all.Count == 0)
+                if (trips==null || trips.Count == 0)
                 {
                     this.Error = "Geen trips gevonden";
                     canRun = false;
@@ -216,8 +213,13 @@ namespace BOBApp.ViewModels
                     return;
                 }
 
+                var count = trips.Count;
+                if ((trips.Count >= 10) && canRun == true)
+                {
+                    count = 10;
+                }
 
-                for (int i = 0; i < trips.Count; i++)
+                for (int i = 0; i < count; i++)
                 {
                     Task<User.All> user= Task.FromResult<User.All>(await UsersRepository.GetUserById(trips[i].Users_ID));
                     Task<Bob.All> bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(trips[i].Bobs_ID));
@@ -233,22 +235,17 @@ namespace BOBApp.ViewModels
                     newTrip.Destination = destination.Result;
                     trips_all.Add(newTrip);
 
-
-
                 }
 
 
-                if ((trips_all.Count >= 10 || trips_all.Count < 10) && canRun == true)
-                {
-                    this.Trips = trips_all.Take(10).ToList();
-                    canRun = false;
-                    this.Loading = false;
-                }
+                this.Trips = trips_all;
+                canRun = false;
+                this.Loading = false;
 
                 RaiseAll();
 
             });
-#pragma warning restore CS1998
+            #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 
         }
 

@@ -228,7 +228,7 @@ namespace BOBApp.ViewModels
                 Libraries.Socket socketSendToBob;
                 Libraries.Socket socketSendToUser;
 
-                if (MainViewVM.USER.ID == userID)
+                if (MainViewVM.USER.IsBob==false)
                 {
                     socketSendToBob = new Libraries.Socket()
                     {
@@ -241,7 +241,7 @@ namespace BOBApp.ViewModels
                     socketSendToUser = new Libraries.Socket()
                     {
                         From = bob.User.ID,
-                        To = MainViewVM.USER.ID,
+                        To = ChatRoom.ChatRoom.Users_ID,
                         Status = true,
                         Object = comment.Comment,
                         Object2=false
@@ -260,7 +260,7 @@ namespace BOBApp.ViewModels
                     socketSendToUser = new Libraries.Socket()
                     {
                         From = bob.User.ID,
-                        To = MainViewVM.USER.ID,
+                        To = ChatRoom.ChatRoom.Users_ID,
                         Status = true,
                         Object = comment.Comment,
                         Object2 = true

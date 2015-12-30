@@ -883,7 +883,11 @@ namespace BOBApp.ViewModels
             }
             else
             {
-              
+                if (VindRitVM.CurrentTrip.StatusID.HasValue)
+                {
+                    SetStatus(VindRitVM.CurrentTrip.StatusID.Value);
+                }
+               
                 this.EnableFind = false;
              
             }

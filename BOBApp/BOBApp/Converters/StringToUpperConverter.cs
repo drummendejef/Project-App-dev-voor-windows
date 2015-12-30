@@ -12,7 +12,15 @@ namespace BOBApp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return ((string)value).ToUpper();
+            if (value != null)
+            {
+                return ((string)value).ToUpper();
+            }
+            else
+            {
+                return value;
+            }
+           
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

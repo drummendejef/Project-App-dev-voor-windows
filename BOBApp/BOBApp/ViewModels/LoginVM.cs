@@ -133,12 +133,31 @@ namespace BOBApp.ViewModels
                 Response res = await LoginRepository.Login(email, md5.Create(pass));
                 if (res.Success == true)
                 {
-                    var json = JsonConvert.SerializeObject(new { Email =email, Password= md5.Create(pass) });
-                    await Localdata.save("user.json", json);
-
-                
                     User user = await UserRepository.GetUser();
                     MainViewVM.USER = user;
+
+                    try
+                    {
+                        string jsonUser = await Localdata.read("user.json");
+                        var dataUser = JsonConvert.DeserializeObject<User>(jsonUser);
+                        if (dataUser.ID != MainViewVM.USER.ID)
+                        {
+                            Clear();
+                        }
+
+
+                        var json = JsonConvert.SerializeObject(new { Email = email, Password = md5.Create(pass) });
+                        await Localdata.save("user.json", json);
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        
+                    }
+
+
+                  
 
 
                     Messenger.Default.Send<GoToPage>(new GoToPage()

@@ -208,7 +208,7 @@ namespace BOBApp.ViewModels
                     });
 
 
-                    if((bool)_socket.Object2 == true)
+                    if((bool)_socket.Object2 == true && fromUser!=null)
                     {
                         Messenger.Default.Send<Dialog>(new Dialog()
                         {
