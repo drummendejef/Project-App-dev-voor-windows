@@ -19,7 +19,7 @@
             <DataTemplate x:Key="DTemplateUsersMap">
                 <ContentControl Maps:MapControl.Location="{Binding GeoLocation}" >
                     <Grid Background="#3e5d94" Padding="5">
-                        <TextBlock Text="Test?" Margin="0" />
+                        <TextBlock Text="Waar kom ik tevoorschijn? VindRitBob" Margin="0" />
                     </Grid>
                 </ContentControl>
             </DataTemplate>

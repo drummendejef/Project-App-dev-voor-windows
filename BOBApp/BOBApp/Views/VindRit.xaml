@@ -18,10 +18,18 @@
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:VindRitFilterVM x:Key="filter"/>
+            <converters:MailToConverter x:Key="MailToConverter"/>
             <DataTemplate x:Key="DTemplateBobsMap">
                 <ContentControl Maps:MapControl.Location="{Binding GeoLocation}" >
                     <Grid Background="#3e5d94" Padding="5">
-                        <TextBlock Text="Test?" Margin="0" />
+                        <TextBlock Text="Voornaam: " Margin="0"/>
+                        <TextBlock Text="{Binding User.Firstname}" Margin="100,0,0,0" />
+                        <TextBlock Text="Achternaam: " Margin="0,25,0,0"/>
+                        <TextBlock Text="{Binding User.LastName}" Margin="100,25,0,0"/>
+                        <TextBlock Text="E-mailadres: " Margin="0,50,0,0" />
+                        <HyperlinkButton Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="100,50,0,0" />
+                        <TextBlock Text="Stuur een sms:" Margin="0,75,0,0"/>
+                        
                     </Grid>
                 </ContentControl>
             </DataTemplate>
