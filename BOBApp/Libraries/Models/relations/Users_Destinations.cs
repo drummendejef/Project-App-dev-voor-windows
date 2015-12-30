@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace Libraries.Models.relations
 {
@@ -22,6 +23,7 @@ namespace Libraries.Models.relations
         public int Cities_ID { get; set; }
         public string Cities_Name { get; set; }
         public RelayCommand<object> SetDefault { get; set; }
+        public Visibility VisibleDefault { get; set; }
 
         private object _Location;
 

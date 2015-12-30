@@ -21,7 +21,9 @@
 
     <RelativePanel Background="White" Padding="10">
         <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
-            <Grid HorizontalAlignment="Stretch">
+            <TextBlock x:Name="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" HorizontalAlignment="Center" Margin="0,0,0,20" Text="Filter" Style="{ThemeResource h1}" ></TextBlock>
+
+            <Grid RelativePanel.Below="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="160"/>
                     <ColumnDefinition/>

@@ -159,6 +159,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Destinations");
             RaisePropertyChanged("MapCenter");
             RaisePropertyChanged("NewDestination");
+          
         }
 
         //Methods
@@ -183,24 +184,37 @@ namespace BOBApp.ViewModels
             Frame rootFrame =MainViewVM.MainFrame as Frame;
             rootFrame.Navigate(typeof(Bestemmingen_Nieuw),true);
         }
+
+        List<Users_Destinations> destinations_all = new List<Users_Destinations>();
         private async Task GetDestinations()
         {
             this.Loading = true;
             RaisePropertyChanged("Loading");
 
-            this.Destinations = await DestinationRepository.GetDestinations();
+            destinations_all = await DestinationRepository.GetDestinations();
 
-            for (int i = 0; i < this.Destinations.Count; i++)
+            var count = destinations_all.Count;
+            if (destinations_all.Count >= 10)
             {
-                if (this.Destinations[i].Default == false)
+                count = 10;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (destinations_all[i].Default == false)
                 {
-                    this.Destinations[i].SetDefault = new RelayCommand<object>(SetDefault);
+                    destinations_all[i].VisibleDefault = Visibility.Visible;
+                    destinations_all[i].SetDefault = new RelayCommand<object>(SetDefault);
+                }
+                else
+                {
+                    destinations_all[i].VisibleDefault = Visibility.Collapsed;
                 }
                 
             }
-
+            this.Destinations = destinations_all;
             this.Loading = false;
-            RaisePropertyChanged("Loading");
+            RaiseAll();
         }
 
         private async void SetDefault(object id)
@@ -221,6 +235,7 @@ namespace BOBApp.ViewModels
                     ParamView = false,
                     Cb = null
                 });
+                Loaded();
             }
             else
             {
@@ -238,6 +253,8 @@ namespace BOBApp.ViewModels
 
             this.Loading = false;
             RaisePropertyChanged("Loading");
+
+            RaiseAll();
         }
 
         //De naam van de gemeente omzetten naar de locatie

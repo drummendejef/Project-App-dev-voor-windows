@@ -22,11 +22,13 @@
     <RootPropertyPathName Name="BestemmingenVM" />
     <RootPropertyPathName Name="SelectedDestination" />
     <RootPropertyPathName Name="Destinations" />
+    <RootPropertyPathName Name="VisibleDefault" />
     <RootPropertyPathName Name="SetDefault" />
     <RootPropertyPathName Name="Destinations_ID" />
     <RootPropertyPathName Name="Cities_Name" />
     <RootPropertyPathName Name="GoDestinationCommand" />
     <RootPropertyPathName Name="SearchLocation" />
+    <RootPropertyPathName Name="Loading" />
     <RootPropertyPathName Name="NewDestination" />
     <RootPropertyPathName Name="Location" />
     <RootPropertyPathName Name="MapCenter" />
@@ -48,7 +50,6 @@
     <RootPropertyPathName Name="LoginCommand" />
     <RootPropertyPathName Name="Pass" />
     <RootPropertyPathName Name="Email" />
-    <RootPropertyPathName Name="Loading" />
     <RootPropertyPathName Name="MainViewVM" />
     <RootPropertyPathName Name="LogOffCommand" />
     <RootPropertyPathName Name="MijnRittenVM" />
@@ -137,6 +138,7 @@
     <RootPropertyPathName Name="SelectedFriend" />
     <RootPropertyPathName Name="SelectedUser" />
     <RootPropertyPathName Name="SearchUsers" />
+    <RootPropertyPathName Name="SearchCommand" />
     <RootPropertyPathName Name="SearchUser" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -472,13 +474,14 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="ChildrenTransitions" />
       <RootProperty Name="Width" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="SetAlignHorizontalCenterWithPanel" />
+      <RootMethod Name="GetAlignVerticalCenterWithPanel" />
+      <RootMethod Name="SetAlignVerticalCenterWithPanel" />
       <RootMethod Name="GetAlignRightWithPanel" />
       <RootMethod Name="SetAlignRightWithPanel" />
       <RootMethod Name="GetRightOf" />
@@ -495,8 +498,6 @@
       <RootMethod Name="SetAlignLeftWith" />
       <RootMethod Name="GetAlignRightWith" />
       <RootMethod Name="SetAlignRightWith" />
-      <RootMethod Name="GetAlignVerticalCenterWithPanel" />
-      <RootMethod Name="SetAlignVerticalCenterWithPanel" />
       <RootMethod Name="GetAlignBottomWith" />
       <RootMethod Name="SetAlignBottomWith" />
       <RootMethod Name="GetAlignTopWith" />
@@ -556,6 +557,13 @@
     </RootType>
     <RootType FullName="BOBApp.Converters.StringToUpperConverter" />
     <RootType FullName="BOBApp.Converters.DateTimeConverter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="IsActive" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+    </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
       <RootProperty Name="Margin" />
@@ -597,13 +605,6 @@
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowHeight" />
       <RootProperty Name="MinWindowWidth" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="IsActive" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="BOBApp.Views.Login" />
     <RootType FullName="Windows.UI.Xaml.Controls.SplitView">
@@ -647,9 +648,6 @@
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
     <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="BOBApp.Converters.MailToConverter" />
-    <RootType FullName="Windows.UI.Xaml.Media.Animation.PaneThemeTransition">
-      <RootProperty Name="Edge" />
-    </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="BOBApp.Views.VindRitChat" />

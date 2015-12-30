@@ -28,11 +28,11 @@ namespace BOBApp.ViewModels
 
         public Visibility VisibleModal { get; set; }
         public Frame Frame { get; set; }
-
+        public string SearchUser { get; set; }
 
         public RelayCommand AddFriendCommand { get; set; }
         public RelayCommand ShowModalCommand { get; set; }
-       
+        public RelayCommand SearchCommand { get; set; }
         public RelayCommand CloseModalCommand { get; set; }
      
         //Constructor
@@ -43,11 +43,15 @@ namespace BOBApp.ViewModels
             AddFriendCommand = new RelayCommand(AddFriend);
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
+            SearchCommand = new RelayCommand(Search);
 
+            VisibleModal = Visibility.Collapsed;
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
             RaiseAll();
         }
+
+      
 
         private void RaiseAll()
         {
@@ -158,6 +162,11 @@ namespace BOBApp.ViewModels
         }
         #endregion
 
+        private void Search()
+        {
+            FindUserByEmail(this.SearchUser.Trim());
+        }
+
         private async void AddFriend(string email)
         {
             email = email.Trim().ToLower();
@@ -176,23 +185,18 @@ namespace BOBApp.ViewModels
 
 
         #region add friend
-        private string _SearchUser;
-
-        public string SearchUser
-        {
-            get { return _SearchUser; }
-            set {
-                _SearchUser = value;
-                FindUserByEmail(_SearchUser.Trim());
-            }
-        }
+       
 
         private async void FindUserByEmail(string email)
         {
             User.All item = await UsersRepository.GetUserByEmail(email);
             if (item != null)
             {
-                this.SearchUsers.Clear();
+                if (this.SearchUsers != null)
+                {
+                    this.SearchUsers.Clear();
+                }
+              
                 this.SearchUsers = new List<User.All>();
                 this.SearchUsers.Add(item);
             }
@@ -209,7 +213,7 @@ namespace BOBApp.ViewModels
         public User.All SelectedUser { get; set; }
         private void AddFriend()
         {
-            
+            //todo: friends api
 
         }
 

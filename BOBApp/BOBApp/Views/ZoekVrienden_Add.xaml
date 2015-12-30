@@ -17,13 +17,14 @@
 
     </Page.Resources>
 
-    <RelativePanel>
-        <TextBlock x:Name="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="Find by email" ></TextBlock>
-        <TextBox RelativePanel.Below="lblFriend" Width="400" x:Name="friend" Text="{Binding SearchUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignHorizontalCenterWithPanel="True"></TextBox>
-        <ListView x:Name="Friends" Width="400" MinHeight="100" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" ItemsSource="{Binding SearchUsers, Mode=TwoWay}"  Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="friend">
+    <RelativePanel Background="White" Width="400" Padding="10" >
+        <TextBlock x:Name="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,20" Text="Find by email" Style="{ThemeResource h1}" ></TextBlock>
+        <TextBox RelativePanel.Below="lblFriend" Margin="12" x:Name="friend" Width="300" Text="{Binding SearchUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{ThemeResource textBox}"></TextBox>
+        <Button Margin="10,10,0,10" Width="50" RelativePanel.RightOf="Friends" Style="{ThemeResource button}" RelativePanel.Below="lblFriend" x:Name="friendButton" Content="Zoek" Command="{Binding SearchCommand, Mode=TwoWay}"/>
+        <ListView x:Name="Friends" Width="300" MinHeight="100" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" ItemsSource="{Binding SearchUsers, Mode=TwoWay}" Margin="12"  RelativePanel.Below="friend">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
+                    <StackPanel Margin="0,0,0,12" Orientation="Vertical" HorizontalAlignment="Stretch">
                         <TextBlock HorizontalAlignment="Center" Text="{Binding User.Email, Mode=TwoWay}" />
                         <TextBlock HorizontalAlignment="Center" Text="{Binding User.Firstname, Mode=TwoWay}" />
                         <TextBlock HorizontalAlignment="Center" Text="{Binding User.Lastname, Mode=TwoWay}" />
@@ -32,7 +33,7 @@
                 
             </ListView.ItemTemplate>
         </ListView>
-        <Button Content="Add" RelativePanel.Below="Friends" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="addFriend" Margin="10" Command="{Binding AddFriendCommand}" Style="{ThemeResource button}"></Button>
+        <Button Content="Add" RelativePanel.RightOf="Friends" Width="50" RelativePanel.Below="friendButton" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="addFriend" Margin="10,10,0,10" Command="{Binding AddFriendCommand}" Style="{ThemeResource button}"></Button>
 
     </RelativePanel>
     
