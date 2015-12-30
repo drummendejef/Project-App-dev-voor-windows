@@ -228,7 +228,7 @@ namespace BOBApp.ViewModels
                 Libraries.Socket socketSendToBob;
                 Libraries.Socket socketSendToUser;
 
-                if (MainViewVM.USER.ID != userID)
+                if (MainViewVM.USER.ID == userID)
                 {
                     socketSendToBob = new Libraries.Socket()
                     {
