@@ -113,7 +113,21 @@ namespace BOBApp.ViewModels
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
-                    TripDone();
+                    if (fromUser.User.IsBob.Value==true)
+                    {
+                        Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                        {
+                            Name = "rating_dialog",
+                            View=typeof(VindRit),
+                            Data=_socket.Object
+                        });
+
+                    }
+                    else
+                    {
+                        TripDone();
+                    }
+                    
                 }
 
             });
@@ -185,29 +199,25 @@ namespace BOBApp.ViewModels
                     {
                         Name = "newComment"
                     });
-
-                    if (fromUser != null)
-                    {
-                        if(MainViewVM.USER.ID!= _socket.To)
-                        {
-                            Messenger.Default.Send<Dialog>(new Dialog()
-                            {
-                                Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
-                                Ok = "Antwoord",
-                                Nok = "Negeer",
-                                ViewOk = typeof(VindRitChat),
-                                ViewNok = null,
-                                ParamView = false,
-                                Cb = null,
-                                IsNotification = true
-                            });
-                        }
-                        
-                    }
-                    
-
-
                 }
+
+                if (_socket.Status == true && MainViewVM.USER.ID == _socket.From)
+                {
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = fromUser.User.ToString() + " zegt: " + _socket.Object.ToString(),
+                        Ok = "Antwoord",
+                        Nok = "Negeer",
+                        ViewOk = typeof(VindRitChat),
+                        ViewNok = null,
+                        ParamView = false,
+                        Cb = null,
+                        IsNotification = true
+                    });
+                }
+
             });
         }
 

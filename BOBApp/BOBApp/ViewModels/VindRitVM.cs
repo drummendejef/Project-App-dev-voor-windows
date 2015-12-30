@@ -385,12 +385,11 @@ namespace BOBApp.ViewModels
                     this.Loading = false;
                     this.Status = null;
 
-                    SetStatus(0);
-
+                  
 
 
                     canShowDialog = true;
-                    RaiseAll();
+         
 
 
 
@@ -483,6 +482,10 @@ namespace BOBApp.ViewModels
                            
                         }
                         RaiseAll();
+                        break;
+                    case "rating_dialog":
+                        Bobs_Parties item = (Bobs_Parties)obj.Data;
+                        RatingDialog(item);
                         break;
 
                     default:
@@ -659,10 +662,8 @@ namespace BOBApp.ViewModels
                 if (farEnough.Success == true)
                 {
                     //kleiner dan 1km
-                    SetStatus(3);
-                    RaiseAll();
-                    timer.Stop();
-
+                    
+                    
 
                     Trips_Locations item = new Trips_Locations()
                     {
@@ -691,10 +692,20 @@ namespace BOBApp.ViewModels
                         bool done = Task.FromResult<bool>(await OnDestination()).Result;
                         if (done == true)
                         {
-                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                            SetStatus(3);
+                            timer.Stop();
+                            RaiseAll();
 
                             BobisDone(location, "Trip is afgerond");
-                            RatingDialog(bob, VindRitVM.CurrentTrip);
+                            Bobs_Parties bobs_parties = new Bobs_Parties()
+                            {
+                                Bobs_ID = CurrentTrip.Bobs_ID,
+                                Party_ID = CurrentTrip.Party_ID,
+                                Trips_ID = CurrentTrip.ID
+                               
+                            };
+
+                            RatingDialog(bobs_parties);
                         }
                     }
 
@@ -951,7 +962,7 @@ namespace BOBApp.ViewModels
         //tasks
         private async Task<List<Bob>> FindBob_task()
         {
-            SetStatus(1);
+           
             if (VindRitFilterVM.SelectedParty != "" && VindRitFilterVM.SelectedParty!=null)
             {
 
@@ -1084,7 +1095,7 @@ namespace BOBApp.ViewModels
         private async void CancelTrip()
         {
             timer.Stop();
-            timer = null;
+           
             if (this.EnableFind == true)
             {
                 this.VisibleSelectedFriends = Visibility.Collapsed;
@@ -1104,6 +1115,8 @@ namespace BOBApp.ViewModels
             }
             else
             {
+                SetStatus(5);
+
                 Geolocator geolocator = new Geolocator();
                 Geoposition pos = await geolocator.GetGeopositionAsync();
                 Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
@@ -1210,7 +1223,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async void RatingDialog(Bob.All bob,Trip trip)
+        private async void RatingDialog(Bobs_Parties item)
         {
             var dialog = new ContentDialog()
             {
@@ -1260,17 +1273,12 @@ namespace BOBApp.ViewModels
 
                 double.TryParse(text, out rating);
 
-                Bobs_Parties item = new Bobs_Parties()
-                {
-                    Bobs_ID = bob.Bob.ID.Value,
-                    Party_ID= trip.Party_ID,
-                    Trips_ID= trip.ID,
-                    Rating=rating
-                };
+                item.Rating = rating;
 
-                await AddRating(comment, item);
+                Response res = await TripRepository.AddRating(item);
+                var ok= res.Success;
 
-               
+
             };
 
 
@@ -1283,11 +1291,6 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async Task<bool> AddRating(string comment, Bobs_Parties item)
-        {
-            Response res = await TripRepository.AddRating(item);
-            return res.Success;
-        }
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
