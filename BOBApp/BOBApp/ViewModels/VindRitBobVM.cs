@@ -259,12 +259,14 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private void newtrip_bob(Trip data)
+        private async void newtrip_bob(Trip data)
         {
             this.VisibleCancel = Visibility.Visible;
             this.VisibleOffer = Visibility.Visible;
             this.SelectedTrip = data;
-            VindRitBobVM.Request += 1;
+            VindRitBobVM.Request = VindRitBobVM.Request + 1;
+
+            await trip_location();
             RaiseAll();
         }
 
@@ -415,6 +417,10 @@ namespace BOBApp.ViewModels
                     return "Rit is gedaan";
                 case 5:
                     return "Rit is geannuleerd";
+                case 6://niet in db
+                    return "Wachten op antwoord van bob";
+                case 7: //niet in db
+                    return "Bob is in de buurt";
                 default:
                     return "";
 
@@ -453,31 +459,8 @@ namespace BOBApp.ViewModels
             //todo: swtich
             RaiseAll();
 
-
-
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
-
-            Trips_Locations item = new Trips_Locations()
-            {
-                Trips_ID = VindRitVM.CurrentTrip.ID,
-                Location = JsonConvert.SerializeObject(location),
-                Statuses_ID = VindRitVM.StatusID
-            };
-            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
-
-            if (ok.Success == true)
-            {
-                StartTripLocationTimer();
-
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            StartTripLocationTimer();
+            return true;
         }
 
 
