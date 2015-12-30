@@ -46,12 +46,12 @@
         </VisualStateManager.VisualStateGroups>
 
         <RelativePanel Background="White">
-            <TextBlock Text="Verander hier je wachtwoord." RelativePanel.Above="textBlockError"  Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" />
-            <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" Margin="10" RelativePanel.Above="passwordBox" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Red" FontWeight="Bold" TextAlignment="Center" Style="{StaticResource textblock}"/>
-            <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox"  PlaceholderText="Wachtwoord" RelativePanel.AlignVerticalCenterWithPanel="true" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300" Style="{StaticResource passwordBox}" PasswordChanged="passwordBox_PasswordChanged"/>
-            <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" Width="300" Style="{StaticResource passwordBox}" PasswordChanged="passwordBoxHerhaal_PasswordChanged"/>
-            <Button x:Name="buttonCancel" Content="Annuleer" RelativePanel.AlignBottomWithPanel="True" Height="32" Margin="10" RelativePanel.AlignLeftWithPanel="True" Command="{Binding CancelCommand}" Style="{StaticResource button}"/>
-            <Button x:Name="buttonWijzig" Content="Wijzig wachtwoord" RelativePanel.AlignBottomWithPanel="True" Height="32" Margin="10" RelativePanel.AlignRightWithPanel="True" Command="{Binding WijzigCommand}" Style="{StaticResource button}" IsEnabled="False"/>
+            <TextBlock Text="Verander hier je wachtwoord." RelativePanel.Above="textBlockError"  Margin="12" RelativePanel.AlignHorizontalCenterWithPanel="True" />
+            <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" Margin="12" RelativePanel.Above="passwordBox" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Red" FontWeight="Bold" TextAlignment="Center" Style="{StaticResource textblock}"/>
+            <PasswordBox Password="{Binding Password, Mode=TwoWay}" x:Name="passwordBox"  PlaceholderText="Wachtwoord" RelativePanel.AlignVerticalCenterWithPanel="true" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="12" Width="280" Style="{StaticResource passwordBox}" PasswordChanged="passwordBox_PasswordChanged"/>
+            <PasswordBox Password="{Binding PasswordRepeat, Mode=TwoWay}" x:Name="passwordBoxHerhaal" RelativePanel.Below="passwordBox" PlaceholderText="Herhaal Wachtwoord" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="12" Width="280" Style="{StaticResource passwordBox}" PasswordChanged="passwordBoxHerhaal_PasswordChanged"/>
+            <Button x:Name="buttonCancel" Content="Annuleer" RelativePanel.AlignBottomWithPanel="True" Height="32" Margin="12" RelativePanel.AlignLeftWithPanel="True" Command="{Binding CancelCommand}" Style="{StaticResource button}"/>
+            <Button x:Name="buttonWijzig" Content="Wijzig wachtwoord" RelativePanel.AlignBottomWithPanel="True" Height="32" Margin="12" RelativePanel.AlignRightWithPanel="True" Command="{Binding WijzigCommand}" Style="{StaticResource button}" IsEnabled="False"/>
 
         </RelativePanel>
 
