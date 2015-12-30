@@ -133,6 +133,7 @@ namespace BOBApp
             };
             Window.Current.VisibilityChanged += (ss, ee) =>
             {
+               
                 if (!ee.Visible)
                 {
                     //minimized
@@ -160,6 +161,7 @@ namespace BOBApp
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,async () =>
                {
+                   var test = Window.Current.CoreWindow.Visible;
                    if (IsMinimized == true || dialog.IsNotification==true)
                    {
                        bool ok = Toast.Show(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb,dialog.Data);

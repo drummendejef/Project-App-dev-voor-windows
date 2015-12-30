@@ -119,9 +119,9 @@ namespace BOBApp.ViewModels
 
             if (obj.Name == "friend_accepted")
             {
-                User.All user = (User.All)obj.ParamView;
+                User user = (User)obj.Data;
                 bool accepted = (bool) obj.Result;
-                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID,user.User.ID,accepted)).Result;
+                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID,user.ID,accepted)).Result;
 
                 if (response.Success == true)
                 {
@@ -164,6 +164,10 @@ namespace BOBApp.ViewModels
 
         private void Search()
         {
+            if (this.SearchUser == null)
+            {
+                this.SearchUser = "";
+            }
             FindUserByEmail(this.SearchUser.Trim());
         }
 
@@ -198,36 +202,62 @@ namespace BOBApp.ViewModels
                
                
             }
+            if (this.SearchUsers != null)
+            {
+                this.SearchUsers = this.SearchUsers.Where(r => r.User.ID != MainViewVM.USER.ID).ToList<User.All>();
 
-            this.SearchUsers = this.SearchUsers.Where(r => r.User.ID != MainViewVM.USER.ID).ToList<User.All>();
-            if(this.SearchUsers.Count==0)
-            {
-                this.Error = "Geen gebruikers gevonden met dit email";
+                if (this.SearchUsers.Count == 0)
+                {
+                    this.Error = "Geen gebruikers gevonden met dit email";
+                }
+                else
+                {
+                    this.Error = null;
+                }
             }
-            else
-            {
-                this.Error = null;
-            }
+            
+           
             RaiseAll();
         }
 
         public List<User.All> SearchUsers { get; set; }
         public User.All SelectedUser { get; set; }
-        private void AddFriend()
+        private async void AddFriend()
         {
             //todo: friends api
             User.All user = this.SelectedUser;
 
-            Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.User.ID, Status = true };
+            List<Friend.All> friends = await FriendsRepository.GetFriends();
 
-            MainViewVM.socket.Emit("friend_REQUEST:send", JsonConvert.SerializeObject(socketSend));
-            CloseModal();
-
-            Messenger.Default.Send<Dialog>(new Dialog()
+            if (friends != null)
             {
-                Message = "Vrienddschapsverzoek is verzonden",
-                Ok = "Ok"
-            });
+
+                var items= friends.Where(r => r.User2.ID==user.User.ID).ToList();
+                if(items!=null && items.Count > 0)
+                {
+                    
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = "U hebt al deze vriend.",
+                        Ok = "Ok"
+                    });
+                }
+                else
+                {
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.User.ID, Status = true };
+
+                    MainViewVM.socket.Emit("friend_REQUEST:send", JsonConvert.SerializeObject(socketSend));
+                    CloseModal();
+
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = "Vrienddschapsverzoek is verzonden",
+                        Ok = "Ok"
+                    });
+                }
+            }
+
+            
         }
 
 

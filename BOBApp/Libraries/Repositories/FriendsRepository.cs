@@ -46,7 +46,7 @@ namespace Libraries.Repositories
 
         #region post
 
-        public static async Task<Response> PostFriend(int usersID, int friendsID, bool accepted)
+        public static async Task<Response> PostFriend(int users_ID, int friends_ID, bool accepted)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace Libraries.Repositories
                 {
                     client.BaseAddress = new Uri(URL.BASE);
 
-                    var newObject = JsonConvert.SerializeObject(new { UsersID = usersID, FriendsID = friendsID, Accepted = accepted });
+                    var newObject = JsonConvert.SerializeObject(new { Users_ID = users_ID, Friends_ID = friends_ID, Accepted = accepted });
 
                     HttpResponseMessage result = await client.PostAsync(URL.FRIENDS, new StringContent(newObject, Encoding.UTF8, "application/json"));
                     string json = await result.Content.ReadAsStringAsync();

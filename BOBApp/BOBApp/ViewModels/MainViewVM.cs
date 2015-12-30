@@ -251,11 +251,12 @@ namespace BOBApp.ViewModels
           
             Messenger.Default.Send<Dialog>(new Dialog()
             {
-                Message = fromUser.ToString() + " wilt u toevoegen als vriend",
+                Message = fromUser.User.ToString() + " wilt u toevoegen als vriend",
                 Ok = "Accept",
                 Nok = "Ignore",
-                ParamView = fromUser,
+                Data=MainViewVM.USER,
                 Cb = "friend_accepted",
+                IsNotification=true
             });
         }
 
