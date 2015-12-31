@@ -268,7 +268,7 @@ namespace BOBApp.ViewModels
 
             await UserRepository.PostPoint(3);
 
-            await trip_location();
+            trip_location();
             RaiseAll();
         }
 
@@ -454,15 +454,15 @@ namespace BOBApp.ViewModels
 
         //update location user/bob naar de db
 
-        private async Task<bool> trip_location()
+        private void trip_location()
         {
             SetStatus(2);
             this.Loading = false;
             //todo: swtich
-            RaiseAll();
+           
 
             StartTripLocationTimer();
-            return true;
+            RaiseAll();
         }
 
 
@@ -471,14 +471,8 @@ namespace BOBApp.ViewModels
         bool canShowDialog;
         private void StartTripLocationTimer()
         {
-            if (timer.IsEnabled == true)
-            {
-                timer.Stop();
-                timer = new DispatcherTimer();
 
-            }
-
-
+            timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(0, 0, 20);
             timer.Tick += Timer_Tick;
             canShowDialog = true;
