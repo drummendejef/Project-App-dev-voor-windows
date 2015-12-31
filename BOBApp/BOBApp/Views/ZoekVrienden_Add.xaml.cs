@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,13 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class ZoekVrienden_Add : Page
     {
+        public ZoekVriendenVM Vm
+        {
+            get
+            {
+                return this.DataContext as ZoekVriendenVM;
+            }
+        }
         public ZoekVrienden_Add()
         {
             this.InitializeComponent();

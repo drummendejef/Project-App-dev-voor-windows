@@ -11,35 +11,42 @@
     
 
     <Page.Resources>
-        <!--Dit moet in commentaar omdat ik anders die datatemplate niet kan aanmaken? Geen idee hoe dat op te lossen, en tbh is dat niet een van m'n grootste zorgen atm, Joren-->
-        <!--<ResourceDictionary>
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
-        <DataTemplate x:Key="DTemplateFeestjesMap">
-            <ContentControl Maps:MapControl.Location="{Binding GeoLocation}">
-                <Grid Background="#3e5d94" Margin="40,0,0,0" Padding="5">
-                    <TextBlock Text="Feest: " Margin="0" />
-                    <TextBlock Text="{Binding Name}" Margin="85,0,0,0" />
-                    <TextBlock Text="Organisator:" Margin="0,20,0,0"/>
-                    <TextBlock Text="{Binding Organisator}" Margin="85,20,0,0"/>
-                    <TextBlock Text="Aanwezig: " Margin="0,40,0,0"/>
-                    <TextBlock Text="{Binding Amount}" Margin="85,40,0,0"/>
-                    <!--<Button Content="Facebook(doetnogniets)" Click="" Margin="0,60,0,0"/>-->
-                    <HyperlinkButton Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="0,60,0,0" />
-                </Grid>
-            </ContentControl>
-        </DataTemplate>
+            <DataTemplate x:Key="DTemplateFeestjesMap">
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation}">
+                    <Grid Background="#3e5d94" Margin="40,0,0,0" Padding="5">
+                        <TextBlock Text="Feest: " Margin="0" />
+                        <TextBlock Text="{Binding Name}" Margin="85,0,0,0" />
+                        <TextBlock Text="Organisator:" Margin="0,20,0,0"/>
+                        <TextBlock Text="{Binding Organisator}" Margin="85,20,0,0"/>
+                        <TextBlock Text="Aanwezig: " Margin="0,40,0,0"/>
+                        <TextBlock Text="{Binding Amount}" Margin="85,40,0,0"/>
+                        <!--<Button Content="Facebook(doetnogniets)" Click="" Margin="0,60,0,0"/>-->
+                        <HyperlinkButton Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="0,60,0,0" />
+                    </Grid>
+                </ContentControl>
+            </DataTemplate>
+        </ResourceDictionary>
+
+       
     </Page.Resources>
 
-    <RelativePanel x:Name="Root">
-        <!--Kan hier geen stijl aan meegeven, zie commentaar hier boven-->
-        <TextBox x:Name="textBoxZoek" Height="32" PlaceholderText="Zoek locatie/feestje" Text="{Binding ZoekVeld, Mode=TwoWay}" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
-        <!--<TextBox x:Name="textBoxZoek" Height="32" PlaceholderText="Zoek locatie/feestje" Text="{Binding ZoekVeld, Mode=TwoWay}" VerticalAlignment="Top" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>-->
-
-        <Maps:MapControl x:Name="MapFeestOverzicht" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="textBoxZoek" RelativePanel.AlignBottomWithPanel="True" Margin="10">
-            <Maps:MapItemsControl ItemsSource="{Binding Feestjes}" ItemTemplate="{StaticResource DTemplateFeestjesMap}" />
+    <RelativePanel Background="White">
+        <RelativePanel x:Name="search" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Background="{ThemeResource White}">
+            <RelativePanel Width="400" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <AutoSuggestBox RelativePanel.AlignLeftWithPanel="True" SuggestionChosen="{x:Bind Vm.SearchChosen}" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchItem, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Parties, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" Height="32" PlaceholderText="Locatie" Margin="10" />
+                <Button x:Name="btnSearch" Margin="10" Content="Zoeken" Style="{ThemeResource button}" Command="{Binding SearchItemCommand}" RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+        </RelativePanel>
+       
+        
+        
+        <TextBlock RelativePanel.Below="search" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+        <Maps:MapControl x:Name="MapFeestOverzicht" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="search" RelativePanel.AlignBottomWithPanel="True" Margin="0">
+            <Maps:MapItemsControl ItemsSource="{Binding Parties, Mode=TwoWay}" ItemTemplate="{StaticResource DTemplateFeestjesMap}" />
         </Maps:MapControl>
 
     </RelativePanel>

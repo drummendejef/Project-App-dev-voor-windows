@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BOBApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:converters="using:BOBApp.Converters"
-    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:BOBApp.Converters"
     mc:Ignorable="d"
     DataContext="{Binding BestemmingenVM, Mode=TwoWay, Source={StaticResource Locator}}">
 
@@ -26,10 +26,19 @@
     <RelativePanel Background="White">
         <ProgressRing Foreground="black" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Height="30" Width="30" Canvas.ZIndex="10000" Margin="0,20,0,0" />
 
-        
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchLocation, Mode=TwoWay}" Height="32" TextWrapping="Wrap" PlaceholderText="Locatie" Margin="10" Style="{StaticResource textBox}" />
-        <Button x:Name="btnAdd" Margin="10" Content="Add" Command="{Binding GoDestinationCommand}" RelativePanel.AlignRightWithPanel="True" RelativePanel.RightOf="textBoxZoekLocaties" Style="{StaticResource button}" />
-        <ScrollViewer RelativePanel.Below="btnAdd" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch">
+
+        <RelativePanel x:Name="search" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Background="{ThemeResource White}">
+            <RelativePanel Width="400" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <AutoSuggestBox RelativePanel.AlignLeftWithPanel="True" SuggestionChosen="{x:Bind Vm.SearchChosen}" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Destinations, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" Height="32" PlaceholderText="Locatie" Margin="10" />
+                <Button x:Name="btnSearch" Margin="10" Content="Zoeken" Style="{ThemeResource button}" Command="{Binding SearchItemCommand}" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+        </RelativePanel>
+        <Button x:Name="btnAdd" Margin="10" Content="Add" Style="{ThemeResource button:add}" Command="{Binding GoDestinationCommand}" RelativePanel.AlignRightWithPanel="True" />
+
+
+        <TextBlock RelativePanel.Below="search" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+        <ScrollViewer RelativePanel.Below="search" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch">
+            
             <ListView SelectionChanged="{x:Bind Vm.Changed}" ItemContainerStyle="{ThemeResource listViewItem}" HorizontalAlignment="Stretch" Width="400" Margin="10" MinHeight="100" x:Name="Friends" RelativePanel.AlignHorizontalCenterWithPanel="True" SelectedItem="{Binding SelectedDestination, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Destinations, Mode=TwoWay}" >
                 <ListView.ItemContainerTransitions>
                     <TransitionCollection>
@@ -45,11 +54,11 @@
                             <TextBlock x:Name="title" HorizontalAlignment="left" FontSize="20" FontWeight="Light" Text="{Binding Name, Mode=TwoWay, Converter={StaticResource ToUpperConverter}}" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
                             <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding Cities_Name, Mode=TwoWay}" />
 
-                            <Button x:Name="go" Visibility="{Binding VisibleDefault, Mode=TwoWay}" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWith="date"  VerticalAlignment="Center" Command="{Binding SetDefault,Mode=TwoWay}" CommandParameter="{Binding Destinations_ID, Mode=TwoWay}" Content="Setdefault"/>
+                            <Button x:Name="go" Visibility="{Binding VisibleDefault, Mode=TwoWay}" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignVerticalCenterWith="date"  VerticalAlignment="Center" Command="{Binding SetDefault,Mode=TwoWay}" CommandParameter="{Binding Destinations_ID, Mode=TwoWay}" Content="Setdefault" Style="{ThemeResource button}"/>
                             <TextBlock x:Name="date" RelativePanel.Below="subTitle" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,10,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding Added, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" />
 
                             <Maps:MapControl x:Name="map" Margin="-15,10,-15,-15" Height="180" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="go" RelativePanel.AlignBottomWithPanel="True">
-                                <Maps:MapItemsControl />
+
                             </Maps:MapControl>
                         </RelativePanel>
                     </DataTemplate>

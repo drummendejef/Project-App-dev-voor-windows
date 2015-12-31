@@ -32,6 +32,14 @@ namespace BOBApp.Views
         RandomAccessStreamReference mapIconStreamReference;
         RandomAccessStreamReference mapIconStreamReferenceParty;
 
+        public FeestjesOverzichtVM Vm
+        {
+            get
+            {
+                return this.DataContext as FeestjesOverzichtVM;
+            }
+        }
+
         public FeestjesOverzicht()
         {
             this.InitializeComponent();
@@ -39,9 +47,7 @@ namespace BOBApp.Views
             MapFeestOverzicht.Loaded += myMap_Loaded;
             mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/userpin.png"));
 
-            FeestjesOverzichtVM vm = new FeestjesOverzichtVM();
-            vm.GetFeestjes();
-            Root.DataContext = vm;
+           
 
             mapIconStreamReferenceParty = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/feestpin.png"));
         }

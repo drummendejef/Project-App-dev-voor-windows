@@ -18,12 +18,19 @@
 
     </Page.Resources>
 
-    <RelativePanel >
-        <!--<TextBox x:Name="textBoxZoekVriend" Margin="10" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" Style="{StaticResource textBox}"/>-->
+    <RelativePanel Background="White">
 
-        <AutoSuggestBox x:Name="textBoxZoekVriend" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"  RelativePanel.AlignRightWithPanel="True" Margin="10,10,70,10" Text="{Binding SelectedFriend, Mode=TwoWay}" ItemsSource="{Binding Friends, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" Height="35" PlaceholderText="Zoek vrienden"  />
-        <Button x:Name="addFriend" Margin="10" Command="{Binding ShowModalCommand}" RelativePanel.AlignRightWith="textBoxZoekVriend" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True" Content="Add"/>
-        <Maps:MapControl x:Name="MapZoekVriend" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="textBoxZoekVriend" >
+        <RelativePanel x:Name="search" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Background="{ThemeResource White}">
+            <RelativePanel Width="400" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <AutoSuggestBox RelativePanel.AlignLeftWithPanel="True" SuggestionChosen="{x:Bind Vm.SearchChosen}" Width="250" x:Name="textBoxZoekLocaties" Text="{Binding SearchItem, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Friends, Mode=TwoWay}" TextMemberPath="User2" DisplayMemberPath="User2" Height="32" PlaceholderText="Locatie" Margin="10" />
+                <Button x:Name="btnSearch" Margin="10" Content="Zoeken" Style="{ThemeResource button}" Command="{Binding SearchItemCommand}" RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+        </RelativePanel>
+        <Button x:Name="btnAdd" Margin="10" Content="Add" Style="{ThemeResource button:add}"  Command="{Binding ShowModalCommand}" RelativePanel.AlignRightWithPanel="True" />
+
+
+        <TextBlock RelativePanel.Below="btnAdd" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+        <Maps:MapControl x:Name="MapZoekVriend" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="search" >
    
         </Maps:MapControl>
         

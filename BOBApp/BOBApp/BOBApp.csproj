@@ -95,10 +95,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="project.json" />
+    <Content Include="Assets\add.png" />
     <Content Include="Assets\BOBpin.png" />
     <Content Include="Assets\car.png" />
     <Content Include="Assets\close.png" />
     <Content Include="Assets\feestpin.png" />
+    <Content Include="Assets\home.png" />
     <Content Include="Assets\road.png" />
     <Content Include="Assets\userpin.png" />
     <Content Include="Assets\vriendpin.png" />

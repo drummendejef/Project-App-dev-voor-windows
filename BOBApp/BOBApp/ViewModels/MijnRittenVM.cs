@@ -43,7 +43,28 @@ namespace BOBApp.ViewModels
             }
         }
 
-      
+        //search
+        public RelayCommand SearchItemCommand { get; set; }
+        private string _SearchItem;
+
+        public string SearchItem
+        {
+            get { return _SearchItem; }
+            set
+            {
+                _SearchItem = value;
+                if (_SearchItem == null || _SearchItem.Trim() == "")
+                {
+                    if (trips_all != null)
+                    {
+                        this.Trips = trips_all;
+                        RaisePropertyChanged("Trips");
+                    }
+                }
+            }
+        }
+
+
 
         //Constructor
         public MijnRittenVM()
@@ -64,8 +85,8 @@ namespace BOBApp.ViewModels
 
             });
 
-            GetCurrentTrip();
-            GetTrips();
+            SearchItemCommand = new RelayCommand(Search);
+
             //raise
             RaiseAll();
         }
@@ -153,7 +174,6 @@ namespace BOBApp.ViewModels
                         newTrip.Destination = destination;
 
                         MoveCar(newTrip.Trip.Status_Name);
-                        this.Loading = false;
                         this.CurrentTrip = newTrip;
                     }
                     else
@@ -261,6 +281,42 @@ namespace BOBApp.ViewModels
 
         }
 
+        private void Search()
+        {
+            if (SearchItem == null)
+            {
+                return;
+            }
+
+            string item = this.SearchItem.ToString().Trim().ToLower();
+
+            var newItems = trips_all.Where(r => r.User.User.ToString().Trim().ToLower() == item).ToList();
+            if (newItems == null || newItems.Count == 0)
+            {
+                newItems = trips_all.Where(r => r.User.User.Firstname.Trim().ToLower() == item).ToList();
+
+                if (newItems == null || newItems.Count == 0)
+                {
+                    newItems = trips_all.Where(r => r.User.User.Lastname.Trim().ToLower() == item).ToList();
+                }
+
+            }
+
+            if (newItems != null && newItems.Count > 0)
+            {
+                this.Trips = newItems;
+                this.Error = null;
+            }
+            else
+            {
+                this.Error = "Geen ritten gevonden";
+            }
+
+
+
+            RaiseAll();
+
+        }
 
 
         //bind events
@@ -324,5 +380,17 @@ namespace BOBApp.ViewModels
 
 
         }
+
+
+        public void SearchChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+
+            var value = args.SelectedItem as Trip.All;
+
+            this.SearchItem = value.Bob.User.ToString();
+            Search();
+        }
+
+
     }
 }

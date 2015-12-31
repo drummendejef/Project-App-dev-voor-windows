@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,6 +27,14 @@ namespace BOBApp.Views
     {
         RandomAccessStreamReference mapIconStreamReference;
         RandomAccessStreamReference mapIconStreamReferenceVriend;
+
+        public ZoekVriendenVM Vm
+        {
+            get
+            {
+                return this.DataContext as ZoekVriendenVM;
+            }
+        }
 
         public ZoekVrienden()
         {
@@ -66,5 +75,7 @@ namespace BOBApp.Views
             }*/
 
         }
+
+      
     }
 }

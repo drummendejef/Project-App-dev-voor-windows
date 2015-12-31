@@ -37,6 +37,7 @@ namespace BOBApp.ViewModels
         public RelayCommand GoDestinationCommand { get; set; }
         public RelayCommand AddDestinationCommand { get; set; }
         public RelayCommand GoToCityCommand { get; set; }
+       
 
         public List<City> Cities { get; set; }
         public List<Users_Destinations> Destinations { get; set; }
@@ -56,9 +57,31 @@ namespace BOBApp.ViewModels
         //databinding voor het center van de map
         public Geopoint MapCenter { get; set; }
 
+
+        //search
+        public RelayCommand SearchItemCommand { get; set; }
+        private string _SearchItem;
+
+        public string SearchItem
+        {
+            get { return _SearchItem; }
+            set {
+                _SearchItem = value;
+                if(_SearchItem==null || _SearchItem.Trim() == "")
+                {
+                    if (destinations_all != null)
+                    {
+                        this.Destinations = destinations_all;
+                        RaisePropertyChanged("Destinations");
+                    }
+                }
+            }
+        }
+
+
         #endregion
 
-        
+
 
         //Constructor
         public BestemmingenVM()
@@ -73,13 +96,15 @@ namespace BOBApp.ViewModels
             AddDestinationCommand = new RelayCommand(AddDestination);
             GoDestinationCommand = new RelayCommand(GoDestination);
             GoToCityCommand = new RelayCommand(TownToCoord);
-           
-           
+            SearchItemCommand = new RelayCommand(Search);
 
-            RaiseAll();
+
+             RaiseAll();
 
 
         }
+
+     
 
         private void ExecuteNavigatedTo(NavigateTo obj)
         {
@@ -159,7 +184,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("Destinations");
             RaisePropertyChanged("MapCenter");
             RaisePropertyChanged("NewDestination");
-          
+            RaisePropertyChanged("SearchItem");
         }
 
         //Methods
@@ -298,6 +323,32 @@ namespace BOBApp.ViewModels
             this.NewDestination.Location = location;
         }
 
+        private void Search()
+        {
+            if (SearchItem == null)
+            {
+                return;
+            }
+
+            string item = this.SearchItem.Trim().ToLower();
+            var newItems = destinations_all.Where(r => r.Name.Trim().ToLower() == item).ToList();
+
+            if (newItems != null && newItems.Count > 0)
+            {
+                this.Destinations = newItems;
+                this.Error = null;
+            }
+            else
+            {
+                this.Error = "Geen bestemmingen gevonden";
+            }
+
+
+
+            RaiseAll();
+
+        }
+
         //bind events
         public async void Changed(object sender, SelectionChangedEventArgs e)
         {
@@ -359,5 +410,16 @@ namespace BOBApp.ViewModels
 
 
         }
+
+
+        public void SearchChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+
+            var value = args.SelectedItem as Users_Destinations;
+
+            this.SearchItem = value.Name;
+            Search();
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BOBApp.Messages;
 using BOBApp.Views;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Repositories;
@@ -14,6 +15,7 @@ using Windows.ApplicationModel.Core;
 using Windows.Devices.Geolocation;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
+using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
 {
@@ -23,16 +25,35 @@ namespace BOBApp.ViewModels
         public bool Loading { get; set; }
         public string Error { get; set; }
 
-        public string ZoekVeld { get; set; }
+      
 
+        public RelayCommand SearchCommand { get; set; }
         //Dingen die te maken hebben met de kaart
         RandomAccessStreamReference PartyIcon;
 
-        public List<Party> Feestjes { get; set; }
-        //De te binden dingen
-        /* public string NaamFeest { get; set; }
-         public string OrganisatorFeest { get; set; }
-         public Geopoint GeoLocation { get; set; }*/
+        public List<Party> Parties { get; set; }
+
+        //search
+        public RelayCommand SearchItemCommand { get; set; }
+        private string _SearchItem;
+
+        public string SearchItem
+        {
+            get { return _SearchItem; }
+            set
+            {
+                _SearchItem = value;
+                if (_SearchItem == null || _SearchItem.Trim() == "")
+                {
+                    if (parties_all != null)
+                    {
+                        this.Parties = parties_all;
+                        RaisePropertyChanged("Parties");
+                    }
+                }
+            }
+        }
+
 
         #endregion
 
@@ -41,6 +62,8 @@ namespace BOBApp.ViewModels
         {
             this.PartyIcon = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/feestpin.png"));
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+
+            SearchItemCommand = new RelayCommand(Search);
 
             RaiseAll();
         }
@@ -65,11 +88,12 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-                GetFeestjes();
+                
              
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
+                    await GetParties();
                     this.Loading = false;
                     RaiseAll();
 
@@ -84,22 +108,25 @@ namespace BOBApp.ViewModels
         {
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");
-            RaisePropertyChanged("Feetjes");
+            RaisePropertyChanged("Parties");
+
+            RaisePropertyChanged("SearchItem");
         }
 
         //Methods
-        public async void GetFeestjes()
+        List<Party> parties_all = new List<Party>();
+        public async Task GetParties()
         {
            
-            this.Feestjes = new List<Party>();
+            this.Parties = new List<Party>();
 
             //Ingeladen feestjes ophalen
-            List<Party> omtezettenfeestjes = await PartyRepository.GetParties();
+            parties_all = await PartyRepository.GetParties();
 
-            int aantalfeestjes = omtezettenfeestjes.Count();
-            for(int i = 0; i < aantalfeestjes; i++)
+            
+            for(int i = 0; i < parties_all.Count; i++)
             {
-                Party feest = omtezettenfeestjes[i];
+                Party feest = parties_all[i];
 
                 //Feestlocatie opsplitsen (word opgeslagen als string)
                 //string[] splittedcoord = feest.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
@@ -111,9 +138,53 @@ namespace BOBApp.ViewModels
                 //Location
                 GeoLocation = new Geopoint(new BasicGeoposition() { Latitude = double.Parse(splittedcoord[1].ToString()), Longitude = double.Parse(splittedcoord[3].ToString()) });*/
 
-                Feestjes.Add(feest);
+                //parties_all.Add(feest);
             }
 
+            this.Parties = parties_all;
+
+            RaiseAll();
+
         }
+
+
+        private void Search()
+        {
+            if (SearchItem == null)
+            {
+                return;
+            }
+
+            string item = this.SearchItem.ToString().Trim().ToLower();
+
+            var newItems = parties_all.Where(r => r.Name.ToString().Trim().ToLower() == item).ToList();
+            
+
+
+
+
+
+            if (newItems != null && newItems.Count > 0)
+            {
+                this.Parties = newItems;
+                this.Error = null;
+            }
+            else
+            {
+                this.Error = "Geen feestjes gevonden";
+            }
+
+            RaiseAll();
+        }
+
+        public void SearchChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            var value = args.SelectedItem as Party;
+            this.SearchItem = value.Name;
+            Search();
+        }
+
+
+
     }
 }

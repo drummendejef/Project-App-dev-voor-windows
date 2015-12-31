@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BOBApp.Views"
+     xmlns:converters="using:BOBApp.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -13,30 +14,39 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:StringToUpperConverter x:Key="ToUpperConverter"/>
+            <converters:DateTimeConverter x:Key="DateTimeConverter"/>
         </ResourceDictionary>
 
     </Page.Resources>
+    <RelativePanel Background="White" Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
+        <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True" Width="400">
+            <TextBlock x:Name="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,20" Text="Find by email" Style="{ThemeResource h1}" ></TextBlock>
+            <TextBox RelativePanel.Below="lblFriend" Margin="12" x:Name="friend" Width="300" Text="{Binding SearchUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{ThemeResource textBox}"></TextBox>
+            <Button Margin="10,10,10,10" Width="60" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}" RelativePanel.Below="lblFriend" x:Name="friendButton" Content="Zoek" Command="{Binding SearchCommand, Mode=TwoWay}"/>
+            <TextBlock Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99" RelativePanel.Below="friend" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
 
-    <RelativePanel Background="White" Width="400" Padding="10" >
-        <TextBlock x:Name="lblFriend" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,20" Text="Find by email" Style="{ThemeResource h1}" ></TextBlock>
-        <TextBox RelativePanel.Below="lblFriend" Margin="12" x:Name="friend" Width="300" Text="{Binding SearchUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{ThemeResource textBox}"></TextBox>
-        <Button Margin="10,10,0,10" Width="50" RelativePanel.RightOf="Friends" Style="{ThemeResource button}" RelativePanel.Below="lblFriend" x:Name="friendButton" Content="Zoek" Command="{Binding SearchCommand, Mode=TwoWay}"/>
-        <TextBlock Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99" RelativePanel.Below="friend" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
+            <ListView SelectionChanged="{x:Bind Vm.Changed}" ItemContainerStyle="{ThemeResource listViewItem}" x:Name="Friends" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" MinHeight="100" SelectedItem="{Binding SelectedUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding SearchUsers, Mode=TwoWay}" Margin="12"  RelativePanel.Below="friend">
+                <ListView.ItemContainerTransitions>
+                    <TransitionCollection>
+                        <AddDeleteThemeTransition/>
+                        <ContentThemeTransition />
+                        <ReorderThemeTransition />
+                        <EntranceThemeTransition IsStaggeringEnabled="False" />
+                    </TransitionCollection>
+                </ListView.ItemContainerTransitions>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <RelativePanel Padding="15" Margin="0,0,0,15" HorizontalAlignment="Stretch" Background="#f7f7f7">
+                            <TextBlock x:Name="title" HorizontalAlignment="left" FontSize="20" FontWeight="Light" Text="{Binding User, Mode=TwoWay, Converter={StaticResource ToUpperConverter}}" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
+                            <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding User.Online, Mode=TwoWay}" />
 
-        <ListView x:Name="Friends" Width="300" MinHeight="100" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" ItemsSource="{Binding SearchUsers, Mode=TwoWay}" Margin="12"  RelativePanel.Below="friend">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="0,0,0,12" Orientation="Vertical" HorizontalAlignment="Stretch">
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding User.Email, Mode=TwoWay}" />
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding User.Firstname, Mode=TwoWay}" />
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding User.Lastname, Mode=TwoWay}" />
-                    </StackPanel>
-                </DataTemplate>
-                
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Content="Add" RelativePanel.RightOf="Friends" Width="50" RelativePanel.Below="friendButton" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True" x:Name="addFriend" Margin="10,10,0,10" Command="{Binding AddFriendCommand}" Style="{ThemeResource button}"></Button>
+                        </RelativePanel>
+                    </DataTemplate>
 
+                </ListView.ItemTemplate>
+            </ListView>
+           
+        </RelativePanel>
     </RelativePanel>
-    
 </Page>

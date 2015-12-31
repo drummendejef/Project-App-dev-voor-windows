@@ -29,25 +29,49 @@ namespace BOBApp.ViewModels
         public Visibility VisibleModal { get; set; }
         public Frame Frame { get; set; }
         public string SearchUser { get; set; }
+        public List<Friend.All> Friends { get; set; }
 
-        public RelayCommand AddFriendCommand { get; set; }
+
         public RelayCommand ShowModalCommand { get; set; }
         public RelayCommand SearchCommand { get; set; }
         public RelayCommand CloseModalCommand { get; set; }
-     
+
+        //search
+        public RelayCommand SearchItemCommand { get; set; }
+        private string _SearchItem;
+
+        public string SearchItem
+        {
+            get { return _SearchItem; }
+            set
+            {
+                _SearchItem = value;
+                if (_SearchItem == null || _SearchItem.Trim() == "")
+                {
+                    if (friends_all != null)
+                    {
+                        this.Friends = friends_all;
+                        RaisePropertyChanged("Friends");
+                    }
+                }
+            }
+        }
+
         //Constructor
         public ZoekVriendenVM()
         {
            
           
-            AddFriendCommand = new RelayCommand(AddFriend);
+          
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
-            SearchCommand = new RelayCommand(Search);
+            SearchCommand = new RelayCommand(SearchByEmail);
+            SearchItemCommand = new RelayCommand(Search);
 
             VisibleModal = Visibility.Collapsed;
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+          
             RaiseAll();
         }
 
@@ -68,6 +92,9 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("SearchUsers");
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");
+            RaisePropertyChanged("Friends");
+
+            RaisePropertyChanged("SearchItem");
 
         }
 
@@ -90,7 +117,7 @@ namespace BOBApp.ViewModels
                     this.Frame = new Frame();
 
 
-                    GetFriends();
+                    await GetFriends();
                     this.Loading = false;
                     RaiseAll();
 
@@ -129,6 +156,10 @@ namespace BOBApp.ViewModels
                     {
                         Message = user.ToString() + " is toegevoegd",
                     });
+
+                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.ID, Status = true };
+
+                    MainViewVM.socket.Emit("friend_ADDED:send", JsonConvert.SerializeObject(socketSend));
                 }
                 else
                 {
@@ -162,7 +193,46 @@ namespace BOBApp.ViewModels
         }
         #endregion
 
+
         private void Search()
+        {
+            if (SearchItem == null)
+            {
+                return;
+            }
+
+            string item = this.SearchItem.ToString().Trim().ToLower();
+
+            var newItems = friends_all.Where(r => r.User2.ToString().Trim().ToLower() == item).ToList();
+            if (newItems == null || newItems.Count == 0)
+            {
+                newItems = friends_all.Where(r => r.User2.Firstname.Trim().ToLower() == item).ToList();
+
+                if (newItems == null || newItems.Count == 0)
+                {
+                    newItems = friends_all.Where(r => r.User2.Lastname.Trim().ToLower() == item).ToList();
+                }
+
+            }
+
+
+
+
+
+            if (newItems != null && newItems.Count > 0)
+            {
+                this.Friends = newItems;
+                this.Error = null;
+            }
+            else
+            {
+                this.Error = "Geen vrienden gevonden";
+            }
+
+            RaiseAll();
+        }
+
+        private void SearchByEmail()
         {
             if (this.SearchUser == null)
             {
@@ -171,29 +241,44 @@ namespace BOBApp.ViewModels
             FindUserByEmail(this.SearchUser.Trim());
         }
 
-      
 
-        private void GetFriends()
+        List<Friend.All> friends_all = new List<Friend.All>();
+        private async Task GetFriends()
         {
-            //
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            friends_all = await FriendsRepository.GetFriends();
+
+            var count = friends_all.Count;
+            if (friends_all.Count >= 10)
+            {
+                count = 10;
+            }
+
+
+            this.Friends = friends_all;
+            this.Loading = false;
+            RaiseAll();
         }
 
 
         #region add friend
-       
+
 
         private async void FindUserByEmail(string email)
         {
             User.All item = await UsersRepository.GetUserByEmail(email);
-            if (item != null)
+            if (item != null && item.User.Online==true)
             {
                 if (this.SearchUsers != null)
                 {
                     this.SearchUsers.Clear();
                 }
-              
+
                 this.SearchUsers = new List<User.All>();
                 this.SearchUsers.Add(item);
+
             }
             else
             {
@@ -267,68 +352,22 @@ namespace BOBApp.ViewModels
 
 
         //bind events
-        /*public async void Changed(object sender, SelectionChangedEventArgs e)
+        public void Changed(object sender, SelectionChangedEventArgs e)
         {
             ListView item = (ListView)sender;
-            if (item.SelectedIndex == -1)
-            {
-                return;
-            }
 
-
-            var dialog = new ContentDialog()
-            {
-                Title = "",
-            };
-
-            // Setup Content
-            var panel = new StackPanel();
-
-            panel.Children.Add(new TextBlock
-            {
-                Text = "Volgende bestemming wilt u wijzigen: ",
-                TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(0, 0, 0, 15)
-            });
-
-            var cb = new TextBox
-            {
-                TextWrapping = TextWrapping.Wrap,
-                HorizontalContentAlignment = HorizontalAlignment.Stretch
-            };
-
-
-
-            panel.Children.Add(cb);
-            dialog.Content = panel;
-
-            // Add Buttons
-            dialog.PrimaryButtonText = "Ok";
-            dialog.PrimaryButtonClick += async delegate
-            {
-                string text = cb.Text;
-
-                Loaded();
-            };
-
-            dialog.SecondaryButtonText = "Cancel";
-            dialog.SecondaryButtonClick += delegate
-            {
-
-            };
-
-            // Show Dialog
-            var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.None)
-            {
-
-            }
-            item.SelectedIndex = -1;
-
+            AddFriend();
 
         }
 
-    */
+        public void SearchChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            var value = args.SelectedItem as Friend.All;
+            this.SearchItem = value.User2.ToString();
+            Search();
+        }
+
+    
 
 
     }

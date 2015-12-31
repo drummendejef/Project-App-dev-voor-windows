@@ -152,6 +152,23 @@ namespace BOBApp.ViewModels
                 }
 
             });
+            MainViewVM.socket.On("friend_ADDED", async (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
+                //if (_socket.Status == true)
+                {
+                    //friend add
+                    User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+
+                    Messenger.Default.Send<Dialog>(new Dialog()
+                    {
+                        Message = fromUser.ToString() + " heeft u vriendschapsverzoek geaccepteerd",
+                    });
+                }
+
+            });
+
 
             //to user
             MainViewVM.socket.On("trip_MAKE", async (msg) =>
@@ -255,6 +272,7 @@ namespace BOBApp.ViewModels
                 Ok = "Accept",
                 Nok = "Ignore",
                 Data=MainViewVM.USER,
+                ViewOk=typeof(ZoekVrienden),
                 Cb = "friend_accepted",
                 IsNotification=true
             });

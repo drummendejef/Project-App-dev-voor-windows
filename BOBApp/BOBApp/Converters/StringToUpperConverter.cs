@@ -14,7 +14,7 @@ namespace BOBApp.Converters
         {
             if (value != null)
             {
-                return ((string)value).ToUpper();
+                return ((string)value.ToString()).ToUpper();
             }
             else
             {
