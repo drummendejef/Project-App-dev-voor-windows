@@ -30,285 +30,102 @@ namespace BOBApp.Views
 
         private void textBoxNaam_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
+            if (textBoxNaam.Text.Length <= 2)
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
             }
             else
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if(passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+                buttonRegistreer.IsEnabled = true;
             }
         }
 
         private void textBoxVoornaam_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
+            if (textBoxNaam.Text.Length <= 2)
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
             }
             else
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+                buttonRegistreer.IsEnabled = true;
             }
         }
 
         private void textBoxEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
+            if (textBoxNaam.Text.Length <= 2)
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
             }
             else
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+                buttonRegistreer.IsEnabled = true;
             }
         }
 
         private void textBoxGSMnr_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
-            {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
-            }
-            else
-            {
                 if (textBoxNaam.Text.Length <= 2)
                 {
                     buttonRegistreer.IsEnabled = false;
@@ -337,162 +154,101 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = true;
                 }
-            }
         }
 
         private void textBoxNummerplaat_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
+            if (textBoxNaam.Text.Length <= 2)
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+            }
+            else if (textBoxNummerplaat.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBox.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (textboxPrice.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBoxBobType.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
             }
             else
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+                buttonRegistreer.IsEnabled = true;
             }
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
+            if (textBoxNaam.Text.Length <= 2)
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+            }
+            else if (textBoxNummerplaat.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBox.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (textboxPrice.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBoxBobType.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
             }
             else
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+                buttonRegistreer.IsEnabled = true;
             }
         }
 
@@ -500,6 +256,12 @@ namespace BOBApp.Views
         {
             if (tglIsBob.IsOn)
             {
+
+                textboxPrice.IsEnabled = true;
+                textBoxNummerplaat.IsEnabled = true;
+                comboBox.IsEnabled = true;
+                comboBoxBobType.IsEnabled = true;
+
                 if (textBoxNaam.Text.Length <= 2)
                 {
                     buttonRegistreer.IsEnabled = false;
@@ -532,6 +294,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (comboBoxBobType.SelectedIndex < 0)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
                 {
                     buttonRegistreer.IsEnabled = false;
@@ -543,6 +309,11 @@ namespace BOBApp.Views
             }
             else
             {
+                textboxPrice.IsEnabled = false;
+                textBoxNummerplaat.IsEnabled = false;
+                comboBox.IsEnabled = false;
+                comboBoxBobType.IsEnabled = false;
+
                 if (textBoxNaam.Text.Length <= 2)
                 {
                     buttonRegistreer.IsEnabled = false;
@@ -576,79 +347,49 @@ namespace BOBApp.Views
 
         private void textboxPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tglIsBob.IsOn)
+            if (textBoxNaam.Text.Length <= 2)
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
 
-                }
-                else if (textBoxNummerplaat.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (comboBox.SelectedIndex < 0)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (textboxPrice.Text.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+            }
+            else if (textBoxNummerplaat.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBox.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (textboxPrice.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBoxBobType.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
             }
             else
             {
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (textBoxGSMnr.Text.Length <= 4)
-                {
-                    buttonRegistreer.IsEnabled = false;
-
-                }
-                else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
-                {
-                    buttonRegistreer.IsEnabled = false;
-                }
-                else
-                {
-                    buttonRegistreer.IsEnabled = true;
-                }
+                buttonRegistreer.IsEnabled = true;
             }
         }
 
@@ -685,6 +426,10 @@ namespace BOBApp.Views
                     buttonRegistreer.IsEnabled = false;
                 }
                 else if (textboxPrice.Text.Length < 1)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
+                else if (comboBoxBobType.SelectedIndex < 0)
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
@@ -766,6 +511,10 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = false;
                 }
+                else if (comboBoxBobType.SelectedIndex < 0)
+                {
+                    buttonRegistreer.IsEnabled = false;
+                }
                 else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
                 {
                     buttonRegistreer.IsEnabled = false;
@@ -805,6 +554,54 @@ namespace BOBApp.Views
                 {
                     buttonRegistreer.IsEnabled = true;
                 }
+            }
+        }
+
+        private void comboBoxBobType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (textBoxNaam.Text.Length <= 2)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxVoornaam.Text.Length <= 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxEmail.Text.Length <= 5)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxGSMnr.Text.Length <= 4)
+            {
+                buttonRegistreer.IsEnabled = false;
+
+            }
+            else if (textBoxNummerplaat.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBox.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (textboxPrice.Text.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (comboBoxBobType.SelectedIndex < 0)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else if (passwordBox.Password.Length < 1 && passwordBoxHerhaal.Password.Length < 1)
+            {
+                buttonRegistreer.IsEnabled = false;
+            }
+            else
+            {
+                buttonRegistreer.IsEnabled = true;
             }
         }
     }

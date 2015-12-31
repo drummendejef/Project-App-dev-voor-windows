@@ -123,9 +123,7 @@ namespace BOBApp.ViewModels
             {
                 NewRegister.IsBob = false;
             }
-            double price;
-            Double.TryParse(PricePerKm, out price);
-            NewRegister.PricePerKm = price;
+           
             
             bool task = await RegisterUser(NewRegister);
       
@@ -142,10 +140,24 @@ namespace BOBApp.ViewModels
             else if (Password == PasswordRepeat)
             {
                 register.Password = Password;
-                if (SelectedAutoType != null)
+
+                //Controleer op bob
+                if (register.IsBob == true)
                 {
+                    register.BobsType_ID = SelectedTypeBob.ID;
                     register.AutoType_ID = SelectedAutoType.ID;
+                    double price;
+                    Double.TryParse(PricePerKm, out price);
+                    register.PricePerKm = price;
                 }
+                else
+                {
+                    register.BobsType_ID = null;
+                    register.AutoType_ID = null;
+                    register.PricePerKm = null;
+                    register.LicensePlate = null;
+                }
+               
                 Response res = await UserRepository.Register(register);
                 if (res.Success == true)
                 {
