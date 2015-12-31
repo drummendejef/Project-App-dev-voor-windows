@@ -38,6 +38,7 @@ namespace BOBApp.ViewModels
 
         public bool Loading { get; set; }
         public string Error { get; set; }
+        DispatcherTimer timer = MainViewVM.TIMER;
 
         public Visibility VisibleModal { get; set; }
         public Visibility VisibleOffer { get; set; }
@@ -208,7 +209,7 @@ namespace BOBApp.ViewModels
             {
                 canShowDialog = false;
 
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(this.SelectedTrip.Bobs_ID)).Result;
 
                 BobisDone(location, "Trip is afgerond");
             }
@@ -252,7 +253,7 @@ namespace BOBApp.ViewModels
                         #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         break;
                     case "trip_location:reload":
-                        Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
+                        Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(this.SelectedTrip.Destinations_ID)).Result;
 
                         //instellen voor timer, niet gebruiken in filter
                         VindRitFilterVM.SelectedDestination = dest;
@@ -477,7 +478,7 @@ namespace BOBApp.ViewModels
 
 
         #region  StartTripLocationTimer
-        DispatcherTimer timer = new DispatcherTimer();
+        
         bool canShowDialog;
         private async void StartTripLocationTimer()
         {
@@ -594,7 +595,7 @@ namespace BOBApp.ViewModels
 
             Trips_Locations item = new Trips_Locations()
             {
-                Trips_ID = VindRitVM.CurrentTrip.ID,
+                Trips_ID = this.SelectedTrip.ID,
                 Location = JsonConvert.SerializeObject(location),
                 Statuses_ID = VindRitVM.StatusID
             };
@@ -618,24 +619,26 @@ namespace BOBApp.ViewModels
                 {
 
 
-                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+
 
                     Libraries.Socket socketSendToBob = new Libraries.Socket()
                     {
-                        To = bob.User.ID,
+                        To = this.SelectedTrip.Users_ID,
                         Status = true,
-                        Object=bobs_parties
+                        Object = bobs_parties,
+                        Object2 = false
                         
                     };
                     Libraries.Socket socketSendToUser = new Libraries.Socket()
                     {
                         To = MainViewVM.USER.ID,
                         Status = true,
-                        Object = bobs_parties
+                        Object = bobs_parties,
+                        Object2=true
                     };
 
 
-                    //todo: rating
+                
 
 
 

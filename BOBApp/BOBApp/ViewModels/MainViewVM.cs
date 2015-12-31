@@ -22,6 +22,7 @@ using Windows.Devices.Geolocation;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -32,11 +33,13 @@ namespace BOBApp.ViewModels
     {
         #region props
         public static Frame MainFrame;
+        public static DispatcherTimer TIMER = new DispatcherTimer();
         public static User USER;
         public static ChatRoom ChatRoom;
         public static Quobject.SocketIoClientDotNet.Client.Socket socket;
         public static Libraries.Socket LatestSocket;
         public static int searchArea = 100000;
+        
 
         public User User { get; set; }
         public RelayCommand LogOffCommand { get; set; }
@@ -115,7 +118,7 @@ namespace BOBApp.ViewModels
 
                     if (fromUser!=null)
                     {
-                        if (fromUser.User.IsBob.Value == true)
+                        if (fromUser.User.IsBob.Value == true && (bool) _socket.Object2==true)
                         {
                             Messenger.Default.Send<NavigateTo>(new NavigateTo()
                             {
@@ -300,6 +303,7 @@ namespace BOBApp.ViewModels
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 1;
 
+            if()
 
 
 

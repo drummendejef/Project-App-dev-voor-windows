@@ -54,7 +54,8 @@ namespace BOBApp.ViewModels
         public Visibility VisibleFilterContext { get; set; }
         public Visibility VisibleModal { get; set; }
 
-       
+        DispatcherTimer timer = MainViewVM.TIMER;
+
         public Frame Frame { get; set; }
      
         public string CancelText { get; set; }
@@ -471,9 +472,18 @@ namespace BOBApp.ViewModels
                     case "trip_location":
                         if (VindRitVM.CurrentTrip != null)
                         {
-                            trip_location();
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+                            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                            {
+                                trip_location();
+                            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         }
 
+                        break;
+                    case "rating_dialog":
+                        Bobs_Parties item = obj.Data as Bobs_Parties;
+                        RatingDialog(item);
                         break;
                     case "find_bob":
                         find_bob((bool)obj.Result);
@@ -634,7 +644,7 @@ namespace BOBApp.ViewModels
 
 
         #region  StartTripLocationTimer
-        DispatcherTimer timer;
+       
         bool canShowDialog;
         private async void StartTripLocationTimer()
         {
@@ -711,7 +721,15 @@ namespace BOBApp.ViewModels
                             Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
 
                             BobisDone(location, "Trip is afgerond");
-                            RatingDialog(bob, VindRitVM.CurrentTrip);
+                            Bobs_Parties itemBobs = new Bobs_Parties()
+                            {
+                                Bobs_ID=VindRitVM.CurrentTrip.Bobs_ID,
+                                Party_ID=VindRitVM.CurrentTrip.Party_ID,
+                                Trips_ID=VindRitVM.CurrentTrip.ID,
+                                Users_ID=VindRitVM.CurrentTrip.Users_ID
+                            };
+
+                            RatingDialog(itemBobs);
                         }
                     }
 
@@ -1243,7 +1261,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async void RatingDialog(Bob.All bob,Trip trip)
+        private async void RatingDialog(Bobs_Parties item)
         {
             var dialog = new ContentDialog()
             {
@@ -1293,17 +1311,24 @@ namespace BOBApp.ViewModels
 
                 double.TryParse(text, out rating);
 
-                Bobs_Parties item = new Bobs_Parties()
+
+                item.Rating = rating;
+
+                Response res = await TripRepository.AddRating(item);
+                var ok= res.Success;
+
+                if (ok == true)
                 {
-                    Bobs_ID = bob.Bob.ID.Value,
-                    Party_ID= trip.Party_ID,
-                    Trips_ID= trip.ID,
-                    Rating=rating
-                };
 
-                await AddRating(comment, item);
+                    Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    {
+                        To = MainViewVM.USER.ID,
+                        Status = true,
+                    };
 
-               
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                }
+
             };
 
 
@@ -1316,11 +1341,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async Task<bool> AddRating(string comment, Bobs_Parties item)
-        {
-            Response res = await TripRepository.AddRating(item);
-            return res.Success;
-        }
+      
 
         private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {

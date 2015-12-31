@@ -62,11 +62,13 @@
     <RootPropertyPathName Name="ProfielVM" />
     <RootPropertyPathName Name="WachtwoordCommand" />
     <RootPropertyPathName Name="AanpasCommand" />
-    <RootPropertyPathName Name="IsBob" />
+    <RootPropertyPathName Name="TypesBob" />
+    <RootPropertyPathName Name="BobsType_ID" />
     <RootPropertyPathName Name="PricePerKm" />
     <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="Autotype" />
     <RootPropertyPathName Name="LicensePlate" />
+    <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="Cellphone" />
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="SelectedPoint" />
@@ -75,8 +77,9 @@
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="PasswordRepeat" />
     <RootPropertyPathName Name="Password" />
-    <RootPropertyPathName Name="NewRegister" />
+    <RootPropertyPathName Name="SelectedTypeBob" />
     <RootPropertyPathName Name="SelectedAutoType" />
+    <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Licenseplate" />
     <RootPropertyPathName Name="Rating" />
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
@@ -106,7 +109,6 @@
     <RootPropertyPathName Name="GetSelectedParty" />
     <RootPropertyPathName Name="GetStatus" />
     <RootPropertyPathName Name="VisibleModal" />
-    <RootPropertyPathName Name="Frame" />
     <RootPropertyPathName Name="CloseModalCommand" />
     <RootPropertyPathName Name="VindRitBobVM" />
     <RootPropertyPathName Name="UserList" />
@@ -596,6 +598,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="SelectedValuePath" />
       <RootProperty Name="SelectedValue" />
       <RootProperty Name="MinWidth" />
@@ -630,7 +633,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="ContentTransitions" />
-      <RootProperty Name="Content" />
       <RootEvent Name="Navigated" />
       <RootEvent Name="Navigating" />
       <RootEvent Name="NavigationStopped" />
