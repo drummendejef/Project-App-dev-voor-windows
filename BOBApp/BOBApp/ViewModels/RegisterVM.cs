@@ -35,6 +35,9 @@ namespace BOBApp.ViewModels
       
 
         public List<Autotype> Merken {get;set;}
+        public List<BobsType> TypesBob { get; set; }
+
+        public BobsType SelectedTypeBob { get; set; }
 
         public Autotype SelectedAutoType { get; set; }
         public String PricePerKm { get; set; }
@@ -48,7 +51,10 @@ namespace BOBApp.ViewModels
             CancelCommand = new RelayCommand(Cancel);
 
             this.NewRegister = new Libraries.Models.Register();
+            GetMerken();
+            GetBobTypes();
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+           
             RaiseAll();
         }
 
@@ -87,8 +93,8 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-                GetMerken();
-                this.NewRegister = new Libraries.Models.Register();
+               // GetMerken();
+                //this.NewRegister = new Libraries.Models.Register();
 
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -213,6 +219,12 @@ namespace BOBApp.ViewModels
         private async void GetMerken()
         {
             this.Merken = await AutotypeRepository.GetAutotypes();
+            RaiseAll();
+        }
+
+        private async void GetBobTypes()
+        {
+            this.TypesBob = await BobsRepository.GetTypes();
             RaiseAll();
         }
     }
