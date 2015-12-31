@@ -659,6 +659,7 @@ namespace BOBApp.ViewModels
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
+
         private async void Timer_Tick(object sender, object e)
         {
             Geolocator geolocator = new Geolocator();
