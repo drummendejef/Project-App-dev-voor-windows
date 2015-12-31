@@ -307,17 +307,19 @@ namespace BOBApp.ViewModels
 
             if (MainViewVM.USER.IsBob==true)
             {
+
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
-                    Reload = true,
+                    Name = "loaded",
                     View = typeof(VindRit)
+                   
                 });
             }
             else
             {
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
-                    Reload = true,
+                    Name = "loaded",
                     View = typeof(VindRitBob)
                 });
             }

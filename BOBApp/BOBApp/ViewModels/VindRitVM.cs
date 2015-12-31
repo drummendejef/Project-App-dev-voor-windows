@@ -272,8 +272,7 @@ namespace BOBApp.ViewModels
                     this.VisibleChat = Visibility.Visible;
                     this.CancelText = "Annuleer huidige trip";
                 }
-                RaisePropertyChanged("CancelText");
-                RaisePropertyChanged("VisibleFind"); RaisePropertyChanged("VisibleCancel"); RaisePropertyChanged("VisibleChat");
+                RaiseAll();
             }
         }
 
@@ -343,43 +342,48 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("EnableFind");
-            RaisePropertyChanged("VisibleModal");
-            RaisePropertyChanged("VisibleFind");
-            RaisePropertyChanged("VisibleCancel");
-            RaisePropertyChanged("CancelText");
-            RaisePropertyChanged("VisibleChat");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("EnableFind");
+                RaisePropertyChanged("VisibleModal");
+                RaisePropertyChanged("VisibleFind");
+                RaisePropertyChanged("VisibleCancel");
+                RaisePropertyChanged("CancelText");
+                RaisePropertyChanged("VisibleChat");
 
 
-            RaisePropertyChanged("VisibleFilterContext");
+                RaisePropertyChanged("VisibleFilterContext");
 
-            RaisePropertyChanged("SelectedParty");
-            RaisePropertyChanged("SelectedUser");
-            RaisePropertyChanged("CurrentTrip");
-            RaisePropertyChanged("BobAccepted");
-            RaisePropertyChanged("SelectedBob");
-            RaisePropertyChanged("StatusID");
-            RaisePropertyChanged("Request");
-            RaisePropertyChanged("Status");
-            RaisePropertyChanged("RitTime");
+                RaisePropertyChanged("SelectedParty");
+                RaisePropertyChanged("SelectedUser");
+                RaisePropertyChanged("CurrentTrip");
+                RaisePropertyChanged("BobAccepted");
+                RaisePropertyChanged("SelectedBob");
+                RaisePropertyChanged("StatusID");
+                RaisePropertyChanged("Request");
+                RaisePropertyChanged("Status");
+                RaisePropertyChanged("RitTime");
 
-            RaisePropertyChanged("GetStatus");
-            RaisePropertyChanged("GetSelectedRating");
-            RaisePropertyChanged("GetSelectedDestination");
-            RaisePropertyChanged("GetSelectedBobsType");
-            RaisePropertyChanged("GetSelectedParty");
-            RaisePropertyChanged("GetSelectedFriendsString");
+                RaisePropertyChanged("GetStatus");
+                RaisePropertyChanged("GetSelectedRating");
+                RaisePropertyChanged("GetSelectedDestination");
+                RaisePropertyChanged("GetSelectedBobsType");
+                RaisePropertyChanged("GetSelectedParty");
+                RaisePropertyChanged("GetSelectedFriendsString");
 
 
-            RaisePropertyChanged("VisibleSelectedFriends");
-            RaisePropertyChanged("VisibleSelectedDestination");
-            RaisePropertyChanged("VisibleSelectedRating");
-            RaisePropertyChanged("VisibleSelectedParty");
-            RaisePropertyChanged("VisibleSelectedBobsType");
-            RaisePropertyChanged("VisibleSelectedBob");
+                RaisePropertyChanged("VisibleSelectedFriends");
+                RaisePropertyChanged("VisibleSelectedDestination");
+                RaisePropertyChanged("VisibleSelectedRating");
+                RaisePropertyChanged("VisibleSelectedParty");
+                RaisePropertyChanged("VisibleSelectedBobsType");
+                RaisePropertyChanged("VisibleSelectedBob");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         private async void Loaded()
@@ -467,12 +471,7 @@ namespace BOBApp.ViewModels
                     case "trip_location":
                         if (VindRitVM.CurrentTrip != null)
                         {
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-                            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-                            {
-                               await trip_location();
-                            });
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+                            trip_location();
                         }
 
                         break;
@@ -601,7 +600,7 @@ namespace BOBApp.ViewModels
 
         //update location user/bob naar de db
 
-        private async Task<bool> trip_location()
+        private async void trip_location()
         {
             SetStatus(2);
             this.EnableFind = false;
@@ -628,34 +627,36 @@ namespace BOBApp.ViewModels
             {
                 StartTripLocationTimer();
 
-                return true;
+               
             }
-            else
-            {
-                return false;
-            }
+
         }
 
 
         #region  StartTripLocationTimer
         DispatcherTimer timer;
         bool canShowDialog;
-        private void StartTripLocationTimer()
+        private async void StartTripLocationTimer()
         {
-            if (timer!=null)
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
-                timer.Stop();
-                timer = null;
-                return;
+                if (timer != null)
+                {
+                    timer.Stop();
+                    timer = null;
+                    return;
 
-                
-            }
 
-            timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 20);
-            timer.Tick += Timer_Tick;
-            canShowDialog = true;
-            timer.Start();
+                }
+
+                timer = new DispatcherTimer();
+                timer.Interval = new TimeSpan(0, 0, 20);
+                timer.Tick += Timer_Tick;
+                canShowDialog = true;
+                timer.Start();
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         private async void Timer_Tick(object sender, object e)
@@ -1329,7 +1330,7 @@ namespace BOBApp.ViewModels
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
                     Reload = reload,
-                    View=typeof(VindRitFilter)
+                    View=this.Frame.CurrentSourcePageType
                    
                 });
 

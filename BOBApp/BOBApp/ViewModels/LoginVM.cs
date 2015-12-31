@@ -133,14 +133,17 @@ namespace BOBApp.ViewModels
                 Response res = await LoginRepository.Login(email, md5.Create(pass));
                 if (res.Success == true)
                 {
-                    User user = await UserRepository.GetUser();
-                    MainViewVM.USER = user;
+                   
 
                     try
                     {
+                        User user = await UserRepository.GetUser();
+                        MainViewVM.USER = user;
+
                         string jsonUser = await Localdata.read("user.json");
-                        var dataUser = JsonConvert.DeserializeObject<User>(jsonUser);
-                        if (dataUser.ID != MainViewVM.USER.ID)
+                        var definitionMail = new { Email = "", Password = "" };
+                        var dataUser = JsonConvert.DeserializeAnonymousType(jsonUser, definitionMail);
+                        if (user.ID != MainViewVM.USER.ID)
                         {
                             Clear();
                         }
@@ -149,28 +152,7 @@ namespace BOBApp.ViewModels
                         var json = JsonConvert.SerializeObject(new { Email = email, Password = md5.Create(pass) });
                         await Localdata.save("user.json", json);
 
-                    }
-                    catch (Exception ex)
-                    {
-
-                        
-                    }
-
-
-                  
-
-
-                    Messenger.Default.Send<GoToPage>(new GoToPage()
-                    {
-                        Name = "MainView"
-                    });
-
-                   
-
-                    //test json
-                    //update json
-                    try
-                    {
+ 
                         string jsonChat = await Localdata.read("chatroom.json");
                         string jsonTrip = await Localdata.read("trip.json");
                         var definition = new { ID = 0, UserID = 0 };
@@ -196,16 +178,30 @@ namespace BOBApp.ViewModels
                         {
                            // Clear();
                             VindRitVM.CurrentTrip = await TripRepository.GetCurrentTrip();
-                          
-                            VindRitChatVM.ID = dataChat.ID;
-                            if (dataTrip.ID != null && VindRitVM.CurrentTrip.ID==dataTrip.ID)
+
+                            if (VindRitVM.CurrentTrip != null)
                             {
-                                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                                VindRitChatVM.ID = dataChat.ID;
+                                if (dataTrip.ID != null && VindRitVM.CurrentTrip.ID == dataTrip.ID)
                                 {
-                                    Name = "trip_location:reload"
-                                });
+                                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                                    {
+                                        Name = "trip_location:reload"
+                                    });
+                                }
                             }
+                            else
+                            {
+                                Clear();
+                            }
+                           
                         }
+
+                        Messenger.Default.Send<GoToPage>(new GoToPage()
+                        {
+                            Name = "MainView"
+                        });
+
                     }
                     catch (Exception ex)
                     {
