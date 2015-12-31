@@ -28,7 +28,6 @@ namespace Libraries
         public static string USER_EDIT = USER + "/edit";
         public static string USER_LOCATION = USER + "/location";
         public static string USER_CHANGETOBOB = USER + "/change";
-        public static string USER_RATING = USER + "/rating";
 
 
         public static string TRIPS = BASE + "/trips";

@@ -147,7 +147,7 @@ namespace Libraries.Repositories
         }
 
 
-        public static async Task<Response> PostRating(int rating)
+        public static async Task<Response> PostPoint(int rating)
         {
             try
             {
@@ -158,7 +158,7 @@ namespace Libraries.Repositories
                     var definition = new { PointsDescription_ID = rating };
                     var newObject = JsonConvert.SerializeObject(definition);
 
-                    HttpResponseMessage result = await client.PostAsync(URL.USER_RATING, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    HttpResponseMessage result = await client.PostAsync(URL.USER_POINTS, new StringContent(newObject, Encoding.UTF8, "application/json"));
                     string json = await result.Content.ReadAsStringAsync();
                     Response data = JsonConvert.DeserializeObject<Response>(json);
 
@@ -175,7 +175,7 @@ namespace Libraries.Repositories
             }
         }
 
-        public static async Task<Response> PostRating()
+        public static async Task<Response> PostPoint()
         {
             try
             {
@@ -186,7 +186,7 @@ namespace Libraries.Repositories
                     var definition = new {  };
                     var newObject = JsonConvert.SerializeObject(definition);
 
-                    HttpResponseMessage result = await client.PostAsync(URL.USER_RATING, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    HttpResponseMessage result = await client.PostAsync(URL.USER_POINTS, new StringContent(newObject, Encoding.UTF8, "application/json"));
                     string json = await result.Content.ReadAsStringAsync();
                     Response data = JsonConvert.DeserializeObject<Response>(json);
 

@@ -791,7 +791,7 @@ namespace BOBApp.ViewModels
 
 
                     //todo: rating
-                    await UserRepository.PostRating();
+                    await UserRepository.PostPoint();
                    
 
                     MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
