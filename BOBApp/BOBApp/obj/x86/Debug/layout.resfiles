@@ -1,10 +1,12 @@
 WinMetadata\Windows.winmd
 ApplicationInsights.config
+Assets\add.png
 Assets\BOB.png
 Assets\BOBpin.png
 Assets\car.png
 Assets\close.png
 Assets\feestpin.png
+Assets\home.png
 Assets\LockScreenLogo.scale-200.png
 Assets\road.png
 Assets\SplashScreen.scale-200.png

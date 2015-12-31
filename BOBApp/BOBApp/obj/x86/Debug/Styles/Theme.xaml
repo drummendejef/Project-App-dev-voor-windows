@@ -844,6 +844,66 @@
         </Setter>
     </Style>
 
+
+    <Style x:Key="button:add" TargetType="Button">
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+        <Setter Property="UseSystemFocusVisuals" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="00:00:00.1"
+                                         Storyboard.TargetProperty="Opacity" 
+                                         Storyboard.TargetName="RootGrid"
+                                         From="1" 
+                                         To="0.7"/>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="00:00:00.1"
+                                         Storyboard.TargetProperty="Opacity" 
+                                         Storyboard.TargetName="RootGrid"
+                                         From="1" 
+                                         To="0.7"/>
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="0.5"/>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Image Source="ms-appx:///Assets/add.png" Height="30" Width="30" Stretch="UniformToFill" />
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="listView" TargetType="ListView">
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="TabNavigation" Value="Once" />
@@ -925,67 +985,7 @@
             <TextBlock Grid.Row="1" Text="{Binding Added}" Grid.Column="1"/>
         </Grid>
     </DataTemplate>
-    <DataTemplate x:Key="TemplateDestinations">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.ColumnSpan="2" Text="{Binding Name}" />
-            <TextBlock Grid.Row="1" Text="{Binding Default}" Grid.Column="2"/>
-            <TextBlock Grid.Row="1" Text="{Binding Added}" Grid.Column="1"/>
-        </Grid>
-    </DataTemplate>
 
-
-    
-
-    <DataTemplate x:Key="TemplateTrips">
-        <RelativePanel >
-            <Grid RelativePanel.AlignHorizontalCenterWithPanel="True">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="0" Grid.Row="0" BorderThickness="0" Padding="5" Background="{ThemeResource Yellow }">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Tag="&#xE909;" FontSize="12" FontFamily="Segoe MDL2 Assets"></TextBlock>
-                        <TextBlock Foreground="{ThemeResource White}" Text="{Binding Party.Name, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="textBlockHuidigeRit" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
-                    </StackPanel>
-                </Border>
-
-                <TextBlock Grid.Column="2" Grid.Row="0"  Text="{Binding Destination.Name, Mode=TwoWay}" HorizontalAlignment="Right" x:Name="textBlockBestemming" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>
-
-
-                <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" >
-                    <TextBlock Text="User: " Width="100"></TextBlock>
-                    <TextBlock Text="{Binding User, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="user" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" >
-                    <TextBlock Text="Bob: " Width="100"></TextBlock>
-                    <TextBlock Text="{Binding Bob, Mode=TwoWay}" HorizontalAlignment="Left" x:Name="bob" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
-                </StackPanel>
-
-                <TextBlock Text="{Binding Trip.Added, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right"></TextBlock>
-
-
-            </Grid>
-        </RelativePanel>
-           
-       
-    </DataTemplate>
 
     <DataTemplate x:Key="TemplateChatComments">
         <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">

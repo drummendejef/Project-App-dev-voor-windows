@@ -20,6 +20,7 @@ namespace Libraries
         public static string AUTH_LOGOFF = BASE + "/auth/logoff";
 
         public static string USER = BASE + "/user";
+        public static string USER_POINTS_DESCRIPTION = USER + "/points/description";
         public static string USER_POINTS = USER + "/points";
         public static string USER_POINTSAMOUNT = USER + "/points/amount";
         public static string USER_PROFILE = USER + "/profile";
@@ -27,6 +28,7 @@ namespace Libraries
         public static string USER_EDIT = USER + "/edit";
         public static string USER_LOCATION = USER + "/location";
         public static string USER_CHANGETOBOB = USER + "/change";
+        public static string USER_RATING = USER + "/rating";
 
 
         public static string TRIPS = BASE + "/trips";

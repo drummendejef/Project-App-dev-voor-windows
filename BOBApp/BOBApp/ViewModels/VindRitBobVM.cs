@@ -266,6 +266,8 @@ namespace BOBApp.ViewModels
             this.SelectedTrip = data;
             VindRitBobVM.Request = VindRitBobVM.Request + 1;
 
+            await UserRepository.PostRating(3);
+
             await trip_location();
             RaiseAll();
         }

@@ -146,6 +146,63 @@ namespace Libraries.Repositories
             }
         }
 
+
+        public static async Task<Response> PostRating(int rating)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
+                    
+                    var definition = new { PointsDescription_ID = rating };
+                    var newObject = JsonConvert.SerializeObject(definition);
+
+                    HttpResponseMessage result = await client.PostAsync(URL.USER_RATING, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+            }
+        }
+
+        public static async Task<Response> PostRating()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
+
+                    var definition = new {  };
+                    var newObject = JsonConvert.SerializeObject(definition);
+
+                    HttpResponseMessage result = await client.PostAsync(URL.USER_RATING, new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+            }
+        }
+
         #endregion
 
         #region put
