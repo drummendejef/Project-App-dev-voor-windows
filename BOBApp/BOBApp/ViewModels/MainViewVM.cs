@@ -36,7 +36,7 @@ namespace BOBApp.ViewModels
         public static ChatRoom ChatRoom;
         public static Quobject.SocketIoClientDotNet.Client.Socket socket;
         public static Libraries.Socket LatestSocket;
-        public static int searchArea = 10000;
+        public static int searchArea = 100000;
 
         public User User { get; set; }
         public RelayCommand LogOffCommand { get; set; }

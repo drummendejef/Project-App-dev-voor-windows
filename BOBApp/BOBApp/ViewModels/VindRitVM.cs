@@ -1105,8 +1105,12 @@ namespace BOBApp.ViewModels
 
         private async void CancelTrip()
         {
-            timer.Stop();
-            timer = null;
+            if (timer != null)
+            {
+                timer.Stop();
+                timer = null;
+            }
+            
             if (this.EnableFind == true)
             {
                 this.VisibleSelectedFriends = Visibility.Collapsed;
