@@ -40,6 +40,8 @@ namespace BOBApp.Views
         {
             this.InitializeComponent();
 
+            Vm.Frame = frame;
+
             MapZoekVriend.Loaded += myMap_Loaded;
             mapIconStreamReference = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/userpin.png"));
             mapIconStreamReferenceVriend = RandomAccessStreamReference.CreateFromUri(new Uri("s-appx:///Assets/vriendpin.png"));

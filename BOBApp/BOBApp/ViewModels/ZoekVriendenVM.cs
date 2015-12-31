@@ -80,15 +80,6 @@ namespace BOBApp.ViewModels
         private void RaiseAll()
         {
             RaisePropertyChanged("VisibleModal");
-            try
-            {
-                RaisePropertyChanged("Frame");
-            }
-            catch (Exception ex)
-            {
-
-                
-            }
             RaisePropertyChanged("SearchUsers");
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");
@@ -114,7 +105,7 @@ namespace BOBApp.ViewModels
 
                     VisibleModal = Visibility.Collapsed;
 
-                    this.Frame = new Frame();
+               
 
 
                     await GetFriends();
@@ -183,7 +174,7 @@ namespace BOBApp.ViewModels
 
         private void ShowModal()
         {
-            this.Frame = new Frame();
+          
             this.Frame.Navigate(typeof(ZoekVrienden_Add));
            
 

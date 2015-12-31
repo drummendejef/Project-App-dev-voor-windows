@@ -307,8 +307,7 @@ namespace BOBApp.ViewModels
             this.VisibleSelectedBobsType = Visibility.Collapsed;
             this.VisibleSelectedRating = Visibility.Collapsed;
             this.VisibleSelectedParty = Visibility.Collapsed;
-            this.Frame = new Frame();
-            RaisePropertyChanged("Frame");
+           
             this.VisibleFilterContext = Visibility.Collapsed;
            
 
@@ -414,8 +413,6 @@ namespace BOBApp.ViewModels
 
 
                     canShowDialog = true;
-                  
-
 
 
                     await GetParties();
@@ -423,16 +420,8 @@ namespace BOBApp.ViewModels
                     await GetBobTypes();
                     await GetCurrentTrip();
 
-                    this.Frame = new Frame();
-                    try
-                    {
-                        RaisePropertyChanged("Frame");
-                    }
-                    catch (Exception)
-                    {
-
-                        
-                    }
+                    
+                   
 
 
                     RaiseAll();
@@ -1207,12 +1196,13 @@ namespace BOBApp.ViewModels
         }
         private void ShowModal()
         {
+
             this.Frame.Navigated += Frame_Navigated;
             this.Frame.Navigate(typeof(VindRitFilter), true);
 
-            //RaisePropertyChanged("Frame");
             VisibleModal = Visibility.Visible;
             RaiseAll();
+
         }
         private void SetStatus(int statusID)
         {

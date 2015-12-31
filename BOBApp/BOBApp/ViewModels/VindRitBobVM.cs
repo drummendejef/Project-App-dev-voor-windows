@@ -387,7 +387,7 @@ namespace BOBApp.ViewModels
         }
         private void ShowModal()
         {
-            this.Frame = new Frame();
+           
             this.Frame.Navigate(typeof(VindRitFilter));
             this.Frame.Navigated += Frame_Navigated;
 
