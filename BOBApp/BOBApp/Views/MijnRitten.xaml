@@ -39,6 +39,8 @@
             
             
             <TextBlock Text="{Binding CurrentTrip.Bob.User, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" x:Name="bob" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
+            <TextBlock Text="{Binding CurrentTrip.User.User, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" x:Name="user" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
+
 
             <TextBlock Text="{Binding CurrentTrip.Party.Name, Mode=TwoWay}" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" x:Name="textBlockHuidigeRit" Height="20" TextWrapping="Wrap" Margin="10"  VerticalAlignment="Top"  Style="{StaticResource textblock}"/>
             <TextBlock Text="{Binding CurrentTrip.Destination.Name, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" x:Name="textBlockBestemming" Height="20" TextWrapping="Wrap" Margin="10" VerticalAlignment="Top" Style="{StaticResource textblock}"/>

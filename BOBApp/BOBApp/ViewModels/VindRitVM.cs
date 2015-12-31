@@ -389,7 +389,7 @@ namespace BOBApp.ViewModels
         private async void Loaded()
         {
             this.Loading = true;
-            RaisePropertyChanged("Loading");
+            RaiseAll();
 
 
 
