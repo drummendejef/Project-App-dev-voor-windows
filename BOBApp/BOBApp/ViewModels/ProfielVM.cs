@@ -34,6 +34,9 @@ namespace BOBApp.ViewModels
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
         public List<Autotype> Merken { get; set; }
+
+        public List<BobsType> TypesBob { get; set; }
+
         public User.PutUser EditUser { get; set; }
 
         #endregion
@@ -44,8 +47,9 @@ namespace BOBApp.ViewModels
             //GetUserDetails() werkt
             GetUserDetails();
             GetMerken();
+            GetBobTypes();
 
-          
+
 
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
@@ -99,6 +103,7 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("MapCenter");
             RaisePropertyChanged("NewDestination");
             RaisePropertyChanged("Merken");
+            RaisePropertyChanged("TypesBob");
             RaisePropertyChanged("Loading");
             RaisePropertyChanged("Error");
         }
@@ -160,6 +165,12 @@ namespace BOBApp.ViewModels
         private async void GetMerken()
         {
             this.Merken = await AutotypeRepository.GetAutotypes();
+            RaiseAll();
+        }
+
+        private async void GetBobTypes()
+        {
+            this.TypesBob = await BobsRepository.GetTypes();
             RaiseAll();
         }
 

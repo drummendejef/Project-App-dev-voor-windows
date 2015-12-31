@@ -66,6 +66,8 @@ namespace BOBApp.ViewModels
             RaisePropertyChanged("PasswordRepeat");
             RaisePropertyChanged("Merken");
             RaisePropertyChanged("SelectedAutoType");
+            RaisePropertyChanged("TypesBob");
+            RaisePropertyChanged("SelectedTypeBob");
             RaisePropertyChanged("Error");
             RaisePropertyChanged("PicePerKm");
             RaisePropertyChanged("Loading");
