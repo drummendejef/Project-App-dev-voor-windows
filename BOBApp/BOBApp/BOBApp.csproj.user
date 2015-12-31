@@ -13,5 +13,6 @@
     <DeviceId>30F105C9-681E-420b-A277-7C086EAD8A4E</DeviceId>
     <UseEmulator>false</UseEmulator>
     <UseSimulator>false</UseSimulator>
+    <AuthenticationMode>Windows</AuthenticationMode>
   </PropertyGroup>
 </Project>

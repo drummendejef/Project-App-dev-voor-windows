@@ -2794,3 +2794,8 @@ C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBA
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\NotificationsExtensions.pri.xml
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\ProjectArchitectures.txt
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\ZoekVrienden_Add.xbf
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.i.cs
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.cs
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xaml
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xbf

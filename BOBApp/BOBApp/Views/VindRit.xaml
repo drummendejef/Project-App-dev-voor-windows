@@ -28,7 +28,7 @@
                         <TextBlock Text="{Binding User.LastName}" Margin="100,25,0,0"/>
                         <TextBlock Text="E-mailadres: " Margin="0,50,0,0" />
                         <HyperlinkButton Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="100,50,0,0" />
-                        <TextBlock Text="Stuur een sms:" Margin="0,75,0,0"/>
+                        <!-- <TextBlock Text="Stuur een sms:" Margin="0,75,0,0"/> -->
                         
                     </Grid>
                 </ContentControl>
