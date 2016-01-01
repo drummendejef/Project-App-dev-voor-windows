@@ -589,7 +589,8 @@ namespace BOBApp.ViewModels
             {
                 Bobs_ID = this.SelectedTrip.Bobs_ID,
                 Party_ID = this.SelectedTrip.Party_ID,
-                Trips_ID = this.SelectedTrip.ID
+                Trips_ID = this.SelectedTrip.ID,
+                Users_ID=this.SelectedTrip.Users_ID
 
             };
 
@@ -623,22 +624,24 @@ namespace BOBApp.ViewModels
 
                     Libraries.Socket socketSendToBob = new Libraries.Socket()
                     {
-                        To = this.SelectedTrip.Users_ID,
+                        From = this.SelectedTrip.Users_ID,
+                        To = MainViewVM.USER.ID,
                         Status = true,
-                        Object = bobs_parties,
+                        Object = JsonConvert.SerializeObject(bobs_parties),
                         Object2 = false
-                        
+
                     };
                     Libraries.Socket socketSendToUser = new Libraries.Socket()
                     {
-                        To = MainViewVM.USER.ID,
+                        From = MainViewVM.USER.ID,
+                        To =this.SelectedTrip.Users_ID,
                         Status = true,
-                        Object = bobs_parties,
-                        Object2=true
+                        Object = JsonConvert.SerializeObject(bobs_parties),
+                        Object2 = true
                     };
 
 
-                
+
 
 
 

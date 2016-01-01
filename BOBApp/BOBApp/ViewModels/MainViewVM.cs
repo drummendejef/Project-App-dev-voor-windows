@@ -303,7 +303,7 @@ namespace BOBApp.ViewModels
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 1;
 
-            if()
+   
 
 
 
