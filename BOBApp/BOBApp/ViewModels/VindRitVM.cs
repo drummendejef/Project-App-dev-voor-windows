@@ -475,14 +475,14 @@ namespace BOBApp.ViewModels
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                             {
-                                trip_location();
+                                await trip_location();
                             });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         }
 
                         break;
                     case "rating_dialog":
-                        Bobs_Parties item = obj.Data as Bobs_Parties;
+                        Bobs_Parties item = JsonConvert.DeserializeObject<Bobs_Parties>(obj.Data.ToString());
                         RatingDialog(item);
                         break;
                     case "find_bob":
@@ -610,7 +610,7 @@ namespace BOBApp.ViewModels
 
         //update location user/bob naar de db
 
-        private async void trip_location()
+        private async Task trip_location()
         {
             SetStatus(2);
             this.EnableFind = false;
@@ -618,27 +618,36 @@ namespace BOBApp.ViewModels
             //todo: swtich
             RaiseAll();
 
-          
 
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
-
-            Trips_Locations item = new Trips_Locations()
+            try
             {
-                Trips_ID = VindRitVM.CurrentTrip.ID,
-                Location = JsonConvert.SerializeObject(location),
-                Statuses_ID = VindRitVM.StatusID
-            };
-            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+                Geolocator geolocator = new Geolocator();
+                Geoposition pos = await geolocator.GetGeopositionAsync();
+                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
-            if (ok.Success == true)
+                Trips_Locations item = new Trips_Locations()
+                {
+                    Trips_ID = VindRitVM.CurrentTrip.ID,
+                    Location = JsonConvert.SerializeObject(location),
+                    Statuses_ID = VindRitVM.StatusID
+                };
+                Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+
+                if (ok.Success == true)
+                {
+                    StartTripLocationTimer();
+
+
+                }
+            }
+            catch (Exception ex)
             {
-                StartTripLocationTimer();
 
                
             }
+           
+
+          
 
         }
 
@@ -1263,82 +1272,86 @@ namespace BOBApp.ViewModels
 
         private async void RatingDialog(Bobs_Parties item)
         {
-            var dialog = new ContentDialog()
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
-                Title = "Rating",
-            };
 
-            // Setup Content
-            var panel = new StackPanel();
+                var dialog = new ContentDialog()
+                {
+                    Title = "Rating",
+                };
 
-            panel.Children.Add(new TextBlock
-            {
-                Text = "Uw rit is ten einde, hoeveel rating wilt u deze bob geven? ",
-                TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(0, 0, 0, 15)
-            });
+                // Setup Content
+                var panel = new StackPanel();
 
-            List<string> items = new List<string>();
-            for (int i = 1; i < 5; i++)
-            {
-                items.Add(i.ToString());
-            }
-            var cb = new ComboBox
-            {
-                HorizontalAlignment = HorizontalAlignment.Stretch
-            };
-            cb.ItemsSource = items;
+                panel.Children.Add(new TextBlock
+                {
+                    Text = "Uw rit is ten einde, hoeveel rating wilt u deze bob geven? ",
+                    TextWrapping = TextWrapping.Wrap,
+                    Margin = new Thickness(0, 0, 0, 15)
+                });
 
-            var txt = new TextBox
-            {
-                TextWrapping = TextWrapping.Wrap,
-                HorizontalContentAlignment = HorizontalAlignment.Stretch
-            };
+                List<string> items = new List<string>();
+                for (int i = 1; i < 5; i++)
+                {
+                    items.Add(i.ToString());
+                }
+                var cb = new ComboBox
+                {
+                    HorizontalAlignment = HorizontalAlignment.Stretch
+                };
+                cb.ItemsSource = items;
 
-
-
-            panel.Children.Add(cb);
-            panel.Children.Add(txt);
-            dialog.Content = panel;
-
-            // Add Buttons
-            dialog.PrimaryButtonText = "Ok";
-            dialog.PrimaryButtonClick += async delegate
-            {
-                double rating;
-                string text = cb.SelectedValue.ToString();
-                string comment = txt.Text;
-
-                double.TryParse(text, out rating);
+                var txt = new TextBox
+                {
+                    TextWrapping = TextWrapping.Wrap,
+                    HorizontalContentAlignment = HorizontalAlignment.Stretch
+                };
 
 
-                item.Rating = rating;
 
-                Response res = await TripRepository.AddRating(item);
-                var ok= res.Success;
+                panel.Children.Add(cb);
+                panel.Children.Add(txt);
+                dialog.Content = panel;
 
-                if (ok == true)
+                // Add Buttons
+                dialog.PrimaryButtonText = "Ok";
+                dialog.PrimaryButtonClick += async delegate
+                {
+                    double rating;
+                    string text = cb.SelectedValue.ToString();
+                    string comment = txt.Text;
+
+                    double.TryParse(text, out rating);
+
+
+                    item.Rating = rating;
+
+                    Response res = await TripRepository.AddRating(item);
+                    var ok = res.Success;
+
+                    if (ok == true)
+                    {
+
+                        Libraries.Socket socketSendToUser = new Libraries.Socket()
+                        {
+                            To = MainViewVM.USER.ID,
+                            Status = true,
+                        };
+
+                        MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                    }
+
+                };
+
+
+
+                // Show Dialog
+                var result = await dialog.ShowAsync();
+                if (result == ContentDialogResult.None)
                 {
 
-                    Libraries.Socket socketSendToUser = new Libraries.Socket()
-                    {
-                        To = MainViewVM.USER.ID,
-                        Status = true,
-                    };
-
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
                 }
-
-            };
-
-
-
-            // Show Dialog
-            var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.None)
-            {
-
-            }
+            });
         }
 
       

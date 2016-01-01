@@ -615,30 +615,31 @@ namespace BOBApp.ViewModels
                 var result = await dialog.ShowAsync();
 
                 int id = int.Parse(result.Id.ToString());
-                if (id == 0)
-                {
+
 
 
 
 
                     Libraries.Socket socketSendToBob = new Libraries.Socket()
                     {
-                        To = this.SelectedTrip.Users_ID,
-                        Status = true,
-                        Object = bobs_parties,
-                        Object2 = false
-                        
-                    };
-                    Libraries.Socket socketSendToUser = new Libraries.Socket()
-                    {
+                        From = this.SelectedTrip.Users_ID,
                         To = MainViewVM.USER.ID,
                         Status = true,
                         Object = bobs_parties,
-                        Object2=true
+                        Object2 = false
+
+                    };
+                    Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    {
+                        From = MainViewVM.USER.ID,
+                        To = this.SelectedTrip.Users_ID,
+                        Status = true,
+                        Object = bobs_parties,
+                        Object2 = true
                     };
 
 
-                
+
 
 
 
@@ -658,7 +659,7 @@ namespace BOBApp.ViewModels
 
                     canShowDialog = true;
                     RaiseAll();
-                }
+                
 
             }
         }

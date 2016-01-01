@@ -301,9 +301,10 @@ namespace BOBApp.ViewModels
             VindRitVM.SelectedUser = null;
             VindRitVM.CurrentTrip = null;
             VindRitVM.BobAccepted = false;
-            VindRitVM.StatusID = 1;
+            VindRitVM.StatusID = 0;
+            
 
-            if()
+
 
 
 
