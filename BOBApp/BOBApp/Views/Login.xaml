@@ -33,6 +33,12 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="imageLogo.(FrameworkElement.MaxWidth)" Value="100" />
+                        <Setter Target="textBoxEmail.Margin" Value="8,4" />
+                        <Setter Target="passwordBox.Margin" Value="8,4" />
+                        <Setter Target="buttonAanmelden.Margin" Value="8,4" />
+                        <Setter Target="buttonRegistreren.Margin" Value="8,4" />
+                        <Setter Target="error.Margin" Value="8,4" />
+
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="big">
@@ -41,6 +47,11 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="imageLogo.(FrameworkElement.MaxWidth)" Value="300" />
+                        <Setter Target="textBoxEmail.Margin" Value="12" />
+                        <Setter Target="passwordBox.Margin" Value="12" />
+                        <Setter Target="buttonAanmelden.Margin" Value="12" />
+                        <Setter Target="buttonRegistreren.Margin" Value="12" />
+                        <Setter Target="error.Margin" Value="12" />
 
                     </VisualState.Setters>
                 </VisualState>
@@ -56,7 +67,7 @@
             <PasswordBox IsEnabled="{Binding EnableLogin, Mode=TwoWay}" x:Name="passwordBox"  HorizontalAlignment="Left" PlaceholderText="Wachtwoord" Height="32" VerticalAlignment="Top" Width="252" RelativePanel.Below="textBoxEmail" Margin="20,12" RelativePanel.AlignHorizontalCenterWithPanel="True" Password="{Binding Pass,Mode=TwoWay}" Style="{StaticResource passwordBox}"/>
             <Button IsEnabled="{Binding EnableLogin, Mode=TwoWay}" Style="{ThemeResource login_button}" x:Name="buttonAanmelden"  Content="Aanmelden" Width="252" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBox" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="20,12" Command="{Binding LoginCommand}" RelativePanel.AlignLeftWith="passwordBox" RelativePanel.AlignRightWith=""/>
             <Button IsEnabled="{Binding EnableLogin, Mode=TwoWay}" Style="{ThemeResource login_button}" x:Name="buttonRegistreren" Content="Registreren"  Width="252" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="12" Command="{Binding RegisterCommand}"/>
-            <TextBlock Style="{ThemeResource textblock}" Foreground="White" Text="{Binding Error, Mode=TwoWay}"  Height="32" Margin="12" RelativePanel.Below="buttonRegistreren" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <TextBlock Style="{ThemeResource textblock}" x:Name="error" Foreground="White" Text="{Binding Error, Mode=TwoWay}"  Height="32" Margin="12" RelativePanel.Below="buttonRegistreren" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
         </RelativePanel>
     </Grid>
 </Page>

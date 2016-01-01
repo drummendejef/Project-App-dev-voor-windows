@@ -589,7 +589,8 @@ namespace BOBApp.ViewModels
             {
                 Bobs_ID = this.SelectedTrip.Bobs_ID,
                 Party_ID = this.SelectedTrip.Party_ID,
-                Trips_ID = this.SelectedTrip.ID
+                Trips_ID = this.SelectedTrip.ID,
+                Users_ID=this.SelectedTrip.Users_ID
 
             };
 
@@ -615,51 +616,49 @@ namespace BOBApp.ViewModels
                 var result = await dialog.ShowAsync();
 
                 int id = int.Parse(result.Id.ToString());
+               
 
 
+                Libraries.Socket socketSendToBob = new Libraries.Socket()
+                {
+                    From = this.SelectedTrip.Users_ID,
+                    To = MainViewVM.USER.ID,
+                    Status = true,
+                    Object = JsonConvert.SerializeObject(bobs_parties),
+                    Object2 = false
 
-
-
-                    Libraries.Socket socketSendToBob = new Libraries.Socket()
-                    {
-                        From = this.SelectedTrip.Users_ID,
-                        To = MainViewVM.USER.ID,
-                        Status = true,
-                        Object = bobs_parties,
-                        Object2 = false
-
-                    };
-                    Libraries.Socket socketSendToUser = new Libraries.Socket()
-                    {
-                        From = MainViewVM.USER.ID,
-                        To = this.SelectedTrip.Users_ID,
-                        Status = true,
-                        Object = bobs_parties,
-                        Object2 = true
-                    };
+                };
+                Libraries.Socket socketSendToUser = new Libraries.Socket()
+                {
+                    From = MainViewVM.USER.ID,
+                    To =this.SelectedTrip.Users_ID,
+                    Status = true,
+                    Object = JsonConvert.SerializeObject(bobs_parties),
+                    Object2 = true
+                };
 
 
 
 
 
 
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
+                MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
 
 
-                    this.VisibleCancel = Visibility.Collapsed;
-                    this.VisibleOffer = Visibility.Collapsed;
-                    VindRitBobVM.Request -= 1;
-                    this.Loading = false;
-                    this.Status = null;
-                    SetStatus(0);
+                this.VisibleCancel = Visibility.Collapsed;
+                this.VisibleOffer = Visibility.Collapsed;
+                VindRitBobVM.Request -= 1;
+                this.Loading = false;
+                this.Status = null;
+                SetStatus(0);
 
 
 
 
-                    canShowDialog = true;
-                    RaiseAll();
-                
+                canShowDialog = true;
+                RaiseAll();
+
 
             }
         }
