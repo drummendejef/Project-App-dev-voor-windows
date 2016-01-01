@@ -780,60 +780,52 @@ namespace BOBApp.ViewModels
 
             if (ok.Success == true && active.Success == true)
             {
-                var dialog = new MessageDialog(text);
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
 
-                dialog.Commands.Add(new UICommand("Ok") { Id = 0 });
-
-
-
-                dialog.DefaultCommandIndex = 0;
-
-                var result = await dialog.ShowAsync();
-
-                int id = int.Parse(result.Id.ToString());
-                if (id == 0)
+                Libraries.Socket socketSendToBob = new Libraries.Socket() {
+                    To = bob.User.ID,
+                    Status = true
+                };
+                Libraries.Socket socketSendToUser = new Libraries.Socket()
                 {
-
-                   
-                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
-
-                    Libraries.Socket socketSendToBob = new Libraries.Socket() {
-                        To = bob.User.ID,
-                        Status = true
-                    };
-                    Libraries.Socket socketSendToUser = new Libraries.Socket()
-                    {
-                        To = MainViewVM.USER.ID,
-                        Status = true
-                    };
+                    To = MainViewVM.USER.ID,
+                    Status = true
+                };
 
 
-                    //todo: rating
-                    await UserRepository.PostPoint();
+                //todo: rating
+                await UserRepository.PostPoint();
                    
 
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
-                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
+                MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
 
-                    this.EnableFind = true;
-                    this.VisibleSelectedFriends = Visibility.Collapsed;
-                    this.VisibleSelectedBob = Visibility.Collapsed;
-                    this.VisibleSelectedBobsType = Visibility.Collapsed;
-                    this.VisibleSelectedRating = Visibility.Collapsed;
-                    this.VisibleSelectedParty = Visibility.Collapsed;
 
-                    this.VisibleCancel = Visibility.Collapsed;
-                    this.VisibleFind = Visibility.Visible;
-                    this.Loading = false;
-                    this.Status = null;
+                var dialog = new MessageDialog(text);
+                dialog.Commands.Add(new UICommand("Ok") { Id = 0 });
+                dialog.DefaultCommandIndex = 0;
+                var result = await dialog.ShowAsync();
+                int id = int.Parse(result.Id.ToString());
+
+                this.EnableFind = true;
+                this.VisibleSelectedFriends = Visibility.Collapsed;
+                this.VisibleSelectedBob = Visibility.Collapsed;
+                this.VisibleSelectedBobsType = Visibility.Collapsed;
+                this.VisibleSelectedRating = Visibility.Collapsed;
+                this.VisibleSelectedParty = Visibility.Collapsed;
+
+                this.VisibleCancel = Visibility.Collapsed;
+                this.VisibleFind = Visibility.Visible;
+                this.Loading = false;
+                this.Status = null;
                    
-                    SetStatus(0);
+                SetStatus(0);
 
                   
 
-                    canShowDialog = true;
-                    RaiseAll();
-                }
+                canShowDialog = true;
+                RaiseAll();
+               
 
             }
         }
@@ -1329,9 +1321,8 @@ namespace BOBApp.ViewModels
                     Response res = await TripRepository.AddRating(item);
                     var ok = res.Success;
 
-                    if (ok == true)
+                    if (ok == true || ok == false)
                     {
-
                         Libraries.Socket socketSendToUser = new Libraries.Socket()
                         {
                             To = MainViewVM.USER.ID,
@@ -1339,7 +1330,11 @@ namespace BOBApp.ViewModels
                         };
 
                         MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+
                     }
+
+                       
+                 
 
                 };
 

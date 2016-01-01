@@ -605,19 +605,6 @@ namespace BOBApp.ViewModels
 
             if (ok.Success == true && active.Success == true)
             {
-                var dialog = new MessageDialog(text);
-
-                dialog.Commands.Add(new UICommand("Ok") { Id = 0 });
-
-
-
-                dialog.DefaultCommandIndex = 0;
-
-                var result = await dialog.ShowAsync();
-
-                int id = int.Parse(result.Id.ToString());
-               
-
 
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
                 {
@@ -644,6 +631,14 @@ namespace BOBApp.ViewModels
 
                 MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
                 MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));
+
+
+                var dialog = new MessageDialog(text);
+                dialog.Commands.Add(new UICommand("Ok") { Id = 0 });
+                dialog.DefaultCommandIndex = 0;
+                var result = await dialog.ShowAsync();
+                int id = int.Parse(result.Id.ToString());
+
 
 
                 this.VisibleCancel = Visibility.Collapsed;
@@ -767,9 +762,11 @@ namespace BOBApp.ViewModels
                     Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(this.SelectedTrip.Bobs_ID)).Result;
                     Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
                     MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+
+                    BobisDone(location, "Trip is geannuleerd");
                 }
 
-                BobisDone(location, "Trip is geannuleerd");
+               
 
                 this.VisibleCancel = Visibility.Collapsed;
                 this.VisibleOffer = Visibility.Collapsed;
