@@ -48,7 +48,7 @@ namespace BOBApp.ViewModels
         public string OfferText { get; set; }
         public string Status { get; set; }
 
-     
+
         public List<User> UserRequest { get; set; }
 
         private bool _CanOffer;
@@ -56,10 +56,11 @@ namespace BOBApp.ViewModels
         public bool CanOffer
         {
             get { return _CanOffer; }
-            set {
-                    SetActive(value);
-                    _CanOffer = value;
-                    
+            set
+            {
+                SetActive(value);
+                _CanOffer = value;
+
 
             }
         }
@@ -68,7 +69,7 @@ namespace BOBApp.ViewModels
         {
             //todo in db
             Response res = Task.FromResult<Response>(await BobsRepository.SetOffer(value, MainViewVM.USER.Bobs_ID.Value)).Result;
-         
+
         }
 
 
@@ -82,7 +83,7 @@ namespace BOBApp.ViewModels
 
                 if (MainViewVM.CurrentTrip != null)
                 {
-                  
+
                     this.VisibleSelectedTrip = Visibility.Visible;
                     return MainViewVM.CurrentTrip.Status_Name;
                 }
@@ -102,7 +103,7 @@ namespace BOBApp.ViewModels
         public RelayCommand ShowModalCommand { get; set; }
         public RelayCommand CloseModalCommand { get; set; }
         public RelayCommand GoChatCommand { get; set; }
-       
+
         public RelayCommand CancelCommand { get; set; }
         public string BobRequests { get; set; }
         public string RitTime { get; set; }
@@ -141,18 +142,18 @@ namespace BOBApp.ViewModels
         public VindRitBobVM()
         {
 
-           
+
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
             ArrivedCommand = new RelayCommand(Arrived);
             GoChatCommand = new RelayCommand(GoChat);
-         
+
             CancelCommand = new RelayCommand(Cancel);
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             this.Loading = false;
-          
+
             this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
 
             this.IsEnabledOffer = true;
@@ -181,12 +182,9 @@ namespace BOBApp.ViewModels
             {
                 timer.Stop();
             }
-           
 
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
+            Location location = await LocationService.GetCurrent();
 
             Trips_Locations item = new Trips_Locations()
             {
@@ -248,12 +246,12 @@ namespace BOBApp.ViewModels
                         bob_accepted((bool)obj.Result, id);
                         break;
                     case "newtrip_bob":
-                        #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                         await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                         {
                             newtrip_bob((Trip)obj.Data);
                         });
-                        #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         break;
                     case "trip_location:reload":
                         Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
@@ -277,7 +275,7 @@ namespace BOBApp.ViewModels
 
         private async void newtrip_bob(Trip data)
         {
-            if (data != null || MainViewVM.CurrentTrip==null)
+            if (data != null || MainViewVM.CurrentTrip == null)
             {
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
@@ -292,7 +290,7 @@ namespace BOBApp.ViewModels
                 RaiseAll();
 
             }
-           
+
         }
 
         private async void bob_accepted(bool accepted, float id)
@@ -312,7 +310,7 @@ namespace BOBApp.ViewModels
                     To = user.User.ID,//to user
                     Status = true,
                     Object = user,
-                    ID=id
+                    ID = id
                 };
 
                 MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
@@ -362,7 +360,7 @@ namespace BOBApp.ViewModels
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     //default on start
-                  
+
                     VisibleModal = Visibility.Collapsed;
 
                     await GetCurrentTrip();
@@ -405,12 +403,12 @@ namespace BOBApp.ViewModels
             VisibleModal = Visibility.Collapsed;
             RaiseAll();
 
-           
-           
+
+
         }
         private void ShowModal()
         {
-           
+
             this.Frame.Navigate(typeof(VindRitFilter));
             this.Frame.Navigated += Frame_Navigated;
 
@@ -491,7 +489,7 @@ namespace BOBApp.ViewModels
             SetStatus(2);
             this.Loading = false;
             //todo: swtich
-           
+
 
             StartTripLocationTimer();
             RaiseAll();
@@ -499,7 +497,7 @@ namespace BOBApp.ViewModels
 
 
         #region  StartTripLocationTimer
-        
+
         bool canShowDialog;
         private async void StartTripLocationTimer()
         {
@@ -526,9 +524,7 @@ namespace BOBApp.ViewModels
 
         private async void Timer_Tick(object sender, object e)
         {
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+            Location location = await LocationService.GetCurrent();
 
             await getRitTime(location);
 
@@ -540,7 +536,7 @@ namespace BOBApp.ViewModels
                 if (farEnough.Success == true)
                 {
                     //kleiner dan 1km
-                   
+
 
 
                     Trips_Locations item = new Trips_Locations()
@@ -574,7 +570,7 @@ namespace BOBApp.ViewModels
                             timer.Stop();
                             RaiseAll();
 
-                          
+
 
                             BobisDone(location, "Trip is afgerond");
 
@@ -612,7 +608,7 @@ namespace BOBApp.ViewModels
                 Bobs_ID = MainViewVM.CurrentTrip.Bobs_ID,
                 Party_ID = MainViewVM.CurrentTrip.Party_ID,
                 Trips_ID = MainViewVM.CurrentTrip.ID,
-                Users_ID=MainViewVM.CurrentTrip.Users_ID
+                Users_ID = MainViewVM.CurrentTrip.Users_ID
 
             };
 
@@ -640,7 +636,7 @@ namespace BOBApp.ViewModels
                 Libraries.Socket socketSendToUser = new Libraries.Socket()
                 {
                     From = MainViewVM.USER.ID,
-                    To =MainViewVM.CurrentTrip.Users_ID,
+                    To = MainViewVM.CurrentTrip.Users_ID,
                     Status = true,
                     Object = JsonConvert.SerializeObject(bobs_parties),
                     Object2 = true
@@ -766,41 +762,38 @@ namespace BOBApp.ViewModels
             {
                 timer.Stop();
             }
-            
+
             SetStatus(5);
 
-                Geolocator geolocator = new Geolocator();
-                Geoposition pos = await geolocator.GetGeopositionAsync();
-                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+            Location location = await LocationService.GetCurrent();
+            Trips_Locations item = new Trips_Locations()
+            {
+                Trips_ID = MainViewVM.CurrentTrip.ID,
+                Location = JsonConvert.SerializeObject(location),
+                Statuses_ID = VindRitVM.StatusID
+            };
+            Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
+            if (ok.Success == true)
+            {
 
-                Trips_Locations item = new Trips_Locations()
-                {
-                    Trips_ID = MainViewVM.CurrentTrip.ID,
-                    Location = JsonConvert.SerializeObject(location),
-                    Statuses_ID = VindRitVM.StatusID
-                };
-                Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
-                if (ok.Success == true)
-                {
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
+                Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
+                MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
 
-                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
-                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                    MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
-
-                    BobisDone(location, "Trip is geannuleerd");
-                }
+                BobisDone(location, "Trip is geannuleerd");
+            }
 
 
 
-                this.IsEnabledOffer = true;
-                this.VisibleCancel = Visibility.Collapsed;
-                this.VisibleOffer = Visibility.Collapsed;
-                VindRitBobVM.Request -= 1;
-                this.Loading = false;
-                this.Status = null;
-                SetStatus(0);
+            this.IsEnabledOffer = true;
+            this.VisibleCancel = Visibility.Collapsed;
+            this.VisibleOffer = Visibility.Collapsed;
+            VindRitBobVM.Request -= 1;
+            this.Loading = false;
+            this.Status = null;
+            SetStatus(0);
 
-                RaiseAll();
+            RaiseAll();
 
 
         }

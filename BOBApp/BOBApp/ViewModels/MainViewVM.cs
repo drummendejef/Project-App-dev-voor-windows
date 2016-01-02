@@ -650,20 +650,9 @@ namespace BOBApp.ViewModels
 
         private async void PostLocation()
         {
-            try
-            {
-                Geolocator geolocator = new Geolocator();
-                Geoposition pos = await geolocator.GetGeopositionAsync();
-                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
 
-                Response ok = await UserRepository.PostLocation(location);
-            }
-            catch (Exception ex)
-            {
+            Response ok = await UserRepository.PostLocation(await LocationService.GetCurrent());
 
-                Debug.WriteLine(ex.Message);
-            }
-           
         }
 
         private object GetTripObject()

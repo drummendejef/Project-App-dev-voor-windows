@@ -623,9 +623,7 @@ namespace BOBApp.ViewModels
 
             try
             {
-                Geolocator geolocator = new Geolocator();
-                Geoposition pos = await geolocator.GetGeopositionAsync();
-                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                Location location = await LocationService.GetCurrent();
 
                 Trips_Locations item = new Trips_Locations()
                 {
@@ -683,10 +681,7 @@ namespace BOBApp.ViewModels
 
         private async void Timer_Tick(object sender, object e)
         {
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
+            Location location = await LocationService.GetCurrent();
             await getRitTime(location);
 
 
@@ -948,7 +943,12 @@ namespace BOBApp.ViewModels
         private async Task GetDestinations()
         {
             List<Users_Destinations> lijst = await DestinationRepository.GetDestinations();
-            VindRitFilterVM.SelectedDestination = lijst.Where(r => r.Default == true).First() ;
+            if (lijst != null && lijst.Count!=0)
+            {
+                VindRitFilterVM.SelectedDestination = lijst.Where(r => r.Default == true).First();
+            }
+          
+           
 
 
 
@@ -1007,14 +1007,11 @@ namespace BOBApp.ViewModels
 
                 try
                 {
-                    Geolocator geolocator = new Geolocator();
-                    Geoposition pos = await geolocator.GetGeopositionAsync();
-
+                    Location location = await LocationService.GetCurrent();
 
                     int? rating = VindRitFilterVM.SelectedRating;
                     DateTime minDate = DateTime.Today; //moet nog gedaan worden
                     int bobsType_ID = VindRitFilterVM.SelectedBobsType.ID;
-                    Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
                     int? maxDistance = MainViewVM.searchArea;
 
                     List<Bob> bobs = await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance);
@@ -1158,9 +1155,7 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                Geolocator geolocator = new Geolocator();
-                Geoposition pos = await geolocator.GetGeopositionAsync();
-                Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                Location location = await LocationService.GetCurrent();
 
                 Trips_Locations item = new Trips_Locations()
                 {

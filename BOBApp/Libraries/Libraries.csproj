@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Error.cs" />
+    <Compile Include="LocationService.cs" />
     <Compile Include="md5.cs" />
     <Compile Include="Models\Autotype.cs" />
     <Compile Include="Models\Bob.cs" />
