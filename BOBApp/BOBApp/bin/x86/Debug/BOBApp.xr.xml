@@ -85,7 +85,6 @@
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
-    <RootPropertyPathName Name="LastName" />
     <RootPropertyPathName Name="VisibleCancel" />
     <RootPropertyPathName Name="CancelText" />
     <RootPropertyPathName Name="VisibleFind" />
@@ -114,6 +113,7 @@
     <RootPropertyPathName Name="UserList" />
     <RootPropertyPathName Name="VisibleOffer" />
     <RootPropertyPathName Name="ArrivedCommand" />
+    <RootPropertyPathName Name="IsEnabledOffer" />
     <RootPropertyPathName Name="CanOffer" />
     <RootPropertyPathName Name="VisibleSelectedTrip" />
     <RootPropertyPathName Name="GetSelectedTrip" />
@@ -526,8 +526,9 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="BorderThickness" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
+      <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Visibility" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="SetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="GetAlignVerticalCenterWithPanel" />
@@ -650,6 +651,7 @@
       <RootProperty Name="OnContent" />
       <RootProperty Name="Header" />
       <RootProperty Name="IsOn" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Height" />
       <RootEvent Name="Toggled" />
@@ -661,6 +663,18 @@
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
     <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="BOBApp.Converters.MailToConverter" />
+    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Points" />
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="RenderTransform" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.RotateTransform">
+      <RootProperty Name="CenterX" />
+      <RootProperty Name="CenterY" />
+      <RootProperty Name="Angle" />
+    </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="BOBApp.Views.VindRitChat" />

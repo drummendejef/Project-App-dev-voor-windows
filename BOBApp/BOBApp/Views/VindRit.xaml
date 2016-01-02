@@ -20,17 +20,21 @@
             <vm:VindRitFilterVM x:Key="filter"/>
             <converters:MailToConverter x:Key="MailToConverter"/>
             <DataTemplate x:Key="DTemplateBobsMap">
-                <ContentControl Maps:MapControl.Location="{Binding GeoLocation}" >
-                    <Grid Background="#3e5d94" Padding="5">
-                        <TextBlock Text="Voornaam: " Margin="0"/>
-                        <TextBlock Text="{Binding User.Firstname}" Margin="100,0,0,0" />
-                        <TextBlock Text="Achternaam: " Margin="0,25,0,0"/>
-                        <TextBlock Text="{Binding User.LastName}" Margin="100,25,0,0"/>
-                        <TextBlock Text="E-mailadres: " Margin="0,50,0,0" />
-                        <HyperlinkButton Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="100,50,0,0" />
-                        <!-- <TextBlock Text="Stuur een sms:" Margin="0,75,0,0"/> -->
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
+                    <RelativePanel Margin="-60,-150,0,0">
+                        <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="100" CornerRadius="5">
+                            <TextBlock x:Name="voornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User, Mode=TwoWay}" Margin="8" />
+                            <HyperlinkButton x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="voornaam" Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
+                        </RelativePanel>
                         
-                    </Grid>
+                        <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                            <Polygon.RenderTransform>
+                                <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                            </Polygon.RenderTransform>
+                        </Polygon>
+                        
+                    </RelativePanel>
+                    
                 </ContentControl>
             </DataTemplate>
         </ResourceDictionary>
@@ -94,7 +98,7 @@
 
 
         <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10">
-            <Maps:MapItemsControl ItemsSource="{Binding BobList}" ItemTemplate="{StaticResource DTemplateBobsMap}" />
+            <Maps:MapItemsControl ItemsSource="{Binding BobList, Mode=TwoWay}" ItemTemplate="{StaticResource DTemplateBobsMap}" />
         </Maps:MapControl>
 
         <Button Style="{ThemeResource button}" Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />

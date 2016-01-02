@@ -36,6 +36,7 @@ namespace BOBApp.ViewModels
         public static DispatcherTimer TIMER = new DispatcherTimer();
         public static User USER;
         public static ChatRoom ChatRoom;
+        public static Trip CurrentTrip;
         public static Quobject.SocketIoClientDotNet.Client.Socket socket;
         public static Libraries.Socket LatestSocket;
         public static int searchArea = 100000;
@@ -90,6 +91,22 @@ namespace BOBApp.ViewModels
             MainViewVM.socket.On("disconnect", (msg) =>
             {
                 LogOff();
+            });
+            //not implemented
+            MainViewVM.socket.On("user_location_NEW", (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
+                //if (_socket.Status == true)
+                {
+
+                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                    {
+                        Name = "map_reload",
+                    });
+
+                }
+
             });
             //to bob
             MainViewVM.socket.On("trip_START", async (msg) =>
@@ -251,17 +268,21 @@ namespace BOBApp.ViewModels
 
         private async void TripSave(Trip trip)
         {
-            trip.StatusID = VindRitVM.StatusID;
-            var data = JsonConvert.SerializeObject(trip);
-
-            bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
-
-
-            Messenger.Default.Send<NavigateTo>(new NavigateTo()
+            if (trip != null)
             {
-                Name = "newtrip_bob",
-                Data=trip
-            });
+                trip.StatusID = VindRitVM.StatusID;
+                var data = JsonConvert.SerializeObject(trip);
+
+                bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
+
+
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                {
+                    Name = "newtrip_bob",
+                    Data = trip
+                });
+            }
+           
         }
        
        
@@ -299,11 +320,10 @@ namespace BOBApp.ViewModels
             VindRitVM.SelectedParty = null;
             VindRitVM.SelectedBob = null;
             VindRitVM.SelectedUser = null;
-            VindRitVM.CurrentTrip = null;
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 0;
             
-
+            MainViewVM.CurrentTrip= null;
 
 
 
@@ -316,8 +336,8 @@ namespace BOBApp.ViewModels
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
                     Name = "loaded",
-                    View = typeof(VindRit)
-                   
+                    View = typeof(VindRitBob)
+
                 });
             }
             else
@@ -325,7 +345,7 @@ namespace BOBApp.ViewModels
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
                     Name = "loaded",
-                    View = typeof(VindRitBob)
+                    View = typeof(VindRit)
                 });
             }
 
@@ -582,7 +602,7 @@ namespace BOBApp.ViewModels
         {
             if (currentTrip != null)
             {
-                VindRitVM.CurrentTrip = currentTrip;
+               MainViewVM.CurrentTrip = currentTrip;
                 //update very minuten location for trip
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {

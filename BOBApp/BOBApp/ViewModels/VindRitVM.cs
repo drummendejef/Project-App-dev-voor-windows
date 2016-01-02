@@ -470,7 +470,7 @@ namespace BOBApp.ViewModels
                 switch (obj.Name)
                 {
                     case "trip_location":
-                        if (VindRitVM.CurrentTrip != null)
+                        if (MainViewVM.CurrentTrip != null)
                         {
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -490,14 +490,14 @@ namespace BOBApp.ViewModels
                         break;
                    
                     case "trip_location:reload":
-                        Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(VindRitVM.CurrentTrip.Destinations_ID)).Result;
+                        Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
 
                         //instellen voor timer, niet gebruiken in filter
                         VindRitFilterVM.SelectedDestination = dest;
                         if (VindRitFilterVM.SelectedDestination != null)
                         {
                          
-                            VindRitVM.SelectedParty = await PartyRepository.GetPartyById(VindRitVM.CurrentTrip.Party_ID);
+                            VindRitVM.SelectedParty = await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID);
                             this.EnableFind = false;
                             SetStatus(2);
                             
@@ -506,7 +506,9 @@ namespace BOBApp.ViewModels
                         }
                         RaiseAll();
                         break;
-
+                    case "map_reload":
+                        //map reload
+                        break;
                     default:
                         break;
                 }
@@ -627,7 +629,7 @@ namespace BOBApp.ViewModels
 
                 Trips_Locations item = new Trips_Locations()
                 {
-                    Trips_ID = VindRitVM.CurrentTrip.ID,
+                    Trips_ID =MainViewVM.CurrentTrip.ID,
                     Location = JsonConvert.SerializeObject(location),
                     Statuses_ID = VindRitVM.StatusID
                 };
@@ -687,8 +689,12 @@ namespace BOBApp.ViewModels
 
             await getRitTime(location);
 
+
+
             if (location != null)
             {
+                
+
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
@@ -702,7 +708,7 @@ namespace BOBApp.ViewModels
 
                     Trips_Locations item = new Trips_Locations()
                     {
-                        Trips_ID = VindRitVM.CurrentTrip.ID,
+                        Trips_ID =MainViewVM.CurrentTrip.ID,
                         Location = JsonConvert.SerializeObject(location),
                         Statuses_ID = VindRitVM.StatusID
                     };
@@ -710,9 +716,9 @@ namespace BOBApp.ViewModels
                     if (ok.Success == true)
                     {
 
-                        Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                        Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
                         Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                        MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                        MainViewVM.socket.Emit("user_location_NEW:send", JsonConvert.SerializeObject(socketSend)); //bob
                     }
                     else
                     {
@@ -727,15 +733,15 @@ namespace BOBApp.ViewModels
                         bool done = Task.FromResult<bool>(await OnDestination()).Result;
                         if (done == true)
                         {
-                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
 
                             BobisDone(location, "Trip is afgerond");
                             Bobs_Parties itemBobs = new Bobs_Parties()
                             {
-                                Bobs_ID=VindRitVM.CurrentTrip.Bobs_ID,
-                                Party_ID=VindRitVM.CurrentTrip.Party_ID,
-                                Trips_ID=VindRitVM.CurrentTrip.ID,
-                                Users_ID=VindRitVM.CurrentTrip.Users_ID
+                                Bobs_ID=MainViewVM.CurrentTrip.Bobs_ID,
+                                Party_ID=MainViewVM.CurrentTrip.Party_ID,
+                                Trips_ID=MainViewVM.CurrentTrip.ID,
+                                Users_ID=MainViewVM.CurrentTrip.Users_ID
                             };
 
                             RatingDialog(itemBobs);
@@ -749,7 +755,7 @@ namespace BOBApp.ViewModels
                     //VindRitFilterVM.SelectedDestination.Location;
                     Trips_Locations item = new Trips_Locations()
                     {
-                        Trips_ID = VindRitVM.CurrentTrip.ID,
+                        Trips_ID =MainViewVM.CurrentTrip.ID,
                         Location = JsonConvert.SerializeObject(location),
                         Statuses_ID = VindRitVM.StatusID
                     };
@@ -771,7 +777,7 @@ namespace BOBApp.ViewModels
 
             Trips_Locations item = new Trips_Locations()
             {
-                Trips_ID = VindRitVM.CurrentTrip.ID,
+                Trips_ID =MainViewVM.CurrentTrip.ID,
                 Location = JsonConvert.SerializeObject(location),
                 Statuses_ID = VindRitVM.StatusID
             };
@@ -780,7 +786,7 @@ namespace BOBApp.ViewModels
 
             if (ok.Success == true && active.Success == true)
             {
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
 
                 Libraries.Socket socketSendToBob = new Libraries.Socket() {
                     To = bob.User.ID,
@@ -871,7 +877,7 @@ namespace BOBApp.ViewModels
         }
         private async Task GetCurrentTrip()
         {
-            if (VindRitVM.CurrentTrip == null || VindRitVM.CurrentTrip.ID == 0)
+            if (MainViewVM.CurrentTrip == null ||MainViewVM.CurrentTrip.ID == 0)
             {
                 try
                 {
@@ -881,7 +887,7 @@ namespace BOBApp.ViewModels
                     if (data.ID != -1)
                     {
                         SetStatus(data.StatusID.Value);
-                        VindRitVM.CurrentTrip = data;
+                       MainViewVM.CurrentTrip = data;
                      
                         this.EnableFind = false;
                     }
@@ -903,9 +909,9 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                if (VindRitVM.CurrentTrip.StatusID.HasValue)
+                if (MainViewVM.CurrentTrip.StatusID.HasValue)
                 {
-                    SetStatus(VindRitVM.CurrentTrip.StatusID.Value);
+                    SetStatus(MainViewVM.CurrentTrip.StatusID.Value);
                 }
                
                 this.EnableFind = false;
@@ -1157,7 +1163,7 @@ namespace BOBApp.ViewModels
 
                 Trips_Locations item = new Trips_Locations()
                 {
-                    Trips_ID = VindRitVM.CurrentTrip.ID,
+                    Trips_ID = MainViewVM.CurrentTrip.ID,
                     Location = JsonConvert.SerializeObject(location),
                     Statuses_ID = VindRitVM.StatusID
                 };
@@ -1165,7 +1171,7 @@ namespace BOBApp.ViewModels
                 if (ok.Success == true)
                 {
 
-                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(VindRitVM.CurrentTrip.Bobs_ID)).Result;
+                    Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
                     Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
                     MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
                 }

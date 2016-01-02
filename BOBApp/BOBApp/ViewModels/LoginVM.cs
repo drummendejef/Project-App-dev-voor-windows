@@ -180,12 +180,12 @@ namespace BOBApp.ViewModels
                         else
                         {
                            // Clear();
-                            VindRitVM.CurrentTrip = await TripRepository.GetCurrentTrip();
+                           MainViewVM.CurrentTrip = await TripRepository.GetCurrentTrip();
 
-                            if (VindRitVM.CurrentTrip != null)
+                            if (MainViewVM.CurrentTrip != null)
                             {
                                 VindRitChatVM.ID = dataChat.ID;
-                                if (dataTrip.ID != null && VindRitVM.CurrentTrip.ID == dataTrip.ID)
+                                if (dataTrip.ID != null && MainViewVM.CurrentTrip.ID == dataTrip.ID)
                                 {
                                     Messenger.Default.Send<NavigateTo>(new NavigateTo()
                                     {

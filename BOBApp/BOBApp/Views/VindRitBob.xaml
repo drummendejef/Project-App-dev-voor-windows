@@ -35,7 +35,7 @@
             <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="16" x:Name="lblStatus" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding BobRequests, Mode=TwoWay}"/>
             <TextBlock Visibility="{Binding VisibleSelectedTrip, Mode=TwoWay}" RelativePanel.Below="lblStatus" Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedTrip, Mode=TwoWay}"/>
 
-            <ToggleSwitch Margin="100,0,0,0" IsOn="{Binding CanOffer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignRightWithPanel="True" Padding="10,0,10,0" Height="35" Width="auto"/>
+            <ToggleSwitch Margin="100,0,0,0" IsEnabled="{Binding IsEnabledOffer,Mode=TwoWay}" IsOn="{Binding CanOffer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignRightWithPanel="True" Padding="10,0,10,0" Height="35" Width="auto"/>
             <Button Margin="100,40,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleOffer, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="Aangekomen" Command="{Binding ArrivedCommand}"   />
             <Button Margin="100,80,0,0" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True"  Visibility="{Binding VisibleOffer,Mode=TwoWay}" Padding="10,0,10,0" Width="auto" Content="Chat" Height="35" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
 
