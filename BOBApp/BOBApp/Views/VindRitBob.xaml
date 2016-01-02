@@ -32,20 +32,27 @@
        
 
         <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
-            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="16" x:Name="lblStatus" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding BobRequests, Mode=TwoWay}"/>
-            <TextBlock Visibility="{Binding VisibleSelectedTrip, Mode=TwoWay}" RelativePanel.Below="lblStatus" Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedTrip, Mode=TwoWay}"/>
+            <TextBlock Visibility="Collapsed" Foreground="{ThemeResource DarkBlue}" FontSize="16" x:Name="lblStatus" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding BobRequests, Mode=TwoWay}"/>
+            <TextBlock Visibility="{Binding VisibleSelectedTrip, Mode=TwoWay}" RelativePanel.Below="lblStatus" Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="status" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding Status, Mode=TwoWay}"/>
 
-            <ToggleSwitch Margin="100,0,0,0" IsEnabled="{Binding IsEnabledOffer,Mode=TwoWay}" IsOn="{Binding CanOffer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignRightWithPanel="True" Padding="10,0,10,0" Height="35" Width="auto"/>
-            <Button Margin="100,40,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleOffer, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="Aangekomen" Command="{Binding ArrivedCommand}"   />
-            <Button Margin="100,80,0,0" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True"  Visibility="{Binding VisibleOffer,Mode=TwoWay}" Padding="10,0,10,0" Width="auto" Content="Chat" Height="35" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
+            <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="status" Visibility="{Binding VisibleOffer, Mode=TwoWay}">
+                <TextBlock x:Name="lblparty" Text="Party:" />
+                <TextBlock RelativePanel.RightOf="lblparty" RelativePanel.Below="status" Text="{Binding CurrentTrip.Party.Name, Mode=TwoWay}"/>
 
-            
+                <TextBlock x:Name="lbluser" RelativePanel.Below="lblparty" Text="User:" />
+                <TextBlock RelativePanel.RightOf="lbluser" RelativePanel.Below="lblparty" Text="{Binding CurrentTrip.User.User, Mode=TwoWay}"/>
 
-            <RelativePanel  RelativePanel.Below="lblFeest" RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="filter" >
+                <TextBlock x:Name="lblbestemming" RelativePanel.Below="lbluser" Text="Bestemming:" />
+                <TextBlock RelativePanel.RightOf="lblbestemming" RelativePanel.Below="lbluser" Text="{Binding CurrentTrip.Destination.Name, Mode=TwoWay}"/>
 
-            
 
             </RelativePanel>
+           
+            <ToggleSwitch Margin="100,0,0,0" IsEnabled="{Binding IsEnabledOffer,Mode=TwoWay}" IsOn="{Binding CanOffer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignRightWithPanel="True" Padding="10,0,10,0" Height="35" Width="auto"/>
+            <Button Margin="100,40,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleOffer, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="Aangekomen" Command="{Binding ArrivedCommand}"  IsEnabled="{Binding IsEnabledArrived, Mode=TwoWay}"   />
+            <Button Margin="100,80,0,0" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True"  Visibility="{Binding VisibleOffer,Mode=TwoWay}" Padding="10,0,10,0" Width="auto" Content="Chat" Height="35" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
+
+
 
         </RelativePanel>
 
@@ -54,7 +61,7 @@
             <Maps:MapItemsControl ItemsSource="{Binding UserList}" ItemTemplate="{StaticResource DTemplateUsersMap}" />
         </Maps:MapControl>
 
-        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
+        <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" IsEnabled="{Binding IsEnabledCancel, Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
 
 
 

@@ -185,7 +185,12 @@ namespace BOBApp.ViewModels
         private async Task GetDestinations()
         {
             this.Destinations = await DestinationRepository.GetDestinations();
-           
+
+            if (VindRitFilterVM.SelectedDestination != null)
+            {
+                this.SelectedDestination_ID = VindRitFilterVM.SelectedDestination.Destinations_ID;
+            }
+
            
             RaiseAll();
         }

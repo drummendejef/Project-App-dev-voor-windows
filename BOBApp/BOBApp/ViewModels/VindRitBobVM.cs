@@ -44,9 +44,12 @@ namespace BOBApp.ViewModels
         public Visibility VisibleOffer { get; set; }
         public Visibility VisibleCancel { get; set; }
         public bool IsEnabledOffer { get; set; }
+        public bool IsEnabledArrived { get; set; }
+        public bool IsEnabledCancel { get; set; }
         public Frame Frame { get; set; }
         public string OfferText { get; set; }
         public string Status { get; set; }
+        public Trip.All CurrentTrip { get; set; }
 
 
         public List<User> UserRequest { get; set; }
@@ -75,26 +78,7 @@ namespace BOBApp.ViewModels
 
         #region gets
 
-        public Visibility VisibleSelectedTrip { get; set; }
-        public string GetSelectedTrip
-        {
-            get
-            {
 
-                if (MainViewVM.CurrentTrip != null)
-                {
-
-                    this.VisibleSelectedTrip = Visibility.Visible;
-                    return MainViewVM.CurrentTrip.Status_Name;
-                }
-                else
-                {
-                    this.VisibleSelectedTrip = Visibility.Collapsed;
-                    return "";
-                }
-
-            }
-        }
 
         #endregion
 
@@ -156,6 +140,8 @@ namespace BOBApp.ViewModels
 
             this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
 
+            this.IsEnabledArrived = true;
+            this.IsEnabledCancel = true;
             this.IsEnabledOffer = true;
             this.VisibleCancel = Visibility.Collapsed;
             this.VisibleOffer = Visibility.Collapsed;
@@ -168,6 +154,8 @@ namespace BOBApp.ViewModels
 
         private void Cancel()
         {
+            this.IsEnabledCancel = false;
+            RaiseAll(); ;
             CancelTrip();
         }
 
@@ -175,6 +163,9 @@ namespace BOBApp.ViewModels
 
         private async void Arrived()
         {
+            this.IsEnabledArrived = false;
+            RaiseAll();
+
             SetStatus(4);
 
             RaiseAll();
@@ -283,10 +274,39 @@ namespace BOBApp.ViewModels
                 MainViewVM.CurrentTrip = data;
                 VindRitFilterVM.SelectedDestination = await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID);
                 VindRitBobVM.Request = 1;
+                SetStatus(data.StatusID.Value);
+
 
                 await UserRepository.PostPoint(3);
 
                 trip_location();
+
+
+                //trip.all invullen
+                if (MainViewVM.CurrentTrip != null)
+                {
+                    Trip.All trips_all = new Trip.All();
+
+
+                    User.All user = await UsersRepository.GetUserById(MainViewVM.CurrentTrip.Users_ID);
+                    Bob.All bob = await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID);
+                    Users_Destinations destination = await DestinationRepository.GetDestinationById((MainViewVM.CurrentTrip.Destinations_ID));
+                    Party party = await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID);
+                    Trip.All newTrip = new Trip.All();
+
+
+
+                    newTrip.Trip = MainViewVM.CurrentTrip;
+                    newTrip.Party = party;
+                    newTrip.User = user;
+                    newTrip.Bob = bob;
+                    newTrip.Destination = destination;
+
+                    this.CurrentTrip = newTrip;
+                }
+               
+
+
                 RaiseAll();
 
             }
@@ -336,11 +356,11 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("RitTime");
                 RaisePropertyChanged("CanOffer");
                 RaisePropertyChanged("IsEnabledOffer");
+                RaisePropertyChanged("IsEnabledArriver");
+                RaisePropertyChanged("IsEnabledCancel");
+                RaisePropertyChanged("CurrentTrip");
 
-                RaisePropertyChanged("GetSelectedTrip");
-
-
-                RaisePropertyChanged("VisibleSelectedTrip");
+              
 
             });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -658,7 +678,9 @@ namespace BOBApp.ViewModels
                 var result = await dialog.ShowAsync();
                 int id = int.Parse(result.Id.ToString());
 
-
+                this.IsEnabledArrived = true;
+                this.IsEnabledCancel = true;
+               
                 this.IsEnabledOffer = true;
                 this.VisibleCancel = Visibility.Collapsed;
                 this.VisibleOffer = Visibility.Collapsed;

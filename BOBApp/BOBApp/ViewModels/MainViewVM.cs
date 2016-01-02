@@ -206,8 +206,11 @@ namespace BOBApp.ViewModels
                         User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object.ToString());
                         Trip newTrip = (Trip)GetTripObject();
 
-
-                        MakeTrip(newTrip, fromBob.Bob.ID.Value);
+                        if (newTrip != null)
+                        {
+                            MakeTrip(newTrip, fromBob.Bob.ID.Value);
+                        }
+                       
                     }
                 }
 
@@ -270,7 +273,7 @@ namespace BOBApp.ViewModels
         {
             if (trip != null)
             {
-                trip.StatusID = VindRitVM.StatusID;
+              
                 var data = JsonConvert.SerializeObject(trip);
 
                 bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
@@ -667,6 +670,15 @@ namespace BOBApp.ViewModels
                 DateTime? minDate = VindRitFilterVM.SelectedMinDate;
                 int? rating = VindRitFilterVM.SelectedRating;
 
+                if (SelectedDestination == null || selectedBob==null || SelectedParty ==null || type==null)
+                {
+                    
+                    //trip afronden
+                    TripDone();
+
+
+                    return null;
+                }
 
                 //destinations edit
 

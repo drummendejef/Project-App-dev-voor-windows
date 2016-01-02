@@ -51,6 +51,7 @@
             </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        
         <RelativePanel  Background="{ThemeResource White}" Height="80" x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <RelativePanel Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True">
                 <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,20,100,20" RelativePanel.AlignVerticalCenterWithPanel="True"  Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>

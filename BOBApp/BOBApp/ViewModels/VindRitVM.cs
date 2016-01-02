@@ -1002,46 +1002,61 @@ namespace BOBApp.ViewModels
         private async Task<List<Bob>> FindBob_task()
         {
            
-            if (VindRitFilterVM.SelectedParty != "" && VindRitFilterVM.SelectedParty!=null)
+            try
             {
+                Location location = Task.FromResult<Location>(await LocationService.GetCurrent()).Result;
 
-                try
-                {
-                    Location location = await LocationService.GetCurrent();
+                int? rating = VindRitFilterVM.SelectedRating;
+                DateTime minDate = DateTime.Today; //moet nog gedaan worden
+                int bobsType_ID = VindRitFilterVM.SelectedBobsType.ID;
+                int? maxDistance = MainViewVM.searchArea;
 
-                    int? rating = VindRitFilterVM.SelectedRating;
-                    DateTime minDate = DateTime.Today; //moet nog gedaan worden
-                    int bobsType_ID = VindRitFilterVM.SelectedBobsType.ID;
-                    int? maxDistance = MainViewVM.searchArea;
-
-                    List<Bob> bobs = await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance);
+                List<Bob> bobs = Task.FromResult<List<Bob>>(await BobsRepository.FindBobs(rating, minDate, bobsType_ID, location, maxDistance)).Result;
 
 
-                    return bobs;
-                }
-                catch (Exception ex)
-                {
-
-                    return null;
-                }
-               
-            }
-            else
-            {
-                Bob bob= new Bob()
-                {
-                    ID = -1
-                };
-                List<Bob> bobs = new List<Bob>();
-                bobs.Add(bob);
                 return bobs;
             }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+               
+ 
 
             //location
 
         }
         private async void FindBob()
         {
+            //controle
+            if (VindRitFilterVM.SelectedDestination == null)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "U hebt geen bestemming aangemaakt \nGa naar bestemmingen en maak een nieuwe aan.",
+                    Ok = "Ok",
+                });
+                this.EnableFind = true;
+                RaiseAll();
+                return;
+            }
+
+            if(VindRitFilterVM.SelectedParty==null || VindRitFilterVM.SelectedParty == "")
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Geen Feestje geselecteerd",
+                    Ok = "Ok",
+                });
+                this.EnableFind = true;
+                RaiseAll();
+                return;
+            }
+
+
+
+
             this.VisibleFilterContext = Visibility.Visible;
             this.Loading = true;
             this.VisibleFind = Visibility.Collapsed;
@@ -1058,21 +1073,6 @@ namespace BOBApp.ViewModels
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
                     Message = "Geen bob gevonden",
-                    Ok = "Ok",
-                    Nok = null,
-                    ViewOk = null,
-                    ViewNok = null,
-                    ParamView = false,
-                    Cb = null
-                });
-                this.EnableFind = true;
-                RaiseAll();
-
-            }else if (bobs[0].ID == -1)
-            {
-                Messenger.Default.Send<Dialog>(new Dialog()
-                {
-                    Message = "Geen Feestje geselecteerd",
                     Ok = "Ok",
                     Nok = null,
                     ViewOk = null,
