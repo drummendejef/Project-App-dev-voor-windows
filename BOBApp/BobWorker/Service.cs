@@ -1,4 +1,5 @@
-﻿using Libraries.Models;
+﻿using Libraries;
+using Libraries.Models;
 using Libraries.Repositories;
 using Newtonsoft.Json;
 using System;
@@ -19,38 +20,44 @@ namespace BobWorker
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
 
-            if (BackgroundWorkCost.CurrentBackgroundWorkCost == BackgroundWorkCostValue.High)
+           
+
+
+            try
             {
-                return;
-            }
-
-
-            BackgroundTaskDeferral deferal = taskInstance.GetDeferral();
-
-
-            Geolocator geolocator = new Geolocator();
-            Geoposition pos = await geolocator.GetGeopositionAsync();
-            Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-
-
-
-            string json = await readStringFromLocalFile("user.json");
-            var definition = new { Email="", Password=""};
-            var user = JsonConvert.DeserializeAnonymousType(json, definition);
-
-
-
-            Response res = await LoginRepository.Login(user.Email,user.Password);
-            if (res.Success == true)
-            {
-                if (location != null)
+                if (BackgroundWorkCost.CurrentBackgroundWorkCost == BackgroundWorkCostValue.High)
                 {
-                    Response ok = await UserRepository.PostLocation(location);
-                    Debug.WriteLine(ok);
+                    return;
                 }
+
+
+                BackgroundTaskDeferral deferal = taskInstance.GetDeferral();
+
+                string json = await readStringFromLocalFile("user.json");
+                var definition = new { Email = "", Password = "" };
+                var user = JsonConvert.DeserializeAnonymousType(json, definition);
+
+                Location location = await LocationService.GetCurrent();
+
+                Response res = await LoginRepository.Login(user.Email, user.Password);
+                if (res.Success == true)
+                {
+                    if (location != null)
+                    {
+                        Response ok = await UserRepository.PostLocation(location);
+                        Debug.WriteLine(ok);
+                    }
+                }
+
+                deferal.Complete();
+
+            }
+            catch (Exception ex)
+            {
+
+              
             }
 
-           
 
            
 
@@ -58,8 +65,10 @@ namespace BobWorker
 
            
 
+           
 
-            deferal.Complete();
+
+         
 
 
 

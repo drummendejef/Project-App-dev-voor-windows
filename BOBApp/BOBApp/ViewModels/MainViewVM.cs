@@ -438,7 +438,7 @@ namespace BOBApp.ViewModels
                     //default on start
                     User = MainViewVM.USER;
                     GetPoints();
-                    PostLocation();
+                    await PostLocation();
 
                     SetupBackgroundTask();
                     StartSocket();
@@ -648,10 +648,10 @@ namespace BOBApp.ViewModels
         }
 
 
-        private async void PostLocation()
+        private async Task PostLocation()
         {
-
-            Response ok = await UserRepository.PostLocation(await LocationService.GetCurrent());
+            Location location = await LocationService.GetCurrent();
+            Response ok = await UserRepository.PostLocation(location);
 
         }
 

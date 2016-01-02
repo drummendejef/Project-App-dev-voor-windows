@@ -11,39 +11,65 @@ namespace Libraries
 {
     public class LocationService
     {
-        private static Location LastLocation;
+        private static Geolocator geolocator;
+
+        public static Location LastLocation;
+        public static void Start()
+        {
+            geolocator = new Geolocator();
+            geolocator.PositionChanged += Geolocator_PositionChanged;
+            geolocator.StatusChanged += Geolocator_StatusChanged;
+        }
+
+
+
         public static async Task<Location> GetCurrent()
         {
-           
+            await Geolocator.RequestAccessAsync();
+
             try
             {
-                await Task.Run(async () =>
+                return await Task.Run(async () =>
                 {
-                    Geolocator geolocator = new Geolocator();
-                    Geoposition pos = await geolocator.GetGeopositionAsync();
-                    Location location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                    Location location = LastLocation;
+                    if (geolocator != null)
+                    {
 
-                    return location;
+
+                        Geoposition pos = Task.FromResult<Geoposition>(await geolocator.GetGeopositionAsync()).Result;
+                        location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                        LastLocation = location;
+
+                        return location;
+                    }
+                    else
+                    {
+                        Start();
+                        return await GetCurrent();
+                    }
                 });
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
 
-                if (LastLocation == null)
-                {
-                    await GetCurrent();
-                }
-                else
-                {
-                    return LastLocation;
-                }
-               
+
             }
+            return null;
 
-            return LastLocation;
-                }
-            
+
+
+
+
+        }
+
+        private static async void Geolocator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            //var location = await geolocator.GetGeopositionAsync();
+        }
+
+        private static async void Geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        {
+            //var location = await geolocator.GetGeopositionAsync();
         }
     }
 }
