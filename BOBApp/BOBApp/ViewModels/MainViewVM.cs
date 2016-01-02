@@ -189,6 +189,35 @@ namespace BOBApp.ViewModels
 
             });
 
+            
+
+            MainViewVM.socket.On("status_UPDATE", async (msg) =>
+            {
+                Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
+
+                if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
+                //if (_socket.Status == true)
+                {
+                    //from bob
+                    if (VindRitVM.FindID == _socket.ID)
+                    {
+
+                        User.All fromBob = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
+                        User.All user = JsonConvert.DeserializeObject<User.All>(_socket.Object.ToString());
+                        MainViewVM.CurrentTrip= Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
+
+
+                        Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                        {
+                            Name = "get_trip",
+                            View = typeof(VindRit)
+                        });
+
+
+                    }
+                }
+
+            });
 
             //to user
             MainViewVM.socket.On("trip_MAKE", async (msg) =>

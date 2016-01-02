@@ -59,7 +59,7 @@
     <RootPropertyPathName Name="WachtwoordCommand" />
     <RootPropertyPathName Name="AanpasCommand" />
     <RootPropertyPathName Name="TypesBob" />
-    <RootPropertyPathName Name="BobsType_ID" />
+    <RootPropertyPathName Name="SelectedTypeBob" />
     <RootPropertyPathName Name="PricePerKm" />
     <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="Autotype" />
@@ -75,7 +75,6 @@
     <RootPropertyPathName Name="CancelCommand" />
     <RootPropertyPathName Name="PasswordRepeat" />
     <RootPropertyPathName Name="Password" />
-    <RootPropertyPathName Name="SelectedTypeBob" />
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="NewRegister" />
     <RootPropertyPathName Name="Licenseplate" />

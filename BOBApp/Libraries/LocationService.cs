@@ -25,28 +25,27 @@ namespace Libraries
 
         public static async Task<Location> GetCurrent()
         {
-            await Geolocator.RequestAccessAsync();
+           
 
             try
             {
                 return await Task.Run(async () =>
                 {
                     Location location = LastLocation;
-                    if (geolocator != null)
-                    {
+                    //await Geolocator.RequestAccessAsync();
 
+                    geolocator = new Geolocator();
 
-                        Geoposition pos = Task.FromResult<Geoposition>(await geolocator.GetGeopositionAsync()).Result;
-                        location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
-                        LastLocation = location;
+                    geolocator.ReportInterval = 100;
+                    geolocator.DesiredAccuracyInMeters = 200;
 
-                        return location;
-                    }
-                    else
-                    {
-                        Start();
-                        return await GetCurrent();
-                    }
+                    Geoposition pos = Task.FromResult<Geoposition>(await geolocator.GetGeopositionAsync()).Result;
+                    location = new Location() { Latitude = pos.Coordinate.Point.Position.Latitude, Longitude = pos.Coordinate.Point.Position.Longitude };
+                    LastLocation = location;
+
+                    return location;
+                   
+                    
                 });
             }
             catch (Exception ex)
