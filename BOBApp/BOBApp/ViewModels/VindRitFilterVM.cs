@@ -94,25 +94,30 @@ namespace BOBApp.ViewModels
         }
 
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
 
-            RaisePropertyChanged("SelectedFriendString");
-            RaisePropertyChanged("SelectedFriends");
- 
-            RaisePropertyChanged("SelectedRating");
-            RaisePropertyChanged("SelectedParty");
+                RaisePropertyChanged("SelectedFriendString");
+                RaisePropertyChanged("SelectedFriends");
+
+                RaisePropertyChanged("SelectedRating");
+                RaisePropertyChanged("SelectedParty");
 
 
-            RaisePropertyChanged("BobsTypes");
-            RaisePropertyChanged("Parties");
-            RaisePropertyChanged("Destinations");
-            RaisePropertyChanged("Friends");
+                RaisePropertyChanged("BobsTypes");
+                RaisePropertyChanged("Parties");
+                RaisePropertyChanged("Destinations");
+                RaisePropertyChanged("Friends");
 
-            RaisePropertyChanged("SelectedDestination_ID");
-            RaisePropertyChanged("SelectedBobsType_ID");
+                RaisePropertyChanged("SelectedDestination_ID");
+                RaisePropertyChanged("SelectedBobsType_ID");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
         private void ExecuteNavigatedTo(NavigateTo obj)
         {

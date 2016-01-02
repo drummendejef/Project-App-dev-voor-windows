@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -25,10 +26,19 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class Login : Page
     {
+        public LoginVM Vm
+        {
+            get
+            {
+                return this.DataContext as LoginVM;
+            }
+        }
         public Login()
         {
             this.InitializeComponent();
             
         }
+
+       
     }
 }

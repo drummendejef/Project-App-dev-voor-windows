@@ -301,7 +301,7 @@ namespace BOBApp.ViewModels
 
             this.Loading = false;
             this.EnableFind = true;
-            VisibleModal = Visibility.Collapsed;
+            this.VisibleModal = Visibility.Collapsed;
             this.VisibleSelectedFriends = Visibility.Collapsed;
             this.VisibleSelectedBob = Visibility.Collapsed;
             this.VisibleSelectedBobsType = Visibility.Collapsed;
@@ -403,7 +403,7 @@ namespace BOBApp.ViewModels
                     //default on start
                     this.Loading = false;
                  
-                    VisibleModal = Visibility.Collapsed;
+                    this.VisibleModal = Visibility.Collapsed;
                     
                     this.VisibleFilterContext = Visibility.Collapsed;
                     this.EnableFind = true;
@@ -1224,6 +1224,11 @@ namespace BOBApp.ViewModels
 
            
            
+        }
+        private void SelectParty(int id)
+        {
+            VindRitVM.SelectedParty = this.Parties.Find(r => r.ID == id);
+            RaiseAll();
         }
         private void ShowModal()
         {

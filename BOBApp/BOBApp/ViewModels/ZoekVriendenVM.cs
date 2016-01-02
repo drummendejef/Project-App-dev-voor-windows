@@ -75,18 +75,23 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-      
 
-        private void RaiseAll()
+
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("VisibleModal");
-            RaisePropertyChanged("SearchUsers");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
-            RaisePropertyChanged("Friends");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("VisibleModal");
+                RaisePropertyChanged("SearchUsers");
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
+                RaisePropertyChanged("Friends");
 
-            RaisePropertyChanged("SearchItem");
+                RaisePropertyChanged("SearchItem");
 
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         private async void Loaded()

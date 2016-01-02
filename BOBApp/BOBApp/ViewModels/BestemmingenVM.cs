@@ -175,16 +175,21 @@ namespace BOBApp.ViewModels
             });
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
-            RaisePropertyChanged("SearchLocation");
-            RaisePropertyChanged("Destination");
-            RaisePropertyChanged("Destinations");
-            RaisePropertyChanged("MapCenter");
-            RaisePropertyChanged("NewDestination");
-            RaisePropertyChanged("SearchItem");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
+                RaisePropertyChanged("SearchLocation");
+                RaisePropertyChanged("Destination");
+                RaisePropertyChanged("Destinations");
+                RaisePropertyChanged("MapCenter");
+                RaisePropertyChanged("NewDestination");
+                RaisePropertyChanged("SearchItem");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         //Methods

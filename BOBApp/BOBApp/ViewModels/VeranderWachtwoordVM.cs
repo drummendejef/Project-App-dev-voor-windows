@@ -83,14 +83,19 @@ namespace BOBApp.ViewModels
             });
         }
 
-      
 
-        private void RaiseAll()
+
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Password");
-            RaisePropertyChanged("PasswordRepeat");
-            RaisePropertyChanged("Error");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Password");
+                RaisePropertyChanged("PasswordRepeat");
+                RaisePropertyChanged("Error");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
 

@@ -58,19 +58,24 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Merken");
-            RaisePropertyChanged("NewRegister");
-            RaisePropertyChanged("Password");
-            RaisePropertyChanged("PasswordRepeat");
-            RaisePropertyChanged("Merken");
-            RaisePropertyChanged("SelectedAutoType");
-            RaisePropertyChanged("TypesBob");
-            RaisePropertyChanged("SelectedTypeBob");
-            RaisePropertyChanged("Error");
-            RaisePropertyChanged("PicePerKm");
-            RaisePropertyChanged("Loading");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Merken");
+                RaisePropertyChanged("NewRegister");
+                RaisePropertyChanged("Password");
+                RaisePropertyChanged("PasswordRepeat");
+                RaisePropertyChanged("Merken");
+                RaisePropertyChanged("SelectedAutoType");
+                RaisePropertyChanged("TypesBob");
+                RaisePropertyChanged("SelectedTypeBob");
+                RaisePropertyChanged("Error");
+                RaisePropertyChanged("PicePerKm");
+                RaisePropertyChanged("Loading");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         private void ExecuteNavigatedTo(NavigateTo obj)

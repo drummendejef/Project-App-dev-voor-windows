@@ -52,13 +52,18 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("ChatComment");
-            RaisePropertyChanged("SearchLocation");
-            RaisePropertyChanged("ChatRoom");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("ChatComment");
+                RaisePropertyChanged("SearchLocation");
+                RaisePropertyChanged("ChatRoom");
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         private void ExecuteNavigatedTo(NavigateTo obj)

@@ -18,6 +18,26 @@
     <ScrollViewer>
     
     <RelativePanel Background="White">
+            <RelativePanel Visibility="{Binding VisibleModal, Mode=TwoWay}" Canvas.ZIndex="9998" Background="#B2000000" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+
+            </RelativePanel>
+            <RelativePanel Visibility="{Binding VisibleModal, Mode=TwoWay}" Background="White" x:Name="modal" Canvas.ZIndex="9999" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" Width="500" Height="500">
+                <Button Canvas.ZIndex="10000" Style="{ThemeResource button:close}" Command="{Binding CloseModalCommand}"  RelativePanel.AlignRightWithPanel="True" Margin="0,8,8,0">
+                </Button>
+                <Frame x:Name="frame" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition>
+                                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                    <EntranceNavigationTransitionInfo />
+                                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                            </NavigationThemeTransition>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </RelativePanel>
+
+
         <TextBox x:Name="textBoxNaam" TextWrapping="Wrap" Text="{Binding User.User.Lastname, Mode=TwoWay}" PlaceholderText="Naam" RelativePanel.Below="textBoxVoornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="280" Margin="12" Style="{StaticResource textBox}" TextChanged="textBoxNaam_TextChanged"/>
         <TextBox x:Name="textBoxVoornaam" TextWrapping="Wrap" Text="{Binding User.User.Firstname, Mode=TwoWay}" PlaceholderText="Voornaam"  RelativePanel.AlignHorizontalCenterWithPanel="True" Width="280" Margin="12,48,12,12" Style="{StaticResource textBox}" TextChanged="textBoxVoornaam_TextChanged"/>
         <TextBox x:Name="textBoxEmail" TextWrapping="Wrap" Text="{Binding User.User.Email, Mode=TwoWay}" PlaceholderText="Email" RelativePanel.Below="textBoxNaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="280" Margin="12" Style="{StaticResource textBox}" TextChanged="textBoxEmail_TextChanged"/>

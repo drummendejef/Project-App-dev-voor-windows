@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BOBApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,20 @@ namespace BOBApp.Views
     /// </summary>
     public sealed partial class Profiel : Page
     {
+        public ProfielVM Vm
+        {
+            get
+            {
+                return this.DataContext as ProfielVM;
+            }
+        }
+
         public Profiel()
         {
             this.InitializeComponent();
+
+            Vm.Frame = frame;
+
             if (tglIsBob.IsOn)
             {
                 textboxPrice.IsEnabled = true;

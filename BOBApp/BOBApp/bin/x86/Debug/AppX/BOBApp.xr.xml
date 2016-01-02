@@ -70,6 +70,8 @@
     <RootPropertyPathName Name="LicensePlate" />
     <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="Cellphone" />
+    <RootPropertyPathName Name="VisibleModal" />
+    <RootPropertyPathName Name="CloseModalCommand" />
     <RootPropertyPathName Name="PuntenVM" />
     <RootPropertyPathName Name="SelectedPoint" />
     <RootPropertyPathName Name="PointsText" />
@@ -107,8 +109,6 @@
     <RootPropertyPathName Name="VisibleSelectedParty" />
     <RootPropertyPathName Name="GetSelectedParty" />
     <RootPropertyPathName Name="GetStatus" />
-    <RootPropertyPathName Name="VisibleModal" />
-    <RootPropertyPathName Name="CloseModalCommand" />
     <RootPropertyPathName Name="VindRitBobVM" />
     <RootPropertyPathName Name="UserList" />
     <RootPropertyPathName Name="VisibleOffer" />
@@ -348,6 +348,10 @@
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="IsHoldingEnabled" />
+      <RootProperty Name="IsRightTapEnabled" />
+      <RootProperty Name="IsDoubleTapEnabled" />
+      <RootEvent Name="KeyDown" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
@@ -417,6 +421,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Password" />
       <RootProperty Name="Style" />
+      <RootEvent Name="KeyDown" />
       <RootEvent Name="PasswordChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
@@ -525,10 +530,10 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
-      <RootProperty Name="BorderThickness" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="CornerRadius" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="CornerRadius" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="SetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="GetAlignVerticalCenterWithPanel" />
@@ -549,14 +554,14 @@
       <RootMethod Name="SetAlignLeftWith" />
       <RootMethod Name="GetAlignRightWith" />
       <RootMethod Name="SetAlignRightWith" />
+      <RootMethod Name="GetAlignTopWithPanel" />
+      <RootMethod Name="SetAlignTopWithPanel" />
       <RootMethod Name="GetAlignBottomWith" />
       <RootMethod Name="SetAlignBottomWith" />
       <RootMethod Name="GetAlignTopWith" />
       <RootMethod Name="SetAlignTopWith" />
       <RootMethod Name="GetAbove" />
       <RootMethod Name="SetAbove" />
-      <RootMethod Name="GetAlignTopWithPanel" />
-      <RootMethod Name="SetAlignTopWithPanel" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowHeight" />

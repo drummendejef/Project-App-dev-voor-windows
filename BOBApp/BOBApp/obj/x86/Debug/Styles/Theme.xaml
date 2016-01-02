@@ -11,7 +11,7 @@
     <SolidColorBrush x:Key="White" Color="#CCFFFFFF"/>
     <SolidColorBrush x:Key="background" Color="#f5f7f8"/>
 
-    <SolidColorBrush x:Key="dark" Color="#E5FFFFFF"/>
+    <SolidColorBrush x:Key="dark" Color="#F2FFFFFF"/>
 
 
     <Color x:Key="cDarkBlue">#343f4b</Color>

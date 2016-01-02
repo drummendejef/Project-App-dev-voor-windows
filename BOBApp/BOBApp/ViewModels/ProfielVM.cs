@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace BOBApp.ViewModels
@@ -26,9 +27,13 @@ namespace BOBApp.ViewModels
         public bool Loading { get; set; }
         public string Error { get; set; }
 
+        public Frame Frame { get; set; }
+        public Visibility VisibleModal { get; set; }
 
         public RelayCommand AanpasCommand { get; set; }
         public RelayCommand WachtwoordCommand { get; set; }
+        public RelayCommand ShowModalCommand { get; set; }
+        public RelayCommand CloseModalCommand { get; set; }
 
         public User.Profile User { get; set; }
         public String Password { get; set; }
@@ -49,7 +54,9 @@ namespace BOBApp.ViewModels
             GetMerken();
             GetBobTypes();
 
-
+            this.VisibleModal = Visibility.Collapsed;
+            CloseModalCommand = new RelayCommand(CloseModal);
+            ShowModalCommand = new RelayCommand(ShowModal);
 
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
@@ -86,6 +93,7 @@ namespace BOBApp.ViewModels
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
+                    this.VisibleModal = Visibility.Collapsed;
                     this.Loading = false;
                     RaiseAll();
 
@@ -95,25 +103,32 @@ namespace BOBApp.ViewModels
             });
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("SearchLocation");
-            RaisePropertyChanged("Destination");
-            RaisePropertyChanged("Destinations");
-            RaisePropertyChanged("MapCenter");
-            RaisePropertyChanged("NewDestination");
-            RaisePropertyChanged("Merken");
-            RaisePropertyChanged("TypesBob");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("Error");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("VisibleModal");
+
+                RaisePropertyChanged("SearchLocation");
+                RaisePropertyChanged("Destination");
+                RaisePropertyChanged("Destinations");
+                RaisePropertyChanged("MapCenter");
+                RaisePropertyChanged("NewDestination");
+                RaisePropertyChanged("Merken");
+                RaisePropertyChanged("TypesBob");
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("Error");
+
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
         //Methods
 
         public void Wachtwoord()
         {
-            Frame rootFrame = MainViewVM.MainFrame as Frame;
-            rootFrame.Navigate(typeof(VeranderWachtwoord), true);
+            ShowModal();
         }
         public async void Aanpassen()
         {
@@ -174,5 +189,47 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
+
+        private void CloseModal()
+        {
+
+            VisibleModal = Visibility.Collapsed;
+            RaiseAll();
+
+
+
+        }
+
+
+        private void ShowModal()
+        {
+
+            this.Frame.Navigated += Frame_Navigated;
+            this.Frame.Navigate(typeof(VeranderWachtwoord), true);
+
+            VisibleModal = Visibility.Visible;
+            RaiseAll();
+
+        }
+        private void Frame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            if (e.Parameter != null)
+            {
+                bool reload = (bool)e.Parameter;
+
+                Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                {
+                    Reload = reload,
+                    View = this.Frame.CurrentSourcePageType
+
+                });
+
+                if (reload == false)
+                {
+                    //e.Cancel = true;
+
+                }
+            }
+        }
     }
 }

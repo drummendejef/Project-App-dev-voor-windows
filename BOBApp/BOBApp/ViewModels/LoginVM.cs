@@ -22,6 +22,7 @@ using Windows.Storage;
 using System.IO;
 using Windows.ApplicationModel.Core;
 using BOBApp.Views;
+using Windows.UI.Xaml.Input;
 
 namespace BOBApp.ViewModels
 {
@@ -93,14 +94,19 @@ namespace BOBApp.ViewModels
             RaiseAll();
         }
 
-        private void RaiseAll()
+        private async void RaiseAll()
         {
-            RaisePropertyChanged("Email");
-            RaisePropertyChanged("Online");
-            RaisePropertyChanged("Pass");
-            RaisePropertyChanged("Error");
-            RaisePropertyChanged("Loading");
-            RaisePropertyChanged("EnableLogin");
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+                RaisePropertyChanged("Email");
+                RaisePropertyChanged("Online");
+                RaisePropertyChanged("Pass");
+                RaisePropertyChanged("Error");
+                RaisePropertyChanged("Loading");
+                RaisePropertyChanged("EnableLogin");
+            });
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
 
 
@@ -414,5 +420,12 @@ namespace BOBApp.ViewModels
         }
 
        
+        public void Change(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                Login();
+            }
+        }
     }
 }
