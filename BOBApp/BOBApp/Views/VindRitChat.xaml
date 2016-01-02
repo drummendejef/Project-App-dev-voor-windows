@@ -23,10 +23,10 @@
     
     <RelativePanel>
         <ScrollViewer>
-            <ItemsControl Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,80" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" RelativePanel.AlignBottomWithPanel="True">
+            <ItemsControl RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,80"  RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" RelativePanel.AlignBottomWithPanel="True">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <StackPanel Width="600" Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
                         <TextBlock HorizontalAlignment="Center" Text="{Binding Added}" />
                         <Grid HorizontalAlignment="{Binding Alignment}">
                             <Grid.RowDefinitions>

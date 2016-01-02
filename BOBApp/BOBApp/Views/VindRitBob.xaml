@@ -37,7 +37,7 @@
 
             <RelativePanel RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="status" Visibility="{Binding VisibleOffer, Mode=TwoWay}">
                 <TextBlock x:Name="lblparty" Text="Party:" />
-                <TextBlock RelativePanel.RightOf="lblparty" RelativePanel.Below="status" Text="{Binding CurrentTrip.Party.Name, Mode=TwoWay}"/>
+                <TextBlock RelativePanel.RightOf="lblparty" Text="{Binding CurrentTrip.Party.Name, Mode=TwoWay}"/>
 
                 <TextBlock x:Name="lbluser" RelativePanel.Below="lblparty" Text="User:" />
                 <TextBlock RelativePanel.RightOf="lbluser" RelativePanel.Below="lblparty" Text="{Binding CurrentTrip.User.User, Mode=TwoWay}"/>

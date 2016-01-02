@@ -1,6 +1,7 @@
 ﻿using BOBApp.Messages;
 using BOBApp.ViewModels;
 using GalaSoft.MvvmLight.Messaging;
+using Libraries;
 using Libraries.Models;
 using Libraries.Repositories;
 using System;
@@ -186,34 +187,50 @@ namespace BOBApp.Views
         bool isBob;
         private async void changeToBob()
         {
-            isBob = MainViewVM.USER.CanBeBob.Value;
+            isBob = MainViewVM.USER.IsBob.Value;
 
-            if (isBob == true){
-
-                Response ok = await UserRepository.ChanteToBob(isBob);
-                if (ok.Success == true)
-                {
-                    IsBob();
-                }
-
+            if (isBob == true)
+            {
+                isBob = false;
             }
             else
             {
+                isBob = true;
+            }
+
+
+            if (MainViewVM.USER.CanBeBob == false && isBob){
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
-                    Message= "Gelieve bob gegevens in te vullen",
-                    Ok=null,
-                    Nok=null
+                    Message = "Gelieve bob gegevens in te vullen",
+                    Ok = null,
+                    Nok = null
                 });
 
-               
+
                 ShellSplitView.IsPaneOpen = false;
                 if (ShellSplitView.Content != null)
                     ((Frame)ShellSplitView.Content).Navigate(typeof(Profiel));
                 CheckIsPaneOpen();
+
+
             }
+            else
+            {
+                Response ok = await UserRepository.ChanteToBob(isBob);
+                if (ok.Success == true)
+                {
+                   // Location location = await LocationService.GetCurrent();
+                    //Response ok2 = await UserRepository.PostLocation(location);
+
+                    MainViewVM.USER.IsBob = isBob;
+                    IsBob();
+                }
+            }
+
+
            
-            
+
 
         }
 
