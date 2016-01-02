@@ -490,6 +490,8 @@ namespace BOBApp.ViewModels
                         break;
                     case "get_trip":
                         await GetCurrentTrip();
+                        Location location = await LocationService.GetCurrent();
+                        await getRitTime(location);
                         break;
                     case "trip_location:reload":
                         Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
@@ -817,6 +819,7 @@ namespace BOBApp.ViewModels
                             MainViewVM.CurrentTrip = data;
 
                             this.EnableFind = false;
+                            RaiseAll();
                             return;
                         }
                     }

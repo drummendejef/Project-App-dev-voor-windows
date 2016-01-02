@@ -269,7 +269,9 @@ namespace BOBApp.ViewModels
                 SetStatus(data.StatusID.Value);
 
 
-                
+                Location location = await LocationService.GetCurrent();
+                await getRitTime(location);
+
 
                 trip_location();
 
@@ -307,7 +309,7 @@ namespace BOBApp.ViewModels
 
         private async void bob_accepted(bool accepted, float id)
         {
-            this.Status = null;
+
             VindRitBobVM.FindID = id;
             this.Loading = false;
             RaiseAll();
@@ -346,7 +348,6 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("VisibleOffer");
                 RaisePropertyChanged("Frame");
                 RaisePropertyChanged("BobRequests");
-                RaisePropertyChanged("Status");
                 RaisePropertyChanged("UserRequests");
                 RaisePropertyChanged("OfferText");
                 RaisePropertyChanged("RitTime");
@@ -356,7 +357,8 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("IsEnabledCancel");
                 RaisePropertyChanged("CurrentTrip");
 
-              
+                RaisePropertyChanged("Status");
+
 
             });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -380,6 +382,7 @@ namespace BOBApp.ViewModels
 
                     VisibleModal = Visibility.Collapsed;
 
+                  
                     await GetCurrentTrip();
 
                     this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
@@ -438,6 +441,8 @@ namespace BOBApp.ViewModels
         {
             VindRitVM.StatusID = statusID;
             this.Status = GetStatusName(statusID);
+            RaiseAll();
+
             if (MainViewVM.CurrentTrip != null)
             {
                 if (LocationService.LastLocation != null && statusID!=0)
@@ -728,7 +733,9 @@ namespace BOBApp.ViewModels
                         var data = JsonConvert.DeserializeObject<Trip>(json);
                         if (data.ID != -1)
                         {
+                            this.Status = GetStatusName(data.ID);
                             newtrip_bob(data);
+                            RaiseAll();
                             return;
                         }
                     }
@@ -750,11 +757,13 @@ namespace BOBApp.ViewModels
             }
             else
             {
+                this.Status = GetStatusName(MainViewVM.CurrentTrip.ID);
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
                 this.VisibleOffer = Visibility.Visible;
 
             }
+           
             RaiseAll();
 
 

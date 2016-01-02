@@ -37,8 +37,7 @@ namespace BOBApp.ViewModels
         {
             get { return _SelectedTrip; }
             set { _SelectedTrip = value;
-                Frame rootFrame = MainViewVM.MainFrame as Frame;
-                rootFrame.Navigate(typeof(RitItem));
+               
 
             }
         }
@@ -322,61 +321,9 @@ namespace BOBApp.ViewModels
         //bind events
         public async void Changed(object sender, SelectionChangedEventArgs e)
         {
-            ListView item = (ListView)sender;
-            if (item.SelectedIndex == -1)
-            {
-                return;
-            }
 
-
-            var dialog = new ContentDialog()
-            {
-                Title = "Wijzigen",
-            };
-
-            // Setup Content
-            var panel = new StackPanel();
-
-            panel.Children.Add(new TextBlock
-            {
-                Text = "Volgende bestemming wilt u wijzigen: ",
-                TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(0, 0, 0, 15)
-            });
-
-            var cb = new TextBox
-            {
-                TextWrapping = TextWrapping.Wrap,
-                HorizontalContentAlignment = HorizontalAlignment.Stretch
-            };
-
-
-
-            panel.Children.Add(cb);
-            dialog.Content = panel;
-
-            // Add Buttons
-            dialog.PrimaryButtonText = "Ok";
-            dialog.PrimaryButtonClick += async delegate
-            {
-                string text = cb.Text;
-                
-                Loaded();
-            };
-
-            dialog.SecondaryButtonText = "Cancel";
-            dialog.SecondaryButtonClick += delegate
-            {
-
-            };
-
-            // Show Dialog
-            var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.None)
-            {
-
-            }
-            item.SelectedIndex = -1;
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
+            rootFrame.Navigate(typeof(RitItem));
 
 
         }
