@@ -39,7 +39,7 @@ namespace BOBApp.ViewModels
         public String Password { get; set; }
         public String PasswordRepeat { get; set; }
         public List<Autotype> Merken { get; set; }
-
+        public BobsType SelectedTypeBob { get; set; }
         public List<BobsType> TypesBob { get; set; }
 
         public User.PutUser EditUser { get; set; }
@@ -132,6 +132,7 @@ namespace BOBApp.ViewModels
         }
         public async void Aanpassen()
         {
+            
             EditUser = new User.PutUser();
 
             if (User.User.IsBob == true)
@@ -144,7 +145,7 @@ namespace BOBApp.ViewModels
                 EditUser.Cellphone = User.User.Cellphone;
                 EditUser.IsBob = User.User.IsBob.Value;
                 EditUser.PricePerKm = User.Bob.PricePerKm;
-                EditUser.BobsType_ID = User.Bob.BobsType_ID;
+                EditUser.BobsType_ID = SelectedTypeBob.ID;
                 EditUser.LicensePlate = User.Bob.LicensePlate;
                 EditUser.AutoType_ID = User.Autotype.ID;
             }
@@ -191,6 +192,8 @@ namespace BOBApp.ViewModels
             {
                 User.Autotype = new Autotype();
             }
+
+            RaiseAll();
 
         }
 
