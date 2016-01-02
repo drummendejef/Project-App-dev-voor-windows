@@ -62,17 +62,7 @@ namespace BOBApp.Views
                 comboBoxTypeBob.IsEnabled = true;
                 comboBox.IsEnabled = true;
 
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
+               if (textBoxEmail.Text.Length <= 5)
                 {
                     buttonAanpassen.IsEnabled = false;
 
@@ -107,17 +97,7 @@ namespace BOBApp.Views
                 comboBoxTypeBob.IsEnabled = false;
                 comboBox.IsEnabled = false;
 
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
+               if (textBoxEmail.Text.Length <= 5)
                 {
                     buttonAanpassen.IsEnabled = false;
 
@@ -137,17 +117,7 @@ namespace BOBApp.Views
         private void textBoxVoornaam_TextChanged(object sender, TextChangedEventArgs e)
         {
           
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
+               if (textBoxEmail.Text.Length <= 5)
                 {
                     buttonAanpassen.IsEnabled = false;
 
@@ -166,17 +136,7 @@ namespace BOBApp.Views
 
         private void textBoxNaam_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBoxNaam.Text.Length <= 2)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxVoornaam.Text.Length <= 1)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxEmail.Text.Length <= 5)
+           if (textBoxEmail.Text.Length <= 5)
             {
                 buttonAanpassen.IsEnabled = false;
 
@@ -194,17 +154,7 @@ namespace BOBApp.Views
 
         private void textBoxEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBoxNaam.Text.Length <= 2)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxVoornaam.Text.Length <= 1)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxEmail.Text.Length <= 5)
+            if (textBoxEmail.Text.Length <= 5)
             {
                 buttonAanpassen.IsEnabled = false;
 
@@ -222,17 +172,7 @@ namespace BOBApp.Views
 
         private void textBoxGSMnr_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBoxNaam.Text.Length <= 2)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxVoornaam.Text.Length <= 1)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxEmail.Text.Length <= 5)
+           if (textBoxEmail.Text.Length <= 5)
             {
                 buttonAanpassen.IsEnabled = false;
 
@@ -250,17 +190,7 @@ namespace BOBApp.Views
 
         private void textBoxNummerplaat_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBoxNaam.Text.Length <= 2)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxVoornaam.Text.Length <= 1)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxEmail.Text.Length <= 5)
+           if (textBoxEmail.Text.Length <= 5)
             {
                 buttonAanpassen.IsEnabled = false;
 
@@ -294,17 +224,7 @@ namespace BOBApp.Views
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (textBoxNaam.Text.Length <= 2)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxVoornaam.Text.Length <= 1)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxEmail.Text.Length <= 5)
+          if (textBoxEmail.Text.Length <= 5)
             {
                 buttonAanpassen.IsEnabled = false;
 
@@ -339,17 +259,7 @@ namespace BOBApp.Views
         private void textboxPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
            
-                if (textBoxNaam.Text.Length <= 2)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxVoornaam.Text.Length <= 1)
-                {
-                    buttonAanpassen.IsEnabled = false;
-
-                }
-                else if (textBoxEmail.Text.Length <= 5)
+              if (textBoxEmail.Text.Length <= 5)
                 {
                     buttonAanpassen.IsEnabled = false;
 
@@ -384,17 +294,7 @@ namespace BOBApp.Views
 
         private void comboBoxTypeBob_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (textBoxNaam.Text.Length <= 2)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxVoornaam.Text.Length <= 1)
-            {
-                buttonAanpassen.IsEnabled = false;
-
-            }
-            else if (textBoxEmail.Text.Length <= 5)
+          if (textBoxEmail.Text.Length <= 5)
             {
                 buttonAanpassen.IsEnabled = false;
 
