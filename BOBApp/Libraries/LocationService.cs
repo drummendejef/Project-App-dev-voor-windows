@@ -11,7 +11,7 @@ namespace Libraries
 {
     public class LocationService
     {
-        private static Geolocator geolocator;
+        public static Geolocator geolocator;
 
         public static Location LastLocation;
         public static void Start()

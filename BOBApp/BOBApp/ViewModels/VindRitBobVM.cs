@@ -164,6 +164,7 @@ namespace BOBApp.ViewModels
         private async void Arrived()
         {
             this.IsEnabledArrived = false;
+            this.Loading = true;
             RaiseAll();
 
             SetStatus(4);
@@ -175,7 +176,7 @@ namespace BOBApp.ViewModels
             }
 
 
-            Location location = await LocationService.GetCurrent();
+            Location location =Task.FromResult<Location>(await LocationService.GetCurrent()).Result;
 
             Trips_Locations item = new Trips_Locations()
             {
@@ -184,18 +185,6 @@ namespace BOBApp.ViewModels
                 Statuses_ID = VindRitVM.StatusID
             };
             Response ok = Task.FromResult<Response>(await TripRepository.PostLocation(item)).Result;
-            if (ok.Success == true)
-            {
-
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
-                Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bob.User.ID, Status = true };
-                MainViewVM.socket.Emit("trip_UPDATE:send", JsonConvert.SerializeObject(socketSend));
-            }
-            else
-            {
-                timer.Stop();
-
-            }
 
             if (canShowDialog == true)
             {
@@ -240,7 +229,23 @@ namespace BOBApp.ViewModels
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
                         await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                         {
-                            newtrip_bob((Trip)obj.Data);
+                            await UserRepository.PostPoint(3);
+
+                            var data = (Trip)obj.Data;
+                            data.StatusID = 2;
+                            Location location = await LocationService.GetCurrent();
+                            Trips_Locations tripL = new Trips_Locations()
+                            {
+                                Trips_ID = data.ID,
+                                Location = JsonConvert.SerializeObject(location),
+                                Statuses_ID = data.StatusID.Value
+                            };
+
+                            Response okTripL = await TripRepository.PostLocation(tripL);
+                            this.Loading = false;
+                            RaiseAll();
+
+                            newtrip_bob(data);
                         });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
                         break;
@@ -268,16 +273,7 @@ namespace BOBApp.ViewModels
         {
             if (data != null || MainViewVM.CurrentTrip == null)
             {
-                data.StatusID = 2;
-                Location location = await LocationService.GetCurrent();
-                Trips_Locations tripL = new Trips_Locations()
-                {
-                    Trips_ID = data.ID,
-                    Location = JsonConvert.SerializeObject(location),
-                    Statuses_ID = data.StatusID.Value
-                };
-
-                Response okTripL = await TripRepository.PostLocation(tripL);
+                
 
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
@@ -288,7 +284,7 @@ namespace BOBApp.ViewModels
                 SetStatus(data.StatusID.Value);
 
 
-                await UserRepository.PostPoint(3);
+                
 
                 trip_location();
 
@@ -346,7 +342,8 @@ namespace BOBApp.ViewModels
                
 
                 MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
-
+                this.Loading = true;
+                RaiseAll();
             }
 
         }
@@ -519,7 +516,7 @@ namespace BOBApp.ViewModels
 
         private void trip_location()
         {
-            SetStatus(2);
+           
             this.Loading = false;
             //todo: swtich
 

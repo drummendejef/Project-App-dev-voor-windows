@@ -218,7 +218,7 @@ namespace BOBApp.ViewModels
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
-                if(farEnough.Success== true)
+                if(farEnough.Value!=null)
                 {
                     double distance;
                     double.TryParse(farEnough.Value.ToString(), out distance);
@@ -482,6 +482,8 @@ namespace BOBApp.ViewModels
 
                         break;
                     case "rating_dialog":
+                        SetStatus(4);
+                        RaiseAll();
                         Bobs_Parties item = JsonConvert.DeserializeObject<Bobs_Parties>(obj.Data.ToString());
                         RatingDialog(item);
                         break;

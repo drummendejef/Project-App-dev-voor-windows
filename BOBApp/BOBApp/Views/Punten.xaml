@@ -17,6 +17,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:StringToUpperConverter x:Key="ToUpperConverter"/>
+            <converters:DateTimeConverter x:Key="DateTimeConverter"/>
         </ResourceDictionary>
     </Page.Resources>
 

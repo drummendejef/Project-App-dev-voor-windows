@@ -22,8 +22,8 @@
     </Page.Resources>
     
     <RelativePanel>
-        <ScrollViewer>
-            <ItemsControl RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,80"  RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" RelativePanel.AlignBottomWithPanel="True">
+        <ScrollViewer Margin="0,0,0,80"  RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" >
+            <ItemsControl RelativePanel.AlignHorizontalCenterWithPanel="True"  x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                         <StackPanel Width="600" Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
@@ -54,7 +54,7 @@
         
         <RelativePanel  Background="{ThemeResource White}" Height="80" x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <RelativePanel Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True">
-                <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,20,100,20" RelativePanel.AlignVerticalCenterWithPanel="True"  Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
+                <TextBox KeyDown="{x:Bind Vm.Change}" x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,20,100,20" RelativePanel.AlignVerticalCenterWithPanel="True"  Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
                 <Button Width="80" Margin="0,0,0,0" x:Name="addComment" Content="Verzend" HorizontalAlignment="Right" RelativePanel.AlignVerticalCenterWithPanel="True"  RelativePanel.AlignRightWithPanel="True" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
 
             </RelativePanel>

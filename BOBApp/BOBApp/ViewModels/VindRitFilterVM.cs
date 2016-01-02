@@ -82,6 +82,7 @@ namespace BOBApp.ViewModels
 
 
 
+
         #endregion
 
         //Constructor
@@ -169,6 +170,10 @@ namespace BOBApp.ViewModels
             if (this.SelectedFriendString != null)
             {
                 Friend.All friend = this.Friends.Where(r => r.User2.ToString() == this.SelectedFriendString).First();
+                if (VindRitFilterVM.SelectedFriends == null)
+                {
+                    VindRitFilterVM.SelectedFriends = new List<Friend.All>();
+                }
                 VindRitFilterVM.SelectedFriends.Add(friend);
             }
            

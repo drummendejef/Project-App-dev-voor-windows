@@ -114,8 +114,8 @@
     <RootPropertyPathName Name="IsEnabledOffer" />
     <RootPropertyPathName Name="CanOffer" />
     <RootPropertyPathName Name="VisibleSelectedTrip" />
-    <RootPropertyPathName Name="Status" />
     <RootPropertyPathName Name="BobRequests" />
+    <RootPropertyPathName Name="Status" />
     <RootPropertyPathName Name="VindRitChatVM" />
     <RootPropertyPathName Name="AddCommentCommand" />
     <RootPropertyPathName Name="ChatComment" />
@@ -131,9 +131,10 @@
     <RootPropertyPathName Name="SelectedBobsType_ID" />
     <RootPropertyPathName Name="BobsTypes" />
     <RootPropertyPathName Name="SelectedRating" />
+    <RootPropertyPathName Name="SelectedFriends" />
     <RootPropertyPathName Name="AddFriendCommand" />
     <RootPropertyPathName Name="Friends" />
-    <RootPropertyPathName Name="SelectedFriendText" />
+    <RootPropertyPathName Name="SelectedFriendString" />
     <RootPropertyPathName Name="SelectedDestination_ID" />
     <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
@@ -169,10 +170,10 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="Padding" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Padding" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetColumn" />
@@ -409,10 +410,12 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="CommandParameter" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Padding" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Padding" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />
@@ -450,6 +453,7 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemContainerTransitions" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
@@ -459,8 +463,6 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemContainerTransitions" />
       <RootProperty Name="ItemsPanel" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Margin" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
     </RootType>
@@ -513,6 +515,7 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Children" />
       <RootProperty Name="Orientation" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">

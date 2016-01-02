@@ -17,6 +17,7 @@ using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
 namespace BOBApp.ViewModels
@@ -329,6 +330,15 @@ namespace BOBApp.ViewModels
                 RaiseAll();
             });
 
+        }
+
+
+        public void Change(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                AddComment();
+            }
         }
     }
 }

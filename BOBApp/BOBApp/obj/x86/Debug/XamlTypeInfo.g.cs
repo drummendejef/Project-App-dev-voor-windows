@@ -817,6 +817,7 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             case 59:   //  BOBApp.Views.VindRitChat
                 userType = new global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_59_VindRitChat;
+                userType.AddMemberName("Vm");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -1363,12 +1364,17 @@ namespace BOBApp.BOBApp_XamlTypeInfo
             var that = (global::BOBApp.Views.VindRitBob)instance;
             return that.Vm;
         }
-        private object get_63_ZoekVrienden_Vm(object instance)
+        private object get_63_VindRitChat_Vm(object instance)
+        {
+            var that = (global::BOBApp.Views.VindRitChat)instance;
+            return that.Vm;
+        }
+        private object get_64_ZoekVrienden_Vm(object instance)
         {
             var that = (global::BOBApp.Views.ZoekVrienden)instance;
             return that.Vm;
         }
-        private object get_64_ZoekVrienden_Add_Vm(object instance)
+        private object get_65_ZoekVrienden_Add_Vm(object instance)
         {
             var that = (global::BOBApp.Views.ZoekVrienden_Add)instance;
             return that.Vm;
@@ -1759,16 +1765,22 @@ namespace BOBApp.BOBApp_XamlTypeInfo
                 xamlMember.Getter = get_62_VindRitBob_Vm;
                 xamlMember.SetIsReadOnly();
                 break;
+            case "BOBApp.Views.VindRitChat.Vm":
+                userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.Views.VindRitChat");
+                xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Vm", "BOBApp.ViewModels.VindRitChatVM");
+                xamlMember.Getter = get_63_VindRitChat_Vm;
+                xamlMember.SetIsReadOnly();
+                break;
             case "BOBApp.Views.ZoekVrienden.Vm":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.Views.ZoekVrienden");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Vm", "BOBApp.ViewModels.ZoekVriendenVM");
-                xamlMember.Getter = get_63_ZoekVrienden_Vm;
+                xamlMember.Getter = get_64_ZoekVrienden_Vm;
                 xamlMember.SetIsReadOnly();
                 break;
             case "BOBApp.Views.ZoekVrienden_Add.Vm":
                 userType = (global::BOBApp.BOBApp_XamlTypeInfo.XamlUserType)GetXamlTypeByName("BOBApp.Views.ZoekVrienden_Add");
                 xamlMember = new global::BOBApp.BOBApp_XamlTypeInfo.XamlMember(this, "Vm", "BOBApp.ViewModels.ZoekVriendenVM");
-                xamlMember.Getter = get_64_ZoekVrienden_Add_Vm;
+                xamlMember.Getter = get_65_ZoekVrienden_Add_Vm;
                 xamlMember.SetIsReadOnly();
                 break;
             }
