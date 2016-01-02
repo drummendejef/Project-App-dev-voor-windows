@@ -102,5 +102,23 @@ namespace BOBApp.Views
                 MapFeestOverzicht.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
             }
         }
+
+        private void onKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            Debug.WriteLine("OnKeyDown");
+        }
+
+        private void MapElemenClick(MapControl sender, MapElementClickEventArgs args)
+        {
+            Debug.WriteLine("MapElementClick");
+            //var buttonSender = sender as Button;
+            
+            
+        }
+
+        private void mapItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Geklikt op knop");
+        }
     }
 }
