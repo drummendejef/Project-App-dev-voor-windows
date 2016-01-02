@@ -2198,6 +2198,33 @@ C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp
 C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\NotificationsExtensions.pri.xml
 C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\ProjectArchitectures.txt
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\ZoekVrienden_Add.xbf
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.i.cs
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.cs
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xaml
+E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\RitItem.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\VeranderWachtwoord.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\VindRitBob.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\ZoekVrienden_Add.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\EngineIoClientDotNet.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\SocketIoClientDotNet.dll
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.g.i.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.g.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.g.i.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.g.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.g.i.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.g.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.i.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.cs
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.xaml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.xaml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.xaml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xaml
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.xbf
+C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xbf
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\ApplicationInsights.config
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\App.xbf
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\MainPage.xbf
@@ -2504,30 +2531,3 @@ C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBA
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\GalaSoft.MvvmLight.Platform.pri.xml
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\NotificationsExtensions.pri.xml
 C:\Users\stijnvanhulle\Documents\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\ProjectArchitectures.txt
-E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\ZoekVrienden_Add.xbf
-E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.i.cs
-E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.cs
-E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xaml
-E:\School\2015 - 2016\App Dev For Windows\BobApp\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\RitItem.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\VeranderWachtwoord.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\VindRitBob.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\Views\ZoekVrienden_Add.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\EngineIoClientDotNet.dll
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Debug\SocketIoClientDotNet.dll
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.g.i.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.g.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.g.i.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.g.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.g.i.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.g.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.i.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.g.cs
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.xaml
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.xaml
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.xaml
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xaml
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\RitItem.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VeranderWachtwoord.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\VindRitBob.xbf
-C:\Users\kevin\Desktop\NMCT\Apps_voor_Windows\Project\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Debug\Views\ZoekVrienden_Add.xbf

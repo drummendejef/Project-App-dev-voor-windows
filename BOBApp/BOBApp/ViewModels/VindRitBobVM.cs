@@ -268,6 +268,17 @@ namespace BOBApp.ViewModels
         {
             if (data != null || MainViewVM.CurrentTrip == null)
             {
+                data.StatusID = 2;
+                Location location = await LocationService.GetCurrent();
+                Trips_Locations tripL = new Trips_Locations()
+                {
+                    Trips_ID = data.ID,
+                    Location = JsonConvert.SerializeObject(location),
+                    Statuses_ID = data.StatusID.Value
+                };
+
+                Response okTripL = await TripRepository.PostLocation(tripL);
+
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
                 this.VisibleOffer = Visibility.Visible;
@@ -332,6 +343,7 @@ namespace BOBApp.ViewModels
                     Object = user,
                     ID = id
                 };
+               
 
                 MainViewVM.socket.Emit("trip_MAKE:send", JsonConvert.SerializeObject(socketSend));
 

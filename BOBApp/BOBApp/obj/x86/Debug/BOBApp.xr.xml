@@ -106,13 +106,15 @@
     <RootPropertyPathName Name="GetSelectedParty" />
     <RootPropertyPathName Name="GetStatus" />
     <RootPropertyPathName Name="VindRitBobVM" />
+    <RootPropertyPathName Name="IsEnabledCancel" />
     <RootPropertyPathName Name="UserList" />
     <RootPropertyPathName Name="VisibleOffer" />
     <RootPropertyPathName Name="ArrivedCommand" />
+    <RootPropertyPathName Name="IsEnabledArrived" />
     <RootPropertyPathName Name="IsEnabledOffer" />
     <RootPropertyPathName Name="CanOffer" />
     <RootPropertyPathName Name="VisibleSelectedTrip" />
-    <RootPropertyPathName Name="GetSelectedTrip" />
+    <RootPropertyPathName Name="Status" />
     <RootPropertyPathName Name="BobRequests" />
     <RootPropertyPathName Name="VindRitChatVM" />
     <RootPropertyPathName Name="AddCommentCommand" />

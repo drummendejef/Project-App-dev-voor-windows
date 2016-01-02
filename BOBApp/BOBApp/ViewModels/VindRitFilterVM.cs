@@ -50,7 +50,9 @@ namespace BOBApp.ViewModels
 
         public int SelectedBobsType_ID
         {
-            get { return _SelectedBobsType_ID; }
+            get {
+                return _SelectedBobsType_ID;
+            }
             set {
                 if (this.BobsTypes != null)
                 {
@@ -65,7 +67,10 @@ namespace BOBApp.ViewModels
 
         public int SelectedDestination_ID
         {
-            get { return _SelectedDestination_ID; }
+            get {
+               
+                return _SelectedDestination_ID;
+            }
             set {
                 if (this.Destinations!=null)
                 {

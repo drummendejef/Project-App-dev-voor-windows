@@ -578,6 +578,18 @@ namespace BOBApp.ViewModels
 
             if (res.Success == true)
             {
+                VindRitVM.StatusID = 1;
+                Location location = await LocationService.GetCurrent();
+                Trips_Locations tripL = new Trips_Locations()
+                {
+                    Trips_ID=res.NewID.Value,
+                    Location= JsonConvert.SerializeObject(location),
+                    Statuses_ID=VindRitVM.StatusID
+                };
+               
+                Response okTripL = await TripRepository.PostLocation(tripL);
+
+
                 Trip currentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
 
 
