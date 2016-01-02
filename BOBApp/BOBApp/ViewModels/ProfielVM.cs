@@ -88,8 +88,8 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-                GetUserDetails();
-                GetMerken();
+               // GetUserDetails();
+               // GetMerken();
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
@@ -134,7 +134,8 @@ namespace BOBApp.ViewModels
         {
             EditUser = new User.PutUser();
 
-            
+            if (User.User.IsBob == true)
+            {
                 EditUser.Bobs_ID = User.Bob.ID;
                 EditUser.Users_ID = User.User.ID;
                 EditUser.Firstname = User.User.Firstname;
@@ -146,6 +147,22 @@ namespace BOBApp.ViewModels
                 EditUser.BobsType_ID = User.Bob.BobsType_ID;
                 EditUser.LicensePlate = User.Bob.LicensePlate;
                 EditUser.AutoType_ID = User.Autotype.ID;
+            }
+            else
+            {
+                EditUser.Users_ID = User.User.ID;
+                EditUser.Firstname = User.User.Firstname;
+                EditUser.Lastname = User.User.Lastname;
+                EditUser.Email = User.User.Email;
+                EditUser.Cellphone = User.User.Cellphone;
+                EditUser.IsBob = User.User.IsBob.Value;
+
+                EditUser.Bobs_ID = null;
+                EditUser.PricePerKm = null;
+                EditUser.BobsType_ID = null;
+                EditUser.LicensePlate = null;
+                EditUser.AutoType_ID = null;
+            }
             
             //Updaten naar DB
             Response r = await UserRepository.EditUser(EditUser);

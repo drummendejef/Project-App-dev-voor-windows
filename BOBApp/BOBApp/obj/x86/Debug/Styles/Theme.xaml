@@ -987,10 +987,6 @@
     </DataTemplate>
 
 
-    <DataTemplate x:Key="TemplateChatComments">
-        
-        
-    </DataTemplate>
-
+    
 
 </ResourceDictionary>

@@ -52,7 +52,7 @@ namespace Libraries.Models
             public String Password { get; set; }
             public int FacebookID { get; set; }
             public Boolean? IsBob { get; set; }
-            public Double PricePerKm { get; set; }
+            public Double? PricePerKm { get; set; }
             public int? BobsType_ID { get; set; }
             public String LicensePlate { get; set; }
             public int? AutoType_ID { get; set; }
