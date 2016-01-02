@@ -164,7 +164,13 @@ namespace BOBApp
                    var test = Window.Current.CoreWindow.Visible;
                    if (IsMinimized == true || dialog.IsNotification==true)
                    {
-                       bool ok = Toast.Show(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb,dialog.Data);
+                       if (dialog.ViewOk != typeof(VindRitChat))
+                       {
+                           bool ok = Toast.Show(dialog.Message, dialog.Ok, dialog.Nok, dialog.ViewOk, dialog.ViewNok, dialog.ParamView, dialog.Cb, dialog.Data);
+                        
+
+
+                       }
 
                    }
                    else

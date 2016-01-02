@@ -22,12 +22,8 @@
     </Page.Resources>
     
     <RelativePanel>
-        <ItemsControl Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,80" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" RelativePanel.AlignBottomWithPanel="True">
-            <ItemsControl.ItemContainerTransitions>
-                <TransitionCollection>
-                    <AddDeleteThemeTransition/>
-                </TransitionCollection>
-            </ItemsControl.ItemContainerTransitions>
+        <ScrollViewer>
+            <ItemsControl Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,80" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" RelativePanel.AlignBottomWithPanel="True">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
@@ -51,14 +47,17 @@
                         </Grid>
                     </StackPanel>
                 </DataTemplate>
-                
+
             </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ItemsControl>
+        </ScrollViewer>
+        <RelativePanel  Background="{ThemeResource White}" Height="80" x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <RelativePanel Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,20,100,20" RelativePanel.AlignVerticalCenterWithPanel="True"  Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
+                <Button Width="80" Margin="0,0,0,0" x:Name="addComment" Content="Verzend" HorizontalAlignment="Right" RelativePanel.AlignVerticalCenterWithPanel="True"  RelativePanel.AlignRightWithPanel="True" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
 
-        <RelativePanel Background="{ThemeResource White}" Height="80" x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="120,20,210,20" RelativePanel.AlignVerticalCenterWithPanel="True"  Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
-            <Button Width="80" Margin="0,0,120,0" x:Name="addComment" Content="Verzend" HorizontalAlignment="Right" RelativePanel.AlignVerticalCenterWithPanel="True"  RelativePanel.AlignRightWithPanel="True" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
-
+            </RelativePanel>
+            
         </RelativePanel>
     </RelativePanel>
 </Page>

@@ -419,7 +419,7 @@ namespace BOBApp.ViewModels
 
                     canShowDialog = true;
 
-
+                    getBobs();
                     await GetParties();
                     await GetDestinations();
                     await GetBobTypes();
