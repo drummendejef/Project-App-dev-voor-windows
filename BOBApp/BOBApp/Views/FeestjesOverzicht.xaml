@@ -16,7 +16,7 @@
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="DTemplateFeestjesMap">
-                <ContentControl Maps:MapControl.Location="{Binding GeoLocation}" KeyDown="onKeyDown">
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation}">
                     <Button x:Name="mapItemButton" Click="mapItemButton_Click" Background="#3e5d94" Margin="40" Padding="5">
                         <Grid>
                             <TextBlock Text="Feest: " Margin="0" />
@@ -46,7 +46,7 @@
         
         
         <TextBlock RelativePanel.Below="search" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
-        <Maps:MapControl x:Name="MapFeestOverzicht" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="search" RelativePanel.AlignBottomWithPanel="True" Margin="0" MapElementClick="MapElemenClick">
+        <Maps:MapControl x:Name="MapFeestOverzicht" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="search" RelativePanel.AlignBottomWithPanel="True" Margin="0" >
             <Maps:MapItemsControl ItemsSource="{Binding Parties, Mode=TwoWay}" ItemTemplate="{StaticResource DTemplateFeestjesMap}" />
         </Maps:MapControl>
 

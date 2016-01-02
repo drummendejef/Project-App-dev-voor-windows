@@ -103,22 +103,15 @@ namespace BOBApp.Views
             }
         }
 
-        private void onKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            Debug.WriteLine("OnKeyDown");
-        }
-
-        private void MapElemenClick(MapControl sender, MapElementClickEventArgs args)
-        {
-            Debug.WriteLine("MapElementClick");
-            //var buttonSender = sender as Button;
-            
-            
-        }
-
         private void mapItemButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Geklikt op knop");
+            var buttonSender = sender as Button;
+            Party party = buttonSender.DataContext as Party;
+
+            //Locatie uit gekozen feestje halen.
+            string locatie = party.Location;
+
         }
     }
 }
