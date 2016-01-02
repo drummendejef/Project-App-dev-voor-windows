@@ -296,23 +296,25 @@ namespace BOBApp.ViewModels
                     for (int i = 0; i < lijst.ChatComments.Count; i++)
                     {
                         HorizontalAlignment aligment = HorizontalAlignment.Left;
-                        SolidColorBrush background = new SolidColorBrush(Color.FromArgb(0,0,0,0));
-                        SolidColorBrush forground = new SolidColorBrush(Color.FromArgb(0, 255, 255, 255));
+                        SolidColorBrush background = new SolidColorBrush(Color.FromArgb(255, 199, 199, 204));
+                        SolidColorBrush forground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
 
                         if (lijst.ChatComments[i].FromUser_ID == MainViewVM.USER.ID)
                         {
                             aligment = HorizontalAlignment.Left;
-                            background = new SolidColorBrush(Color.FromArgb(0, 100, 200, 200));
-                            forground = new SolidColorBrush(Color.FromArgb(0, 200, 200, 200));
+                            background = new SolidColorBrush(Color.FromArgb(255, 199, 199, 204));
+                            forground = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
                         }
                         else
                         {
                             aligment = HorizontalAlignment.Right;
-                            background = new SolidColorBrush(Color.FromArgb(0, 200, 200, 200));
-                            forground = new SolidColorBrush(Color.FromArgb(0, 200, 200, 200));
+                            background = new SolidColorBrush(Color.FromArgb(255, 76, 217, 100));
+                            forground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+                           
                         }
                         lijst.ChatComments[i].Alignment = aligment;
-
+                        lijst.ChatComments[i].Background = background;
+                        lijst.ChatComments[i].Foreground = forground;
                     }
                 
                 }
@@ -320,6 +322,8 @@ namespace BOBApp.ViewModels
                 {
                     //geen comments
                 }
+
+              
 
                 this.ChatRoom = lijst;
                 RaiseAll();

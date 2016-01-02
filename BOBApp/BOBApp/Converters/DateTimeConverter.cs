@@ -11,8 +11,17 @@ namespace BOBApp.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            DateTime time = (DateTime)value;
-            return "Gemaakt op " + time.ToString("dd/MM/yyyy");
+            try
+            {
+                DateTime time = (DateTime)value;
+                return "Gemaakt op " + time.ToString("dd/MM/yyyy");
+            }
+            catch (Exception ex)
+            {
+
+                return value;
+            }
+            
         }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {

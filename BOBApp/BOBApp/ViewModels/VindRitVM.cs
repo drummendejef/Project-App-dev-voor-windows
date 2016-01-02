@@ -882,21 +882,22 @@ namespace BOBApp.ViewModels
                 try
                 {
                     string json = await Localdata.read("trip.json");
+                    if (json != null && json !="")
+                    {
+                        var data = JsonConvert.DeserializeObject<Trip>(json);
+                        if (data.ID != -1)
+                        {
+                            SetStatus(data.StatusID.Value);
+                            MainViewVM.CurrentTrip = data;
 
-                    var data = JsonConvert.DeserializeObject<Trip>(json);
-                    if (data.ID != -1)
-                    {
-                        SetStatus(data.StatusID.Value);
-                       MainViewVM.CurrentTrip = data;
-                     
-                        this.EnableFind = false;
+                            this.EnableFind = false;
+                            return;
+                        }
                     }
-                    else
-                    {
-                        SetStatus(0);
-                        this.EnableFind = true;
-                    }
-                  
+
+                    SetStatus(0);
+                    this.EnableFind = true;
+
 
 
                 }
@@ -1244,6 +1245,11 @@ namespace BOBApp.ViewModels
         {
             VindRitVM.StatusID = statusID;
             this.Status = GetStatusName(statusID);
+            if(this.GetSelectedParty!=null && this.GetSelectedDestination != null)
+            {
+                Toast.Tile("Party: " + this.GetSelectedParty.Name,"Bestemming: " +  this.GetSelectedDestination.Name,"Status " + this.Status);
+            }
+           
             RaiseAll();
         }
 

@@ -6,30 +6,58 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:converters="using:BOBApp.Converters"
     DataContext="{Binding VindRitChatVM, Mode=TwoWay, Source={StaticResource Locator}}">
+
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:StringToUpperConverter x:Key="ToUpperConverter"/>
+            <converters:DateTimeConverter x:Key="DateTimeConverter"/>
         </ResourceDictionary>
-    </Page.Resources>
 
+
+    </Page.Resources>
+    
     <RelativePanel>
-        <ItemsControl HorizontalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,35" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" ItemTemplate="{ThemeResource TemplateChatComments}" RelativePanel.AlignBottomWithPanel="True">
+        <ItemsControl Width="600" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="0,0,0,80" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="comments" ItemsSource="{Binding ChatRoom.ChatComments}" RelativePanel.AlignBottomWithPanel="True">
             <ItemsControl.ItemContainerTransitions>
                 <TransitionCollection>
                     <AddDeleteThemeTransition/>
-                    <ContentThemeTransition />
-                    <ReorderThemeTransition />
-                    <EntranceThemeTransition IsStaggeringEnabled="False" />
                 </TransitionCollection>
             </ItemsControl.ItemContainerTransitions>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,0,0,15" Orientation="Vertical" HorizontalAlignment="Stretch">
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Added}" />
+                        <Grid HorizontalAlignment="{Binding Alignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding FromUser_ID}"/>-->
+
+                            <Border Margin="8" Padding="8,5,8,5" CornerRadius="5,5,5,2" BorderThickness="0" HorizontalAlignment="Center" Background="{Binding Background}">
+                                <TextBlock Grid.Row="0" Grid.Column="1" MinWidth="70" Text="{Binding Comment}" HorizontalAlignment="Center" Foreground="{Binding Foreground}" />
+                            </Border>
+
+
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+                
+            </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <RelativePanel x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-            <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="0,0,80,0" Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
-            <Button Width="80" x:Name="addComment" Content="Add comment" HorizontalAlignment="Right"  RelativePanel.AlignRightWithPanel="True" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
+        <RelativePanel Background="{ThemeResource White}" Height="80" x:Name="comment" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <TextBox x:Name="txtComment" RelativePanel.AlignRightWithPanel="True" Margin="120,20,210,20" RelativePanel.AlignVerticalCenterWithPanel="True"  Text="{Binding ChatComment, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Style="{StaticResource textBox}"/>
+            <Button Width="80" Margin="0,0,120,0" x:Name="addComment" Content="Verzend" HorizontalAlignment="Right" RelativePanel.AlignVerticalCenterWithPanel="True"  RelativePanel.AlignRightWithPanel="True" Command="{Binding AddCommentCommand}" Style="{StaticResource button}"/>
 
         </RelativePanel>
     </RelativePanel>

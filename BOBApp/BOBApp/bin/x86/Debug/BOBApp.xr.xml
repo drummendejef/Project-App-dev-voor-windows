@@ -4,10 +4,6 @@
     <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
   </Roots.Interfaces>
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="Alignment" />
-    <RootPropertyPathName Name="Background" />
-    <RootPropertyPathName Name="Comment" />
-    <RootPropertyPathName Name="Foreground" />
     <RootPropertyPathName Name="Added" />
     <RootPropertyPathName Name="PointsDescription" />
     <RootPropertyPathName Name="Points" />
@@ -123,6 +119,10 @@
     <RootPropertyPathName Name="ChatComment" />
     <RootPropertyPathName Name="ChatRoom" />
     <RootPropertyPathName Name="ChatComments" />
+    <RootPropertyPathName Name="Alignment" />
+    <RootPropertyPathName Name="Background" />
+    <RootPropertyPathName Name="Comment" />
+    <RootPropertyPathName Name="Foreground" />
     <RootPropertyPathName Name="VindRitFilterVM" />
     <RootPropertyPathName Name="User2" />
     <RootPropertyPathName Name="ID" />
@@ -164,11 +164,11 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Children" />
       <RootProperty Name="Visibility" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="CornerRadius" />
       <RootMethod Name="GetColumnSpan" />
@@ -194,8 +194,8 @@
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="Padding" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="FontStyle" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Opacity" />
@@ -205,6 +205,7 @@
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="MinWidth" />
       <RootEvent Name="Tapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.FrameworkElement">
@@ -257,9 +258,10 @@
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Child" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="Opacity" />
       <RootProperty Name="Padding" />
       <RootProperty Name="CornerRadius" />
-      <RootProperty Name="Opacity" />
+      <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.VisualStateManager">
       <RootMethod Name="GetVisualStateGroups" />
@@ -455,16 +457,10 @@
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
       <RootProperty Name="ItemContainerTransitions" />
       <RootProperty Name="ItemsPanel" />
-      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
       <RootProperty Name="Margin" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemTemplate" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Orientation" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Children" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
@@ -509,6 +505,12 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="MaxWidth" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Orientation" />
       <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Canvas">

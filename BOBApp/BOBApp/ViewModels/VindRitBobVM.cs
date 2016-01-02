@@ -48,7 +48,7 @@ namespace BOBApp.ViewModels
         public string OfferText { get; set; }
         public string Status { get; set; }
 
-        public Trip SelectedTrip { get; set; }
+     
         public List<User> UserRequest { get; set; }
 
         private bool _CanOffer;
@@ -84,7 +84,7 @@ namespace BOBApp.ViewModels
                 {
                   
                     this.VisibleSelectedTrip = Visibility.Visible;
-                    return SelectedTrip.Status_Name;
+                    return MainViewVM.CurrentTrip.Status_Name;
                 }
                 else
                 {
@@ -419,10 +419,19 @@ namespace BOBApp.ViewModels
 
         }
 
-        private void SetStatus(int statusID)
+        private async void SetStatus(int statusID)
         {
             VindRitVM.StatusID = statusID;
             this.Status = GetStatusName(statusID);
+            if (MainViewVM.CurrentTrip != null)
+            {
+                var party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
+                var destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
+
+                Toast.Tile("Party: " + party.Name, "Bestemming: " + destination.Name, "Status " + this.Status);
+
+            }
+
             RaiseAll();
         }
 
@@ -710,19 +719,19 @@ namespace BOBApp.ViewModels
                 try
                 {
                     string json = await Localdata.read("trip.json");
+                    if (json != null && json != "")
+                    {
+                        var data = JsonConvert.DeserializeObject<Trip>(json);
+                        if (data.ID != -1)
+                        {
+                            newtrip_bob(data);
+                            return;
+                        }
+                    }
 
-                    var data = JsonConvert.DeserializeObject<Trip>(json);
-                    if (data.ID != -1)
-                    {
-                        
-                        newtrip_bob(data);
-                    }
-                    else
-                    {
-                        this.IsEnabledOffer = true;
-                        this.VisibleCancel = Visibility.Collapsed;
-                        this.VisibleOffer = Visibility.Collapsed;
-                    }
+                    this.IsEnabledOffer = true;
+                    this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleOffer = Visibility.Collapsed;
 
 
 
