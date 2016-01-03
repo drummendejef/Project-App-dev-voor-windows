@@ -11,7 +11,9 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Services.Maps;
 using Windows.Storage.Streams;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -105,7 +107,7 @@ namespace BOBApp.Views
         }
 
         //Als er op 1 van de "feestinfo buttons" geklikt wordt.
-        private void mapItemButton_Click(object sender, RoutedEventArgs e)
+        private async void mapItemButton_Click(object sender, RoutedEventArgs e)
         {
             if ((App.Current as App).UserLocation != null)
             {
@@ -128,14 +130,33 @@ namespace BOBApp.Views
 
                 //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
                 //We gaan deze zelf aanmaken.
-                string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
                 startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
                 startstring += "&waypoint.2=";//Start van het eindpunt
                 startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
-                startstring += URL.URLBINGKEY + URL.BINGKEY;
-                
+                startstring += URL.URLBINGKEY + URL.BINGKEY;*/
 
-            }          
+                //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                Geopoint startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                Geopoint eindpunt = new Geopoint(tempbasic);
+
+                //De route tussen 2 punten opvragen
+                MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt,eindpunt);
+
+                if(routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                {
+                    Debug.WriteLine("Succesvol route teruggekregen.");
+
+                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                    viewOfRoute.RouteColor = Colors.Blue;
+
+                    //MapRouteView toevoegen aan de Route Collectie
+                    MapFeestOverzicht.Routes.Add(viewOfRoute);
+
+                    //Fit de mapcontrol op de route
+                    await MapFeestOverzicht.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                }
+            }
         }
     }
 }
