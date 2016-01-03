@@ -23,6 +23,7 @@ using System.IO;
 using Windows.ApplicationModel.Core;
 using BOBApp.Views;
 using Windows.UI.Xaml.Input;
+using Windows.Foundation;
 
 namespace BOBApp.ViewModels
 {
@@ -328,6 +329,7 @@ namespace BOBApp.ViewModels
 
                         //Inschrijven op de StatusChanged voor updates van de permissies voor locaties.
                         geolocator.StatusChanged += OnStatusChanged;
+                        geolocator.PositionChanged += OnPositionChanged();
 
                         //Locatie opvragen
                         Geoposition pos = await geolocator.GetGeopositionAsync();
@@ -406,9 +408,22 @@ namespace BOBApp.ViewModels
             }
             catch (Exception ex)
             {
-
-                
+                Debug.WriteLine("Error in LoginVM, LocatieToestemmingVragen: " + ex.Message);
             }
+        }
+
+        private TypedEventHandler<Geolocator, PositionChangedEventArgs> OnPositionChanged()
+        {
+            Debug.WriteLine("Positie veranderd");
+
+            //https://msdn.microsoft.com/en-us/library/windows/desktop/mt219698.aspx
+            //Link naar hoe dit zou moeten werken, gelieve niet te verwijderen. - Joren
+
+            //TODO - Locatie veranderd - Joren
+            //Als de locatie veranderd, moet de locatie die we bijhouden, opslaan
+            //En die nieuwe locatie moet dan aangepast worden op de kaart.
+
+            return null;
         }
 
         //Als de status van de locatie permissies veranderd is.
@@ -417,13 +432,15 @@ namespace BOBApp.ViewModels
 
             //TODO: Locatie opvragen afwerken? - Joren
 
-
+            Debug.WriteLine("Status veranderd");
         }
 
         //Als de locatie veranderd is, zou Async moeten gebeuren!!
-        private void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
+        async private void OnPositionChanged(Geolocator sender, PositionChangedEventArgs e)
         {     
             (App.Current as App).UserLocation = e.Position;
+
+            Debug.WriteLine("Positie veranderd");
         }
 
        
