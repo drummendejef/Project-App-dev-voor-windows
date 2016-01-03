@@ -28,16 +28,16 @@
                         <AdaptiveTrigger MinWindowHeight="300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="row0.(Framework.Height)" Value="30" />
-                        <Setter Target="row1.(Framework.Height)" Value="24" />
-                        <Setter Target="bobVindEenRit.(Framework.Height)" Value="33" />
-                        <Setter Target="bobBiedJeAan.(Framework.Height)" Value="33" />
-                        <Setter Target="vindJeVrienden.(Framework.Height)" Value="33" />
-                        <Setter Target="mijnRitten.(Framework.Height)" Value="33" />
-                        <Setter Target="feestjesInDeBuurt.(Framework.Height)" Value="33" />
-                        <Setter Target="mijnBestemmingen.(Framework.Height)" Value="33" />
-                        <Setter Target="mijnProfiel.(Framework.Height)" Value="33" />
-                        <Setter Target="Change.(Framework.Height)" Value="33" />
+                        <Setter Target="row0.(FrameworkElement.Height)" Value="30" />
+                        <Setter Target="row1.(FrameworkElement.Height)" Value="24" />
+                        <Setter Target="bobVindEenRit.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="bobBiedJeAan.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="vindJeVrienden.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnRitten.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="feestjesInDeBuurt.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnBestemmingen.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnProfiel.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="Change.(FrameworkElement.Height)" Value="33" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="big">
