@@ -1,4 +1,5 @@
 ﻿using BOBApp.ViewModels;
+using Libraries;
 using Libraries.Models;
 using Libraries.Repositories;
 using System;
@@ -103,15 +104,38 @@ namespace BOBApp.Views
             }
         }
 
+        //Als er op 1 van de "feestinfo buttons" geklikt wordt.
         private void mapItemButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Geklikt op knop");
-            var buttonSender = sender as Button;
-            Party party = buttonSender.DataContext as Party;
+            if ((App.Current as App).UserLocation != null)
+            {
+                Debug.WriteLine("Geklikt op knop");
+                var buttonSender = sender as Button;
+                Party party = buttonSender.DataContext as Party;
 
-            //Locatie uit gekozen feestje halen.
-            string locatie = party.Location;
+                //Locatie uit gekozen feestje halen.
+                string locatie = party.Location;
 
+                //Tijdelijke locatie aanmaken
+                BasicGeoposition tempbasic = new BasicGeoposition();
+
+                //Feestlocatie opsplitsen (word opgeslagen als string)
+                string[] splittedcoord = party.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
+
+                //Locaties omzetten en in de tijdelijke posities opslaan.
+                tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
+                tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
+
+                //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
+                //We gaan deze zelf aanmaken.
+                string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
+                startstring += "&waypoint.2=";//Start van het eindpunt
+                startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
+                startstring += URL.URLBINGKEY + URL.BINGKEY;
+                
+
+            }          
         }
     }
 }
