@@ -168,12 +168,12 @@ namespace BOBApp.ViewModels
                 Response res = await UserRepository.Register(register);
                 if (res.Success == true)
                 {
-                    //await LoginUser(register.Email, register.Password);
-                    Messenger.Default.Send<GoToPage>(new GoToPage()
+                    await LoginUser(register.Email, register.Password);
+                    /*Messenger.Default.Send<GoToPage>(new GoToPage()
                     {
                         //Keer terug naar login scherm
                         Name = "Login"
-                    });
+                    }); */
 
                 }
                 else
@@ -199,7 +199,7 @@ namespace BOBApp.ViewModels
 
 
         //login, zelfde als bij loginVM
-       /* private async Task<Boolean> LoginUser(string email, string pass)
+        private async Task<Boolean> LoginUser(string email, string pass)
         {
             Response res = await LoginRepository.Login(email, pass);
             if (res.Success == true)
@@ -232,7 +232,7 @@ namespace BOBApp.ViewModels
             }
 
             return res.Success;
-        }*/
+        }
 
 
         private async void GetMerken()
