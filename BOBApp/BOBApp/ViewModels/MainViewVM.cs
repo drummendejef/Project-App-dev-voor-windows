@@ -20,6 +20,7 @@ using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Core;
 using Windows.Devices.Geolocation;
 using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -29,7 +30,7 @@ using Windows.UI.Xaml.Navigation;
 namespace BOBApp.ViewModels
 {
 
-    public class MainViewVM:ViewModelBase
+    public class MainViewVM : ViewModelBase
     {
         #region props
         public static Frame MainFrame;
@@ -40,6 +41,13 @@ namespace BOBApp.ViewModels
         public static Quobject.SocketIoClientDotNet.Client.Socket socket;
         public static Libraries.Socket LatestSocket;
         public static int searchArea = 100000;
+
+        public static class Pins
+        {
+            public static RandomAccessStreamReference UserPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/userpin.png"));
+            public static RandomAccessStreamReference FeestPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/feestpin.png"));
+            public static RandomAccessStreamReference BobPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/BOBpin.png"));
+        }
         
 
         public User User { get; set; }
@@ -49,6 +57,8 @@ namespace BOBApp.ViewModels
 
         public double Points { get; set; }
         public bool Loading { get; set; }
+
+
 
 
         #endregion

@@ -22,6 +22,7 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using System.ComponentModel;
 using System.Diagnostics;
+using Windows.UI.Xaml.Controls.Maps;
 
 namespace BOBApp.ViewModels
 {
@@ -40,8 +41,6 @@ namespace BOBApp.ViewModels
         public static float FindID { get; set; }
 
 
-
-        public List<Bob.All> BobList { get; set; }
 
 
         #endregion
@@ -248,7 +247,9 @@ namespace BOBApp.ViewModels
         public string BobRequests { get; set; }
         public string RitTime { get; set; }
         public List<Party> Parties { get; set; }
+        public List<Bob.All> Bobs { get; set; }
         public string Status { get; set; }
+        public MapControl Map { get; set; }
 
 
         private bool _EnableFind;
@@ -313,35 +314,54 @@ namespace BOBApp.ViewModels
             
 
             //Ritten ophalen
-            getBobs();
+          
 
             Loaded();
             RaiseAll();
         }
 
         //De bobs ophalen om op de kaart te tonen.
-        private async void getBobs()
+        private async Task GetBobs()
         {
-            this.BobList = new List<Bob.All>();
-            List<Bob.All> omtezettenbobs = new List<Bob.All>();
+            this.Bobs = await BobsRepository.GetBobs();
 
             //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
-            try
-            { 
-            //Ingeladen bobs ophalen
-            omtezettenbobs = await BobsRepository.GetBobs();
-            }
-            catch
+            if (this.Bobs != null)
             {
-                Debug.WriteLine("Lege bob");
-            }
+                for (int i = 0; i < this.Bobs.Count(); i++)
+                {
+                    Bob.All item = this.Bobs[i];
+                    if (item.Location == null)
+                    {
+                        return;
+                    }
 
-            for (int i = 0; i < omtezettenbobs.Count(); i++)
-            {
-                Bob.All bob = omtezettenbobs[i];
+                    BasicGeoposition tempbasic = new BasicGeoposition();
 
-                BobList.Add(bob);
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    string[] splittedcoord = item.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
+
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
+                    tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
+
+                    //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                    Geopoint temppoint = new Geopoint(tempbasic);
+
+                    MapIcon mapIconFeestLocation = new MapIcon();
+                    mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                               //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                    mapIconFeestLocation.Image = MainViewVM.Pins.BobPin;
+                    this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+                    
+                }
+
+               
+
+                RaiseAll();
             }
+            
+            
         }
 
         private async void RaiseAll()
@@ -368,6 +388,7 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("StatusID");
                 RaisePropertyChanged("Request");
                 RaisePropertyChanged("Status");
+                RaisePropertyChanged("Bobs");
                 RaisePropertyChanged("RitTime");
 
                 RaisePropertyChanged("GetStatus");
@@ -420,7 +441,7 @@ namespace BOBApp.ViewModels
 
                     canShowDialog = true;
 
-                    getBobs();
+                    await GetBobs();
                     await GetParties();
                     await GetDestinations();
                     await GetBobTypes();
@@ -858,22 +879,47 @@ namespace BOBApp.ViewModels
 
 
         }
-        private async Task<Boolean> GetParties()
+        private async Task GetParties()
         {
 
             this.Parties = await PartyRepository.GetParties();
-            
 
-            RaiseAll();
+            if (this.Parties != null)
+            {
+                for (int i = 0; i < this.Parties.Count(); i++)
+                {
+                    Party item = this.Parties[i];
+                    if (item.Location == null)
+                    {
+                        return;
+                    }
 
-            if (this.Parties.Count > 0)
-            {
-                return true;
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    string[] splittedcoord = item.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
+
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
+                    tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
+
+                    //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                    Geopoint temppoint = new Geopoint(tempbasic);
+
+                    MapIcon mapIconFeestLocation = new MapIcon();
+                    mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                               //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                    mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                    this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+
+                }
+                
+                RaiseAll();
             }
-            else
-            {
-                return false;
-            }
+
+           
+
+           
 
         }
 
@@ -1306,5 +1352,33 @@ namespace BOBApp.ViewModels
                 }
             }
         }
+
+        #region bind events
+        public void MapLoaded(object sender, RoutedEventArgs e)//Als de map geladen is.
+        {
+            if ((App.Current as App).UserLocation != null)
+            {
+
+                //Map centreren op huidige locatie
+                this.Map.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
+                this.Map.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
+                this.Map.LandmarksVisible = true;
+
+                //Marker voor eigen locatie plaatsen
+                MapIcon mapIconUserLocation = new MapIcon();
+                mapIconUserLocation.Location = this.Map.Center;
+                mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+                mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
+                mapIconUserLocation.Image = MainViewVM.Pins.UserPin;
+                this.Map.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+            }
+
+
+
+        }
+
+
+        #endregion
+
     }
 }

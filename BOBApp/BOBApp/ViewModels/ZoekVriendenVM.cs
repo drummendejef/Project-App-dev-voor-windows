@@ -15,6 +15,7 @@ using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 
 namespace BOBApp.ViewModels
 {
@@ -30,6 +31,7 @@ namespace BOBApp.ViewModels
         public Frame Frame { get; set; }
         public string SearchUser { get; set; }
         public List<Friend.All> Friends { get; set; }
+        public MapControl Map { get; set; }
 
 
         public RelayCommand ShowModalCommand { get; set; }
@@ -356,6 +358,8 @@ namespace BOBApp.ViewModels
 
         }
 
+        #region bind event
+
         public void SearchChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             var value = args.SelectedItem as Friend.All;
@@ -363,7 +367,31 @@ namespace BOBApp.ViewModels
             Search();
         }
 
-    
+        public void MapLoaded(object sender, RoutedEventArgs e)//Als de map geladen is.
+        {
+            if ((App.Current as App).UserLocation != null)
+            {
+                //Map centreren op huidige locatie
+                this.Map.Center = (App.Current as App).UserLocation.Coordinate.Point;//De userpoint ophalen, en de map hier op centreren.
+                this.Map.ZoomLevel = 15;//Inzoomlevel instellen (hoe groter het getal, hoe dichterbij)
+                this.Map.LandmarksVisible = true;
+
+                //Marker voor eigen locatie plaatsen
+                MapIcon mapIconUserLocation = new MapIcon();
+                mapIconUserLocation.Location = this.Map.Center;
+                mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+                mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
+                mapIconUserLocation.Image = MainViewVM.Pins.UserPin;
+                this.Map.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+            }
+
+
+
+        }
+
+        #endregion
+
+
 
 
     }

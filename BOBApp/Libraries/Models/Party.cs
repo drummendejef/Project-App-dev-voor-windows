@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,14 @@ namespace Libraries.Models
         public int Cities_ID { get; set; }
         public DateTime Added { get; set; }
         public string Location { get; set; }
+
+
+
+
+
+
+        public RelayCommand<object> Click { get; set; }
+
         private Geopoint geolocation;
 
         public Geopoint GeoLocation
