@@ -20,6 +20,46 @@
     <SplitView PaneClosing="ShellSplitView_PaneClosing" x:Name="ShellSplitView" DisplayMode="CompactOverlay"
                IsPaneOpen="True" CompactPaneLength="41" OpenPaneLength="200"
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="row0.(FrameworkElement.Height)" Value="30" />
+                        <Setter Target="row1.(FrameworkElement.Height)" Value="24" />
+                        <Setter Target="bobVindEenRit.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="bobBiedJeAan.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="vindJeVrienden.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnRitten.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="feestjesInDeBuurt.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnBestemmingen.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnProfiel.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="Change.(FrameworkElement.Height)" Value="33" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="row0.(Framework.Height)" Value="40" />
+                        <Setter Target="row1.(Framework.Height)" Value="40" />
+                        <Setter Target="bobVindEenRit.(Framework.Height)" Value="40" />
+                        <Setter Target="bobBiedJeAan.(Framework.Height)" Value="40" />
+                        <Setter Target="vindJeVrienden.(Framework.Height)" Value="40" />
+                        <Setter Target="mijnRitten.(Framework.Height)" Value="40" />
+                        <Setter Target="feestjesInDeBuurt.(Framework.Height)" Value="40" />
+                        <Setter Target="mijnBestemmingen.(Framework.Height)" Value="40" />
+                        <Setter Target="mijnProfiel.(Framework.Height)" Value="40" />
+                        <Setter Target="Change.(Framework.Height)" Value="40" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <SplitView.Pane>
             <StackPanel>
                 <RadioButton Canvas.ZIndex="99998" Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked" />
@@ -30,11 +70,11 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="40"/>
+                        <RowDefinition x:Name="row0" Height="40"/>
+                        <RowDefinition x:Name="row1" Height="40"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Grid.ColumnSpan="2" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User, Mode=TwoWay}" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,4,0,8" Grid.Column="0" Grid.ColumnSpan="2" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User, Mode=TwoWay}" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="Points:" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" TextAlignment="Right" Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points, Mode=TwoWay}" Tapped="TextBlock_Tapped" />
 
@@ -44,11 +84,11 @@
                 <RadioButton Tag="&#xE724;" x:Name="bobVindEenRit" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
                 <RadioButton Tag="&#xE724;" x:Name="bobBiedJeAan" Visibility="Collapsed" Content="Bied je aan" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBiedJeAanChecked" />
 
-                <RadioButton Tag="&#xE716;" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindVriendenChecked" />
-                <RadioButton Tag="&#xE707;" Content="Mijn ritten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnMijnRittenChecked" />
-                <RadioButton Tag="&#xE909;" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnFeestjesInDeBuurtChecked" />
-                <RadioButton Tag="&#xE913;" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBestemmingenChecked" />
-                <RadioButton Tag="&#xe77B;" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
+                <RadioButton Tag="&#xE716;" x:Name="vindJeVrienden" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindVriendenChecked" />
+                <RadioButton Tag="&#xE707;" x:Name="mijnRitten" Content="Mijn ritten" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnMijnRittenChecked" />
+                <RadioButton Tag="&#xE909;" x:Name="feestjesInDeBuurt" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnFeestjesInDeBuurtChecked" />
+                <RadioButton Tag="&#xE913;" x:Name="mijnBestemmingen" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnBestemmingenChecked" />
+                <RadioButton Tag="&#xe77B;" x:Name="mijnProfiel" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
                 <RadioButton x:Name="Change" Content="Type: User" HorizontalAlignment="Stretch" Click="OnChangeChecked" Tag="" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnProfielChecked" />
 
             </StackPanel>
