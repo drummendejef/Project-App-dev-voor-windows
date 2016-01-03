@@ -218,13 +218,13 @@ namespace BOBApp.ViewModels
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
-                if(farEnough.Value!=null)
+                if(farEnough.Success==true && farEnough.Value!=null)
                 {
                     double distance;
                     double.TryParse(farEnough.Value.ToString(), out distance);
 
 
-                    double speed = 50;
+                    double speed = 45;
                     double time = distance / speed;
 
                     this.RitTime = ": " + time.ToString();
@@ -309,7 +309,8 @@ namespace BOBApp.ViewModels
             this.VisibleSelectedParty = Visibility.Collapsed;
            
             this.VisibleFilterContext = Visibility.Collapsed;
-           
+
+            
 
             //Ritten ophalen
             getBobs();
@@ -805,6 +806,8 @@ namespace BOBApp.ViewModels
         }
         private async Task GetCurrentTrip()
         {
+           
+
             if (MainViewVM.CurrentTrip == null ||MainViewVM.CurrentTrip.ID == 0)
             {
                 try
@@ -839,6 +842,8 @@ namespace BOBApp.ViewModels
             }
             else
             {
+                MainViewVM.CurrentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
+
                 if (MainViewVM.CurrentTrip.StatusID.HasValue)
                 {
                     SetStatus(MainViewVM.CurrentTrip.StatusID.Value);
@@ -919,7 +924,7 @@ namespace BOBApp.ViewModels
            
 
             Frame rootFrame = MainViewVM.MainFrame as Frame;
-            rootFrame.Navigate(typeof(VindRitFilter),true);
+            rootFrame.Navigate(typeof(VindRitFilter));
         }
 
 
@@ -1171,7 +1176,7 @@ namespace BOBApp.ViewModels
             switch (statusID)
             {
                 case 0:
-                    return "";
+                    return "Kies je feestje";
                 case 1:
                      return "Bob is aangevraagd";
                 case 2:

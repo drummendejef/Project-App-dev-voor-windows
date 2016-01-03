@@ -42,8 +42,8 @@
                         <AdaptiveTrigger MinWindowHeight="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="innerSearch.(FrameworkElement.Width)" Value="360" />
-                        <Setter Target="textBoxZoekLocaties.(FrameworkElement.Width)" Value="180" />
+                        <Setter Target="innerSearch.(FrameworkElement.Width)" Value="400" />
+                        <Setter Target="textBoxZoekLocaties.(FrameworkElement.Width)" Value="320" />
 
                     </VisualState.Setters>
                 </VisualState>
@@ -56,18 +56,19 @@
 
 
         <RelativePanel x:Name="search" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Background="{ThemeResource White}">
-            <RelativePanel x:Name="innerSearch" Width="360" RelativePanel.AlignHorizontalCenterWithPanel="True">
-                <AutoSuggestBox RelativePanel.AlignLeftWithPanel="True" SuggestionChosen="{x:Bind Vm.SearchChosen}" Width="180" x:Name="textBoxZoekLocaties" Text="{Binding SearchItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Destinations, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" Height="32" PlaceholderText="Locatie" Margin="12" />
-                <Button x:Name="btnSearch" Margin="12" Content="Zoeken" Style="{ThemeResource button}" Command="{Binding SearchItemCommand}" RelativePanel.RightOf="textBoxZoekLocaties"/>
-                <Button x:Name="btnAdd" Margin="12" Content="Add" Style="{ThemeResource button:add}" Command="{Binding GoDestinationCommand}" RelativePanel.RightOf="btnSearch" />
+            <RelativePanel x:Name="innerSearch" Width="400" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                <AutoSuggestBox RelativePanel.AlignLeftWithPanel="True" SuggestionChosen="{x:Bind Vm.SearchChosen}" Width="320" x:Name="textBoxZoekLocaties" Text="{Binding SearchItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Destinations, Mode=TwoWay}" TextMemberPath="Name" DisplayMemberPath="Name" Height="32" PlaceholderText="Locatie" Margin="0,10,10,10" />
+                <Button x:Name="btnSearch" RelativePanel.AlignRightWithPanel="True" Margin="10,10,0,10" Content="Zoeken" Style="{ThemeResource button}" Command="{Binding SearchItemCommand}"/>
             </RelativePanel>
+            <Button RelativePanel.AlignRightWithPanel="True" x:Name="btnAdd" Margin="12" Content="Add" Style="{ThemeResource button:add}" Command="{Binding GoDestinationCommand}"  />
+
         </RelativePanel>
 
 
         <TextBlock RelativePanel.Below="search" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
         <ScrollViewer RelativePanel.Below="search" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch">
             
-            <ListView SelectionChanged="{x:Bind Vm.Changed}" ItemContainerStyle="{ThemeResource listViewItem}" HorizontalAlignment="Stretch" Width="360" Margin="10" MinHeight="100" x:Name="Friends" RelativePanel.AlignHorizontalCenterWithPanel="True" SelectedItem="{Binding SelectedDestination, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Destinations, Mode=TwoWay}" >
+            <ListView SelectionChanged="{x:Bind Vm.Changed}" ItemContainerStyle="{ThemeResource listViewItem}" HorizontalAlignment="Stretch" Width="400" Margin="10" MinHeight="100" x:Name="Friends" RelativePanel.AlignHorizontalCenterWithPanel="True" SelectedItem="{Binding SelectedDestination, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Destinations, Mode=TwoWay}" >
                 <ListView.ItemContainerTransitions>
                     <TransitionCollection>
                         <AddDeleteThemeTransition/>

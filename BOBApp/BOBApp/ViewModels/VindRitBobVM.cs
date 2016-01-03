@@ -487,7 +487,7 @@ namespace BOBApp.ViewModels
             switch (statusID)
             {
                 case 0:
-                    return "";
+                    return "Wachter op gebruiker";
                 case 1:
                     return "Bob is aangevraagd";
                 case 2:

@@ -19,12 +19,13 @@
             </ResourceDictionary.MergedDictionaries>
             <vm:VindRitFilterVM x:Key="filter"/>
             <converters:MailToConverter x:Key="MailToConverter"/>
+            <converters:StringToUpperConverter x:Key="StringToUpperConverter"/>
             <DataTemplate x:Key="DTemplateBobsMap">
                 <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
                     <RelativePanel Margin="-60,-150,0,0">
                         <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="100" CornerRadius="5">
-                            <TextBlock x:Name="voornaam" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User, Mode=TwoWay}" Margin="8" />
-                            <HyperlinkButton x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="voornaam" Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
+                            <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+                            <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="naam" Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
                         </RelativePanel>
                         
                         <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
@@ -65,8 +66,8 @@
         
         
         <RelativePanel Padding="10" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" Background="{ThemeResource White}" Canvas.ZIndex="1000" >
-            <TextBlock Foreground="{ThemeResource DarkBlue}" FontSize="16" x:Name="lblStatus" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetStatus, Mode=TwoWay}"/>
-            <TextBlock Visibility="{Binding VisibleSelectedParty, Mode=TwoWay}" RelativePanel.Below="lblStatus" Foreground="{ThemeResource DarkBlue}" FontSize="20" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedParty.Name, Mode=TwoWay}"/>
+            <TextBlock Style="{ThemeResource status}" x:Name="lblStatus" Margin="0,0,0,0" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetStatus, Mode=TwoWay, Converter={StaticResource StringToUpperConverter}}"/>
+            <TextBlock Style="{ThemeResource h1}" Visibility="{Binding VisibleSelectedParty, Mode=TwoWay}" RelativePanel.Below="lblStatus" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedParty.Name, Mode=TwoWay, Converter={StaticResource StringToUpperConverter}}"/>
 
 
             <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding ShowModalCommand}"   />

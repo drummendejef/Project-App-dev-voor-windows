@@ -38,7 +38,7 @@
                     <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="Points:" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" TextAlignment="Right" Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points, Mode=TwoWay}" Tapped="TextBlock_Tapped" />
 
-                    <Button Foreground="White" Margin="0,0,0,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Stretch" Content="Afmelden" Command="{Binding LogOffCommand}" />
+                    <Button Style="{ThemeResource button}" Margin="0,0,0,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Stretch" Content="Afmelden" Command="{Binding LogOffCommand}" />
                 </Grid>
 
                 <RadioButton Tag="&#xE724;" x:Name="bobVindEenRit" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnVindEenRitChecked" IsChecked="True" />
