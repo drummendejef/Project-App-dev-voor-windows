@@ -148,10 +148,13 @@ namespace BOBApp.ViewModels
 
                         string jsonUser = await Localdata.read("user.json");
                         var definitionMail = new { Email = "", Password = "" };
-                        var dataUser = JsonConvert.DeserializeAnonymousType(jsonUser, definitionMail);
-                        if (user.ID != MainViewVM.USER.ID)
+                        if (jsonUser != null)
                         {
-                            Clear();
+                            var dataUser = JsonConvert.DeserializeAnonymousType(jsonUser, definitionMail);
+                            if (user.ID != MainViewVM.USER.ID)
+                            {
+                                Clear();
+                            }
                         }
 
 
@@ -162,48 +165,52 @@ namespace BOBApp.ViewModels
                         string jsonChat = await Localdata.read("chatroom.json");
                         string jsonTrip = await Localdata.read("trip.json");
                         var definition = new { ID = 0, UserID = 0 };
-                        var dataChat = JsonConvert.DeserializeAnonymousType(jsonChat, definition);
-                        var dataTrip = JsonConvert.DeserializeObject<Trip>(jsonTrip);
-                        if(dataChat==null | dataTrip == null)
-                        {
-                            Clear();
-                        }
-                        else if (MainViewVM.USER.IsBob == false && dataChat.UserID != MainViewVM.USER.ID)
-                        {
-                            Clear();
 
-                        }
-                        else if (MainViewVM.USER.IsBob == false && dataTrip.Users_ID != MainViewVM.USER.ID)
+                        if (jsonChat != null && jsonTrip != null)
                         {
-                            Clear();
-                            
-
-                        }
-                        else if (MainViewVM.USER.IsBob==true && dataTrip.Bobs_ID!=MainViewVM.USER.Bobs_ID)
-                        {
-                            Clear();
-                        }
-                        else
-                        {
-                           // Clear();
-                           MainViewVM.CurrentTrip = await TripRepository.GetCurrentTrip();
-
-                            if (MainViewVM.CurrentTrip != null)
-                            {
-                                VindRitChatVM.ID = dataChat.ID;
-                                if (dataTrip.ID != null && MainViewVM.CurrentTrip.ID == dataTrip.ID)
-                                {
-                                    Messenger.Default.Send<NavigateTo>(new NavigateTo()
-                                    {
-                                        Name = "trip_location:reload"
-                                    });
-                                }
-                            }
-                            else
+                            var dataChat = JsonConvert.DeserializeAnonymousType(jsonChat, definition);
+                            var dataTrip = JsonConvert.DeserializeObject<Trip>(jsonTrip);
+                            if (dataChat == null | dataTrip == null)
                             {
                                 Clear();
                             }
-                           
+                            else if (MainViewVM.USER.IsBob == false && dataChat.UserID != MainViewVM.USER.ID)
+                            {
+                                Clear();
+
+                            }
+                            else if (MainViewVM.USER.IsBob == false && dataTrip.Users_ID != MainViewVM.USER.ID)
+                            {
+                                Clear();
+
+
+                            }
+                            else if (MainViewVM.USER.IsBob == true && dataTrip.Bobs_ID != MainViewVM.USER.Bobs_ID)
+                            {
+                                Clear();
+                            }
+                            else
+                            {
+                                // Clear();
+                                MainViewVM.CurrentTrip = await TripRepository.GetCurrentTrip();
+
+                                if (MainViewVM.CurrentTrip != null)
+                                {
+                                    VindRitChatVM.ID = dataChat.ID;
+                                    if (dataTrip.ID != null && MainViewVM.CurrentTrip.ID == dataTrip.ID)
+                                    {
+                                        Messenger.Default.Send<NavigateTo>(new NavigateTo()
+                                        {
+                                            Name = "trip_location:reload"
+                                        });
+                                    }
+                                }
+                                else
+                                {
+                                    Clear();
+                                }
+
+                            }
                         }
 
                         Messenger.Default.Send<GoToPage>(new GoToPage()
