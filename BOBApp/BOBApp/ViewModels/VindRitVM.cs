@@ -1171,7 +1171,17 @@ namespace BOBApp.ViewModels
             {
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
-                    Message = "Bob is toegekomen op het feestje",
+                    
+                    IsNotification = true
+                });
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = VindRitVM.SelectedBob.User.ToString() + "is toegekomen op " + VindRitVM.SelectedParty.Name + "met nummerplaat: + " + VindRitVM.SelectedBob.Bob.LicensePlate.ToString() ,
+                    Ok = "Ok",
+                    ViewOk = typeof(VindRit),
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null,
                     IsNotification = true
                 });
             }
