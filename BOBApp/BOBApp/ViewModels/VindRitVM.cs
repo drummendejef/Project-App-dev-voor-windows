@@ -651,7 +651,7 @@ namespace BOBApp.ViewModels
         private async void Timer_Tick(object sender, object e)
         {
             Location location = await LocationService.GetCurrent();
-            await getRitTime(location);
+          
 
 
             if (location != null)
@@ -841,7 +841,12 @@ namespace BOBApp.ViewModels
                 {
                     SetStatus(MainViewVM.CurrentTrip.StatusID.Value);
                 }
-               
+
+
+                Location location = await LocationService.GetCurrent();
+                Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
+                ShowRoute(location, (Location)destination.Location);
+
                 this.EnableFind = false;
              
             }
@@ -1106,22 +1111,7 @@ namespace BOBApp.ViewModels
 
                     ShowRoute((Location) VindRitVM.SelectedParty.Location,(Location) VindRitFilterVM.SelectedDestination.Location);
                 }
-                if (VindRitFilterVM.SelectedDestination != null)
-                {
-                    MapIcon mapIconUserLocation = new MapIcon();
-
-                    BasicGeoposition tempbasic = new BasicGeoposition();
-                    Location location = (Location)VindRitFilterVM.SelectedDestination.Location;
-                    tempbasic.Latitude = location.Latitude;
-                    tempbasic.Longitude = location.Longitude;
-                    Geopoint eindpunt = new Geopoint(tempbasic);
-
-                    mapIconUserLocation.Location = eindpunt;
-                    mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
-                    mapIconUserLocation.Title = VindRitFilterVM.SelectedDestination.Name;//Titel die boven de marker komt.
-                    mapIconUserLocation.Image = MainViewVM.Pins.HomePin;
-                    this.Map.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
-                }
+               
 
                
                
@@ -1296,7 +1286,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async void ShowRoute(Location from, Location to)
+        private async void ShowRoute(Location from, Location to, Location end = null)
         {
             try
             {
@@ -1320,8 +1310,12 @@ namespace BOBApp.ViewModels
                     Geopoint startpunt = new Geopoint(tempFrom);
                     Geopoint eindpunt = new Geopoint(tempTo);
 
+
                     //De route tussen 2 punten opvragen
                     MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+
+
 
                     if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
                     {
@@ -1333,6 +1327,28 @@ namespace BOBApp.ViewModels
                         //Fit de mapcontrol op de route
                         await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
                     }
+
+
+                    if (end != null)
+                    {
+                        BasicGeoposition tempEnd = new BasicGeoposition();
+                        tempEnd.Longitude = end.Longitude;
+                        tempEnd.Latitude = end.Latitude;
+                        Geopoint endpunt = new Geopoint(tempTo);
+                        MapRouteFinderResult routeResult2 = await MapRouteFinder.GetDrivingRouteAsync(eindpunt, endpunt);
+                        if (routeResult2.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                        {
+                            MapRouteView viewOfRoute = new MapRouteView(routeResult2.Route);
+                            viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                            this.Map.Routes.Add(viewOfRoute);
+
+                            //Fit de mapcontrol op de route
+                            await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                        }
+
+                    }
+
                 }
             }
             catch (Exception ex)

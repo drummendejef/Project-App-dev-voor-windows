@@ -272,16 +272,19 @@ namespace BOBApp.ViewModels
                 this.VisibleCancel = Visibility.Visible;
                 this.VisibleOffer = Visibility.Visible;
                 MainViewVM.CurrentTrip = data;
-                VindRitFilterVM.SelectedDestination = await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID);
+                
                 VindRitBobVM.Request = 1;
                 SetStatus(data.StatusID.Value);
 
 
                 Location location = await LocationService.GetCurrent();
+                Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
+                Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
 
-                ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                VindRitFilterVM.SelectedDestination = destination;
+                ShowRoute(location,(Location) party.Location, (Location)destination.Location);
 
-                await getRitTime(location);
+
 
 
                 trip_location();
@@ -295,7 +298,7 @@ namespace BOBApp.ViewModels
 
                     User.All user = await UsersRepository.GetUserById(MainViewVM.CurrentTrip.Users_ID);
                     Bob.All bob = await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID);
-                    Users_Destinations destination = VindRitFilterVM.SelectedDestination;
+                    
                     Party party = await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID);
                     Trip.All newTrip = new Trip.All();
 
@@ -590,17 +593,19 @@ namespace BOBApp.ViewModels
         {
             Location location = await LocationService.GetCurrent();
 
-            await getRitTime(location);
+            
 
             if (location != null)
             {
+                Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
+                ShowRoute(location, (Location)party.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
                 if (farEnough.Success == true)
                 {
                     //kleiner dan 1km
-                    ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                   
 
                     SetStatus(7);
                     RaiseAll();
@@ -780,6 +785,15 @@ namespace BOBApp.ViewModels
             else
             {
                 this.Status = GetStatusName(MainViewVM.CurrentTrip.ID);
+
+                Location location = await LocationService.GetCurrent();
+                Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
+                Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
+
+                VindRitFilterVM.SelectedDestination = destination;
+                ShowRoute(location, (Location)party.Location, (Location)destination.Location);
+
+
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
                 this.VisibleOffer = Visibility.Visible;
@@ -828,7 +842,7 @@ namespace BOBApp.ViewModels
 
 
         }
-        private async void ShowRoute(Location from, Location to)
+        private async void ShowRoute(Location from, Location to, Location end=null)
         {
             try
             {
@@ -851,9 +865,13 @@ namespace BOBApp.ViewModels
                     //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
                     Geopoint startpunt = new Geopoint(tempFrom);
                     Geopoint eindpunt = new Geopoint(tempTo);
+                  
 
                     //De route tussen 2 punten opvragen
                     MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+
+                  
 
                     if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
                     {
@@ -865,6 +883,28 @@ namespace BOBApp.ViewModels
                         //Fit de mapcontrol op de route
                         await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
                     }
+
+                   
+                    if (end != null)
+                    {
+                        BasicGeoposition tempEnd = new BasicGeoposition();
+                        tempEnd.Longitude = end.Longitude;
+                        tempEnd.Latitude = end.Latitude;
+                        Geopoint endpunt = new Geopoint(tempTo);
+                        MapRouteFinderResult routeResult2 = await MapRouteFinder.GetDrivingRouteAsync(eindpunt, endpunt);
+                        if (routeResult2.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                        {
+                            MapRouteView viewOfRoute = new MapRouteView(routeResult2.Route);
+                            viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                            this.Map.Routes.Add(viewOfRoute);
+
+                            //Fit de mapcontrol op de route
+                            await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                        }
+
+                    }
+
                 }
             }
             catch (Exception ex)
