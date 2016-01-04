@@ -28,6 +28,7 @@
                         <AdaptiveTrigger MinWindowHeight="300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- setters voor landscape mobile -->
                         <Setter Target="row0.(FrameworkElement.Height)" Value="30" />
                         <Setter Target="row1.(FrameworkElement.Height)" Value="24" />
                         <Setter Target="bobVindEenRit.(FrameworkElement.Height)" Value="33" />
@@ -45,6 +46,7 @@
                         <AdaptiveTrigger MinWindowHeight="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- setters voor portrait mobile -->
                         <Setter Target="row0.(Framework.Height)" Value="40" />
                         <Setter Target="row1.(Framework.Height)" Value="40" />
                         <Setter Target="bobVindEenRit.(Framework.Height)" Value="40" />

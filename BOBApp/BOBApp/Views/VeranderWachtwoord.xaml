@@ -27,7 +27,7 @@
                         <AdaptiveTrigger MinWindowHeight="300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-           
+           <!-- setters voor landscape mobile -->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="big">
@@ -35,7 +35,7 @@
                         <AdaptiveTrigger MinWindowHeight="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-             
+             <!-- setters voor portrait mobile -->
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="desktop">

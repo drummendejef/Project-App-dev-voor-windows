@@ -32,13 +32,13 @@
                         <AdaptiveTrigger MinWindowHeight="300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- setters voor landscape mobile -->
                         <Setter Target="imageLogo.(FrameworkElement.MaxWidth)" Value="100" />
                         <Setter Target="textBoxEmail.Margin" Value="8,4" />
                         <Setter Target="passwordBox.Margin" Value="8,4" />
                         <Setter Target="buttonAanmelden.Margin" Value="8,4" />
                         <Setter Target="buttonRegistreren.Margin" Value="8,4" />
                         <Setter Target="error.Margin" Value="8,4" />
-
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="big">
@@ -46,6 +46,7 @@
                         <AdaptiveTrigger MinWindowHeight="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- setters voor portrait mobile -->
                         <Setter Target="imageLogo.(FrameworkElement.MaxWidth)" Value="300" />
                         <Setter Target="textBoxEmail.Margin" Value="12" />
                         <Setter Target="passwordBox.Margin" Value="12" />

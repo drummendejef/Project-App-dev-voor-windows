@@ -24,7 +24,54 @@
     </Page.Transitions>
 
     <ScrollViewer>
+
         <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor landscape mobile -->
+                        <Setter Target="buttonCancel.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="buttonCancel.(RelativePanel.Below)" Value="passwordBoxHerhaal" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.Below)" Value="passwordBoxHerhaal" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor portrait mobile -->
+                        <Setter Target="buttonCancel.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="buttonCancel.(RelativePanel.Below)" Value="passwordBoxHerhaal" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.Below)" Value="passwordBoxHerhaal" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor desktop-->
+                        <Setter Target="buttonCancel.(FrameworkElement.Width)" Value="160"/>
+                        <Setter Target="buttonCancel.(FrameworkElement.Height)" Value="32"/>
+                        <Setter Target="buttonRegistreer.(FrameworkElement.Width)" Value="160"/>
+                        <Setter Target="buttonRegistreer.(FrameworkElement.Height)" Value="32"/>
+                        <Setter Target="buttonCancel.(RelativePanel.AlignBottomWithPanel)" Value="True" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.AlignBottomWithPanel)" Value="True" />
+                        <Setter Target="buttonCancel.(RelativePanel.Below)" Value="" />
+                        <Setter Target="buttonRegistreer.(RelativePanel.Below)" Value="" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <!-- <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="Under800">
                     <VisualState.StateTriggers>
@@ -39,26 +86,16 @@
                 </VisualState>
                 <VisualState x:Name="Over800">
                     <VisualState.Setters>
-                       <!-- <Setter Target="buttonRegisterFacebook.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>10,30,10,20</Thickness>
-                            </Setter.Value>
-                        </Setter> -->
-                        <Setter Target="buttonCancel.(FrameworkElement.Width)" Value="160"/>
-                        <Setter Target="buttonCancel.(FrameworkElement.Height)" Value="32"/>
-                        <Setter Target="buttonRegistreer.(FrameworkElement.Width)" Value="160"/>
-                        <Setter Target="buttonRegistreer.(FrameworkElement.Height)" Value="32"/>
-                        <Setter Target="buttonCancel.(RelativePanel.AlignBottomWithPanel)" Value="True" />
-                        <Setter Target="buttonRegistreer.(RelativePanel.AlignBottomWithPanel)" Value="True" />
-                        <Setter Target="buttonCancel.(RelativePanel.Below)" Value="" />
-                        <Setter Target="buttonRegistreer.(RelativePanel.Below)" Value="" />
+                 
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="800"/>
                     </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        </VisualStateManager.VisualStateGroups> -->
+        
+        
         
         <RelativePanel Background="White">
             <TextBlock Text="{Binding Error,Mode=TwoWay}" x:Name="textBlockError" Margin="12" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Foreground="Red" FontWeight="Bold" TextAlignment="Center" Style="{StaticResource textblock}"/>

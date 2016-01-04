@@ -32,14 +32,13 @@
                         <AdaptiveTrigger MinWindowHeight="300" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- setters voor landscape mobile -->
                         <Setter Target="innerSearch.(FrameworkElement.Width)" Value="640" />
                         <Setter Target="textBoxZoekLocaties.(FrameworkElement.Width)" Value="360" />
                         <Setter Target="search.(FrameworkElement.Width)" Value="640" />
                         <Setter Target="Friends.(FrameworkElement.Width)" Value="556" />
                         <Setter Target="btnAddDesktop.Visibility" Value="Collapsed" />
                         <Setter Target="btnAdd.Visibility" Value="Visible" />
-
-
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="big">
@@ -47,15 +46,12 @@
                         <AdaptiveTrigger MinWindowHeight="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- setters voor portrait mobile -->
                         <Setter Target="innerSearch.(FrameworkElement.Width)" Value="360" />
                         <Setter Target="textBoxZoekLocaties.(FrameworkElement.Width)" Value="160" />
                         <Setter Target="btnAddDesktop.Visibility" Value="Collapsed" />
                         <Setter Target="btnAdd.Visibility" Value="Visible" />
-
-
                         <Setter Target="Friends.(FrameworkElement.Width)" Value="360" />
-
-
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="desktop">
@@ -63,7 +59,7 @@
                         <AdaptiveTrigger MinWindowHeight="700" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                    <!-- setters for desktop-->
+                    <!-- setters voor desktop-->
                         <Setter Target="innerSearch.(FrameworkElement.Width)" Value="400" />
                         <Setter Target="textBoxZoekLocaties.(FrameworkElement.Width)" Value="320" />
                         <Setter Target="btnAddDesktop.Visibility" Value="Visible" />
