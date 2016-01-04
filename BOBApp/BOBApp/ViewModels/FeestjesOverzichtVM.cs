@@ -226,11 +226,11 @@ namespace BOBApp.ViewModels
                         item.RouteCommandText = "Toon route";
                         if (MainViewVM.USER.IsBob.Value)
                         {
-                            item.VisibleRoute = Visibility.Collapsed;
+                            item.VisibleTake = Visibility.Collapsed;
                         }
                         else
                         {
-                            item.VisibleRoute = Visibility.Visible;
+                            item.VisibleTake = Visibility.Visible;
                         }
 
                         BasicGeoposition tempbasic = new BasicGeoposition();

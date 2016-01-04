@@ -856,7 +856,7 @@ namespace BOBApp.ViewModels
 
                 Location location = await LocationService.GetCurrent();
                 Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
-                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(data.Bobs_ID)).Result;
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
                 VindRitVM.SelectedBob = bob;
                 if (bobTypes != null)
                 {
@@ -1508,11 +1508,11 @@ namespace BOBApp.ViewModels
                         item.RouteCommandText = "Toon route";
                         if (MainViewVM.USER.IsBob.Value)
                         {
-                            item.VisibleRoute = Visibility.Collapsed;
+                            item.VisibleTake = Visibility.Collapsed;
                         }
                         else
                         {
-                            item.VisibleRoute = Visibility.Visible;
+                            item.VisibleTake = Visibility.Visible;
                         }
 
                         BasicGeoposition tempbasic = new BasicGeoposition();

@@ -71,7 +71,7 @@ namespace Libraries.Models
         //for map
         public RelayCommand<object> ShowCommand { get; set; }
         public Visibility VisibleShow { get; set; }
-        public Visibility VisibleRoute { get; set; }
+        public Visibility VisibleTake { get; set; }
 
         private Geopoint geolocation;
 

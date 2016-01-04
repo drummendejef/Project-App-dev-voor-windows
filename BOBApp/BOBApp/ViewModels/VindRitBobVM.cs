@@ -991,6 +991,15 @@ namespace BOBApp.ViewModels
                         item.RouteCommand = new RelayCommand<object>(e => mapItem_Party(e));
                        
                         item.RouteCommandText = "Toon route";
+                        if (MainViewVM.USER.IsBob.Value)
+                        {
+                            item.VisibleTake = Visibility.Collapsed;
+                        }
+                        else
+                        {
+                            item.VisibleTake = Visibility.Visible;
+                        }
+
 
                         BasicGeoposition tempbasic = new BasicGeoposition();
                         //Locaties omzetten en in de tijdelijke posities opslaan.

@@ -120,11 +120,10 @@
 
 
                                 
-                                    
-                                </RelativePanel>
+                                   
                                 <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="more" Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="3" />
-                                <Button Visibility="{Binding VisibleRoute, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
-                                <Button RelativePanel.AlignRightWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemClickButton" Command="{Binding TakeCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="Neem dit feestje"/>
+                                <Button RelativePanel.AlignLeftWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
+                                <Button Visibility="{Binding VisibleTake, Mode=TwoWay}" RelativePanel.AlignRightWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemClickButton" Command="{Binding TakeCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="Neem dit feestje"/>
 
                             </RelativePanel>
 

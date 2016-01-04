@@ -32,6 +32,7 @@
     <RootPropertyPathName Name="GeoLocation" />
     <RootPropertyPathName Name="VisibleShow" />
     <RootPropertyPathName Name="TakeCommand" />
+    <RootPropertyPathName Name="VisibleRoute" />
     <RootPropertyPathName Name="RouteCommand" />
     <RootPropertyPathName Name="RouteCommandText" />
     <RootPropertyPathName Name="FacebookLinkID" />
@@ -669,6 +670,7 @@
       <RootProperty Name="OnContent" />
       <RootProperty Name="Header" />
       <RootProperty Name="IsOn" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Height" />
