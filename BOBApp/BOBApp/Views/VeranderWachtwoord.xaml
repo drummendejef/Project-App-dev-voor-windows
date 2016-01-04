@@ -19,31 +19,41 @@
 
 
     <ScrollViewer>
+      
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="Under800">
+                <VisualState x:Name="small">
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="1"/>
+                        <AdaptiveTrigger MinWindowHeight="300" />
                     </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="Over800">
                     <VisualState.Setters>
-                        <!-- <Setter Target="buttonRegisterFacebook.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>10,30,10,20</Thickness>
-                            </Setter.Value>
-                        </Setter> -->
+           
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+             
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="desktop">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters for desktop-->
                         <Setter Target="buttonCancel.(FrameworkElement.Width)" Value="160"/>
                         <Setter Target="buttonCancel.(FrameworkElement.Height)" Value="32"/>
                         <Setter Target="buttonWijzig.(FrameworkElement.Width)" Value="160"/>
                         <Setter Target="buttonWijzig.(FrameworkElement.Height)" Value="32"/>
                     </VisualState.Setters>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="1" MinWindowWidth="800"/>
-                    </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+
 
         <RelativePanel Background="White">
             <TextBlock Text="Verander hier je wachtwoord." RelativePanel.Above="textBlockError"  Margin="12" RelativePanel.AlignHorizontalCenterWithPanel="True" />
