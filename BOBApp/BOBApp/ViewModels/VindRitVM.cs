@@ -416,10 +416,7 @@ namespace BOBApp.ViewModels
                     await GetBobTypes();
                     await GetCurrentTrip();
 
-                    if (VindRitVM.SelectedParty != null && VindRitFilterVM.SelectedDestination != null)
-                    {
-                        ShowRoute((Location)VindRitVM.SelectedParty.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
-                    }
+                 
 
 
 
@@ -484,8 +481,7 @@ namespace BOBApp.ViewModels
                         break;
                     case "get_trip":
                         await GetCurrentTrip();
-                        Location location = await LocationService.GetCurrent();
-                        await getRitTime(location);
+                        
                         break;
                     case "trip_location:reload":
                         Users_Destinations dest = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
@@ -791,10 +787,11 @@ namespace BOBApp.ViewModels
 
 
         #region gets
+        List<BobsType> bobTypes;
         private async Task GetBobTypes()
         {
-            List<BobsType> lijst = await BobsRepository.GetTypes();
-            VindRitFilterVM.SelectedBobsType = lijst.Where(r => r.ID == 2).First();
+            bobTypes= await BobsRepository.GetTypes();
+            VindRitFilterVM.SelectedBobsType = bobTypes.Where(r => r.ID == 2).First();
            
         }
         private async Task GetCurrentTrip()
@@ -814,6 +811,20 @@ namespace BOBApp.ViewModels
                             SetStatus(data.StatusID.Value);
                             MainViewVM.CurrentTrip = data;
 
+                            Location location = await LocationService.GetCurrent();
+                            Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
+                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(data.Bobs_ID)).Result;
+                            VindRitVM.SelectedBob = bob;
+                            if (bobTypes != null)
+                            {
+                                VindRitFilterVM.SelectedBobsType = bobTypes.Where(r => r.ID == bob.Bob.BobsType_ID).First();
+                            }
+                            VindRitFilterVM.SelectedDestination = destination;
+
+
+                            ShowRoute(location, (Location)destination.Location);
+
+                            
                             this.EnableFind = false;
                             RaiseAll();
                             return;
@@ -845,6 +856,15 @@ namespace BOBApp.ViewModels
 
                 Location location = await LocationService.GetCurrent();
                 Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
+                Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(data.Bobs_ID)).Result;
+                VindRitVM.SelectedBob = bob;
+                if (bobTypes != null)
+                {
+                    VindRitFilterVM.SelectedBobsType = bobTypes.Where(r => r.ID == bob.Bob.BobsType_ID).First();
+                }
+                VindRitFilterVM.SelectedDestination = destination;
+
+
                 ShowRoute(location, (Location)destination.Location);
 
                 this.EnableFind = false;
@@ -1147,6 +1167,15 @@ namespace BOBApp.ViewModels
                 Toast.Tile("Party: " + this.GetSelectedParty.Name, "Bestemming: " + this.GetSelectedDestination.Name, "Status " + this.Status);
             }
 
+            if (statusID == 8)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Bob is toegekomen op het feestje",
+                    IsNotification = true
+                });
+            }
+
             RaiseAll();
         }
 
@@ -1170,6 +1199,8 @@ namespace BOBApp.ViewModels
                     return "Wachten op antwoord van bob";
                 case 7:
                     return "Bob is in de buurt";
+                case 8:
+                    return "Bob is bij het feestje";
                 default:
                     return "";
 
@@ -1286,7 +1317,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-        private async void ShowRoute(Location from, Location to, Location end = null)
+        private async void ShowRoute(Location from, Location to)
         {
             try
             {
@@ -1329,25 +1360,7 @@ namespace BOBApp.ViewModels
                     }
 
 
-                    if (end != null)
-                    {
-                        BasicGeoposition tempEnd = new BasicGeoposition();
-                        tempEnd.Longitude = end.Longitude;
-                        tempEnd.Latitude = end.Latitude;
-                        Geopoint endpunt = new Geopoint(tempTo);
-                        MapRouteFinderResult routeResult2 = await MapRouteFinder.GetDrivingRouteAsync(eindpunt, endpunt);
-                        if (routeResult2.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
-                        {
-                            MapRouteView viewOfRoute = new MapRouteView(routeResult2.Route);
-                            viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
-
-                            this.Map.Routes.Add(viewOfRoute);
-
-                            //Fit de mapcontrol op de route
-                            await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
-                        }
-
-                    }
+                 
 
                 }
             }
@@ -1493,6 +1506,14 @@ namespace BOBApp.ViewModels
                         item.RouteCommand = new RelayCommand<object>(e => mapItem_Party(e));
                         item.TakeCommand = new RelayCommand<object>(e => TakeParty(e));
                         item.RouteCommandText = "Toon route";
+                        if (MainViewVM.USER.IsBob.Value)
+                        {
+                            item.VisibleRoute = Visibility.Collapsed;
+                        }
+                        else
+                        {
+                            item.VisibleRoute = Visibility.Visible;
+                        }
 
                         BasicGeoposition tempbasic = new BasicGeoposition();
                         //Locaties omzetten en in de tijdelijke posities opslaan.

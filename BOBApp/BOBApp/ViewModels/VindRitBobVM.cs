@@ -101,6 +101,7 @@ namespace BOBApp.ViewModels
         public RelayCommand CancelCommand { get; set; }
         public string BobRequests { get; set; }
         public string RitTime { get; set; }
+        public Party SelectedParty { get; private set; }
 
         private async Task getRitTime(Location location)
         {
@@ -170,29 +171,46 @@ namespace BOBApp.ViewModels
         }
 
 
-
+        bool ToDestination = false;
         private async void Arrived()
         {
             this.IsEnabledArrived = false;
             this.Loading = true;
             RaiseAll();
+            Location location = await LocationService.GetCurrent();
+            Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)this.SelectedParty.Location, location)).Result;
 
-            SetStatus(4);
+            if(farEnough.Success && farEnough.Value != null)
+            {
+                if (double.Parse(farEnough.Value.ToString()) < 600)
+                {
+                    //bij het feestje
+                    SetStatus(8);
+                    ToDestination = true;
+                    this.IsEnabledArrived = true;
+                    this.Loading = false;
+                    
+                  
+                }
+                else
+                {
+                    SetStatus(4);
+
+                    RaiseAll();
+                    if (timer != null)
+                    {
+                        timer.Stop();
+                    }
+
+                    BobisDone("Trip is afgerond");
+
+                }
+            }
 
             RaiseAll();
-            if (timer != null)
-            {
-                timer.Stop();
-            }
 
-            if (canShowDialog == true)
-            {
-                canShowDialog = false;
 
-             
 
-                BobisDone("Trip is afgerond");
-            }
         }
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
@@ -282,9 +300,27 @@ namespace BOBApp.ViewModels
                 Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
 
                 VindRitFilterVM.SelectedDestination = destination;
-                ShowRoute(location,(Location) party.Location, (Location)destination.Location);
+                this.SelectedParty = party;
+              
 
+                Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)this.SelectedParty.Location, location)).Result;
 
+                if (farEnough.Success && farEnough.Value != null)
+                {
+                    if (double.Parse(farEnough.Value.ToString()) < 600)
+                    {
+                        //bij het feestje
+
+                        ShowRoute((Location)party.Location, (Location)destination.Location);
+                        SetStatus(8);
+                        ToDestination = true;
+                    }
+                    else
+                    {
+                        ShowRoute(location, (Location)party.Location);
+                       
+                    }
+                }
 
 
                 trip_location();
@@ -299,7 +335,7 @@ namespace BOBApp.ViewModels
                     User.All user = await UsersRepository.GetUserById(MainViewVM.CurrentTrip.Users_ID);
                     Bob.All bob = await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID);
                     
-                    Party party = await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID);
+
                     Trip.All newTrip = new Trip.All();
 
 
@@ -367,12 +403,13 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("RitTime");
                 RaisePropertyChanged("CanOffer");
                 RaisePropertyChanged("IsEnabledOffer");
-                RaisePropertyChanged("IsEnabledArriver");
+                RaisePropertyChanged("IsEnabledArrived");
                 RaisePropertyChanged("IsEnabledCancel");
                 RaisePropertyChanged("CurrentTrip");
                 RaisePropertyChanged("Parties");
                 RaisePropertyChanged("Users");
                 RaisePropertyChanged("Bobs");
+
 
                 RaisePropertyChanged("Status");
 
@@ -400,12 +437,15 @@ namespace BOBApp.ViewModels
                     VisibleModal = Visibility.Collapsed;
 
                   
-                    await GetCurrentTrip();
+                 
                     await GetParties();
                     await GetUsers();
                     await GetBobs();
 
                     this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
+
+                    await GetCurrentTrip();
+
                     this.Loading = false;
                     RaiseAll();
 
@@ -522,6 +562,8 @@ namespace BOBApp.ViewModels
                     return "Wachten op antwoord van bob";
                 case 7: //niet in db
                     return "Bob is in de buurt";
+                case 8:
+                    return "Bob is bij het feestje";
                 default:
                     return "";
 
@@ -598,8 +640,20 @@ namespace BOBApp.ViewModels
             if (location != null)
             {
                 Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
-                ShowRoute(location, (Location)party.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
+
+                if (ToDestination == true)
+                {
+                    ShowRoute((Location)party.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                }
+                else
+                {
+                    ShowRoute(location, (Location)party.Location);
+                }
+               
                 //checkhowfaraway
+
+
+
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
                 if (farEnough.Success == true)
@@ -786,12 +840,7 @@ namespace BOBApp.ViewModels
             {
                 this.Status = GetStatusName(MainViewVM.CurrentTrip.ID);
 
-                Location location = await LocationService.GetCurrent();
-                Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
-                Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
-
-                VindRitFilterVM.SelectedDestination = destination;
-                ShowRoute(location, (Location)party.Location, (Location)destination.Location);
+                newtrip_bob(MainViewVM.CurrentTrip);
 
 
                 this.IsEnabledOffer = false;
@@ -842,7 +891,7 @@ namespace BOBApp.ViewModels
 
 
         }
-        private async void ShowRoute(Location from, Location to, Location end=null)
+        private async void ShowRoute(Location from, Location to)
         {
             try
             {
@@ -885,25 +934,7 @@ namespace BOBApp.ViewModels
                     }
 
                    
-                    if (end != null)
-                    {
-                        BasicGeoposition tempEnd = new BasicGeoposition();
-                        tempEnd.Longitude = end.Longitude;
-                        tempEnd.Latitude = end.Latitude;
-                        Geopoint endpunt = new Geopoint(tempTo);
-                        MapRouteFinderResult routeResult2 = await MapRouteFinder.GetDrivingRouteAsync(eindpunt, endpunt);
-                        if (routeResult2.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
-                        {
-                            MapRouteView viewOfRoute = new MapRouteView(routeResult2.Route);
-                            viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
-
-                            this.Map.Routes.Add(viewOfRoute);
-
-                            //Fit de mapcontrol op de route
-                            await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
-                        }
-
-                    }
+                   
 
                 }
             }

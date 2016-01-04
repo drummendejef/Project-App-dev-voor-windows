@@ -28,8 +28,8 @@
                             <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
                         </RelativePanel>
 
-                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-45,-120,0,0">
-                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="90" CornerRadius="5">
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-45,-80,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="50" CornerRadius="5">
                                 <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
                                 
                             </RelativePanel>
@@ -119,8 +119,11 @@
                                 </RelativePanel>
 
 
+                                
+                                    
+                                </RelativePanel>
                                 <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="more" Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="3" />
-                                <Button RelativePanel.AlignLeftWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
+                                <Button Visibility="{Binding VisibleRoute, Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
                                 <Button RelativePanel.AlignRightWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemClickButton" Command="{Binding TakeCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="Neem dit feestje"/>
 
                             </RelativePanel>
