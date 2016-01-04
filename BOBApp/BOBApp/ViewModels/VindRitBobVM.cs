@@ -1046,13 +1046,21 @@ namespace BOBApp.ViewModels
                 }
 
 
-                var newControl = new MapItemsControl();
-                VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
 
-                newControl.ItemsSource = Parties;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["PartiesMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = Parties;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["PartiesMapTemplate"] as DataTemplate;
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                   
+                }
 
 
                 RaiseAll();
@@ -1131,13 +1139,21 @@ namespace BOBApp.ViewModels
 
                 }
 
-                var newControl = new MapItemsControl();
-                VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
 
-                newControl.ItemsSource = this.Bobs;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["BobsMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = this.Bobs;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["BobsMapTemplate"] as DataTemplate;
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                   
+                }
 
 
                 RaiseAll();
