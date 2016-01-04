@@ -16,6 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
             <converters:StringToUpperConverter x:Key="ToUpperConverter"/>
             <converters:DateTimeConverter x:Key="DateTimeConverter"/>
+            <converters:OnlineConverter x:Key="OnlineConverter"/>
         </ResourceDictionary>
 
     </Page.Resources>
@@ -39,7 +40,7 @@
                     <DataTemplate>
                         <RelativePanel Padding="15" Margin="0,0,0,15" HorizontalAlignment="Stretch" Background="#f7f7f7">
                             <TextBlock x:Name="title" HorizontalAlignment="left" FontSize="20" FontWeight="Light" Text="{Binding User, Mode=TwoWay, Converter={StaticResource ToUpperConverter}}" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
-                            <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding User.Online, Mode=TwoWay}" />
+                            <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding User.Online, Mode=TwoWay, Converter={StaticResource OnlineConverter}}" />
 
                         </RelativePanel>
                     </DataTemplate>

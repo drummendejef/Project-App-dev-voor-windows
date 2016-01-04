@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Data;
 
 namespace BOBApp.Converters
 {
-    public class MailToConverter : IValueConverter
+    public class OnlineConverter : IValueConverter
     {
         //De hyperlinks die een emailadres bevatten.
         //Als je wil dat die een mail stuurt, zet je daar mailto: voor.
@@ -17,12 +17,20 @@ namespace BOBApp.Converters
         {
             try
             {
-                return new Uri("mailto:" + value.ToString());
+                var online = (bool)value;
+                if (online == true)
+                {
+                    return "ONLINE";
+                }
+                else
+                {
+                    return "OFFLINE";
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 return value;
+                
             }
         }
 

@@ -100,6 +100,7 @@
     <Content Include="Assets\car.png" />
     <Content Include="Assets\close.png" />
     <Content Include="Assets\feestpin.png" />
+    <Content Include="Assets\filter.png" />
     <Content Include="Assets\home.png" />
     <Content Include="Assets\road.png" />
     <Content Include="Assets\userpin.png" />
@@ -120,8 +121,10 @@
     </Compile>
     <Compile Include="BaseViewModelLocator.cs" />
     <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\OnlineConverter.cs" />
     <Compile Include="Converters\MailToConverter.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
+    <Compile Include="DataTemplateSelectors\MapTemplateSelector.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

@@ -20,23 +20,125 @@
             <vm:VindRitFilterVM x:Key="filter"/>
             <converters:MailToConverter x:Key="MailToConverter"/>
             <converters:StringToUpperConverter x:Key="StringToUpperConverter"/>
-            <DataTemplate x:Key="DTemplateBobsMap">
+            <DataTemplate x:Key="DestinationsMapTemplate">
+
                 <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
-                    <RelativePanel Margin="-60,-150,0,0">
-                        <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="100" CornerRadius="5">
-                            <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
-                            <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="naam" Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
+                    <RelativePanel>
+                        <RelativePanel Margin="0,0,0,0">
+                            <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
                         </RelativePanel>
-                        
-                        <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
-                            <Polygon.RenderTransform>
-                                <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
-                            </Polygon.RenderTransform>
-                        </Polygon>
-                        
+
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-65,-180,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="150" CornerRadius="5">
+                                <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+                                
+                            </RelativePanel>
+
+                            <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                                <Polygon.RenderTransform>
+                                    <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
+                        </RelativePanel>
                     </RelativePanel>
+
+
+                </ContentControl>
+            </DataTemplate>
+            <DataTemplate x:Key="UsersMapTemplate">
+
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
+                    <RelativePanel>
+                        <RelativePanel Margin="0,0,0,0">
+                            <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
+                        </RelativePanel>
+
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-65,-180,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="150" CornerRadius="5">
+                                <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+                                <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="naam" Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
+                                <Button RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
+
+                            </RelativePanel>
+
+                            <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                                <Polygon.RenderTransform>
+                                    <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
+                        </RelativePanel>
+                    </RelativePanel>
+                  
+
+                </ContentControl>
+            </DataTemplate>
+            <DataTemplate x:Key="BobsMapTemplate">
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
+                    <RelativePanel>
+                        <RelativePanel Margin="0,0,0,0">
+                            <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
+                        </RelativePanel>
+
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-65,-180,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="150" CornerRadius="5">
+                                <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+                                <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="naam" Content="Stuur een mail" NavigateUri="{Binding User.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
+                                <Button RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
+
+                            </RelativePanel>
+
+                            <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                                <Polygon.RenderTransform>
+                                    <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
+                        </RelativePanel>
+                    </RelativePanel>
+                  
                     
                 </ContentControl>
+            </DataTemplate>
+            <DataTemplate x:Key="PartiesMapTemplate">
+                <ContentControl  x:Name="data" Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
+                    <RelativePanel>
+                        <RelativePanel Margin="0,0,0,0">
+                            <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
+                        </RelativePanel>
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-70,-200,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="180" Height="170" CornerRadius="5">
+                                <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+
+                                <RelativePanel x:Name="more" RelativePanel.Below="naam" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                                    <TextBlock FontSize="12" x:Name="org" Text="Organisator:" Margin="3"/>
+                                    <TextBlock FontSize="12" x:Name="orgtext" RelativePanel.RightOf="org" Text="{Binding Organisator, Mode=TwoWay}" Margin="3"/>
+                                    <TextBlock FontSize="12" x:Name="aan" RelativePanel.Below="org"  Text="Aanwezig: " Margin="3"/>
+                                    <TextBlock FontSize="12" x:Name="aantext" RelativePanel.Below="org" RelativePanel.RightOf="aan" Text="{Binding Amount, Mode=TwoWay}" Margin="3"/>
+                                </RelativePanel>
+
+
+                                <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="more" Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="3" />
+                                <Button RelativePanel.AlignLeftWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
+                                <Button RelativePanel.AlignRightWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemClickButton" Command="{Binding TakeCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="Neem dit feestje"/>
+
+                            </RelativePanel>
+
+
+
+                            <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                                <Polygon.RenderTransform>
+                                    <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
+                        </RelativePanel>
+                    </RelativePanel>
+                  
+
+                </ContentControl>
+
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
@@ -70,7 +172,7 @@
             <TextBlock Style="{ThemeResource h1}" Visibility="{Binding VisibleSelectedParty, Mode=TwoWay}" RelativePanel.Below="lblStatus" x:Name="lblFeest" Margin="0,0,0,10" RelativePanel.AlignHorizontalCenterWithPanel="True"  Text="{Binding GetSelectedParty.Name, Mode=TwoWay, Converter={StaticResource StringToUpperConverter}}"/>
 
 
-            <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="FILTER" Command="{Binding ShowModalCommand}"   />
+            <Button Margin="100,0,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button:filter}"  Visibility="{Binding VisibleFind, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Command="{Binding ShowModalCommand}"   />
             <Button Margin="100,0,0,0" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True"  Visibility="{Binding VisibleChat,Mode=TwoWay}" Padding="10,0,10,0" Width="auto" Content="Chat" Height="35" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
 
 
@@ -87,7 +189,7 @@
 
 
                 <RelativePanel Visibility="{Binding VisibleSelectedBob, Mode=TwoWay}"  RelativePanel.Below="lblRating" >
-                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text="Geschactte toekomsttijd"/>
+                    <TextBlock x:Name="lblTime" Margin="0,0,0,8" Text=""/>
                     <TextBlock x:Name="lblTime4" RelativePanel.RightOf="lblTime" Margin="10,0,0,8" Text="{Binding GetSelectedDestination.Name, Mode=TwoWay}"/>
                     <TextBlock x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,8"  Text="{Binding GetSelectedBob.User, Mode=TwoWay}"/>
                     <TextBlock x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,8"  Text="{Binding RitTime, Mode=TwoWay}"/>
@@ -99,7 +201,7 @@
 
 
         <Maps:MapControl Loaded="{x:Bind Vm.MapLoaded}" x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10">
-            <Maps:MapItemsControl ItemTemplate="{StaticResource DTemplateBobsMap}" />
+            <Maps:MapItemsControl />
         </Maps:MapControl>
 
         <Button Style="{ThemeResource button}" Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />

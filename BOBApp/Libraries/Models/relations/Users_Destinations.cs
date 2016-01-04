@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 using Windows.UI.Xaml;
 
 namespace Libraries.Models.relations
@@ -25,12 +26,14 @@ namespace Libraries.Models.relations
         public RelayCommand<object> SetDefault { get; set; }
         public Visibility VisibleDefault { get; set; }
 
-        private object _Location;
 
+
+        private object _Location;
         public object Location
         {
             get { return _Location; }
-            set {
+            set
+            {
 
                 try
                 {
@@ -41,12 +44,43 @@ namespace Libraries.Models.relations
                 {
                     _Location = value;
                 }
-              
+
 
 
             }
 
         }
+        private Geopoint geolocation;
+
+        public Geopoint GeoLocation
+        {
+            get
+            {
+                try
+                {
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+                    tempbasic.Latitude = ((Location)this.Location).Latitude;
+                    tempbasic.Longitude = ((Location)this.Location).Longitude;
+                    geolocation = new Geopoint(tempbasic);
+                    return geolocation;
+                }
+                catch (Exception)
+                {
+
+                    return null;
+                }
+
+            }
+            set { geolocation = value; }
+        }
+
+        public RelayCommand<object> RouteCommand { get; set; }
+        public RelayCommand<object> TakeCommand { get; set; }
+        public string RouteCommandText { get; set; }
+
+        //for map
+        public RelayCommand<object> ShowCommand { get; set; }
+        public Visibility VisibleShow { get; set; }
 
 
     }

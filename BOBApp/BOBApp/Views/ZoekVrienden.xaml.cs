@@ -43,8 +43,9 @@ namespace BOBApp.Views
            
         }
 
+        private void textBoxZoekLocaties_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
 
-
-      
+        }
     }
 }

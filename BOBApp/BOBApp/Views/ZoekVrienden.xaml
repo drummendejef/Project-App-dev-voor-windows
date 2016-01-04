@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:converters="using:BOBApp.Converters"
     x:Class="BOBApp.Views.ZoekVrienden"
     mc:Ignorable="d"
     DataContext="{Binding ZoekVriendenVM, Mode=TwoWay, Source={StaticResource Locator}}">
@@ -14,6 +15,35 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:MailToConverter x:Key="MailToConverter"/>
+            <converters:StringToUpperConverter x:Key="StringToUpperConverter"/>
+            <DataTemplate x:Key="FriendsMapTemplate">
+
+                <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
+                    <RelativePanel>
+                        <RelativePanel Margin="0,0,0,0">
+                            <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
+                        </RelativePanel>
+
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-65,-180,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="150" CornerRadius="5">
+                                <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding User2, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+                                <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="naam" Content="Stuur een mail" NavigateUri="{Binding User1.Email, Converter={StaticResource MailToConverter}}" Margin="8" />
+                                
+                            </RelativePanel>
+
+                            <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                                <Polygon.RenderTransform>
+                                    <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
+                        </RelativePanel>
+                    </RelativePanel>
+
+
+                </ContentControl>
+            </DataTemplate>
         </ResourceDictionary>
 
     </Page.Resources>
@@ -31,7 +61,7 @@
 
         <TextBlock RelativePanel.Below="btnAdd" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
         <Maps:MapControl Loaded="{x:Bind Vm.MapLoaded}" x:Name="MapZoekVriend" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.Below="search" >
-   
+            <Maps:MapItemsControl/>
         </Maps:MapControl>
         
         

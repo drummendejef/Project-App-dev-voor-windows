@@ -1,9 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.UI.Xaml;
 
 namespace Libraries.Models
 {
@@ -62,6 +65,38 @@ namespace Libraries.Models
                 }
 
             }
+            private Geopoint geolocation;
+
+            public Geopoint GeoLocation
+            {
+                get
+                {
+                    try
+                    {
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        tempbasic.Latitude = ((Location)this.Location).Latitude;
+                        tempbasic.Longitude = ((Location)this.Location).Longitude;
+                        geolocation = new Geopoint(tempbasic);
+                        return geolocation;
+                    }
+                    catch (Exception)
+                    {
+
+                        return null;
+                    }
+
+                }
+                set { geolocation = value; }
+            }
+
+            public RelayCommand<object> RouteCommand { get; set; }
+            public RelayCommand<object> TakeCommand { get; set; }
+            public string RouteCommandText { get; set; }
+
+            //for map
+            public RelayCommand<object> ShowCommand { get; set; }
+            public Visibility VisibleShow { get; set; }
+
         }
 
         public class PutUser

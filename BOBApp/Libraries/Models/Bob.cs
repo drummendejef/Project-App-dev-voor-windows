@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Windows.UI.Xaml;
 
 namespace Libraries.Models
 {
@@ -55,10 +57,9 @@ namespace Libraries.Models
                 {
                     try
                     {
-                        string[] splittedcoord = Location.Split(',', ':', '}');
                         BasicGeoposition tempbasic = new BasicGeoposition();
-                        tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
-                        tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
+                        tempbasic.Latitude = ((Location)this.Location).Latitude;
+                        tempbasic.Longitude = ((Location)this.Location).Longitude;
                         geolocation = new Geopoint(tempbasic);
                         return geolocation;
                     }
@@ -67,9 +68,18 @@ namespace Libraries.Models
 
                         return null;
                     }
+
                 }
                 set { geolocation = value; }
             }
+
+            public RelayCommand<object> RouteCommand { get; set; }
+            public RelayCommand<object> TakeCommand { get; set; }
+            public string RouteCommandText { get; set; }
+
+            //for map
+            public RelayCommand<object> ShowCommand { get; set; }
+            public Visibility VisibleShow { get; set; }
 
         }
 

@@ -12,6 +12,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
+using Windows.Devices.Geolocation;
+using Windows.Services.Maps;
+using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -53,7 +56,9 @@ namespace BOBApp.ViewModels
                     if (friends_all != null)
                     {
                         this.Friends = friends_all;
-                        RaisePropertyChanged("Friends");
+                        ClearAllMapItems();
+                        
+                        RaiseAll();
                     }
                 }
             }
@@ -199,6 +204,8 @@ namespace BOBApp.ViewModels
                 return;
             }
 
+            ClearAllMapItems();
+
             string item = this.SearchItem.ToString().Trim().ToLower();
 
             var newItems = friends_all.Where(r => r.User2.ToString().Trim().ToLower() == item).ToList();
@@ -213,8 +220,12 @@ namespace BOBApp.ViewModels
 
             }
 
-
-
+            foreach (var friend in newItems)
+            {
+                friend.VisibleShow = Visibility.Visible;
+               
+            }
+           
 
 
             if (newItems != null && newItems.Count > 0)
@@ -227,6 +238,7 @@ namespace BOBApp.ViewModels
                 this.Error = "Geen vrienden gevonden";
             }
 
+            UpdateMapOfType(typeof(List<Friend.All>));
             RaiseAll();
         }
 
@@ -240,25 +252,7 @@ namespace BOBApp.ViewModels
         }
 
 
-        List<Friend.All> friends_all = new List<Friend.All>();
-        private async Task GetFriends()
-        {
-            this.Loading = true;
-            RaisePropertyChanged("Loading");
-
-            friends_all = await FriendsRepository.GetFriends();
-
-            var count = friends_all.Count;
-            if (friends_all.Count >= 10)
-            {
-                count = 10;
-            }
-
-
-            this.Friends = friends_all;
-            this.Loading = false;
-            RaiseAll();
-        }
+       
 
 
         #region add friend
@@ -392,7 +386,274 @@ namespace BOBApp.ViewModels
         #endregion
 
 
+        #region maps
 
+        List<Friend.All> friends_all = new List<Friend.All>();
+        private async Task GetFriends()
+        {
+            this.Loading = true;
+            RaisePropertyChanged("Loading");
+
+            friends_all = await FriendsRepository.GetFriends();
+
+            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
+            if (this.friends_all != null)
+            {
+                for (int i = 0; i < friends_all.Count(); i++)
+                {
+                    try
+                    {
+                        Friend.All item = friends_all[i];
+                        if (item.Location == null)
+                        {
+                            break;
+                        }
+
+                        item.VisibleShow = Visibility.Collapsed;
+                        item.ShowCommand = new RelayCommand<object>(e => ShowFriend(e));
+                        item.RouteCommand = new RelayCommand<object>(e => mapItem_Friend(e));
+                        item.RouteCommandText = "Toon route";
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.UserPin;
+                        mapIconFeestLocation.Title = item.User1.ToString();
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+
+                }
+
+                var newControl = new MapItemsControl();
+                ZoekVrienden vindrit = MainViewVM.MainFrame.Content as ZoekVrienden;
+
+                newControl.ItemsSource = friends_all;
+                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["FriendsMapTemplate"] as DataTemplate;
+
+
+
+                AddOrUpdateChild(newControl);
+
+
+
+
+                this.Friends = friends_all.Take(10).ToList();
+                this.Loading = false;
+                RaiseAll();
+
+
+            }
+
+
+        }
+
+        private void AddOrUpdateChild(MapItemsControl newControl)
+        {
+            bool done = false;
+            foreach (var itemChild in this.Map.Children)
+            {
+                var control = itemChild as MapItemsControl;
+                if (control.ItemsSource != null)
+                {
+                    if (control.ItemsSource.GetType() == newControl.ItemsSource.GetType())
+                    {
+                        if (newControl.ItemsSource.GetType() == typeof(List<Friend.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Friends;
+                            done = true;
+                        }
+
+                       
+
+                    }
+
+                }
+
+            }
+
+            if (done == false)
+            {
+                this.Map.Children.Add(newControl);
+            }
+
+        }
+
+        private void ShowFriend(object obj)
+        {
+            var item = obj as Friend.All;
+            if (item.VisibleShow == Visibility.Collapsed)
+            {
+                item.VisibleShow = Visibility.Visible;
+
+            }
+            else
+            {
+                item.VisibleShow = Visibility.Collapsed;
+
+            }
+            UpdateMapOfType(typeof(List<Friend.All>));
+
+            RaiseAll();
+
+        }
+        private void ClearAllMapItems()
+        {
+            try
+            {
+                foreach (var item in this.Friends)
+                {
+                    item.VisibleShow = Visibility.Collapsed;
+                }
+               
+                RaiseAll();
+
+                foreach (var itemChild in this.Map.Children)
+                {
+                    var control = itemChild as MapItemsControl;
+                    if (control.ItemsSource != null)
+                    {
+                        if (control.ItemsSource.GetType() == typeof(List<Friend.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Friends;
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+        private void UpdateMapOfType(Type type)
+        {
+            foreach (var itemChild in this.Map.Children)
+            {
+                var control = itemChild as MapItemsControl;
+                if (control.ItemsSource != null)
+                {
+                    if (control.ItemsSource.GetType() == type)
+                    {
+                        if (type == typeof(List<Friend.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Friends;
+                        }
+
+                      
+
+                    }
+                }
+
+            }
+        }
+
+      
+
+        public async void mapItem_Friend(object param)
+        {
+            if ((App.Current as App).UserLocation != null)
+            {
+
+                //Locatie uit gekozen feestje halen.
+                User.All item = param as User.All;
+
+                //Tijdelijke locatie aanmaken
+                try
+                {
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    Location location = (Location)item.Location;
+
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = location.Latitude;
+                    tempbasic.Longitude = location.Longitude;
+
+                    //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
+                    //We gaan deze zelf aanmaken.
+                    /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                    startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
+                    startstring += "&waypoint.2=";//Start van het eindpunt
+                    startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
+                    startstring += URL.URLBINGKEY + URL.BINGKEY;*/
+
+                    Geopoint startpunt;
+                    //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                    if (VindRitFilterVM.SelectedDestination != null)
+                    {
+                        BasicGeoposition tempDest = new BasicGeoposition();
+                        tempDest.Latitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Latitude;
+                        tempDest.Longitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Longitude;
+                        startpunt = new Geopoint(tempDest);
+                    }
+                    else
+                    {
+                        startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    }
+                    Geopoint eindpunt = new Geopoint(tempbasic);
+                    //De route tussen 2 punten opvragen
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+                    if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                    {
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                        viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                        if (item.RouteCommandText == "Toon route")
+                        {
+                            this.Map.Routes.Clear();
+                        }
+
+                        var items = this.Map.Routes;
+                        if (items.Count() > 0)
+                        {
+                            item.RouteCommandText = "Toon route";
+                            this.Map.Routes.Clear();
+                        }
+                        else
+                        {
+                            item.RouteCommandText = "Clear route";
+                            this.Map.Routes.Add(viewOfRoute);
+                        }
+
+                        //MapRouteView toevoegen aan de Route Collectie
+
+
+                        //Fit de mapcontrol op de route
+                        await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+
+            UpdateMapOfType(typeof(List<User.All>));
+        }
+
+       
+
+        #endregion
 
     }
 }

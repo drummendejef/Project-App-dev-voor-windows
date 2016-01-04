@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
+using Windows.UI.Xaml;
 
 namespace Libraries.Models
 {
@@ -63,7 +64,13 @@ namespace Libraries.Models
 
 
 
-        public RelayCommand<object> Click { get; set; }
+        public RelayCommand<object> RouteCommand { get; set; }
+        public RelayCommand<object> TakeCommand { get; set; }
+        public string RouteCommandText { get; set; }
+
+        //for map
+        public RelayCommand<object> ShowCommand { get; set; }
+        public Visibility VisibleShow { get; set; }
 
         private Geopoint geolocation;
 

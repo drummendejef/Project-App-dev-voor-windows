@@ -37,6 +37,8 @@ namespace BOBApp.ViewModels
         RandomAccessStreamReference PartyIcon;
 
         public List<Party> Parties { get; set; }
+        public List<Bob.All> Bobs { get; set; }
+        public List<User.All> Users { get; set; }
 
         //search
         public RelayCommand SearchItemCommand { get; set; }
@@ -53,7 +55,9 @@ namespace BOBApp.ViewModels
                     if (parties_all != null)
                     {
                         this.Parties = parties_all;
-                        RaisePropertyChanged("Parties");
+                        ClearAllMapItems();
+
+                        RaiseAll();
                     }
                 }
             }
@@ -124,58 +128,7 @@ namespace BOBApp.ViewModels
         }
 
         //Methods
-        List<Party> parties_all = new List<Party>();
-       
-        public async Task GetParties()
-        {
-
-            parties_all = await PartyRepository.GetParties();
-
-
-            int aantalfeestjes = parties_all.Count;// na het ophalen van de feestjes, het aantal feestjes tellen (NOG DOEN)
-            for (int i = 0; i < aantalfeestjes; i++)//Alle feestjes overlopen en markers zetten.
-            {
-                //Kan weg gelaten worden door feestjes[i] op een van de onderstaande lijnen te zetten (optimalisatie?) maar dit is misschien duidelijker. Keuzes keuzes
-                Party feest = parties_all[i];
-
-                //Tijdelijke locatie aanmaken
-                try
-                {
-                    BasicGeoposition tempbasic = new BasicGeoposition();
-
-                    //Feestlocatie opsplitsen (word opgeslagen als string)
-
-
-                    //Locaties omzetten en in de tijdelijke posities opslaan.
-                    tempbasic.Latitude = ((Location)feest.Location).Latitude;
-                    tempbasic.Longitude = ((Location)feest.Location).Longitude;
-
-                    //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
-                    Geopoint temppoint = new Geopoint(tempbasic);
-
-                    MapIcon mapIconFeestLocation = new MapIcon();
-                    mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                                                               //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                    mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
-                    this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
-
-
-                    feest.Click = new RelayCommand<object>(e => mapItemButton_Click(e));
-                }
-                catch (Exception ex)
-                {
-
-                    
-                }
-            }
-           
-
-            this.Parties = parties_all;
-
-            RaiseAll();
-
-        }
-
+     
 
         private void Search()
         {
@@ -183,14 +136,20 @@ namespace BOBApp.ViewModels
             {
                 return;
             }
+            ClearAllMapItems();
+
 
             string item = this.SearchItem.ToString().Trim().ToLower();
 
             var newItems = parties_all.Where(r => r.Name.ToString().Trim().ToLower() == item).ToList();
-            
 
 
 
+            foreach (var party in newItems)
+            {
+                party.VisibleShow = Visibility.Visible;
+
+            }
 
 
             if (newItems != null && newItems.Count > 0)
@@ -203,6 +162,7 @@ namespace BOBApp.ViewModels
                 this.Error = "Geen feestjes gevonden";
             }
 
+            UpdateMapOfType(typeof(List<Party>));
             RaiseAll();
         }
 
@@ -237,14 +197,216 @@ namespace BOBApp.ViewModels
 
         }
 
-        public async void mapItemButton_Click(object param)
+
+
+        #endregion
+
+        #region maps
+        List<Party> parties_all = new List<Party>();
+        private async Task GetParties()
+        {
+
+            parties_all = await PartyRepository.GetParties();
+
+            if (parties_all != null)
+            {
+                for (int i = 0; i < parties_all.Count; i++)
+                {
+                    try
+                    {
+                        Party item = parties_all[i];
+                        if (item.Location == null)
+                        {
+                            break;
+                        }
+                        item.VisibleShow = Visibility.Collapsed;
+                        item.ShowCommand = new RelayCommand<object>(e => ShowParty(e));
+                        item.RouteCommand = new RelayCommand<object>(e => mapItem_Party(e));
+                        item.TakeCommand = new RelayCommand<object>(e => TakeParty(e));
+                        item.RouteCommandText = "Toon route";
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        mapIconFeestLocation.Title = item.Name;
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+
+                }
+
+
+                var newControl = new MapItemsControl();
+                FeestjesOverzicht view = MainViewVM.MainFrame.Content as FeestjesOverzicht;
+
+                newControl.ItemsSource =parties_all;
+                newControl.ItemTemplate = (DataTemplate)view.Resources["PartiesMapTemplate"] as DataTemplate;
+
+                AddOrUpdateChild(newControl);
+
+                this.Parties = parties_all.Take(10).ToList();
+                RaiseAll();
+            }
+
+
+
+
+
+        }
+
+        private void ShowParty(object obj)
+        {
+            var item = obj as Party;
+            if (item.VisibleShow == Visibility.Collapsed)
+            {
+                item.VisibleShow = Visibility.Visible;
+
+            }
+            else
+            {
+                item.VisibleShow = Visibility.Collapsed;
+
+            }
+            UpdateMapOfType(typeof(List<Party>));
+
+            RaiseAll();
+
+        }
+        private void TakeParty(object obj)
+        {
+            var item = obj as Party;
+
+            if (MainViewVM.USER.IsBob == false)
+            {
+                VindRitFilterVM.SelectedParty = item.Name;
+                VindRitVM.SelectedParty = item;
+
+                MainViewVM.MainFrame.Navigate(typeof(VindRit), true);
+            }
+
+            RaiseAll();
+
+        }
+
+
+       
+
+   
+
+
+     
+
+        private void AddOrUpdateChild(MapItemsControl newControl)
+        {
+            bool done = false;
+            foreach (var itemChild in this.Map.Children)
+            {
+                var control = itemChild as MapItemsControl;
+                if (control.ItemsSource != null)
+                {
+                    if (control.ItemsSource.GetType() == newControl.ItemsSource.GetType())
+                    {
+                        if (newControl.ItemsSource.GetType() == typeof(List<Party>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Parties;
+                            done = true;
+                        }
+
+                      
+
+                    }
+
+                }
+
+            }
+
+            if (done == false)
+            {
+                this.Map.Children.Add(newControl);
+            }
+
+        }
+
+     
+        private void ClearAllMapItems()
+        {
+            try
+            {
+                foreach (var item in this.Parties)
+                {
+                    item.VisibleShow = Visibility.Collapsed;
+                }
+               
+                RaiseAll();
+
+                foreach (var itemChild in this.Map.Children)
+                {
+                    var control = itemChild as MapItemsControl;
+                    if (control.ItemsSource != null)
+                    {
+                        if (control.ItemsSource.GetType() == typeof(List<Party>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Parties;
+                        }
+
+                       
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+        private void UpdateMapOfType(Type type)
+        {
+            foreach (var itemChild in this.Map.Children)
+            {
+                var control = itemChild as MapItemsControl;
+                if (control.ItemsSource != null)
+                {
+                    if (control.ItemsSource.GetType() == type)
+                    {
+                        if (type == typeof(List<Party>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Parties;
+                        }
+
+                       
+
+                    }
+                }
+
+            }
+        }
+
+        public async void mapItem_Party(object param)
         {
             if ((App.Current as App).UserLocation != null)
             {
-             
-                Party party = param as Party;
-                //Locatie uit gekozen feestje halen.
 
+                //Locatie uit gekozen feestje halen.
+                Party item = param as Party;
 
                 //Tijdelijke locatie aanmaken
                 try
@@ -252,7 +414,7 @@ namespace BOBApp.ViewModels
                     BasicGeoposition tempbasic = new BasicGeoposition();
 
                     //Feestlocatie opsplitsen (word opgeslagen als string)
-                    Location location = (Location)party.Location;
+                    Location location = (Location)item.Location;
 
                     //Locaties omzetten en in de tijdelijke posities opslaan.
                     tempbasic.Latitude = location.Latitude;
@@ -266,8 +428,20 @@ namespace BOBApp.ViewModels
                     startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
                     startstring += URL.URLBINGKEY + URL.BINGKEY;*/
 
+                    Geopoint startpunt;
                     //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
-                    Geopoint startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    if (VindRitFilterVM.SelectedDestination != null)
+                    {
+                        BasicGeoposition tempDest = new BasicGeoposition();
+                        tempDest.Latitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Latitude;
+                        tempDest.Longitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Longitude;
+                        startpunt = new Geopoint(tempDest);
+                    }
+                    else
+                    {
+                        startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    }
+
                     Geopoint eindpunt = new Geopoint(tempbasic);
 
                     //De route tussen 2 punten opvragen
@@ -278,13 +452,20 @@ namespace BOBApp.ViewModels
                         MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
                         viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
 
+                        if (item.RouteCommandText == "Toon route")
+                        {
+                            this.Map.Routes.Clear();
+                        }
+
                         var items = this.Map.Routes;
                         if (items.Count() > 0)
                         {
+                            item.RouteCommandText = "Toon route";
                             this.Map.Routes.Clear();
                         }
                         else
                         {
+                            item.RouteCommandText = "Clear route";
                             this.Map.Routes.Add(viewOfRoute);
                         }
 
@@ -298,10 +479,16 @@ namespace BOBApp.ViewModels
                 catch (Exception ex)
                 {
 
-                    
+
                 }
             }
+
+            UpdateMapOfType(typeof(List<Party>));
         }
+
+       
+
+        
 
         #endregion
 

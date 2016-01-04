@@ -18,36 +18,44 @@
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <converters:StringToUpperConverter x:Key="StringToUpperConverter"/>
-            <DataTemplate x:Key="DTemplateFeestjesMap">
-                <ContentControl x:Name="data" Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
-                    <RelativePanel Margin="-65,-190,0,0">
-                        <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="180" Height="170" CornerRadius="5">
-                            <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
+            <DataTemplate x:Key="PartiesMapTemplate">
+                <ContentControl  x:Name="data" Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
+                    <RelativePanel>
+                        <RelativePanel Margin="0,0,0,0">
+                            <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
+                        </RelativePanel>
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-70,-200,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="180" Height="170" CornerRadius="5">
+                                <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
 
-                            <RelativePanel x:Name="more" RelativePanel.Below="naam" RelativePanel.AlignHorizontalCenterWithPanel="True">
-                                <TextBlock FontSize="12" x:Name="org" Text="Organisator:" Margin="3"/>
-                                <TextBlock FontSize="12" x:Name="orgtext" RelativePanel.RightOf="org" Text="{Binding Organisator, Mode=TwoWay}" Margin="3"/>
-                                <TextBlock FontSize="12" x:Name="aan" RelativePanel.Below="org"  Text="Aanwezig: " Margin="3"/>
-                                <TextBlock FontSize="12" x:Name="aantext" RelativePanel.Below="org" RelativePanel.RightOf="aan" Text="{Binding Amount, Mode=TwoWay}" Margin="3"/>
+                                <RelativePanel x:Name="more" RelativePanel.Below="naam" RelativePanel.AlignHorizontalCenterWithPanel="True">
+                                    <TextBlock FontSize="12" x:Name="org" Text="Organisator:" Margin="3"/>
+                                    <TextBlock FontSize="12" x:Name="orgtext" RelativePanel.RightOf="org" Text="{Binding Organisator, Mode=TwoWay}" Margin="3"/>
+                                    <TextBlock FontSize="12" x:Name="aan" RelativePanel.Below="org"  Text="Aanwezig: " Margin="3"/>
+                                    <TextBlock FontSize="12" x:Name="aantext" RelativePanel.Below="org" RelativePanel.RightOf="aan" Text="{Binding Amount, Mode=TwoWay}" Margin="3"/>
+                                </RelativePanel>
+
+
+                                <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="more" Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="3" />
+                                <Button RelativePanel.AlignLeftWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding RouteCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="{Binding RouteCommandText, Mode=TwoWay}"/>
+                                <Button RelativePanel.AlignRightWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemClickButton" Command="{Binding TakeCommand, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="Neem dit feestje"/>
+
                             </RelativePanel>
 
 
-                            <HyperlinkButton FontSize="12" x:Name="email" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="more" Content="Facebook" NavigateUri="{Binding FacebookLinkID}" Margin="3" />
-                            <Button RelativePanel.AlignHorizontalCenterWithPanel="True" FontSize="12" RelativePanel.Below="email" x:Name="mapItemButton" Command="{Binding Click, Mode=TwoWay}" CommandParameter="{Binding}" Style="{ThemeResource button:light}" Content="Toon route"/>
+
+                            <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
+                                <Polygon.RenderTransform>
+                                    <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
+                                </Polygon.RenderTransform>
+                            </Polygon>
+
                         </RelativePanel>
-                        
-                       
-
-                        <Polygon Margin="20,0,5,0" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="item"  Points="0,0 8,5, 0,10" Stroke="{ThemeResource dark}" Fill="{ThemeResource dark}">
-                            <Polygon.RenderTransform>
-                                <RotateTransform CenterX="0" CenterY="0" Angle="90"/>
-                            </Polygon.RenderTransform>
-                        </Polygon>
-
                     </RelativePanel>
 
+
                 </ContentControl>
-               
+
             </DataTemplate>
         </ResourceDictionary>
 
@@ -66,7 +74,7 @@
         
         <TextBlock RelativePanel.Below="search" Margin="0,20,0,20" HorizontalAlignment="Center" Text="{Binding Error, Mode=TwoWay}" Canvas.ZIndex="99"  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" />
         <Maps:MapControl Loaded="{x:Bind Vm.MapLoaded}" x:Name="MapFeestOverzicht" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="search" RelativePanel.AlignBottomWithPanel="True" Margin="0" >
-            <Maps:MapItemsControl ItemsSource="{Binding Parties, Mode=TwoWay}" ItemTemplate="{StaticResource DTemplateFeestjesMap}" />
+            <Maps:MapItemsControl/>
         </Maps:MapControl>
 
     </RelativePanel>

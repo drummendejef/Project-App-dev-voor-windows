@@ -58,6 +58,7 @@ namespace BOBApp.ViewModels
         public Trip.All CurrentTrip { get; set; }
         public List<Party> Parties { get; set; }
         public List<User.All> Users { get; set; }
+        public List<Bob.All> Bobs { get; set; }
 
         public MapControl Map { get; set; }
 
@@ -368,6 +369,7 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("CurrentTrip");
                 RaisePropertyChanged("Parties");
                 RaisePropertyChanged("Users");
+                RaisePropertyChanged("Bobs");
 
                 RaisePropertyChanged("Status");
 
@@ -398,6 +400,7 @@ namespace BOBApp.ViewModels
                     await GetCurrentTrip();
                     await GetParties();
                     await GetUsers();
+                    await GetBobs();
 
                     this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
                     this.Loading = false;
@@ -790,107 +793,10 @@ namespace BOBApp.ViewModels
 
         }
 
-        private async Task GetParties()
-        {
-
-            this.Parties = await PartyRepository.GetParties();
-
-            if (this.Parties != null)
-            {
-                for (int i = 0; i < this.Parties.Count(); i++)
-                {
-                    try
-                    {
-                        Party item = this.Parties[i];
-                        if (item.Location == null)
-                        {
-                            return;
-                        }
-
-                        BasicGeoposition tempbasic = new BasicGeoposition();
+     
 
 
-
-                        //Locaties omzetten en in de tijdelijke posities opslaan.
-                        tempbasic.Latitude = ((Location)item.Location).Latitude;
-                        tempbasic.Longitude = ((Location)item.Location).Longitude;
-
-                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
-                        Geopoint temppoint = new Geopoint(tempbasic);
-
-                        MapIcon mapIconFeestLocation = new MapIcon();
-                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
-                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
-                    }
-                    catch (Exception ex)
-                    {
-
-                       
-                    }
-
-                }
-
-                RaiseAll();
-            }
-
-
-
-
-
-        }
-
-
-        private async Task GetUsers()
-        {
-            this.Users = await UsersRepository.GetUsersOnline();
-
-            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
-            if (this.Users != null)
-            {
-                for (int i = 0; i < this.Users.Count(); i++)
-                {
-                    try
-                    {
-                        User.All item = this.Users[i];
-                        if (item.Location == null)
-                        {
-                            return;
-                        }
-
-                        BasicGeoposition tempbasic = new BasicGeoposition();
-
-
-
-                        //Locaties omzetten en in de tijdelijke posities opslaan.
-                        tempbasic.Latitude = ((Location)item.Location).Latitude;
-                        tempbasic.Longitude = ((Location)item.Location).Longitude;
-
-                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
-                        Geopoint temppoint = new Geopoint(tempbasic);
-
-                        MapIcon mapIconFeestLocation = new MapIcon();
-                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                        mapIconFeestLocation.Image = MainViewVM.Pins.BobPin;
-                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
-                    }
-                    catch (Exception ex)
-                    {
-
-                      
-                    }
-
-                }
-
-
-
-                RaiseAll();
-            }
-
-
-        }
+       
 
         private async void CancelTrip()
         {
@@ -928,6 +834,8 @@ namespace BOBApp.ViewModels
             {
                 if ((App.Current as App).UserLocation != null)
                 {
+                    ClearAllMapItems();
+
                     this.Map.Routes.Clear();
 
 
@@ -982,13 +890,646 @@ namespace BOBApp.ViewModels
                 mapIconUserLocation.Location = this.Map.Center;
                 mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
                 mapIconUserLocation.Title = "Ik";//Titel die boven de marker komt.
-                mapIconUserLocation.Image = MainViewVM.Pins.UserPin;
+                mapIconUserLocation.Image = MainViewVM.Pins.BobPin;
                 this.Map.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
             }
 
 
 
         }
+
+        #region maps
+        private async Task GetParties()
+        {
+
+            this.Parties = await PartyRepository.GetParties();
+
+            if (this.Parties != null)
+            {
+                for (int i = 0; i < this.Parties.Count(); i++)
+                {
+                    try
+                    {
+                        Party item = this.Parties[i];
+                        if (item.Location == null)
+                        {
+                            break;
+                        }
+                        item.VisibleShow = Visibility.Collapsed;
+                        item.ShowCommand = new RelayCommand<object>(e => ShowParty(e));
+                        item.RouteCommand = new RelayCommand<object>(e => mapItem_Party(e));
+                       
+                        item.RouteCommandText = "Toon route";
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        mapIconFeestLocation.Title = item.Name;
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+
+                }
+
+
+                var newControl = new MapItemsControl();
+                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+
+                newControl.ItemsSource = Parties;
+                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["PartiesMapTemplate"] as DataTemplate;
+
+                AddOrUpdateChild(newControl);
+
+
+                RaiseAll();
+            }
+
+
+
+
+
+        }
+
+        private void ShowParty(object obj)
+        {
+            var item = obj as Party;
+            if (item.VisibleShow == Visibility.Collapsed)
+            {
+                item.VisibleShow = Visibility.Visible;
+
+            }
+            else
+            {
+                item.VisibleShow = Visibility.Collapsed;
+
+            }
+            UpdateMapOfType(typeof(List<Party>));
+
+            RaiseAll();
+
+        }
+      
+
+
+        private async Task GetBobs()
+        {
+            this.Bobs = await BobsRepository.GetBobsOnline();
+
+            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
+            if (this.Bobs != null)
+            {
+                for (int i = 0; i < this.Bobs.Count(); i++)
+                {
+                    try
+                    {
+                        Bob.All item = this.Bobs[i];
+                        if (item.Location == null)
+                        {
+                            break;
+                        }
+
+                        item.VisibleShow = Visibility.Collapsed;
+                        item.ShowCommand = new RelayCommand<object>(e => ShowBob(e));
+                        item.RouteCommand = new RelayCommand<object>(e => mapItem_Bob(e));
+
+                        item.RouteCommandText = "Toon route";
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        mapIconFeestLocation.Title = item.User.ToString();
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+
+                }
+
+                var newControl = new MapItemsControl();
+                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+
+                newControl.ItemsSource = this.Bobs;
+                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["BobsMapTemplate"] as DataTemplate;
+
+                AddOrUpdateChild(newControl);
+
+
+                RaiseAll();
+            }
+
+
+        }
+
+        private void ShowBob(object obj)
+        {
+            var item = obj as Bob.All;
+            if (item.VisibleShow == Visibility.Collapsed)
+            {
+                item.VisibleShow = Visibility.Visible;
+
+            }
+            else
+            {
+                item.VisibleShow = Visibility.Collapsed;
+
+            }
+            UpdateMapOfType(typeof(List<Bob.All>));
+
+            RaiseAll();
+
+        }
+
+
+        private async Task GetUsers()
+        {
+            this.Users = await UsersRepository.GetUsersOnline();
+
+            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
+            if (this.Users != null)
+            {
+                for (int i = 0; i < this.Users.Count(); i++)
+                {
+                    try
+                    {
+                        User.All item = this.Users[i];
+                        if (item.Location == null)
+                        {
+                            break;
+                        }
+
+                        item.VisibleShow = Visibility.Collapsed;
+                        item.ShowCommand = new RelayCommand<object>(e => ShowUser(e));
+                        item.RouteCommand = new RelayCommand<object>(e => mapItem_User(e));
+                        item.RouteCommandText = "Toon route";
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        mapIconFeestLocation.Title = item.User.ToString();
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+
+                }
+
+                var newControl = new MapItemsControl();
+                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+
+                newControl.ItemsSource = this.Users;
+                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["UsersMapTemplate"] as DataTemplate;
+
+
+
+                AddOrUpdateChild(newControl);
+
+
+
+
+                RaiseAll();
+
+
+            }
+
+
+        }
+
+        private void AddOrUpdateChild(MapItemsControl newControl)
+        {
+            bool done = false;
+            foreach (var itemChild in this.Map.Children)
+            {
+                var control = itemChild as MapItemsControl;
+                if (control.ItemsSource != null)
+                {
+                    if (control.ItemsSource.GetType() == newControl.ItemsSource.GetType())
+                    {
+                        if (newControl.ItemsSource.GetType() == typeof(List<Party>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Parties;
+                            done = true;
+                        }
+
+                        if (newControl.ItemsSource.GetType() == typeof(List<User.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Users;
+                            done = true;
+                        }
+                        if (newControl.ItemsSource.GetType() == typeof(List<Bob.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Bobs;
+                            done = true;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            if (done == false)
+            {
+                this.Map.Children.Add(newControl);
+            }
+
+        }
+
+        private void ShowUser(object obj)
+        {
+            var item = obj as User.All;
+            if (item.VisibleShow == Visibility.Collapsed)
+            {
+                item.VisibleShow = Visibility.Visible;
+
+            }
+            else
+            {
+                item.VisibleShow = Visibility.Collapsed;
+
+            }
+            UpdateMapOfType(typeof(List<User.All>));
+
+            RaiseAll();
+
+        }
+        private void ClearAllMapItems()
+        {
+            try
+            {
+                foreach (var item in this.Parties)
+                {
+                    item.VisibleShow = Visibility.Collapsed;
+                }
+                foreach (var item in this.Users)
+                {
+                    item.VisibleShow = Visibility.Collapsed;
+                }
+                foreach (var item in this.Bobs)
+                {
+                    item.VisibleShow = Visibility.Collapsed;
+                }
+                RaiseAll();
+
+                foreach (var itemChild in this.Map.Children)
+                {
+                    var control = itemChild as MapItemsControl;
+                    if (control.ItemsSource != null)
+                    {
+                        if (control.ItemsSource.GetType() == typeof(List<Party>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Parties;
+                        }
+
+                        if (control.ItemsSource.GetType() == typeof(List<User.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Users;
+                        }
+                        if (control.ItemsSource.GetType() == typeof(List<Bob.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Bobs;
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+        }
+        private void UpdateMapOfType(Type type)
+        {
+            foreach (var itemChild in this.Map.Children)
+            {
+                var control = itemChild as MapItemsControl;
+                if (control.ItemsSource != null)
+                {
+                    if (control.ItemsSource.GetType() == type)
+                    {
+                        if (type == typeof(List<Party>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Parties;
+                        }
+
+                        if (type == typeof(List<User.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Users;
+                        }
+                        if (type == typeof(List<Bob.All>))
+                        {
+                            control.ItemsSource = null;
+                            control.ItemsSource = this.Bobs;
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+        public async void mapItem_Party(object param)
+        {
+            if ((App.Current as App).UserLocation != null)
+            {
+
+                //Locatie uit gekozen feestje halen.
+                Party item = param as Party;
+
+                //Tijdelijke locatie aanmaken
+                try
+                {
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    Location location = (Location)item.Location;
+
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = location.Latitude;
+                    tempbasic.Longitude = location.Longitude;
+
+                    //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
+                    //We gaan deze zelf aanmaken.
+                    /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                    startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
+                    startstring += "&waypoint.2=";//Start van het eindpunt
+                    startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
+                    startstring += URL.URLBINGKEY + URL.BINGKEY;*/
+
+                    Geopoint startpunt;
+                    //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                    if (VindRitFilterVM.SelectedDestination != null)
+                    {
+                        BasicGeoposition tempDest = new BasicGeoposition();
+                        tempDest.Latitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Latitude;
+                        tempDest.Longitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Longitude;
+                        startpunt = new Geopoint(tempDest);
+                    }
+                    else
+                    {
+                        startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    }
+
+                    Geopoint eindpunt = new Geopoint(tempbasic);
+
+                    //De route tussen 2 punten opvragen
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+                    if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                    {
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                        viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                        if (item.RouteCommandText == "Toon route")
+                        {
+                            this.Map.Routes.Clear();
+                        }
+
+                        var items = this.Map.Routes;
+                        if (items.Count() > 0)
+                        {
+                            item.RouteCommandText = "Toon route";
+                            this.Map.Routes.Clear();
+                        }
+                        else
+                        {
+                            item.RouteCommandText = "Clear route";
+                            this.Map.Routes.Add(viewOfRoute);
+                        }
+
+                        //MapRouteView toevoegen aan de Route Collectie
+
+
+                        //Fit de mapcontrol op de route
+                        await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+
+            UpdateMapOfType(typeof(List<Party>));
+        }
+
+        public async void mapItem_User(object param)
+        {
+            if ((App.Current as App).UserLocation != null)
+            {
+
+                //Locatie uit gekozen feestje halen.
+                User.All item = param as User.All;
+
+                //Tijdelijke locatie aanmaken
+                try
+                {
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    Location location = (Location)item.Location;
+
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = location.Latitude;
+                    tempbasic.Longitude = location.Longitude;
+
+                    //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
+                    //We gaan deze zelf aanmaken.
+                    /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                    startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
+                    startstring += "&waypoint.2=";//Start van het eindpunt
+                    startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
+                    startstring += URL.URLBINGKEY + URL.BINGKEY;*/
+
+                    Geopoint startpunt;
+                    //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                    if (VindRitFilterVM.SelectedDestination != null)
+                    {
+                        BasicGeoposition tempDest = new BasicGeoposition();
+                        tempDest.Latitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Latitude;
+                        tempDest.Longitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Longitude;
+                        startpunt = new Geopoint(tempDest);
+                    }
+                    else
+                    {
+                        startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    }
+                    Geopoint eindpunt = new Geopoint(tempbasic);
+                    //De route tussen 2 punten opvragen
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+                    if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                    {
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                        viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                        if (item.RouteCommandText == "Toon route")
+                        {
+                            this.Map.Routes.Clear();
+                        }
+
+                        var items = this.Map.Routes;
+                        if (items.Count() > 0)
+                        {
+                            item.RouteCommandText = "Toon route";
+                            this.Map.Routes.Clear();
+                        }
+                        else
+                        {
+                            item.RouteCommandText = "Clear route";
+                            this.Map.Routes.Add(viewOfRoute);
+                        }
+
+                        //MapRouteView toevoegen aan de Route Collectie
+
+
+                        //Fit de mapcontrol op de route
+                        await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+
+            UpdateMapOfType(typeof(List<User.All>));
+        }
+
+        public async void mapItem_Bob(object param)
+        {
+            if ((App.Current as App).UserLocation != null)
+            {
+
+                //Locatie uit gekozen feestje halen.
+                Bob.All item = param as Bob.All;
+
+                //Tijdelijke locatie aanmaken
+                try
+                {
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    Location location = (Location)item.Location;
+
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = location.Latitude;
+                    tempbasic.Longitude = location.Longitude;
+
+                    //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
+                    //We gaan deze zelf aanmaken.
+                    /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                    startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
+                    startstring += "&waypoint.2=";//Start van het eindpunt
+                    startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
+                    startstring += URL.URLBINGKEY + URL.BINGKEY;*/
+
+                    Geopoint startpunt;
+                    //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                    if (VindRitFilterVM.SelectedDestination != null)
+                    {
+                        BasicGeoposition tempDest = new BasicGeoposition();
+                        tempDest.Latitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Latitude;
+                        tempDest.Longitude = ((Location)VindRitFilterVM.SelectedDestination.Location).Longitude;
+                        startpunt = new Geopoint(tempDest);
+                    }
+                    else
+                    {
+                        startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    }
+                    Geopoint eindpunt = new Geopoint(tempbasic);
+                    //De route tussen 2 punten opvragen
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+                    if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                    {
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                        viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                        if (item.RouteCommandText == "Toon route")
+                        {
+                            this.Map.Routes.Clear();
+                        }
+
+                        var items = this.Map.Routes;
+                        if (items.Count() > 0)
+                        {
+                            item.RouteCommandText = "Toon route";
+                            this.Map.Routes.Clear();
+                        }
+                        else
+                        {
+                            item.RouteCommandText = "Clear route";
+                            this.Map.Routes.Add(viewOfRoute);
+                        }
+
+                        //MapRouteView toevoegen aan de Route Collectie
+
+
+                        //Fit de mapcontrol op de route
+                        await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+
+                }
+            }
+
+            UpdateMapOfType(typeof(List<Bob.All>));
+        }
+
+        #endregion
 
 
         #endregion

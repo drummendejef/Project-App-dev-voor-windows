@@ -8,7 +8,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:BaseViewModelLocator x:Key="Locator"/>
+            <ResourceDictionary x:Key="theme" Source="ms-appx:///Styles/Theme.xaml"/>
         </ResourceDictionary>
- 
+        
     </Application.Resources>
 </Application>
