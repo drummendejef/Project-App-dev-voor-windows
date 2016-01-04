@@ -39,7 +39,7 @@ namespace BOBApp.Views
             this.InitializeComponent();
 
             Vm.Map = MapZoekVriend;
-
+            Vm.Frame = frame;
            
         }
 

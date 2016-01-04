@@ -23,6 +23,8 @@ using Windows.UI.Core;
 using System.ComponentModel;
 using System.Diagnostics;
 using Windows.UI.Xaml.Controls.Maps;
+using Windows.Services.Maps;
+using Windows.UI;
 
 namespace BOBApp.ViewModels
 {
@@ -321,48 +323,7 @@ namespace BOBApp.ViewModels
         }
 
         //De bobs ophalen om op de kaart te tonen.
-        private async Task GetBobs()
-        {
-            this.Bobs = await BobsRepository.GetBobs();
-
-            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
-            if (this.Bobs != null)
-            {
-                for (int i = 0; i < this.Bobs.Count(); i++)
-                {
-                    Bob.All item = this.Bobs[i];
-                    if (item.Location == null)
-                    {
-                        return;
-                    }
-
-                    BasicGeoposition tempbasic = new BasicGeoposition();
-
-                    //Feestlocatie opsplitsen (word opgeslagen als string)
-                    string[] splittedcoord = item.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
-
-                    //Locaties omzetten en in de tijdelijke posities opslaan.
-                    tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
-                    tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
-
-                    //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
-                    Geopoint temppoint = new Geopoint(tempbasic);
-
-                    MapIcon mapIconFeestLocation = new MapIcon();
-                    mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                                                               //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                    mapIconFeestLocation.Image = MainViewVM.Pins.BobPin;
-                    this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
-                    
-                }
-
-               
-
-                RaiseAll();
-            }
-            
-            
-        }
+     
 
         private async void RaiseAll()
         {
@@ -642,11 +603,11 @@ namespace BOBApp.ViewModels
           
             this.EnableFind = false;
             this.Loading = false;
-            //todo: swtich
-            RaiseAll();
+           
 
             StartTripLocationTimer();
-            
+            this.Map.MapElements.Clear();
+            RaiseAll();
         }
 
 
@@ -685,8 +646,7 @@ namespace BOBApp.ViewModels
 
             if (location != null)
             {
-                
-
+                ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
@@ -726,6 +686,50 @@ namespace BOBApp.ViewModels
 
 
 
+            }
+        }
+
+        private async void ShowRoute(Location from, Location to)
+        {
+            try
+            {
+                if ((App.Current as App).UserLocation != null)
+                {
+                    this.Map.Routes.Clear();
+
+
+                    //Tijdelijke locatie aanmaken
+                    BasicGeoposition tempFrom = new BasicGeoposition();
+                    tempFrom.Longitude = from.Longitude;
+                    tempFrom.Latitude = from.Latitude;
+
+                    BasicGeoposition tempTo = new BasicGeoposition();
+                    tempTo.Longitude =to.Longitude;
+                    tempTo.Latitude = to.Latitude;
+
+                    //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                    Geopoint startpunt = new Geopoint(tempFrom);
+                    Geopoint eindpunt = new Geopoint(tempTo);
+
+                    //De route tussen 2 punten opvragen
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+                    if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                    {
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                        viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                        this.Map.Routes.Add(viewOfRoute);
+
+                        //Fit de mapcontrol op de route
+                        await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+               
             }
         }
 
@@ -888,30 +892,37 @@ namespace BOBApp.ViewModels
             {
                 for (int i = 0; i < this.Parties.Count(); i++)
                 {
-                    Party item = this.Parties[i];
-                    if (item.Location == null)
+                    try
                     {
-                        return;
+                        Party item = this.Parties[i];
+                        if (item.Location == null)
+                        {
+                            return;
+                        }
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+
+
+
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
                     }
+                    catch (Exception ex)
+                    {
 
-                    BasicGeoposition tempbasic = new BasicGeoposition();
-
-                    //Feestlocatie opsplitsen (word opgeslagen als string)
-                    string[] splittedcoord = item.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
-
-                    //Locaties omzetten en in de tijdelijke posities opslaan.
-                    tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
-                    tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
-
-                    //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
-                    Geopoint temppoint = new Geopoint(tempbasic);
-
-                    MapIcon mapIconFeestLocation = new MapIcon();
-                    mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                                                               //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                    mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
-                    this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
-
+                       
+                    }
+                    
                 }
                 
                 RaiseAll();
@@ -923,7 +934,56 @@ namespace BOBApp.ViewModels
 
         }
 
+        private async Task GetBobs()
+        {
+            this.Bobs = await BobsRepository.GetBobsOnline();
 
+            //Try catch errond om te zorgen dat hij niet crasht bij lege bobs.
+            if (this.Bobs != null)
+            {
+                for (int i = 0; i < this.Bobs.Count(); i++)
+                {
+                    try
+                    {
+                        Bob.All item = this.Bobs[i];
+                        if (item.Location == null)
+                        {
+                            return;
+                        }
+
+                        BasicGeoposition tempbasic = new BasicGeoposition();
+
+                        //Feestlocatie opsplitsen (word opgeslagen als string)
+
+
+                        //Locaties omzetten en in de tijdelijke posities opslaan.
+                        tempbasic.Latitude = ((Location)item.Location).Latitude;
+                        tempbasic.Longitude = ((Location)item.Location).Longitude;
+
+                        //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                        Geopoint temppoint = new Geopoint(tempbasic);
+
+                        MapIcon mapIconFeestLocation = new MapIcon();
+                        mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                                   //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.BobPin;
+                        this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
+
+                }
+
+
+
+                RaiseAll();
+            }
+
+
+        }
 
         private async Task GetDestinations()
         {
@@ -1181,6 +1241,30 @@ namespace BOBApp.ViewModels
                 Party foundParty=  this.Parties.Find(r => r.Name.Trim() == VindRitFilterVM.SelectedParty.Trim());
                 VindRitVM.SelectedParty = foundParty;
                 this.VisibleSelectedParty = Visibility.Visible;
+
+                if (VindRitVM.SelectedParty != null && VindRitFilterVM.SelectedDestination != null)
+                {
+
+                    ShowRoute((Location) VindRitVM.SelectedParty.Location,(Location) VindRitFilterVM.SelectedDestination.Location);
+                }
+                if (VindRitFilterVM.SelectedDestination != null)
+                {
+                    MapIcon mapIconUserLocation = new MapIcon();
+
+                    BasicGeoposition tempbasic = new BasicGeoposition();
+                    Location location = (Location)VindRitFilterVM.SelectedDestination.Location;
+                    tempbasic.Latitude = location.Latitude;
+                    tempbasic.Longitude = location.Longitude;
+                    Geopoint eindpunt = new Geopoint(tempbasic);
+
+                    mapIconUserLocation.Location = eindpunt;
+                    mapIconUserLocation.NormalizedAnchorPoint = new Windows.Foundation.Point(0.5, 1.0);//Verzet het icoontje, zodat de punt van de marker staat op waar de locatie is. (anders zou de linkerbovenhoek op de locatie staan) 
+                    mapIconUserLocation.Title = VindRitFilterVM.SelectedDestination.Name;//Titel die boven de marker komt.
+                    mapIconUserLocation.Image = MainViewVM.Pins.HomePin;
+                    this.Map.MapElements.Add(mapIconUserLocation);//Marker op de map zetten.
+                }
+
+               
                
             }
 

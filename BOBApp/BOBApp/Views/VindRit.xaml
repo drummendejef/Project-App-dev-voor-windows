@@ -99,7 +99,7 @@
 
 
         <Maps:MapControl Loaded="{x:Bind Vm.MapLoaded}" x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10">
-            <Maps:MapItemsControl ItemsSource="{Binding BobList, Mode=TwoWay}" ItemTemplate="{StaticResource DTemplateBobsMap}" />
+            <Maps:MapItemsControl ItemTemplate="{StaticResource DTemplateBobsMap}" />
         </Maps:MapControl>
 
         <Button Style="{ThemeResource button}" Visibility="{Binding VisibleFind,Mode=TwoWay}" IsEnabled="{Binding EnableFind,Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonZoekChauffeur"  Content="Zoek een Chauffeur" Command="{Binding FindBobCommand }" Canvas.ZIndex="1000"   />

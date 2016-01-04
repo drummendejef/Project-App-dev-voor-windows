@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Libraries.Models;
 using Libraries.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -138,26 +139,34 @@ namespace BOBApp.ViewModels
                 Party feest = parties_all[i];
 
                 //Tijdelijke locatie aanmaken
-                BasicGeoposition tempbasic = new BasicGeoposition();
+                try
+                {
+                    BasicGeoposition tempbasic = new BasicGeoposition();
 
-                //Feestlocatie opsplitsen (word opgeslagen als string)
-                string[] splittedcoord = feest.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
-
-                //Locaties omzetten en in de tijdelijke posities opslaan.
-                tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
-                tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
-
-                //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
-                Geopoint temppoint = new Geopoint(tempbasic);
-
-                MapIcon mapIconFeestLocation = new MapIcon();
-                mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
-                //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
-                this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
 
 
-                feest.Click = new RelayCommand<object>(e => mapItemButton_Click(e));
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = ((Location)feest.Location).Latitude;
+                    tempbasic.Longitude = ((Location)feest.Location).Longitude;
+
+                    //Omzetten van tijdelijk punt naar echte locatie (anders krijg je die niet in de mapIconFeestLocation.Location)
+                    Geopoint temppoint = new Geopoint(tempbasic);
+
+                    MapIcon mapIconFeestLocation = new MapIcon();
+                    mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
+                                                               //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
+                    mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                    this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
+
+
+                    feest.Click = new RelayCommand<object>(e => mapItemButton_Click(e));
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
             }
            
 
@@ -232,46 +241,64 @@ namespace BOBApp.ViewModels
         {
             if ((App.Current as App).UserLocation != null)
             {
-
+             
                 Party party = param as Party;
                 //Locatie uit gekozen feestje halen.
-                string locatie = party.Location;
+
 
                 //Tijdelijke locatie aanmaken
-                BasicGeoposition tempbasic = new BasicGeoposition();
-
-                //Feestlocatie opsplitsen (word opgeslagen als string)
-                string[] splittedcoord = party.Location.Split(',', ':', '}');//Splitsen op } zodat de lon proper is
-
-                //Locaties omzetten en in de tijdelijke posities opslaan.
-                tempbasic.Latitude = double.Parse(splittedcoord[1].ToString());
-                tempbasic.Longitude = double.Parse(splittedcoord[3].ToString());
-
-                //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
-                //We gaan deze zelf aanmaken.
-                /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
-                startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
-                startstring += "&waypoint.2=";//Start van het eindpunt
-                startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
-                startstring += URL.URLBINGKEY + URL.BINGKEY;*/
-
-                //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
-                Geopoint startpunt = (App.Current as App).UserLocation.Coordinate.Point;
-                Geopoint eindpunt = new Geopoint(tempbasic);
-
-                //De route tussen 2 punten opvragen
-                MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
-
-                if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                try
                 {
-                    MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
-                    viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+                    BasicGeoposition tempbasic = new BasicGeoposition();
 
-                    //MapRouteView toevoegen aan de Route Collectie
-                    this.Map.Routes.Add(viewOfRoute);
+                    //Feestlocatie opsplitsen (word opgeslagen als string)
+                    Location location = (Location)party.Location;
 
-                    //Fit de mapcontrol op de route
-                    await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    //Locaties omzetten en in de tijdelijke posities opslaan.
+                    tempbasic.Latitude = location.Latitude;
+                    tempbasic.Longitude = location.Longitude;
+
+                    //Om de route aan te vragen, heb je een start en een eindpunt nodig. Die moeten er zo uit zien: "waypoint.1=47.610,-122.107".
+                    //We gaan deze zelf aanmaken.
+                    /*string startstring = "http://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=";//Eerste deel van de url
+                    startstring += (App.Current as App).UserLocation.Coordinate.Point.Position.Latitude.ToString() + "," + (App.Current as App).UserLocation.Coordinate.Point.Position.Longitude.ToString();
+                    startstring += "&waypoint.2=";//Start van het eindpunt
+                    startstring += tempbasic.Latitude.ToString() + "," + tempbasic.Longitude.ToString();//Endpoint
+                    startstring += URL.URLBINGKEY + URL.BINGKEY;*/
+
+                    //Start en eindpunt ophalen en klaarzetten voor onderstaande vraag
+                    Geopoint startpunt = (App.Current as App).UserLocation.Coordinate.Point;
+                    Geopoint eindpunt = new Geopoint(tempbasic);
+
+                    //De route tussen 2 punten opvragen
+                    MapRouteFinderResult routeResult = await MapRouteFinder.GetDrivingRouteAsync(startpunt, eindpunt);
+
+                    if (routeResult.Status == MapRouteFinderStatus.Success)//Het is gelukt, we hebben een antwoord gekregen.
+                    {
+                        MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                        viewOfRoute.RouteColor = Color.FromArgb(255, 62, 94, 148);
+
+                        var items = this.Map.Routes;
+                        if (items.Count() > 0)
+                        {
+                            this.Map.Routes.Clear();
+                        }
+                        else
+                        {
+                            this.Map.Routes.Add(viewOfRoute);
+                        }
+
+                        //MapRouteView toevoegen aan de Route Collectie
+
+
+                        //Fit de mapcontrol op de route
+                        await this.Map.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    
                 }
             }
         }

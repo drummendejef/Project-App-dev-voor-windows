@@ -30,6 +30,7 @@
     <RootPropertyPathName Name="NewCity" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
+    <RootPropertyPathName Name="Click" />
     <RootPropertyPathName Name="FacebookLinkID" />
     <RootPropertyPathName Name="Amount" />
     <RootPropertyPathName Name="Organisator" />
@@ -77,8 +78,11 @@
     <RootPropertyPathName Name="Password" />
     <RootPropertyPathName Name="SelectedAutoType" />
     <RootPropertyPathName Name="NewRegister" />
-    <RootPropertyPathName Name="Licenseplate" />
+    <RootPropertyPathName Name="Default" />
+    <RootPropertyPathName Name="Friends" />
     <RootPropertyPathName Name="Rating" />
+    <RootPropertyPathName Name="Autotype_ID" />
+    <RootPropertyPathName Name="Licenseplate" />
     <RootPropertyPathName Name="VeranderWachtwoordVM" />
     <RootPropertyPathName Name="WijzigCommand" />
     <RootPropertyPathName Name="VindRitVM" />
@@ -132,7 +136,6 @@
     <RootPropertyPathName Name="SelectedRating" />
     <RootPropertyPathName Name="SelectedFriends" />
     <RootPropertyPathName Name="AddFriendCommand" />
-    <RootPropertyPathName Name="Friends" />
     <RootPropertyPathName Name="SelectedFriendString" />
     <RootPropertyPathName Name="SelectedDestination_ID" />
     <RootPropertyPathName Name="SelectedParty" />
@@ -404,17 +407,14 @@
       <RootProperty Name="Style" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Content" />
-      <RootProperty Name="Command" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Command" />
       <RootProperty Name="CommandParameter" />
+      <RootProperty Name="Content" />
       <RootProperty Name="Height" />
-      <RootProperty Name="Background" />
-      <RootProperty Name="Padding" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Foreground" />
-      <RootEvent Name="Click" />
+      <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="SelectionHighlightColor" />
@@ -536,10 +536,10 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
-      <RootProperty Name="BorderThickness" />
       <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="BorderThickness" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="SetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="GetAlignVerticalCenterWithPanel" />
@@ -589,6 +589,7 @@
       <RootProperty Name="ZoomLevel" />
       <RootProperty Name="Children" />
       <RootEvent Name="MapHolding" />
+      <RootEvent Name="Loaded" />
       <RootMethod Name="GetLocation" />
       <RootMethod Name="SetLocation" />
     </RootType>
@@ -621,7 +622,20 @@
       <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen_Nieuw" />
+    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Points" />
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="RenderTransform" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.RotateTransform">
+      <RootProperty Name="CenterX" />
+      <RootProperty Name="CenterY" />
+      <RootProperty Name="Angle" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
+      <RootProperty Name="FontSize" />
       <RootProperty Name="Content" />
       <RootProperty Name="NavigateUri" />
       <RootProperty Name="Margin" />
@@ -674,18 +688,6 @@
     <RootType FullName="BOBApp.Views.VeranderWachtwoord" />
     <RootType FullName="BOBApp.ViewModels.VindRitFilterVM" />
     <RootType FullName="BOBApp.Converters.MailToConverter" />
-    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Points" />
-      <RootProperty Name="Stroke" />
-      <RootProperty Name="Fill" />
-      <RootProperty Name="RenderTransform" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.RotateTransform">
-      <RootProperty Name="CenterX" />
-      <RootProperty Name="CenterY" />
-      <RootProperty Name="Angle" />
-    </RootType>
     <RootType FullName="BOBApp.Views.VindRit" />
     <RootType FullName="BOBApp.Views.VindRitBob" />
     <RootType FullName="BOBApp.Views.VindRitChat" />

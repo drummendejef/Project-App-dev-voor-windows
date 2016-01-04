@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,28 @@ namespace Libraries.Models
         {
             public User User { get; set; }
             public Bob Bob { get; set; }
-            public string Location { get; set; }
+            private object _Location;
+            public object Location
+            {
+                get { return _Location; }
+                set
+                {
+
+                    try
+                    {
+                        string v = value.ToString();
+                        _Location = JsonConvert.DeserializeObject<Location>(v);
+                    }
+                    catch (Exception)
+                    {
+                        _Location = value;
+                    }
+
+
+
+                }
+
+            }
 
             private Geopoint geolocation;
 

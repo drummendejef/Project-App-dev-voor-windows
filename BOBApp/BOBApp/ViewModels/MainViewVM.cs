@@ -47,6 +47,7 @@ namespace BOBApp.ViewModels
             public static RandomAccessStreamReference UserPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/userpin.png"));
             public static RandomAccessStreamReference FeestPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/feestpin.png"));
             public static RandomAccessStreamReference BobPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/BOBpin.png"));
+            public static RandomAccessStreamReference HomePin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/home.png"));
         }
         
 

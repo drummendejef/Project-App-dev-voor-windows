@@ -34,6 +34,7 @@ namespace BOBApp.Views
         public VindRitBob()
         {
             this.InitializeComponent();
+            Vm.Map = MapVindRit;
         }
     }
 }

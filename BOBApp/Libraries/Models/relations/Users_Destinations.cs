@@ -39,7 +39,7 @@ namespace Libraries.Models.relations
                 }
                 catch (Exception)
                 {
-                    
+                    _Location = value;
                 }
               
 

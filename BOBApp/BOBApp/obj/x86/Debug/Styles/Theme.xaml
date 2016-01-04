@@ -10,8 +10,10 @@
     <SolidColorBrush x:Key="LightBlue" Color="#3b63a7"/>
     <SolidColorBrush x:Key="White" Color="#CCFFFFFF"/>
     <SolidColorBrush x:Key="background" Color="#f5f7f8"/>
-
+    <SolidColorBrush x:Key="green" Color="#649053"/>
+    
     <SolidColorBrush x:Key="dark" Color="#F2FFFFFF"/>
+    <SolidColorBrush x:Key="black" Color="#2c2c2c"/>
 
 
     <Color x:Key="cDarkBlue">#343f4b</Color>
@@ -25,17 +27,31 @@
     <Style x:Key="h1" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
         <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Foreground" Value="{ThemeResource black}"/>
     </Style>
     <Style x:Key="h2" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
         <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{ThemeResource black}"/>
     </Style>
     <Style x:Key="h3" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{ThemeResource black}"/>
+    </Style>
+    <Style x:Key="p" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{ThemeResource black}"/>
+    </Style>
+    <Style x:Key="status" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
+        <Setter Property="Foreground" Value="{ThemeResource DarkBlue}"/>
+        <Setter Property="FontSize" Value="12"/>
     </Style>
     <Style x:Key="LoginText" TargetType="TextBox">
         <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>
@@ -672,6 +688,7 @@
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="FontFamily" Value="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
         <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{ThemeResource black}"/>
     </Style>
 
     <!--EDIT button-->

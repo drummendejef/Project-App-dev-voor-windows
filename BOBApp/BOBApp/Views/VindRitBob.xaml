@@ -57,8 +57,8 @@
         </RelativePanel>
 
 
-        <Maps:MapControl x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10">
-            <Maps:MapItemsControl ItemsSource="{Binding UserList}" ItemTemplate="{StaticResource DTemplateUsersMap}" />
+        <Maps:MapControl Loaded="{x:Bind Vm.MapLoaded}"  x:Name="MapVindRit" MapServiceToken="dOUBDBVwN5QvZ1iHg90c~s2bgtqxiAZX20yceA6JFuw~An9qrmMutNOdQJ0PiF_t7WMqjN4lZBOWQaKrphjthrGdwmqvhjUvX8--_O2kP2K5" Margin="0" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Canvas.ZIndex="10">
+            <Maps:MapItemsControl  ItemTemplate="{StaticResource DTemplateUsersMap}" />
         </Maps:MapControl>
 
         <Button Style="{ThemeResource button}" Visibility="{Binding VisibleCancel,Mode=TwoWay}" IsEnabled="{Binding IsEnabledCancel, Mode=TwoWay}" RelativePanel.Below="MapVindRit" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,-100,10,10" x:Name="buttonCancel"  Content="Cancel" Command="{Binding CancelCommand }" Canvas.ZIndex="1000"   />
