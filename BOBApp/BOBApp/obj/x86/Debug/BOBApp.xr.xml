@@ -30,10 +30,14 @@
     <RootPropertyPathName Name="NewCity" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
-    <RootPropertyPathName Name="Click" />
+    <RootPropertyPathName Name="VisibleShow" />
+    <RootPropertyPathName Name="TakeCommand" />
+    <RootPropertyPathName Name="RouteCommand" />
+    <RootPropertyPathName Name="RouteCommandText" />
     <RootPropertyPathName Name="FacebookLinkID" />
     <RootPropertyPathName Name="Amount" />
     <RootPropertyPathName Name="Organisator" />
+    <RootPropertyPathName Name="ShowCommand" />
     <RootPropertyPathName Name="Parties" />
     <RootPropertyPathName Name="LoginVM" />
     <RootPropertyPathName Name="EnableLogin" />
@@ -91,7 +95,6 @@
     <RootPropertyPathName Name="VisibleFind" />
     <RootPropertyPathName Name="EnableFind" />
     <RootPropertyPathName Name="FindBobCommand" />
-    <RootPropertyPathName Name="BobList" />
     <RootPropertyPathName Name="VisibleSelectedBob" />
     <RootPropertyPathName Name="RitTime" />
     <RootPropertyPathName Name="GetSelectedBob" />
@@ -110,7 +113,6 @@
     <RootPropertyPathName Name="GetStatus" />
     <RootPropertyPathName Name="VindRitBobVM" />
     <RootPropertyPathName Name="IsEnabledCancel" />
-    <RootPropertyPathName Name="UserList" />
     <RootPropertyPathName Name="VisibleOffer" />
     <RootPropertyPathName Name="ArrivedCommand" />
     <RootPropertyPathName Name="IsEnabledArrived" />
@@ -140,6 +142,7 @@
     <RootPropertyPathName Name="SelectedDestination_ID" />
     <RootPropertyPathName Name="SelectedParty" />
     <RootPropertyPathName Name="ZoekVriendenVM" />
+    <RootPropertyPathName Name="User1" />
     <RootPropertyPathName Name="SelectedUser" />
     <RootPropertyPathName Name="SearchUsers" />
     <RootPropertyPathName Name="Online" />
@@ -152,8 +155,8 @@
       <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
-      <RootProperty Name="MergedDictionaries" />
       <RootProperty Name="Source" />
+      <RootProperty Name="MergedDictionaries" />
     </RootType>
     <RootType FullName="BOBApp.BaseViewModelLocator" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
@@ -175,7 +178,6 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="CornerRadius" />
-      <RootProperty Name="Padding" />
       <RootMethod Name="GetColumnSpan" />
       <RootMethod Name="SetColumnSpan" />
       <RootMethod Name="GetColumn" />
@@ -412,8 +414,8 @@
       <RootProperty Name="CommandParameter" />
       <RootProperty Name="Content" />
       <RootProperty Name="Height" />
-      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
+      <RootProperty Name="IsEnabled" />
       <RootProperty Name="Padding" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
@@ -452,6 +454,7 @@
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="ItemContainerTransitions" />
       <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
@@ -536,9 +539,9 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
       <RootProperty Name="CornerRadius" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="BorderThickness" />
       <RootMethod Name="GetAlignHorizontalCenterWithPanel" />
       <RootMethod Name="SetAlignHorizontalCenterWithPanel" />
@@ -571,7 +574,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
       <RootProperty Name="MinWindowHeight" />
-      <RootProperty Name="MinWindowWidth" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
       <RootProperty Name="Foreground" />
@@ -604,6 +606,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="MinWidth" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="SuggestionChosen" />
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen" />
@@ -640,10 +643,7 @@
       <RootProperty Name="NavigateUri" />
       <RootProperty Name="Margin" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapItemsControl">
-      <RootProperty Name="ItemsSource" />
-      <RootProperty Name="ItemTemplate" />
-    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapItemsControl" />
     <RootType FullName="BOBApp.Views.FeestjesOverzicht" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.PopupThemeTransition" />
     <RootType FullName="BOBApp.Views.Login" />
@@ -699,6 +699,7 @@
     </RootType>
     <RootType FullName="BOBApp.Views.VindRitFilter" />
     <RootType FullName="BOBApp.Views.ZoekVrienden" />
+    <RootType FullName="BOBApp.Converters.OnlineConverter" />
     <RootType FullName="BOBApp.Views.ZoekVrienden_Add" />
   </Roots.RootTypes>
 </Roots>
