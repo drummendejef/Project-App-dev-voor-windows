@@ -134,6 +134,7 @@ namespace Libraries
         public static bool Show(string message, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb, object data)
         {
             if (ok == null) ok = "Ok";
+            if (nok == null) nok = "Ignore";
             if (ok == null && nok == null)
             {
                 ok = "Yes"; nok = "No";

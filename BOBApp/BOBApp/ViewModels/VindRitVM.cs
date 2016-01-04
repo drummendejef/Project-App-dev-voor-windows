@@ -591,6 +591,7 @@ namespace BOBApp.ViewModels
 
                     SetStatus(6);
                     this.VisibleSelectedBob = Visibility.Visible;
+                    ShowedOnParty = false;
                     this.Loading = true;
                     RaiseAll();
                 }
@@ -737,6 +738,7 @@ namespace BOBApp.ViewModels
                 this.VisibleSelectedBobsType = Visibility.Collapsed;
                 this.VisibleSelectedRating = Visibility.Collapsed;
                 this.VisibleSelectedParty = Visibility.Collapsed;
+                ShowedOnParty = false;
 
                 this.VisibleCancel = Visibility.Collapsed;
                 this.VisibleFind = Visibility.Visible;
@@ -813,8 +815,11 @@ namespace BOBApp.ViewModels
 
                             Location location = await LocationService.GetCurrent();
                             Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
-                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(data.Bobs_ID)).Result;
+                            Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
+                            Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
                             VindRitVM.SelectedBob = bob;
+                            VindRitVM.SelectedParty = party;
+
                             if (bobTypes != null)
                             {
                                 VindRitFilterVM.SelectedBobsType = bobTypes.Where(r => r.ID == bob.Bob.BobsType_ID).First();
@@ -824,7 +829,7 @@ namespace BOBApp.ViewModels
 
                             ShowRoute(location, (Location)destination.Location);
 
-                            
+                            ShowedOnParty = true;
                             this.EnableFind = false;
                             RaiseAll();
                             return;
@@ -832,6 +837,7 @@ namespace BOBApp.ViewModels
                     }
 
                     SetStatus(0);
+                    ShowedOnParty = true;
                     this.EnableFind = true;
 
 
@@ -840,6 +846,7 @@ namespace BOBApp.ViewModels
                 catch (Exception ex)
                 {
                     SetStatus(0);
+                    ShowedOnParty = true;
                     this.EnableFind = true;
                    
                 }
@@ -848,24 +855,28 @@ namespace BOBApp.ViewModels
             {
                 MainViewVM.CurrentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
 
-                if (MainViewVM.CurrentTrip.StatusID.HasValue)
-                {
-                    SetStatus(MainViewVM.CurrentTrip.StatusID.Value);
-                }
-
-
                 Location location = await LocationService.GetCurrent();
                 Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
                 Bob.All bob = Task.FromResult<Bob.All>(await BobsRepository.GetBobById(MainViewVM.CurrentTrip.Bobs_ID)).Result;
+                Party party = Task.FromResult<Party>(await  PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
                 VindRitVM.SelectedBob = bob;
+                VindRitVM.SelectedParty = party;
+
                 if (bobTypes != null)
                 {
                     VindRitFilterVM.SelectedBobsType = bobTypes.Where(r => r.ID == bob.Bob.BobsType_ID).First();
                 }
                 VindRitFilterVM.SelectedDestination = destination;
-
+               
 
                 ShowRoute(location, (Location)destination.Location);
+
+                ShowedOnParty = true;
+
+                if (MainViewVM.CurrentTrip.StatusID.HasValue)
+                {
+                    SetStatus(MainViewVM.CurrentTrip.StatusID.Value);
+                }
 
                 this.EnableFind = false;
              
@@ -1158,6 +1169,7 @@ namespace BOBApp.ViewModels
             RaiseAll();
 
         }
+        bool ShowedOnParty = false;
         private void SetStatus(int statusID)
         {
             VindRitVM.StatusID = statusID;
@@ -1167,23 +1179,21 @@ namespace BOBApp.ViewModels
                 Toast.Tile("Party: " + this.GetSelectedParty.Name, "Bestemming: " + this.GetSelectedDestination.Name, "Status " + this.Status);
             }
 
-            if (statusID == 8)
+            if (statusID == 8 && ShowedOnParty==false)
             {
-                Messenger.Default.Send<Dialog>(new Dialog()
-                {
-                    
-                    IsNotification = true
-                });
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
                     Message = VindRitVM.SelectedBob.User.ToString() + "is toegekomen op " + VindRitVM.SelectedParty.Name + "met nummerplaat: + " + VindRitVM.SelectedBob.Bob.LicensePlate.ToString() ,
                     Ok = "Ok",
+                    Nok="Negeer",
                     ViewOk = typeof(VindRit),
                     ViewNok = null,
                     ParamView = false,
                     Cb = null,
                     IsNotification = true
                 });
+                ShowedOnParty = true;
+
             }
 
             RaiseAll();
@@ -1550,13 +1560,21 @@ namespace BOBApp.ViewModels
                 }
 
 
-                var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
 
-                newControl.ItemsSource = Parties;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["PartiesMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = Parties;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["PartiesMapTemplate"] as DataTemplate;
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                    
+                }
 
 
                 RaiseAll();
@@ -1654,13 +1672,21 @@ namespace BOBApp.ViewModels
 
                 }
 
-                var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
 
-                newControl.ItemsSource = this.Bobs;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["BobsMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = this.Bobs;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["BobsMapTemplate"] as DataTemplate;
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
 
 
                 RaiseAll();
@@ -1734,15 +1760,23 @@ namespace BOBApp.ViewModels
 
                 }
 
-                var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
 
-                newControl.ItemsSource = this.Users;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["UsersMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = this.Users;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["UsersMapTemplate"] as DataTemplate;
 
 
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                   
+                }
 
 
 
