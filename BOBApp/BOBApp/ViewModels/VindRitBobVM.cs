@@ -194,6 +194,7 @@ namespace BOBApp.ViewModels
                 }
                 else
                 {
+                    ToDestination = false; ;
                     SetStatus(4);
 
                     RaiseAll();
@@ -283,15 +284,16 @@ namespace BOBApp.ViewModels
         {
             if (data != null || MainViewVM.CurrentTrip == null)
             {
-                
-               
+                VindRitBobVM.Request = 1;
+                this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
+
 
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
                 this.VisibleOffer = Visibility.Visible;
                 MainViewVM.CurrentTrip = data;
                 
-                VindRitBobVM.Request = 1;
+               
                 SetStatus(data.StatusID.Value);
 
 
@@ -318,7 +320,7 @@ namespace BOBApp.ViewModels
                     else
                     {
                         ShowRoute(location, (Location)party.Location);
-                       
+                        ToDestination = false;
                     }
                 }
 
@@ -525,8 +527,11 @@ namespace BOBApp.ViewModels
                             ID = VindRitBobVM.FindID
                         };
 
-
-                        MainViewVM.socket.Emit("status_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                        if (MainViewVM.socket != null)
+                        {
+                            MainViewVM.socket.Emit("status_UPDATE:send", JsonConvert.SerializeObject(socketSend));
+                        }
+                        
                     }
                 }
                
@@ -641,14 +646,25 @@ namespace BOBApp.ViewModels
             {
                 Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
 
-                if (ToDestination == true)
+
+                Response farEnoughValue = Task.FromResult<Response>(await TripRepository.Difference((Location)this.SelectedParty.Location, location)).Result;
+
+                if (farEnoughValue.Success && farEnoughValue.Value != null)
                 {
-                    ShowRoute((Location)party.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                    if (double.Parse(farEnoughValue.Value.ToString()) < 600)
+                    {
+                        //bij het feestje
+
+                        ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                        ToDestination = true;
+                    }
+                    else
+                    {
+                        ShowRoute(location, (Location)party.Location);
+                        ToDestination = false;
+                    }
                 }
-                else
-                {
-                    ShowRoute(location, (Location)party.Location);
-                }
+
                
                 //checkhowfaraway
 
@@ -821,6 +837,8 @@ namespace BOBApp.ViewModels
                         }
                     }
 
+                    VindRitBobVM.Request = 0;
+                    this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
                     this.IsEnabledOffer = true;
                     this.VisibleCancel = Visibility.Collapsed;
                     this.VisibleOffer = Visibility.Collapsed;
@@ -830,6 +848,8 @@ namespace BOBApp.ViewModels
                 }
                 catch (Exception ex)
                 {
+                    VindRitBobVM.Request = 0;
+                    this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
                     this.IsEnabledOffer = true;
                     this.VisibleCancel = Visibility.Collapsed;
                     this.VisibleOffer = Visibility.Collapsed;
