@@ -1422,7 +1422,7 @@ namespace BOBApp.ViewModels
                 var newControl = new MapItemsControl();
                 VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
 
-                newControl.ItemsSource = this.Destinations;
+                newControl.ItemsSource = Destinations;
                 newControl.ItemTemplate = (DataTemplate)vindrit.Resources["DestinationsMapTemplate"] as DataTemplate;
 
                 AddOrUpdateChild(newControl);

@@ -45,11 +45,13 @@
                 <TextBlock Style="{ThemeResource h3}" Grid.Column="0" Grid.Row="1" Margin="10" Text="Destination:"></TextBlock>
                 <ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" Margin="20,0,20,0" PlaceholderText="Zoek bestemmingen" SelectedValuePath="Destinations_ID" SelectedValue="{Binding SelectedDestination_ID, Mode=TwoWay}" MinWidth="150" DisplayMemberPath="Name" ItemsSource="{Binding Destinations,Mode=OneWay}" />
 
-                <TextBlock Visibility="Collapsed" Grid.Column="0" Grid.Row="2"  Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Voeg vrienden toe:" VerticalAlignment="Top" Style="{ThemeResource h3}"/>
+                <!--<TextBlock Visibility="Collapsed" Grid.Column="0" Grid.Row="2"  Margin="10" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="Voeg vrienden toe:" VerticalAlignment="Top" Style="{ThemeResource h3}"/>
                 <AutoSuggestBox Visibility="Collapsed" Grid.Column="1" Grid.Row="2" Height="32" PlaceholderText="Voeg vrienden toe"  Margin="20,0,20,0" ItemsSource="{Binding Friends, Mode=OneWay}" Text="{Binding SelectedFriendString, Mode=TwoWay}" DisplayMemberPath="User2" TextMemberPath="User2" />
                 <Button Visibility="Collapsed" Grid.Column="2" Style="{ThemeResource button}" Grid.Row="2" Content="Add" Command="{Binding AddFriendCommand}" Margin="10,0" Height="32" Width="auto" />
 
-                <ListView Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SelectedFriends, Source={StaticResource this}, Mode=TwoWay}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" MinHeight="100" Margin="10"  MinWidth="500" />
+                <ListView Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding SelectedFriends, Source={StaticResource this}, Mode=TwoWay}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" MinHeight="100" Margin="10"  MinWidth="500" />-->
+
+                <TextBlock MinWidth="500" Text="" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
                 <TextBlock Style="{ThemeResource h3}" Grid.Column="0" Grid.Row="4" Margin="10" Text="Minimum rating:" />
                 <Slider Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Value="{Binding SelectedRating, Source={StaticResource this}, Mode=TwoWay}" Margin="20,0,20,0" Maximum="5" />

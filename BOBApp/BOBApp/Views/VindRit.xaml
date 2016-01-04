@@ -28,8 +28,8 @@
                             <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
                         </RelativePanel>
 
-                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-65,-180,0,0">
-                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="150" CornerRadius="5">
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-45,-120,0,0">
+                            <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="120" Height="90" CornerRadius="5">
                                 <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
                                 
                             </RelativePanel>
@@ -107,7 +107,7 @@
                         <RelativePanel Margin="0,0,0,0">
                             <Button Width="25" Height="25" Style="{ThemeResource button:trans}" Command="{Binding ShowCommand, Mode=TwoWay}" CommandParameter="{Binding}" />
                         </RelativePanel>
-                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-70,-200,0,0">
+                        <RelativePanel Visibility="{Binding VisibleShow, Mode=TwoWay}" Margin="-75,-200,0,0">
                             <RelativePanel x:Name="item" Background="{ThemeResource dark}" Padding="5" Width="180" Height="170" CornerRadius="5">
                                 <TextBlock x:Name="naam" Style="{ThemeResource h3}" RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Name, Mode=TwoWay,Converter={StaticResource StringToUpperConverter}}" Margin="10" />
 

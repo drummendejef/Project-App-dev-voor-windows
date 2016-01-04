@@ -947,7 +947,7 @@ namespace BOBApp.ViewModels
 
 
                 var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
 
                 newControl.ItemsSource = Parties;
                 newControl.ItemTemplate = (DataTemplate)vindrit.Resources["PartiesMapTemplate"] as DataTemplate;
@@ -1032,7 +1032,7 @@ namespace BOBApp.ViewModels
                 }
 
                 var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
 
                 newControl.ItemsSource = this.Bobs;
                 newControl.ItemTemplate = (DataTemplate)vindrit.Resources["BobsMapTemplate"] as DataTemplate;
@@ -1112,7 +1112,7 @@ namespace BOBApp.ViewModels
                 }
 
                 var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
 
                 newControl.ItemsSource = this.Users;
                 newControl.ItemTemplate = (DataTemplate)vindrit.Resources["UsersMapTemplate"] as DataTemplate;

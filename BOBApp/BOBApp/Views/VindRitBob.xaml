@@ -16,6 +16,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <converters:MailToConverter x:Key="MailToConverter"/>
+            <converters:StringToUpperConverter x:Key="StringToUpperConverter"/>
             <DataTemplate x:Key="UsersMapTemplate">
 
                 <ContentControl Maps:MapControl.Location="{Binding GeoLocation, Mode=TwoWay}" >
