@@ -700,7 +700,9 @@ namespace BOBApp.ViewModels
 
         private async void BobisDone(string text)
         {
-           
+            this.Map.MapElements.Clear();
+            ClearAllMapItems();
+
             Response active = Task.FromResult<Response>(await TripRepository.PutActive(MainViewVM.CurrentTrip.ID, false)).Result;
 
             if (active.Success == true)

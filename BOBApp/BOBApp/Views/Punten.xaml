@@ -38,7 +38,9 @@
                 <DataTemplate>
                     <RelativePanel Padding="15" Margin="0,0,0,15" HorizontalAlignment="Stretch" Background="#f7f7f7">
                         <TextBlock x:Name="title" HorizontalAlignment="left" FontSize="20" FontWeight="Light" Text="{Binding PointsDescription.Description, Mode=TwoWay, Converter={StaticResource ToUpperConverter}}" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway"/>
-                        <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding PointsDescription.Points, Mode=TwoWay}" />
+                        <TextBlock x:Name="subTitle" RelativePanel.Below="title" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="POINTS: " />
+
+                        <TextBlock x:Name="subTitle2" RelativePanel.Below="title" RelativePanel.RightOf="subTitle" HorizontalAlignment="left" Margin="0,5,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding PointsDescription.Points, Mode=TwoWay}" />
 
                         <TextBlock x:Name="date" RelativePanel.Below="subTitle" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,10,0,10" FontWeight="Light"  FontSize="12" FontFamily="ms-appx:/Styles/fonts/Raleway-Light.otf#Raleway" Text="{Binding Added, Mode=TwoWay, Converter={StaticResource DateTimeConverter}}" />
 

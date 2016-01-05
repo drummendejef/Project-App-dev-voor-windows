@@ -602,6 +602,7 @@ namespace BOBApp.ViewModels
 
                
             }
+            RaisePropertyChanged("Points");
         }
 
         //by user

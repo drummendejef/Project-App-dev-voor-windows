@@ -137,7 +137,7 @@
 
             </RelativePanel>
            
-            <ToggleSwitch FontSize="12" IsEnabled="{Binding IsEnabledOffer,Mode=TwoWay}" IsOn="{Binding CanOffer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignRightWithPanel="True" Padding="10,0,10,0" Height="35" Width="auto" OffContent="Bied me niet aan" OnContent="Bied me aan"/>
+            <ToggleSwitch FontSize="12"  IsEnabled="{Binding IsEnabledOffer,Mode=TwoWay}" IsOn="{Binding CanOffer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RelativePanel.AlignRightWithPanel="True" Padding="10,0,10,0" Height="35" Width="auto" OffContent="Bied me niet aan" OnContent="Bied me aan"/>
             <Button Margin="100,40,0,0" RelativePanel.AlignRightWithPanel="True" Style="{ThemeResource button}"  Visibility="{Binding VisibleOffer, Mode=TwoWay}" Padding="10,0,10,0" Height="35" Width="auto" Content="Aangekomen" Command="{Binding ArrivedCommand}"  IsEnabled="{Binding IsEnabledArrived, Mode=TwoWay}"   />
             <Button Margin="100,80,0,0" Style="{ThemeResource button}" RelativePanel.AlignRightWithPanel="True"  Visibility="{Binding VisibleOffer,Mode=TwoWay}" Padding="10,0,10,0" Width="auto" Content="Chat" Height="35" Command="{Binding GoChatCommand}"  Canvas.ZIndex="1000"  />
 

@@ -182,7 +182,7 @@ namespace BOBApp.ViewModels
 
             if(farEnough.Success && farEnough.Value != null)
             {
-                if (double.Parse(farEnough.Value.ToString()) < 600)
+                if (double.Parse(farEnough.Value.ToString()) < 500)
                 {
                     //bij het feestje
                     SetStatus(8);
@@ -718,6 +718,7 @@ namespace BOBApp.ViewModels
         private async void BobisDone(string text)
         {
             this.Map.MapElements.Clear();
+            ClearAllMapItems();
 
             Bobs_Parties bobs_parties = new Bobs_Parties()
             {
@@ -1227,15 +1228,23 @@ namespace BOBApp.ViewModels
 
                 }
 
-                var newControl = new MapItemsControl();
-                VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRitBob vindrit = MainViewVM.MainFrame.Content as VindRitBob;
 
-                newControl.ItemsSource = this.Users;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["UsersMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = this.Users;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["UsersMapTemplate"] as DataTemplate;
 
 
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                    
+                }
 
 
 
