@@ -258,13 +258,21 @@ namespace BOBApp.ViewModels
                 }
 
 
-                var newControl = new MapItemsControl();
-                FeestjesOverzicht view = MainViewVM.MainFrame.Content as FeestjesOverzicht;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    FeestjesOverzicht view = MainViewVM.MainFrame.Content as FeestjesOverzicht;
 
-                newControl.ItemsSource =parties_all;
-                newControl.ItemTemplate = (DataTemplate)view.Resources["PartiesMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = parties_all;
+                    newControl.ItemTemplate = (DataTemplate)view.Resources["PartiesMapTemplate"] as DataTemplate;
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                  
+                }
 
                 this.Parties = parties_all.Take(10).ToList();
                 RaiseAll();

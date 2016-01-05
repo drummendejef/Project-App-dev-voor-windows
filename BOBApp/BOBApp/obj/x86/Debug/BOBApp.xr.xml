@@ -31,8 +31,8 @@
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
     <RootPropertyPathName Name="VisibleShow" />
+    <RootPropertyPathName Name="VisibleTake" />
     <RootPropertyPathName Name="TakeCommand" />
-    <RootPropertyPathName Name="VisibleRoute" />
     <RootPropertyPathName Name="RouteCommand" />
     <RootPropertyPathName Name="RouteCommandText" />
     <RootPropertyPathName Name="FacebookLinkID" />

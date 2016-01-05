@@ -44,6 +44,10 @@ namespace BOBApp.Views
         public FeestjesOverzicht()
         {
             this.InitializeComponent();
+            if (MapFeestOverzicht == null)
+            {
+                MapFeestOverzicht = new MapControl();
+            }
             Vm.Map = MapFeestOverzicht;
 
            

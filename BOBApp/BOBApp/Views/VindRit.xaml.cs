@@ -40,6 +40,10 @@ namespace BOBApp.Views
 
 
             Vm.Frame = frame;
+            if (MapVindRit == null)
+            {
+                MapVindRit = new MapControl();
+            }
             Vm.Map = MapVindRit;
 
         }

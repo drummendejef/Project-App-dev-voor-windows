@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -34,6 +35,10 @@ namespace BOBApp.Views
         public VindRitBob()
         {
             this.InitializeComponent();
+            if (MapVindRit == null)
+            {
+                MapVindRit = new MapControl();
+            }
             Vm.Map = MapVindRit;
         }
     }

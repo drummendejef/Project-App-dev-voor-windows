@@ -38,9 +38,13 @@ namespace BOBApp.Views
         {
             this.InitializeComponent();
 
-            Vm.Map = MapZoekVriend;
-            Vm.Frame = frame;
            
+            if (MapZoekVriend == null)
+            {
+                MapZoekVriend = new MapControl();
+            }
+            Vm.Frame = frame;
+            Vm.Map = MapZoekVriend;
         }
 
         private void textBoxZoekLocaties_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
