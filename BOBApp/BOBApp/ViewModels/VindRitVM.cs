@@ -115,7 +115,7 @@ namespace BOBApp.ViewModels
         {
             get
             {
-                if(VindRitFilterVM.SelectedRating.HasValue)
+                if(VindRitFilterVM.SelectedRating!=0 || VindRitFilterVM.SelectedRating!=-1)
                 {
                     this.VisibleSelectedRating = Visibility.Visible;
                     return VindRitFilterVM.SelectedRating;
@@ -316,10 +316,14 @@ namespace BOBApp.ViewModels
             this.VisibleFilterContext = Visibility.Collapsed;
 
 
+            this.VisibleFind = Visibility.Collapsed;
+            this.VisibleCancel = Visibility.Collapsed;
+            this.VisibleChat = Visibility.Collapsed;
+
 
             //Ritten ophalen
-           
-           
+
+
 
             Loaded();
             RaiseAll();
@@ -391,15 +395,12 @@ namespace BOBApp.ViewModels
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
                 {
                     //default on start
-                    this.Loading = false;
                  
-                    this.VisibleModal = Visibility.Collapsed;
-                    
-                    this.VisibleFilterContext = Visibility.Collapsed;
+                 
+                 
+                  
                     this.EnableFind = true;
 
-                    this.VisibleCancel = Visibility.Collapsed;
-                    this.VisibleFind = Visibility.Visible;
                     this.Loading = false;
                     this.Status = null;
 
@@ -414,10 +415,17 @@ namespace BOBApp.ViewModels
                     await GetParties();
                     await GetDestinations();
                     await GetBobTypes();
+
+
+                    this.VisibleModal = Visibility.Collapsed;
+                    this.VisibleFilterContext = Visibility.Collapsed;
+                    this.VisibleCancel = Visibility.Collapsed;
+                    this.VisibleFind = Visibility.Collapsed;
+
                     await GetCurrentTrip();
 
-                 
 
+                   
 
 
                     RaiseAll();
@@ -576,6 +584,8 @@ namespace BOBApp.ViewModels
                 //take this bob
                 if (bobs != null)
                 {
+                    await UserRepository.PostPoint();
+
                     Random random = new Random();
                     float randomNumber = random.Next(0, 1000);
                     VindRitVM.FindID = randomNumber;
@@ -812,8 +822,34 @@ namespace BOBApp.ViewModels
                         var data = JsonConvert.DeserializeObject<Trip>(json);
                         if (data.ID != -1)
                         {
+                            this.Loading = true;
+                            RaiseAll();
+
                             SetStatus(data.StatusID.Value);
                             MainViewVM.CurrentTrip = data;
+
+                            if (data.StatusID.Value== 5)
+                            {
+                                Bobs_Parties bobs_parties = new Bobs_Parties()
+                                {
+                                    Bobs_ID = MainViewVM.CurrentTrip.Bobs_ID,
+                                    Party_ID = MainViewVM.CurrentTrip.Party_ID,
+                                    Trips_ID = MainViewVM.CurrentTrip.ID,
+                                    Users_ID = MainViewVM.CurrentTrip.Users_ID
+
+                                };
+
+                                Libraries.Socket socketSendToUser = new Libraries.Socket()
+                                {
+                                    From = MainViewVM.USER.ID,
+                                    To = MainViewVM.CurrentTrip.Users_ID,
+                                    Status = true,
+                                    Object = JsonConvert.SerializeObject(bobs_parties),
+                                    Object2 = true
+                                };
+                                MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                            }
+                           
 
                             Location location = await LocationService.GetCurrent();
                             Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
@@ -833,6 +869,7 @@ namespace BOBApp.ViewModels
 
                             ShowedOnParty = true;
                             this.EnableFind = false;
+                            this.Loading = false;
                             RaiseAll();
                             return;
                         }
@@ -855,7 +892,32 @@ namespace BOBApp.ViewModels
             }
             else
             {
+                this.Loading = true;
+                RaiseAll();
+
                 MainViewVM.CurrentTrip = Task.FromResult<Trip>(await TripRepository.GetCurrentTrip()).Result;
+
+                if (MainViewVM.CurrentTrip.StatusID.Value == 5)
+                {
+                    Bobs_Parties bobs_parties = new Bobs_Parties()
+                    {
+                        Bobs_ID = MainViewVM.CurrentTrip.Bobs_ID,
+                        Party_ID = MainViewVM.CurrentTrip.Party_ID,
+                        Trips_ID = MainViewVM.CurrentTrip.ID,
+                        Users_ID = MainViewVM.CurrentTrip.Users_ID
+
+                    };
+
+                    Libraries.Socket socketSendToUser = new Libraries.Socket()
+                    {
+                        From = MainViewVM.USER.ID,
+                        To = MainViewVM.CurrentTrip.Users_ID,
+                        Status = true,
+                        Object = JsonConvert.SerializeObject(bobs_parties),
+                        Object2 = true
+                    };
+                    MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
+                }
 
                 Location location = await LocationService.GetCurrent();
                 Users_Destinations destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
@@ -881,7 +943,9 @@ namespace BOBApp.ViewModels
                 }
 
                 this.EnableFind = false;
-             
+                this.Loading = false;
+               
+
             }
             RaiseAll();
 
@@ -1470,13 +1534,21 @@ namespace BOBApp.ViewModels
                 }
 
 
-                var newControl = new MapItemsControl();
-                VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    VindRit vindrit = MainViewVM.MainFrame.Content as VindRit;
 
-                newControl.ItemsSource = Destinations;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["DestinationsMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = Destinations;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["DestinationsMapTemplate"] as DataTemplate;
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                   
+                }
 
 
                 RaiseAll();

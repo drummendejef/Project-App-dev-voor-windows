@@ -437,15 +437,23 @@ namespace BOBApp.ViewModels
 
                 }
 
-                var newControl = new MapItemsControl();
-                ZoekVrienden vindrit = MainViewVM.MainFrame.Content as ZoekVrienden;
+                try
+                {
+                    var newControl = new MapItemsControl();
+                    ZoekVrienden vindrit = MainViewVM.MainFrame.Content as ZoekVrienden;
 
-                newControl.ItemsSource = friends_all;
-                newControl.ItemTemplate = (DataTemplate)vindrit.Resources["FriendsMapTemplate"] as DataTemplate;
+                    newControl.ItemsSource = friends_all;
+                    newControl.ItemTemplate = (DataTemplate)vindrit.Resources["FriendsMapTemplate"] as DataTemplate;
 
 
 
-                AddOrUpdateChild(newControl);
+                    AddOrUpdateChild(newControl);
+                }
+                catch (Exception)
+                {
+
+                    
+                }
 
 
 

@@ -54,7 +54,7 @@
                 <TextBlock MinWidth="500" Text="" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
 
                 <TextBlock Style="{ThemeResource h3}" Grid.Column="0" Grid.Row="4" Margin="10" Text="Minimum rating:" />
-                <Slider Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Value="{Binding SelectedRating, Source={StaticResource this}, Mode=TwoWay}" Margin="20,0,20,0" Maximum="5" />
+                <Slider Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Value="{Binding SelectedRating, Source={StaticResource this}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="20,0,20,0" Maximum="5" />
 
                 <TextBlock Grid.Column="0" Grid.Row="5" Margin="10" Height="20" TextWrapping="Wrap" Text="Soort vervoer:"  Style="{ThemeResource h3}"/>
                 <ComboBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="20,0,20,0" PlaceholderText="Bobtypes" SelectedValuePath="ID" SelectedValue="{Binding SelectedBobsType_ID, Mode=TwoWay}"  ItemsSource="{Binding BobsTypes,Mode=OneWay}" DisplayMemberPath="Name" />

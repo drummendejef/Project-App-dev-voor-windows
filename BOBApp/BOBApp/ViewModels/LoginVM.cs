@@ -24,6 +24,7 @@ using Windows.ApplicationModel.Core;
 using BOBApp.Views;
 using Windows.UI.Xaml.Input;
 using Windows.Foundation;
+using Quobject.SocketIoClientDotNet.Client;
 
 namespace BOBApp.ViewModels
 {
@@ -213,6 +214,8 @@ namespace BOBApp.ViewModels
 
                             }
                         }
+                        MainViewVM.socket = IO.Socket(URL.SOCKET);
+                        MainViewVM.socket.Connect();
 
                         Messenger.Default.Send<GoToPage>(new GoToPage()
                         {

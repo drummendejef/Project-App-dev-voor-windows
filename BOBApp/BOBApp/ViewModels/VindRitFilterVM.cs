@@ -29,7 +29,7 @@ namespace BOBApp.ViewModels
         public static List<Friend.All> SelectedFriends { get; set; }
         public static Users_Destinations SelectedDestination { get; set; }
         public static BobsType SelectedBobsType { get; set; }
-        public static int? SelectedRating { get; set; }
+        public static int SelectedRating { get; set; }
         public static DateTime? SelectedMinDate { get; set; }
         public static string SelectedParty { get; set; }
         

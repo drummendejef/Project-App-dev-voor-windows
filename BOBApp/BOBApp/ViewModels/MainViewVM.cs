@@ -80,8 +80,7 @@ namespace BOBApp.ViewModels
         #region socket
         private void StartSocket()
         {
-            MainViewVM.socket = IO.Socket(URL.SOCKET);
-            MainViewVM.socket.Connect();
+           
 
             //to bob
             MainViewVM.socket.On("bob_ACCEPT", (msg) =>
@@ -307,7 +306,7 @@ namespace BOBApp.ViewModels
         {
             if (trip != null)
             {
-              
+                await UserRepository.PostPoint();
                 var data = JsonConvert.SerializeObject(trip);
 
                 bool ok = Task.FromResult<bool>(await Localdata.save("trip.json", data)).Result;
@@ -474,11 +473,11 @@ namespace BOBApp.ViewModels
                 {
                     //default on start
                     User = MainViewVM.USER;
-                    GetPoints();
-                    await PostLocation();
-
                     SetupBackgroundTask();
                     StartSocket();
+
+                    GetPoints();
+                    await PostLocation();
 
                     this.Loading = false;
                     RaisePropertyChanged("Loading");

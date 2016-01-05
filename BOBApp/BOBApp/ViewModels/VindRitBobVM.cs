@@ -286,7 +286,7 @@ namespace BOBApp.ViewModels
             {
                 VindRitBobVM.Request = 1;
                 this.BobRequests = "Momenteel " + VindRitBobVM.Request.ToString() + " aanvragen";
-
+                await UserRepository.PostPoint();
 
                 this.IsEnabledOffer = false;
                 this.VisibleCancel = Visibility.Visible;
