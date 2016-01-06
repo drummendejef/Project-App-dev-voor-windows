@@ -361,6 +361,7 @@ namespace BOBApp.ViewModels
             
             MainViewVM.CurrentTrip= null;
 
+            Toast.TileClear();
 
 
 

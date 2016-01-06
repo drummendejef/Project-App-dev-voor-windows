@@ -15,4 +15,7 @@
     <UseSimulator>false</UseSimulator>
     <AuthenticationMode>Windows</AuthenticationMode>
   </PropertyGroup>
+  <PropertyGroup>
+    <AppxShowAllApps>False</AppxShowAllApps>
+  </PropertyGroup>
 </Project>

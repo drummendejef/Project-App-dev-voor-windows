@@ -640,12 +640,13 @@ namespace BOBApp.ViewModels
         {
             Location location = await LocationService.GetCurrent();
 
-            
 
             if (location != null)
             {
                 Party party = Task.FromResult<Party>(await PartyRepository.GetPartyById(MainViewVM.CurrentTrip.Party_ID)).Result;
+                var destination = Task.FromResult<Users_Destinations>(await DestinationRepository.GetDestinationById(MainViewVM.CurrentTrip.Destinations_ID)).Result;
 
+                Toast.Tile("Party: " + party.Name, "Bestemming: " + destination.Name, "Status " + this.Status);
 
                 Response farEnoughValue = Task.FromResult<Response>(await TripRepository.Difference((Location)this.SelectedParty.Location, location)).Result;
 

@@ -658,7 +658,8 @@ namespace BOBApp.ViewModels
         private async void Timer_Tick(object sender, object e)
         {
             Location location = await LocationService.GetCurrent();
-          
+
+            Toast.Tile("Party: " + this.GetSelectedParty.Name, "Bestemming: " + this.GetSelectedDestination.Name, "Status " + this.Status);
 
 
             if (location != null)

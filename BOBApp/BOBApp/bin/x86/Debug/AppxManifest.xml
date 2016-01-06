@@ -7,11 +7,11 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="7084735e-3c30-4abc-b4dc-c8e26e7d39f4" Publisher="CN=stijnvanhulle" Version="0.1.2.0" ProcessorArchitecture="x86" />
+  <Identity Name="64230stijnvanhulle.Bob-app" Publisher="CN=BBC7E977-DDAA-405E-8BF9-170859D87111" Version="1.1.0.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="7084735e-3c30-4abc-b4dc-c8e26e7d39f4" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>BOBApp</DisplayName>
-    <PublisherDisplayName>stijn</PublisherDisplayName>
+    <DisplayName>Bob-app</DisplayName>
+    <PublisherDisplayName>stijnvanhulle</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -23,7 +23,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="BOBApp.exe" EntryPoint="BOBApp.App">
-      <uap:VisualElements DisplayName="BOBApp" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="BOBApp" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Bob-app" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="BOBApp" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"></uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#3e5d94" />
         <uap:InitialRotationPreference>

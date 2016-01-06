@@ -17,8 +17,8 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>BOBApp_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>61FC089098F1EDBF9EB4E275AB4DA0488B033354</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>BOBApp_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>5BE5433DBDE39FE5D34DBF082E04B138AFAECEC6</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -94,6 +94,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="BOBApp_StoreKey.pfx" />
     <None Include="project.json" />
     <Content Include="Assets\add.png" />
     <Content Include="Assets\BOBpin.png" />
@@ -105,6 +106,7 @@
     <Content Include="Assets\road.png" />
     <Content Include="Assets\userpin.png" />
     <Content Include="Assets\vriendpin.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Styles\fonts\Raleway-Bold.otf" />
     <Content Include="Styles\fonts\Raleway-ExtraBold.otf" />
     <Content Include="Styles\fonts\Raleway-ExtraLight.otf" />

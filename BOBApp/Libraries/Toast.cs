@@ -19,6 +19,7 @@ namespace Libraries
         {
             try
             {
+                Toast.TileClear();
                 TileContent content = GetTileContent(line1, line2, line3);
 
 
@@ -128,7 +129,7 @@ namespace Libraries
         }
 
         private static int conversationId = 384928;
-        private static string title = "Boba-pp";
+        private static string title = "Bob-app";
         private static string content = "";
         private static string logo = "";
         public static bool Show(string message, string ok, string nok, Type viewOk, Type viewNok, object paramView, string cb, object data)
