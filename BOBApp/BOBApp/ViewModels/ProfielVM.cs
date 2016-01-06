@@ -197,6 +197,7 @@ namespace BOBApp.ViewModels
                 User.Autotype = new Autotype();
             }
 
+            User.User.IsBob = MainViewVM.USER.IsBob;
             RaiseAll();
 
         }

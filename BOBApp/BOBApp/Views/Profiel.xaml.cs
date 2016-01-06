@@ -59,6 +59,7 @@ namespace BOBApp.Views
              if (tglIsBob.IsOn)
             {
                await UserRepository.ChanteToBob(true);
+                MainViewVM.USER.IsBob = true;
                 textboxPrice.IsEnabled = true;
                 textBoxNummerplaat.IsEnabled = true;
                 comboBoxTypeBob.IsEnabled = true;
@@ -94,6 +95,8 @@ namespace BOBApp.Views
             else
             {
                 await UserRepository.ChanteToBob(false);
+                MainViewVM.USER.IsBob = true;
+
 
                 textboxPrice.IsEnabled = false;
                 textBoxNummerplaat.IsEnabled = false;
