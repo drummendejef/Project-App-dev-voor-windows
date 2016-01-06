@@ -137,9 +137,9 @@ namespace BOBApp.ViewModels
 
             if (User.User.IsBob == true)
             {
-                if(User.Bob.ID != null)
+                if(MainViewVM.USER.Bobs_ID != null)
                 {
-                    EditUser.Bobs_ID = User.Bob.ID;
+                    EditUser.Bobs_ID = MainViewVM.USER.Bobs_ID;
                 }
                 
                 EditUser.Users_ID = User.User.ID;
@@ -174,6 +174,9 @@ namespace BOBApp.ViewModels
             if (r.Success)
             {
                 var dialog = new MessageDialog("Uw gegevens zijn opgeslaan.");
+                User user = await UserRepository.GetUser();
+                MainViewVM.USER = user;
+
                 await dialog.ShowAsync();
             }
             else
