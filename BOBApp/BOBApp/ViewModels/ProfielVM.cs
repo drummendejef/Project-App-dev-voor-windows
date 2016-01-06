@@ -137,7 +137,11 @@ namespace BOBApp.ViewModels
 
             if (User.User.IsBob == true)
             {
-                EditUser.Bobs_ID = User.Bob.ID;
+                if(User.Bob.ID != null)
+                {
+                    EditUser.Bobs_ID = User.Bob.ID;
+                }
+                
                 EditUser.Users_ID = User.User.ID;
                 EditUser.Firstname = User.User.Firstname;
                 EditUser.Lastname = User.User.Lastname;
