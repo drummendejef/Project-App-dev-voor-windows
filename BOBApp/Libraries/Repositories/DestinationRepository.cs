@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Libraries.Models.relations;
 
 namespace Libraries.Repositories
 {
@@ -122,7 +123,38 @@ namespace Libraries.Repositories
                 return new Response() { Error = ex.Message.ToString(), Success = false };
             }
         }
+        public static async Task<Response> RemoveDestination(int id)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URL.BASE);
 
+                    Users_Destinations destination = new Users_Destinations()
+                    {
+                        Destinations_ID=id
+                    };
+
+
+                    var newObject = JsonConvert.SerializeObject(destination);
+
+                    HttpResponseMessage result = await client.PostAsync(URL.DESTINATIONS + "/remove", new StringContent(newObject, Encoding.UTF8, "application/json"));
+                    string json = await result.Content.ReadAsStringAsync();
+                    Response data = JsonConvert.DeserializeObject<Response>(json);
+
+                    return data;
+                }
+            }
+            catch (JsonException jex)
+            {
+                return new Response() { Error = "Parse Error: " + jex.ToString(), Success = false };
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Error = ex.Message.ToString(), Success = false };
+            }
+        }
 
         public static async Task<Response> PostDefaultDestination(int destinationsID)
         {

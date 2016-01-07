@@ -214,6 +214,7 @@ namespace BOBApp.Views
                 CheckIsPaneOpen();
 
 
+
             }
             else
             {
@@ -223,7 +224,7 @@ namespace BOBApp.Views
                    // Location location = await LocationService.GetCurrent();
                     //Response ok2 = await UserRepository.PostLocation(location);
 
-                    MainViewVM.USER.IsBob = isBob;
+                    MainViewVM.USER= await UserRepository.GetUser();
                     IsBob();
                 }
             }
@@ -242,7 +243,6 @@ namespace BOBApp.Views
                 //bob
                 bobBiedJeAan.Visibility = Visibility.Visible;
                 bobVindEenRit.Visibility = Visibility.Collapsed;
-                isBob = false;
                 Change.Content = "Type: BOB";
             }
             else
@@ -250,7 +250,6 @@ namespace BOBApp.Views
                 //user
                 bobBiedJeAan.Visibility = Visibility.Collapsed;
                 bobVindEenRit.Visibility = Visibility.Visible;
-                isBob = true;
                 Change.Content = "Type: USER";
             }
         }

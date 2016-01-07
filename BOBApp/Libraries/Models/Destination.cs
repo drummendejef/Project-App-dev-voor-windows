@@ -12,5 +12,8 @@ namespace Libraries.Models
         public int ID { get; set; }
         public int Cities_ID { get; set; }
         public string Location { get; set; }
+
+        //for db
+        public string Name { get; set; }
     }
 }

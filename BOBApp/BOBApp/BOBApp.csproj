@@ -97,15 +97,31 @@
     <None Include="BOBApp_StoreKey.pfx" />
     <None Include="project.json" />
     <Content Include="Assets\add.png" />
-    <Content Include="Assets\BOBpin.png" />
-    <Content Include="Assets\car.png" />
-    <Content Include="Assets\close.png" />
-    <Content Include="Assets\feestpin.png" />
+    <Content Include="Assets\BOBpin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\car.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\feestpin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\filter.png" />
-    <Content Include="Assets\home.png" />
-    <Content Include="Assets\road.png" />
-    <Content Include="Assets\userpin.png" />
-    <Content Include="Assets\vriendpin.png" />
+    <Content Include="Assets\home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\road.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\userpin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\vriendpin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Styles\fonts\Raleway-Bold.otf" />
     <Content Include="Styles\fonts\Raleway-ExtraBold.otf" />
@@ -207,15 +223,31 @@
     <None Include="BOBApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\BOB.png" />
+    <Content Include="Assets\BOB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SplashScreen.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Square150x150Logo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Square44x44Logo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\StoreLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Wide310x150Logo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

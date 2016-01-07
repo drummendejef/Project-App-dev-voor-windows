@@ -188,6 +188,8 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("MapCenter");
                 RaisePropertyChanged("NewDestination");
                 RaisePropertyChanged("SearchItem");
+                RaisePropertyChanged("NewCity");
+
             });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         }
@@ -200,13 +202,56 @@ namespace BOBApp.ViewModels
 
         private async Task AddDestination_task()
         {
+            if(this.NewDestination.Name==null || this.NewDestination.Name == "")
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Geen naam ingevuld",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+                return;
+            }
+            if(this.NewCity==null || this.NewCity.ID == null)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Geen stad ingevuld",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+                return;
+
+            }
             Destination destination = new Destination()
             {
                 Cities_ID = this.NewCity.ID,
-                Location = this.NewDestination.Location
+                Location = this.NewDestination.Location,
+                Name=this.NewDestination.Name
 
             };
             Response ok = await DestinationRepository.PostDestination(destination);
+            if (ok.Success == true)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Bestemming toegevoegd",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = typeof(Bestemmingen),
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+            }
         }
 
         private void GoDestination()
@@ -240,11 +285,39 @@ namespace BOBApp.ViewModels
                 {
                     destinations_all[i].VisibleDefault = Visibility.Collapsed;
                 }
+
+                destinations_all[i].Remove = new RelayCommand<object>(Remove);
+               
                 
             }
             this.Destinations = destinations_all;
             this.Loading = false;
             RaiseAll();
+        }
+
+        private async void Remove(object id)
+        {
+            int DestinationsID = int.Parse(id.ToString());
+            Response response = Task.FromResult<Response>(await DestinationRepository.RemoveDestination(DestinationsID)).Result;
+
+            if (response.Success == true)
+            {
+                Messenger.Default.Send<Dialog>(new Dialog()
+                {
+                    Message = "Bestemming verwijderd",
+                    Ok = "Ok",
+                    Nok = null,
+                    ViewOk = null,
+                    ViewNok = null,
+                    ParamView = false,
+                    Cb = null
+                });
+                Loaded();
+            }
+            else
+            {
+                //error
+            }
         }
 
         private async void SetDefault(object id)
@@ -280,6 +353,8 @@ namespace BOBApp.ViewModels
 
             this.Cities = await CityRepository.GetCities();
             this.Cities.Sort((a, b) => a.Name.CompareTo(b.Name));
+
+            //this.NewCity = this.Cities.Where(r => r.Name.ToLower() == "kortrijk").First();
 
             this.Loading = false;
             RaisePropertyChanged("Loading");

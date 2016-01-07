@@ -58,6 +58,8 @@ namespace BOBApp.ViewModels
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
 
+            Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
+
             //Testen met statische data ( momenteel nog laten staan, in geval dit nog handig kan zijn voor iets)
             //User = new Register{ Lastname = "Van Lancker", Firstname = "Kevin", Email = "Test@test.be", Cellphone = "0494616943", LicensePlate = "1-43AE42", Password = "123" };
             AanpasCommand = new RelayCommand(Aanpassen);
@@ -95,6 +97,8 @@ namespace BOBApp.ViewModels
                 {
                     this.VisibleModal = Visibility.Collapsed;
                     this.Loading = false;
+
+                    GetUserDetails();
                     RaiseAll();
 
                 });
@@ -119,6 +123,8 @@ namespace BOBApp.ViewModels
                 RaisePropertyChanged("TypesBob");
                 RaisePropertyChanged("Loading");
                 RaisePropertyChanged("Error");
+                RaisePropertyChanged("User");
+                RaisePropertyChanged("SelectedTypeBob");
 
             });
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
@@ -169,6 +175,8 @@ namespace BOBApp.ViewModels
             Response r = await UserRepository.EditUser(EditUser);
             if (r.Success)
             {
+                MainViewVM.USER = await UserRepository.GetUser();
+
                 var dialog = new MessageDialog("Uw gegevens zijn opgeslaan.");
                 await dialog.ShowAsync();
             }
@@ -188,10 +196,15 @@ namespace BOBApp.ViewModels
             {
                 User.Bob = new Bob();
             }
+            else
+            {
+                SelectedTypeBob = BobsRepository.GetTypes().Result.Where(r => r.ID == User.Bob.BobsType_ID).First();
+            }
             if (User.Autotype == null)
             {
                 User.Autotype = new Autotype();
             }
+
 
             RaiseAll();
 

@@ -11,9 +11,10 @@
     <RootPropertyPathName Name="BestemmingenVM" />
     <RootPropertyPathName Name="SelectedDestination" />
     <RootPropertyPathName Name="Destinations" />
+    <RootPropertyPathName Name="Remove" />
+    <RootPropertyPathName Name="Destinations_ID" />
     <RootPropertyPathName Name="VisibleDefault" />
     <RootPropertyPathName Name="SetDefault" />
-    <RootPropertyPathName Name="Destinations_ID" />
     <RootPropertyPathName Name="Cities_Name" />
     <RootPropertyPathName Name="Name" />
     <RootPropertyPathName Name="Error" />
@@ -21,13 +22,14 @@
     <RootPropertyPathName Name="SearchItemCommand" />
     <RootPropertyPathName Name="SearchItem" />
     <RootPropertyPathName Name="Loading" />
+    <RootPropertyPathName Name="ID" />
     <RootPropertyPathName Name="NewDestination" />
     <RootPropertyPathName Name="Location" />
     <RootPropertyPathName Name="MapCenter" />
     <RootPropertyPathName Name="AddDestinationCommand" />
     <RootPropertyPathName Name="GoToCityCommand" />
-    <RootPropertyPathName Name="Cities" />
     <RootPropertyPathName Name="NewCity" />
+    <RootPropertyPathName Name="Cities" />
     <RootPropertyPathName Name="FeestjesOverzichtVM" />
     <RootPropertyPathName Name="GeoLocation" />
     <RootPropertyPathName Name="VisibleShow" />
@@ -64,11 +66,11 @@
     <RootPropertyPathName Name="ProfielVM" />
     <RootPropertyPathName Name="WachtwoordCommand" />
     <RootPropertyPathName Name="AanpasCommand" />
-    <RootPropertyPathName Name="TypesBob" />
     <RootPropertyPathName Name="SelectedTypeBob" />
+    <RootPropertyPathName Name="TypesBob" />
     <RootPropertyPathName Name="PricePerKm" />
-    <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="Autotype" />
+    <RootPropertyPathName Name="Merken" />
     <RootPropertyPathName Name="LicensePlate" />
     <RootPropertyPathName Name="IsBob" />
     <RootPropertyPathName Name="Cellphone" />
@@ -132,7 +134,6 @@
     <RootPropertyPathName Name="Comment" />
     <RootPropertyPathName Name="Foreground" />
     <RootPropertyPathName Name="VindRitFilterVM" />
-    <RootPropertyPathName Name="ID" />
     <RootPropertyPathName Name="SelectedBobsType_ID" />
     <RootPropertyPathName Name="BobsTypes" />
     <RootPropertyPathName Name="SelectedRating" />
@@ -533,6 +534,7 @@
       <RootProperty Name="Padding" />
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Height" />
@@ -579,6 +581,7 @@
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Margin" />
       <RootProperty Name="Height" />
       <RootProperty Name="MapServiceToken" />
@@ -605,16 +608,16 @@
     </RootType>
     <RootType FullName="BOBApp.Views.Bestemmingen" />
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="SelectedValue" />
+      <RootProperty Name="SelectedItem" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="DisplayMemberPath" />
-      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="SelectedValuePath" />
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Margin" />
       <RootProperty Name="IsEnabled" />
-      <RootProperty Name="SelectedValuePath" />
-      <RootProperty Name="SelectedValue" />
       <RootProperty Name="MinWidth" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
