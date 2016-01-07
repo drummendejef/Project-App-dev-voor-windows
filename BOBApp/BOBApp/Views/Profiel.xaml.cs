@@ -1,4 +1,5 @@
 ﻿using BOBApp.ViewModels;
+using Libraries.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,7 +37,14 @@ namespace BOBApp.Views
             this.InitializeComponent();
 
             Vm.Frame = frame;
-
+            if(MainViewVM.USER.IsBob == true)
+            {
+                tglIsBob.IsOn = true;
+            }
+            else
+            {
+                tglIsBob.IsOn = false;
+            }
             if (tglIsBob.IsOn)
             {
                 textboxPrice.IsEnabled = true;
@@ -53,10 +61,14 @@ namespace BOBApp.Views
             }
         }
 
-        private void tglIsBob_Toggled(object sender, RoutedEventArgs e)
+        private async void tglIsBob_Toggled(object sender, RoutedEventArgs e)
         {
              if (tglIsBob.IsOn)
             {
+               await UserRepository.ChanteToBob(true);
+                MainViewVM.USER.IsBob = true;
+                
+
                 textboxPrice.IsEnabled = true;
                 textBoxNummerplaat.IsEnabled = true;
                 comboBoxTypeBob.IsEnabled = true;
@@ -91,6 +103,9 @@ namespace BOBApp.Views
             }
             else
             {
+                await UserRepository.ChanteToBob(false);
+                MainViewVM.USER.IsBob = true;
+
 
                 textboxPrice.IsEnabled = false;
                 textBoxNummerplaat.IsEnabled = false;
