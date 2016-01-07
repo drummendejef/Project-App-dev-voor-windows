@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="64230stijnvanhulle.Bob-app" version="1.0" primary="true">
+		<Qualifiers>
+			<AlternateForm>UNPLATED</AlternateForm>
+			<Language>EN-US</Language>
+			<Scale>200</Scale>
+			<TargetSize>24</TargetSize>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<NamedResource name="App.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/App.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ApplicationInsights.config" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/ApplicationInsights.config">
+				<Candidate type="Path">
+					<Value>ApplicationInsights.config</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="BOBApp.xr.xml" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/BOBApp.xr.xml">
+				<Candidate type="Path">
+					<Value>BOBApp.xr.xml</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="MainPage.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/MainPage.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<ResourceMapSubtree name="Assets">
+				<NamedResource name="add.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/add.png">
+					<Candidate type="Path">
+						<Value>Assets\add.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="BOB.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/BOB.png">
+					<Candidate type="Path">
+						<Value>Assets\BOB.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="BOBpin.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/BOBpin.png">
+					<Candidate type="Path">
+						<Value>Assets\BOBpin.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="car.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/car.png">
+					<Candidate type="Path">
+						<Value>Assets\car.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="close.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/close.png">
+					<Candidate type="Path">
+						<Value>Assets\close.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="feestpin.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/feestpin.png">
+					<Candidate type="Path">
+						<Value>Assets\feestpin.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="filter.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/filter.png">
+					<Candidate type="Path">
+						<Value>Assets\filter.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="home.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/home.png">
+					<Candidate type="Path">
+						<Value>Assets\home.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="LockScreenLogo.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/LockScreenLogo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\LockScreenLogo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="road.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/road.png">
+					<Candidate type="Path">
+						<Value>Assets\road.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SplashScreen.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/SplashScreen.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\SplashScreen.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square150x150Logo.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/Square150x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Square150x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square44x44Logo.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/Square44x44Logo.png">
+					<Candidate qualifiers="TargetSize-24, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</Value>
+					</Candidate>
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="StoreLogo.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/StoreLogo.png">
+					<Candidate type="Path">
+						<Value>Assets\StoreLogo.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="userpin.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/userpin.png">
+					<Candidate type="Path">
+						<Value>Assets\userpin.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="vriendpin.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/vriendpin.png">
+					<Candidate type="Path">
+						<Value>Assets\vriendpin.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Wide310x150Logo.png" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Assets/Wide310x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Wide310x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Properties">
+				<NamedResource name="Default.rd.xml" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Properties/Default.rd.xml">
+					<Candidate type="Path">
+						<Value>Properties\Default.rd.xml</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Styles">
+				<NamedResource name="SplitView.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/SplitView.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Theme.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/Theme.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="fonts">
+					<NamedResource name="Raleway-Bold.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-Bold.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-Bold.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-ExtraBold.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-ExtraBold.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-ExtraBold.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-ExtraLight.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-ExtraLight.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-ExtraLight.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-Heavy.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-Heavy.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-Heavy.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-Light.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-Light.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-Light.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-Medium.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-Medium.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-Medium.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-Regular.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-Regular.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-Regular.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-SemiBold.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-SemiBold.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-SemiBold.otf</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Raleway-Thin.otf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Styles/fonts/Raleway-Thin.otf">
+						<Candidate type="Path">
+							<Value>Styles\fonts\Raleway-Thin.otf</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Views">
+				<NamedResource name="Bestemmingen.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/Bestemmingen.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Bestemmingen_Nieuw.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/Bestemmingen_Nieuw.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="FeestjesOverzicht.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/FeestjesOverzicht.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Login.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/Login.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="MainView.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/MainView.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="MijnRitten.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/MijnRitten.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Profiel.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/Profiel.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Punten.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/Punten.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Register.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/Register.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="RitItem.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/RitItem.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="VeranderWachtwoord.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/VeranderWachtwoord.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="VindRit.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/VindRit.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="VindRitBob.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/VindRitBob.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="VindRitChat.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/VindRitChat.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="VindRitFilter.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/VindRitFilter.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ZoekVrienden.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/ZoekVrienden.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ZoekVrienden_Add.xbf" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/Views/ZoekVrienden_Add.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="WinMetadata">
+				<NamedResource name="Windows.winmd" uri="ms-resource://64230stijnvanhulle.Bob-app/Files/WinMetadata/Windows.winmd">
+					<Candidate type="Path">
+						<Value>WinMetadata\Windows.winmd</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Practices.ServiceLocation.Properties.Resources">
+			<NamedResource name="ActivateAllExceptionMessage" uri="ms-resource://64230stijnvanhulle.Bob-app/Microsoft.Practices.ServiceLocation.Properties.Resources/ActivateAllExceptionMessage">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Activation error occurred while trying to get all instances of type {0}</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ActivationExceptionMessage" uri="ms-resource://64230stijnvanhulle.Bob-app/Microsoft.Practices.ServiceLocation.Properties.Resources/ActivationExceptionMessage">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>Activation error occurred while trying to get instance of type {0}, key "{1}"</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ServiceLocationProviderNotSetMessage" uri="ms-resource://64230stijnvanhulle.Bob-app/Microsoft.Practices.ServiceLocation.Properties.Resources/ServiceLocationProviderNotSetMessage">
+				<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+					<Value>ServiceLocationProvider must be set.</Value>
+				</Candidate>
+			</NamedResource>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

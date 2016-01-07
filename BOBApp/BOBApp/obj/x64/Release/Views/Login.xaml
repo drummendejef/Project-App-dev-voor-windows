@@ -1,0 +1,75 @@
+﻿<Page x:ConnectionId='1'
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BOBApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Foundation="using:Windows.Foundation"
+    x:Class="BOBApp.Views.Login"
+    mc:Ignorable="d"
+    DataContext="{Binding LoginVM, Mode=TwoWay, Source={StaticResource Locator}}">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Page.Transitions>
+        <TransitionCollection>
+            <PopupThemeTransition />
+        </TransitionCollection>
+    </Page.Transitions>
+
+
+    <Grid Background="{ThemeResource DarkBlue}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:ConnectionId='2' x:Name="VisualStateGroup">
+                <VisualState x:ConnectionId='3' x:Name="small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor landscape mobile -->
+                        <Setter Target="imageLogo.(FrameworkElement.MaxWidth)" Value="100" />
+                        <Setter Target="textBoxEmail.Margin" Value="8,4" />
+                        <Setter Target="passwordBox.Margin" Value="8,4" />
+                        <Setter Target="buttonAanmelden.Margin" Value="8,4" />
+                        <Setter Target="buttonRegistreren.Margin" Value="8,4" />
+                        <Setter Target="error.Margin" Value="8,4" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:ConnectionId='4' x:Name="big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor portrait mobile -->
+                        <Setter Target="imageLogo.(FrameworkElement.MaxWidth)" Value="300" />
+                        <Setter Target="textBoxEmail.Margin" Value="12" />
+                        <Setter Target="passwordBox.Margin" Value="12" />
+                        <Setter Target="buttonAanmelden.Margin" Value="12" />
+                        <Setter Target="buttonRegistreren.Margin" Value="12" />
+                        <Setter Target="error.Margin" Value="12" />
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <RelativePanel >
+           
+            <ProgressRing Foreground="White" IsActive="{Binding Loading, Mode=TwoWay}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="buttonRegistreren" Height="32" Width="32" Canvas.ZIndex="10000" Margin="0,20,0,0" />
+           
+            
+            <Image x:ConnectionId='5' x:Name="imageLogo" HorizontalAlignment="Center" MaxWidth="300"  VerticalAlignment="Top"  Source="ms-appx:///Assets/BOB.png" Margin="12" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <TextBox x:ConnectionId='6' IsEnabled="{Binding EnableLogin, Mode=TwoWay}" x:Name="textBoxEmail"  HorizontalAlignment="Center" PlaceholderText="Email" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay}"  VerticalAlignment="Top" Width="252" Margin="20,12" RelativePanel.Below="imageLogo" RelativePanel.AlignHorizontalCenterWithPanel="True" d:LayoutOverrides="HorizontalAlignment" Style="{StaticResource textBox}" IsHoldingEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False"                             />
+            <PasswordBox x:ConnectionId='7' IsEnabled="{Binding EnableLogin, Mode=TwoWay}" x:Name="passwordBox"  HorizontalAlignment="Left" PlaceholderText="Wachtwoord" Height="32" VerticalAlignment="Top" Width="252" RelativePanel.Below="textBoxEmail" Margin="20,12" RelativePanel.AlignHorizontalCenterWithPanel="True" Password="{Binding Pass,Mode=TwoWay}" Style="{StaticResource passwordBox}"                             />
+            <Button x:ConnectionId='8' IsEnabled="{Binding EnableLogin, Mode=TwoWay}" Style="{ThemeResource login_button}" x:Name="buttonAanmelden"  Content="Aanmelden" Width="252" Height="32" VerticalAlignment="Top" RelativePanel.Below="passwordBox" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="20,12" Command="{Binding LoginCommand}" RelativePanel.AlignLeftWith="passwordBox" RelativePanel.AlignRightWith=""/>
+            <Button x:ConnectionId='9' IsEnabled="{Binding EnableLogin, Mode=TwoWay}" Style="{ThemeResource login_button}" x:Name="buttonRegistreren" Content="Registreren"  Width="252" Height="32" VerticalAlignment="Top" RelativePanel.Below="buttonAanmelden" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="12" Command="{Binding RegisterCommand}"/>
+            <TextBlock x:ConnectionId='10' Style="{ThemeResource textblock}" x:Name="error" Foreground="White" Text="{Binding Error, Mode=TwoWay}"  Height="32" Margin="12" RelativePanel.Below="buttonRegistreren" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+        </RelativePanel>
+    </Grid>
+</Page>
+

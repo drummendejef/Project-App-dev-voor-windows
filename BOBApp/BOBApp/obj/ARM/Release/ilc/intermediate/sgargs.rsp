@@ -1,0 +1,8 @@
+/out:"C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\ARM\Release\ilc\intermediate\SgGenerated\\"
+/int:"C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\ARM\Release\ilc\intermediate\\"
+/ref:"C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\ARM\Release\ilc\intermediate\PreMergeILTransformed\\"
+/ref:"C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\ARM\Release\ilc\in\\"
+/ref:"C:\Program Files\MSBuild\Microsoft\.NetNative\ARM\ilc\lib\Private\\"
+/ref:"C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\ARM\Release\ilc\in\\"
+/ref:"C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\ARM\Release\ilc\in\WinMetadata\\"
+/ca:System.Private.CoreLib

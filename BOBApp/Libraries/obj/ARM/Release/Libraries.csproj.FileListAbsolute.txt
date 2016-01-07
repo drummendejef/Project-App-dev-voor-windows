@@ -1,0 +1,16 @@
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\ARM\Release\Libraries.dll
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\ARM\Release\Libraries.pdb
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\bin\ARM\Release\Libraries.pri
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\Libraries.dll
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\Libraries.pdb
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\priconfig.xml
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\priconfig.xml.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\layout.resfiles
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\layout.resfiles.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\resources.resfiles
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\resources.resfiles.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\pri.resfiles
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\pri.resfiles.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\qualifiers.txt
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\qualifiers.txt.intermediate
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\obj\ARM\Release\MultipleQualifiersPerDimensionFound.txt

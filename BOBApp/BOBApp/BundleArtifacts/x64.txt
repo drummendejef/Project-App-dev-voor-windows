@@ -1,0 +1,2 @@
+MainPackage=C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x64\Release\BOBApp_1.2.0.0_x64.appx
+SymbolPackage=C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\AppPackages\BOBApp_1.2.0.0_Test\BOBApp_1.2.0.0_x64.appxsym

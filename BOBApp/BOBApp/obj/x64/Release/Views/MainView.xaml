@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="BOBApp.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BOBApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+     DataContext="{Binding MainViewVM, Mode=TwoWay, Source={StaticResource Locator}}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/SplitView.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Styles/Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+
+    <SplitView x:ConnectionId='1'                                          x:Name="ShellSplitView" DisplayMode="CompactOverlay"
+               IsPaneOpen="True" CompactPaneLength="41" OpenPaneLength="200"
+               PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:ConnectionId='2' x:Name="VisualStateGroup">
+                <VisualState x:ConnectionId='3' x:Name="small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="300" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor landscape mobile -->
+                        <Setter Target="row0.(FrameworkElement.Height)" Value="30" />
+                        <Setter Target="row1.(FrameworkElement.Height)" Value="24" />
+                        <Setter Target="bobVindEenRit.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="bobBiedJeAan.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="vindJeVrienden.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnRitten.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="feestjesInDeBuurt.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnBestemmingen.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="mijnProfiel.(FrameworkElement.Height)" Value="33" />
+                        <Setter Target="Change.(FrameworkElement.Height)" Value="33" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:ConnectionId='4' x:Name="big">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- setters voor portrait mobile -->
+                        <Setter Target="row0.(Framework.Height)" Value="40" />
+                        <Setter Target="row1.(Framework.Height)" Value="40" />
+                        <Setter Target="bobVindEenRit.(Framework.Height)" Value="40" />
+                        <Setter Target="bobBiedJeAan.(Framework.Height)" Value="40" />
+                        <Setter Target="vindJeVrienden.(Framework.Height)" Value="40" />
+                        <Setter Target="mijnRitten.(Framework.Height)" Value="40" />
+                        <Setter Target="feestjesInDeBuurt.(Framework.Height)" Value="40" />
+                        <Setter Target="mijnBestemmingen.(Framework.Height)" Value="40" />
+                        <Setter Target="mijnProfiel.(Framework.Height)" Value="40" />
+                        <Setter Target="Change.(Framework.Height)" Value="40" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <SplitView.Pane>
+            <StackPanel>
+                <RadioButton x:ConnectionId='5' Canvas.ZIndex="99998" Style="{StaticResource SplitViewMenuButtonStyle}"                             />
+
+                <Grid x:ConnectionId='6' Canvas.ZIndex="99999" x:Name="user" Visibility="Visible" Margin="45,-40,20,0" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:ConnectionId='15' x:Name="row0" Height="40"/>
+                        <RowDefinition x:ConnectionId='16' x:Name="row1" Height="40"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock VerticalAlignment="Center" Margin="0,4,0,8" Grid.Column="0" Grid.ColumnSpan="2" Foreground="{ThemeResource Yellow}" Grid.Row="0" Text="{Binding User, Mode=TwoWay}" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,0,8" Grid.Column="0" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="Points:" />
+                    <TextBlock x:ConnectionId='17' VerticalAlignment="Center" Margin="0,0,0,8" TextAlignment="Right" Grid.Column="1" Foreground="{ThemeResource Yellow}" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Points, Mode=TwoWay}"                           />
+
+                    <Button Style="{ThemeResource button}" Margin="0,0,0,10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Height="30" HorizontalAlignment="Stretch" Content="Afmelden" Command="{Binding LogOffCommand}" />
+                </Grid>
+
+                <RadioButton x:ConnectionId='7' Tag="&#xE724;" x:Name="bobVindEenRit" Content="Vind een rit" Style="{StaticResource SplitViewNavButtonStyle}"                               IsChecked="True" />
+                <RadioButton x:ConnectionId='8' Tag="&#xE724;" x:Name="bobBiedJeAan" Visibility="Collapsed" Content="Bied je aan" Style="{StaticResource SplitViewNavButtonStyle}"                              />
+
+                <RadioButton x:ConnectionId='9' Tag="&#xE716;" x:Name="vindJeVrienden" Content="Vind je vrienden" Style="{StaticResource SplitViewNavButtonStyle}"                                 />
+                <RadioButton x:ConnectionId='10' Tag="&#xE707;" x:Name="mijnRitten" Content="Mijn ritten" Style="{StaticResource SplitViewNavButtonStyle}"                               />
+                <RadioButton x:ConnectionId='11' Tag="&#xE909;" x:Name="feestjesInDeBuurt" Content="Feestjes in de buurt" Style="{StaticResource SplitViewNavButtonStyle}"                                      />
+                <RadioButton x:ConnectionId='12' Tag="&#xE913;" x:Name="mijnBestemmingen" Content="Mijn bestemmingen" Style="{StaticResource SplitViewNavButtonStyle}"                                 />
+                <RadioButton x:ConnectionId='13' Tag="&#xe77B;" x:Name="mijnProfiel" Content="Mijn profiel" Style="{StaticResource SplitViewNavButtonStyle}"                            />
+                <RadioButton x:ConnectionId='14' x:Name="Change" Content="Type: User" HorizontalAlignment="Stretch"                         Tag="" Style="{StaticResource SplitViewNavButtonStyle}"                            />
+
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <!-- Navigation Frame -->
+            <Frame x:ConnectionId='18' x:Name="frame"                                                                                                        >
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo />
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+            </Frame>
+        </SplitView.Content>
+    </SplitView>
+</Page>
+
