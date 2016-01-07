@@ -1,4 +1,0 @@
-C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\BOBApp.csproj;x86
-C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BobWorker\BobWorker.csproj;x86
-C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\Libraries.csproj;x86
-C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\Libraries\Libraries.csproj;x86

@@ -191,10 +191,11 @@
 
 
                 <RelativePanel Visibility="{Binding VisibleSelectedBob, Mode=TwoWay}"  RelativePanel.Below="lblRating" >
-                    <TextBlock x:ConnectionId='12' x:Name="lblTime" Margin="0,0,0,8" Text=""/>
+                    <TextBlock x:ConnectionId='12' x:Name="lblTime" Margin="0,0,0,8" Text="Bestemming: "/>
                     <TextBlock x:ConnectionId='13' x:Name="lblTime4" RelativePanel.RightOf="lblTime" Margin="10,0,0,8" Text="{Binding GetSelectedDestination.Name, Mode=TwoWay}"/>
-                    <TextBlock x:ConnectionId='14' x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,8"  Text="{Binding GetSelectedBob.User, Mode=TwoWay}"/>
-                    <TextBlock x:ConnectionId='15' x:Name="lblTime3" RelativePanel.RightOf="lblTime2" Margin="10,0,0,8"  Text="{Binding RitTime, Mode=TwoWay}"/>
+                    <TextBlock x:ConnectionId='14' x:Name="lblTime5" RelativePanel.RightOf="lblTime4" Margin="0,0,0,8" Text=" met bob "/>
+                    <TextBlock x:ConnectionId='15' x:Name="lblTime2" RelativePanel.RightOf="lblTime4" Margin="10,0,0,8"  Text="{Binding GetSelectedBob.User, Mode=TwoWay}"/>
+                  
                 </RelativePanel>
 
             </RelativePanel>

@@ -10,19 +10,19 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>7084735e-3c30-4abc-b4dc-c8e26e7d39f4</PackageIdentityName>
     <IntermediateOutputPath>C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\obj\x86\Release\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>97F973D51558CFAC2C0F1D33D0CF19C862E4A33358002C644E5A0229134E3BBB</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>64230stijnvanhulle.Bob-app_1.2.0.0_x86__y4y0h80h034vy</RegisteredPackageMoniker>
+    <RegisteredManifestChecksum>60ED7AA388424A8CB81084D5D7864775D55AB6FE04CB6DF953458230E4A399B6</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>64230stijnvanhulle.Bob-app_1.2.2.0_x86__y4y0h80h034vy</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>64230stijnvanhulle.Bob-app_y4y0h80h034vy!App</RegisteredUserModeAppID>
     <RegisteredPackageID>64230stijnvanhulle.Bob-app</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=BBC7E977-DDAA-405E-8BF9-170859D87111</RegisteredPackagePublisher>
-    <RegisteredVersion>1.2.0.0</RegisteredVersion>
+    <RegisteredVersion>1.2.2.0</RegisteredVersion>
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-01-07T10:55:23.384</Modified>
+      <Modified>2016-01-07T13:24:41.798</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -110,15 +110,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\BOBApp.dll">
       <PackagePath>BOBApp.dll</PackagePath>
-      <Modified>2016-01-07T10:55:21.610</Modified>
+      <Modified>2016-01-07T13:24:40.075</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\BOBApp.exe">
       <PackagePath>BOBApp.exe</PackagePath>
-      <Modified>2016-01-07T10:55:23.193</Modified>
+      <Modified>2016-01-07T13:24:41.721</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\BobWorker.winmd">
       <PackagePath>BobWorker.winmd</PackagePath>
-      <Modified>2016-01-07T10:37:44.541</Modified>
+      <Modified>2016-01-07T13:19:56.936</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\ClrCompression.dll">
       <PackagePath>ClrCompression.dll</PackagePath>
@@ -130,7 +130,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-01-07T10:53:05.230</Modified>
+      <Modified>2016-01-07T13:22:21.015</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\Styles\fonts\Raleway-Bold.otf">
       <PackagePath>Styles\fonts\Raleway-Bold.otf</PackagePath>
@@ -170,11 +170,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\_Resources\0.rsrc">
       <PackagePath>_Resources\0.rsrc</PackagePath>
-      <Modified>2016-01-07T10:54:05.319</Modified>
+      <Modified>2016-01-07T13:23:13.098</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\bin\x86\Release\ilc\_Resources\index.txt">
       <PackagePath>_Resources\index.txt</PackagePath>
-      <Modified>2016-01-07T10:54:05.322</Modified>
+      <Modified>2016-01-07T13:23:13.100</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

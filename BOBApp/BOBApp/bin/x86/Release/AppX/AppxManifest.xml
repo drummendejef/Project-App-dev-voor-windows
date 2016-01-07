@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="64230stijnvanhulle.Bob-app" Publisher="CN=BBC7E977-DDAA-405E-8BF9-170859D87111" Version="1.2.0.0" ProcessorArchitecture="x86" />
+  <Identity Name="64230stijnvanhulle.Bob-app" Publisher="CN=BBC7E977-DDAA-405E-8BF9-170859D87111" Version="1.2.2.0" ProcessorArchitecture="x86" />
   <mp:PhoneIdentity PhoneProductId="7084735e-3c30-4abc-b4dc-c8e26e7d39f4" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Bob-app</DisplayName>

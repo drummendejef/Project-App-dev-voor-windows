@@ -1,1 +1,1 @@
-C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\AppPackages\BOBApp_1.2.0.0_Test\BOBApp_1.2.0.0_x86_x64_arm.appxbundle
+C:\Users\stijnvanhulle\Desktop\GitHub\Project-App-dev-voor-windows\BOBApp\BOBApp\AppPackages\BOBApp_1.2.2.0_Test\BOBApp_1.2.2.0_x86_x64_arm.appxbundle
