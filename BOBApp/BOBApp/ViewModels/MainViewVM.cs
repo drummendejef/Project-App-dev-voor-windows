@@ -194,6 +194,7 @@ namespace BOBApp.ViewModels
                     Messenger.Default.Send<Dialog>(new Dialog()
                     {
                         Message = fromUser.User.ToString() + " heeft u vriendschapsverzoek geaccepteerd",
+                        ViewOk=typeof(ZoekVrienden)
                     });
                 }
 
@@ -331,7 +332,7 @@ namespace BOBApp.ViewModels
                 Message = fromUser.User.ToString() + " wilt u toevoegen als vriend",
                 Ok = "Accept",
                 Nok = "Ignore",
-                Data = JsonConvert.SerializeObject(MainViewVM.USER),
+                Data = JsonConvert.SerializeObject(fromUser),
                 ViewOk = typeof(ZoekVrienden),
                 Cb = "friend_accepted",
                 IsNotification = true

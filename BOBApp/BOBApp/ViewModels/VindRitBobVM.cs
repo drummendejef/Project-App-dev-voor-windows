@@ -307,7 +307,7 @@ namespace BOBApp.ViewModels
 
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)this.SelectedParty.Location, location)).Result;
 
-                if (farEnough.Success && farEnough.Value != null)
+                if (farEnough.Value != null)
                 {
                     if (double.Parse(farEnough.Value.ToString()) < 600)
                     {
@@ -605,7 +605,7 @@ namespace BOBApp.ViewModels
             this.Loading = false;
  
             StartTripLocationTimer();
-            this.Map.MapElements.Clear();
+            //this.Map.MapElements.Clear();
             RaiseAll();
         }
 
@@ -755,6 +755,8 @@ namespace BOBApp.ViewModels
                 };
 
                 await UserRepository.PostPoint();
+
+                this.Map.MapElements.Clear();
 
                 MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
                 MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToBob));

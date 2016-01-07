@@ -598,6 +598,7 @@ namespace BOBApp.ViewModels
                     Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = bobAll.User.ID, Status = true, ID=randomNumber };
                     MainViewVM.socket.Emit("bob_ACCEPT:send", JsonConvert.SerializeObject(socketSend));
 
+                    ShowRoute((Location)VindRitVM.SelectedParty.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
 
                     SetStatus(6);
                     this.VisibleSelectedBob = Visibility.Visible;
@@ -623,7 +624,7 @@ namespace BOBApp.ViewModels
            
 
             StartTripLocationTimer();
-            this.Map.MapElements.Clear();
+            //this.Map.MapElements.Clear();
             RaiseAll();
         }
 
@@ -664,7 +665,15 @@ namespace BOBApp.ViewModels
 
             if (location != null)
             {
-                ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                if (MainViewVM.CurrentTrip.StatusID == 2 || MainViewVM.CurrentTrip.StatusID == 8)
+                {
+                    ShowRoute((Location)VindRitVM.SelectedParty.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                }
+                else
+                {
+                    ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                }
+
                 //checkhowfaraway
                 Response farEnough = Task.FromResult<Response>(await TripRepository.Difference((Location)VindRitFilterVM.SelectedDestination.Location, location)).Result;
 
@@ -865,8 +874,19 @@ namespace BOBApp.ViewModels
                             }
                             VindRitFilterVM.SelectedDestination = destination;
 
+                            if (MainViewVM.CurrentTrip.StatusID.HasValue)
+                            {
+                                if (MainViewVM.CurrentTrip.StatusID == 2 || MainViewVM.CurrentTrip.StatusID == 8)
+                                {
+                                    ShowRoute((Location)VindRitVM.SelectedParty.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                                }
+                                else
+                                {
+                                    ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                                }
+                            }
 
-                            ShowRoute(location, (Location)destination.Location);
+                            
 
                             ShowedOnParty = true;
                             this.EnableFind = false;
@@ -932,14 +952,23 @@ namespace BOBApp.ViewModels
                     VindRitFilterVM.SelectedBobsType = bobTypes.Where(r => r.ID == bob.Bob.BobsType_ID).First();
                 }
                 VindRitFilterVM.SelectedDestination = destination;
-               
 
-                ShowRoute(location, (Location)destination.Location);
+
+               
 
                 ShowedOnParty = true;
 
                 if (MainViewVM.CurrentTrip.StatusID.HasValue)
                 {
+                    if (MainViewVM.CurrentTrip.StatusID == 2 || MainViewVM.CurrentTrip.StatusID == 8)
+                    {
+                        ShowRoute((Location)VindRitVM.SelectedParty.Location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                    }
+                    else
+                    {
+                        ShowRoute(location, (Location)VindRitFilterVM.SelectedDestination.Location);
+                    }
+
                     SetStatus(MainViewVM.CurrentTrip.StatusID.Value);
                 }
 
@@ -1362,7 +1391,8 @@ namespace BOBApp.ViewModels
                         };
 
                         MainViewVM.socket.Emit("trip_DONE:send", JsonConvert.SerializeObject(socketSendToUser));
-
+                        
+                        this.Map.MapElements.Clear();
                     }
 
                        
@@ -1735,7 +1765,7 @@ namespace BOBApp.ViewModels
                         MapIcon mapIconFeestLocation = new MapIcon();
                         mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
                                                                    //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.BobPin;
                         mapIconFeestLocation.Title = item.User.ToString();
                         this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
                     }

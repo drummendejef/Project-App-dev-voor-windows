@@ -73,13 +73,13 @@ namespace BOBApp.ViewModels
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
 
             //sockets
-            MainViewVM.socket.On("update_trip", (msg) =>
+            MainViewVM.socket.On("update_trip", async (msg) =>
             {
                 Libraries.Socket _socket = JsonConvert.DeserializeObject<Libraries.Socket>((string)msg);
                 //if (_socket.Status == true && _socket.To==MainViewVM.USER.ID)
                 if (_socket.Status == true)
                 {
-                    GetCurrentTrip();
+                    await GetCurrentTrip();
                 }
 
             });
@@ -177,6 +177,7 @@ namespace BOBApp.ViewModels
                     }
                     else
                     {
+                        this.CurrentTrip = null;
                         //geen current trip nu
 
                     }

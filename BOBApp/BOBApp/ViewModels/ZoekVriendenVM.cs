@@ -149,18 +149,19 @@ namespace BOBApp.ViewModels
 
             if (obj.Name == "friend_accepted")
             {
-                User user = JsonConvert.DeserializeObject<User>(obj.Data.ToString());
+                User.All user = JsonConvert.DeserializeObject<User.All>(obj.Data.ToString());
                 bool accepted = (bool)obj.Result;
-                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID, user.ID, accepted)).Result;
+                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend( user.User.ID,MainViewVM.USER.ID, accepted)).Result;
 
                 if (response.Success == true)
                 {
                     Messenger.Default.Send<Dialog>(new Dialog()
                     {
-                        Message = user.ToString() + " is toegevoegd",
+                        Message = user.User.ToString() + " is toegevoegd",
+                        ViewOk=typeof(ZoekVrienden)
                     });
 
-                    Libraries.Socket socketSend = new Libraries.Socket() { From = MainViewVM.USER.ID, To = user.ID, Status = true };
+                    Libraries.Socket socketSend = new Libraries.Socket() { To = user.User.ID, From = MainViewVM.USER.ID, Status = true };
 
                     MainViewVM.socket.Emit("friend_ADDED:send", JsonConvert.SerializeObject(socketSend));
                 }
