@@ -1853,7 +1853,7 @@ namespace BOBApp.ViewModels
                         MapIcon mapIconFeestLocation = new MapIcon();
                         mapIconFeestLocation.Location = temppoint; //Opgehaalde locatie
                                                                    //mapIconFeestLocation.Title = feest.Name; //Naam van het feestje;
-                        mapIconFeestLocation.Image = MainViewVM.Pins.FeestPin;
+                        mapIconFeestLocation.Image = MainViewVM.Pins.UserPin;
                         mapIconFeestLocation.Title = item.User.ToString();
                         this.Map.MapElements.Add(mapIconFeestLocation);//Marker op de map zetten.
                     }
