@@ -49,7 +49,7 @@ namespace BOBApp.ViewModels
             public static RandomAccessStreamReference BobPin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/BOBpin.png"));
             public static RandomAccessStreamReference HomePin = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/home.png"));
         }
-        
+
 
         public User User { get; set; }
         public RelayCommand LogOffCommand { get; set; }
@@ -68,10 +68,10 @@ namespace BOBApp.ViewModels
         public MainViewVM()
         {
             User = MainViewVM.USER;
-           
+
             LogOffCommand = new RelayCommand(LogOff);
 
-         
+
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
             this.Loading = false;
             RaisePropertyChanged("User");
@@ -80,7 +80,7 @@ namespace BOBApp.ViewModels
         #region socket
         private void StartSocket()
         {
-           
+
 
             //to bob
             MainViewVM.socket.On("bob_ACCEPT", (msg) =>
@@ -92,7 +92,7 @@ namespace BOBApp.ViewModels
                     MainViewVM.LatestSocket = _socket;
                     VindRitBobVM.Request = VindRitBobVM.Request + 1;
 
-                    Bob_Accept(_socket.From,_socket.ID);
+                    Bob_Accept(_socket.From, _socket.ID);
 
                 }
 
@@ -125,7 +125,7 @@ namespace BOBApp.ViewModels
                 if (_socket.Status == true && _socket.To == MainViewVM.USER.ID)
                 //if (_socket.Status == true)
                 {
-                  
+
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
                     Trip currentTrip = JsonConvert.DeserializeObject<Trip>(_socket.Object.ToString());
 
@@ -143,9 +143,9 @@ namespace BOBApp.ViewModels
                 {
                     User.All fromUser = Task.FromResult<User.All>(await UsersRepository.GetUserById(_socket.From)).Result;
 
-                    if (fromUser!=null)
+                    if (fromUser != null)
                     {
-                        if (fromUser.User.IsBob.Value == true && (bool) _socket.Object2==true)
+                        if (fromUser.User.IsBob.Value == true && (bool)_socket.Object2 == true)
                         {
                             Messenger.Default.Send<NavigateTo>(new NavigateTo()
                             {
@@ -164,7 +164,7 @@ namespace BOBApp.ViewModels
                     {
                         TripDone();
                     }
-                   
+
                 }
 
             });
@@ -193,7 +193,7 @@ namespace BOBApp.ViewModels
 
                     Messenger.Default.Send<Dialog>(new Dialog()
                     {
-                        Message = fromUser.ToString() + " heeft u vriendschapsverzoek geaccepteerd",
+                        Message = fromUser.User.ToString() + " heeft u vriendschapsverzoek geaccepteerd",
                     });
                 }
 
@@ -243,7 +243,7 @@ namespace BOBApp.ViewModels
                         {
                             MakeTrip(newTrip, fromBob.Bob.ID.Value);
                         }
-                       
+
                     }
                 }
 
@@ -281,7 +281,7 @@ namespace BOBApp.ViewModels
                     });
 
 
-                    if((bool)_socket.Object2 == true && fromUser!=null)
+                    if ((bool)_socket.Object2 == true && fromUser != null)
                     {
                         Messenger.Default.Send<Dialog>(new Dialog()
                         {
@@ -318,32 +318,32 @@ namespace BOBApp.ViewModels
                     Data = trip
                 });
             }
-           
+
         }
-       
-       
+
+
 
         private void FriendRequest(User.All fromUser)
         {
-          
+
             Messenger.Default.Send<Dialog>(new Dialog()
             {
                 Message = fromUser.User.ToString() + " wilt u toevoegen als vriend",
                 Ok = "Accept",
                 Nok = "Ignore",
-                Data=MainViewVM.USER,
-                ViewOk=typeof(ZoekVrienden),
+                Data = JsonConvert.SerializeObject(MainViewVM.USER),
+                ViewOk = typeof(ZoekVrienden),
                 Cb = "friend_accepted",
-                IsNotification=true
+                IsNotification = true
             });
         }
 
         private async void TripDone()
         {
-            var definition = new { ID =-1 , UserID =-1};
+            var definition = new { ID = -1, UserID = -1 };
             var data = JsonConvert.SerializeObject(definition);
             var data2 = JsonConvert.SerializeObject(new Trip() { ID = -1 });
-           
+
 
             bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
             bool ok_trip = Task.FromResult<bool>(await Localdata.save("trip.json", data2)).Result;
@@ -358,8 +358,8 @@ namespace BOBApp.ViewModels
             VindRitVM.SelectedUser = null;
             VindRitVM.BobAccepted = false;
             VindRitVM.StatusID = 0;
-            
-            MainViewVM.CurrentTrip= null;
+
+            MainViewVM.CurrentTrip = null;
 
             Toast.TileClear();
 
@@ -367,7 +367,7 @@ namespace BOBApp.ViewModels
 
             Frame rootFrame = MainViewVM.MainFrame as Frame;
 
-            if (MainViewVM.USER.IsBob==true)
+            if (MainViewVM.USER.IsBob == true)
             {
 
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
@@ -391,22 +391,22 @@ namespace BOBApp.ViewModels
 
         private async void OpenChatroom(int chatroomID)
         {
-            var definition = new { ID = chatroomID, UserID= MainViewVM.USER.ID };
+            var definition = new { ID = chatroomID, UserID = MainViewVM.USER.ID };
             var data = JsonConvert.SerializeObject(definition);
             bool ok_chatroom = Task.FromResult<bool>(await Localdata.save("chatroom.json", data)).Result;
 
             if (ok_chatroom == true)
             {
-//#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-//                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-//                {
-//                    Frame rootFrame = MainViewVM.MainFrame as Frame;
-//                    rootFrame.Navigate(typeof(VindRitChat),true);
-//                });
-//#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+                //#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+                //                await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+                //                {
+                //                    Frame rootFrame = MainViewVM.MainFrame as Frame;
+                //                    rootFrame.Navigate(typeof(VindRitChat),true);
+                //                });
+                //#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
             }
 
-           
+
         }
 
         private async void Bob_Accept(int from, float id)
@@ -425,7 +425,7 @@ namespace BOBApp.ViewModels
                     ParamView = true,
                     Cb = "bob_accepted",
                     Data = id,
-                    IsNotification=true
+                    IsNotification = true
                 });
             }
             else
@@ -600,7 +600,7 @@ namespace BOBApp.ViewModels
             catch (Exception ex)
             {
 
-               
+
             }
             RaisePropertyChanged("Points");
         }
@@ -617,11 +617,11 @@ namespace BOBApp.ViewModels
                 Location location = await LocationService.GetCurrent();
                 Trips_Locations tripL = new Trips_Locations()
                 {
-                    Trips_ID=res.NewID.Value,
-                    Location= JsonConvert.SerializeObject(location),
-                    Statuses_ID=VindRitVM.StatusID
+                    Trips_ID = res.NewID.Value,
+                    Location = JsonConvert.SerializeObject(location),
+                    Statuses_ID = VindRitVM.StatusID
                 };
-               
+
                 Response okTripL = await TripRepository.PostLocation(tripL);
 
 
@@ -652,7 +652,7 @@ namespace BOBApp.ViewModels
         {
             if (currentTrip != null)
             {
-               MainViewVM.CurrentTrip = currentTrip;
+                MainViewVM.CurrentTrip = currentTrip;
                 //update very minuten location for trip
                 Messenger.Default.Send<NavigateTo>(new NavigateTo()
                 {
@@ -671,7 +671,7 @@ namespace BOBApp.ViewModels
 
             if (res.Success == true)
             {
-               VindRitChatVM.ID = res.NewID.Value;
+                VindRitChatVM.ID = res.NewID.Value;
 
                 Bob.All bob = VindRitVM.SelectedBob;
                 Libraries.Socket socketSendToBob = new Libraries.Socket()
@@ -717,9 +717,9 @@ namespace BOBApp.ViewModels
                 DateTime? minDate = VindRitFilterVM.SelectedMinDate;
                 int? rating = VindRitFilterVM.SelectedRating;
 
-                if (SelectedDestination == null || selectedBob==null || SelectedParty ==null || type==null)
+                if (SelectedDestination == null || selectedBob == null || SelectedParty == null || type == null)
                 {
-                    
+
                     //trip afronden
                     TripDone();
 

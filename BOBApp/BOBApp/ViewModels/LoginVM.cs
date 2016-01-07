@@ -63,8 +63,8 @@ namespace BOBApp.ViewModels
             RegisterCommand = new RelayCommand(Register);
         
             //DEVELOP
-            Email = "stijn.vanhulle@outlook.com";
-            Pass = "test";
+           // Email = "stijn.vanhulle@outlook.com";
+           // Pass = "test";
 
             Tests();
              RaiseAll();

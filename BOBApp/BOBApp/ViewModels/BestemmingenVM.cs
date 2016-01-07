@@ -27,7 +27,7 @@ using Windows.UI.Xaml.Data;
 
 namespace BOBApp.ViewModels
 {
-    public class BestemmingenVM: ViewModelBase
+    public class BestemmingenVM : ViewModelBase
     {
         #region props
         public bool Loading { get; set; }
@@ -37,7 +37,7 @@ namespace BOBApp.ViewModels
         public RelayCommand GoDestinationCommand { get; set; }
         public RelayCommand AddDestinationCommand { get; set; }
         public RelayCommand GoToCityCommand { get; set; }
-       
+
 
         public List<City> Cities { get; set; }
         public List<Users_Destinations> Destinations { get; set; }
@@ -49,7 +49,7 @@ namespace BOBApp.ViewModels
         public City NewCity
         {
             get { return _NewCity; }
-            set { _NewCity = value;}
+            set { _NewCity = value; }
         }
 
         public Destination NewDestination { get; set; }
@@ -65,9 +65,10 @@ namespace BOBApp.ViewModels
         public string SearchItem
         {
             get { return _SearchItem; }
-            set {
+            set
+            {
                 _SearchItem = value;
-                if(_SearchItem==null || _SearchItem.Trim() == "")
+                if (_SearchItem == null || _SearchItem.Trim() == "")
                 {
                     if (destinations_all != null)
                     {
@@ -90,7 +91,7 @@ namespace BOBApp.ViewModels
                 MapCenter = (App.Current as App).UserLocation.Coordinate.Point;//Zoja, center van de map eerst op de persoon focussen.
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
-           
+
 
 
             AddDestinationCommand = new RelayCommand(AddDestination);
@@ -99,12 +100,12 @@ namespace BOBApp.ViewModels
             SearchItemCommand = new RelayCommand(Search);
 
 
-             RaiseAll();
+            RaiseAll();
 
 
         }
 
-     
+
 
         private void ExecuteNavigatedTo(NavigateTo obj)
         {
@@ -133,7 +134,7 @@ namespace BOBApp.ViewModels
             await Task.Run(async () =>
             {
                 // running in background
-               
+
 
 #pragma warning disable CS1998
                 await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -197,12 +198,12 @@ namespace BOBApp.ViewModels
         //Methods
         private void AddDestination()
         {
-           Task task = AddDestination_task(); 
+            Task task = AddDestination_task();
         }
 
         private async Task AddDestination_task()
         {
-            if(this.NewDestination.Name==null || this.NewDestination.Name == "")
+            if (this.NewDestination.Name == null || this.NewDestination.Name == "")
             {
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
@@ -216,7 +217,7 @@ namespace BOBApp.ViewModels
                 });
                 return;
             }
-            if(this.NewCity==null || this.NewCity.ID == null)
+            if (this.NewCity == null || this.NewCity.ID == null)
             {
                 Messenger.Default.Send<Dialog>(new Dialog()
                 {
@@ -235,7 +236,7 @@ namespace BOBApp.ViewModels
             {
                 Cities_ID = this.NewCity.ID,
                 Location = this.NewDestination.Location,
-                Name=this.NewDestination.Name
+                Name = this.NewDestination.Name
 
             };
             Response ok = await DestinationRepository.PostDestination(destination);
@@ -256,8 +257,8 @@ namespace BOBApp.ViewModels
 
         private void GoDestination()
         {
-            Frame rootFrame =MainViewVM.MainFrame as Frame;
-            rootFrame.Navigate(typeof(Bestemmingen_Nieuw),true);
+            Frame rootFrame = MainViewVM.MainFrame as Frame;
+            rootFrame.Navigate(typeof(Bestemmingen_Nieuw), true);
         }
 
         List<Users_Destinations> destinations_all = new List<Users_Destinations>();
@@ -287,10 +288,14 @@ namespace BOBApp.ViewModels
                 }
 
                 destinations_all[i].Remove = new RelayCommand<object>(Remove);
-               
-                
+
+
             }
             this.Destinations = destinations_all;
+            if (this.Destinations == null || this.Destinations.Count == 0)
+            {
+                this.Error = "Geen bestemmingen gevonden";
+            }
             this.Loading = false;
             RaiseAll();
         }
@@ -377,9 +382,9 @@ namespace BOBApp.ViewModels
                 string json = await result.Result.Content.ReadAsStringAsync();
                 var root = JsonConvert.DeserializeObject<TownToCoordinates.RootObject>(json);
 
-                foreach(var rs in root.resourceSets)//In de Json resourcessets gaan
+                foreach (var rs in root.resourceSets)//In de Json resourcessets gaan
                 {
-                    foreach(var r in rs.resources)//Alle resources overlopen (maar 1, door onze vraag)
+                    foreach (var r in rs.resources)//Alle resources overlopen (maar 1, door onze vraag)
                     {
                         Debug.WriteLine("Geselecteerde stadsnaam: " + NewCity.Name + ", ontvangen stadsnaam: " + r.name);
                         Debug.WriteLine("Coordinaten ontvangen stad: " + r.point.coordinates[0] + ", " + r.point.coordinates[1]);
@@ -393,7 +398,7 @@ namespace BOBApp.ViewModels
                     }
                 }
             }
-            
+
             // https://msdn.microsoft.com/en-us/library/ff701714.aspx 
         }
 
@@ -451,7 +456,7 @@ namespace BOBApp.ViewModels
             {
                 Text = "Volgende bestemming wilt u wijzigen: " + this.SelectedDestination.Name,
                 TextWrapping = TextWrapping.Wrap,
-                Margin=new Thickness(0,0,0,15)
+                Margin = new Thickness(0, 0, 0, 15)
             });
 
             var cb = new TextBox
@@ -484,7 +489,7 @@ namespace BOBApp.ViewModels
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.None)
             {
-               
+
             }
             item.SelectedIndex = -1;
 

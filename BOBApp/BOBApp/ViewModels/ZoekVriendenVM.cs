@@ -57,7 +57,7 @@ namespace BOBApp.ViewModels
                     {
                         this.Friends = friends_all;
                         ClearAllMapItems();
-                        
+
                         RaiseAll();
                     }
                 }
@@ -67,9 +67,9 @@ namespace BOBApp.ViewModels
         //Constructor
         public ZoekVriendenVM()
         {
-           
-          
-          
+
+
+
             CloseModalCommand = new RelayCommand(CloseModal);
             ShowModalCommand = new RelayCommand(ShowModal);
             SearchCommand = new RelayCommand(SearchByEmail);
@@ -78,7 +78,7 @@ namespace BOBApp.ViewModels
             VisibleModal = Visibility.Collapsed;
 
             Messenger.Default.Register<NavigateTo>(typeof(bool), ExecuteNavigatedTo);
-          
+
             RaiseAll();
         }
 
@@ -117,7 +117,7 @@ namespace BOBApp.ViewModels
 
                     VisibleModal = Visibility.Collapsed;
 
-               
+
 
 
                     await GetFriends();
@@ -133,7 +133,7 @@ namespace BOBApp.ViewModels
             });
         }
 
-      
+
 
         private async void ExecuteNavigatedTo(NavigateTo obj)
         {
@@ -149,9 +149,9 @@ namespace BOBApp.ViewModels
 
             if (obj.Name == "friend_accepted")
             {
-                User user = (User)obj.Data;
-                bool accepted = (bool) obj.Result;
-                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID,user.ID,accepted)).Result;
+                User user = JsonConvert.DeserializeObject<User>(obj.Data.ToString());
+                bool accepted = (bool)obj.Result;
+                Response response = Task.FromResult<Response>(await FriendsRepository.PostFriend(MainViewVM.USER.ID, user.ID, accepted)).Result;
 
                 if (response.Success == true)
                 {
@@ -168,8 +168,8 @@ namespace BOBApp.ViewModels
                 {
                     //iets misgelopen
                 }
-               
-              
+
+
             }
         }
 
@@ -186,9 +186,9 @@ namespace BOBApp.ViewModels
 
         private void ShowModal()
         {
-          
+
             this.Frame.Navigate(typeof(ZoekVrienden_Add));
-           
+
 
             VisibleModal = Visibility.Visible;
             RaiseAll();
@@ -223,9 +223,9 @@ namespace BOBApp.ViewModels
             foreach (var friend in newItems)
             {
                 friend.VisibleShow = Visibility.Visible;
-               
+
             }
-           
+
 
 
             if (newItems != null && newItems.Count > 0)
@@ -252,7 +252,7 @@ namespace BOBApp.ViewModels
         }
 
 
-       
+
 
 
         #region add friend
@@ -261,7 +261,7 @@ namespace BOBApp.ViewModels
         private async void FindUserByEmail(string email)
         {
             User.All item = await UsersRepository.GetUserByEmail(email);
-            if (item != null && item.User.Online==true)
+            if (item != null && item.User.Online == true)
             {
                 if (this.SearchUsers != null)
                 {
@@ -274,10 +274,10 @@ namespace BOBApp.ViewModels
             }
             else
             {
-                
+
                 this.SearchUsers = await UsersRepository.GetUsersOnline();
-               
-               
+
+
             }
             if (this.SearchUsers != null)
             {
@@ -292,8 +292,8 @@ namespace BOBApp.ViewModels
                     this.Error = null;
                 }
             }
-            
-           
+
+
             RaiseAll();
         }
 
@@ -309,10 +309,10 @@ namespace BOBApp.ViewModels
             if (friends != null)
             {
 
-                var items= friends.Where(r => r.User2.ID==user.User.ID).ToList();
-                if(items!=null && items.Count > 0)
+                var items = friends.Where(r => r.User2.ID == user.User.ID).ToList();
+                if (items != null && items.Count > 0)
                 {
-                    
+
                     Messenger.Default.Send<Dialog>(new Dialog()
                     {
                         Message = "U hebt al deze vriend.",
@@ -334,7 +334,7 @@ namespace BOBApp.ViewModels
                 }
             }
 
-            
+
         }
 
 
@@ -452,7 +452,7 @@ namespace BOBApp.ViewModels
                 catch (Exception)
                 {
 
-                    
+
                 }
 
 
@@ -485,7 +485,7 @@ namespace BOBApp.ViewModels
                             done = true;
                         }
 
-                       
+
 
                     }
 
@@ -526,7 +526,7 @@ namespace BOBApp.ViewModels
                 {
                     item.VisibleShow = Visibility.Collapsed;
                 }
-               
+
                 RaiseAll();
 
                 foreach (var itemChild in this.Map.Children)
@@ -565,7 +565,7 @@ namespace BOBApp.ViewModels
                             control.ItemsSource = this.Friends;
                         }
 
-                      
+
 
                     }
                 }
@@ -573,7 +573,7 @@ namespace BOBApp.ViewModels
             }
         }
 
-      
+
 
         public async void mapItem_Friend(object param)
         {
@@ -659,7 +659,7 @@ namespace BOBApp.ViewModels
             UpdateMapOfType(typeof(List<User.All>));
         }
 
-       
+
 
         #endregion
 
